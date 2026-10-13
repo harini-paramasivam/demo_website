@@ -66,14 +66,14 @@ export default function HeroArt() {
         </g>
 
         <g className="fl-b">
-          <rect x="250" y="400" width="226" height="52" rx="26" fill="url(#glassfill)" stroke="#fff" strokeOpacity=".25" />
-          <path d="M276 426l8 8 15-17" stroke="#f59a3c" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-          <text x="312" y="433" fill="#fff" fontSize="18" fontWeight="600" fontFamily="Inter, sans-serif">PAC validation</text>
+          <rect x="230" y="400" width="250" height="52" rx="26" fill="url(#glassfill)" stroke="#fff" strokeOpacity=".25" />
+          <path d="M256 426l8 8 15-17" stroke="#f59a3c" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <text x="290" y="433" fill="#fff" fontSize="17" fontWeight="600" fontFamily="Inter, sans-serif">WCAG 2.2 &amp; PDF/UA</text>
         </g>
         <g className="fl-c">
-          <rect x="300" y="500" width="256" height="52" rx="26" fill="url(#glassfill)" stroke="#fff" strokeOpacity=".25" />
-          <path d="M326 526l8 8 15-17" stroke="#f59a3c" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-          <text x="362" y="533" fill="#fff" fontSize="18" fontWeight="600" fontFamily="Inter, sans-serif">Screen reader QA</text>
+          <rect x="290" y="500" width="270" height="52" rx="26" fill="url(#glassfill)" stroke="#fff" strokeOpacity=".25" />
+          <path d="M316 526l8 8 15-17" stroke="#f59a3c" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <text x="350" y="533" fill="#fff" fontSize="17" fontWeight="600" fontFamily="Inter, sans-serif">EPUB 3 &amp; Screen Reader</text>
         </g>
         <g className="fl-d">
           <rect x="120" y="500" width="150" height="46" rx="23" fill="#0d1b38" stroke="#fff" strokeOpacity=".15" />

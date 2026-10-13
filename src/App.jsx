@@ -11,6 +11,8 @@ import ServicesOverview from './pages/ServicesOverview.jsx';
 import ServicePage from './pages/ServicePage.jsx';
 import ResourcePage from './pages/ResourcePage.jsx';
 import Contact from './pages/Contact.jsx';
+import AccessibilityStatement from './pages/AccessibilityStatement.jsx';
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
 import NotFound from './pages/NotFound.jsx';
 
 function ScrollToTop() {
@@ -26,9 +28,11 @@ export default function App() {
   const [showTop, setShowTop] = useState(false);
   useEffect(() => {
     const f = () => setShowTop(window.scrollY > 500);
-    f(); window.addEventListener('scroll', f, { passive: true });
+    f();
+    window.addEventListener('scroll', f, { passive: true });
     return () => window.removeEventListener('scroll', f);
   }, []);
+
   return (
     <>
       <ScrollToTop />
@@ -44,14 +48,22 @@ export default function App() {
           <Route path="/resources/news-events" element={<ResourcePage type="news-events" />} />
           <Route path="/resources/case-studies" element={<ResourcePage type="case-studies" />} />
           <Route path="/resources/client-testimonials" element={<ResourcePage type="client-testimonials" />} />
-          <Route path="/resources/guides-insights" element={<ResourcePage type="guides-insights" />} />
           <Route path="/blog" element={<ResourcePage type="blog" />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/accessibility-statement" element={<AccessibilityStatement />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
-      <button type="button" className={`totop${showTop ? ' show' : ''}`} aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}><ArrowUp size={22} aria-hidden="true" /></button>
+      <button
+        type="button"
+        className={`totop${showTop ? ' show' : ''}`}
+        aria-label="Back to top"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
+        <ArrowUp size={22} aria-hidden="true" />
+      </button>
     </>
   );
 }
