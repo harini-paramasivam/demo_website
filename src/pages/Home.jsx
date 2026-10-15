@@ -44,8 +44,8 @@ export default function Home() {
               <li>Section 508</li>
             </ul>
           </div>
+          <HeroArt />
         </div>
-        <HeroArt />
 
         {/* NUMBERS STRIP */}
         <div className="container stats" aria-label="Key statistics">
