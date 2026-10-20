@@ -31,7 +31,16 @@ import {
   Award,
   FileCode,
   Headphones,
-  Check
+  Check,
+  Building2,
+  Landmark,
+  Sliders,
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  Pause,
+  ArrowUpRight,
+  Cpu
 } from 'lucide-react';
 
 const map = {
@@ -67,7 +76,16 @@ const map = {
   Award,
   FileCode,
   Headphones,
-  Check
+  Check,
+  Building2,
+  Landmark,
+  Sliders,
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  Pause,
+  ArrowUpRight,
+  Cpu
 };
 
 export default function Icon({ name, size = 24, ...rest }) {

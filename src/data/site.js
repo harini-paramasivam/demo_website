@@ -5,10 +5,10 @@ export const company = {
   tagline: 'Content That Works for Everyone, Everywhere',
   heroHeading: 'Content That Works for Everyone, Everywhere',
   heroSubheading:
-    'We help publishers, universities, and enterprises create structured, accessible, and multi-format content that reaches every reader on every device.',
-  introHeading: 'Your Content Partner from Manuscript to Millions of Readers',
+    'We help publishers, universities, enterprises, and government organizations create structured, accessible content and smarter digital workflows—from ePublishing and XML to AI, software, data analytics, and digital marketing.',
+  introHeading: 'Your Content and Technology Partner, from Manuscript to Millions of Readers',
   introText:
-    'Velvora Solutions is a content services company focused on three things we do exceptionally well: ePublishing, XML, and digital accessibility. Whether you publish books, journals, training material, or corporate documents, we make sure your content is well-structured, standards-compliant, and usable by everyone, including people who rely on assistive technologies.',
+    'Velvora Solutions is a content and technology services company. We combine ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing to make your content well-structured, standards-compliant, discoverable, and usable by everyone, including people who rely on assistive technologies.',
   email: 'info@velvorasolutions.com',
   accessibilityEmail: 'accessibility@velvorasolutions.com',
   phone: '+91 9500834236',
@@ -17,16 +17,181 @@ export const company = {
   linkedinCompany: 'https://www.linkedin.com/company/118444302/',
   aboutLine: 'Velvora Solutions: ePublishing, XML, and Digital Accessibility Services.',
   description:
-    'Velvora Solutions delivers ePublishing, XML, and digital accessibility services, including EPUB 2/3, web, PDF, Word, PowerPoint, and Excel accessibility, for publishers and organizations worldwide.',
+    'Velvora Solutions delivers ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing services for publishers, universities, enterprises, and government organizations worldwide.',
   accessibilityStatement:
     'Velvora Solutions is committed to making our website accessible to everyone, including people with disabilities. We aim to conform to WCAG 2.2 Level AA. If you have difficulty using any part of this site or need content in another format, please contact us at accessibility@velvorasolutions.com and we will respond promptly.',
 };
 
 export const numbersStrip = [
-  { value: '10+', label: 'Years of Experience' },
-  { value: '5,000+', label: 'Titles Converted' },
-  { value: '50,000+', label: 'Documents Remediated' },
-  { value: '100+', label: 'Satisfied Clients' },
+  { value: '5+', count: 5, label: 'Countries Reached' },
+  { value: '500+', count: 500, label: 'XML Titles Structured' },
+  { value: '2,000+', count: 2000, label: 'Training Hours Delivered' },
+  { value: '30+', count: 30, label: 'Skilled Specialists' },
+];
+
+export const transitionBannerContent = [
+  {
+    title: 'ePublishing Services',
+    quote: 'Transform manuscripts into digital experiences…',
+    desc: 'From XML conversion to EPUB accessibility, we make publishing seamless and future‑ready.',
+    icon: 'BookOpen',
+    tag: 'Publishing & Formats',
+    to: '/services/epublishing'
+  },
+  {
+    title: 'Accessibility Services',
+    quote: 'Designing content that includes everyone…',
+    desc: 'We remediate PDFs, Office files, and websites to meet global accessibility standards.',
+    icon: 'FileCheck2',
+    tag: 'WCAG 2.2 & PDF/UA',
+    to: '/services/digital-accessibility'
+  },
+  {
+    title: 'Web & Software Development',
+    quote: 'Build smarter, faster, accessible applications…',
+    desc: 'Our teams deliver scalable, modern solutions tailored to enterprises, publishers, and universities.',
+    icon: 'Code',
+    tag: 'Web & Enterprise Tech',
+    to: '/services'
+  },
+  {
+    title: 'AI Automation',
+    quote: 'Automate workflows, amplify innovation…',
+    desc: 'We harness AI to reduce manual effort, accelerate publishing, and unlock new efficiencies.',
+    icon: 'Bot',
+    tag: 'AI Workflows & NLP',
+    to: '/services'
+  },
+  {
+    title: 'Data Analytics',
+    quote: 'Turn data into decisions…',
+    desc: 'From predictive models to dashboards, we help organizations see insights clearly and act confidently.',
+    icon: 'BarChart3',
+    tag: 'BI & Predictive Analytics',
+    to: '/services'
+  },
+  {
+    title: 'Digital Marketing',
+    quote: 'Reach audiences with authentic impact…',
+    desc: 'SEO, campaigns, and analytics crafted by diverse voices to drive measurable growth.',
+    icon: 'Megaphone',
+    tag: 'SEO & Global Growth',
+    to: '/contact'
+  },
+  {
+    title: 'Training Services',
+    quote: 'Training designed for impact…',
+    desc: 'Practical sessions that prepare you for global projects and industries.',
+    icon: 'GraduationCap',
+    tag: 'Workshops & Certifications',
+    to: '/services/accessibility-training-and-consulting'
+  }
+];
+
+export const homeServices = [
+  {
+    id: 'publishing-xml',
+    title: 'Publishing and XML',
+    desc: 'Conversion, formatting, and structured XML for books and journals.',
+    btnText: 'Explore Publishing and XML',
+    to: '/services/epublishing',
+    icon: 'BookOpen',
+    tag: 'Structured Content',
+    badge: 'JATS · BITS · EPUB 3'
+  },
+  {
+    id: 'content-services',
+    title: 'Content Services',
+    desc: 'Typesetting, math, metadata, OCR, captioning, and transcription for print and digital content.',
+    btnText: 'Explore Content Services',
+    to: '/services/typesetting-and-design',
+    icon: 'Layers',
+    tag: 'End-to-End Production',
+    badge: 'LaTeX · MathML · OCR'
+  },
+  {
+    id: 'digital-accessibility',
+    title: 'Digital Accessibility',
+    desc: 'Accessible EPUB, web, PDF, Word, PowerPoint, and Excel files that meet WCAG, PDF/UA, and Section 508, plus training and consulting.',
+    btnText: 'Explore Digital Accessibility',
+    to: '/services/digital-accessibility',
+    icon: 'FileCheck2',
+    tag: 'Universal Inclusion',
+    badge: 'WCAG 2.2 · PDF/UA · Section 508'
+  },
+  {
+    id: 'it-services',
+    title: 'IT Services',
+    desc: 'AI automation, website development, software development, data analytics, and digital marketing that cut manual work, build smarter applications, transform data into insights, and help your content reach the right audience.',
+    btnText: 'Explore IT Services',
+    to: '/services',
+    icon: 'Cpu',
+    tag: 'Enterprise Engineering',
+    badge: 'AI Automation · Software · Data'
+  },
+  {
+    id: 'digital-marketing',
+    title: 'Digital Marketing',
+    desc: 'SEO, social media, paid campaigns, content marketing, and analytics to amplify your reach and maximize engagement.',
+    btnText: 'Explore Digital Marketing',
+    to: '/contact',
+    icon: 'Megaphone',
+    tag: 'Audience Amplification',
+    badge: 'SEO · Content · Multi-Channel'
+  },
+  {
+    id: 'training-development',
+    title: 'Training and Skill Development',
+    desc: 'Workshops, certification support, and hands‑on sessions in accessibility, publishing workflows, XML, AI automation, software development, data analytics, and digital marketing. We help your team build practical skills, stay current with evolving standards, and apply best practices directly to real projects.',
+    btnText: 'Explore Training',
+    to: '/services/accessibility-training-and-consulting',
+    icon: 'GraduationCap',
+    tag: 'Hands-on Capacity Building',
+    badge: 'CPACC Prep · Workflows · Tooling'
+  }
+];
+
+export const industrySolutions = [
+  {
+    id: 'publishers',
+    industry: 'Publishers',
+    headline: 'Books and journals, ready for every format.',
+    desc: 'From reflowable EPUB 3 and JATS/BITS XML to print-ready composition and accessible backlist conversions, we keep publishing houses compliant and agile.',
+    icon: 'BookOpen',
+    tag: 'Publishing Industry',
+    highlights: ['EPUB 3 & MathML', 'JATS / BITS XML', 'EAA Compliance', 'Backlist Remediation'],
+    to: '/services/epublishing'
+  },
+  {
+    id: 'universities',
+    industry: 'Universities and EdTech',
+    headline: 'Accessible learning content at scale.',
+    desc: 'Enable equal access to course materials, syllabi, textbooks, and interactive LMS files that strictly comply with Section 508 and WCAG 2.2 AA.',
+    icon: 'GraduationCap',
+    tag: 'Higher Ed & EdTech',
+    highlights: ['Course Packs & Syllabi', 'STEM / LaTeX / MathML', 'PDF/UA Remediation', 'LMS Readiness'],
+    to: '/services/digital-accessibility'
+  },
+  {
+    id: 'enterprises',
+    industry: 'Enterprises',
+    headline: 'Accessible documents, smarter workflows.',
+    desc: 'Transform annual reports, ESG disclosures, marketing assets, and employee intranets into universally accessible, brand-compliant assets.',
+    icon: 'Building2',
+    tag: 'Corporate & Finance',
+    highlights: ['ESG & Annual Reports', 'Office 365 / PDF', 'AI Automation', 'Enterprise SLAs'],
+    to: '/services'
+  },
+  {
+    id: 'government',
+    industry: 'Government and Public Sector',
+    headline: 'Compliance with accessibility regulations.',
+    desc: 'Audit, remediate, and maintain citizen-facing portals and statutory public documents with complete VPAT / ACR documentation and zero compliance gaps.',
+    icon: 'Landmark',
+    tag: 'Public Administration',
+    highlights: ['Section 508 & ADA', 'VPAT / ACR Reports', 'Public Forms Remediation', 'Screen Reader QA'],
+    to: '/contact'
+  }
 ];
 
 export const whyChoose = [
@@ -37,7 +202,7 @@ export const whyChoose = [
   },
   {
     title: 'Human + Tool Quality Checks',
-    desc: 'Automated checkers find the obvious issues. Our trained accessibility specialists find the rest, using real screen readers.',
+    desc: 'Automated checkers find the obvious issues. Our trained specialists find the rest, using real screen readers.',
     icon: 'CheckCircle2',
   },
   {
@@ -57,7 +222,7 @@ export const whyChoose = [
   },
   {
     title: 'One Partner, Many Services',
-    desc: 'Typesetting, XML, EPUB, accessibility, and more, managed through a single point of contact.',
+    desc: 'Publishing, XML, accessibility, AI, website development, software, data analytics, and digital marketing—managed through a single point of contact.',
     icon: 'Layers',
   },
   {
@@ -67,7 +232,7 @@ export const whyChoose = [
   },
   {
     title: 'Accessible by Design',
-    desc: 'Whatever we produce, we build in a way that supports accessibility from the start.',
+    desc: 'Whatever we produce, we build it to support accessibility from the start.',
     icon: 'FileCheck2',
   },
   {
