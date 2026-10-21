@@ -32,59 +32,101 @@ export const numbersStrip = [
 export const transitionBannerContent = [
   {
     title: 'ePublishing Services',
+    headlinePrefix: 'Transform Manuscripts into',
+    headlineAccent: 'Digital Experiences',
     quote: 'Transform manuscripts into digital experiences…',
-    desc: 'From XML conversion to EPUB accessibility, we make publishing seamless and future‑ready.',
+    desc: 'From XML conversion to EPUB accessibility, we make publishing seamless, beautifully structured, and future‑ready.',
     icon: 'BookOpen',
     tag: 'Publishing & Formats',
-    to: '/services/epublishing'
+    to: '/services/epublishing',
+    chips: ['EPUB 2 & 3', 'JATS / BITS XML', 'MathML', 'DocBook', 'Editorial QA', 'Interactive eBooks'],
+    image: '/hero-slide-1.jpg',
+    badgeTop: { label: 'WCAG 2.2 & PDF/UA', sub: 'Universal Accessibility Verified', dot: 'green' },
+    badgeBottom: { label: 'EPUB 3 & JATS XML', sub: 'Structured Multi-Format Delivery', dot: 'gold' }
   },
   {
     title: 'Accessibility Services',
+    headlinePrefix: 'Designing Content That',
+    headlineAccent: 'Includes Everyone',
     quote: 'Designing content that includes everyone…',
-    desc: 'We remediate PDFs, Office files, and websites to meet global accessibility standards.',
+    desc: 'We remediate PDFs, Office files, and websites to meet global WCAG 2.2, PDF/UA, and Section 508 accessibility standards.',
     icon: 'FileCheck2',
     tag: 'WCAG 2.2 & PDF/UA',
-    to: '/services/digital-accessibility'
+    to: '/services/digital-accessibility',
+    chips: ['WCAG 2.2 AA / AAA', 'PDF/UA-1', 'Section 508', 'Screen Reader QA', 'VPAT Assessments', 'Alt-Text & Audio'],
+    image: '/hero-slide-2.jpg',
+    badgeTop: { label: 'Universal WCAG 2.2', sub: 'Audio Descriptions & Screen Readers', dot: 'green' },
+    badgeBottom: { label: 'PDF/UA & Section 508', sub: 'Document & Web Remediation', dot: 'gold' }
   },
   {
     title: 'Web & Software Development',
+    headlinePrefix: 'Build Smarter, Faster,',
+    headlineAccent: 'Accessible Applications',
     quote: 'Build smarter, faster, accessible applications…',
-    desc: 'Our teams deliver scalable, modern solutions tailored to enterprises, publishers, and universities.',
+    desc: 'Our engineering teams deliver scalable, modern solutions tailored to enterprises, publishers, and universities worldwide.',
     icon: 'Code',
     tag: 'Web & Enterprise Tech',
-    to: '/services'
+    to: '/services',
+    chips: ['React & Next.js', 'Cloud APIs', 'Microservices', 'Enterprise Scalability', 'UI/UX Design', 'Full-Stack'],
+    image: '/hero-slide-3.jpg',
+    badgeTop: { label: 'Cloud Architecture', sub: 'Next-Gen Microservices & APIs', dot: 'green' },
+    badgeBottom: { label: 'Modern UI/UX', sub: 'Enterprise-Grade Scalability', dot: 'gold' }
   },
   {
     title: 'AI Automation',
+    headlinePrefix: 'Automate Workflows,',
+    headlineAccent: 'Amplify Innovation',
     quote: 'Automate workflows, amplify innovation…',
-    desc: 'We harness AI to reduce manual effort, accelerate publishing, and unlock new efficiencies.',
+    desc: 'We harness modern AI and NLP to reduce manual effort, accelerate publishing cycles, and unlock breakthrough efficiencies.',
     icon: 'Bot',
     tag: 'AI Workflows & NLP',
-    to: '/services'
+    to: '/services',
+    chips: ['AI Content Ingestion', 'NLP Processing', 'Automated QA', 'Prompt Engineering', 'Workflow Automation', '70% Faster'],
+    image: '/hero-slide-4.jpg',
+    badgeTop: { label: 'AI Neural Engines', sub: '70% Manual Time Reduction', dot: 'gold' },
+    badgeBottom: { label: 'Automated QA & NLP', sub: 'Intelligent Content Ingestion', dot: 'green' }
   },
   {
     title: 'Data Analytics',
+    headlinePrefix: 'Turn Complex Data into',
+    headlineAccent: 'Decisive Action',
     quote: 'Turn data into decisions…',
-    desc: 'From predictive models to dashboards, we help organizations see insights clearly and act confidently.',
+    desc: 'From predictive intelligence models to real-time dashboards, we help leadership see patterns clearly and act confidently.',
     icon: 'BarChart3',
     tag: 'BI & Predictive Analytics',
-    to: '/services'
+    to: '/services',
+    chips: ['BI Dashboards', 'Predictive Modeling', 'ETL Data Pipelines', 'Executive Reporting', 'Real-Time Telemetry', 'Actionable ROI'],
+    image: '/hero-slide-5.jpg',
+    badgeTop: { label: 'Predictive BI Models', sub: 'Real-Time Executive Intelligence', dot: 'gold' },
+    badgeBottom: { label: 'Data Visualizations', sub: 'Actionable Forecasting Metrics', dot: 'green' }
   },
   {
     title: 'Digital Marketing',
+    headlinePrefix: 'Reach Global Audiences with',
+    headlineAccent: 'Authentic Impact',
     quote: 'Reach audiences with authentic impact…',
-    desc: 'SEO, campaigns, and analytics crafted by diverse voices to drive measurable growth.',
+    desc: 'SEO, performance campaigns, and omnichannel analytics crafted by diverse voices to drive measurable, lasting growth.',
     icon: 'Megaphone',
     tag: 'SEO & Global Growth',
-    to: '/contact'
+    to: '/contact',
+    chips: ['Technical SEO', 'Omnichannel Strategy', 'Global Reach', 'Content Marketing', 'Conversion Optimization', 'Performance Ads'],
+    image: '/hero-slide-6.jpg',
+    badgeTop: { label: 'Global Market Reach', sub: 'Omnichannel Growth Networks', dot: 'green' },
+    badgeBottom: { label: 'SEO & Content Impact', sub: 'Data-Driven Campaign ROI', dot: 'gold' }
   },
   {
     title: 'Training Services',
+    headlinePrefix: 'Empowering Teams Through',
+    headlineAccent: 'High-Impact Training',
     quote: 'Training designed for impact…',
-    desc: 'Practical sessions that prepare you for global projects and industries.',
+    desc: 'Practical corporate workshops and certification masterclasses that prepare your staff for global standards and compliance.',
     icon: 'GraduationCap',
     tag: 'Workshops & Certifications',
-    to: '/services/accessibility-training-and-consulting'
+    to: '/services/accessibility-training-and-consulting',
+    chips: ['WCAG Masterclasses', 'Staff Upskilling', 'PDF Remediation Bootcamps', 'Digital Credentials', 'Consulting Retainers', 'Hands-On Labs'],
+    image: '/hero-slide-7.jpg',
+    badgeTop: { label: 'Corporate Masterclasses', sub: 'WCAG 2.2 Compliance Workshops', dot: 'gold' },
+    badgeBottom: { label: 'Certified Specialists', sub: 'Professional Digital Credentials', dot: 'green' }
   }
 ];
 
@@ -97,7 +139,8 @@ export const homeServices = [
     to: '/services/epublishing',
     icon: 'BookOpen',
     tag: 'Structured Content',
-    badge: 'JATS · BITS · EPUB 3'
+    badge: 'JATS · BITS · EPUB 3',
+    image: '/hero-slide-1.jpg'
   },
   {
     id: 'content-services',
@@ -107,7 +150,8 @@ export const homeServices = [
     to: '/services/typesetting-and-design',
     icon: 'Layers',
     tag: 'End-to-End Production',
-    badge: 'LaTeX · MathML · OCR'
+    badge: 'LaTeX · MathML · OCR',
+    image: '/about-manuscript.jpg'
   },
   {
     id: 'digital-accessibility',
@@ -117,7 +161,8 @@ export const homeServices = [
     to: '/services/digital-accessibility',
     icon: 'FileCheck2',
     tag: 'Universal Inclusion',
-    badge: 'WCAG 2.2 · PDF/UA · Section 508'
+    badge: 'WCAG 2.2 · PDF/UA · Section 508',
+    image: '/hero-slide-2.jpg'
   },
   {
     id: 'it-services',
@@ -127,7 +172,8 @@ export const homeServices = [
     to: '/services',
     icon: 'Cpu',
     tag: 'Enterprise Engineering',
-    badge: 'AI Automation · Software · Data'
+    badge: 'AI Automation · Software · Data',
+    image: '/hero-slide-3.jpg'
   },
   {
     id: 'digital-marketing',
@@ -137,7 +183,8 @@ export const homeServices = [
     to: '/contact',
     icon: 'Megaphone',
     tag: 'Audience Amplification',
-    badge: 'SEO · Content · Multi-Channel'
+    badge: 'SEO · Content · Multi-Channel',
+    image: '/hero-slide-6.jpg'
   },
   {
     id: 'training-development',
@@ -147,7 +194,8 @@ export const homeServices = [
     to: '/services/accessibility-training-and-consulting',
     icon: 'GraduationCap',
     tag: 'Hands-on Capacity Building',
-    badge: 'CPACC Prep · Workflows · Tooling'
+    badge: 'CPACC Prep · Workflows · Tooling',
+    image: '/hero-slide-7.jpg'
   }
 ];
 

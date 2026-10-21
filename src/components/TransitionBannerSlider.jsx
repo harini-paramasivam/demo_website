@@ -3,18 +3,17 @@ import { Link } from 'react-router-dom';
 import { 
   ChevronLeft, 
   ChevronRight, 
-  Play, 
-  Pause, 
   ArrowRight, 
-  Sparkles,
-  Quote
+  Quote,
+  Pause,
+  Play
 } from 'lucide-react';
 import { transitionBannerContent } from '../data/site.js';
 import Icon from './Icon.jsx';
 
 export default function TransitionBannerSlider() {
   const [activeIdx, setActiveIdx] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isHeld, setIsHeld] = useState(false);
   const totalSlides = transitionBannerContent.length;
   const timerRef = useRef(null);
 
@@ -27,90 +26,68 @@ export default function TransitionBannerSlider() {
   };
 
   useEffect(() => {
-    if (isPlaying) {
-      timerRef.current = setInterval(nextSlide, 5000);
+    if (isHeld) {
+      clearInterval(timerRef.current);
+      return;
     }
+    timerRef.current = setInterval(nextSlide, 4000); // 4 seconds auto slide
     return () => clearInterval(timerRef.current);
-  }, [isPlaying, activeIdx]);
+  }, [activeIdx, isHeld]);
+
+  const handleCardClick = (e) => {
+    // If clicking a link or button directly, allow its normal action
+    if (e.target.closest('a') || e.target.closest('button')) {
+      return;
+    }
+    // Toggle hold when tapping/clicking banner card
+    setIsHeld((prev) => !prev);
+  };
 
   const current = transitionBannerContent[activeIdx];
 
   return (
     <section 
       className="t-slider-wrap" 
-      aria-label="Core Capabilities Interactive Showcase"
-      onMouseEnter={() => setIsPlaying(false)}
-      onMouseLeave={() => setIsPlaying(true)}
+      aria-label="Capabilities Showcase"
     >
       <div className="container">
-        {/* Top Header & Slide Navigation Tabs */}
-        <div className="t-slider-top">
-          <div className="t-slider-eyebrow">
-            <span className="t-slider-eyebrow__pulse" />
-            <Sparkles size={16} className="t-slider-sparkle" />
-            <span>TRANSITION SHOWCASE · 7 CORE PILLARS</span>
-          </div>
-
-          <div className="t-slider-controls">
-            <span className="t-slider-counter" aria-live="polite">
-              <span className="t-slider-counter__current">0{activeIdx + 1}</span>
-              <span className="t-slider-counter__sep">/</span>
-              <span className="t-slider-counter__total">0{totalSlides}</span>
-            </span>
-
-            <button 
-              type="button" 
-              className="t-slider-btn" 
-              onClick={prevSlide}
-              aria-label="Previous capability slide"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button 
-              type="button" 
-              className="t-slider-btn" 
-              onClick={nextSlide}
-              aria-label="Next capability slide"
-            >
-              <ChevronRight size={18} />
-            </button>
-            <button
-              type="button"
-              className="t-slider-btn t-slider-btn--play"
-              onClick={() => setIsPlaying(!isPlaying)}
-              aria-label={isPlaying ? 'Pause slideshow' : 'Play slideshow'}
-              title={isPlaying ? 'Pause auto-sliding' : 'Resume auto-sliding'}
-            >
-              {isPlaying ? <Pause size={15} /> : <Play size={15} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Tab Pills for Instant Direct Slide Selection */}
-        <div className="t-slider-tabs" role="tablist" aria-label="Capability selection">
-          {transitionBannerContent.map((item, idx) => (
-            <button
-              key={item.title}
-              role="tab"
-              aria-selected={activeIdx === idx}
-              className={`t-slider-tab${activeIdx === idx ? ' is-active' : ''}`}
-              onClick={() => setActiveIdx(idx)}
-            >
-              <span className="t-slider-tab__icon">
-                <Icon name={item.icon} size={16} />
-              </span>
-              <span className="t-slider-tab__label">{item.title}</span>
-              {activeIdx === idx && isPlaying && (
-                <span className="t-slider-tab__progress" aria-hidden="true" />
-              )}
-            </button>
-          ))}
-        </div>
-
-        {/* Main Stage Slide Card */}
+        {/* Main Banner Card with embedded Left & Right corner arrows */}
         <div className="t-slide-stage">
-          <div className="t-slide-card" key={activeIdx}>
+          <div 
+            className={`t-slide-card${isHeld ? ' is-held' : ''}`} 
+            key={activeIdx}
+            onClick={handleCardClick}
+            role="region"
+            aria-label={`${current.title} slide. Tap to ${isHeld ? 'resume' : 'hold'}.`}
+            style={{ cursor: 'pointer' }}
+          >
             <div className="t-slide-card__ambient-glow" />
+
+            {/* Left corner arrow button inside banner */}
+            <button 
+              type="button" 
+              className="t-card-arrow t-card-arrow--prev" 
+              onClick={(e) => {
+                e.stopPropagation();
+                prevSlide();
+              }}
+              aria-label="Previous slide"
+            >
+              <ChevronLeft size={22} />
+            </button>
+
+            {/* Right corner arrow button inside banner */}
+            <button 
+              type="button" 
+              className="t-card-arrow t-card-arrow--next" 
+              onClick={(e) => {
+                e.stopPropagation();
+                nextSlide();
+              }}
+              aria-label="Next slide"
+            >
+              <ChevronRight size={22} />
+            </button>
             
             <div className="t-slide-card__content">
               <div className="t-slide-card__meta">
@@ -118,7 +95,18 @@ export default function TransitionBannerSlider() {
                   <Icon name={current.icon} size={15} />
                   <span>{current.tag}</span>
                 </span>
-                <span className="t-slide-card__index">Pillar 0{activeIdx + 1} of 0{totalSlides}</span>
+
+                {/* Subtle Hold Status Pill */}
+                {isHeld ? (
+                  <span className="t-held-pill" title="Slide is on hold. Tap to resume automatic sliding.">
+                    <Pause size={12} />
+                    <span>Held · Tap to Resume</span>
+                  </span>
+                ) : (
+                  <span className="t-held-hint" title="Tap banner to hold this slide">
+                    Tap to Hold
+                  </span>
+                )}
               </div>
 
               <h2 className="t-slide-card__title">
@@ -159,6 +147,23 @@ export default function TransitionBannerSlider() {
                 <small>100% Quality Assured</small>
               </div>
             </div>
+          </div>
+
+          {/* Navigation Dots */}
+          <div className="t-slider-dots" role="tablist" aria-label="Slides">
+            {transitionBannerContent.map((item, idx) => (
+              <button
+                key={item.title}
+                role="tab"
+                aria-selected={activeIdx === idx}
+                className={`t-slider-dot${activeIdx === idx ? ' is-active' : ''}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveIdx(idx);
+                }}
+                aria-label={`Go to slide ${idx + 1}: ${item.title}`}
+              />
+            ))}
           </div>
         </div>
 

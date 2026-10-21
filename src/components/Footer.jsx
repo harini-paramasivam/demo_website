@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Linkedin, ArrowRight } from 'lucide-react';
+import { Mail, Linkedin, ArrowRight, Phone, Clock, MapPin } from 'lucide-react';
 import { company } from '../data/site.js';
 
 export default function Footer() {
@@ -14,11 +14,20 @@ export default function Footer() {
 
   const serviceLinks = [
     { label: 'ePublishing', to: '/services/epublishing' },
-    { label: 'XML', to: '/services/xml' },
+    { label: 'XML Conversion', to: '/services/xml' },
     { label: 'EPUB Accessibility', to: '/services/digital-accessibility#epub-3' },
     { label: 'Web Accessibility', to: '/services/digital-accessibility#web' },
-    { label: 'PDF Accessibility', to: '/services/digital-accessibility#pdf' },
-    { label: 'Word, PPT and Excel Accessibility', to: '/services/digital-accessibility#word' },
+    { label: 'PDF Remediation', to: '/services/digital-accessibility#pdf' },
+    { label: 'Office Accessibility', to: '/services/digital-accessibility#word' },
+  ];
+
+  const standardsLinks = [
+    { label: 'WCAG 2.2 AA / AAA', to: '/services/digital-accessibility' },
+    { label: 'PDF/UA (ISO 14289)', to: '/services/digital-accessibility#pdf' },
+    { label: 'JATS & BITS XML', to: '/services/xml' },
+    { label: 'EPUB Accessibility 1.1', to: '/services/digital-accessibility#epub-3' },
+    { label: 'Section 508 & ADA', to: '/services/digital-accessibility' },
+    { label: 'Enterprise NDA & Security', to: '/privacy-policy' },
   ];
 
   return (
@@ -39,6 +48,9 @@ export default function Footer() {
             </a>
             <a href={`mailto:${company.email}`} aria-label={`Email ${company.email}`}>
               <Mail size={18} />
+            </a>
+            <a href={`tel:${company.phone.replace(/\s+/g, '')}`} aria-label={`Call ${company.phone}`}>
+              <Phone size={18} />
             </a>
           </div>
         </div>
@@ -65,15 +77,43 @@ export default function Footer() {
           </ul>
         </nav>
 
+        <nav aria-label="Footer – Standards & QA">
+          <h2 className="footer__h">Standards & QA</h2>
+          <ul>
+            {standardsLinks.map((item) => (
+              <li key={item.label}>
+                <Link to={item.to}>{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
         <div className="footer__talk">
           <h2 className="footer__h">Start a conversation</h2>
-          <p>Tell us about your project and our team will respond within one business day.</p>
-          <Link to="/contact" className="btn btn--orange">
-            Get in touch <ArrowRight size={18} aria-hidden="true" />
+          <p className="footer__talk-lead">
+            Tell us about your project and our team will respond within one business day.
+          </p>
+          <Link to="/contact" className="btn btn--orange footer__cta-btn">
+            Get in touch <ArrowRight size={17} aria-hidden="true" />
           </Link>
-          <a className="footer__mail" href={`mailto:${company.email}`}>
-            {company.email}
-          </a>
+          <div className="footer__contact-info">
+            <a className="footer__contact-link" href={`mailto:${company.email}`}>
+              <Mail size={15} aria-hidden="true" />
+              <span>{company.email}</span>
+            </a>
+            <a className="footer__contact-link" href={`tel:${company.phone.replace(/\s+/g, '')}`}>
+              <Phone size={15} aria-hidden="true" />
+              <span>{company.phone}</span>
+            </a>
+            <div className="footer__contact-text">
+              <Clock size={15} aria-hidden="true" />
+              <span>{company.hours}</span>
+            </div>
+            <div className="footer__contact-text">
+              <MapPin size={15} aria-hidden="true" />
+              <span>Cuddalore, Tamil Nadu, India</span>
+            </div>
+          </div>
         </div>
       </div>
 
