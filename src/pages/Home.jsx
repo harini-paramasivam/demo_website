@@ -4,7 +4,6 @@ import { ArrowRight, ArrowUp } from 'lucide-react';
 import { company, whyChoose, homeServices, industrySolutions, transitionBannerContent } from '../data/site.js';
 import Icon from '../components/Icon.jsx';
 import HeroArt from '../components/HeroArt.jsx';
-import AboutArt from '../components/AboutArt.jsx';
 import ServicesStream from '../components/ServicesStream.jsx';
 import SectorBlueprint from '../components/SectorBlueprint.jsx';
 import TrustArchitecture from '../components/TrustArchitecture.jsx';
@@ -79,11 +78,18 @@ export default function Home() {
                 Get in Touch <ArrowRight size={18} aria-hidden="true" />
               </Link>
             </div>
-            <ul className="chips" aria-label={`Core capabilities for ${currentSlide.title}`}>
-              {currentSlide.chips.map((chip) => (
-                <li key={chip}>{chip}</li>
-              ))}
-            </ul>
+
+            {/* Single-line Horizontally Moving Capabilities Ribbon */}
+            <div className="hero-chips-marquee" aria-label={`Core capabilities for ${currentSlide.title}`}>
+              <div className="hero-chips-track">
+                {[...currentSlide.chips, ...currentSlide.chips].map((chip, idx) => (
+                  <span key={`${chip}-${idx}`} className="hero-chip-pill">
+                    <span className="hero-chip-dot" />
+                    <span>{chip}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
           <HeroArt 
             activeIdx={heroIdx}
@@ -120,34 +126,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* 2. INTRO SECTION (LUXURY ORANGE THEME) */}
-      <section className="section about-section-orange netbg" aria-labelledby="about-title">
-        <div className="container about">
-          <div className="reveal">
-            <p className="eyebrow eyebrow--orange">About Velvora Solutions</p>
-            <h2 id="about-title" className="xl">
-              Your Content and Technology Partner, from <br />
-              <span className="accent">Manuscript to Millions of Readers</span>
-            </h2>
-            <p className="lead lead--dark">
-              {company.introText}
-            </p>
-            <div className="btn-row" style={{ marginTop: '1.75rem' }}>
-              <Link to="/about/company-overview" className="btn btn--orange">
-                About Velvora Solutions <ArrowRight size={17} aria-hidden="true" />
-              </Link>
-              <Link to="/contact" className="btn btn--outline">
-                Contact Our Specialists <ArrowRight size={17} aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-          <div className="reveal">
-            <AboutArt />
-          </div>
-        </div>
-      </section>
-
-      {/* 4. SERVICES AT A GLANCE (INNOVATIVE INTERACTIVE CAPABILITY STREAM) */}
+      {/* 2. SERVICES AT A GLANCE */}
       <section id="services-glance" className="section section--tint" aria-labelledby="services-head">
         <div className="container">
           <SectionHead
