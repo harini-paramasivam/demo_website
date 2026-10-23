@@ -117,14 +117,12 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="footer__legal-wrap">
-        <div className="container footer__legal">
-          <p>© 2026 Velvora Solutions. All rights reserved.</p>
-          <div className="footer__legal-links">
-            <Link to="/privacy-policy">Privacy Policy</Link>
-            <span aria-hidden="true">|</span>
-            <Link to="/accessibility-statement">Accessibility Statement</Link>
-          </div>
+      <div className="container footer__legal">
+        <p>© 2026 Velvora Solutions. All rights reserved.</p>
+        <div className="footer__legal-links">
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <span aria-hidden="true">|</span>
+          <Link to="/accessibility-statement">Accessibility Statement</Link>
         </div>
       </div>
     </footer>
