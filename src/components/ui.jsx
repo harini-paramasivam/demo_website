@@ -70,6 +70,7 @@ export function CtaBand({
   text = 'Tell us about your project and our team will respond within one business day.',
   primaryBtnText = 'Get in Touch',
   primaryBtnTo = '/contact',
+  primaryBtnOnClick,
   secondaryBtnText = 'Explore Our Services',
   secondaryBtnTo = '/services',
 }) {
@@ -81,9 +82,15 @@ export function CtaBand({
           <p>{text}</p>
         </div>
         <div className="btn-row">
-          <Link to={primaryBtnTo} className="btn btn--orange">
-            {primaryBtnText} <ArrowRight size={18} aria-hidden="true" />
-          </Link>
+          {primaryBtnOnClick ? (
+            <button type="button" onClick={primaryBtnOnClick} className="btn btn--orange">
+              {primaryBtnText} <ArrowRight size={18} aria-hidden="true" />
+            </button>
+          ) : (
+            <Link to={primaryBtnTo} className="btn btn--orange">
+              {primaryBtnText} <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+          )}
           {secondaryBtnTo && (
             <Link to={secondaryBtnTo} className="btn btn--outline">
               {secondaryBtnText} <ArrowRight size={18} aria-hidden="true" />

@@ -1,24 +1,34 @@
-import { User } from 'lucide-react';
+import { useEffect } from 'react';
+import { User, Sparkles, Award } from 'lucide-react';
 import { teamMembers } from '../data/site.js';
 import { PageHero, CtaBand } from '../components/ui.jsx';
 
 export default function OurTeam() {
+  useEffect(() => {
+    document.title = 'Meet the People Behind Velvora | Velvora Solutions';
+  }, []);
+
   return (
     <>
       <PageHero
-        eyebrow="Our Team"
+        eyebrow="Our Leadership & Specialists"
         title="Meet the People Behind Velvora"
-        crumbs={['About Us', 'Our Team']}
+        crumbs={['Home', 'About Us', 'Our Team']}
       >
-        Publishing professionals, XML specialists, accessibility testers, and project managers delivering reliable results.
+        Publishing professionals, XML specialists, accessibility testers, data and automation engineers, digital marketers, and project managers who work together to deliver reliable results.
       </PageHero>
 
       <section className="section">
         <div className="container">
-          <div className="prose" style={{ maxWidth: '75ch', marginBottom: '3rem' }}>
-            <h2>Our People, Our Strength</h2>
-            <p className="lead">
-              Our strength is our people. Velvora&apos;s team includes publishing professionals, XML specialists, accessibility testers, and project managers who work together to deliver reliable results.
+          <div className="prose" style={{ maxWidth: '82ch', marginBottom: '3.5rem' }}>
+            <span className="badge-eyebrow">
+              <Sparkles size={16} /> Our People, Our Strength
+            </span>
+            <h2 className="career-section-h2" style={{ color: 'var(--ink)' }}>
+              United by Craft, Driven by Quality
+            </h2>
+            <p className="lead" style={{ color: '#334155', lineHeight: 1.7 }}>
+              Our strength is our people. Velvora’s team includes publishing professionals, XML specialists, accessibility testers, data and automation engineers, digital marketers, and project managers who work together to deliver reliable results.
             </p>
           </div>
 
@@ -26,8 +36,8 @@ export default function OurTeam() {
             {teamMembers.map((member) => (
               <article key={member.name} className="team-card">
                 <div className="team-card__avatar">
-                  <div className="avatar-placeholder" aria-hidden="true">
-                    <User size={48} strokeWidth={1.5} />
+                  <div className="avatar-placeholder" role="img" aria-label={member.alt}>
+                    <User size={52} strokeWidth={1.5} />
                   </div>
                   <span className="sr">{member.alt}</span>
                 </div>
@@ -44,7 +54,7 @@ export default function OurTeam() {
 
       <CtaBand
         title="Want to Collaborate with Our Specialists?"
-        text="Discuss your project with our accessibility, XML, and production leads today."
+        text="Discuss your project with our accessibility, XML, engineering, and production leads today."
         primaryBtnText="Get in Touch"
         primaryBtnTo="/contact"
       />

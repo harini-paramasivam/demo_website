@@ -7,7 +7,10 @@ export default function Footer() {
     { label: 'Home', to: '/' },
     { label: 'About Us', to: '/about/company-overview' },
     { label: 'Services', to: '/services' },
-    { label: 'Resources', to: '/resources/news-events' },
+    { label: 'Solutions', to: '/solutions' },
+    { label: 'Partner With Us', to: '/partner' },
+    { label: 'Careers', to: '/careers' },
+    { label: 'Insights', to: '/resources/insights' },
     { label: 'Blog', to: '/blog' },
     { label: 'Contact Us', to: '/contact' },
   ];

@@ -51,32 +51,46 @@ export default function Home() {
 
   return (
     <>
-      {/* 1. HERO SECTION (SYNCHRONIZED 7-CAPABILITY SLIDER) */}
+      {/* 1. HERO SECTION */}
       <section className="hero netbg" aria-labelledby="hero-title">
         <div className="container hero__in">
-          <div className="hero__copy hero__copy--slider" key={heroIdx}>
+          <div className="hero__copy">
             <p className="pill">
               <i />
-              {currentSlide.tag} · {currentSlide.title}
+              Content &amp; Technology Services
             </p>
-            <h1 id="hero-title" className="hero-slide-h1">
-              {currentSlide.headlinePrefix}{' '}
-              <span className="accent">{currentSlide.headlineAccent}</span>
+            <h1 id="hero-title" className="hero-main-h1">
+              Content That Works for <span className="accent">Everyone, Everywhere</span>
             </h1>
-            <span className="rule" aria-hidden="true" />
-            <p className="hero-slide-quote">
-              “{currentSlide.quote.replace(/[“”]/g, '')}”
+            <p className="lead lead--dark hero-main-lead">
+              We help publishers, universities, enterprises, and government organizations create structured, accessible content and smarter digital workflows—from ePublishing and XML to AI, software, data analytics, and digital marketing.
             </p>
-            <p className="lead lead--dark">
-              {currentSlide.desc}
-            </p>
-            <div className="btn-row">
-              <Link to={currentSlide.to} className="btn btn--orange btn--lg">
-                Explore {currentSlide.title} <ArrowRight size={18} aria-hidden="true" />
-              </Link>
-              <Link to="/contact" className="btn btn--outline btn--lg">
+            <div className="btn-row hero-main-btns">
+              <Link to="/contact" className="btn btn--orange btn--lg">
                 Get in Touch <ArrowRight size={18} aria-hidden="true" />
               </Link>
+              <a href="#services-glance" className="btn btn--outline btn--lg">
+                Explore Our Services <ArrowRight size={18} aria-hidden="true" />
+              </a>
+            </div>
+
+            {/* Synchronized 7-Capability Transition Card */}
+            <div className="hero-transition-banner" key={heroIdx}>
+              <div className="hero-transition-banner__top">
+                <span className="hero-transition-banner__tag">
+                  <Icon name={currentSlide.icon} size={15} />
+                  <span>{currentSlide.title}</span>
+                </span>
+                <span className="hero-transition-banner__counter">
+                  0{heroIdx + 1} / 0{totalSlides}
+                </span>
+              </div>
+              <p className="hero-transition-banner__quote">
+                “{currentSlide.quote.replace(/[“”]/g, '')}”
+              </p>
+              <p className="hero-transition-banner__desc">
+                {currentSlide.desc}
+              </p>
             </div>
 
             {/* Single-line Horizontally Moving Capabilities Ribbon */}
@@ -101,23 +115,54 @@ export default function Home() {
           />
         </div>
 
-        {/* NUMBERS STRIP */}
-        <div className="container stats" aria-label="Key statistics">
-          <div>
-            <b><CountUp to={5} />+</b>
-            <span>Countries Reached</span>
+        {/* NUMBERS STRIP - LUMINOUS METRIC PODS */}
+        <div className="container stats" aria-label="Key company statistics">
+          <div className="stat-card">
+            <div className="stat-card__icon">
+              <Icon name="Globe" size={20} />
+            </div>
+            <b className="stat-card__num">
+              <CountUp to={5} /><span className="stat-card__plus">+</span>
+            </b>
+            <span className="stat-card__label">Countries Reached</span>
+            <span className="stat-card__sub">Global Delivery</span>
+            <div className="stat-card__bar" />
           </div>
-          <div>
-            <b><CountUp to={500} />+</b>
-            <span>XML Titles Structured</span>
+
+          <div className="stat-card">
+            <div className="stat-card__icon">
+              <Icon name="FileCode" size={20} />
+            </div>
+            <b className="stat-card__num">
+              <CountUp to={500} /><span className="stat-card__plus">+</span>
+            </b>
+            <span className="stat-card__label">XML Titles Structured</span>
+            <span className="stat-card__sub">Publishing Standards</span>
+            <div className="stat-card__bar" />
           </div>
-          <div>
-            <b><CountUp to={2000} />+</b>
-            <span>Training Hours Delivered</span>
+
+          <div className="stat-card">
+            <div className="stat-card__icon">
+              <Icon name="GraduationCap" size={20} />
+            </div>
+            <b className="stat-card__num">
+              <CountUp to={2000} /><span className="stat-card__plus">+</span>
+            </b>
+            <span className="stat-card__label">Training Hours Delivered</span>
+            <span className="stat-card__sub">Continuous Upskilling</span>
+            <div className="stat-card__bar" />
           </div>
-          <div>
-            <b><CountUp to={30} />+</b>
-            <span>Skilled Specialists</span>
+
+          <div className="stat-card">
+            <div className="stat-card__icon">
+              <Icon name="Users" size={20} />
+            </div>
+            <b className="stat-card__num">
+              <CountUp to={30} /><span className="stat-card__plus">+</span>
+            </b>
+            <span className="stat-card__label">Skilled Specialists</span>
+            <span className="stat-card__sub">In-House Experts</span>
+            <div className="stat-card__bar" />
           </div>
         </div>
 
@@ -126,21 +171,59 @@ export default function Home() {
         </p>
       </section>
 
-      {/* 2. SERVICES AT A GLANCE */}
+      {/* 2. INTRO SECTION */}
+      <section className="section intro-section" aria-labelledby="intro-head">
+        <div className="container">
+          <div className="intro-card reveal">
+            <div className="intro-card__header">
+              <span className="badge-eyebrow">
+                <Icon name="Sparkles" size={16} /> Partner with Velvora
+              </span>
+              <h2 id="intro-head" className="intro-card__title">
+                Your Content and Technology Partner, from Manuscript to Millions of Readers
+              </h2>
+            </div>
+            <div className="intro-card__body">
+              <p className="intro-card__text">
+                Velvora Solutions is a content and technology services company. We combine ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing to make your content well-structured, standards-compliant, discoverable, and usable by everyone, including people who rely on assistive technologies.
+              </p>
+              <div className="intro-card__tags">
+                <span className="intro-tag">ePublishing &amp; XML</span>
+                <span className="intro-tag">Digital Accessibility</span>
+                <span className="intro-tag">AI Automation</span>
+                <span className="intro-tag">Web &amp; Software</span>
+                <span className="intro-tag">Data Analytics</span>
+                <span className="intro-tag">Digital Marketing</span>
+                <span className="intro-tag">Training &amp; Skills</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. SERVICES AT A GLANCE */}
       <section id="services-glance" className="section section--tint" aria-labelledby="services-head">
         <div className="container">
           <SectionHead
-            eyebrow="Services at a Glance"
-            title="Complete Content Services Under One Roof"
+            eyebrow="Capabilities Overview"
+            title="Services at a Glance"
           >
             We convert, structure, and remediate content so it can be published anywhere and read by anyone.
           </SectionHead>
           
           <ServicesStream />
+
+          {/* Centered View All Button */}
+          <div className="glance-cta-wrap">
+            <Link to="/services" className="btn btn--orange btn--lg">
+              <span>View All Services</span>
+              <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* 5. WHO WE SERVE (INNOVATIVE 4-SECTOR CONNECTED BLUEPRINT) */}
+      {/* 4. WHO WE SERVE */}
       <section className="section section--paper" aria-labelledby="industry-head">
         <div className="container">
           <SectionHead
@@ -154,12 +237,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. WHY CHOOSE VELVORA (LUXURY 9-PILLAR ASSURANCE MATRIX) */}
+      {/* 5. WHY CHOOSE VELVORA */}
       <section className="section why-section-dark netbg" aria-labelledby="why-head">
         <div className="container">
           <SectionHead
             eyebrow="The Velvora Advantage"
-            title="Standards, expertise, and precision you can count on"
+            title="Why Choose Velvora"
             dark={true}
           >
             Publishing know-how meets accessibility excellence. Here is why leading publishers and enterprises partner with us.

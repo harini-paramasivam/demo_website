@@ -37,7 +37,7 @@ export default function SectorBlueprint() {
             </div>
 
             <div className="sector-pod__footer">
-              <Link to="/contact" className="btn btn--orange sector-pod__btn">
+              <Link to="/solutions" className="btn btn--orange sector-pod__btn">
                 View Solution <ArrowRight size={17} aria-hidden="true" />
               </Link>
             </div>

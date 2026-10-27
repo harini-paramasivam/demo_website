@@ -1,11 +1,24 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, Shield, HeartHandshake, BookOpen, RefreshCw } from 'lucide-react';
+import { 
+  ArrowRight, 
+  CheckCircle2, 
+  ShieldCheck, 
+  HeartHandshake, 
+  BookOpen, 
+  RefreshCw, 
+  Layers, 
+  Sparkles, 
+  Compass, 
+  Check, 
+  Target 
+} from 'lucide-react';
 import { PageHero, CtaBand } from '../components/ui.jsx';
 
 const values = [
   {
     title: 'Quality',
-    desc: 'We check our work twice so you do not have to.',
+    desc: 'We check our work twice so you don’t have to.',
     icon: CheckCircle2,
   },
   {
@@ -16,7 +29,7 @@ const values = [
   {
     title: 'Integrity',
     desc: 'We say what we do and do what we say.',
-    icon: Shield,
+    icon: ShieldCheck,
   },
   {
     title: 'Collaboration',
@@ -25,49 +38,69 @@ const values = [
   },
   {
     title: 'Continuous Learning',
-    desc: 'Standards evolve and so do we.',
+    desc: 'Standards and technology evolve, and so do we.',
     icon: RefreshCw,
   },
 ];
 
 export default function CompanyOverview() {
+  useEffect(() => {
+    document.title = 'About Velvora Solutions | Company Overview';
+  }, []);
+
   return (
     <>
       <PageHero
         eyebrow="About Us"
         title="About Velvora Solutions"
-        crumbs={['About Us', 'Company Overview']}
+        crumbs={['Home', 'About Us', 'Company Overview']}
       >
-        Transforming manuscripts and documents into structured, accessible, and digital-ready content.
+        Transforming content and data into structured, accessible, and digital-ready assets for organizations worldwide.
       </PageHero>
 
-      {/* WHO WE ARE */}
+      {/* WHO WE ARE & MISSION / VISION */}
       <section className="section">
         <div className="container split split--top">
           <div className="prose">
-            <h2>Who We Are</h2>
-            <p>
-              Velvora Solutions is a content services company that helps publishers, educational institutions, government bodies, and enterprises transform their content into structured, accessible, and digital-ready formats. We specialize in ePublishing, XML, and digital accessibility, and we bring technical depth, process discipline, and genuine care for quality to every project.
+            <span className="badge-eyebrow">
+              <Sparkles size={16} /> Content &amp; Technology Services
+            </span>
+            <h2 className="career-section-h2" style={{ color: 'var(--ink)' }}>Who We Are</h2>
+            <p className="lead" style={{ color: '#334155', lineHeight: 1.7 }}>
+              Velvora Solutions is a content and technology services company that helps publishers, educational institutions, government bodies, and enterprises transform their content and data into structured, accessible, and digital-ready assets. We specialize in ePublishing, XML, digital accessibility, AI automation, software development, data analytics, and digital marketing. Every project we deliver reflects technical depth, process discipline, and genuine care for quality.
             </p>
 
-            <h2>What Sets Us Apart</h2>
-            <p>
-              We combine publishing know-how with accessibility expertise. Many vendors do one or the other. At Velvora, the same team understands how a book is built and how a screen reader reads it, so the files we deliver work in the real world and not just in a checker.
-            </p>
+            <div style={{ marginTop: '2.5rem' }}>
+              <span className="badge-eyebrow">
+                <Compass size={16} /> The Velvora Advantage
+              </span>
+              <h2 className="career-section-h2" style={{ color: 'var(--ink)' }}>What Sets Us Apart</h2>
+              <p style={{ color: '#475569', fontSize: '1.05rem', lineHeight: 1.75 }}>
+                We combine publishing know-how with accessibility and technology expertise. Many vendors do only one of these. At Velvora, the same team understands how a book is built, how a screen reader reads it, and how automation or marketing can amplify it—so the files, systems, and campaigns we deliver work in the real world, not just in a checker.
+              </p>
+            </div>
           </div>
 
           <div className="prose">
-            <div className="callout-card">
-              <h3>Our Mission</h3>
-              <p>
+            <div className="callout-card" style={{ padding: '2.2rem 2.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--orange)', marginBottom: '0.6rem' }}>
+                <Target size={20} />
+                <span style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Core Purpose</span>
+              </div>
+              <h3 style={{ margin: '0 0 0.75rem', fontSize: '1.45rem', color: '#ffffff' }}>Our Mission</h3>
+              <p style={{ margin: 0, fontSize: '1.05rem', color: '#cbd5e1', lineHeight: 1.65 }}>
                 To make content accessible, discoverable, and usable for every reader, regardless of ability, device, or platform.
               </p>
             </div>
 
-            <div className="callout-card" style={{ marginTop: '1.5rem' }}>
-              <h3>Our Vision</h3>
-              <p>
-                To be the most trusted partner for publishers and organizations building inclusive digital content.
+            <div className="callout-card" style={{ marginTop: '1.5rem', padding: '2.2rem 2.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--orange)', marginBottom: '0.6rem' }}>
+                <Compass size={20} />
+                <span style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Future Horizon</span>
+              </div>
+              <h3 style={{ margin: '0 0 0.75rem', fontSize: '1.45rem', color: '#ffffff' }}>Our Vision</h3>
+              <p style={{ margin: 0, fontSize: '1.05rem', color: '#cbd5e1', lineHeight: 1.65 }}>
+                To be the most trusted partner for publishers and organizations building inclusive digital content and smarter workflows.
               </p>
             </div>
           </div>
@@ -102,8 +135,8 @@ export default function CompanyOverview() {
 
       {/* CLOSING CTA */}
       <CtaBand
-        title="Ready to Make Your Content Accessible and Future-Ready?"
-        text="Tell us about your project and our team will respond within one business day."
+        title="Ready to Partner with Velvora Solutions?"
+        text="Tell us about your publishing, accessibility, or technology project and our specialists will respond within one business day."
         primaryBtnText="Get in Touch"
         primaryBtnTo="/contact"
       />

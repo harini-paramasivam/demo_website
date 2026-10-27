@@ -32,9 +32,11 @@ export default function ServicesStream() {
 
             {/* Direct Action Link */}
             <div className="glance-card__action">
-              <Link to={svc.to} className="glance-card__link">
-                <span>{svc.btnText}</span>
-                <ArrowRight size={16} aria-hidden="true" />
+              <Link to={svc.to} className="glance-card__link" aria-label={`Explore ${svc.title}`}>
+                <span>{svc.btnText || 'Explore Service'}</span>
+                <span className="glance-card__arrow-wrap">
+                  <ArrowRight size={14} aria-hidden="true" />
+                </span>
               </Link>
             </div>
           </div>

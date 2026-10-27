@@ -7,7 +7,11 @@ import Home from './pages/Home.jsx';
 import CompanyOverview from './pages/CompanyOverview.jsx';
 import OurTeam from './pages/OurTeam.jsx';
 import Careers from './pages/Careers.jsx';
+import AboutCareers from './pages/AboutCareers.jsx';
 import ServicesOverview from './pages/ServicesOverview.jsx';
+import SolutionsOverview from './pages/SolutionsOverview.jsx';
+import PartnerWithUs from './pages/PartnerWithUs.jsx';
+import Insights from './pages/Insights.jsx';
 import ServicePage from './pages/ServicePage.jsx';
 import ResourcePage from './pages/ResourcePage.jsx';
 import Contact from './pages/Contact.jsx';
@@ -42,9 +46,17 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about/company-overview" element={<CompanyOverview />} />
           <Route path="/about/our-team" element={<OurTeam />} />
-          <Route path="/about/careers" element={<Careers />} />
+          <Route path="/about/careers" element={<AboutCareers />} />
+          <Route path="/about/partner-with-us" element={<PartnerWithUs />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/partner" element={<PartnerWithUs />} />
+          <Route path="/partner-with-us" element={<PartnerWithUs />} />
           <Route path="/services" element={<ServicesOverview />} />
+          <Route path="/solutions" element={<SolutionsOverview />} />
+          <Route path="/solutions-overview" element={<SolutionsOverview />} />
           <Route path="/services/:slug" element={<ServicePage />} />
+          <Route path="/resources/insights" element={<Insights />} />
+          <Route path="/insights" element={<Insights />} />
           <Route path="/resources/news-events" element={<ResourcePage type="news-events" />} />
           <Route path="/resources/case-studies" element={<ResourcePage type="case-studies" />} />
           <Route path="/resources/client-testimonials" element={<ResourcePage type="client-testimonials" />} />
