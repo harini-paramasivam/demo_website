@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowRight, ArrowUp } from 'lucide-react';
 import { company, whyChoose, homeServices, industrySolutions, transitionBannerContent } from '../data/site.js';
 import Icon from '../components/Icon.jsx';
@@ -10,9 +10,47 @@ import TrustArchitecture from '../components/TrustArchitecture.jsx';
 import CaseStudySpotlight from '../components/CaseStudySpotlight.jsx';
 import { SectionHead, CtaBand } from '../components/ui.jsx';
 import { useReveal, CountUp } from '../components/hooks.jsx';
+import ThemeExperimentBar, { HOMEPAGE_THEMES } from '../components/ThemeExperimentBar.jsx';
+import '../themes.css';
 
-export default function Home() {
+export default function Home({ initialTheme }) {
   useReveal();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const queryTheme = searchParams.get('theme');
+  const [activeTheme, setActiveTheme] = useState(
+    initialTheme || queryTheme || 'default'
+  );
+
+  useEffect(() => {
+    if (initialTheme) {
+      setActiveTheme(initialTheme);
+    } else if (queryTheme) {
+      setActiveTheme(queryTheme);
+    }
+  }, [initialTheme, queryTheme]);
+
+  useEffect(() => {
+    if (activeTheme && activeTheme !== 'default') {
+      document.documentElement.setAttribute('data-theme', activeTheme);
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    return () => {
+      document.documentElement.removeAttribute('data-theme');
+    };
+  }, [activeTheme]);
+
+  const handleSelectTheme = (newTheme) => {
+    setActiveTheme(newTheme);
+    if (newTheme === 'default') {
+      searchParams.delete('theme');
+      setSearchParams(searchParams, { replace: true });
+    } else {
+      searchParams.set('theme', newTheme);
+      setSearchParams(searchParams, { replace: true });
+    }
+  };
 
   const [heroIdx, setHeroIdx] = useState(0);
   const [isHeld, setIsHeld] = useState(false);
@@ -51,6 +89,10 @@ export default function Home() {
 
   return (
     <>
+      <ThemeExperimentBar 
+        currentTheme={activeTheme} 
+        onSelectTheme={handleSelectTheme} 
+      />
       {/* 1. HERO SECTION */}
       <section className="hero netbg" aria-labelledby="hero-title">
         <div className="container hero__in">

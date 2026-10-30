@@ -82,24 +82,24 @@ export default function CompanyOverview() {
           </div>
 
           <div className="prose">
-            <div className="callout-card" style={{ padding: '2.2rem 2.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--orange)', marginBottom: '0.6rem' }}>
-                <Target size={20} />
-                <span style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Core Purpose</span>
+            <div className="company-callout-card">
+              <div className="company-callout-card__badge">
+                <Target size={20} className="company-callout-card__icon" />
+                <span>Core Purpose</span>
               </div>
-              <h3 style={{ margin: '0 0 0.75rem', fontSize: '1.45rem', color: '#ffffff' }}>Our Mission</h3>
-              <p style={{ margin: 0, fontSize: '1.05rem', color: '#cbd5e1', lineHeight: 1.65 }}>
+              <h3 className="company-callout-card__title">Our Mission</h3>
+              <p className="company-callout-card__text">
                 To make content accessible, discoverable, and usable for every reader, regardless of ability, device, or platform.
               </p>
             </div>
 
-            <div className="callout-card" style={{ marginTop: '1.5rem', padding: '2.2rem 2.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--orange)', marginBottom: '0.6rem' }}>
-                <Compass size={20} />
-                <span style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Future Horizon</span>
+            <div className="company-callout-card" style={{ marginTop: '1.5rem' }}>
+              <div className="company-callout-card__badge">
+                <Compass size={20} className="company-callout-card__icon" />
+                <span>Future Horizon</span>
               </div>
-              <h3 style={{ margin: '0 0 0.75rem', fontSize: '1.45rem', color: '#ffffff' }}>Our Vision</h3>
-              <p style={{ margin: 0, fontSize: '1.05rem', color: '#cbd5e1', lineHeight: 1.65 }}>
+              <h3 className="company-callout-card__title">Our Vision</h3>
+              <p className="company-callout-card__text">
                 To be the most trusted partner for publishers and organizations building inclusive digital content and smarter workflows.
               </p>
             </div>

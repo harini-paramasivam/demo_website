@@ -8,11 +8,7 @@ import {
   ShieldCheck, 
   CheckCircle, 
   ArrowRight, 
-  Linkedin, 
-  Twitter, 
-  Facebook, 
-  Instagram, 
-  Youtube,
+  Linkedin,
   Compass,
   Briefcase,
   BookOpen,
@@ -62,30 +58,6 @@ ${f.message}`;
       icon: Linkedin,
       url: company.linkedinCompany || 'https://www.linkedin.com/company/118444302/',
       color: '#0a66c2'
-    },
-    {
-      name: 'Twitter/X',
-      icon: Twitter,
-      url: 'https://twitter.com/velvorasolutions',
-      color: '#e2e8f0'
-    },
-    {
-      name: 'Facebook',
-      icon: Facebook,
-      url: 'https://facebook.com/velvorasolutions',
-      color: '#1877f2'
-    },
-    {
-      name: 'Instagram',
-      icon: Instagram,
-      url: 'https://instagram.com/velvorasolutions',
-      color: '#e4405f'
-    },
-    {
-      name: 'Youtube',
-      icon: Youtube,
-      url: 'https://youtube.com/@velvorasolutions',
-      color: '#ff0000'
     }
   ];
 

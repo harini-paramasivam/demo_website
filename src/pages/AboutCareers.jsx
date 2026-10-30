@@ -59,9 +59,9 @@ export default function AboutCareers() {
       </PageHero>
 
       {/* INTRO SECTION */}
-      <section className="section">
+      <section className="section netbg" style={{ background: 'linear-gradient(180deg, #0a0c14 0%, #0d0f1a 100%)' }}>
         <div className="container">
-          <div className="career-philosophy-card reveal" style={{ maxWidth: '900px', marginInline: 'auto' }}>
+          <div className="career-philosophy-card" style={{ maxWidth: '900px', marginInline: 'auto' }}>
             <span className="badge-eyebrow">
               <Sparkles size={16} /> Meaningful Impact
             </span>
@@ -74,29 +74,47 @@ export default function AboutCareers() {
       </section>
 
       {/* WHY WORK WITH US */}
-      <section className="section section--tint">
+      <section className="section why-section-dark netbg">
         <div className="container">
-          <div className="sec-head text-center" style={{ marginInline: 'auto' }}>
-            <p className="eyebrow">The Velvora Culture</p>
-            <h2>Why Work With Us</h2>
-            <p className="lead" style={{ marginInline: 'auto', maxWidth: '64ch' }}>
+          <div className="sec-head sec-head--dark text-center" style={{ marginInline: 'auto' }}>
+            <p className="eyebrow eyebrow--dark">The Velvora Culture</p>
+            <h2 style={{ color: '#ffffff' }}>Why Work With Us</h2>
+            <p className="lead" style={{ marginInline: 'auto', maxWidth: '64ch', color: '#cbd5e1' }}>
               We provide the environment, tools, and mentorship you need to advance your career.
             </p>
           </div>
 
-          <div className="career-grow-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
-            {whyWorkPoints.map((item) => {
-              const IconCmp = item.icon;
-              return (
-                <div key={item.title} className="grow-pod" style={{ background: '#ffffff', borderColor: 'rgba(0,0,0,0.08)' }}>
-                  <div className="grow-pod__icon-wrap">
-                    <IconCmp size={24} />
+          {/* Funnel Layout: Row 1 has 3 cards, Row 2 has 2 centered cards */}
+          <div className="why-work-funnel">
+            <div className="why-work-funnel__row why-work-funnel__row--top">
+              {whyWorkPoints.slice(0, 3).map((item) => {
+                const IconCmp = item.icon;
+                return (
+                  <div key={item.title} className="grow-pod">
+                    <div className="grow-pod__icon-wrap">
+                      <IconCmp size={24} />
+                    </div>
+                    <h3 className="grow-pod__title">{item.title}</h3>
+                    <p className="grow-pod__desc">{item.desc}</p>
                   </div>
-                  <h3 className="grow-pod__title" style={{ color: '#0f172a' }}>{item.title}</h3>
-                  <p className="grow-pod__desc" style={{ color: '#475569' }}>{item.desc}</p>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+
+            <div className="why-work-funnel__row why-work-funnel__row--bottom">
+              {whyWorkPoints.slice(3, 5).map((item) => {
+                const IconCmp = item.icon;
+                return (
+                  <div key={item.title} className="grow-pod">
+                    <div className="grow-pod__icon-wrap">
+                      <IconCmp size={24} />
+                    </div>
+                    <h3 className="grow-pod__title">{item.title}</h3>
+                    <p className="grow-pod__desc">{item.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

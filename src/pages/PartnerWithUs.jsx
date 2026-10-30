@@ -175,7 +175,7 @@ Submitted via Velvora Solutions Partnership Portal.`;
               <h2 id="form-section-head" style={{ fontSize: '2rem', margin: '8px 0 16px', color: '#0f172a' }}>
                 Partnership Application Form
               </h2>
-              <p style={{ color: '#64748b', fontSize: '1.02rem', lineHeight: '1.6', marginBottom: '24px' }}>
+              <p style={{ color: '#334155', fontSize: '1.02rem', lineHeight: '1.6', marginBottom: '24px' }}>
                 Interested in partnering with us? Fill out the form below and our leadership team will connect with you to explore synergies.
               </p>
 
@@ -213,7 +213,7 @@ Submitted via Velvora Solutions Partnership Portal.`;
                     Your default email client has opened with your proposal. You can also send materials directly to{' '}
                     <strong>{company.email}</strong>.
                   </p>
-                  <p style={{ fontSize: '.86rem', color: '#64748b', marginTop: '12px' }}>
+                  <p style={{ fontSize: '.88rem', color: '#334155', marginTop: '12px' }}>
                     Our team looks forward to reviewing your organization's goals and discussing how we can grow together.
                   </p>
                   <button

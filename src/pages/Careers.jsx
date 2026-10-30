@@ -273,7 +273,7 @@ export default function Careers() {
           <div id="grow-framework" className="career-grow-header" style={{ marginTop: '4rem' }}>
             <span className="pill"><i /> Career Progression</span>
             <h2 className="career-section-h2">Our Career Framework: G.R.O.W.</h2>
-            <p className="lead">
+            <p className="lead" style={{ color: '#cbd5e1', fontSize: '1.18rem', lineHeight: 1.7, maxWidth: '68ch' }}>
               A structured roadmap designed to support your development from day one through continuous milestones.
             </p>
           </div>
@@ -513,7 +513,7 @@ export default function Careers() {
       </section>
 
       {/* 6. DELIVERING QUALITY WORK: OUR FRAMEWORK */}
-      <section id="quality-framework" className="section section--tint quality-framework-section">
+      <section id="quality-framework" className="section why-section-dark netbg quality-framework-section">
         <div className="container">
           <div className="career-panel-header text-center">
             <span className="pill"><i /> Delivery Lifecycle</span>
@@ -623,7 +623,7 @@ export default function Careers() {
           <div className="career-panel-header text-center">
             <span className="pill"><i /> Join Our Team</span>
             <h2 className="career-section-h2">Explore Current Openings &amp; Apply</h2>
-            <p className="lead" style={{ maxWidth: '64ch', margin: '0 auto' }}>
+            <p className="lead" style={{ color: '#cbd5e1', maxWidth: '64ch', margin: '0 auto' }}>
               Find your next role with Velvora Solutions. Select an opening or submit an open application below.
             </p>
           </div>

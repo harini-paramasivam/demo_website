@@ -44,6 +44,30 @@ export default function App() {
       <main id="main" tabIndex="-1">
         <Routes>
           <Route path="/" element={<Home />} />
+          {/* 5 Independent Homepage Theme Experiment Routes */}
+          <Route path="/index-obsidian-gold.html" element={<Home initialTheme="obsidian-gold" />} />
+          <Route path="/theme/obsidian-gold" element={<Home initialTheme="obsidian-gold" />} />
+          <Route path="/index-burnt-orange.html" element={<Home initialTheme="burnt-orange" />} />
+          <Route path="/theme/burnt-orange" element={<Home initialTheme="burnt-orange" />} />
+          <Route path="/index-ivory-champagne.html" element={<Home initialTheme="ivory-champagne" />} />
+          <Route path="/theme/ivory-champagne" element={<Home initialTheme="ivory-champagne" />} />
+          <Route path="/index-emerald-gold.html" element={<Home initialTheme="emerald-gold" />} />
+          <Route path="/theme/emerald-gold" element={<Home initialTheme="emerald-gold" />} />
+          <Route path="/index-burgundy-rosegold.html" element={<Home initialTheme="burgundy-rosegold" />} />
+          <Route path="/theme/burgundy-rosegold" element={<Home initialTheme="burgundy-rosegold" />} />
+          {/* Gold Suite & Complementary Luxury Themes */}
+          <Route path="/theme/venetian-gold" element={<Home initialTheme="venetian-gold" />} />
+          <Route path="/index-venetian-gold.html" element={<Home initialTheme="venetian-gold" />} />
+          <Route path="/theme/imperial-gold" element={<Home initialTheme="imperial-gold" />} />
+          <Route path="/index-imperial-gold.html" element={<Home initialTheme="imperial-gold" />} />
+          <Route path="/theme/sahara-bronze" element={<Home initialTheme="sahara-bronze" />} />
+          <Route path="/index-sahara-bronze.html" element={<Home initialTheme="sahara-bronze" />} />
+          <Route path="/theme/nordic-sage" element={<Home initialTheme="nordic-sage" />} />
+          {/* Legacy fallback aliases */}
+          <Route path="/theme/cyber-teal" element={<Home initialTheme="venetian-gold" />} />
+          <Route path="/theme/electric-cobalt" element={<Home initialTheme="imperial-gold" />} />
+
+
           <Route path="/about/company-overview" element={<CompanyOverview />} />
           <Route path="/about/our-team" element={<OurTeam />} />
           <Route path="/about/careers" element={<AboutCareers />} />
