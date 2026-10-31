@@ -63,6 +63,15 @@ export default function App() {
           <Route path="/theme/sahara-bronze" element={<Home initialTheme="sahara-bronze" />} />
           <Route path="/index-sahara-bronze.html" element={<Home initialTheme="sahara-bronze" />} />
           <Route path="/theme/nordic-sage" element={<Home initialTheme="nordic-sage" />} />
+          {/* Light Theme Suite Routes */}
+          <Route path="/theme/porcelain-azure" element={<Home initialTheme="porcelain-azure" />} />
+          <Route path="/index-porcelain-azure.html" element={<Home initialTheme="porcelain-azure" />} />
+          <Route path="/theme/mint-breeze" element={<Home initialTheme="mint-breeze" />} />
+          <Route path="/index-mint-breeze.html" element={<Home initialTheme="mint-breeze" />} />
+          <Route path="/theme/sunrise-peach" element={<Home initialTheme="sunrise-peach" />} />
+          <Route path="/index-sunrise-peach.html" element={<Home initialTheme="sunrise-peach" />} />
+          <Route path="/theme/pearl-platinum" element={<Home initialTheme="pearl-platinum" />} />
+          <Route path="/index-pearl-platinum.html" element={<Home initialTheme="pearl-platinum" />} />
           {/* Legacy fallback aliases */}
           <Route path="/theme/cyber-teal" element={<Home initialTheme="venetian-gold" />} />
           <Route path="/theme/electric-cobalt" element={<Home initialTheme="imperial-gold" />} />

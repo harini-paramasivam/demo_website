@@ -67,20 +67,52 @@ export const HOMEPAGE_THEMES = [
     desc: 'Imperial forest green and antique bullion gold representing institutional trust'
   },
   {
-    id: 'ivory-champagne',
-    name: 'Ivory & Champagne',
-    tag: 'Editorial Light',
-    dotColor: '#c59b4b',
-    bgPreview: '#fdfbf7',
-    desc: 'Minimal alabaster ivory, soft champagne gold and rich espresso typography'
-  },
-  {
     id: 'burgundy-rosegold',
     name: 'Burgundy & Rose Gold',
     tag: 'Editorial Luxe',
     dotColor: '#fb7185',
     bgPreview: '#14050a',
     desc: 'Royal velvet wine, dark burgundy and shimmering metallic rose gold'
+  },
+  {
+    id: 'ivory-champagne',
+    name: 'Ivory & Champagne (Light)',
+    tag: 'Editorial Light',
+    dotColor: '#c59b4b',
+    bgPreview: '#fdfbf7',
+    desc: 'Minimal alabaster ivory, soft champagne gold and rich espresso typography'
+  },
+  {
+    id: 'porcelain-azure',
+    name: 'Porcelain Azure (Light)',
+    tag: 'Clean Executive Light',
+    dotColor: '#0284c7',
+    bgPreview: '#f8fafc',
+    desc: 'Crisp porcelain white, deep executive navy typography, and royal azure accents'
+  },
+  {
+    id: 'mint-breeze',
+    name: 'Mint Breeze (Light)',
+    tag: 'Botanical Light',
+    dotColor: '#10b981',
+    bgPreview: '#f3f9f6',
+    desc: 'Refreshing sage alabaster, evergreen typography, and crisp mint emerald accents'
+  },
+  {
+    id: 'sunrise-peach',
+    name: 'Sunrise Peach (Light)',
+    tag: 'Warm Editorial Light',
+    dotColor: '#f97316',
+    bgPreview: '#fdf7f2',
+    desc: 'Sunlit Tuscan sand, warm peach tones, rich espresso text, and radiant amber accents'
+  },
+  {
+    id: 'pearl-platinum',
+    name: 'Pearl Alabaster (Light)',
+    tag: 'Minimalist Light',
+    dotColor: '#d4af37',
+    bgPreview: '#fafafa',
+    desc: 'Minimalist pearl alabaster, sharp obsidian typography, and brushed 24K gold accents'
   }
 ];
 
