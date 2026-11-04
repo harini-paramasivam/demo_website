@@ -126,7 +126,7 @@ Submitted via Velvora Solutions Partnership Portal.`;
       <section className="section section--dark netbg" aria-labelledby="opportunities-head">
         <div className="container">
           <div className="sec-head sec-head--dark text-center" style={{ maxWidth: 740, margin: '0 auto 44px' }}>
-            <span className="eyebrow eyebrow--gold">Collaboration Horizons</span>
+            <span className="eyebrow eyebrow--cyan">Collaboration Horizons</span>
             <h2 id="opportunities-head" className="sec-head__title" style={{ color: '#ffffff' }}>Partnership Opportunities</h2>
             <p className="sec-head__sub" style={{ color: '#cbd5e1' }}>
               Explore multi-tiered strategic models crafted for technology providers, publishing houses, consulting firms, and agencies.

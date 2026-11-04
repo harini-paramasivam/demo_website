@@ -37,7 +37,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer__grid">
         <div className="footer__brand">
-          <img src="/logo.png" alt="Velvora Solutions" width="735" height="679" />
+          <img src="/logo.png" alt="Velvora Solutions" width="922" height="321" />
           <p className="footer__tagline">{company.aboutLine}</p>
           <p className="footer__desc">{company.description}</p>
           <div className="social">

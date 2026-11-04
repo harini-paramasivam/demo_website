@@ -21,7 +21,7 @@ export default function AboutArt() {
       </div>
 
       <div className="about-badge about-badge--bottom">
-        <span className="about-badge__dot about-badge__dot--gold" />
+        <span className="about-badge__dot about-badge__dot--cyan" />
         <div>
           <strong>WCAG 2.2 &amp; PDF/UA Compliant</strong>
           <small>Global Universal Accessibility</small>

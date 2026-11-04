@@ -68,7 +68,7 @@ export default function HeroArt({
 
   return (
     <div className="hero__art hero__art--modern">
-      {/* Ambient warm gold atmospheric glow */}
+      {/* Ambient cyan and violet atmospheric glow */}
       <div className="hero-art-glow" />
 
       {/* Main Interactive Showcase Frame: 7 Image Capabilities Slider */}
@@ -141,7 +141,7 @@ export default function HeroArt({
 
         {/* Floating Glassmorphic Badge: Bottom */}
         <div className="hero-badge hero-badge--bottom">
-          <span className={`hero-badge__dot hero-badge__dot--${current.badgeBottom?.dot || 'gold'}`} />
+          <span className={`hero-badge__dot hero-badge__dot--${current.badgeBottom?.dot || 'cyan'}`} />
           <div className="hero-badge__content">
             <strong>{current.badgeBottom?.label}</strong>
             <small>{current.badgeBottom?.sub}</small>

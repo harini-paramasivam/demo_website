@@ -46,7 +46,7 @@ export const transitionBannerContent = [
     chips: ['EPUB 2 & 3', 'JATS / BITS XML', 'MathML', 'DocBook', 'Editorial QA', 'Interactive eBooks'],
     image: '/hero-slide-1.jpg',
     badgeTop: { label: 'WCAG 2.2 & PDF/UA', sub: 'Universal Accessibility Verified', dot: 'green' },
-    badgeBottom: { label: 'EPUB 3 & JATS XML', sub: 'Structured Multi-Format Delivery', dot: 'gold' }
+    badgeBottom: { label: 'EPUB 3 & JATS XML', sub: 'Structured Multi-Format Delivery', dot: 'cyan' }
   },
   {
     title: 'Accessibility Services',
@@ -60,7 +60,7 @@ export const transitionBannerContent = [
     chips: ['WCAG 2.2 AA / AAA', 'PDF/UA-1', 'Section 508', 'Screen Reader QA', 'VPAT Assessments', 'Alt-Text & Audio'],
     image: '/hero-slide-2.jpg',
     badgeTop: { label: 'Universal WCAG 2.2', sub: 'Audio Descriptions & Screen Readers', dot: 'green' },
-    badgeBottom: { label: 'PDF/UA & Section 508', sub: 'Document & Web Remediation', dot: 'gold' }
+    badgeBottom: { label: 'PDF/UA & Section 508', sub: 'Document & Web Remediation', dot: 'violet' }
   },
   {
     title: 'Web & Software Development',
@@ -74,7 +74,7 @@ export const transitionBannerContent = [
     chips: ['React & Next.js', 'Cloud APIs', 'Microservices', 'Enterprise Scalability', 'UI/UX Design', 'Full-Stack'],
     image: '/hero-slide-3.jpg',
     badgeTop: { label: 'Cloud Architecture', sub: 'Next-Gen Microservices & APIs', dot: 'green' },
-    badgeBottom: { label: 'Modern UI/UX', sub: 'Enterprise-Grade Scalability', dot: 'gold' }
+    badgeBottom: { label: 'Modern UI/UX', sub: 'Enterprise-Grade Scalability', dot: 'cyan' }
   },
   {
     title: 'AI Automation',
@@ -87,7 +87,7 @@ export const transitionBannerContent = [
     to: '/services',
     chips: ['AI Content Ingestion', 'NLP Processing', 'Automated QA', 'Prompt Engineering', 'Workflow Automation', '70% Faster'],
     image: '/hero-slide-4.jpg',
-    badgeTop: { label: 'AI Neural Engines', sub: '70% Manual Time Reduction', dot: 'gold' },
+    badgeTop: { label: 'AI Neural Engines', sub: '70% Manual Time Reduction', dot: 'violet' },
     badgeBottom: { label: 'Automated QA & NLP', sub: 'Intelligent Content Ingestion', dot: 'green' }
   },
   {
@@ -101,7 +101,7 @@ export const transitionBannerContent = [
     to: '/services',
     chips: ['BI Dashboards', 'Predictive Modeling', 'ETL Data Pipelines', 'Executive Reporting', 'Real-Time Telemetry', 'Actionable ROI'],
     image: '/hero-slide-5.jpg',
-    badgeTop: { label: 'Predictive BI Models', sub: 'Real-Time Executive Intelligence', dot: 'gold' },
+    badgeTop: { label: 'Predictive BI Models', sub: 'Real-Time Executive Intelligence', dot: 'cyan' },
     badgeBottom: { label: 'Data Visualizations', sub: 'Actionable Forecasting Metrics', dot: 'green' }
   },
   {
@@ -116,7 +116,7 @@ export const transitionBannerContent = [
     chips: ['Technical SEO', 'Omnichannel Strategy', 'Global Reach', 'Content Marketing', 'Conversion Optimization', 'Performance Ads'],
     image: '/hero-slide-6.jpg',
     badgeTop: { label: 'Global Market Reach', sub: 'Omnichannel Growth Networks', dot: 'green' },
-    badgeBottom: { label: 'SEO & Content Impact', sub: 'Data-Driven Campaign ROI', dot: 'gold' }
+    badgeBottom: { label: 'SEO & Content Impact', sub: 'Data-Driven Campaign ROI', dot: 'violet' }
   },
   {
     title: 'Training Services',
@@ -129,7 +129,7 @@ export const transitionBannerContent = [
     to: '/services/accessibility-training-and-consulting',
     chips: ['WCAG Masterclasses', 'Staff Upskilling', 'PDF Remediation Bootcamps', 'Digital Credentials', 'Consulting Retainers', 'Hands-On Labs'],
     image: '/hero-slide-7.jpg',
-    badgeTop: { label: 'Corporate Masterclasses', sub: 'WCAG 2.2 Compliance Workshops', dot: 'gold' },
+    badgeTop: { label: 'Corporate Masterclasses', sub: 'WCAG 2.2 Compliance Workshops', dot: 'cyan' },
     badgeBottom: { label: 'Certified Specialists', sub: 'Professional Digital Credentials', dot: 'green' }
   }
 ];

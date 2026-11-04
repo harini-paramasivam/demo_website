@@ -44,47 +44,6 @@ export default function App() {
       <main id="main" tabIndex="-1">
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* 5 Independent Homepage Theme Experiment Routes */}
-          <Route path="/index-obsidian-gold.html" element={<Home initialTheme="obsidian-gold" />} />
-          <Route path="/theme/obsidian-gold" element={<Home initialTheme="obsidian-gold" />} />
-          <Route path="/index-burnt-orange.html" element={<Home initialTheme="burnt-orange" />} />
-          <Route path="/theme/burnt-orange" element={<Home initialTheme="burnt-orange" />} />
-          <Route path="/index-ivory-champagne.html" element={<Home initialTheme="ivory-champagne" />} />
-          <Route path="/theme/ivory-champagne" element={<Home initialTheme="ivory-champagne" />} />
-          <Route path="/index-emerald-gold.html" element={<Home initialTheme="emerald-gold" />} />
-          <Route path="/theme/emerald-gold" element={<Home initialTheme="emerald-gold" />} />
-          <Route path="/index-burgundy-rosegold.html" element={<Home initialTheme="burgundy-rosegold" />} />
-          <Route path="/theme/burgundy-rosegold" element={<Home initialTheme="burgundy-rosegold" />} />
-          {/* Gold Suite & Complementary Luxury Themes */}
-          <Route path="/theme/venetian-gold" element={<Home initialTheme="venetian-gold" />} />
-          <Route path="/index-venetian-gold.html" element={<Home initialTheme="venetian-gold" />} />
-          <Route path="/theme/imperial-gold" element={<Home initialTheme="imperial-gold" />} />
-          <Route path="/index-imperial-gold.html" element={<Home initialTheme="imperial-gold" />} />
-          <Route path="/theme/sahara-bronze" element={<Home initialTheme="sahara-bronze" />} />
-          <Route path="/index-sahara-bronze.html" element={<Home initialTheme="sahara-bronze" />} />
-          <Route path="/theme/nordic-sage" element={<Home initialTheme="nordic-sage" />} />
-          {/* Light Theme Suite Routes */}
-          <Route path="/theme/porcelain-azure" element={<Home initialTheme="porcelain-azure" />} />
-          <Route path="/index-porcelain-azure.html" element={<Home initialTheme="porcelain-azure" />} />
-          <Route path="/theme/mint-breeze" element={<Home initialTheme="mint-breeze" />} />
-          <Route path="/index-mint-breeze.html" element={<Home initialTheme="mint-breeze" />} />
-          <Route path="/theme/sunrise-peach" element={<Home initialTheme="sunrise-peach" />} />
-          <Route path="/index-sunrise-peach.html" element={<Home initialTheme="sunrise-peach" />} />
-          <Route path="/theme/pearl-platinum" element={<Home initialTheme="pearl-platinum" />} />
-          <Route path="/index-pearl-platinum.html" element={<Home initialTheme="pearl-platinum" />} />
-          {/* Logo-Suited Light Theme Suite Routes */}
-          <Route path="/theme/amber-honey" element={<Home initialTheme="amber-honey" />} />
-          <Route path="/index-amber-honey.html" element={<Home initialTheme="amber-honey" />} />
-          <Route path="/theme/platinum-silver-gold" element={<Home initialTheme="platinum-silver-gold" />} />
-          <Route path="/index-platinum-silver-gold.html" element={<Home initialTheme="platinum-silver-gold" />} />
-          <Route path="/theme/gilded-cashmere" element={<Home initialTheme="gilded-cashmere" />} />
-          <Route path="/index-gilded-cashmere.html" element={<Home initialTheme="gilded-cashmere" />} />
-          <Route path="/theme/sunburst-gold" element={<Home initialTheme="sunburst-gold" />} />
-          <Route path="/index-sunburst-gold.html" element={<Home initialTheme="sunburst-gold" />} />
-          {/* Legacy fallback aliases */}
-          <Route path="/theme/cyber-teal" element={<Home initialTheme="venetian-gold" />} />
-          <Route path="/theme/electric-cobalt" element={<Home initialTheme="imperial-gold" />} />
-
 
           <Route path="/about/company-overview" element={<CompanyOverview />} />
           <Route path="/about/our-team" element={<OurTeam />} />

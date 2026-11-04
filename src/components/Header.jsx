@@ -58,7 +58,7 @@ export default function Header() {
       <a href="#main" className="skip">Skip to main content</a>
       <div className="container header__bar">
         <Link to="/" className="header__logo" aria-label="Velvora Solutions – home">
-          <img src="/logo.png" alt="Velvora Solutions" width="735" height="679" />
+          <img src="/logo.png" alt="Velvora Solutions" width="922" height="321" />
         </Link>
         <nav className="nav" aria-label="Main">
           <ul className="nav__list">
