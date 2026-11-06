@@ -124,7 +124,7 @@ export default function PrivacyPolicy() {
             <p style={{ margin: '0.5rem 0' }}>
               <Mail size={16} aria-hidden="true" style={{ verticalAlign: 'middle', marginRight: '6px' }} />
               Email:{' '}
-              <a href="mailto:info@velvorasolutions.com" className="tlink">info@velvorasolutions.com</a>
+              <a href="mailto:harinip0301@gmail.com" className="tlink">harinip0301@gmail.com</a>
             </p>
             <p style={{ margin: '0.5rem 0' }}>
               <Phone size={16} aria-hidden="true" style={{ verticalAlign: 'middle', marginRight: '6px' }} />

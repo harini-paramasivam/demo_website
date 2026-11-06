@@ -9,8 +9,8 @@ export const company = {
   introHeading: 'Your Content and Technology Partner, from Manuscript to Millions of Readers',
   introText:
     'Velvora Solutions is a content and technology services company. We combine ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing to make your content well-structured, standards-compliant, discoverable, and usable by everyone, including people who rely on assistive technologies.',
-  email: 'info@velvorasolutions.com',
-  accessibilityEmail: 'accessibility@velvorasolutions.com',
+  email: 'harinip0301@gmail.com',
+  accessibilityEmail: 'harinip0301@gmail.com',
   phone: '9500834236',
   phoneFormatted: '+91 9500834236',
   office1: 'Velvora Solutions, Pathirikuppam, Thiruvantthipuram Post, Cuddalore 2',
@@ -23,7 +23,7 @@ export const company = {
   description:
     'Velvora Solutions delivers ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing services for publishers, universities, enterprises, and government organizations worldwide.',
   accessibilityStatement:
-    'Velvora Solutions is committed to making our website accessible to everyone, including people with disabilities. We aim to conform to WCAG 2.2 Level AA. If you have difficulty using any part of this site or need content in another format, please contact us at accessibility@velvorasolutions.com and we will respond promptly.',
+    'Velvora Solutions is committed to making our website accessible to everyone, including people with disabilities. We aim to conform to WCAG 2.2 Level AA. If you have difficulty using any part of this site or need content in another format, please contact us at harinip0301@gmail.com and we will respond promptly.',
 };
 
 export const numbersStrip = [
