@@ -9,21 +9,22 @@ export const company = {
   introHeading: 'Your Content and Technology Partner, from Manuscript to Millions of Readers',
   introText:
     'Velvora Solutions is a content and technology services company. We combine ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing to make your content well-structured, standards-compliant, discoverable, and usable by everyone, including people who rely on assistive technologies.',
-  email: 'harinip0301@gmail.com',
-  accessibilityEmail: 'harinip0301@gmail.com',
-  phone: '9500834236',
+  email: 'info@velvorasolutions.com',
+  accessibilityEmail: 'info@velvorasolutions.com',
+  phone: '+91 9500834236',
   phoneFormatted: '+91 9500834236',
-  office1: 'Velvora Solutions, Pathirikuppam, Thiruvantthipuram Post, Cuddalore 2',
-  office2: 'Velvora Solutions, Porur',
-  address: 'Velvora Solutions, Pathirikuppam, Thiruvantthipuram Post, Cuddalore 2',
-  address2: 'Velvora Solutions, Porur',
-  hours: 'Mon to Fri, 9:30 AM to 6:30 PM IST',
+  office1: 'Velvora Solutions, Pathirikuppam, Thiruvantthipuram Post, Cuddalore',
+  office2: 'Velvora Solutions, Porur, Chennai',
+  address: 'Velvora Solutions, Pathirikuppam, Thiruvantthipuram Post, Cuddalore',
+  address2: 'Velvora Solutions, Porur, Chennai',
+  hours: 'Monday to Saturday: 9:00 AM – 6:30 PM',
+  founderLinkedin: 'https://www.linkedin.com/in/iyshwariya-senthil-bb7707287/',
   linkedinCompany: 'https://www.linkedin.com/company/118444302/',
   aboutLine: 'Velvora Solutions: ePublishing, XML, and Digital Accessibility Services.',
   description:
     'Velvora Solutions delivers ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing services for publishers, universities, enterprises, and government organizations worldwide.',
   accessibilityStatement:
-    'Velvora Solutions is committed to making our website accessible to everyone, including people with disabilities. We aim to conform to WCAG 2.2 Level AA. If you have difficulty using any part of this site or need content in another format, please contact us at harinip0301@gmail.com and we will respond promptly.',
+    'Velvora Solutions is committed to making our website accessible to everyone, including people with disabilities. We aim to conform to WCAG 2.2 Level AA. If you have difficulty using any part of this site or need content in another format, please contact us at info@velvorasolutions.com and we will respond promptly.',
 };
 
 export const numbersStrip = [
@@ -44,7 +45,7 @@ export const transitionBannerContent = [
     tag: 'Publishing & Formats',
     to: '/services/epublishing',
     chips: ['EPUB 3 & EPUB 2', 'JATS / BITS XML', 'MathML & LaTeX', 'DocBook & TEI', 'Automated Workflows', 'Multi-Format Delivery'],
-    image: '/hero-slide-1.jpg',
+    image: '/hero-epublishing.jpg',
     badgeTop: { label: 'EPUB 3 & JATS XML', sub: 'Structured Semantic Delivery', dot: 'cyan' },
     badgeBottom: { label: 'Universal Compliance', sub: 'DAISY & EAA Verified', dot: 'green' }
   },
@@ -72,7 +73,7 @@ export const transitionBannerContent = [
     tag: 'Next-Gen AI & NLP Automation',
     to: '/services',
     chips: ['AI Content Ingestion', 'NLP Data Extraction', 'Automated QA Checks', 'Intelligent Workflows', 'Prompt Pipelines', '70% Cycle Reduction'],
-    image: '/hero-slide-3.jpg',
+    image: '/hero-robot-ai.jpg',
     badgeTop: { label: 'AI Neural Pipelines', sub: '70% Manual Time Reduction', dot: 'cyan' },
     badgeBottom: { label: 'Automated QA & NLP', sub: 'Cognitive Workflow Integration', dot: 'green' }
   },
@@ -637,6 +638,7 @@ export const teamMembers = [
     department: 'Executive Leadership',
     bio: '“Iyshwariya has 7+ years of experience in publishing and accessibility and leads our executive leadership. She is certified in Universal Design and Publishing Operations.”',
     alt: 'Portrait of Iyshwariya Senthil, Founder / Managing Director',
+    linkedin: 'https://www.linkedin.com/in/iyshwariya-senthil-bb7707287/',
   },
   {
     name: 'Rajesh Kumar',

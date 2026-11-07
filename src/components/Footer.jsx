@@ -114,7 +114,7 @@ export default function Footer() {
             </div>
             <div className="footer__contact-text">
               <MapPin size={15} aria-hidden="true" />
-              <span>Cuddalore, Tamil Nadu, India</span>
+              <span>Cuddalore &amp; Porur, Chennai</span>
             </div>
           </div>
         </div>

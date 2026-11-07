@@ -126,11 +126,11 @@ export default function AboutCareers() {
             <span className="pill"><i /> Current Openings</span>
             <h2 className="career-section-h2" style={{ color: '#ffffff' }}>Open Positions</h2>
             <p className="lead" style={{ color: '#cbd5e1', margin: '0 auto 2rem' }}>
-              We do not have open positions right now. Send your resume to <strong className="accent">harinip0301@gmail.com</strong> and we will keep it on file.
+              We do not have open positions right now. Send your resume to <strong className="accent">info@velvorasolutions.com</strong> and we will keep it on file.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
               <a
-                href="mailto:harinip0301@gmail.com?subject=Resume%20Submission%20-%20Velvora%20Solutions"
+                href="mailto:info@velvorasolutions.com?subject=Resume%20Submission%20-%20Velvora%20Solutions"
                 className="btn btn--orange btn--lg"
               >
                 <span>Send Your Resume</span>

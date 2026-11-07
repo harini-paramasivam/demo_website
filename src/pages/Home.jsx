@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUp } from 'lucide-react';
 import { company, whyChoose, homeServices, industrySolutions, transitionBannerContent } from '../data/site.js';
 import Icon from '../components/Icon.jsx';
 import HeroArt from '../components/HeroArt.jsx';
+import HeroCyberWave from '../components/HeroCyberWave.jsx';
 import ServicesStream from '../components/ServicesStream.jsx';
 import SectorBlueprint from '../components/SectorBlueprint.jsx';
 import TrustArchitecture from '../components/TrustArchitecture.jsx';
@@ -28,9 +29,7 @@ export default function Home() {
   }, []);
 
   const [heroIdx, setHeroIdx] = useState(0);
-  const [isHeld, setIsHeld] = useState(false);
   const totalSlides = transitionBannerContent.length;
-  const timerRef = useRef(null);
 
   const nextHeroSlide = () => {
     setHeroIdx((prev) => (prev + 1) % totalSlides);
@@ -40,39 +39,25 @@ export default function Home() {
     setHeroIdx((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
-  const resetTimer = () => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    if (!isHeld) {
-      timerRef.current = setInterval(nextHeroSlide, 3000);
-    }
-  };
-
   const handleNext = () => {
     nextHeroSlide();
-    resetTimer();
   };
 
   const handlePrev = () => {
     prevHeroSlide();
-    resetTimer();
   };
 
   const handleSelect = (idx) => {
     setHeroIdx(idx);
-    resetTimer();
   };
 
-  // Automatic slide rotation every 3 seconds with pause-on-hover & seamless looping
+  // Automatic slide rotation every 3 seconds seamlessly & continuously
   useEffect(() => {
-    if (isHeld) {
-      if (timerRef.current) clearInterval(timerRef.current);
-      return;
-    }
-    timerRef.current = setInterval(nextHeroSlide, 3000);
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [heroIdx, isHeld]);
+    const timer = setInterval(() => {
+      setHeroIdx((prev) => (prev + 1) % totalSlides);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [totalSlides]);
 
   // Keyboard navigation support (Left / Right arrow keys)
   useEffect(() => {
@@ -82,7 +67,7 @@ export default function Home() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [heroIdx, isHeld]);
+  }, []);
 
   const currentSlide = transitionBannerContent[heroIdx] || transitionBannerContent[0];
 
@@ -103,17 +88,15 @@ export default function Home() {
       <section 
         className="hero hero--cinematic hero--ref-style" 
         aria-labelledby="hero-title"
-        onMouseEnter={() => setIsHeld(true)}
-        onMouseLeave={() => setIsHeld(false)}
       >
         {/* Atmospheric Volumetric Light Beams */}
         <div className="hero-ambient-mesh" aria-hidden="true" />
+        <HeroCyberWave />
         <div className="hero-light-beam hero-light-beam--1" aria-hidden="true" />
         <div className="hero-light-beam hero-light-beam--2" aria-hidden="true" />
 
-        {/* Minimalist Right Rail Navigation (PREV / NEXT) */}
+        {/* Minimalist Right Rail Navigation (PREV / NEXT - No 1/6 counter) */}
         <div className="hero-ref-rail-nav">
-          <span className="hero-ref-rail-counter">0{heroIdx + 1}&nbsp;/&nbsp;0{totalSlides}</span>
           <button 
             type="button" 
             onClick={handlePrev} 
@@ -137,6 +120,9 @@ export default function Home() {
           <div className="hero-ref-stage-grid">
             {/* LEFT COLUMN: Editorial Typography & Glowing Capsule CTA */}
             <div className="hero-ref-copy">
+              {/* Lighter, Translucent Geometric Triangle Prism on Left Behind Content */}
+              <div className="hero-ref-prism hero-ref-prism--left" aria-hidden="true" />
+
               {/* Minimalist Category Eyebrow */}
               <div className="hero-ref-eyebrow" key={`eyebrow-${heroIdx}`}>
                 <span className="hero-pill-radar" aria-hidden="true" />
@@ -181,8 +167,6 @@ export default function Home() {
             <HeroArt 
               activeIdx={heroIdx}
               setActiveIdx={handleSelect}
-              isHeld={isHeld}
-              setIsHeld={setIsHeld}
               onNext={handleNext}
               onPrev={handlePrev}
             />
@@ -221,7 +205,7 @@ export default function Home() {
                         className="hero-ref-dock__fill"
                         style={{
                           animationDuration: heroIdx === idx ? '3000ms' : '0s',
-                          animationPlayState: isHeld ? 'paused' : 'running',
+                          animationPlayState: 'running',
                         }}
                       />
                     </span>
@@ -291,44 +275,28 @@ export default function Home() {
       {/* 2. INTRO SECTION */}
       <section className="section intro-section" aria-labelledby="intro-head">
         <div className="container">
-          <div className="intro-card intro-card--split reveal">
-            <div className="intro-card__content">
-              <div className="intro-card__header">
-                <span className="badge-eyebrow">
-                  <Icon name="Sparkles" size={16} /> Partner with Velvora
-                </span>
-                <h2 id="intro-head" className="intro-card__title">
-                  Your Content and Technology Partner, from Manuscript to Millions of Readers
-                </h2>
-              </div>
-              <div className="intro-card__body">
-                <p className="intro-card__text">
-                  Velvora Solutions is a content and technology services company. We combine ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing to make your content well-structured, standards-compliant, discoverable, and usable by everyone, including people who rely on assistive technologies.
-                </p>
-                <div className="intro-card__tags">
-                  <span className="intro-tag">ePublishing &amp; XML</span>
-                  <span className="intro-tag">Digital Accessibility</span>
-                  <span className="intro-tag">AI Automation</span>
-                  <span className="intro-tag">Web &amp; Software</span>
-                  <span className="intro-tag">Data Analytics</span>
-                  <span className="intro-tag">Digital Marketing</span>
-                  <span className="intro-tag">Training &amp; Skills</span>
-                </div>
-              </div>
+          <div className="intro-card reveal">
+            <div className="intro-card__bg-graphic" aria-hidden="true" />
+            <div className="intro-card__header">
+              <span className="badge-eyebrow">
+                <Icon name="Sparkles" size={16} /> Partner with Velvora
+              </span>
+              <h2 id="intro-head" className="intro-card__title">
+                Your Content and Technology Partner, from Manuscript to Millions of Readers
+              </h2>
             </div>
-
-            {/* 3D Visual Centerpiece */}
-            <div className="intro-card__visual">
-              <div className="intro-card__visual-glow" aria-hidden="true" />
-              <img 
-                src="/hero-velvora-elite.jpg" 
-                alt="Velvora 3D Technology Hub" 
-                className="intro-card__img" 
-                loading="lazy"
-              />
-              <div className="intro-card__badge-overlay">
-                <Icon name="Award" size={16} />
-                <span>Enterprise Digital Hub</span>
+            <div className="intro-card__body">
+              <p className="intro-card__text">
+                Velvora Solutions is a content and technology services company. We combine ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing to make your content well-structured, standards-compliant, discoverable, and usable by everyone, including people who rely on assistive technologies.
+              </p>
+              <div className="intro-card__tags">
+                <span className="intro-tag">ePublishing &amp; XML</span>
+                <span className="intro-tag">Digital Accessibility</span>
+                <span className="intro-tag">AI Automation</span>
+                <span className="intro-tag">Web &amp; Software</span>
+                <span className="intro-tag">Data Analytics</span>
+                <span className="intro-tag">Digital Marketing</span>
+                <span className="intro-tag">Training &amp; Skills</span>
               </div>
             </div>
           </div>

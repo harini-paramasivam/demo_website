@@ -3,8 +3,6 @@ import { transitionBannerContent } from '../data/site.js';
 export default function HeroArt({
   activeIdx,
   setActiveIdx,
-  isHeld,
-  setIsHeld,
   onNext,
   onPrev
 }) {
@@ -12,9 +10,7 @@ export default function HeroArt({
 
   return (
     <div 
-      className={`hero-ref-stage${isHeld ? ' is-paused' : ''}`}
-      onMouseEnter={() => setIsHeld(true)}
-      onMouseLeave={() => setIsHeld(false)}
+      className="hero-ref-stage"
       role="region"
       aria-label={`${current.title} 3D architectural showcase`}
     >
@@ -23,23 +19,22 @@ export default function HeroArt({
       <div className="hero-ref-glow hero-ref-glow--sapphire" aria-hidden="true" />
       <div className="hero-ref-glow hero-ref-glow--magenta" aria-hidden="true" />
 
-      {/* 2. Glowing Geometric Prism Polygon directly behind the 3D subject */}
-      <div className="hero-ref-prism" aria-hidden="true" />
+      {/* 2. Cyber Orbit HUD Rings (Inspired by Behance Reference) */}
+      <div className="hero-ref-orbit-ring hero-ref-orbit-ring--outer" aria-hidden="true" />
+      <div className="hero-ref-orbit-ring hero-ref-orbit-ring--inner" aria-hidden="true" />
+      <div className="hero-ref-orbit-radar" aria-hidden="true" />
 
-      {/* 3. Borderless 3D Subject Artwork */}
+      {/* 3. Truly Borderless Transparent 3D Subject (AI Robot in Zero-G) */}
       <div className="hero-ref-visual-stage">
-        <div className="hero-ref-img-wrap" key={current.image}>
+        <div className="hero-ref-transparent-wrap" key={current.image}>
           <img
             src={current.image}
             alt={`Velvora 3D Artwork for ${current.title}`}
-            className="hero-ref-img"
+            className="hero-ref-transparent-img"
             width="1376"
             height="768"
             loading="eager"
           />
-          {/* Subtle bottom/side gradient fade blending subject into canvas */}
-          <div className="hero-ref-fade-bottom" aria-hidden="true" />
-          <div className="hero-ref-fade-left" aria-hidden="true" />
         </div>
 
         {/* Floating Verified Standards Capsule */}

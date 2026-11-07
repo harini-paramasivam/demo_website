@@ -4,9 +4,9 @@ import { industrySolutions } from '../data/site.js';
 import Icon from './Icon.jsx';
 
 const sectorVisuals = {
-  publishers: { img: '/hero-slide-1.jpg', badge: 'Editorial & XML Architecture' },
+  publishers: { img: '/hero-epublishing.jpg', badge: 'Editorial & XML Architecture' },
   universities: { img: '/card-training.jpg', badge: 'Accessible Learning Tech' },
-  enterprises: { img: '/hero-slide-4.jpg', badge: 'Enterprise Digital Systems' },
+  enterprises: { img: '/hero-robot-ai.jpg', badge: 'AI & Enterprise Automation' },
   government: { img: '/hero-slide-2.jpg', badge: 'WCAG & Section 508 Verified' },
 };
 
@@ -17,21 +17,16 @@ export default function SectorBlueprint() {
         {industrySolutions.map((item, idx) => {
           const visual = sectorVisuals[item.id] || { img: '/hero-slide-1.jpg', badge: 'Industry Architecture' };
           return (
-            <article key={item.id} className="sector-pod reveal" style={{ transitionDelay: `${idx * 80}ms` }}>
-              <div className="sector-pod__glow" />
+            <article key={item.id} className="sector-pod sector-pod--unified reveal" style={{ transitionDelay: `${idx * 80}ms` }}>
+              {/* Transparent Cyber Background Behind Words (letter ku pinadi) */}
+              <div 
+                className="sector-pod__bg-art" 
+                style={{ backgroundImage: `url(${visual.img})` }} 
+                aria-hidden="true" 
+              />
+              <div className="sector-pod__glow" aria-hidden="true" />
+              <div className="sector-pod__tech-line" aria-hidden="true" />
               
-              {/* 3D Sector Graphic Banner */}
-              <div className="sector-pod__media">
-                <img 
-                  src={visual.img} 
-                  alt={`${item.industry} 3D Solution Architecture`} 
-                  className="sector-pod__img" 
-                  loading="lazy" 
-                />
-                <div className="sector-pod__media-vignette" aria-hidden="true" />
-                <span className="sector-pod__media-badge">{visual.badge}</span>
-              </div>
-
               <div className="sector-pod__header">
                 <div className="sector-pod__icon-wrap">
                   <Icon name={item.icon} size={22} />
@@ -40,6 +35,7 @@ export default function SectorBlueprint() {
                   <span className="sector-pod__tag">{item.tag}</span>
                   <span className="sector-pod__code">Sector 0{idx + 1}</span>
                 </div>
+                <span className="sector-pod__media-badge">{visual.badge}</span>
               </div>
 
               <div className="sector-pod__body">

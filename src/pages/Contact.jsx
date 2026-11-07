@@ -230,9 +230,9 @@ ${f.message}`;
                     <MapPin size={20} />
                   </div>
                   <div className="office-block__details">
-                    <strong className="office-block__label">Our Office</strong>
+                    <strong className="office-block__label">Cuddalore Office</strong>
                     <p className="office-block__text">
-                      Velvora Solutions, Pathirikuppam, Thiruvantthipuram Post, Cuddalore 2
+                      {company.office1}
                     </p>
                   </div>
                 </div>
@@ -242,9 +242,21 @@ ${f.message}`;
                     <MapPin size={20} />
                   </div>
                   <div className="office-block__details">
-                    <strong className="office-block__label">Address 2</strong>
+                    <strong className="office-block__label">Chennai Office (Porur)</strong>
                     <p className="office-block__text">
-                      Velvora Solutions, Porur
+                      {company.office2}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="office-block">
+                  <div className="office-block__icon">
+                    <Clock size={20} />
+                  </div>
+                  <div className="office-block__details">
+                    <strong className="office-block__label">Office Hours</strong>
+                    <p className="office-block__text">
+                      {company.hours}
                     </p>
                   </div>
                 </div>
@@ -270,7 +282,7 @@ ${f.message}`;
                   <div className="office-block__details">
                     <strong className="office-block__label">Phone</strong>
                     <p className="office-block__text">
-                      <a href={`tel:${company.phone}`} className="contact-link">
+                      <a href={`tel:${company.phone.replace(/\s+/g, '')}`} className="contact-link">
                         {company.phone}
                       </a>
                     </p>
