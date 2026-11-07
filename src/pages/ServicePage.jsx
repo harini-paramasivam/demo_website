@@ -68,6 +68,37 @@ export default function ServicePage() {
               </div>
             </div>
 
+            {/* 3D SERVICE CINEMATIC BANNER */}
+            <div className="svc-hero-banner">
+              <img
+                src={
+                  s.slug === 'epublishing' || s.slug === 'xml'
+                    ? '/hero-slide-1.jpg'
+                    : s.slug === 'digital-accessibility'
+                    ? '/card-accessibility.jpg'
+                    : s.slug.includes('training')
+                    ? '/card-training.jpg'
+                    : s.slug.includes('marketing')
+                    ? '/card-marketing.jpg'
+                    : s.slug.includes('data')
+                    ? '/hero-slide-6.jpg'
+                    : s.slug.includes('software') || s.slug.includes('web')
+                    ? '/hero-slide-4.jpg'
+                    : s.slug.includes('ai')
+                    ? '/hero-slide-3.jpg'
+                    : '/card-content-services.jpg'
+                }
+                alt={`${s.title} 3D Architecture`}
+                className="svc-hero-banner__img"
+                loading="eager"
+              />
+              <div className="svc-hero-banner__overlay" aria-hidden="true" />
+              <div className="svc-hero-banner__badge">
+                <Sparkles size={16} />
+                <span>Velvora Enterprise Standard · {s.title}</span>
+              </div>
+            </div>
+
             {/* STANDARDS WE WORK TO (if available) */}
             {s.standards && (
               <div className="callout-card" style={{ margin: '2rem 0' }}>

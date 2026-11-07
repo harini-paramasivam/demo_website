@@ -17,6 +17,14 @@ export default function Home() {
   useEffect(() => {
     // Ensure data-theme is cleared so the website strictly uses the new logo static brand palette
     document.documentElement.removeAttribute('data-theme');
+
+    // Preload all slide images for instant, zero-latency 3-second transitions
+    transitionBannerContent.forEach((slide) => {
+      if (slide.image) {
+        const img = new Image();
+        img.src = slide.image;
+      }
+    });
   }, []);
 
   const [heroIdx, setHeroIdx] = useState(0);
@@ -32,16 +40,51 @@ export default function Home() {
     setHeroIdx((prev) => (prev - 1 + totalSlides) % totalSlides);
   };
 
+  const resetTimer = () => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    if (!isHeld) {
+      timerRef.current = setInterval(nextHeroSlide, 3000);
+    }
+  };
+
+  const handleNext = () => {
+    nextHeroSlide();
+    resetTimer();
+  };
+
+  const handlePrev = () => {
+    prevHeroSlide();
+    resetTimer();
+  };
+
+  const handleSelect = (idx) => {
+    setHeroIdx(idx);
+    resetTimer();
+  };
+
+  // Automatic slide rotation every 3 seconds with pause-on-hover & seamless looping
   useEffect(() => {
     if (isHeld) {
-      clearInterval(timerRef.current);
+      if (timerRef.current) clearInterval(timerRef.current);
       return;
     }
-    timerRef.current = setInterval(nextHeroSlide, 4000); // 4-second synchronized auto transition
-    return () => clearInterval(timerRef.current);
+    timerRef.current = setInterval(nextHeroSlide, 3000);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
   }, [heroIdx, isHeld]);
 
-  const currentSlide = transitionBannerContent[heroIdx];
+  // Keyboard navigation support (Left / Right arrow keys)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowRight') handleNext();
+      if (e.key === 'ArrowLeft') handlePrev();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [heroIdx, isHeld]);
+
+  const currentSlide = transitionBannerContent[heroIdx] || transitionBannerContent[0];
 
   useEffect(() => {
     document.title = 'Velvora Solutions | ePublishing, XML, Accessibility, AI, Data, and Digital Marketing Services';
@@ -56,68 +99,137 @@ export default function Home() {
 
   return (
     <>
-      {/* 1. HERO SECTION */}
-      <section className="hero netbg" aria-labelledby="hero-title">
-        <div className="container hero__in">
-          <div className="hero__copy">
-            <p className="pill">
-              <i />
-              Content &amp; Technology Services
-            </p>
-            <h1 id="hero-title" className="hero-main-h1">
-              Content That Works for <span className="accent">Everyone, Everywhere</span>
-            </h1>
-            <p className="lead lead--dark hero-main-lead">
-              We help publishers, universities, enterprises, and government organizations create structured, accessible content and smarter digital workflows—from ePublishing and XML to AI, software, data analytics, and digital marketing.
-            </p>
-            <div className="btn-row hero-main-btns">
-              <Link to="/contact" className="btn btn--orange btn--lg">
-                Get in Touch <ArrowRight size={18} aria-hidden="true" />
-              </Link>
-              <a href="#services-glance" className="btn btn--outline btn--lg">
-                Explore Our Services <ArrowRight size={18} aria-hidden="true" />
-              </a>
-            </div>
+      {/* 1. FUTURISTIC HERO BANNER (INSPIRED BY REFERENCE DESIGN) */}
+      <section 
+        className="hero hero--cinematic hero--ref-style" 
+        aria-labelledby="hero-title"
+        onMouseEnter={() => setIsHeld(true)}
+        onMouseLeave={() => setIsHeld(false)}
+      >
+        {/* Atmospheric Volumetric Light Beams */}
+        <div className="hero-ambient-mesh" aria-hidden="true" />
+        <div className="hero-light-beam hero-light-beam--1" aria-hidden="true" />
+        <div className="hero-light-beam hero-light-beam--2" aria-hidden="true" />
 
-            {/* Synchronized 7-Capability Transition Card */}
-            <div className="hero-transition-banner" key={heroIdx}>
-              <div className="hero-transition-banner__top">
-                <span className="hero-transition-banner__tag">
-                  <Icon name={currentSlide.icon} size={15} />
-                  <span>{currentSlide.title}</span>
-                </span>
-                <span className="hero-transition-banner__counter">
-                  0{heroIdx + 1} / 0{totalSlides}
-                </span>
+        {/* Minimalist Right Rail Navigation (PREV / NEXT) */}
+        <div className="hero-ref-rail-nav">
+          <span className="hero-ref-rail-counter">0{heroIdx + 1}&nbsp;/&nbsp;0{totalSlides}</span>
+          <button 
+            type="button" 
+            onClick={handlePrev} 
+            className="hero-ref-rail-btn"
+            aria-label="Previous slide"
+          >
+            PREV
+          </button>
+          <span className="hero-ref-rail-line" aria-hidden="true" />
+          <button 
+            type="button" 
+            onClick={handleNext} 
+            className="hero-ref-rail-btn"
+            aria-label="Next slide"
+          >
+            NEXT
+          </button>
+        </div>
+
+        <div className="container hero-ref-container">
+          <div className="hero-ref-stage-grid">
+            {/* LEFT COLUMN: Editorial Typography & Glowing Capsule CTA */}
+            <div className="hero-ref-copy">
+              {/* Minimalist Category Eyebrow */}
+              <div className="hero-ref-eyebrow" key={`eyebrow-${heroIdx}`}>
+                <span className="hero-pill-radar" aria-hidden="true" />
+                <Icon name={currentSlide.icon} size={15} />
+                <span>{currentSlide.tag || currentSlide.title}</span>
               </div>
-              <p className="hero-transition-banner__quote">
-                “{currentSlide.quote.replace(/[“”]/g, '')}”
-              </p>
-              <p className="hero-transition-banner__desc">
+
+              {/* Bold Stacked Display Headline */}
+              <h1 id="hero-title" className="hero-ref-headline" key={`head-${heroIdx}`}>
+                <span className="hero-ref-headline__prefix">{currentSlide.headlinePrefix}</span>
+                <span className="hero-ref-headline__accent">{currentSlide.headlineAccent}</span>
+              </h1>
+
+              {/* Supporting Editorial Description */}
+              <p className="hero-ref-desc" key={`desc-${heroIdx}`}>
                 {currentSlide.desc}
               </p>
-            </div>
 
-            {/* Single-line Horizontally Moving Capabilities Ribbon */}
-            <div className="hero-chips-marquee" aria-label={`Core capabilities for ${currentSlide.title}`}>
-              <div className="hero-chips-track">
-                {[...currentSlide.chips, ...currentSlide.chips].map((chip, idx) => (
-                  <span key={`${chip}-${idx}`} className="hero-chip-pill">
-                    <span className="hero-chip-dot" />
+              {/* Capabilities Pill Strip */}
+              <div className="hero-ref-chips" key={`chips-${heroIdx}`}>
+                {currentSlide.chips.map((chip) => (
+                  <span key={chip} className="hero-ref-chip">
+                    <span className="hero-chip-bullet" aria-hidden="true" />
                     <span>{chip}</span>
                   </span>
                 ))}
               </div>
+
+              {/* Glowing Capsule Action Buttons */}
+              <div className="hero-ref-btn-row">
+                <Link to="/contact" className="hero-ref-btn-primary">
+                  <span>Get in Touch</span>
+                  <ArrowRight size={17} aria-hidden="true" />
+                </Link>
+                <a href="#services-glance" className="hero-ref-btn-secondary">
+                  <span>Explore Services</span>
+                </a>
+              </div>
+            </div>
+
+            {/* CENTER / RIGHT COLUMN: Borderless 3D Artwork & Glowing Geometric Prism */}
+            <HeroArt 
+              activeIdx={heroIdx}
+              setActiveIdx={handleSelect}
+              isHeld={isHeld}
+              setIsHeld={setIsHeld}
+              onNext={handleNext}
+              onPrev={handlePrev}
+            />
+          </div>
+
+          {/* INTEGRATED BOTTOM FROSTED GLASS DECK (Exactly as in Reference Design) */}
+          <div className="hero-ref-dock" role="region" aria-label="Service capability deck">
+            <div className="hero-ref-dock__col">
+              <span className="hero-ref-dock__label">WHAT WE DO</span>
+              <strong className="hero-ref-dock__title">{currentSlide.badgeTop?.label || currentSlide.title}</strong>
+              <p className="hero-ref-dock__sub">{currentSlide.badgeTop?.sub || currentSlide.chips.slice(0, 3).join(' · ')}</p>
+            </div>
+
+            <div className="hero-ref-dock__col">
+              <span className="hero-ref-dock__label">OUR MISSION &amp; ASSURANCE</span>
+              <strong className="hero-ref-dock__title">{currentSlide.badgeBottom?.label || 'Universal Accessibility'}</strong>
+              <p className="hero-ref-dock__sub">{currentSlide.badgeBottom?.sub || 'WCAG 2.2 Level AA · Section 508 · PDF/UA Verified'}</p>
+            </div>
+
+            <div className="hero-ref-dock__col hero-ref-dock__col--tracks">
+              <span className="hero-ref-dock__label">SLIDE SEQUENCE</span>
+              <div className="hero-ref-dock__segments" role="tablist" aria-label="Select hero slide">
+                {transitionBannerContent.map((slide, idx) => (
+                  <button
+                    key={slide.title}
+                    type="button"
+                    role="tab"
+                    aria-selected={heroIdx === idx}
+                    aria-label={`Go to slide ${idx + 1}: ${slide.title}`}
+                    className={`hero-ref-dock__seg${heroIdx === idx ? ' is-active' : ''}${heroIdx > idx ? ' is-passed' : ''}`}
+                    onClick={() => handleSelect(idx)}
+                    title={slide.title}
+                  >
+                    <span className="hero-ref-dock__track">
+                      <span
+                        className="hero-ref-dock__fill"
+                        style={{
+                          animationDuration: heroIdx === idx ? '3000ms' : '0s',
+                          animationPlayState: isHeld ? 'paused' : 'running',
+                        }}
+                      />
+                    </span>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-          <HeroArt 
-            activeIdx={heroIdx}
-            setActiveIdx={setHeroIdx}
-            isHeld={isHeld}
-            setIsHeld={setIsHeld}
-            onNext={nextHeroSlide}
-            onPrev={prevHeroSlide}
-          />
         </div>
 
         {/* NUMBERS STRIP - LUMINOUS METRIC PODS */}
@@ -179,27 +291,44 @@ export default function Home() {
       {/* 2. INTRO SECTION */}
       <section className="section intro-section" aria-labelledby="intro-head">
         <div className="container">
-          <div className="intro-card reveal">
-            <div className="intro-card__header">
-              <span className="badge-eyebrow">
-                <Icon name="Sparkles" size={16} /> Partner with Velvora
-              </span>
-              <h2 id="intro-head" className="intro-card__title">
-                Your Content and Technology Partner, from Manuscript to Millions of Readers
-              </h2>
+          <div className="intro-card intro-card--split reveal">
+            <div className="intro-card__content">
+              <div className="intro-card__header">
+                <span className="badge-eyebrow">
+                  <Icon name="Sparkles" size={16} /> Partner with Velvora
+                </span>
+                <h2 id="intro-head" className="intro-card__title">
+                  Your Content and Technology Partner, from Manuscript to Millions of Readers
+                </h2>
+              </div>
+              <div className="intro-card__body">
+                <p className="intro-card__text">
+                  Velvora Solutions is a content and technology services company. We combine ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing to make your content well-structured, standards-compliant, discoverable, and usable by everyone, including people who rely on assistive technologies.
+                </p>
+                <div className="intro-card__tags">
+                  <span className="intro-tag">ePublishing &amp; XML</span>
+                  <span className="intro-tag">Digital Accessibility</span>
+                  <span className="intro-tag">AI Automation</span>
+                  <span className="intro-tag">Web &amp; Software</span>
+                  <span className="intro-tag">Data Analytics</span>
+                  <span className="intro-tag">Digital Marketing</span>
+                  <span className="intro-tag">Training &amp; Skills</span>
+                </div>
+              </div>
             </div>
-            <div className="intro-card__body">
-              <p className="intro-card__text">
-                Velvora Solutions is a content and technology services company. We combine ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing to make your content well-structured, standards-compliant, discoverable, and usable by everyone, including people who rely on assistive technologies.
-              </p>
-              <div className="intro-card__tags">
-                <span className="intro-tag">ePublishing &amp; XML</span>
-                <span className="intro-tag">Digital Accessibility</span>
-                <span className="intro-tag">AI Automation</span>
-                <span className="intro-tag">Web &amp; Software</span>
-                <span className="intro-tag">Data Analytics</span>
-                <span className="intro-tag">Digital Marketing</span>
-                <span className="intro-tag">Training &amp; Skills</span>
+
+            {/* 3D Visual Centerpiece */}
+            <div className="intro-card__visual">
+              <div className="intro-card__visual-glow" aria-hidden="true" />
+              <img 
+                src="/hero-velvora-elite.jpg" 
+                alt="Velvora 3D Technology Hub" 
+                className="intro-card__img" 
+                loading="lazy"
+              />
+              <div className="intro-card__badge-overlay">
+                <Icon name="Award" size={16} />
+                <span>Enterprise Digital Hub</span>
               </div>
             </div>
           </div>
