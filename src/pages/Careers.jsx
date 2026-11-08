@@ -31,7 +31,8 @@ import {
   Users,
   Compass,
   Lightbulb,
-  CheckCircle
+  CheckCircle,
+  AlertCircle
 } from 'lucide-react';
 import { company } from '../data/site.js';
 import { PageHero } from '../components/ui.jsx';
@@ -114,6 +115,8 @@ const jobOpenings = [
 export default function Careers() {
   const [selectedJob, setSelectedJob] = useState('Copy Editing Specialist');
   const [applicationSubmitted, setApplicationSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [growthModalOpen, setGrowthModalOpen] = useState(false);
   const [inclusionModalOpen, setInclusionModalOpen] = useState(false);
 
@@ -136,6 +139,20 @@ export default function Careers() {
 
   useEffect(() => {
     document.title = 'Careers at Velvora Solutions | Build Skills. Create Impact. Shape the Future.';
+    if (window.location.hash) {
+      const hashId = window.location.hash.replace('#', '');
+      setTimeout(() => {
+        const el = document.getElementById(hashId);
+        if (el) {
+          const headerOffset = 135;
+          const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementPosition - headerOffset,
+            behavior: 'smooth'
+          });
+        }
+      }, 150);
+    }
   }, []);
 
   const formatFileSize = (bytes) => {
@@ -184,6 +201,20 @@ export default function Careers() {
     }
   };
 
+  const scrollToSection = (e, sectionId) => {
+    if (e) e.preventDefault();
+    const el = document.getElementById(sectionId);
+    if (el) {
+      const headerOffset = 135;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - headerOffset,
+        behavior: 'smooth'
+      });
+      window.history.pushState(null, '', `#${sectionId}`);
+    }
+  };
+
   const scrollToApply = (jobTitle = '') => {
     if (jobTitle) {
       setSelectedJob(jobTitle);
@@ -192,7 +223,7 @@ export default function Careers() {
     setGrowthModalOpen(false);
     setInclusionModalOpen(false);
     if (applySectionRef.current) {
-      const topOffset = applySectionRef.current.getBoundingClientRect().top + window.scrollY - 80;
+      const topOffset = applySectionRef.current.getBoundingClientRect().top + window.scrollY - 135;
       window.scrollTo({ top: topOffset, behavior: 'smooth' });
     }
   };
@@ -201,9 +232,52 @@ export default function Careers() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setApplicationSubmitted(true);
+    setErrorMessage('');
+
+    if (!formData.resumeFile) {
+      setErrorMessage('Please upload your resume document (PDF, DOC, DOCX up to 10MB) before submitting.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const data = new FormData();
+      data.append('name', formData.name);
+      data.append('email', formData.email);
+      data.append('phone', formData.phone);
+      data.append('role', formData.role || selectedJob);
+      data.append('portfolio', formData.portfolio || '');
+      data.append('websiteUrl', formData.websiteUrl || '');
+      data.append('message', formData.message || '');
+      data.append('resume', formData.resumeFile);
+
+      const response = await fetch('/api/career', {
+        method: 'POST',
+        body: data,
+      });
+
+      let result = {};
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        result = await response.json().catch(() => ({}));
+      } else {
+        const text = await response.text().catch(() => '');
+        result = { error: text || 'Unable to connect to the email server. Please make sure the server is running.' };
+      }
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Failed to submit application. Please try again.');
+      }
+
+      setApplicationSubmitted(true);
+    } catch (err) {
+      setErrorMessage(err.message || 'Something went wrong while submitting your application. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -226,21 +300,41 @@ export default function Careers() {
       <section className="career-jump-dock" aria-label="Quick jump section navigation">
         <div className="container">
           <div className="career-jump-row">
-            <a href="#philosophy" className="career-jump-btn">
+            <button 
+              type="button" 
+              onClick={(e) => scrollToSection(e, 'philosophy')} 
+              className="career-jump-btn"
+            >
               <span>Our Philosophy</span>
-            </a>
-            <a href="#grow-framework" className="career-jump-btn">
+            </button>
+            <button 
+              type="button" 
+              onClick={(e) => scrollToSection(e, 'grow-framework')} 
+              className="career-jump-btn"
+            >
               <span>G.R.O.W. Framework</span>
-            </a>
-            <a href="#inclusion" className="career-jump-btn">
+            </button>
+            <button 
+              type="button" 
+              onClick={(e) => scrollToSection(e, 'inclusion')} 
+              className="career-jump-btn"
+            >
               <span>Inclusion &amp; Innovation</span>
-            </a>
-            <a href="#why-join" className="career-jump-btn">
+            </button>
+            <button 
+              type="button" 
+              onClick={(e) => scrollToSection(e, 'why-join')} 
+              className="career-jump-btn"
+            >
               <span>Why Join Us?</span>
-            </a>
-            <a href="#quality-framework" className="career-jump-btn">
+            </button>
+            <button 
+              type="button" 
+              onClick={(e) => scrollToSection(e, 'quality-framework')} 
+              className="career-jump-btn"
+            >
               <span>Quality Framework</span>
-            </a>
+            </button>
             <button 
               type="button" 
               onClick={() => scrollToApply()} 
@@ -257,7 +351,7 @@ export default function Careers() {
       <section id="philosophy" className="section career-philosophy-section">
         <div className="container">
           {/* Philosophy Banner */}
-          <div className="career-philosophy-card reveal">
+          <div className="career-philosophy-card">
             <div className="career-philosophy-card__header">
               <span className="badge-eyebrow">
                 <Sparkles size={16} /> Our Philosophy
@@ -337,7 +431,7 @@ export default function Careers() {
       {/* 3. INCLUSION & INNOVATION */}
       <section id="inclusion" className="section section--paper career-inclusion-section">
         <div className="container">
-          <div className="career-inclusion-box reveal">
+          <div className="career-inclusion-box">
             <div className="career-inclusion-box__left">
               <span className="badge-eyebrow">
                 <Users size={16} /> Workplace Diversity
@@ -466,7 +560,7 @@ export default function Careers() {
       {/* 5. MESSAGE TO OUR TEAM: CLIENTS COME FIRST */}
       <section className="section client-charter-section">
         <div className="container">
-          <div className="client-charter-card reveal">
+          <div className="client-charter-card">
             <div className="client-charter-card__header">
               <div className="client-charter-badge">
                 <Target size={16} /> Internal Culture Charter
@@ -586,7 +680,7 @@ export default function Careers() {
           </div>
 
           {/* What Else We Should Do for Quality Projects */}
-          <div className="quality-extra-box reveal">
+          <div className="quality-extra-box">
             <h3 className="quality-extra-box__title">
               <Lightbulb size={20} className="accent" />
               <span>What Else We Should Do for Quality Projects</span>
@@ -712,6 +806,7 @@ export default function Careers() {
                     type="button"
                     onClick={() => {
                       setApplicationSubmitted(false);
+                      setErrorMessage('');
                       setFormData({
                         name: '',
                         email: '',
@@ -724,6 +819,9 @@ export default function Careers() {
                         resumeSize: '',
                         message: '',
                       });
+                      if (fileInputRef.current) {
+                        fileInputRef.current.value = '';
+                      }
                     }}
                     className="btn btn--outline"
                     style={{ marginTop: '1rem' }}
@@ -733,6 +831,13 @@ export default function Careers() {
                 </div>
               ) : (
                 <form className="career-form" onSubmit={handleFormSubmit}>
+                  {errorMessage && (
+                    <div className="contact-form-error" role="alert" style={{ background: '#fef2f2', border: '1px solid #fecaca', color: '#b91c1c', padding: '12px 16px', borderRadius: '8px', fontSize: '13.5px', display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.25rem' }}>
+                      <AlertCircle size={18} style={{ flexShrink: 0 }} />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
+
                   <div className="form-grid">
                     <div className="form-group">
                       <label htmlFor="app-name">
@@ -907,8 +1012,8 @@ export default function Careers() {
                     />
                   </div>
 
-                  <button type="submit" className="btn btn--orange btn--lg" style={{ width: '100%', justifyContent: 'center' }}>
-                    <span>Submit Application</span>
+                  <button type="submit" disabled={isSubmitting} className="btn btn--orange btn--lg" style={{ width: '100%', justifyContent: 'center' }}>
+                    <span>{isSubmitting ? 'Submitting Application...' : 'Submit Application'}</span>
                     <Send size={18} aria-hidden="true" />
                   </button>
 

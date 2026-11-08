@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle2, Award, ShieldCheck, FileCheck } from 'lucide-
 
 export default function CaseStudySpotlight() {
   return (
-    <section className="section section--case-teaser netbg" aria-labelledby="case-study-title">
+    <section className="section section--case-teaser" aria-labelledby="case-study-title">
       <div className="container">
         <div className="case-spotlight-card reveal">
           <div className="case-spotlight-glow" />

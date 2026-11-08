@@ -60,12 +60,41 @@ export default function ServicePage() {
             {/* HEADING & OVERVIEW */}
             <div className="svc-header svc-header--glass">
               <div className="svc-header__bg-art" aria-hidden="true" />
-              <span className="svc-header__icon">
-                <Icon name={s.icon} size={36} />
-              </span>
-              <div>
-                <h2>{s.heading}</h2>
-                <p className="lead">{s.overview}</p>
+
+              {/* Sleek Top Pill with Icon & Specialization Tag */}
+              <div className="svc-header__top-bar">
+                <div className="svc-header__icon-pill">
+                  <span className="svc-header__icon-bubble">
+                    <Icon name={s.icon} size={20} />
+                  </span>
+                  <span className="svc-header__tag-text">{s.title} Enterprise Practice</span>
+                </div>
+                <div className="svc-header__badge-pill">
+                  <Sparkles size={14} className="accent" aria-hidden="true" />
+                  <span>Velvora Certified Standard</span>
+                </div>
+              </div>
+
+              {/* Full-Width Commanding Title */}
+              <h2 className="svc-header__title">{s.heading}</h2>
+
+              {/* Rich Lead Description */}
+              <p className="svc-header__lead">{s.overview}</p>
+
+              {/* Verified Value Highlight Chips */}
+              <div className="svc-header__features">
+                <div className="svc-feature-chip">
+                  <CheckCircle2 size={15} className="svc-chip-icon" aria-hidden="true" />
+                  <span>Industry Standards Compliant</span>
+                </div>
+                <div className="svc-feature-chip">
+                  <CheckCircle2 size={15} className="svc-chip-icon" aria-hidden="true" />
+                  <span>Human-in-the-Loop QA</span>
+                </div>
+                <div className="svc-feature-chip">
+                  <CheckCircle2 size={15} className="svc-chip-icon" aria-hidden="true" />
+                  <span>Multi-Format Scalability</span>
+                </div>
               </div>
             </div>
 

@@ -14,7 +14,8 @@ import {
   BookOpen,
   FileCheck2,
   Clock,
-  Sparkles
+  Sparkles,
+  AlertCircle
 } from 'lucide-react';
 import { company } from '../data/site.js';
 import { PageHero } from '../components/ui.jsx';
@@ -32,24 +33,45 @@ export default function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const set = (k) => (e) => setF({ ...f, [k]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const body = `Name: ${f.name}
-Email: ${f.email}
-Subject: ${f.subject}
+    setErrorMessage('');
+    setIsSubmitting(true);
 
-Message:
-${f.message}`;
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(f),
+      });
 
-    const mailto = `mailto:${company.email}?subject=${encodeURIComponent(
-      f.subject ? `${f.subject} - from ${f.name}` : `Project Enquiry from ${f.name}`
-    )}&body=${encodeURIComponent(body)}`;
+      let data = {};
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json().catch(() => ({}));
+      } else {
+        const text = await response.text().catch(() => '');
+        data = { error: text || 'Unable to connect to the email server. Please make sure the server is running.' };
+      }
 
-    window.location.href = mailto;
-    setSubmitted(true);
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to send your message. Please try again.');
+      }
+
+      setSubmitted(true);
+      setF({ name: '', email: '', subject: '', message: '' });
+    } catch (err) {
+      setErrorMessage(err.message || 'Something went wrong while delivering your message. Please try again or reach out to us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const socialLinks = [
@@ -123,8 +145,7 @@ ${f.message}`;
                   </div>
                   <h3>Thank You for Reaching Out!</h3>
                   <p>
-                    Your message has been initiated. If your mail client did not open automatically, you can always reach us directly at{' '}
-                    <a href={`mailto:${company.email}`} className="tlink">{company.email}</a>.
+                    Your message has been received successfully. We appreciate your interest and our team will get back to you within 24–48 hours.
                   </p>
                   <div className="contact-form-success__note">
                     <Clock size={16} />
@@ -134,6 +155,7 @@ ${f.message}`;
                     type="button"
                     onClick={() => {
                       setSubmitted(false);
+                      setErrorMessage('');
                       setF({ name: '', email: '', subject: '', message: '' });
                     }}
                     className="btn btn--outline"
@@ -144,6 +166,13 @@ ${f.message}`;
                 </div>
               ) : (
                 <form className="contact-form-inner" onSubmit={handleSubmit}>
+                  {errorMessage && (
+                    <div className="contact-form-error" role="alert" style={{ background: '#fef2f2', border: '1px solid #fecaca', color: '#b91c1c', padding: '12px 16px', borderRadius: '8px', fontSize: '13.5px', display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1rem' }}>
+                      <AlertCircle size={18} style={{ flexShrink: 0 }} />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
+
                   <div className="form-group">
                     <label htmlFor="contact-name">
                       Name <span className="req">*</span>
@@ -206,8 +235,8 @@ ${f.message}`;
                     />
                   </div>
 
-                  <button type="submit" className="btn btn--orange btn--lg contact-submit-btn">
-                    <span>Submit</span>
+                  <button type="submit" disabled={isSubmitting} className="btn btn--orange btn--lg contact-submit-btn">
+                    <span>{isSubmitting ? 'Sending...' : 'Submit'}</span>
                     <Send size={18} aria-hidden="true" />
                   </button>
 

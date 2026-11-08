@@ -276,7 +276,50 @@ export default function Home() {
       <section className="section intro-section" aria-labelledby="intro-head">
         <div className="container">
           <div className="intro-card reveal">
-            <div className="intro-card__bg-graphic" aria-hidden="true" />
+            {/* Innovative Cybernetic Background Graphic (fills empty space on left & right of wording) */}
+            <div className="intro-card__bg-graphic" aria-hidden="true">
+              <div className="intro-card__aurora intro-card__aurora--left" />
+              <div className="intro-card__aurora intro-card__aurora--right" />
+              <div className="intro-card__aurora intro-card__aurora--center" />
+              
+              {/* Left Orbit Telemetry HUD behind left heading */}
+              <div className="intro-card__hud-left">
+                <svg viewBox="0 0 320 320" className="intro-hud-svg" fill="none">
+                  <circle cx="160" cy="160" r="140" stroke="rgba(56, 189, 248, 0.22)" strokeWidth="1" strokeDasharray="5 7" />
+                  <circle cx="160" cy="160" r="105" stroke="rgba(0, 210, 255, 0.4)" strokeWidth="1.5" strokeDasharray="14 10 4 10" className="intro-hud-spin" />
+                  <circle cx="160" cy="160" r="70" stroke="rgba(139, 92, 246, 0.35)" strokeWidth="1" strokeDasharray="8 6" />
+                  <circle cx="160" cy="160" r="4.5" fill="#00d2ff" />
+                  <line x1="160" y1="10" x2="160" y2="310" stroke="rgba(56, 189, 248, 0.18)" strokeWidth="1" />
+                  <line x1="10" y1="160" x2="310" y2="160" stroke="rgba(56, 189, 248, 0.18)" strokeWidth="1" />
+                  <polygon points="160,115 198,137 198,183 160,205 122,183 122,137" stroke="rgba(0, 210, 255, 0.45)" strokeWidth="1.2" fill="rgba(0, 210, 255, 0.04)" />
+                </svg>
+              </div>
+
+              {/* Right Cyber Mesh & Node Constellation behind right text & tags */}
+              <div className="intro-card__hud-right">
+                <svg viewBox="0 0 380 320" className="intro-hud-svg" fill="none">
+                  <path d="M 30,160 Q 130,50 250,130 T 360,90" stroke="rgba(56, 189, 248, 0.35)" strokeWidth="1.5" strokeDasharray="6 5" />
+                  <path d="M 20,230 Q 150,290 270,190 T 370,250" stroke="rgba(139, 92, 246, 0.35)" strokeWidth="1.5" />
+                  <path d="M 60,70 L 170,140 L 290,80 L 350,160 L 270,230 L 150,210 Z" stroke="rgba(0, 210, 255, 0.25)" strokeWidth="1" strokeDasharray="4 6" fill="rgba(56, 189, 248, 0.03)" />
+                  <circle cx="60" cy="70" r="4" fill="#38bdf8" className="intro-node-pulse" />
+                  <circle cx="170" cy="140" r="5" fill="#00d2ff" className="intro-node-pulse" />
+                  <circle cx="290" cy="80" r="4.5" fill="#a78bfa" className="intro-node-pulse" />
+                  <circle cx="350" cy="160" r="4" fill="#38bdf8" />
+                  <circle cx="270" cy="230" r="4.5" fill="#60a5fa" />
+                  <circle cx="150" cy="210" r="3.5" fill="#a78bfa" />
+                </svg>
+              </div>
+
+              {/* High-tech Cyber Grid Lines */}
+              <div className="intro-card__grid-overlay" />
+            </div>
+
+            {/* Corner Tech Accents */}
+            <span className="intro-card__corner intro-card__corner--tl" aria-hidden="true" />
+            <span className="intro-card__corner intro-card__corner--tr" aria-hidden="true" />
+            <span className="intro-card__corner intro-card__corner--bl" aria-hidden="true" />
+            <span className="intro-card__corner intro-card__corner--br" aria-hidden="true" />
+
             <div className="intro-card__header">
               <span className="badge-eyebrow">
                 <Icon name="Sparkles" size={16} /> Partner with Velvora

@@ -103,9 +103,6 @@ export default function ResourcePage({ type }) {
                   <p className="eyebrow">{c.items[0].tag}</p>
                   <h2>{c.items[0].title}</h2>
                   <p className="lead">{c.items[0].summary}</p>
-                  <Link to="/contact" className="btn btn--orange" style={{ marginTop: '1rem' }}>
-                    Request Full Article &amp; Guide <ArrowRight size={16} aria-hidden="true" />
-                  </Link>
                 </article>
               )}
 
@@ -118,9 +115,6 @@ export default function ResourcePage({ type }) {
                     <p className="eyebrow">{item.tag}</p>
                     <h4>{item.title}</h4>
                     <p>{item.summary}</p>
-                    <Link to="/contact" className="tlink">
-                      Learn More <ArrowRight size={16} aria-hidden="true" />
-                    </Link>
                   </article>
                 ))}
               </div>
