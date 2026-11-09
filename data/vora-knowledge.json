@@ -1,0 +1,661 @@
+{
+  "syncMetadata": {
+    "version": "1.2.0",
+    "status": "Completed",
+    "lastSynchronized": "2026-11-09T04:15:48.769Z",
+    "indexedCount": 22,
+    "errorLogs": []
+  },
+  "careers": [
+    {
+      "id": "copy-editing-specialist",
+      "title": "Copy Editing Specialist",
+      "department": "Editorial & Quality Assurance",
+      "type": "Full-Time / Hybrid",
+      "location": "Cuddalore, TN / Hybrid",
+      "workMode": "Hybrid",
+      "experience": "1-3 years editorial experience",
+      "skills": [
+        "English Grammar",
+        "APA",
+        "Chicago",
+        "MLA",
+        "Style Guides",
+        "Editorial Proofing"
+      ],
+      "eligibility": "Degree in English, Journalism, Mass Communication, or equivalent editing experience.",
+      "summary": "Review and refine content for accuracy, clarity, and consistency across academic and enterprise publications.",
+      "responsibilities": [
+        "Review and refine content for accuracy, clarity, and consistency.",
+        "Ensure adherence to publishing standards and client style guides (APA, Chicago, MLA).",
+        "Collaborate with content, design, and accessibility teams."
+      ],
+      "requirements": [
+        "Strong command of English grammar, syntax, and publishing style guides.",
+        "Experience in academic, technical, or corporate editing.",
+        "Exceptional attention to detail and ability to meet project deadlines."
+      ],
+      "status": "Active",
+      "applyUrl": "/careers",
+      "updatedAt": "2026-11-09T04:03:16.433Z"
+    },
+    {
+      "id": "ppt-accessibility-specialist",
+      "title": "PPT Accessibility Specialist",
+      "department": "Digital Accessibility",
+      "type": "Full-Time / Hybrid",
+      "location": "Cuddalore, TN / Hybrid",
+      "workMode": "Hybrid",
+      "experience": "1+ years document accessibility remediation",
+      "skills": [
+        "PowerPoint",
+        "WCAG 2.2",
+        "PDF/UA",
+        "Section 508",
+        "JAWS",
+        "NVDA",
+        "Alt Text"
+      ],
+      "eligibility": "Proficiency in MS PowerPoint, accessibility guidelines (WCAG, Section 508), and screen reader testing.",
+      "summary": "Remediate PowerPoint presentations to conform to WCAG 2.2, PDF/UA, and Section 508 standards.",
+      "responsibilities": [
+        "Remediate PowerPoint files to meet accessibility standards (WCAG 2.2, Section 508).",
+        "Add meaningful alt text, proper reading order in selection panes, and accessible slide formatting.",
+        "Collaborate with clients and internal teams to deliver fully inclusive presentation decks."
+      ],
+      "requirements": [
+        "Knowledge of accessibility guidelines (WCAG, Section 508) and assistive technologies (JAWS, NVDA).",
+        "Hands-on experience with accessible document remediation and slide design.",
+        "Strong communication, problem-solving skills, and empathy for diverse users."
+      ],
+      "status": "Active",
+      "applyUrl": "/careers",
+      "updatedAt": "2026-11-09T04:03:16.433Z"
+    },
+    {
+      "id": "typesetting-specialist",
+      "title": "Typesetting Specialist",
+      "department": "Publishing Production",
+      "type": "Full-Time / Hybrid",
+      "location": "Cuddalore, TN / Hybrid",
+      "workMode": "Hybrid",
+      "experience": "1-4 years typesetting experience",
+      "skills": [
+        "InDesign",
+        "LaTeX",
+        "MathML",
+        "EPUB 3",
+        "JATS XML",
+        "Typography Grid Design"
+      ],
+      "eligibility": "Demonstrated experience in InDesign, LaTeX, MathML, or XML publishing production.",
+      "summary": "Format and design manuscripts, journals, and books for print and multi-format digital publishing.",
+      "responsibilities": [
+        "Format and design manuscripts, journals, and books for digital and print publishing.",
+        "Apply consistent styles, layouts, and templates across large volumes of complex content.",
+        "Ensure compliance with publishing standards (EPUB 3, JATS/BITS XML, PDF)."
+      ],
+      "requirements": [
+        "Hands-on experience with typesetting tools (InDesign, LaTeX, MathML, or XML workflows).",
+        "Strong eye for typography, layout design, grid structure, and detail.",
+        "Ability to manage multiple concurrent titles and meet delivery schedules."
+      ],
+      "status": "Active",
+      "applyUrl": "/careers",
+      "updatedAt": "2026-11-09T04:03:16.433Z"
+    },
+    {
+      "id": "ai-automation-engineer",
+      "title": "AI & Automation Engineer",
+      "department": "Engineering & Innovation",
+      "type": "Full-Time / Hybrid",
+      "location": "Cuddalore, TN / Hybrid",
+      "workMode": "Hybrid / Remote",
+      "experience": "Fresher / 1-2 years experience",
+      "skills": [
+        "Python",
+        "FastAPI",
+        "NLP",
+        "LLMs",
+        "Document Processing",
+        "Automated QA",
+        "REST APIs"
+      ],
+      "eligibility": "Degree in Computer Science, Data Science, or related field with solid Python programming and automation skills.",
+      "summary": "Build intelligent workflow pipelines using Python, NLP, and modern LLMs to accelerate content publishing.",
+      "responsibilities": [
+        "Architect AI pipelines that parse, remediate, and validate complex publication manuscripts.",
+        "Develop automated quality gates for XML and EPUB conversion pipelines.",
+        "Collaborate across cross-disciplinary teams to integrate generative AI safely and accurately."
+      ],
+      "requirements": [
+        "Proficiency with Python, API integration, and machine learning/NLP concepts.",
+        "Interest in accessibility standards and automated document processing.",
+        "Strong problem-solving and proactive debugging abilities."
+      ],
+      "status": "Active",
+      "applyUrl": "/careers",
+      "updatedAt": "2026-11-09T04:03:16.433Z"
+    },
+    {
+      "id": "digital-publishing-xml-intern",
+      "title": "Digital Publishing & XML Intern",
+      "department": "Publishing Production",
+      "type": "Internship",
+      "location": "Cuddalore / Remote",
+      "workMode": "Remote",
+      "experience": "Fresher / College Students",
+      "skills": [
+        "HTML",
+        "XML Basics",
+        "Content Structuring",
+        "Proofreading",
+        "Curiosity to learn"
+      ],
+      "eligibility": "Students or recent graduates in Computer Science, Literature, or Media Studies looking for hands-on publishing tech experience.",
+      "summary": "3-6 months paid internship learning production XML structuring, EPUB standards, and digital editorial pipelines.",
+      "responsibilities": [
+        "Assist production teams with XML tag validation and structuring.",
+        "Learn EPUB 3 transformation workflows and quality checks.",
+        "Participate in editorial QA rounds for university and enterprise clients."
+      ],
+      "requirements": [
+        "Keen interest in digital publishing and semantic structure.",
+        "Good English communication skills and enthusiasm to learn new tools."
+      ],
+      "status": "Active",
+      "applyUrl": "/careers",
+      "updatedAt": "2026-11-09T04:03:16.433Z"
+    },
+    {
+      "id": "accessibility-qa-intern",
+      "title": "Accessibility Auditing & QA Intern",
+      "department": "Digital Accessibility",
+      "type": "Internship",
+      "location": "Cuddalore / Remote",
+      "workMode": "Remote",
+      "experience": "Fresher / Final Year Students",
+      "skills": [
+        "WCAG Guidelines",
+        "Screen Reader Testing",
+        "Alt-Text Drafting",
+        "Detail Focus"
+      ],
+      "eligibility": "Passionate about digital inclusion, assistive technologies, and Web Accessibility Guidelines (WCAG).",
+      "summary": "Gain certified training in assistive tech testing (NVDA, JAWS) and PDF/UA remediation.",
+      "responsibilities": [
+        "Learn automated and manual accessibility audit tools.",
+        "Draft descriptive alternative text for educational and enterprise diagrams.",
+        "Assist specialists in verifying Section 508 and WCAG compliance."
+      ],
+      "requirements": [
+        "Empathy for users with disabilities.",
+        "Strong analytical mindset and willingness to master accessibility tools."
+      ],
+      "status": "Active",
+      "applyUrl": "/careers",
+      "updatedAt": "2026-11-09T04:03:16.433Z"
+    }
+  ],
+  "pages": [
+    {
+      "id": "home",
+      "title": "Velvora Solutions — Home",
+      "url": "/",
+      "category": "company",
+      "summary": "Velvora Solutions is a content and technology partner from manuscript to millions of readers. Combining ePublishing, XML, digital accessibility, AI automation, software engineering, and data analytics.",
+      "topics": [
+        "ePublishing",
+        "XML",
+        "Digital Accessibility",
+        "AI Automation",
+        "Software Engineering",
+        "Data Analytics",
+        "Digital Marketing"
+      ],
+      "keywords": [
+        "home",
+        "velvora",
+        "overview",
+        "about",
+        "services",
+        "solutions",
+        "mission",
+        "clients",
+        "publishing"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "company-overview",
+      "title": "Company Overview & Mission",
+      "url": "/about/company-overview",
+      "category": "company",
+      "summary": "At Velvora Solutions, we believe that content is only as powerful as its accessibility and clarity. Our mission is to bridge editorial craft with digital precision to make publications universally usable.",
+      "topics": [
+        "Mission",
+        "Vision",
+        "Core Values",
+        "Global Clients",
+        "Standards & Ethics"
+      ],
+      "keywords": [
+        "about",
+        "company",
+        "mission",
+        "history",
+        "overview",
+        "values",
+        "governance"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "our-team",
+      "title": "Our Leadership & Team",
+      "url": "/about/our-team",
+      "category": "company",
+      "summary": "Guided by Iyshwariya Senthil (Founder & Managing Director, 7+ years of experience in universal design & publishing operations). Our multidisciplinary specialists span editorial, XML architectures, accessibility testing, and cloud development.",
+      "topics": [
+        "Leadership",
+        "Iyshwariya Senthil",
+        "Specialists",
+        "Editorial Team",
+        "Accessibility Testers"
+      ],
+      "keywords": [
+        "team",
+        "leadership",
+        "founder",
+        "managing director",
+        "iyshwariya",
+        "senthil",
+        "executives",
+        "people"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "careers",
+      "title": "Careers at Velvora Solutions",
+      "url": "/careers",
+      "category": "career",
+      "summary": "Build skills, create impact, and shape the future at Velvora. We offer full-time positions and paid internships with equal opportunity, mentoring, G.R.O.W.T.H. framework, and inclusive workplace culture.",
+      "topics": [
+        "Job Openings",
+        "Internships",
+        "G.R.O.W.T.H. Framework",
+        "Diversity & Inclusion",
+        "Application Form",
+        "Resume Upload"
+      ],
+      "keywords": [
+        "careers",
+        "jobs",
+        "vacancies",
+        "hiring",
+        "internships",
+        "fresher",
+        "apply",
+        "work",
+        "culture",
+        "openings",
+        "resume"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "service-epublishing",
+      "title": "ePublishing Services",
+      "url": "/services/epublishing",
+      "category": "service",
+      "summary": "End-to-end ePublishing from raw manuscript to reflowable and fixed-layout EPUB 3, EPUB 2, interactive eBooks, accessibility tagging, and multi-format delivery for global bookstores (Apple Books, Amazon Kindle, Kobo).",
+      "topics": [
+        "EPUB 3",
+        "Fixed Layout",
+        "Reflowable eBooks",
+        "Enhanced Interactive",
+        "Kindle KPF/MOBI",
+        "Multi-device QA"
+      ],
+      "keywords": [
+        "epublishing",
+        "epub",
+        "ebook",
+        "kindle",
+        "manuscript",
+        "publishing",
+        "books",
+        "conversion"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "service-xml",
+      "title": "XML Services & Conversion",
+      "url": "/services/xml",
+      "category": "service",
+      "summary": "Industry-standard structured XML services: JATS 1.3, BITS 2.1, DocBook, TEI, and custom DTD/Schema conversion. Ensuring long-term preservation, rapid cross-media publishing, and semantic discovery.",
+      "topics": [
+        "JATS XML",
+        "BITS XML",
+        "DocBook",
+        "TEI",
+        "DTD Schema Design",
+        "Automated Schematron QA"
+      ],
+      "keywords": [
+        "xml",
+        "jats",
+        "bits",
+        "dtd",
+        "schema",
+        "structuring",
+        "conversion",
+        "journals",
+        "nlm"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "service-digital-accessibility",
+      "title": "Digital Accessibility Services",
+      "url": "/services/digital-accessibility",
+      "category": "service",
+      "summary": "Complete accessibility audits, remediation, and certification. Conforming with WCAG 2.2 AA/AAA, PDF/UA (ISO 14289), Section 508, and EAA. Tested with real assistive technologies (JAWS, NVDA, VoiceOver, TalkBack).",
+      "topics": [
+        "WCAG 2.2",
+        "PDF/UA Remediation",
+        "PowerPoint & Word Accessibility",
+        "Screen Reader QA",
+        "VPAT Conformance",
+        "Audio Description"
+      ],
+      "keywords": [
+        "accessibility",
+        "accessible",
+        "wcag",
+        "pdf/ua",
+        "section 508",
+        "screen reader",
+        "jaws",
+        "nvda",
+        "vpat",
+        "audit",
+        "remediation"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "service-typesetting-and-design",
+      "title": "Typesetting and Design Services",
+      "url": "/services/typesetting-and-design",
+      "category": "service",
+      "summary": "High-end layout, composition, and book design for trade, academic, and complex multilingual publications. Mastering Adobe InDesign, QuarkXPress, and automated template-driven composition.",
+      "topics": [
+        "InDesign Typesetting",
+        "Multilingual Composition",
+        "Cover & Interior Design",
+        "Grid Systems",
+        "Print & Digital PDF"
+      ],
+      "keywords": [
+        "typesetting",
+        "design",
+        "indesign",
+        "layout",
+        "composition",
+        "typography",
+        "book design"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "service-math-and-equation-typesetting",
+      "title": "Math and Equation Typesetting",
+      "url": "/services/math-and-equation-typesetting",
+      "category": "service",
+      "summary": "Specialized STEM composition handling complex mathematical, statistical, and chemical notation using LaTeX, MathML, MathJax, and AMS-TeX, fully compliant with digital accessibility and screen readers.",
+      "topics": [
+        "LaTeX",
+        "MathML",
+        "ChemDraw",
+        "Equations",
+        "STEM Journals",
+        "Accessible Math"
+      ],
+      "keywords": [
+        "math",
+        "equation",
+        "latex",
+        "mathml",
+        "stem",
+        "science",
+        "chemistry",
+        "formulas"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "service-metadata-indexing-and-taxonomy",
+      "title": "Metadata, Indexing and Taxonomy",
+      "url": "/services/metadata-indexing-and-taxonomy",
+      "category": "service",
+      "summary": "Subject indexing, back-of-the-book indexes, hierarchical taxonomy development, DOI/Crossref registration, and ONIX 3.0 metadata feeds to maximize content discoverability and sales telemetry.",
+      "topics": [
+        "Subject Indexing",
+        "Taxonomy",
+        "ONIX 3.0",
+        "DOI Crossref",
+        "Thesaurus Structuring"
+      ],
+      "keywords": [
+        "metadata",
+        "indexing",
+        "taxonomy",
+        "onix",
+        "discovery",
+        "doi",
+        "thesaurus",
+        "search"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "service-ocr-and-digitization",
+      "title": "OCR and Digitization Services",
+      "url": "/services/ocr-and-digitization",
+      "category": "service",
+      "summary": "High-accuracy optical character recognition (OCR) and archival digitization for legacy books, brittle paper manuscripts, rare historical documents, and multi-language archives with 99.995% character accuracy.",
+      "topics": [
+        "Archival Scanning",
+        "High-Accuracy OCR",
+        "Legacy Digitization",
+        "Double-Keying",
+        "Searchable PDF/A"
+      ],
+      "keywords": [
+        "ocr",
+        "digitization",
+        "scanning",
+        "archives",
+        "legacy",
+        "historical",
+        "double keying"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "service-captioning-transcription",
+      "title": "Captioning, Transcription and Audio Description",
+      "url": "/services/captioning-transcription-and-audio-description",
+      "category": "service",
+      "summary": "Accurate closed captioning (CC), subtitles in 20+ languages, verbatim transcripts, and synthesized/human audio description tracks for video and podcast media meeting FCC and WCAG multimedia rules.",
+      "topics": [
+        "Closed Captioning",
+        "Audio Description",
+        "SRT / VTT / DFXP",
+        "Multilingual Subtitling",
+        "Verbatim Transcription"
+      ],
+      "keywords": [
+        "captioning",
+        "subtitles",
+        "transcription",
+        "audio description",
+        "video",
+        "podcasts",
+        "media"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "service-accessibility-training",
+      "title": "Accessibility Training and Consulting",
+      "url": "/services/accessibility-training-and-consulting",
+      "category": "service",
+      "summary": "Empower your internal editorial and engineering teams with tailored accessibility workshops, VPAT assessments, policy drafting, and executive digital inclusion roadmaps.",
+      "topics": [
+        "Corporate Workshops",
+        "VPAT Assessments",
+        "WCAG Roadmaps",
+        "Inclusive Design Coaching"
+      ],
+      "keywords": [
+        "training",
+        "consulting",
+        "workshops",
+        "vpat",
+        "compliance",
+        "corporate coaching"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "solutions-overview",
+      "title": "Industry Solutions",
+      "url": "/solutions",
+      "category": "solution",
+      "summary": "Tailored content and workflow engineering for Academic & Higher Ed, STM Publishers, EdTech Innovators, Global Enterprises, Legal & Regulatory bodies, and Trade Publishers.",
+      "topics": [
+        "Higher Education",
+        "STM Publishers",
+        "EdTech",
+        "Global Enterprises",
+        "Legal & Regulatory",
+        "Trade Publishing"
+      ],
+      "keywords": [
+        "solutions",
+        "industries",
+        "academic",
+        "stm",
+        "edtech",
+        "enterprises",
+        "legal",
+        "publishers"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "contact",
+      "title": "Contact Velvora Solutions",
+      "url": "/contact",
+      "category": "contact",
+      "summary": "Get in touch with our team for project quotes, audits, and partnership discussions. Offices in Cuddalore and Chennai Porur. Email: info@velvorasolutions.com, Phone: +91 9500834236.",
+      "topics": [
+        "Project Enquiry",
+        "Offices",
+        "Cuddalore",
+        "Chennai",
+        "Email",
+        "Phone",
+        "Consultation"
+      ],
+      "keywords": [
+        "contact",
+        "email",
+        "phone",
+        "address",
+        "offices",
+        "location",
+        "reach out",
+        "quote",
+        "support",
+        "hours"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    },
+    {
+      "id": "privacy-policy",
+      "title": "Privacy Policy",
+      "url": "/privacy-policy",
+      "category": "policy",
+      "summary": "Velvora Solutions strictly protects visitor privacy, client project data, and job application resumes. Data is never shared or sold to third parties.",
+      "topics": [
+        "Data Confidentiality",
+        "Applicant Privacy",
+        "GDPR & DPDP Compliance",
+        "Cookies & Analytics"
+      ],
+      "keywords": [
+        "privacy",
+        "policy",
+        "confidentiality",
+        "data",
+        "security",
+        "gdpr",
+        "terms"
+      ],
+      "versionId": "v-2026-11-09-01",
+      "lastUpdated": "2026-11-09T04:03:16.434Z"
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What does Velvora Solutions do?",
+      "a": "Velvora Solutions is a content and technology partner delivering ePublishing, XML transformation, digital accessibility (WCAG 2.2 & PDF/UA), AI automation pipelines, web development, data analytics, and digital marketing.",
+      "url": "/about/company-overview"
+    },
+    {
+      "q": "Who leads Velvora Solutions?",
+      "a": "Velvora Solutions is founded and led by Iyshwariya Senthil (Founder & Managing Director). She brings 7+ years of executive leadership in digital publishing operations, universal design, and WCAG accessibility standards.",
+      "url": "/about/our-team"
+    },
+    {
+      "q": "Where are Velvora offices located?",
+      "a": "Velvora has offices in Cuddalore (Pathirikuppam, Thiruvantthipuram Post) and Chennai (Porur), Tamil Nadu, India. Office hours are Monday to Saturday, 9:00 AM – 6:30 PM.",
+      "url": "/contact"
+    },
+    {
+      "q": "How do I apply for jobs or internships at Velvora?",
+      "a": "You can view all current active openings and submit your application with a resume (PDF, DOC, DOCX up to 10MB) directly on our official Careers page. Applications are reviewed within 24–48 hours.",
+      "url": "/careers"
+    },
+    {
+      "q": "What file formats and limits are accepted for job applications?",
+      "a": "We accept PDF, DOC, and DOCX formats up to 10MB. Please ensure your contact details and applied position are clearly specified.",
+      "url": "/careers"
+    },
+    {
+      "q": "What accessibility standards do you comply with?",
+      "a": "We test and remediate digital publications, PDFs, PowerPoint decks, and web portals to achieve 100% conformance with WCAG 2.2 (Level AA/AAA), PDF/UA (ISO 14289), Section 508, and the European Accessibility Act (EAA).",
+      "url": "/services/digital-accessibility"
+    }
+  ]
+}

@@ -9141,3 +9141,900 @@ main:focus { outline: none; }
   background: #00d2ff;
   box-shadow: 0 0 12px #00d2ff;
 }
+
+/* ========================================================================= */
+/* VORA ROBOT MASCOT & WALKING ANIMATION KINEMATICS */
+/* ========================================================================= */
+
+.vora-robot-wrapper {
+  transform-origin: bottom center;
+}
+
+/* Walking gait: Left & Right Leg Alternation */
+.is-walking .vora-leg-left {
+  animation: voraWalkLeft 0.55s ease-in-out infinite alternate;
+  transform-origin: 66px 146px;
+}
+.is-walking .vora-leg-right {
+  animation: voraWalkRight 0.55s ease-in-out infinite alternate;
+  transform-origin: 94px 146px;
+}
+.is-walking .vora-body-group {
+  animation: voraBob 0.55s ease-in-out infinite alternate;
+}
+.is-walking .vora-arm-left {
+  animation: voraArmSwing 0.55s ease-in-out infinite alternate;
+  transform-origin: 44px 107px;
+}
+.is-walking .vora-shadow {
+  animation: voraShadowPulse 0.55s ease-in-out infinite alternate;
+}
+
+/* Waving Hand State */
+.is-waving .vora-arm-left {
+  animation: voraWave 0.75s ease-in-out infinite;
+  transform-origin: 44px 107px;
+}
+
+@keyframes voraWalkLeft {
+  0% { transform: rotate(18deg) translateY(-2px); }
+  100% { transform: rotate(-18deg) translateY(0px); }
+}
+
+@keyframes voraWalkRight {
+  0% { transform: rotate(-18deg) translateY(0px); }
+  100% { transform: rotate(18deg) translateY(-2px); }
+}
+
+@keyframes voraBob {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes voraArmSwing {
+  0% { transform: rotate(-14deg); }
+  100% { transform: rotate(14deg); }
+}
+
+@keyframes voraWave {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(-45deg); }
+}
+
+@keyframes voraShadowPulse {
+  0% { transform: scale(0.95); opacity: 0.5; }
+  100% { transform: scale(1.05); opacity: 0.35; }
+}
+
+/* ========================================================================= */
+/* FEATURE 1: FIRST-VISIT ROBOT INTRODUCTION OVERLAY */
+/* ========================================================================= */
+
+.vora-intro-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+.vora-intro-actor {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10001;
+  will-change: transform;
+}
+
+.vora-speech-bubble {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(7, 14, 36, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid #38bdf8;
+  border-radius: 16px;
+  padding: 10px 18px;
+  color: #ffffff;
+  font-size: 0.94rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(56, 189, 248, 0.4);
+  animation: voraBubblePop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.vora-speech-pointer {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #38bdf8;
+}
+
+@keyframes voraBubblePop {
+  0% { opacity: 0; transform: translate(-50%, 10px) scale(0.85); }
+  100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+.vora-merge-ripple {
+  position: absolute;
+  inset: -15px;
+  border: 2px solid #00d2ff;
+  border-radius: 50%;
+  animation: voraMergeRipple 0.65s ease-out forwards;
+}
+
+@keyframes voraMergeRipple {
+  0% { transform: scale(0.2); opacity: 1; box-shadow: 0 0 25px #00d2ff; }
+  100% { transform: scale(1.6); opacity: 0; box-shadow: 0 0 50px #00d2ff; }
+}
+
+.vora-skip-intro-btn {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  pointer-events: auto;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: #94a3b8;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.vora-skip-intro-btn:hover {
+  color: #ffffff;
+  border-color: #38bdf8;
+  background: rgba(15, 23, 42, 0.95);
+}
+
+/* ========================================================================= */
+/* VORA CHATBOT LAUNCHER (Fixed at Bottom-Right) */
+/* ========================================================================= */
+
+.vora-launcher-container {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9990;
+}
+
+.vora-launcher-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #070e24 0%, #0d1e4c 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.55);
+  border-radius: 999px;
+  padding: 6px 16px 6px 8px;
+  cursor: pointer;
+  box-shadow: 
+    0 12px 35px -6px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(14, 165, 233, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vora-launcher-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: #38bdf8;
+  box-shadow: 
+    0 16px 42px -6px rgba(0, 0, 0, 0.95),
+    0 0 35px rgba(0, 210, 255, 0.55);
+}
+
+.vora-launcher-btn.is-active {
+  border-color: #00d2ff;
+  box-shadow: 0 0 35px rgba(0, 210, 255, 0.6);
+}
+
+.vora-launcher-inner {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+}
+
+.vora-launcher-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid #00d2ff;
+  animation: voraLauncherPulse 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes voraLauncherPulse {
+  0% { transform: scale(0.85); opacity: 0.9; }
+  60%, 100% { transform: scale(1.4); opacity: 0; }
+}
+
+.vora-online-dot {
+  position: absolute;
+  bottom: 0px;
+  right: -2px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #10b981;
+  border: 2px solid #070e24;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.vora-launcher-badge {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+/* ========================================================================= */
+/* VORA CHAT WINDOW & DRAWER */
+/* ========================================================================= */
+
+.vora-chat-window {
+  position: fixed;
+  bottom: 96px;
+  right: 28px;
+  width: min(430px, calc(100vw - 36px));
+  height: min(630px, calc(100vh - 120px));
+  background: linear-gradient(165deg, rgba(8, 15, 34, 0.96) 0%, rgba(4, 7, 17, 0.98) 100%);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 26px;
+  box-shadow: 
+    0 24px 70px -10px rgba(0, 0, 0, 0.95),
+    0 0 45px rgba(14, 165, 233, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9995;
+  animation: voraWindowOpen 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes voraWindowOpen {
+  0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.vora-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: rgba(14, 23, 42, 0.7);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.vora-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vora-avatar-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  display: grid;
+  place-items: center;
+}
+
+.vora-bot-name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vora-status-chip {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(56, 189, 248, 0.18);
+  color: #38bdf8;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+.vora-sync-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.sync-dot-green {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+}
+
+.vora-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vora-hdr-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94a3b8;
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.2s ease;
+}
+
+.vora-hdr-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+.vora-close-btn:hover {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.15);
+}
+
+/* Messages Body */
+.vora-messages-body {
+  flex: 1;
+  padding: 18px 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.vora-messages-body::-webkit-scrollbar {
+  width: 5px;
+}
+.vora-messages-body::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.25);
+  border-radius: 4px;
+}
+
+.vora-msg-row {
+  display: flex;
+  gap: 10px;
+  max-width: 90%;
+}
+
+.vora-msg-row--vora {
+  align-self: flex-start;
+}
+
+.vora-msg-row--user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.vora-msg-avatar {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.vora-msg-bubble {
+  border-radius: 18px;
+  padding: 12px 16px;
+  font-size: 0.91rem;
+  line-height: 1.6;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.vora-msg-bubble--vora {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #e2e8f0;
+  border-top-left-radius: 4px;
+}
+
+.vora-msg-bubble--user {
+  background: linear-gradient(135deg, #0284c7 0%, #1d4ed8 100%);
+  color: #ffffff;
+  border-top-right-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.vora-msg-text p {
+  margin: 0 0 8px 0;
+}
+.vora-msg-text p:last-child {
+  margin-bottom: 0;
+}
+
+.vora-bullet-line {
+  display: block;
+  margin-left: 8px;
+  color: #cbd5e1;
+}
+.vora-bullet-dot {
+  color: #38bdf8;
+  margin-right: 6px;
+}
+
+.vora-msg-time {
+  display: block;
+  font-size: 0.68rem;
+  color: #64748b;
+  margin-top: 6px;
+  text-align: right;
+}
+
+.vora-sources-box {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(56, 189, 248, 0.25);
+}
+
+.vora-sources-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.vora-sources-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.vora-source-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(14, 165, 233, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.vora-source-pill:hover {
+  background: rgba(14, 165, 233, 0.3);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.vora-source-pill .pill-arrow {
+  color: #38bdf8;
+  transition: transform 0.2s ease;
+}
+.vora-source-pill:hover .pill-arrow {
+  transform: translateX(2px);
+  color: #ffffff;
+}
+
+/* Typing Indicator Animation */
+.vora-typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 18px;
+  padding: 12px 18px;
+}
+
+.vora-typing-indicator span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38bdf8;
+  animation: voraTypingDot 1.4s infinite ease-in-out both;
+}
+
+.vora-typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+.vora-typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes voraTypingDot {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* Quick Questions Dock */
+.vora-quick-dock {
+  padding: 8px 14px;
+  background: rgba(10, 16, 32, 0.75);
+  border-top: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.vora-dock-heading {
+  display: block;
+  font-size: 0.7rem;
+  color: #64748b;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.vora-chips-scroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.vora-chips-scroll::-webkit-scrollbar {
+  height: 3px;
+}
+.vora-chips-scroll::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.2);
+}
+
+.vora-prompt-chip {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #cbd5e1;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.76rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.vora-prompt-chip:hover {
+  background: rgba(14, 165, 233, 0.25);
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+/* Input Bar */
+.vora-input-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  background: rgba(7, 12, 28, 0.95);
+  border-top: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.vora-text-input {
+  flex: 1;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 999px;
+  padding: 10px 16px;
+  color: #ffffff;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.vora-text-input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.3);
+}
+
+.vora-send-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+  border: none;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.vora-send-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.vora-send-btn:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.5);
+}
+
+/* ========================================================================= */
+/* VORA ADMIN KNOWLEDGE CONTROL MODAL */
+/* ========================================================================= */
+
+.vora-admin-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  z-index: 10005;
+  padding: 20px;
+}
+
+.vora-admin-dialog {
+  background: #090e1d;
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  border-radius: 24px;
+  width: min(720px, 100%);
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95);
+}
+
+.vora-admin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.admin-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.admin-title-row h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.vora-admin-body {
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.admin-sync-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(14, 23, 42, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 16px;
+  padding: 16px 20px;
+  gap: 16px;
+}
+
+.admin-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.admin-status-flex {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0;
+}
+
+.status-badge-active {
+  color: #10b981;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.admin-ver {
+  font-size: 0.8rem;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.admin-time {
+  color: #94a3b8;
+  font-size: 0.78rem;
+}
+
+.admin-feature-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 12px 18px;
+  gap: 16px;
+}
+.admin-feature-strip strong {
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+.admin-feature-strip p {
+  color: #94a3b8;
+  font-size: 0.78rem;
+  margin: 2px 0 0;
+}
+
+.admin-careers-section h4 {
+  font-size: 1rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+.careers-header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.count-pill {
+  font-size: 0.75rem;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-weight: 700;
+}
+
+.admin-lead-desc {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin-bottom: 14px;
+}
+
+.admin-job-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 220px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+
+.admin-job-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 12px;
+  padding: 12px 16px;
+  gap: 12px;
+}
+
+.job-item-info strong {
+  display: block;
+  font-size: 0.92rem;
+  color: #ffffff;
+}
+
+.job-meta {
+  display: block;
+  font-size: 0.78rem;
+  color: #38bdf8;
+}
+
+.job-eligibility {
+  display: block;
+  font-size: 0.75rem;
+  color: #cbd5e1;
+  margin-top: 2px;
+}
+
+.job-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.job-status-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.status-active {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.status-closed {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.admin-add-job-form {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px dashed rgba(56, 189, 248, 0.3);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.admin-add-job-form h5 {
+  font-size: 0.88rem;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.btn--sm {
+  min-height: 40px;
+  padding: 0 14px;
+  font-size: 0.85rem;
+}
+
+.btn--xs {
+  min-height: 32px;
+  padding: 0 10px;
+  font-size: 0.75rem;
+}
+
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 640px) {
+  .vora-chat-window {
+    right: 12px;
+    bottom: 84px;
+    width: calc(100vw - 24px);
+    height: calc(100vh - 110px);
+  }
+  .vora-launcher-container {
+    right: 16px;
+    bottom: 16px;
+  }
+  .admin-sync-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+

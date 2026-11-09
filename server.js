@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
 import multer from 'multer';
 import path from 'path';
+import { voraStore } from './server/voraKnowledgeStore.js';
 
 // Load environment variables
 dotenv.config();
@@ -356,6 +357,123 @@ Reply-To: ${email.trim()}
         error: error.message || 'Failed to submit application. Please try again or contact us directly.'
       });
     }
+  });
+});
+
+// -------------------------------------------------------------
+// 3. VORA CHATBOT & LIVE KNOWLEDGE SYNCHRONIZATION ENDPOINTS
+// -------------------------------------------------------------
+
+// Chat query endpoint
+app.post('/api/vora/chat', (req, res) => {
+  try {
+    const { message } = req.body || {};
+    const result = voraStore.answerQuery(message);
+    res.json({
+      success: true,
+      reply: result.reply,
+      sources: result.sources,
+      metadata: voraStore.getMetadata()
+    });
+  } catch (err) {
+    console.error('Vora Chat Error:', err);
+    res.status(500).json({
+      success: false,
+      error: 'VORA encountered a processing error. Please try again.',
+      reply: "I'm having a brief connection pause. Please feel free to check our Services or Careers pages directly!",
+      sources: [
+        { title: 'Services Overview', url: '/services' },
+        { title: 'Careers Portal', url: '/careers' }
+      ]
+    });
+  }
+});
+
+// Knowledge summary and sync status
+app.get('/api/vora/knowledge', (req, res) => {
+  res.json({
+    success: true,
+    metadata: voraStore.getMetadata(),
+    pagesCount: voraStore.getPages().length,
+    activeCareersCount: voraStore.getCareers({ status: 'Active' }).length,
+    pages: voraStore.getPages().map(p => ({ id: p.id, title: p.title, url: p.url, category: p.category })),
+    activeCareers: voraStore.getCareers({ status: 'Active' })
+  });
+});
+
+// Dynamic Careers management
+app.get('/api/vora/careers', (req, res) => {
+  const { status, type, query } = req.query;
+  const list = voraStore.getCareers({ status, type, query });
+  res.json({ success: true, careers: list, total: list.length });
+});
+
+app.post('/api/vora/careers', (req, res) => {
+  try {
+    const { title, department, type, workMode, location, experience, skills, eligibility, summary } = req.body || {};
+    if (!title || !title.trim()) {
+      return res.status(400).json({ success: false, error: 'Job title is required.' });
+    }
+    const record = voraStore.addCareer({
+      title: title.trim(),
+      department: (department || 'Engineering & Operations').trim(),
+      type: (type || 'Full-Time / Hybrid').trim(),
+      workMode: (workMode || 'Hybrid').trim(),
+      location: (location || 'Cuddalore, TN / Hybrid').trim(),
+      experience: (experience || 'Fresher / Experienced').trim(),
+      skills: Array.isArray(skills) ? skills : (skills ? skills.split(',').map(s => s.trim()) : ['Problem Solving']),
+      eligibility: (eligibility || 'Relevant degree or equivalent experience.').trim(),
+      summary: (summary || `Exciting opportunity for ${title} at Velvora Solutions.`).trim(),
+      status: 'Active'
+    });
+    res.status(201).json({ success: true, career: record, message: 'Career listing published successfully.' });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.put('/api/vora/careers/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    const updated = voraStore.updateCareer(id, req.body || {});
+    if (!updated) {
+      return res.status(404).json({ success: false, error: 'Career listing not found.' });
+    }
+    res.json({ success: true, career: updated, message: 'Career listing updated successfully.' });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+app.post('/api/vora/careers/:id/close', (req, res) => {
+  try {
+    const { id } = req.params;
+    const closed = voraStore.closeCareer(id);
+    if (!closed) {
+      return res.status(404).json({ success: false, error: 'Career listing not found.' });
+    }
+    res.json({ success: true, career: closed, message: 'Career listing marked as Closed.' });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// Admin synchronization trigger
+app.post('/api/vora/sync', (req, res) => {
+  const result = voraStore.syncAll();
+  res.json({
+    success: result.success,
+    metadata: voraStore.getMetadata(),
+    message: result.success ? 'Website content synchronized successfully with VORA knowledge base.' : result.error
+  });
+});
+
+app.get('/api/vora/sync/status', (req, res) => {
+  res.json({
+    success: true,
+    metadata: voraStore.getMetadata(),
+    indexedPages: voraStore.getPages().length,
+    indexedCareers: voraStore.getCareers().length
   });
 });
 

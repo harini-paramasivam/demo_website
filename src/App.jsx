@@ -18,6 +18,7 @@ import Contact from './pages/Contact.jsx';
 import AccessibilityStatement from './pages/AccessibilityStatement.jsx';
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
 import NotFound from './pages/NotFound.jsx';
+import VoraChat from './components/VoraChat.jsx';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -77,6 +78,7 @@ export default function App() {
       >
         <ArrowUp size={22} aria-hidden="true" />
       </button>
+      <VoraChat />
     </>
   );
 }
