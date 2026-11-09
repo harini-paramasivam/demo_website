@@ -336,7 +336,7 @@ export class VoraKnowledgeStore {
       return {
         reply: "Velvora Solutions operates from **two verified physical offices** located in Tamil Nadu, India:\n\n" +
                "1. **Cuddalore Office (Head Office & Operations Center):**\n" +
-               "   Pathirikuppam, Thiruvantthipuram Post, Cuddalore - 607002, Tamil Nadu, India\n\n" +
+               "   Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India\n\n" +
                "2. **Chennai Office (Branch Office):**\n" +
                "   Velvora Solutions, Porur, Chennai, Tamil Nadu, India\n\n" +
                "• **Global Delivery:** While our physical offices are based in India, our digital accessibility, ePublishing, and technology workflows serve publishers, universities, and enterprises worldwide.\n" +
@@ -356,7 +356,7 @@ export class VoraKnowledgeStore {
       return {
         reply: "Velvora Solutions operates from two verified offices in Tamil Nadu, India:\n\n" +
                "• **Head Office & Operations Center (Cuddalore):**\n" +
-               "  Pathirikuppam, Thiruvantthipuram Post, Cuddalore - 607002, Tamil Nadu, India\n\n" +
+               "  Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India\n\n" +
                "• **Branch Office (Chennai):**\n" +
                "  Velvora Solutions, Porur, Chennai, Tamil Nadu, India\n\n" +
                "• **Email:** info@velvorasolutions.com\n" +

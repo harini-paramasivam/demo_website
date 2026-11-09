@@ -116,10 +116,9 @@ export default function PrivacyPolicy() {
             <p style={{ margin: '1rem 0' }}>
               <strong>Grievance Officer / Data Protection Contact:</strong><br />
               <strong>Velvora Solutions</strong><br />
-              450/90, Indra Nagar,<br />
-              Pathirikuppam,<br />
+              Indhira Nagar,<br />
               Cuddalore,<br />
-              Tamilnadu &ndash; 606302
+              Tamil Nadu &ndash; 607002
             </p>
             <p style={{ margin: '0.5rem 0' }}>
               <Mail size={16} aria-hidden="true" style={{ verticalAlign: 'middle', marginRight: '6px' }} />

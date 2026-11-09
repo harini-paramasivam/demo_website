@@ -76,7 +76,7 @@ Key Performance Metrics:
 • 2,000+ Training Hours Delivered
 • 30+ Skilled Specialists across accessibility, XML, typesetting, and AI engineering.
 Offices:
-• Head Office & Operations: Pathirikuppam, Thiruvantthipuram Post, Cuddalore - 607002, Tamil Nadu, India
+• Head Office & Operations: Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India
 • Branch Office: Velvora Solutions, Porur, Chennai, Tamil Nadu, India
 Contact: ${company.email} | Phone: ${company.phone} | Office Hours: ${company.hours}`,
         topics: ['About Velvora', 'Content and Technology Partner', 'Global Delivery', 'Company Overview', 'Key Metrics'],
@@ -356,7 +356,7 @@ Application Procedure:
 
 Office Locations in Tamil Nadu, India:
 1. **Cuddalore Office (Head Office / Operations Center):**
-   Pathirikuppam, Thiruvantthipuram Post, Cuddalore - 607002, Tamil Nadu, India
+   Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India
 2. **Chennai Office (Branch Office):**
    Velvora Solutions, Porur, Chennai, Tamil Nadu, India
 
@@ -410,7 +410,7 @@ Key Commitments:
     faqs.push(
       {
         q: 'How many branches or offices does Velvora Solutions have?',
-        a: 'Velvora Solutions operates from two verified physical offices in Tamil Nadu, India: our Head Office & Operations Center in Cuddalore (Pathirikuppam) and our Branch Office in Chennai (Porur). Digital delivery and client collaboration are provided to organizations worldwide.'
+        a: 'Velvora Solutions operates from two verified physical offices in Tamil Nadu, India: our Head Office & Operations Center in Cuddalore (Indhira Nagar) and our Branch Office in Chennai (Porur). Digital delivery and client collaboration are provided to organizations worldwide.'
       },
       {
         q: 'Who is the founder and leader of Velvora Solutions?',

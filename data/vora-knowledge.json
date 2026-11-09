@@ -1,21 +1,24 @@
 {
   "syncMetadata": {
-    "version": "v1.3.7",
+    "version": "v1.3.12",
     "status": "Synchronized",
-    "lastSynchronized": "2026-11-09T07:42:35.251Z",
-    "sourceHash": "1d21c32c559f8fdb0ca3526e4cfc333d6b0e15e1d3dd54652c597871c7095198",
+    "lastSynchronized": "2026-11-09T08:19:03.179Z",
+    "sourceHash": "93dee9cb8b35810dac5aa08e8d5a6dfed25f0e28180cb6125df833d879b95fb5",
     "indexedCount": 33,
     "indexedPages": 27,
     "indexedCareers": 6,
     "errorLogs": [],
     "changelog": [
-      "Synced 27 pages & 6 careers at 2026-11-09T07:42:35.251Z",
+      "Synced 27 pages & 6 careers at 2026-11-09T08:19:03.179Z",
+      "Synced 27 pages & 6 careers at 2026-11-09T08:18:49.771Z",
+      "Synced 27 pages & 6 careers at 2026-11-09T08:18:48.387Z",
+      "Synced 27 pages & 6 careers at 2026-11-09T07:46:55.228Z",
+      "Synced 27 pages & 6 careers at 2026-11-09T07:46:51.894Z",
+      "Synced 27 pages & 6 careers at 2026-11-09T07:42:35.077Z",
       "Synced 27 pages & 6 careers at 2026-11-09T07:41:47.048Z",
       "Synced 27 pages & 6 careers at 2026-11-09T07:41:45.708Z",
       "Synced 27 pages & 6 careers at 2026-11-09T07:38:49.818Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T07:38:48.537Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T07:17:50.039Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T07:17:37.730Z"
+      "Synced 27 pages & 6 careers at 2026-11-09T07:38:48.537Z"
     ]
   },
   "documents": [
@@ -25,7 +28,7 @@
       "url": "/",
       "category": "company",
       "summary": "We help publishers, universities, enterprises, and government organizations create structured, accessible content and smarter digital workflows—from ePublishing and XML to AI, software, data analytics, and digital marketing.",
-      "content": "Velvora Solutions is an end-to-end content and technology services partner.\nTagline: \"Content That Works for Everyone, Everywhere\"\nDescription: Velvora Solutions delivers ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing services for publishers, universities, enterprises, and government organizations worldwide.\nKey Performance Metrics:\n• 5+ Countries Reached worldwide\n• 500+ XML Titles Structured and Converted\n• 2,000+ Training Hours Delivered\n• 30+ Skilled Specialists across accessibility, XML, typesetting, and AI engineering.\nOffices:\n• Head Office & Operations: Pathirikuppam, Thiruvantthipuram Post, Cuddalore - 607002, Tamil Nadu, India\n• Branch Office: Velvora Solutions, Porur, Chennai, Tamil Nadu, India\nContact: info@velvorasolutions.com | Phone: +91 9500834236 | Office Hours: Monday to Saturday: 9:00 AM – 6:30 PM",
+      "content": "Velvora Solutions is an end-to-end content and technology services partner.\nTagline: \"Content That Works for Everyone, Everywhere\"\nDescription: Velvora Solutions delivers ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing services for publishers, universities, enterprises, and government organizations worldwide.\nKey Performance Metrics:\n• 5+ Countries Reached worldwide\n• 500+ XML Titles Structured and Converted\n• 2,000+ Training Hours Delivered\n• 30+ Skilled Specialists across accessibility, XML, typesetting, and AI engineering.\nOffices:\n• Head Office & Operations: Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India\n• Branch Office: Velvora Solutions, Porur, Chennai, Tamil Nadu, India\nContact: info@velvorasolutions.com | Phone: +91 9500834236 | Office Hours: Monday to Saturday: 9:00 AM – 6:30 PM",
       "topics": [
         "About Velvora",
         "Content and Technology Partner",
@@ -599,7 +602,7 @@
       "url": "/contact",
       "category": "contact",
       "summary": "Contact Velvora Solutions. Head office in Cuddalore and branch office in Chennai (Porur). Direct email: info@velvorasolutions.com, Phone: +91 9500834236.",
-      "content": "Velvora Solutions Contact & Physical Office Information:\n\nOffice Locations in Tamil Nadu, India:\n1. **Cuddalore Office (Head Office / Operations Center):**\n   Pathirikuppam, Thiruvantthipuram Post, Cuddalore - 607002, Tamil Nadu, India\n2. **Chennai Office (Branch Office):**\n   Velvora Solutions, Porur, Chennai, Tamil Nadu, India\n\nCommunication Channels:\n• Email: info@velvorasolutions.com\n• Phone: +91 9500834236\n• Business Hours: Monday to Saturday: 9:00 AM – 6:30 PM IST\n\nProject Submissions & Quotations:\nSubmit project scope, document counts, format specifications (e.g. PDF/UA, JATS XML, EPUB 3), and target deadlines via our Contact Form or email info@velvorasolutions.com. Our estimation team will evaluate requirements and provide a detailed quotation within 24–48 hours.",
+      "content": "Velvora Solutions Contact & Physical Office Information:\n\nOffice Locations in Tamil Nadu, India:\n1. **Cuddalore Office (Head Office / Operations Center):**\n   Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India\n2. **Chennai Office (Branch Office):**\n   Velvora Solutions, Porur, Chennai, Tamil Nadu, India\n\nCommunication Channels:\n• Email: info@velvorasolutions.com\n• Phone: +91 9500834236\n• Business Hours: Monday to Saturday: 9:00 AM – 6:30 PM IST\n\nProject Submissions & Quotations:\nSubmit project scope, document counts, format specifications (e.g. PDF/UA, JATS XML, EPUB 3), and target deadlines via our Contact Form or email info@velvorasolutions.com. Our estimation team will evaluate requirements and provide a detailed quotation within 24–48 hours.",
       "topics": [
         "Office Locations",
         "Head Office Cuddalore",
@@ -780,7 +783,7 @@
   "faqs": [
     {
       "q": "How many branches or offices does Velvora Solutions have?",
-      "a": "Velvora Solutions operates from two verified physical offices in Tamil Nadu, India: our Head Office & Operations Center in Cuddalore (Pathirikuppam) and our Branch Office in Chennai (Porur). Digital delivery and client collaboration are provided to organizations worldwide."
+      "a": "Velvora Solutions operates from two verified physical offices in Tamil Nadu, India: our Head Office & Operations Center in Cuddalore (Indhira Nagar) and our Branch Office in Chennai (Porur). Digital delivery and client collaboration are provided to organizations worldwide."
     },
     {
       "q": "Who is the founder and leader of Velvora Solutions?",
