@@ -459,13 +459,17 @@ app.post('/api/vora/careers/:id/close', (req, res) => {
 });
 
 // Admin synchronization trigger
-app.post('/api/vora/sync', (req, res) => {
-  const result = voraStore.syncAll();
-  res.json({
-    success: result.success,
-    metadata: voraStore.getMetadata(),
-    message: result.success ? 'Website content synchronized successfully with VORA knowledge base.' : result.error
-  });
+app.post('/api/vora/sync', async (req, res) => {
+  try {
+    const result = await voraStore.syncAll(true);
+    res.json({
+      success: result.success,
+      metadata: voraStore.getMetadata(),
+      message: result.success ? 'Website content synchronized successfully with VORA knowledge base.' : result.error
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 app.get('/api/vora/sync/status', (req, res) => {

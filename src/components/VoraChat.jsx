@@ -41,6 +41,7 @@ export default function VoraChat() {
   const [isTyping, setIsTyping] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [adminOpen, setAdminOpen] = useState(false);
+  const [introDone, setIntroDone] = useState(false);
   const [isAbsorbing, setIsAbsorbing] = useState(false);
   const [syncStatus, setSyncStatus] = useState(null);
   const [careersList, setCareersList] = useState([]);
@@ -114,7 +115,9 @@ export default function VoraChat() {
     fetchSyncStatus();
 
     const handleAbsorbed = () => {
+      setIntroDone(true);
       setIsAbsorbing(true);
+      playSoftChime();
       setTimeout(() => setIsAbsorbing(false), 1500);
     };
     window.addEventListener('vora_launcher_absorbed', handleAbsorbed);
@@ -296,10 +299,14 @@ export default function VoraChat() {
   const handleReplayIntro = () => {
     try {
       localStorage.removeItem('vora_intro_seen_v1');
+      localStorage.removeItem('vora_intro_seen_v5');
       sessionStorage.removeItem('vora_intro_seen_v1');
+      sessionStorage.removeItem('vora_intro_seen_v5');
     } catch (e) {}
     setIsOpen(false);
     setAdminOpen(false);
+    setIntroDone(false);
+    setIsAbsorbing(false);
     window.dispatchEvent(new CustomEvent('vora_replay_intro'));
   };
 
@@ -314,10 +321,16 @@ export default function VoraChat() {
   return (
     <>
       {/* 1. FIRST-VISIT ROBOT ANIMATION CONTROLLER */}
-      <VoraRobotIntro onIntroComplete={() => {}} />
+      <VoraRobotIntro 
+        onIntroComplete={() => setIntroDone(true)} 
+        onDockingStart={() => {
+          setIntroDone(true);
+          setIsAbsorbing(true);
+        }}
+      />
 
       {/* 2. CHATBOT LAUNCHER BUTTON (Bottom-Right Floating Dock) */}
-      <div className="vora-launcher-container">
+      <div className={`vora-launcher-container ${introDone ? 'is-placed' : 'is-hidden-for-intro'}`}>
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
@@ -330,7 +343,7 @@ export default function VoraChat() {
           )}
           <div className="vora-launcher-inner">
             <span className="vora-launcher-pulse" aria-hidden="true" />
-            <VoraRobotMascot size={42} isWalking={false} isTalking={isOpen} isReading={false} />
+            <VoraRobotMascot size={42} isWalking={false} isTalking={isOpen} />
             <span className="vora-online-dot" title="Knowledge Base Live" />
           </div>
           <span className="vora-launcher-badge">Ask VORA</span>
@@ -368,6 +381,7 @@ export default function VoraChat() {
                 type="button" 
                 onClick={() => {
                   setIsOpen(false);
+                  setIntroDone(false);
                   window.dispatchEvent(new CustomEvent('vora_replay_intro'));
                 }}
                 className="vora-hdr-btn"

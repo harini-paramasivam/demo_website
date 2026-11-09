@@ -42,7 +42,7 @@ export default async function handler(req, res) {
     }
 
     if (action === 'sync') {
-      const result = voraStore.syncAll();
+      const result = await voraStore.syncAll(true);
       return res.status(200).json(result);
     }
 

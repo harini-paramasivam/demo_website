@@ -1,11 +1,670 @@
 {
   "syncMetadata": {
-    "version": "1.3.0",
-    "status": "Completed",
-    "lastSynchronized": "2026-11-09T04:49:50.631Z",
-    "indexedCount": 22,
-    "errorLogs": []
+    "version": "v1.3.2",
+    "status": "Synchronized",
+    "lastSynchronized": "2026-11-09T07:17:50.039Z",
+    "sourceHash": "7536c921c3adbebfb658df91846e7267256f1b8c749728df2f13e9cec291837c",
+    "indexedCount": 33,
+    "indexedPages": 27,
+    "indexedCareers": 6,
+    "errorLogs": [],
+    "changelog": [
+      "Synced 27 pages & 6 careers at 2026-11-09T07:17:50.039Z",
+      "Synced 27 pages & 6 careers at 2026-11-09T07:17:37.730Z"
+    ]
   },
+  "documents": [
+    {
+      "id": "page-home",
+      "title": "Velvora Solutions — Home",
+      "url": "/",
+      "category": "company",
+      "summary": "We help publishers, universities, enterprises, and government organizations create structured, accessible content and smarter digital workflows—from ePublishing and XML to AI, software, data analytics, and digital marketing.",
+      "content": "Velvora Solutions is an end-to-end content and technology services partner.\nTagline: \"Content That Works for Everyone, Everywhere\"\nDescription: Velvora Solutions delivers ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing services for publishers, universities, enterprises, and government organizations worldwide.\nKey Performance Metrics:\n• 5+ Countries Reached worldwide\n• 500+ XML Titles Structured and Converted\n• 2,000+ Training Hours Delivered\n• 30+ Skilled Specialists across accessibility, XML, typesetting, and AI engineering.\nOffices:\n• Head Office & Operations: Pathirikuppam, Thiruvantthipuram Post, Cuddalore - 607002, Tamil Nadu, India\n• Branch Office: Velvora Solutions, Porur, Chennai, Tamil Nadu, India\nContact: info@velvorasolutions.com | Phone: +91 9500834236 | Office Hours: Monday to Saturday: 9:00 AM – 6:30 PM",
+      "topics": [
+        "About Velvora",
+        "Content and Technology Partner",
+        "Global Delivery",
+        "Company Overview",
+        "Key Metrics"
+      ],
+      "keywords": [
+        "velvora",
+        "velvora solutions",
+        "home",
+        "overview",
+        "about velvora",
+        "content partner",
+        "cuddalore",
+        "chennai",
+        "metrics"
+      ]
+    },
+    {
+      "id": "page-company-overview",
+      "title": "Company Overview & Mission",
+      "url": "/about/company-overview",
+      "category": "company",
+      "summary": "Velvora Solutions’ mission is to build accessible, precision-driven digital solutions uniting advanced technology with human craftsmanship to deliver uncompromising quality for global organizations.",
+      "content": "Velvora Solutions Company Overview:\nMission: To build accessible, precision-driven digital solutions uniting advanced technology with human dedication to deliver uncompromising quality for global organizations.\nVision: To empower publishers, academic institutions, and enterprises worldwide with universal digital accessibility, seamless publishing transformations, and resilient software architectures.\nCore Values:\n1. Universal Inclusion: Making digital content usable by everyone, conforming to WCAG 2.2 and PDF/UA.\n2. Technical Craftsmanship: Extreme precision in XML schemas, InDesign composition, LaTeX mathematics, and software engineering.\n3. Integrity & Confidentiality: Strict data privacy, non-disclosure, and enterprise information security.\n4. Client-Centric Innovation: Practical AI workflows and agile collaboration that cut turnarounds and scale output.\nQuality Assurance: Dual-layer verification combining automated validators (Schematron, EPUBCheck, axe) with rigorous human expert reviews (JAWS, NVDA, screen-reader testing).",
+      "topics": [
+        "Mission and Vision",
+        "Core Values",
+        "Quality Assurance",
+        "Universal Inclusion",
+        "Confidentiality"
+      ],
+      "keywords": [
+        "mission",
+        "vision",
+        "values",
+        "why choose velvora",
+        "quality assurance",
+        "overview",
+        "company culture"
+      ]
+    },
+    {
+      "id": "page-our-team",
+      "title": "Our Leadership & Team",
+      "url": "/about/our-team",
+      "category": "team",
+      "summary": "Velvora Solutions is founded and led by Iyshwariya Senthil (Founder & Managing Director) along with certified department heads in digital accessibility, production, technology, and operations.",
+      "content": "Velvora Solutions Leadership and Core Team:\n\nExecutive Founder:\n**Iyshwariya Senthil** — Founder & Managing Director\nBackground: With over 7 years of executive experience in publishing operations, universal design, and WCAG accessibility standards, she guides Velvora’s strategic roadmap. Certified in Universal Design and Publishing Operations.\n\nDepartment Heads & Leadership:\n• **Iyshwariya Senthil** (Founder / Managing Director — Executive Leadership): “Iyshwariya has 7+ years of experience in publishing and accessibility and leads our executive leadership. She is certified in Universal Design and Publishing Operations.”\n\n• **Rajesh Kumar** (Head of Accessibility — Digital Accessibility): “Rajesh has 9 years of experience in accessibility and leads our Digital Accessibility department. He is certified in CPACC and WAS.”\n\n• **Priya Raman** (Head of Production — Production): “Priya has 8 years of experience in publishing and leads our Production department. She is certified in Professional Editorial and Typesetting Standards.”\n\n• **Karthik Subramanian** (Head of Technology — Technology & AI): “Karthik has 10 years of experience in technology and leads our Technology department. He is certified in Cloud Architecture and AI Engineering.”\n\n• **Anand Natarajan** (Head of Operations — Operations): “Anand has 11 years of experience in publishing and technology and leads our Operations department. He is certified in Agile Operations and Information Security.”\n\n• **Shanmugham** (Head of Digital Marketing — Digital Marketing): “Shanmugham has 12+ years of experience in marketing and leads our Digital Marketing department. He is certified in Advanced SEO and Strategic Growth.”\n\n• **Hema** (Business Development Executive — Business Development & Client Relations): “Hema has 2+ years of experience in business development and client engagement. She specializes in strategic client partnerships, market expansion, and tailored service delivery.”\n\nDelivery Teams:\nOur specialists include certified accessibility auditors (CPACC, WAS), XML architects (JATS/BITS), typesetting compositors (InDesign/3B2), and full-stack software engineers.",
+      "topics": [
+        "Executive Leadership",
+        "Iyshwariya Senthil",
+        "Certified Specialists",
+        "Accessibility Auditors",
+        "Technology Leaders"
+      ],
+      "keywords": [
+        "team",
+        "leadership",
+        "founder",
+        "managing director",
+        "ceo",
+        "iyshwariya senthil",
+        "executives",
+        "rajesh kumar",
+        "priya raman",
+        "karthik subramanian",
+        "anand natarajan",
+        "shanmugham",
+        "hema"
+      ]
+    },
+    {
+      "id": "service-epublishing",
+      "title": "ePublishing Services",
+      "url": "/services/epublishing",
+      "category": "service",
+      "summary": "Conversion, formatting, and multi-format delivery of books and journals in EPUB 2/3, PDF, and web formats by Velvora Solutions.",
+      "content": "ePublishing Services (ePublishing Services: From Manuscript to Every Device)\nOverview: Readers expect content on phones, tablets, e-readers, and the web. We prepare your content for all of them. Our ePublishing team converts and formats print and digital files into clean, standards-compliant outputs that work across platforms and retailers.\nWhat We Offer:\n  - EPUB 2 and EPUB 3 Creation: Reflowable and fixed-layout EPUBs for books, journals, and educational titles.\n  - Print-to-Digital Conversion: Scanned or print-ready files converted into editable, structured digital formats.\n  - PDF Production: Print-ready and interactive PDFs, including bookmarks, hyperlinks, and metadata.\n  - Format Conversion: Word, InDesign, XML, and PDF to EPUB, HTML, or other formats.\n  - Metadata and Packaging: Retailer-ready packaging for Kindle, Apple Books, Google Play Books, Kobo, and others.\n  - Quality Validation: EPUBCheck validation plus manual device testing.\nOur Process:\n  - 1. Analyze: We review your source files, requirements, and target platforms.\n  - 2. Plan: We agree on specifications, style rules, and timelines.\n  - 3. Produce: Our team converts and formats your content.\n  - 4. Validate: Automated and manual quality checks.\n  - 5. Deliver: Final files, delivered on time with a quality report.\nTarget Audience / Who It's For:\nBook publishers, journal publishers, educational publishers, authors, and corporate content teams.",
+      "topics": [
+        "ePublishing Services",
+        "epublishing",
+        "publishing-epublishing",
+        "epublishing-services",
+        "Deliverables",
+        "Process Steps"
+      ],
+      "keywords": [
+        "epublishing",
+        "epublishing services",
+        "publishing-epublishing",
+        "epublishing-services",
+        "service",
+        "deliverables",
+        "pricing",
+        "process"
+      ]
+    },
+    {
+      "id": "service-xml",
+      "title": "XML Services",
+      "url": "/services/xml",
+      "category": "service",
+      "summary": "Structured XML creation, conversion (JATS, BITS, DITA, DocBook), and workflows that make your content reusable, searchable, and future-ready.",
+      "content": "XML Services (XML Services: Structured Content That Lasts)\nOverview: Well-structured XML is the foundation of efficient publishing. It lets you create content once and publish it many times, across print, web, EPUB, and beyond. Velvora's XML specialists build and convert content to industry-standard structures, so your content stays consistent, searchable, and easy to maintain.\nWhat We Offer:\n  - XML Conversion: Word, PDF, and InDesign files converted to XML.\n  - Industry DTDs and Schemas: JATS (journals), BITS (books), DITA, DocBook, TEI, and custom DTDs or schemas.\n  - XML Tagging and Markup: Detailed, accurate structural and semantic tagging.\n  - XML Quality Assurance: Validation against DTD or schema, plus manual review.\n  - XML-First Workflow Setup: Help planning and implementing XML-based publishing workflows.\n  - Output Transformation: XML to HTML, EPUB, PDF, and other formats using XSLT.\nOur Process:\n\nTarget Audience / Who It's For:\nPublishers, universities, enterprises, and content creators.",
+      "topics": [
+        "XML Services",
+        "xml",
+        "xml-services",
+        "Deliverables",
+        "Process Steps"
+      ],
+      "keywords": [
+        "xml",
+        "xml services",
+        "xml-services",
+        "service",
+        "deliverables",
+        "pricing",
+        "process"
+      ]
+    },
+    {
+      "id": "service-digital-accessibility",
+      "title": "Digital Accessibility",
+      "url": "/services/digital-accessibility",
+      "category": "service",
+      "summary": "Complete digital accessibility audits, remediation and creation for EPUB 2/3, web, PDF, Word, PowerPoint, and Excel conforming to WCAG 2.2, PDF/UA, and Section 508.",
+      "content": "Digital Accessibility (Digital Accessibility Services: Content Everyone Can Use)\nOverview: More than a billion people worldwide live with some form of disability. Inaccessible content shuts them out, and it can expose organizations to legal and reputational risk. Velvora provides complete accessibility services, including audits, remediation, and new accessible content creation, across all major formats. Our specialists test with real assistive technologies such as JAWS, NVDA, VoiceOver, and TalkBack, not just automated tools.\nWhat We Offer:\n\nOur Process:\n  - 1. Assess: We review your files and goals, and agree on the standard to meet.\n  - 2. Audit: Automated and manual testing, with a clear report of issues.\n  - 3. Remediate: Our specialists fix issues at the source whenever possible.\n  - 4. Verify: Testing with assistive technologies.\n  - 5. Certify and Report: Delivery of fixed files with an accessibility compliance report.\n  - 6. Train and Support: Optional training and ongoing support for your team.\nTarget Audience / Who It's For:\nPublishers, universities, enterprises, and content creators.",
+      "topics": [
+        "Digital Accessibility",
+        "digital-accessibility",
+        "document-accessibility",
+        "website-accessibility",
+        "accessibility",
+        "Deliverables",
+        "Process Steps"
+      ],
+      "keywords": [
+        "digital-accessibility",
+        "digital accessibility",
+        "document-accessibility",
+        "website-accessibility",
+        "accessibility",
+        "service",
+        "deliverables",
+        "pricing",
+        "process"
+      ]
+    },
+    {
+      "id": "service-typesetting-and-design",
+      "title": "Typesetting and Design",
+      "url": "/services/typesetting-and-design",
+      "category": "service",
+      "summary": "Professional typesetting, page layout, and design for books, journals, and reports. Print-ready and digital-ready files from Velvora Solutions.",
+      "content": "Typesetting and Design (Typesetting and Design: Pages That Look Good and Work Everywhere)\nOverview: Good design helps readers focus on your content. Velvora's typesetting team turns manuscripts into polished, consistent, publication-ready pages. We work with your style guides and house templates, and we build files that can be reused for print, PDF, EPUB, and web, so you do not pay twice for the same content.\nWhat We Offer:\n  - Book Typesetting: Fiction, non-fiction, textbooks, reference works, and academic monographs.\n  - Journal Typesetting: Article composition to your journal template, including proofs and corrections.\n  - Page Layout and Composition: Layout in Adobe InDesign, LaTeX, and other professional tools.\n  - Template Design: Custom, reusable templates for books, journals, and reports.\n  - Cover and Jacket Design: Covers that match your brand and your readers.\n  - Figures, Charts and Illustrations: Redrawing, cleaning, and creating clear, consistent artwork.\n  - Tables and Complex Layouts: Accurate setting of multi-column, rotated, and data-heavy tables.\n  - Author and Editor Proof Cycles: Managed proofing with tracked corrections and version control.\n  - Print-Ready Files: PDF/X files with correct bleed, colour profiles, and fonts for printers.\n  - Tagged and Accessible Output: Layouts built so accessible PDF and EPUB files can be produced from the same source.\nOur Process:\n  - 1. Brief: We review your style guide, templates, and requirements.\n  - 2. Sample Pages: We set a few pages for your approval before full production.\n  - 3. Composition: Full typesetting with consistent styles throughout.\n  - 4. Proofing: First proofs, corrections, and second proofs.\n  - 5. Final Files: Print-ready PDF, source files, and digital outputs.\nTarget Audience / Who It's For:\nBook publishers, university presses, scholarly journals, societies, authors, and corporate communications teams.",
+      "topics": [
+        "Typesetting and Design",
+        "typesetting-and-design",
+        "Deliverables",
+        "Process Steps"
+      ],
+      "keywords": [
+        "typesetting-and-design",
+        "typesetting and design",
+        "service",
+        "deliverables",
+        "pricing",
+        "process"
+      ]
+    },
+    {
+      "id": "service-math-and-equation-typesetting",
+      "title": "Math and Equation Typesetting",
+      "url": "/services/math-and-equation-typesetting",
+      "category": "service",
+      "summary": "Accurate math and equation typesetting in LaTeX and MathML for STEM books and journals, including accessible math for EPUB, PDF, and web.",
+      "content": "Math and Equation Typesetting (Math and Equation Typesetting: Precision for STEM Content)\nOverview: Mathematical content demands accuracy. A single misplaced symbol can change the meaning of an equation. Velvora's math specialists typeset, convert, and validate equations for books, journals, and course material, and make sure math is accessible to readers who use screen readers and Braille displays.\nWhat We Offer:\n  - LaTeX Typesetting: Complete composition of mathematics, physics, chemistry, engineering, and computer science content.\n  - MathType and Word Equation Editing: Clean-up and conversion of equations in Word documents.\n  - MathML Creation and Conversion: LaTeX, MathType, and image-based equations converted to MathML.\n  - Image-to-Math Conversion: Equations that exist only as pictures rebuilt as editable, accessible math.\n  - Chemical Structures and Formulae: Accurate setting of chemical equations and structures.\n  - Equation Numbering and Cross-References: Consistent numbering, linking, and referencing.\n  - Web-Ready Math: Equations prepared for display with MathJax or native browser support.\n  - Accessible Math for EPUB 3: MathML with descriptive alternatives so screen readers can read equations correctly.\n  - Accessible Math in PDF: Tagged math with alternative text for PDF/UA compliance.\n  - Math QA: Independent checking of every equation against the source.\nOur Process:\n  - 1. Source Review: We check your files, formats, and notation conventions.\n  - 2. Conversion or Typesetting: Equations are typeset or converted to the target format.\n  - 3. Equation Verification: Every equation is compared against the original.\n  - 4. Accessibility Testing: Checked with screen readers and math-capable tools.\n  - 5. Delivery: Final files with a quality summary.\nTarget Audience / Who It's For:\nPublishers, universities, enterprises, and content creators.",
+      "topics": [
+        "Math and Equation Typesetting",
+        "math-and-equation-typesetting",
+        "Deliverables",
+        "Process Steps"
+      ],
+      "keywords": [
+        "math-and-equation-typesetting",
+        "math and equation typesetting",
+        "service",
+        "deliverables",
+        "pricing",
+        "process"
+      ]
+    },
+    {
+      "id": "service-metadata-indexing-and-taxonomy",
+      "title": "Metadata, Indexing and Taxonomy",
+      "url": "/services/metadata-indexing-and-taxonomy",
+      "category": "service",
+      "summary": "Book indexing, metadata creation, subject classification, and taxonomy services that improve discoverability for publishers and organizations.",
+      "content": "Metadata, Indexing and Taxonomy (Metadata, Indexing and Taxonomy: Help Readers Find Your Content)\nOverview: Great content is only valuable if people can find it. Velvora creates the indexes, metadata, and classification systems that make books, journals, and documents easier to discover, search, and sell. We support publishers, libraries, and enterprises with accurate, consistent, and standards-based descriptions of their content.\nWhat We Offer:\n  - undefined: undefined\n  - undefined: undefined\n  - undefined: undefined\n  - undefined: undefined\nOur Process:\n  - 1. Understand: We learn your audience, platform, and standards.\n  - 2. Define: We agree on rules, schemes, and quality criteria.\n  - 3. Create: Our indexers and metadata specialists produce the output.\n  - 4. Review: Editorial and technical quality checks.\n  - 5. Deliver: Final files in the format your systems need.\nTarget Audience / Who It's For:\nPublishers, universities, enterprises, and content creators.",
+      "topics": [
+        "Metadata, Indexing and Taxonomy",
+        "metadata-indexing-and-taxonomy",
+        "Deliverables",
+        "Process Steps"
+      ],
+      "keywords": [
+        "metadata-indexing-and-taxonomy",
+        "metadata, indexing and taxonomy",
+        "service",
+        "deliverables",
+        "pricing",
+        "process"
+      ]
+    },
+    {
+      "id": "service-ocr-and-digitization",
+      "title": "OCR and Digitization",
+      "url": "/services/ocr-and-digitization",
+      "category": "service",
+      "summary": "Convert print books, journals, and archives into searchable, editable, accessible digital content with Velvora's OCR and digitization services.",
+      "content": "OCR and Digitization (OCR and Digitization: Bring Your Print Content Into the Digital World)\nOverview: Print archives hold valuable knowledge, but they are hard to search, share, and preserve. Velvora digitizes and converts printed and scanned content into accurate, structured, and accessible digital files. We also convert old or inaccessible digital files into modern formats.\nWhat We Offer:\n  - Scanning and Image Capture: High-quality scanning of books, journals, and documents.\n  - OCR (Optical Character Recognition): Text recognition from scanned pages and image PDFs.\n  - OCR Correction and Proofreading: Human review to fix recognition errors and reach high accuracy.\n  - Searchable PDF Creation: Scanned documents turned into searchable PDFs.\n  - Conversion to XML, EPUB and HTML: Structured digital output from legacy content.\n  - Layout Recreation: Rebuilding the layout, tables, and figures of the original.\n  - Archive Digitization: Old journals, newspapers, theses, manuals, and manuscripts.\n  - Data Capture and Data Entry: Extraction of data from forms, tables, and documents.\n  - Back-Catalogue Conversion: Large-scale conversion of publishing backlists.\n  - Accessible Output: Tagged PDFs and EPUBs created from digitized content.\nOur Process:\n  - 1. Assess: We review sample pages, condition, and target outputs.\n  - 2. Capture: Scanning or preparing existing images.\n  - 3. Recognize: OCR with specialized tools.\n  - 4. Correct: Manual proofreading and structural tagging.\n  - 5. Validate: Quality sampling and format checks.\n  - 6. Deliver: Final files with a quality report.\nTarget Audience / Who It's For:\nPublishers, universities, enterprises, and content creators.",
+      "topics": [
+        "OCR and Digitization",
+        "ocr-and-digitization",
+        "Deliverables",
+        "Process Steps"
+      ],
+      "keywords": [
+        "ocr-and-digitization",
+        "ocr and digitization",
+        "service",
+        "deliverables",
+        "pricing",
+        "process"
+      ]
+    },
+    {
+      "id": "service-captioning-transcription-and-audio-description",
+      "title": "Captioning, Transcription and Audio Description",
+      "url": "/services/captioning-transcription-and-audio-description",
+      "category": "service",
+      "summary": "Accurate closed captions, subtitles, transcripts, and audio description for video, audio, and eLearning content, aligned with WCAG.",
+      "content": "Captioning, Transcription and Audio Description (Captioning, Transcription and Audio Description: Make Every Video and Audio File Accessible)\nOverview: Video and audio are now central to learning, marketing, and publishing. But without captions, transcripts, and audio description, they exclude people who are deaf, hard of hearing, blind, or have low vision. They also help people watching in noisy places or in a second language. Velvora provides complete multimedia accessibility services aligned with WCAG.\nWhat We Offer:\n  - undefined: undefined\n  - undefined: undefined\n  - undefined: undefined\n  - undefined: undefined\nOur Process:\n  - 1. Review: We check your media, length, and target standards.\n  - 2. Create: Captions, transcripts, or descriptions are produced by trained specialists.\n  - 3. Quality Check: Review for accuracy, timing, and readability.\n  - 4. Deliver: Files in your preferred formats, ready to upload.\nTarget Audience / Who It's For:\nPublishers, universities, enterprises, and content creators.",
+      "topics": [
+        "Captioning, Transcription and Audio Description",
+        "captioning-transcription-and-audio-description",
+        "Deliverables",
+        "Process Steps"
+      ],
+      "keywords": [
+        "captioning-transcription-and-audio-description",
+        "captioning, transcription and audio description",
+        "service",
+        "deliverables",
+        "pricing",
+        "process"
+      ]
+    },
+    {
+      "id": "service-accessibility-training-and-consulting",
+      "title": "Accessibility Training and Consulting",
+      "url": "/services/accessibility-training-and-consulting",
+      "category": "service",
+      "summary": "Hands-on accessibility training, workshops, and expert consulting for publishers, universities, and organizations. Build accessibility skills inside your team.",
+      "content": "Accessibility Training and Consulting (Accessibility Training and Consulting: Build Skills That Last)\nOverview: Remediation fixes today's files. Training helps your team create accessible content from the start. Velvora's accessibility experts offer practical, role-based training and consulting that help organizations build in-house skills, reduce rework, and meet accessibility goals with confidence.\nWhat We Offer:\n\nOur Process:\n\nTarget Audience / Who It's For:\nPublishers, editorial teams, designers, developers, content authors, instructional designers, HR and procurement teams, and leadership.",
+      "topics": [
+        "Accessibility Training and Consulting",
+        "accessibility-training-and-consulting",
+        "Deliverables",
+        "Process Steps"
+      ],
+      "keywords": [
+        "accessibility-training-and-consulting",
+        "accessibility training and consulting",
+        "service",
+        "deliverables",
+        "pricing",
+        "process"
+      ]
+    },
+    {
+      "id": "solution-publishers-solution",
+      "title": "Solution: Book and Journal Publishers",
+      "url": "/solutions",
+      "category": "solution",
+      "summary": "Tailored solutions for Book and Journal Publishers covering Typesetting, XML Services, ePublishing, Metadata, EPUB Accessibility. Benefits include: Faster multi‑format publishing; Accessibility compliance built in.",
+      "content": "Industry Solution for Book and Journal Publishers (Publishing & Media):\nKey Challenges Solved:\n  - Multi‑format production (print, EPUB, PDF, web)\n  - Accessibility regulations for e‑books\n  - Large back‑catalogues and tight editorial schedules\n  - Inconsistent metadata affecting discoverability\nWorkflow Stages:\nTypeset → Structure in XML → Produce EPUB/PDF → Enrich with metadata → Validate for accessibility\nServices Included:\nTypesetting, XML Services, ePublishing, Metadata, EPUB Accessibility\nKey Measurable Benefits:\n  - Faster multi‑format publishing\n  - Accessibility compliance built in\n  - Improved discoverability with enriched metadata\n  - Reduced production errors and duplication\nCase Study Reference: Making a 5,000‑Title EPUB Library Accessible",
+      "topics": [
+        "Book and Journal Publishers",
+        "Industry Solutions",
+        "Publishing & Media",
+        "Workflow Optimization"
+      ],
+      "keywords": [
+        "solution",
+        "industry solution",
+        "book and journal publishers",
+        "publishing & media",
+        "challenges",
+        "benefits",
+        "workflow"
+      ]
+    },
+    {
+      "id": "solution-universities-edtech-solution",
+      "title": "Solution: Universities and EdTech",
+      "url": "/solutions",
+      "category": "solution",
+      "summary": "Tailored solutions for Universities and EdTech covering PDF Accessibility, Office Accessibility, Captioning, Training, Analytics. Benefits include: One clear view of all course materials; Faster, better‑informed accessibility decisions.",
+      "content": "Industry Solution for Universities and EdTech (Higher Ed & EdTech):\nKey Challenges Solved:\n  - Thousands of inaccessible course PDFs, slides, and documents\n  - Lecture videos without captions or transcripts\n  - Legal and institutional accessibility requirements\n  - Staff lacking practical accessibility skills\nWorkflow Stages:\nAudit content → Remediate files → Caption media → Train staff → Report progress\nServices Included:\nPDF Accessibility, Office Accessibility, Captioning, Training, Analytics\nKey Measurable Benefits:\n  - One clear view of all course materials\n  - Faster, better‑informed accessibility decisions\n  - Less time spent fixing files manually\n  - Inclusive learning for every student, including those with disabilities\nCase Study Reference: PDF Remediation for a University",
+      "topics": [
+        "Universities and EdTech",
+        "Industry Solutions",
+        "Higher Ed & EdTech",
+        "Workflow Optimization"
+      ],
+      "keywords": [
+        "solution",
+        "industry solution",
+        "universities and edtech",
+        "higher ed & edtech",
+        "challenges",
+        "benefits",
+        "workflow"
+      ]
+    },
+    {
+      "id": "solution-enterprises-corporate-solution",
+      "title": "Solution: Enterprises and Corporate Teams",
+      "url": "/solutions",
+      "category": "solution",
+      "summary": "Tailored solutions for Enterprises and Corporate Teams covering Office Accessibility, PDF Accessibility, AI & Automation, Analytics, Training. Benefits include: Reduced compliance risk in procurement; Automated, repeatable workflows.",
+      "content": "Industry Solution for Enterprises and Corporate Teams (Corporate & Enterprise):\nKey Challenges Solved:\n  - Large volumes of inaccessible internal and customer‑facing documents\n  - Procurement requests for VPATs and conformance reports\n  - Repetitive manual reporting and document workflows\n  - Teams without accessibility knowledge\nWorkflow Stages:\nAssess → Remediate documents → Build templates → Automate workflows → Train teams\nServices Included:\nOffice Accessibility, PDF Accessibility, AI & Automation, Analytics, Training\nKey Measurable Benefits:\n  - Reduced compliance risk in procurement\n  - Automated, repeatable workflows\n  - Accessible templates for future documents\n  - Empowered teams with accessibility knowledge\nCase Study Reference: Corporate Document Compliance & Template Standardization",
+      "topics": [
+        "Enterprises and Corporate Teams",
+        "Industry Solutions",
+        "Corporate & Enterprise",
+        "Workflow Optimization"
+      ],
+      "keywords": [
+        "solution",
+        "industry solution",
+        "enterprises and corporate teams",
+        "corporate & enterprise",
+        "challenges",
+        "benefits",
+        "workflow"
+      ]
+    },
+    {
+      "id": "solution-accessibility-compliance-solution",
+      "title": "Solution: Accessibility Compliance",
+      "url": "/solutions",
+      "category": "solution",
+      "summary": "Tailored solutions for Accessibility Compliance covering Web Accessibility, EPUB Accessibility, PDF Accessibility, Training & Consulting. Benefits include: Clear compliance roadmap; Verified accessibility with assistive technology testing.",
+      "content": "Industry Solution for Accessibility Compliance (Global Compliance):\nKey Challenges Solved:\n  - Unclear which laws and standards apply\n  - Content and websites with unknown accessibility gaps\n  - Regulatory deadlines and procurement requirements\n  - Legal and reputational risk from inaccessible content\nWorkflow Stages:\nAudit → Remediate → Verify with screen readers → Report (VPAT/ACR) → Train & monitor\nServices Included:\nWeb Accessibility, EPUB Accessibility, PDF Accessibility, Training & Consulting\nKey Measurable Benefits:\n  - Clear compliance roadmap\n  - Verified accessibility with assistive technology testing\n  - Ready‑to‑use VPAT/ACR documentation\n  - Long‑term monitoring and staff training\nCase Study Reference: Enterprise Implementation",
+      "topics": [
+        "Accessibility Compliance",
+        "Industry Solutions",
+        "Global Compliance",
+        "Workflow Optimization"
+      ],
+      "keywords": [
+        "solution",
+        "industry solution",
+        "accessibility compliance",
+        "global compliance",
+        "challenges",
+        "benefits",
+        "workflow"
+      ]
+    },
+    {
+      "id": "solution-back-catalogue-conversion-solution",
+      "title": "Solution: Back‑Catalogue Conversion and Accessibility",
+      "url": "/solutions",
+      "category": "solution",
+      "summary": "Tailored solutions for Back‑Catalogue Conversion and Accessibility covering OCR and Digitization, XML Workflows, ePublishing, PDF/EPUB Accessibility, Metadata. Benefits include: Unlock legacy content for digital use; Ensure accessibility compliance across archives.",
+      "content": "Industry Solution for Back‑Catalogue Conversion and Accessibility (Archival & Backlist):\nKey Challenges Solved:\n  - Large archives locked in print or legacy formats\n  - Inaccessible back‑catalogues failing compliance\n  - Metadata gaps reducing discoverability\nWorkflow Stages:\nDigitize → OCR → Structure in XML → Produce EPUB/PDF → Remediate for accessibility\nServices Included:\nOCR and Digitization, XML Workflows, ePublishing, PDF/EPUB Accessibility, Metadata\nKey Measurable Benefits:\n  - Unlock legacy content for digital use\n  - Ensure accessibility compliance across archives\n  - Improve metadata for discoverability\n  - Preserve valuable content for the future\nCase Study Reference: Enterprise Implementation",
+      "topics": [
+        "Back‑Catalogue Conversion and Accessibility",
+        "Industry Solutions",
+        "Archival & Backlist",
+        "Workflow Optimization"
+      ],
+      "keywords": [
+        "solution",
+        "industry solution",
+        "back‑catalogue conversion and accessibility",
+        "archival & backlist",
+        "challenges",
+        "benefits",
+        "workflow"
+      ]
+    },
+    {
+      "id": "solution-xml-first-publishing-solution",
+      "title": "Solution: XML‑First Publishing Workflow",
+      "url": "/solutions",
+      "category": "solution",
+      "summary": "Tailored solutions for XML‑First Publishing Workflow covering XML Services, Typesetting, ePublishing, Metadata, Accessibility. Benefits include: Streamlined publishing across formats; Consistent metadata and structure.",
+      "content": "Industry Solution for XML‑First Publishing Workflow (Structured Architecture):\nKey Challenges Solved:\n  - Inefficient multi‑format pipelines\n  - Manual duplication across formats\n  - Metadata inconsistencies\nWorkflow Stages:\nManuscript → XML structuring → Multi‑format output → Metadata enrichment → Accessibility validation\nServices Included:\nXML Services, Typesetting, ePublishing, Metadata, Accessibility\nKey Measurable Benefits:\n  - Streamlined publishing across formats\n  - Consistent metadata and structure\n  - Accessibility built into the workflow\n  - Faster turnaround with fewer errors\nCase Study Reference: Enterprise Implementation",
+      "topics": [
+        "XML‑First Publishing Workflow",
+        "Industry Solutions",
+        "Structured Architecture",
+        "Workflow Optimization"
+      ],
+      "keywords": [
+        "solution",
+        "industry solution",
+        "xml‑first publishing workflow",
+        "structured architecture",
+        "challenges",
+        "benefits",
+        "workflow"
+      ]
+    },
+    {
+      "id": "solution-print-archive-digitization-solution",
+      "title": "Solution: Print Archive Digitization",
+      "url": "/solutions",
+      "category": "solution",
+      "summary": "Tailored solutions for Print Archive Digitization covering OCR and Digitization, Metadata, XML Conversion, ePublishing. Benefits include: Preserve archives digitally; Make content searchable and accessible.",
+      "content": "Industry Solution for Print Archive Digitization (Digitization & Preservation):\nKey Challenges Solved:\n  - Valuable archives locked in physical format\n  - No searchability or digital access\n  - Risk of content loss over time\nWorkflow Stages:\nScan → OCR → Structure → Metadata tagging → Digital delivery\nServices Included:\nOCR and Digitization, Metadata, XML Conversion, ePublishing\nKey Measurable Benefits:\n  - Preserve archives digitally\n  - Make content searchable and accessible\n  - Reduce risk of loss or damage\n  - Enable reuse across formats\nCase Study Reference: Enterprise Implementation",
+      "topics": [
+        "Print Archive Digitization",
+        "Industry Solutions",
+        "Digitization & Preservation",
+        "Workflow Optimization"
+      ],
+      "keywords": [
+        "solution",
+        "industry solution",
+        "print archive digitization",
+        "digitization & preservation",
+        "challenges",
+        "benefits",
+        "workflow"
+      ]
+    },
+    {
+      "id": "solution-ai-powered-content-workflows-solution",
+      "title": "Solution: AI‑Powered Content Workflows",
+      "url": "/solutions",
+      "category": "solution",
+      "summary": "Tailored solutions for AI‑Powered Content Workflows covering AI and Automation, Document Processing, Metadata tagging, Workflow integration. Benefits include: Save time with automation; Reduce human error.",
+      "content": "Industry Solution for AI‑Powered Content Workflows (Next-Gen Automation):\nKey Challenges Solved:\n  - Repetitive manual content tasks\n  - Slow turnaround and high error rates\n  - Lack of automation in publishing pipelines\nWorkflow Stages:\nDiscover → Automate → Human review → Pilot → Scale\nServices Included:\nAI and Automation, Document Processing, Metadata tagging, Workflow integration\nKey Measurable Benefits:\n  - Save time with automation\n  - Reduce human error\n  - Scale workflows efficiently\n  - Free teams to focus on higher‑value tasks\nCase Study Reference: Enterprise Implementation",
+      "topics": [
+        "AI‑Powered Content Workflows",
+        "Industry Solutions",
+        "Next-Gen Automation",
+        "Workflow Optimization"
+      ],
+      "keywords": [
+        "solution",
+        "industry solution",
+        "ai‑powered content workflows",
+        "next-gen automation",
+        "challenges",
+        "benefits",
+        "workflow"
+      ]
+    },
+    {
+      "id": "solution-accessible-dashboards-reporting-solution",
+      "title": "Solution: Accessible Dashboards and Reporting",
+      "url": "/solutions",
+      "category": "solution",
+      "summary": "Tailored solutions for Accessible Dashboards and Reporting covering Business Intelligence and Data Analytics, Accessible Dashboard Design, Data Cleaning, Training. Benefits include: One clear view of your business; Faster, better‑informed decisions.",
+      "content": "Industry Solution for Accessible Dashboards and Reporting (Business Intelligence):\nKey Challenges Solved:\n  - Business data locked in inaccessible dashboards\n  - Manual reporting wasting time\n  - Lack of clarity for decision‑makers\nWorkflow Stages:\nCollect data → Clean and prepare → Build dashboards → Accessibility review → Deliver and train\nServices Included:\nBusiness Intelligence and Data Analytics, Accessible Dashboard Design, Data Cleaning, Training\nKey Measurable Benefits:\n  - One clear view of your business\n  - Faster, better‑informed decisions\n  - Less time spent building manual reports\n  - Insights available to every user, including those with disabilities\nCase Study Reference: Enterprise Implementation",
+      "topics": [
+        "Accessible Dashboards and Reporting",
+        "Industry Solutions",
+        "Business Intelligence",
+        "Workflow Optimization"
+      ],
+      "keywords": [
+        "solution",
+        "industry solution",
+        "accessible dashboards and reporting",
+        "business intelligence",
+        "challenges",
+        "benefits",
+        "workflow"
+      ]
+    },
+    {
+      "id": "page-partnerships",
+      "title": "Partner With Velvora Solutions",
+      "url": "/partner-with-us",
+      "category": "partnership",
+      "summary": "Collaborate with Velvora Solutions as a Technology Alliance, Referral Partner, or Agency Subcontractor to scale innovation, accessibility compliance, and digital publishing.",
+      "content": "Partnership Programs at Velvora Solutions:\nCollaboration Models:\n1. Technology Alliance Partners: Joint software and AI integration\n2. Referral Partners: Revenue sharing for enterprise referrals\n3. Agency & Publishing Subcontractors: White-label high-volume composition and remediation\n4. Consulting Collaborators: Unified accessibility auditing and compliance\nConfidentiality & NDA: All partnership collaborations are bound by strict Non-Disclosure Agreements (NDA) and secure data exchange protocols.\nHow to Partner: Submit requirements via the Partner With Us form on our website or email info@velvorasolutions.com.",
+      "topics": [
+        "Partnership Programs",
+        "Technology Alliance",
+        "Referral Network",
+        "Subcontracting",
+        "White Label Services"
+      ],
+      "keywords": [
+        "partner",
+        "partnerships",
+        "collaboration",
+        "referral",
+        "alliance",
+        "subcontractor",
+        "affiliate",
+        "nda"
+      ]
+    },
+    {
+      "id": "page-insights-podcasts",
+      "title": "Velvora Insights & Knowledge Hub",
+      "url": "/resources/insights",
+      "category": "insight",
+      "summary": "Explore in-depth articles, real-world case snapshots, practical checklists, 10 podcast episodes, and 10 video guides covering publishing, accessibility, AI, and analytics.",
+      "content": "Velvora Insights Knowledge Hub:\nCovers articles, case snapshots, checklists, podcasts, and video guides.\nFeatured Podcasts:\n• Episode 1: \"AI Meets Accessibility\" (22 min, AI & Inclusivity) — How machine learning is helping detect and fix accessibility gaps before content reaches readers.\n• Episode 2: \"Metadata Magic\" (18 min, Metadata & SEO) — Why metadata is the hidden engine of discoverability in publishing and marketing.\n• Episode 3: \"From Manuscript to Millions\" (25 min, XML Architecture) — A walkthrough of modern XML workflows that scale content globally.\n• Episode 4: \"Inclusive Learning at Scale\" (28 min, EdTech & Higher Ed) — Universities and EdTech platforms share how they deliver accessible learning materials.\n• Episode 5: \"Digital Marketing for Startups\" (20 min, Growth & Strategy) — Smart, budget‑friendly strategies to amplify reach without burning cash.\n• Episode 6: \"The Future of EPUB Accessibility\" (24 min, EPUB 3 & Standards) — Exploring standards like EPUB Accessibility 1.1 and what they mean for publishers.\n• Episode 7: \"Data to Decisions\" (21 min, BI & Analytics) — How analytics transform raw data into actionable insights for enterprises.\n• Episode 8: \"Government and Compliance\" (26 min, Policy & Section 508) — Meeting Section 508 and WCAG requirements without slowing down workflows.\n• Episode 9: \"Automation in Action\" (23 min, Workflow Automation) — Real stories of AI workflows cutting manual work in publishing and IT services.\n• Episode 10: \"Global Voices\" (30 min, Global Perspectives) — Perspectives from professionals across 5+ countries on digital transformation trends.\nKey Topics Explored:\n• Future of Digital Accessibility in 2026 (WCAG 2.2 Level AA/AAA, EAA, PDF/UA)\n• Demystifying JATS & BITS XML for scholarly publishing\n• Integrating AI into human publishing QA pipelines\n• University accessibility transformations and EPUB 3 compliance.",
+      "topics": [
+        "Knowledge Hub",
+        "Podcasts",
+        "Articles",
+        "Case Studies",
+        "Best Practices"
+      ],
+      "keywords": [
+        "insights",
+        "blog",
+        "podcasts",
+        "videos",
+        "knowledge hub",
+        "case studies",
+        "articles",
+        "news"
+      ]
+    },
+    {
+      "id": "page-careers",
+      "title": "Careers at Velvora Solutions",
+      "url": "/careers",
+      "category": "career",
+      "summary": "Velvora Solutions offers careers and internships across digital accessibility, editorial proofing, typesetting, and AI engineering. Our career framework is built on G.R.O.W. (Growth, Respect, Opportunity, Well-being).",
+      "content": "Careers at Velvora Solutions:\nOur Framework: G.R.O.W. (Growth, Respect, Opportunity, Well-being)\nBenefits & Perks:\n• Comprehensive hands-on mentorship with industry veterans\n• Flexible hybrid and remote working models\n• Professional certifications in WCAG, JATS XML, and AI technologies\n• Transparent career progression and merit-based advancement\nApplication Procedure:\n1. Browse open positions on our Careers page.\n2. Select your desired role or choose \"General Open Application\".\n3. Upload your resume (PDF, DOC, DOCX up to 10MB).\n4. Our recruitment team reviews submissions and responds within 24–48 hours.",
+      "topics": [
+        "Careers",
+        "Open Positions",
+        "G.R.O.W. Framework",
+        "Internships",
+        "Work Culture",
+        "Resume Upload"
+      ],
+      "keywords": [
+        "careers",
+        "jobs",
+        "vacancies",
+        "hiring",
+        "internships",
+        "apply",
+        "grow framework",
+        "resume upload",
+        "application"
+      ]
+    },
+    {
+      "id": "page-contact",
+      "title": "Contact Velvora Solutions",
+      "url": "/contact",
+      "category": "contact",
+      "summary": "Contact Velvora Solutions. Head office in Cuddalore and branch office in Chennai (Porur). Direct email: info@velvorasolutions.com, Phone: +91 9500834236.",
+      "content": "Velvora Solutions Contact & Physical Office Information:\n\nOffice Locations in Tamil Nadu, India:\n1. **Cuddalore Office (Head Office / Operations Center):**\n   Pathirikuppam, Thiruvantthipuram Post, Cuddalore - 607002, Tamil Nadu, India\n2. **Chennai Office (Branch Office):**\n   Velvora Solutions, Porur, Chennai, Tamil Nadu, India\n\nCommunication Channels:\n• Email: info@velvorasolutions.com\n• Phone: +91 9500834236\n• Business Hours: Monday to Saturday: 9:00 AM – 6:30 PM IST\n\nProject Submissions & Quotations:\nSubmit project scope, document counts, format specifications (e.g. PDF/UA, JATS XML, EPUB 3), and target deadlines via our Contact Form or email info@velvorasolutions.com. Our estimation team will evaluate requirements and provide a detailed quotation within 24–48 hours.",
+      "topics": [
+        "Office Locations",
+        "Head Office Cuddalore",
+        "Branch Office Chennai Porur",
+        "Email",
+        "Phone",
+        "Business Hours",
+        "Quote Request"
+      ],
+      "keywords": [
+        "contact",
+        "office",
+        "cuddalore",
+        "chennai",
+        "porur",
+        "address",
+        "phone",
+        "email",
+        "working hours",
+        "quote",
+        "quotation"
+      ]
+    },
+    {
+      "id": "page-accessibility-statement",
+      "title": "Accessibility Statement",
+      "url": "/accessibility-statement",
+      "category": "policy",
+      "summary": "Velvora Solutions is committed to digital inclusion and aims to conform to WCAG 2.2 Level AA across our digital experiences.",
+      "content": "Accessibility Statement of Velvora Solutions:\nCommitment: We are dedicated to ensuring digital accessibility for everyone, including people with visual, auditory, motor, or cognitive disabilities.\nStandard: We conform to WCAG 2.2 Level AA.\nVerification: Our digital interfaces are tested with real assistive technologies including JAWS, NVDA, and Apple VoiceOver.\nAssistance & Feedback: If you encounter any accessibility barrier or require an alternate format, please email info@velvorasolutions.com.",
+      "topics": [
+        "Accessibility Statement",
+        "WCAG 2.2 Level AA",
+        "Assistive Technology",
+        "Feedback",
+        "Inclusion"
+      ],
+      "keywords": [
+        "accessibility statement",
+        "wcag 2.2 aa",
+        "assistive technology",
+        "screen reader testing",
+        "disability inclusion"
+      ]
+    },
+    {
+      "id": "page-privacy-policy",
+      "title": "Privacy Policy",
+      "url": "/privacy-policy",
+      "category": "policy",
+      "summary": "Velvora Solutions adheres to international data protection standards, client confidentiality, non-disclosure compliance, and GDPR alignment.",
+      "content": "Privacy Policy of Velvora Solutions:\nCovers information security, data collection, lawful processing, and confidentiality.\nKey Commitments:\n• We never sell or monetize personal or client information.\n• Client manuscripts, proprietary documents, and datasets are strictly confidential and governed by Non-Disclosure Agreements (NDA).\n• Data transfers and storage utilize industry-standard TLS/SSL encryption and secure cloud infrastructure.\n• Full alignment with global data privacy frameworks including GDPR.\n• Inquiries regarding data privacy: email info@velvorasolutions.com.",
+      "topics": [
+        "Privacy Policy",
+        "Data Protection",
+        "Confidentiality",
+        "GDPR Alignment",
+        "NDA Security"
+      ],
+      "keywords": [
+        "privacy policy",
+        "privacy",
+        "data security",
+        "gdpr",
+        "confidentiality",
+        "non-disclosure",
+        "nda"
+      ]
+    }
+  ],
   "careers": [
     {
       "id": "copy-editing-specialist",
@@ -14,30 +673,15 @@
       "type": "Full-Time / Hybrid",
       "location": "Cuddalore, TN / Hybrid",
       "workMode": "Hybrid",
-      "experience": "1-3 years editorial experience",
+      "experience": "Experience in academic, technical, or corporate editing.",
       "skills": [
-        "English Grammar",
-        "APA",
-        "Chicago",
-        "MLA",
-        "Style Guides",
-        "Editorial Proofing"
-      ],
-      "eligibility": "Degree in English, Journalism, Mass Communication, or equivalent editing experience.",
-      "summary": "Review and refine content for accuracy, clarity, and consistency across academic and enterprise publications.",
-      "responsibilities": [
-        "Review and refine content for accuracy, clarity, and consistency.",
-        "Ensure adherence to publishing standards and client style guides (APA, Chicago, MLA).",
-        "Collaborate with content, design, and accessibility teams."
-      ],
-      "requirements": [
         "Strong command of English grammar, syntax, and publishing style guides.",
         "Experience in academic, technical, or corporate editing.",
         "Exceptional attention to detail and ability to meet project deadlines."
       ],
-      "status": "Active",
-      "applyUrl": "/careers",
-      "updatedAt": "2026-11-09T04:03:16.433Z"
+      "eligibility": "Strong command of English grammar, syntax, and publishing style guides.",
+      "summary": "Review and refine content for accuracy, clarity, and consistency across academic and enterprise publications.",
+      "status": "Active"
     },
     {
       "id": "ppt-accessibility-specialist",
@@ -46,31 +690,15 @@
       "type": "Full-Time / Hybrid",
       "location": "Cuddalore, TN / Hybrid",
       "workMode": "Hybrid",
-      "experience": "1+ years document accessibility remediation",
+      "experience": "Hands‑on experience with accessible document remediation and slide design.",
       "skills": [
-        "PowerPoint",
-        "WCAG 2.2",
-        "PDF/UA",
-        "Section 508",
-        "JAWS",
-        "NVDA",
-        "Alt Text"
-      ],
-      "eligibility": "Proficiency in MS PowerPoint, accessibility guidelines (WCAG, Section 508), and screen reader testing.",
-      "summary": "Remediate PowerPoint presentations to conform to WCAG 2.2, PDF/UA, and Section 508 standards.",
-      "responsibilities": [
-        "Remediate PowerPoint files to meet accessibility standards (WCAG 2.2, Section 508).",
-        "Add meaningful alt text, proper reading order in selection panes, and accessible slide formatting.",
-        "Collaborate with clients and internal teams to deliver fully inclusive presentation decks."
-      ],
-      "requirements": [
         "Knowledge of accessibility guidelines (WCAG, Section 508) and assistive technologies (JAWS, NVDA).",
-        "Hands-on experience with accessible document remediation and slide design.",
-        "Strong communication, problem-solving skills, and empathy for diverse users."
+        "Hands‑on experience with accessible document remediation and slide design.",
+        "Strong communication, problem‑solving skills, and empathy for diverse users."
       ],
-      "status": "Active",
-      "applyUrl": "/careers",
-      "updatedAt": "2026-11-09T04:03:16.433Z"
+      "eligibility": "Knowledge of accessibility guidelines (WCAG, Section 508) and assistive technologies (JAWS, NVDA).",
+      "summary": "Remediate PowerPoint presentations to conform to WCAG 2.2, PDF/UA, and Section 508 standards.",
+      "status": "Active"
     },
     {
       "id": "typesetting-specialist",
@@ -79,30 +707,15 @@
       "type": "Full-Time / Hybrid",
       "location": "Cuddalore, TN / Hybrid",
       "workMode": "Hybrid",
-      "experience": "1-4 years typesetting experience",
+      "experience": "Strong eye for typography, layout design, grid structure, and detail.",
       "skills": [
-        "InDesign",
-        "LaTeX",
-        "MathML",
-        "EPUB 3",
-        "JATS XML",
-        "Typography Grid Design"
-      ],
-      "eligibility": "Demonstrated experience in InDesign, LaTeX, MathML, or XML publishing production.",
-      "summary": "Format and design manuscripts, journals, and books for print and multi-format digital publishing.",
-      "responsibilities": [
-        "Format and design manuscripts, journals, and books for digital and print publishing.",
-        "Apply consistent styles, layouts, and templates across large volumes of complex content.",
-        "Ensure compliance with publishing standards (EPUB 3, JATS/BITS XML, PDF)."
-      ],
-      "requirements": [
         "Hands-on experience with typesetting tools (InDesign, LaTeX, MathML, or XML workflows).",
         "Strong eye for typography, layout design, grid structure, and detail.",
         "Ability to manage multiple concurrent titles and meet delivery schedules."
       ],
-      "status": "Active",
-      "applyUrl": "/careers",
-      "updatedAt": "2026-11-09T04:03:16.433Z"
+      "eligibility": "Hands-on experience with typesetting tools (InDesign, LaTeX, MathML, or XML workflows).",
+      "summary": "Format and design manuscripts, journals, and books for print and multi-format digital publishing.",
+      "status": "Active"
     },
     {
       "id": "ai-automation-engineer",
@@ -110,39 +723,23 @@
       "department": "Engineering & Innovation",
       "type": "Full-Time / Hybrid",
       "location": "Cuddalore, TN / Hybrid",
-      "workMode": "Hybrid / Remote",
-      "experience": "Fresher / 1-2 years experience",
+      "workMode": "Hybrid",
+      "experience": "Interest in accessibility standards and automated document processing.",
       "skills": [
-        "Python",
-        "FastAPI",
-        "NLP",
-        "LLMs",
-        "Document Processing",
-        "Automated QA",
-        "REST APIs"
-      ],
-      "eligibility": "Degree in Computer Science, Data Science, or related field with solid Python programming and automation skills.",
-      "summary": "Build intelligent workflow pipelines using Python, NLP, and modern LLMs to accelerate content publishing.",
-      "responsibilities": [
-        "Architect AI pipelines that parse, remediate, and validate complex publication manuscripts.",
-        "Develop automated quality gates for XML and EPUB conversion pipelines.",
-        "Collaborate across cross-disciplinary teams to integrate generative AI safely and accurately."
-      ],
-      "requirements": [
         "Proficiency with Python, API integration, and machine learning/NLP concepts.",
         "Interest in accessibility standards and automated document processing.",
         "Strong problem-solving and proactive debugging abilities."
       ],
-      "status": "Active",
-      "applyUrl": "/careers",
-      "updatedAt": "2026-11-09T04:03:16.433Z"
+      "eligibility": "Proficiency with Python, API integration, and machine learning/NLP concepts.",
+      "summary": "Build intelligent workflow pipelines using Python, NLP, and modern LLMs to accelerate content publishing.",
+      "status": "Active"
     },
     {
       "id": "digital-publishing-xml-intern",
       "title": "Digital Publishing & XML Intern",
       "department": "Publishing Production",
       "type": "Internship",
-      "location": "Cuddalore / Remote",
+      "location": "Remote",
       "workMode": "Remote",
       "experience": "Fresher / College Students",
       "skills": [
@@ -150,29 +747,18 @@
         "XML Basics",
         "Content Structuring",
         "Proofreading",
-        "Curiosity to learn"
+        "Attention to Detail"
       ],
       "eligibility": "Students or recent graduates in Computer Science, Literature, or Media Studies looking for hands-on publishing tech experience.",
-      "summary": "3-6 months paid internship learning production XML structuring, EPUB standards, and digital editorial pipelines.",
-      "responsibilities": [
-        "Assist production teams with XML tag validation and structuring.",
-        "Learn EPUB 3 transformation workflows and quality checks.",
-        "Participate in editorial QA rounds for university and enterprise clients."
-      ],
-      "requirements": [
-        "Keen interest in digital publishing and semantic structure.",
-        "Good English communication skills and enthusiasm to learn new tools."
-      ],
-      "status": "Active",
-      "applyUrl": "/careers",
-      "updatedAt": "2026-11-09T04:03:16.433Z"
+      "summary": "3 to 6 months mentorship program in structured XML composition, EPUB generation, and digital publishing pipelines.",
+      "status": "Active"
     },
     {
       "id": "accessibility-qa-intern",
       "title": "Accessibility Auditing & QA Intern",
       "department": "Digital Accessibility",
       "type": "Internship",
-      "location": "Cuddalore / Remote",
+      "location": "Remote",
       "workMode": "Remote",
       "experience": "Fresher / Final Year Students",
       "skills": [
@@ -182,480 +768,30 @@
         "Detail Focus"
       ],
       "eligibility": "Passionate about digital inclusion, assistive technologies, and Web Accessibility Guidelines (WCAG).",
-      "summary": "Gain certified training in assistive tech testing (NVDA, JAWS) and PDF/UA remediation.",
-      "responsibilities": [
-        "Learn automated and manual accessibility audit tools.",
-        "Draft descriptive alternative text for educational and enterprise diagrams.",
-        "Assist specialists in verifying Section 508 and WCAG compliance."
-      ],
-      "requirements": [
-        "Empathy for users with disabilities.",
-        "Strong analytical mindset and willingness to master accessibility tools."
-      ],
-      "status": "Active",
-      "applyUrl": "/careers",
-      "updatedAt": "2026-11-09T04:03:16.433Z"
-    }
-  ],
-  "pages": [
-    {
-      "id": "home",
-      "title": "Velvora Solutions — Home",
-      "url": "/",
-      "category": "company",
-      "summary": "Velvora Solutions is a content and technology partner from manuscript to millions of readers. Combining ePublishing, XML, digital accessibility, AI automation, software engineering, and data analytics.",
-      "topics": [
-        "ePublishing",
-        "XML",
-        "Digital Accessibility",
-        "AI Automation",
-        "Software Engineering",
-        "Data Analytics",
-        "Digital Marketing"
-      ],
-      "keywords": [
-        "home",
-        "velvora",
-        "overview",
-        "about",
-        "services",
-        "solutions",
-        "mission",
-        "clients",
-        "publishing"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "company-overview",
-      "title": "Company Overview & Mission",
-      "url": "/about/company-overview",
-      "category": "company",
-      "summary": "At Velvora Solutions, we believe that content is only as powerful as its accessibility and clarity. Our mission is to bridge editorial craft with digital precision to make publications universally usable.",
-      "topics": [
-        "Mission",
-        "Vision",
-        "Core Values",
-        "Global Clients",
-        "Standards & Ethics"
-      ],
-      "keywords": [
-        "about",
-        "company",
-        "mission",
-        "history",
-        "overview",
-        "values",
-        "governance"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "our-team",
-      "title": "Our Leadership & Team",
-      "url": "/about/our-team",
-      "category": "company",
-      "summary": "Guided by Iyshwariya Senthil (Founder & Managing Director, 7+ years of experience in universal design & publishing operations). Our multidisciplinary specialists span editorial, XML architectures, accessibility testing, and cloud development.",
-      "topics": [
-        "Leadership",
-        "Iyshwariya Senthil",
-        "Specialists",
-        "Editorial Team",
-        "Accessibility Testers"
-      ],
-      "keywords": [
-        "team",
-        "leadership",
-        "founder",
-        "managing director",
-        "iyshwariya",
-        "senthil",
-        "executives",
-        "people"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "careers",
-      "title": "Careers at Velvora Solutions",
-      "url": "/careers",
-      "category": "career",
-      "summary": "Build skills, create impact, and shape the future at Velvora. We offer full-time positions and paid internships with equal opportunity, mentoring, G.R.O.W.T.H. framework, and inclusive workplace culture.",
-      "topics": [
-        "Job Openings",
-        "Internships",
-        "G.R.O.W.T.H. Framework",
-        "Diversity & Inclusion",
-        "Application Form",
-        "Resume Upload"
-      ],
-      "keywords": [
-        "careers",
-        "jobs",
-        "vacancies",
-        "hiring",
-        "internships",
-        "fresher",
-        "apply",
-        "work",
-        "culture",
-        "openings",
-        "resume"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "service-epublishing",
-      "title": "ePublishing Services",
-      "url": "/services/epublishing",
-      "category": "service",
-      "summary": "End-to-end ePublishing from raw manuscript to reflowable and fixed-layout EPUB 3, EPUB 2, interactive eBooks, accessibility tagging, and multi-format delivery for global bookstores (Apple Books, Amazon Kindle, Kobo).",
-      "topics": [
-        "EPUB 3",
-        "Fixed Layout",
-        "Reflowable eBooks",
-        "Enhanced Interactive",
-        "Kindle KPF/MOBI",
-        "Multi-device QA"
-      ],
-      "keywords": [
-        "epublishing",
-        "epub",
-        "ebook",
-        "kindle",
-        "manuscript",
-        "publishing",
-        "books",
-        "conversion"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "service-xml",
-      "title": "XML Services & Conversion",
-      "url": "/services/xml",
-      "category": "service",
-      "summary": "Industry-standard structured XML services: JATS 1.3, BITS 2.1, DocBook, TEI, and custom DTD/Schema conversion. Ensuring long-term preservation, rapid cross-media publishing, and semantic discovery.",
-      "topics": [
-        "JATS XML",
-        "BITS XML",
-        "DocBook",
-        "TEI",
-        "DTD Schema Design",
-        "Automated Schematron QA"
-      ],
-      "keywords": [
-        "xml",
-        "jats",
-        "bits",
-        "dtd",
-        "schema",
-        "structuring",
-        "conversion",
-        "journals",
-        "nlm"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "service-digital-accessibility",
-      "title": "Digital Accessibility Services",
-      "url": "/services/digital-accessibility",
-      "category": "service",
-      "summary": "Complete accessibility audits, remediation, and certification. Conforming with WCAG 2.2 AA/AAA, PDF/UA (ISO 14289), Section 508, and EAA. Tested with real assistive technologies (JAWS, NVDA, VoiceOver, TalkBack).",
-      "topics": [
-        "WCAG 2.2",
-        "PDF/UA Remediation",
-        "PowerPoint & Word Accessibility",
-        "Screen Reader QA",
-        "VPAT Conformance",
-        "Audio Description"
-      ],
-      "keywords": [
-        "accessibility",
-        "accessible",
-        "wcag",
-        "pdf/ua",
-        "section 508",
-        "screen reader",
-        "jaws",
-        "nvda",
-        "vpat",
-        "audit",
-        "remediation"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "service-typesetting-and-design",
-      "title": "Typesetting and Design Services",
-      "url": "/services/typesetting-and-design",
-      "category": "service",
-      "summary": "High-end layout, composition, and book design for trade, academic, and complex multilingual publications. Mastering Adobe InDesign, QuarkXPress, and automated template-driven composition.",
-      "topics": [
-        "InDesign Typesetting",
-        "Multilingual Composition",
-        "Cover & Interior Design",
-        "Grid Systems",
-        "Print & Digital PDF"
-      ],
-      "keywords": [
-        "typesetting",
-        "design",
-        "indesign",
-        "layout",
-        "composition",
-        "typography",
-        "book design"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "service-math-and-equation-typesetting",
-      "title": "Math and Equation Typesetting",
-      "url": "/services/math-and-equation-typesetting",
-      "category": "service",
-      "summary": "Specialized STEM composition handling complex mathematical, statistical, and chemical notation using LaTeX, MathML, MathJax, and AMS-TeX, fully compliant with digital accessibility and screen readers.",
-      "topics": [
-        "LaTeX",
-        "MathML",
-        "ChemDraw",
-        "Equations",
-        "STEM Journals",
-        "Accessible Math"
-      ],
-      "keywords": [
-        "math",
-        "equation",
-        "latex",
-        "mathml",
-        "stem",
-        "science",
-        "chemistry",
-        "formulas"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "service-metadata-indexing-and-taxonomy",
-      "title": "Metadata, Indexing and Taxonomy",
-      "url": "/services/metadata-indexing-and-taxonomy",
-      "category": "service",
-      "summary": "Subject indexing, back-of-the-book indexes, hierarchical taxonomy development, DOI/Crossref registration, and ONIX 3.0 metadata feeds to maximize content discoverability and sales telemetry.",
-      "topics": [
-        "Subject Indexing",
-        "Taxonomy",
-        "ONIX 3.0",
-        "DOI Crossref",
-        "Thesaurus Structuring"
-      ],
-      "keywords": [
-        "metadata",
-        "indexing",
-        "taxonomy",
-        "onix",
-        "discovery",
-        "doi",
-        "thesaurus",
-        "search"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "service-ocr-and-digitization",
-      "title": "OCR and Digitization Services",
-      "url": "/services/ocr-and-digitization",
-      "category": "service",
-      "summary": "High-accuracy optical character recognition (OCR) and archival digitization for legacy books, brittle paper manuscripts, rare historical documents, and multi-language archives with 99.995% character accuracy.",
-      "topics": [
-        "Archival Scanning",
-        "High-Accuracy OCR",
-        "Legacy Digitization",
-        "Double-Keying",
-        "Searchable PDF/A"
-      ],
-      "keywords": [
-        "ocr",
-        "digitization",
-        "scanning",
-        "archives",
-        "legacy",
-        "historical",
-        "double keying"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "service-captioning-transcription",
-      "title": "Captioning, Transcription and Audio Description",
-      "url": "/services/captioning-transcription-and-audio-description",
-      "category": "service",
-      "summary": "Accurate closed captioning (CC), subtitles in 20+ languages, verbatim transcripts, and synthesized/human audio description tracks for video and podcast media meeting FCC and WCAG multimedia rules.",
-      "topics": [
-        "Closed Captioning",
-        "Audio Description",
-        "SRT / VTT / DFXP",
-        "Multilingual Subtitling",
-        "Verbatim Transcription"
-      ],
-      "keywords": [
-        "captioning",
-        "subtitles",
-        "transcription",
-        "audio description",
-        "video",
-        "podcasts",
-        "media"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "service-accessibility-training",
-      "title": "Accessibility Training and Consulting",
-      "url": "/services/accessibility-training-and-consulting",
-      "category": "service",
-      "summary": "Empower your internal editorial and engineering teams with tailored accessibility workshops, VPAT assessments, policy drafting, and executive digital inclusion roadmaps.",
-      "topics": [
-        "Corporate Workshops",
-        "VPAT Assessments",
-        "WCAG Roadmaps",
-        "Inclusive Design Coaching"
-      ],
-      "keywords": [
-        "training",
-        "consulting",
-        "workshops",
-        "vpat",
-        "compliance",
-        "corporate coaching"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "solutions-overview",
-      "title": "Industry Solutions",
-      "url": "/solutions",
-      "category": "solution",
-      "summary": "Tailored content and workflow engineering for Academic & Higher Ed, STM Publishers, EdTech Innovators, Global Enterprises, Legal & Regulatory bodies, and Trade Publishers.",
-      "topics": [
-        "Higher Education",
-        "STM Publishers",
-        "EdTech",
-        "Global Enterprises",
-        "Legal & Regulatory",
-        "Trade Publishing"
-      ],
-      "keywords": [
-        "solutions",
-        "industries",
-        "academic",
-        "stm",
-        "edtech",
-        "enterprises",
-        "legal",
-        "publishers"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "contact",
-      "title": "Contact Velvora Solutions",
-      "url": "/contact",
-      "category": "contact",
-      "summary": "Get in touch with our team for project quotes, audits, and partnership discussions. Offices in Cuddalore and Chennai Porur. Email: info@velvorasolutions.com, Phone: +91 9500834236.",
-      "topics": [
-        "Project Enquiry",
-        "Offices",
-        "Cuddalore",
-        "Chennai",
-        "Email",
-        "Phone",
-        "Consultation"
-      ],
-      "keywords": [
-        "contact",
-        "email",
-        "phone",
-        "address",
-        "offices",
-        "location",
-        "reach out",
-        "quote",
-        "support",
-        "hours"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
-    },
-    {
-      "id": "privacy-policy",
-      "title": "Privacy Policy",
-      "url": "/privacy-policy",
-      "category": "policy",
-      "summary": "Velvora Solutions strictly protects visitor privacy, client project data, and job application resumes. Data is never shared or sold to third parties.",
-      "topics": [
-        "Data Confidentiality",
-        "Applicant Privacy",
-        "GDPR & DPDP Compliance",
-        "Cookies & Analytics"
-      ],
-      "keywords": [
-        "privacy",
-        "policy",
-        "confidentiality",
-        "data",
-        "security",
-        "gdpr",
-        "terms"
-      ],
-      "versionId": "v-2026-11-09-01",
-      "lastUpdated": "2026-11-09T04:03:16.434Z"
+      "summary": "Learn hands-on PDF/UA, EPUB accessibility auditing, and screen reader testing with industry tools.",
+      "status": "Active"
     }
   ],
   "faqs": [
     {
-      "q": "What does Velvora Solutions do?",
-      "a": "Velvora Solutions is a content and technology partner delivering ePublishing, XML transformation, digital accessibility (WCAG 2.2 & PDF/UA), AI automation pipelines, web development, data analytics, and digital marketing.",
-      "url": "/about/company-overview"
+      "q": "How many branches or offices does Velvora Solutions have?",
+      "a": "Velvora Solutions operates from two verified physical offices in Tamil Nadu, India: our Head Office & Operations Center in Cuddalore (Pathirikuppam) and our Branch Office in Chennai (Porur). Digital delivery and client collaboration are provided to organizations worldwide."
     },
     {
-      "q": "Who leads Velvora Solutions?",
-      "a": "Velvora Solutions is founded and led by Iyshwariya Senthil (Founder & Managing Director). She brings 7+ years of executive leadership in digital publishing operations, universal design, and WCAG accessibility standards.",
-      "url": "/about/our-team"
+      "q": "Who is the founder and leader of Velvora Solutions?",
+      "a": "Velvora Solutions is founded and led by Iyshwariya Senthil (Founder & Managing Director). With over 7 years of executive experience in publishing operations, universal design, and WCAG accessibility standards, she directs Velvora’s strategic roadmap."
     },
     {
-      "q": "Where are Velvora offices located?",
-      "a": "Velvora has offices in Cuddalore (Pathirikuppam, Thiruvantthipuram Post) and Chennai (Porur), Tamil Nadu, India. Office hours are Monday to Saturday, 9:00 AM – 6:30 PM.",
-      "url": "/contact"
+      "q": "What services does Velvora Solutions provide?",
+      "a": "Velvora Solutions provides 5 core pillars of services: Digital Accessibility (WCAG 2.2, PDF/UA, Section 508), ePublishing & Typesetting (EPUB 3, InDesign, LaTeX, MathML), XML Conversion (JATS, BITS, DocBook), AI Automation & IDP, Software Engineering (Web, React, Python/FastAPI), and Data Analytics."
     },
     {
-      "q": "How do I apply for jobs or internships at Velvora?",
-      "a": "You can view all current active openings and submit your application with a resume (PDF, DOC, DOCX up to 10MB) directly on our official Careers page. Applications are reviewed within 24–48 hours.",
-      "url": "/careers"
+      "q": "How do I submit my resume or apply for jobs?",
+      "a": "Visit our Careers page (/careers), choose an open position or \"General Open Application\", and upload your resume in PDF, DOC, or DOCX format (up to 10MB). Our recruitment team reviews submissions and responds within 24–48 hours."
     },
     {
-      "q": "What file formats and limits are accepted for job applications?",
-      "a": "We accept PDF, DOC, and DOCX formats up to 10MB. Please ensure your contact details and applied position are clearly specified.",
-      "url": "/careers"
-    },
-    {
-      "q": "What accessibility standards do you comply with?",
-      "a": "We test and remediate digital publications, PDFs, PowerPoint decks, and web portals to achieve 100% conformance with WCAG 2.2 (Level AA/AAA), PDF/UA (ISO 14289), Section 508, and the European Accessibility Act (EAA).",
-      "url": "/services/digital-accessibility"
+      "q": "What is the turnaround time or deadline for a project?",
+      "a": "Project delivery timelines depend on project scope, volume, schema complexity (e.g. JATS XML vs PDF/UA), and client review cycles. Share your specifications with info@velvorasolutions.com for an accurate timeline and quotation."
     }
   ]
 }
