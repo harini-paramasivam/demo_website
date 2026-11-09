@@ -19,6 +19,16 @@ export default function HeroArt({
       <div className="hero-ref-glow hero-ref-glow--sapphire" aria-hidden="true" />
       <div className="hero-ref-glow hero-ref-glow--magenta" aria-hidden="true" />
 
+      {/* Floating Cyber Particle Mesh */}
+      <div className="hero-cyber-particles" aria-hidden="true">
+        <span className="h-particle h-p-1" />
+        <span className="h-particle h-p-2" />
+        <span className="h-particle h-p-3" />
+        <span className="h-particle h-p-4" />
+        <span className="h-particle h-p-5" />
+        <span className="h-particle h-p-6" />
+      </div>
+
       {/* 2. Cyber Orbit HUD Rings (Inspired by Behance Reference) */}
       <div className="hero-ref-orbit-ring hero-ref-orbit-ring--outer" aria-hidden="true" />
       <div className="hero-ref-orbit-ring hero-ref-orbit-ring--inner" aria-hidden="true" />

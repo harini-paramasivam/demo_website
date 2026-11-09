@@ -315,6 +315,19 @@ export default function VoraChat() {
             <div className="vora-header-actions">
               <button 
                 type="button" 
+                onClick={() => {
+                  setIsOpen(false);
+                  window.dispatchEvent(new CustomEvent('vora_replay_intro'));
+                }}
+                className="vora-hdr-btn"
+                title="Watch / Replay Walking Robot Intro"
+                aria-label="Replay Walking Robot Intro"
+              >
+                <Sparkles size={16} />
+              </button>
+
+              <button 
+                type="button" 
                 onClick={() => setSoundEnabled(!soundEnabled)} 
                 className="vora-hdr-btn"
                 title={soundEnabled ? 'Mute sound' : 'Enable sound'}

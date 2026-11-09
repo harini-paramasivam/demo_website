@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import VoraRobotMascot from './VoraRobotMascot.jsx';
 
 const STORAGE_KEY = 'vora_intro_seen_v1';
+const ANIM_VERSION = 'v2_live_walk_final';
 
 /**
  * VoraRobotIntro
@@ -30,11 +31,19 @@ export default function VoraRobotIntro({ onIntroComplete }) {
   const [particles, setParticles] = useState([]);
 
   // Coordinate tracking for the robot actor
-  const [robotPos, setRobotPos] = useState({ x: -140, y: 0, scale: 1, opacity: 1, rotate: 0 });
+  const [robotPos, setRobotPos] = useState({ x: -160, y: 0, scale: 1, opacity: 1, rotate: 0 });
   const hasStartedRef = useRef(false);
 
   useEffect(() => {
-    // 1. Check for manual replay reset (?vora_reset=1 or admin button)
+    // Version check: if user has an old flag from before this release, reset it once so they see the real animation
+    try {
+      if (localStorage.getItem('vora_anim_version') !== ANIM_VERSION) {
+        localStorage.removeItem(STORAGE_KEY);
+        localStorage.setItem('vora_anim_version', ANIM_VERSION);
+      }
+    } catch (e) {}
+
+    // Check for manual replay reset (?vora_reset=1 or admin button)
     const searchParams = new URLSearchParams(window.location.search);
     const forceReset = searchParams.get('vora_reset') === '1';
 
@@ -71,10 +80,15 @@ export default function VoraRobotIntro({ onIntroComplete }) {
       return () => window.removeEventListener('vora_replay_intro', handleReplay);
     }
 
-    // Start intro sequence on first visit
-    startWalkingIntro();
+    // Start intro sequence on first visit with a small mount delay
+    const startTimer = setTimeout(() => {
+      startWalkingIntro();
+    }, 250);
 
-    return () => window.removeEventListener('vora_replay_intro', handleReplay);
+    return () => {
+      clearTimeout(startTimer);
+      window.removeEventListener('vora_replay_intro', handleReplay);
+    };
   }, []);
 
   const startWalkingIntro = () => {
@@ -107,15 +121,15 @@ export default function VoraRobotIntro({ onIntroComplete }) {
     setIsBookClosed(false);
     setHeadTilt('down');
     setEyesState('reading');
-    setRobotPos({ x: -140, y: 0, scale: 1, opacity: 1, rotate: 0 });
+    setRobotPos({ x: -160, y: 0, scale: 1, opacity: 1, rotate: 0 });
 
     // Calculate stop point (approx 30% of viewport, safe max 360px)
     const midPointX = Math.min(Math.max(window.innerWidth * 0.28, 120), 380);
 
-    // Smooth walk translation across from left
+    // Smooth walk translation across from left after DOM paint
     const walkInTimer = setTimeout(() => {
       setRobotPos({ x: midPointX, y: 0, scale: 1, opacity: 1, rotate: 0 });
-    }, 60);
+    }, 180);
 
     // =========================================================================
     // SCENE 3: ROBOT NOTICES THE VISITOR & GREETS
