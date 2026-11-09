@@ -9150,61 +9150,109 @@ main:focus { outline: none; }
   transform-origin: bottom center;
 }
 
-/* Walking gait: Left & Right Leg Alternation */
+/* ========================================================================= */
+/* KINEMATIC WALKING GAIT: ALTERNATING LEGS, SWAY, AND BODY BOB */
+/* ========================================================================= */
+
 .is-walking .vora-leg-left {
-  animation: voraWalkLeft 0.55s ease-in-out infinite alternate;
-  transform-origin: 66px 146px;
-}
-.is-walking .vora-leg-right {
-  animation: voraWalkRight 0.55s ease-in-out infinite alternate;
-  transform-origin: 94px 146px;
-}
-.is-walking .vora-body-group {
-  animation: voraBob 0.55s ease-in-out infinite alternate;
-}
-.is-walking .vora-arm-left {
-  animation: voraArmSwing 0.55s ease-in-out infinite alternate;
-  transform-origin: 44px 107px;
-}
-.is-walking .vora-shadow {
-  animation: voraShadowPulse 0.55s ease-in-out infinite alternate;
+  animation: voraWalkLeft 0.48s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+  transform-origin: 74px 158px;
 }
 
-/* Waving Hand State */
-.is-waving .vora-arm-left {
-  animation: voraWave 0.75s ease-in-out infinite;
-  transform-origin: 44px 107px;
+.is-walking .vora-leg-right {
+  animation: voraWalkRight 0.48s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+  transform-origin: 106px 158px;
+}
+
+.is-walking .vora-body-group {
+  animation: voraBob 0.48s ease-in-out infinite alternate;
+}
+
+.is-walking .vora-shadow {
+  animation: voraShadowSquash 0.48s ease-in-out infinite alternate;
 }
 
 @keyframes voraWalkLeft {
-  0% { transform: rotate(18deg) translateY(-2px); }
-  100% { transform: rotate(-18deg) translateY(0px); }
+  0% { transform: rotate(22deg) translateY(-3px); }
+  50% { transform: rotate(0deg) translateY(0px); }
+  100% { transform: rotate(-22deg) translateY(-1px); }
 }
 
 @keyframes voraWalkRight {
-  0% { transform: rotate(-18deg) translateY(0px); }
-  100% { transform: rotate(18deg) translateY(-2px); }
+  0% { transform: rotate(-22deg) translateY(-1px); }
+  50% { transform: rotate(0deg) translateY(0px); }
+  100% { transform: rotate(22deg) translateY(-3px); }
 }
 
 @keyframes voraBob {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-4px); }
-  100% { transform: translateY(0px); }
+  0% { transform: translateY(0px) rotate(0.8deg); }
+  50% { transform: translateY(-5px) rotate(0deg); }
+  100% { transform: translateY(0px) rotate(-0.8deg); }
 }
 
-@keyframes voraArmSwing {
-  0% { transform: rotate(-14deg); }
-  100% { transform: rotate(14deg); }
+@keyframes voraShadowSquash {
+  0% { transform: scale(0.92); opacity: 0.55; }
+  100% { transform: scale(1.08); opacity: 0.35; }
 }
 
-@keyframes voraWave {
-  0%, 100% { transform: rotate(-10deg); }
-  50% { transform: rotate(-45deg); }
+/* ========================================================================= */
+/* READING THE BOOK & DYNAMIC 3D PAGE-TURN */
+/* ========================================================================= */
+
+.is-reading .vora-turning-page {
+  animation: voraPageTurn 1.9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transform-origin: 28px 6px;
 }
 
-@keyframes voraShadowPulse {
-  0% { transform: scale(0.95); opacity: 0.5; }
-  100% { transform: scale(1.05); opacity: 0.35; }
+@keyframes voraPageTurn {
+  0%, 15% {
+    transform: rotateY(0deg) skewY(0deg);
+    opacity: 1;
+  }
+  48% {
+    transform: rotateY(-90deg) skewY(-8deg) scaleX(0.7);
+    opacity: 0.9;
+  }
+  78%, 100% {
+    transform: rotateY(-175deg) skewY(0deg);
+    opacity: 0;
+  }
+}
+
+.is-reading .vora-eye-pupil-reading {
+  animation: voraEyeScan 1.6s ease-in-out infinite;
+}
+
+@keyframes voraEyeScan {
+  0%, 100% { transform: translateX(-2.5px); }
+  50% { transform: translateX(2.5px); }
+}
+
+/* Book Closing Snap Effect */
+.is-closed .vora-open-book,
+.vora-open-book.is-closed {
+  animation: voraBookSnapShut 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: 28px 20px;
+}
+
+@keyframes voraBookSnapShut {
+  0% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(0.16) scaleY(0.9); opacity: 0.8; }
+}
+
+/* ========================================================================= */
+/* GREETING & FRIENDLY WAVING */
+/* ========================================================================= */
+
+.is-waving .vora-arm-waving {
+  animation: voraFriendlyWave 0.65s ease-in-out infinite;
+  transform-origin: 128px 116px;
+}
+
+@keyframes voraFriendlyWave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-30deg); }
+  75% { transform: rotate(18deg); }
 }
 
 /* ========================================================================= */
@@ -9228,28 +9276,37 @@ main:focus { outline: none; }
   flex-direction: column;
   align-items: center;
   z-index: 10001;
-  will-change: transform;
+  will-change: transform, opacity;
 }
 
+/* Speech Bubble */
 .vora-speech-bubble {
   position: absolute;
-  bottom: calc(100% + 8px);
+  bottom: calc(100% + 14px);
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(7, 14, 36, 0.94);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(7, 14, 36, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1.5px solid #38bdf8;
-  border-radius: 16px;
-  padding: 10px 18px;
+  border-radius: 18px;
+  padding: 12px 22px;
   color: #ffffff;
-  font-size: 0.94rem;
+  font-size: 0.96rem;
   font-weight: 700;
   white-space: nowrap;
   box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.7),
-    0 0 20px rgba(56, 189, 248, 0.4);
-  animation: voraBubblePop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    0 12px 35px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(56, 189, 248, 0.45);
+  animation: voraBubblePop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 10005;
+}
+
+.vora-speech-text {
+  background: linear-gradient(135deg, #ffffff 0%, #38bdf8 60%, #00f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.02em;
 }
 
 .vora-speech-pointer {
@@ -9259,27 +9316,60 @@ main:focus { outline: none; }
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid #38bdf8;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-top: 9px solid #38bdf8;
 }
 
 @keyframes voraBubblePop {
-  0% { opacity: 0; transform: translate(-50%, 10px) scale(0.85); }
+  0% { opacity: 0; transform: translate(-50%, 12px) scale(0.82); }
   100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
 }
 
+/* Floating Sparkle Particles */
+.vora-particles-cluster {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.vora-intro-particle {
+  position: absolute;
+  width: var(--p-size, 6px);
+  height: var(--p-size, 6px);
+  border-radius: 50%;
+  background: #00f2fe;
+  box-shadow: 0 0 12px #00f2fe, 0 0 24px #38bdf8;
+  animation: voraParticleBurst 0.9s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes voraParticleBurst {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--p-angle)) translate(var(--p-dist)) scale(0);
+  }
+}
+
+/* Circular Energy Ripple Wave */
 .vora-merge-ripple {
   position: absolute;
-  inset: -15px;
-  border: 2px solid #00d2ff;
+  inset: -18px;
+  border: 2px solid #00f2fe;
   border-radius: 50%;
-  animation: voraMergeRipple 0.65s ease-out forwards;
+  animation: voraMergeRipple 0.75s ease-out forwards;
 }
 
 @keyframes voraMergeRipple {
-  0% { transform: scale(0.2); opacity: 1; box-shadow: 0 0 25px #00d2ff; }
-  100% { transform: scale(1.6); opacity: 0; box-shadow: 0 0 50px #00d2ff; }
+  0% { transform: scale(0.25); opacity: 1; box-shadow: 0 0 25px #00f2fe; }
+  100% { transform: scale(1.75); opacity: 0; box-shadow: 0 0 55px #00f2fe; }
 }
 
 .vora-skip-intro-btn {
@@ -9302,6 +9392,32 @@ main:focus { outline: none; }
   color: #ffffff;
   border-color: #38bdf8;
   background: rgba(15, 23, 42, 0.95);
+}
+
+/* Absorbing Ripple and Pulse on Launcher Button */
+.vora-absorb-ripple-ring {
+  position: absolute;
+  inset: -12px;
+  border-radius: 999px;
+  border: 2px solid #00f2fe;
+  box-shadow: 0 0 25px #00f2fe, inset 0 0 15px #00f2fe;
+  animation: voraLauncherAbsorbRipple 1.2s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes voraLauncherAbsorbRipple {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.65); opacity: 0; }
+}
+
+.vora-launcher-btn.is-absorbing {
+  animation: voraLauncherAbsorbBounce 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes voraLauncherAbsorbBounce {
+  0% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(0, 242, 254, 0)); }
+  40% { transform: scale(1.18); filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.95)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(0, 242, 254, 0)); }
 }
 
 /* ========================================================================= */
@@ -9382,6 +9498,39 @@ main:focus { outline: none; }
   font-weight: 700;
   color: #ffffff;
   letter-spacing: 0.02em;
+}
+
+@media (max-width: 640px) {
+  .vora-intro-actor {
+    bottom: 16px;
+    transform-origin: bottom center;
+  }
+  .vora-intro-actor .vora-robot-wrapper {
+    transform: scale(0.85);
+  }
+  .vora-speech-bubble {
+    font-size: 0.84rem;
+    padding: 8px 14px;
+    border-radius: 14px;
+    bottom: calc(100% + 6px);
+  }
+  .vora-skip-intro-btn {
+    top: 14px;
+    right: 14px;
+    font-size: 0.72rem;
+    padding: 4px 10px;
+  }
+  .vora-launcher-container {
+    bottom: 18px;
+    right: 18px;
+  }
+  .vora-launcher-badge {
+    display: none;
+  }
+  .vora-launcher-btn {
+    padding: 4px;
+    border-radius: 50%;
+  }
 }
 
 /* ========================================================================= */

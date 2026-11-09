@@ -41,6 +41,7 @@ export default function VoraChat() {
   const [isTyping, setIsTyping] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [adminOpen, setAdminOpen] = useState(false);
+  const [isAbsorbing, setIsAbsorbing] = useState(false);
   const [syncStatus, setSyncStatus] = useState(null);
   const [careersList, setCareersList] = useState([]);
   const [isSyncing, setIsSyncing] = useState(false);
@@ -60,6 +61,13 @@ export default function VoraChat() {
   // Fetch sync metadata and careers on mount
   useEffect(() => {
     fetchSyncStatus();
+
+    const handleAbsorbed = () => {
+      setIsAbsorbing(true);
+      setTimeout(() => setIsAbsorbing(false), 1500);
+    };
+    window.addEventListener('vora_launcher_absorbed', handleAbsorbed);
+    return () => window.removeEventListener('vora_launcher_absorbed', handleAbsorbed);
   }, []);
 
   useEffect(() => {
@@ -262,13 +270,16 @@ export default function VoraChat() {
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className={`vora-launcher-btn ${isOpen ? 'is-active' : ''}`}
+          className={`vora-launcher-btn ${isOpen ? 'is-active' : ''} ${isAbsorbing ? 'is-absorbing' : ''}`}
           aria-label={isOpen ? 'Close VORA Assistant' : 'Chat with VORA AI Assistant'}
           title="Chat with VORA"
         >
+          {isAbsorbing && (
+            <span className="vora-absorb-ripple-ring" aria-hidden="true" />
+          )}
           <div className="vora-launcher-inner">
             <span className="vora-launcher-pulse" aria-hidden="true" />
-            <VoraRobotMascot size={42} isWalking={false} isTalking={isOpen} />
+            <VoraRobotMascot size={42} isWalking={false} isTalking={isOpen} isReading={false} />
             <span className="vora-online-dot" title="Knowledge Base Live" />
           </div>
           <span className="vora-launcher-badge">Ask VORA</span>
@@ -629,3 +640,4 @@ export default function VoraChat() {
     </>
   );
 }
+
