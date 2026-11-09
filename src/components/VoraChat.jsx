@@ -58,6 +58,57 @@ export default function VoraChat() {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
+  // Formatter for markdown, bolding, links, and bullet lists
+  const renderFormattedLine = (rawLine) => {
+    // Sanitize any raw stray 'svg' artifacts
+    let clean = (rawLine || '').replace(/\bsvg\b/gi, '').trim();
+    if (!clean) return null;
+
+    const isBullet = clean.startsWith('• ') || clean.startsWith('- ');
+    if (isBullet) {
+      clean = clean.replace(/^[•\-]\s*/, '');
+    }
+
+    // Split on **bold** and [title](url)
+    const tokenRegex = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g;
+    const parts = clean.split(tokenRegex);
+
+    const nodes = parts.map((part, idx) => {
+      if (!part) return null;
+      if (part.startsWith('**') && part.endsWith('**') && part.length > 4) {
+        return <strong key={idx} className="vora-text-bold">{part.slice(2, -2)}</strong>;
+      }
+      const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+      if (linkMatch) {
+        const title = linkMatch[1];
+        const url = linkMatch[2];
+        if (url.startsWith('/')) {
+          return (
+            <Link key={idx} to={url} onClick={() => setIsOpen(false)} className="vora-inline-link">
+              {title}
+            </Link>
+          );
+        }
+        return (
+          <a key={idx} href={url} target="_blank" rel="noopener noreferrer" className="vora-inline-link">
+            {title}
+          </a>
+        );
+      }
+      return part;
+    });
+
+    if (isBullet) {
+      return (
+        <span className="vora-bullet-line">
+          <span className="vora-bullet-dot" aria-hidden="true">▸</span>
+          <span className="vora-bullet-content">{nodes}</span>
+        </span>
+      );
+    }
+    return nodes;
+  };
+
   // Fetch sync metadata and careers on mount
   useEffect(() => {
     fetchSyncStatus();
@@ -383,14 +434,7 @@ export default function VoraChat() {
                       <p key={pIdx}>
                         {paragraph.split('\n').map((line, lIdx) => (
                           <React.Fragment key={lIdx}>
-                            {line.startsWith('• ') ? (
-                              <span className="vora-bullet-line">
-                                <span className="vora-bullet-dot">▸</span>
-                                {line.slice(2)}
-                              </span>
-                            ) : (
-                              line
-                            )}
+                            {renderFormattedLine(line)}
                             {lIdx < paragraph.split('\n').length - 1 && <br />}
                           </React.Fragment>
                         ))}
@@ -410,8 +454,8 @@ export default function VoraChat() {
                             onClick={() => setIsOpen(false)}
                             className="vora-source-pill"
                           >
-                            <span>{src.title}</span>
-                            <ArrowRight size={12} className="pill-arrow" />
+                            <span className="pill-title">{src.title}</span>
+                            <ArrowRight size={12} className="pill-arrow" aria-hidden="true" focusable="false" />
                           </Link>
                         ))}
                       </div>

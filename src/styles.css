@@ -9759,13 +9759,33 @@ main:focus { outline: none; }
 }
 
 .vora-bullet-line {
-  display: block;
-  margin-left: 8px;
+  display: flex;
+  align-items: flex-start;
+  margin-left: 4px;
+  margin-bottom: 3px;
   color: #cbd5e1;
 }
 .vora-bullet-dot {
   color: #38bdf8;
-  margin-right: 6px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+.vora-bullet-content {
+  flex: 1;
+}
+.vora-text-bold {
+  color: #ffffff;
+  font-weight: 700;
+}
+.vora-inline-link {
+  color: #38bdf8;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+.vora-inline-link:hover {
+  color: #00f2fe;
 }
 
 .vora-msg-time {
