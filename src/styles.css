@@ -2353,17 +2353,28 @@ main:focus { outline: none; }
   z-index: 1;
 }
 
+.leadership-portrait-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
 .leadership-portrait-frame {
   position: relative;
   width: 100%;
-  max-width: 440px;
-  aspect-ratio: 4 / 4.6;
-  border-radius: 24px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
   overflow: hidden;
-  border: 1.5px solid rgba(56, 189, 248, 0.45);
+  border: 2.5px solid rgba(56, 189, 248, 0.6);
   box-shadow: 
-    0 24px 50px -10px rgba(0, 0, 0, 0.95),
-    0 0 35px rgba(14, 165, 233, 0.22);
+    0 25px 60px -10px rgba(0, 0, 0, 0.95),
+    0 0 45px rgba(14, 165, 233, 0.35),
+    inset 0 0 25px rgba(56, 189, 248, 0.2);
   background: #090e1d;
   isolation: isolate;
 }
@@ -2371,7 +2382,8 @@ main:focus { outline: none; }
 .leadership-glow-backing {
   position: absolute;
   inset: -20px;
-  background: radial-gradient(circle at 50% 30%, rgba(56, 189, 248, 0.25) 0%, rgba(2, 132, 199, 0.15) 50%, transparent 75%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, rgba(56, 189, 248, 0.3) 0%, rgba(2, 132, 199, 0.18) 50%, transparent 75%);
   filter: blur(35px);
   z-index: -1;
   pointer-events: none;
@@ -2383,32 +2395,35 @@ main:focus { outline: none; }
   object-fit: cover;
   object-position: center center;
   display: block;
+  border-radius: 50%;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .leadership-portrait-frame:hover .leadership-img {
-  transform: scale(1.035);
+  transform: scale(1.04);
 }
 
-/* Floating Cyan Verification Badge */
+/* Floating Cyan Verification Badge placed beneath the circle */
 .leadership-floating-badge {
   position: absolute;
-  bottom: 18px;
-  left: 18px;
-  right: 18px;
-  background: rgba(9, 14, 28, 0.92);
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(9, 14, 28, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(56, 189, 248, 0.45);
-  border-radius: 16px;
-  padding: 12px 18px;
+  border: 1.5px solid rgba(56, 189, 248, 0.55);
+  border-radius: 9999px;
+  padding: 9px 20px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   box-shadow: 
-    0 12px 30px rgba(0, 0, 0, 0.75),
-    0 0 24px rgba(14, 165, 233, 0.25);
-  z-index: 2;
+    0 16px 36px rgba(0, 0, 0, 0.85),
+    0 0 24px rgba(14, 165, 233, 0.3);
+  z-index: 3;
+  width: max-content;
+  max-width: 90%;
 }
 
 .badge-icon-cyan {
@@ -2907,8 +2922,8 @@ main:focus { outline: none; }
     grid-template-columns: 1fr;
     gap: 36px;
   }
-  .leadership-portrait-frame {
-    max-width: 400px;
+  .leadership-portrait-wrapper {
+    max-width: 380px;
     margin: 0 auto;
   }
   .specialists-grid {
@@ -2924,8 +2939,12 @@ main:focus { outline: none; }
   .leadership-pillars-grid {
     grid-template-columns: 1fr;
   }
-  .leadership-portrait-frame {
-    max-width: 100%;
+  .leadership-portrait-wrapper {
+    max-width: 300px;
+  }
+  .leadership-floating-badge {
+    padding: 7px 14px;
+    font-size: 0.85rem;
   }
   .leadership-showcase {
     padding: 24px 20px;

@@ -110,20 +110,22 @@ export default function OurTeam() {
             <div className="leadership-showcase">
               {/* Left Column: Portrait Showcase with verified genuine photograph */}
               <div className="leadership-portrait-col">
-                <div className="leadership-portrait-frame">
-                  <div className="leadership-glow-backing" aria-hidden="true" />
-                  <img
-                    src="/team-iyshwariya.jpg"
-                    alt={leader.alt || 'Portrait of Iyshwariya Senthil, Founder / Managing Director'}
-                    className="leadership-img"
-                    width={520}
-                    height={650}
-                    loading="eager"
-                  />
+                <div className="leadership-portrait-wrapper">
+                  <div className="leadership-portrait-frame">
+                    <div className="leadership-glow-backing" aria-hidden="true" />
+                    <img
+                      src="/team-iyshwariya.jpg"
+                      alt={leader.alt || 'Portrait of Iyshwariya Senthil, Founder / Managing Director'}
+                      className="leadership-img"
+                      width={520}
+                      height={520}
+                      loading="eager"
+                    />
+                  </div>
                   {/* Floating Cyan Verification Badge */}
                   <div className="leadership-floating-badge">
                     <div className="badge-icon-cyan">
-                      <Award size={22} />
+                      <Award size={20} />
                     </div>
                     <div className="badge-text-wrap">
                       <span className="badge-title">7+ Years Experience</span>
