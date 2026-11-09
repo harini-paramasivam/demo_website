@@ -2,18 +2,19 @@ import React, { useState, useEffect, useRef } from 'react';
 import VoraRobotMascot from './VoraRobotMascot.jsx';
 
 const STORAGE_KEY = 'vora_intro_seen_v1';
-const ANIM_VERSION = 'v2_live_walk_final';
+const ANIM_VERSION = 'v2_live_mascot_walk_final';
 
 /**
  * VoraRobotIntro
  * Orchestrates the full 5-Scene introductory animated walking sequence for VORA:
- * Scene 1: Enters from left of viewport walking naturally
- * Scene 2: Reads open book with alternating steps & page-flip while walking
- * Scene 3: Notices visitor, looks up, blinks, waves & displays speech bubble:
- *          "Hi! 👋" -> "I'm VORA! Your intelligent assistant."
- * Scene 4: Resumes walking towards bottom-right VORA launcher
- * Scene 5: Reaches launcher, turns, closes book, shrinks & transforms into the icon with particle ripples
- * Scene 6: Persists vora_intro_seen_v1 so it never replays on route navigation or reload.
+ * Scene 1: Enters from outside left of viewport walking naturally with alternating leg cycles
+ * Scene 2: Reads open 3D manuscript book with page-flip animation and ambient sparkles while walking
+ * Scene 3: Pauses, tilts head up, blinks, waves and displays speech bubble:
+ *          "Hi! 👋" -> "I'm VORA, your Velvora Solutions assistant!"
+ * Scene 4: Resumes walking towards bottom-right VORA launcher using live DOM bounding box
+ * Scene 5: Reaches launcher, turns, snaps book shut, emits glowing particle burst,
+ *          and smoothly condenses/merges directly into the chatbot launcher button
+ * Scene 6: Persists vora_intro_seen_v1 in localStorage so it plays only once per browser profile.
  */
 export default function VoraRobotIntro({ onIntroComplete }) {
   const [visible, setVisible] = useState(false);
@@ -35,7 +36,7 @@ export default function VoraRobotIntro({ onIntroComplete }) {
   const hasStartedRef = useRef(false);
 
   useEffect(() => {
-    // Version check: if user has an old flag from before this release, reset it once so they see the real animation
+    // 1. One-time upgrade check so the user gets to see the final walk rig on next refresh
     try {
       if (localStorage.getItem('vora_anim_version') !== ANIM_VERSION) {
         localStorage.removeItem(STORAGE_KEY);
@@ -43,7 +44,7 @@ export default function VoraRobotIntro({ onIntroComplete }) {
       }
     } catch (e) {}
 
-    // Check for manual replay reset (?vora_reset=1 or admin button)
+    // 2. Check for manual reset parameter (?vora_reset=1 or admin button)
     const searchParams = new URLSearchParams(window.location.search);
     const forceReset = searchParams.get('vora_reset') === '1';
 
@@ -66,6 +67,7 @@ export default function VoraRobotIntro({ onIntroComplete }) {
       alreadySeen = false;
     }
 
+    // Custom replay event listener (e.g. from sparkles button in chat drawer)
     const handleReplay = () => {
       try {
         localStorage.removeItem(STORAGE_KEY);
@@ -80,10 +82,10 @@ export default function VoraRobotIntro({ onIntroComplete }) {
       return () => window.removeEventListener('vora_replay_intro', handleReplay);
     }
 
-    // Start intro sequence on first visit with a small mount delay
+    // Start intro sequence on first visit with small paint delay
     const startTimer = setTimeout(() => {
       startWalkingIntro();
-    }, 250);
+    }, 280);
 
     return () => {
       clearTimeout(startTimer);
@@ -91,19 +93,37 @@ export default function VoraRobotIntro({ onIntroComplete }) {
     };
   }, []);
 
+  // Helper to get real launcher coordinates in viewport
+  const getLauncherCoords = () => {
+    const launcher = document.querySelector('.vora-launcher-btn');
+    if (launcher) {
+      const r = launcher.getBoundingClientRect();
+      return {
+        targetX: Math.max(r.left - 45, 180),
+        finalX: r.left + r.width / 2 - 58,
+        finalY: 18
+      };
+    }
+    return {
+      targetX: Math.max(window.innerWidth - 145, 180),
+      finalX: window.innerWidth - 75,
+      finalY: 18
+    };
+  };
+
   const startWalkingIntro = () => {
     if (hasStartedRef.current) return;
     hasStartedRef.current = true;
 
-    // Check accessibility: prefers-reduced-motion
+    // Check accessibility preference: prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     setVisible(true);
 
     if (prefersReducedMotion) {
-      // Reduced motion: concise non-disruptive greeting without translation
+      // Reduced motion: skip translation, show direct gentle greeting
       setRobotPos({ x: window.innerWidth - 220, y: 0, scale: 0.9, opacity: 1, rotate: 0 });
       setPhase('greeting-2');
-      setSpeechText("Hi! 👋 I'm VORA! Your intelligent assistant.");
+      setSpeechText("Hi! 👋 I'm VORA, your Velvora Solutions assistant!");
       setSpeechVisible(true);
       setTimeout(() => {
         completeIntro();
@@ -112,7 +132,7 @@ export default function VoraRobotIntro({ onIntroComplete }) {
     }
 
     // =========================================================================
-    // SCENE 1 & 2: ROBOT ENTERS FROM LEFT & READS BOOK WHILE WALKING
+    // SCENE 1: ROBOT ENTERS FROM COMPLETELY OUTSIDE LEFT VIEWPORT
     // =========================================================================
     setPhase('walking-in');
     setIsWalking(true);
@@ -123,50 +143,50 @@ export default function VoraRobotIntro({ onIntroComplete }) {
     setEyesState('reading');
     setRobotPos({ x: -160, y: 0, scale: 1, opacity: 1, rotate: 0 });
 
-    // Calculate stop point (approx 30% of viewport, safe max 360px)
-    const midPointX = Math.min(Math.max(window.innerWidth * 0.28, 120), 380);
+    // Calculate midpoint pause location (approx 28-32% of viewport width)
+    const midPointX = Math.min(Math.max(window.innerWidth * 0.3, 140), 400);
 
-    // Smooth walk translation across from left after DOM paint
+    // Smooth walking translation across lower viewport
     const walkInTimer = setTimeout(() => {
       setRobotPos({ x: midPointX, y: 0, scale: 1, opacity: 1, rotate: 0 });
     }, 180);
 
     // =========================================================================
-    // SCENE 3: ROBOT NOTICES THE VISITOR & GREETS
+    // SCENE 2 & 3: READING WHILE WALKING -> NOTICES VISITOR & GREETS
     // =========================================================================
     const noticeTimer = setTimeout(() => {
       // 3A. Stop walking
       setIsWalking(false);
       setPhase('pause-notice');
-      // Look up with curiosity
+      // Look up at visitor with bright curious gaze
       setHeadTilt('up');
       setEyesState('look-up');
-    }, 2500);
+    }, 2600);
 
     const blinkTimer = setTimeout(() => {
-      // Natural blink
+      // Natural eye blink
       setEyesState('blink');
-    }, 2850);
+    }, 2950);
 
     const greet1Timer = setTimeout(() => {
-      // 3B. Start waving, display "Hi! 👋"
+      // 3B. Wave enthusiastically and show "Hi! 👋"
       setPhase('greeting-1');
       setEyesState('happy');
       setIsWaving(true);
       setSpeechText('Hi! 👋');
       setSpeechVisible(true);
-    }, 3100);
+    }, 3250);
 
     const greet2Timer = setTimeout(() => {
-      // 3C. Display "I'm VORA! Your intelligent assistant."
+      // 3C. Display exact required greeting: "I'm VORA, your Velvora Solutions assistant!"
       setPhase('greeting-2');
-      setSpeechText("I'm VORA! Your intelligent assistant.");
-    }, 4700);
+      setSpeechText("I'm VORA, your Velvora Solutions assistant!");
+    }, 4850);
 
     const hideSpeechTimer = setTimeout(() => {
-      // Bubble fades out
+      // Smooth bubble fade-out
       setSpeechVisible(false);
-    }, 7000);
+    }, 7200);
 
     // =========================================================================
     // SCENE 4: ROBOT RESUMES WALKING TOWARDS CHATBOT LAUNCHER
@@ -179,57 +199,53 @@ export default function VoraRobotIntro({ onIntroComplete }) {
       setEyesState('reading');
       setIsWalking(true);
 
-      // Launcher position is bottom-right: fixed at bottom: 28px; right: 28px
-      // Compute target coordinates so robot walks right up to the launcher
-      const targetX = Math.max(window.innerWidth - 145, 200);
+      const { targetX } = getLauncherCoords();
       setRobotPos({ x: targetX, y: 0, scale: 0.95, opacity: 1, rotate: 0 });
-    }, 7400);
+    }, 7600);
 
     // =========================================================================
-    // SCENE 5: ROBOT ENTERS THE VORA CHATBOT ICON
+    // SCENE 5: MAGICAL TRANSFORMATION & MERGE INTO LAUNCHER ICON
     // =========================================================================
     const reachLauncherTimer = setTimeout(() => {
-      // Robot arrives near launcher
       setIsWalking(false);
       setPhase('entering-icon');
-      // Turns towards the launcher icon
       setHeadTilt('front');
       setEyesState('happy');
-      // Closes the book with snap effect
+      // Snaps the book closed
       setIsBookClosed(true);
 
-      // Trigger sparkle particles
-      const newParticles = Array.from({ length: 10 }).map((_, i) => ({
+      // Generate radiating energy transformation particles
+      const newParticles = Array.from({ length: 12 }).map((_, i) => ({
         id: i,
-        angle: (i / 10) * 360,
-        distance: Math.floor(Math.random() * 35) + 25,
-        size: Math.floor(Math.random() * 5) + 4
+        angle: (i / 12) * 360,
+        distance: Math.floor(Math.random() * 40) + 30,
+        size: Math.floor(Math.random() * 6) + 4
       }));
       setParticles(newParticles);
-    }, 10100);
+    }, 10400);
 
-    // 5B. Shrink and absorb inside the launcher button
+    // 5B. Smoothly shrink and merge inside the VORA launcher button
     const absorbTimer = setTimeout(() => {
       setPhase('absorbed');
-      const launcherCenterX = window.innerWidth - 75;
+      const { finalX, finalY } = getLauncherCoords();
       setRobotPos({
-        x: launcherCenterX,
-        y: 18,
-        scale: 0.12,
+        x: finalX,
+        y: finalY,
+        scale: 0.1,
         opacity: 0,
         rotate: 360
       });
 
-      // Dispatch event to make launcher pulse and radiate energy ripple
+      // Dispatch event to make launcher pulse and trigger energetic absorb ripple
       window.dispatchEvent(new CustomEvent('vora_launcher_absorbed'));
-    }, 10800);
+    }, 11100);
 
     // =========================================================================
     // SCENE 6: COMPLETED & NORMAL STATE
     // =========================================================================
     const completeTimer = setTimeout(() => {
       completeIntro();
-    }, 11700);
+    }, 12100);
 
     return () => {
       clearTimeout(walkInTimer);
@@ -274,15 +290,24 @@ export default function VoraRobotIntro({ onIntroComplete }) {
           opacity: robotPos.opacity,
           transition:
             phase === 'walking-in'
-              ? 'transform 2.4s cubic-bezier(0.2, 0.9, 0.4, 1)'
+              ? 'transform 2.45s cubic-bezier(0.2, 0.9, 0.4, 1)'
               : phase === 'walking-to-target'
-              ? 'transform 2.7s cubic-bezier(0.3, 0, 0.25, 1)'
+              ? 'transform 2.75s cubic-bezier(0.3, 0, 0.25, 1)'
               : phase === 'absorbed'
               ? 'transform 0.85s cubic-bezier(0.6, 0, 0.8, 0.2), opacity 0.75s ease-out'
               : 'none'
         }}
       >
-        {/* Animated Speech Bubble */}
+        {/* Soft Ambient Floating Sparkles Around the Robot */}
+        {(phase === 'walking-in' || phase === 'pause-notice' || phase === 'walking-to-target') && (
+          <div className="vora-ambient-sparkles" aria-hidden="true">
+            <span className="vora-sparkle vora-sparkle--1" />
+            <span className="vora-sparkle vora-sparkle--2" />
+            <span className="vora-sparkle vora-sparkle--3" />
+          </div>
+        )}
+
+        {/* Animated Speech Bubble with Pointer */}
         {speechVisible && speechText && (
           <div className="vora-speech-bubble" role="status">
             <span className="vora-speech-text">{speechText}</span>
@@ -290,9 +315,9 @@ export default function VoraRobotIntro({ onIntroComplete }) {
           </div>
         )}
 
-        {/* 2.5D Articulated Robot Mascot */}
+        {/* 2.5D Articulated Robot Mascot Character */}
         <VoraRobotMascot
-          size={116}
+          size={118}
           isWalking={isWalking}
           isWaving={isWaving}
           isReading={isReading}
@@ -302,7 +327,7 @@ export default function VoraRobotIntro({ onIntroComplete }) {
           headTilt={headTilt}
         />
 
-        {/* Floating Sparkle Particles During Transition into Launcher */}
+        {/* Magical Radiating Particle Burst during Launcher Entry */}
         {particles.length > 0 && phase === 'entering-icon' && (
           <div className="vora-particles-cluster" aria-hidden="true">
             {particles.map(p => (
@@ -319,7 +344,7 @@ export default function VoraRobotIntro({ onIntroComplete }) {
           </div>
         )}
 
-        {/* Circular Energy Ripple Wave */}
+        {/* Energy Ripple Wave */}
         {(phase === 'entering-icon' || phase === 'absorbed') && (
           <div className="vora-merge-ripple" aria-hidden="true" />
         )}

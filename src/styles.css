@@ -9313,6 +9313,50 @@ main:focus { outline: none; }
   will-change: transform, opacity;
 }
 
+/* Ambient Magic Sparkles Drifting Around Robot */
+.vora-ambient-sparkles {
+  position: absolute;
+  inset: -15px;
+  pointer-events: none;
+}
+
+.vora-sparkle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, #00f2fe 60%, transparent 100%);
+  filter: drop-shadow(0 0 6px #00f2fe);
+}
+
+.vora-sparkle--1 {
+  width: 5px;
+  height: 5px;
+  top: 18%;
+  left: -8px;
+  animation: voraSparkleFloat 3s ease-in-out infinite alternate;
+}
+
+.vora-sparkle--2 {
+  width: 6px;
+  height: 6px;
+  top: 45%;
+  right: -12px;
+  animation: voraSparkleFloat 3.6s ease-in-out infinite alternate -1.2s;
+}
+
+.vora-sparkle--3 {
+  width: 4px;
+  height: 4px;
+  bottom: 25%;
+  left: -10px;
+  animation: voraSparkleFloat 2.8s ease-in-out infinite alternate -2s;
+}
+
+@keyframes voraSparkleFloat {
+  0% { transform: translateY(0px) scale(0.8); opacity: 0.3; }
+  50% { transform: translateY(-12px) scale(1.4); opacity: 0.95; }
+  100% { transform: translateY(6px) scale(0.9); opacity: 0.4; }
+}
+
 /* Speech Bubble */
 .vora-speech-bubble {
   position: absolute;
