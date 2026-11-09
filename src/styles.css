@@ -2231,31 +2231,31 @@ main:focus { outline: none; }
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #ffd700 0%, #f59e0b 45%, #38bdf8 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #38bdf8 55%, #0ea5e9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-color: rgba(15, 23, 42, 0.92);
-  border: 1.5px solid rgba(245, 158, 11, 0.5);
+  border: 1.5px solid rgba(56, 189, 248, 0.5);
   border-radius: 9999px;
   padding: 8px 22px;
   margin-bottom: 1.2rem;
   box-shadow: 
-    0 0 30px rgba(245, 158, 11, 0.25),
+    0 0 30px rgba(14, 165, 233, 0.25),
     0 0 15px rgba(56, 189, 248, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
 }
 
 .leadership-eyebrow svg {
-  color: #ffd700 !important;
-  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+  color: #38bdf8 !important;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
   -webkit-text-fill-color: initial;
 }
 
 .leadership-eyebrow:hover {
-  border-color: rgba(255, 215, 0, 0.8);
+  border-color: rgba(56, 189, 248, 0.8);
   box-shadow: 
-    0 0 40px rgba(245, 158, 11, 0.4),
+    0 0 40px rgba(14, 165, 233, 0.4),
     0 0 25px rgba(56, 189, 248, 0.35);
   transform: translateY(-2px);
 }
@@ -2285,19 +2285,19 @@ main:focus { outline: none; }
   background: linear-gradient(145deg, rgba(15, 23, 42, 0.72) 0%, rgba(10, 16, 32, 0.55) 50%, rgba(6, 10, 23, 0.85) 100%);
   backdrop-filter: blur(28px) saturate(200%);
   -webkit-backdrop-filter: blur(28px) saturate(200%);
-  border: 1.5px solid rgba(245, 158, 11, 0.28);
+  border: 1.5px solid rgba(56, 189, 248, 0.28);
   border-radius: 32px;
   padding: clamp(30px, 4.5vw, 52px);
   box-shadow: 
     0 30px 70px -15px rgba(0, 0, 0, 0.85),
     inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0 0 45px -10px rgba(245, 158, 11, 0.15);
+    0 0 45px -10px rgba(14, 165, 233, 0.2);
   position: relative;
   overflow: hidden;
   isolation: isolate;
 }
 
-/* Subtle gold and cyan accent glow in background */
+/* Subtle cyan and azure accent glow in background */
 .leadership-showcase::before {
   content: '';
   position: absolute;
@@ -2305,7 +2305,7 @@ main:focus { outline: none; }
   left: -100px;
   width: 360px;
   height: 360px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, transparent 70%);
   filter: blur(60px);
   pointer-events: none;
   z-index: 0;
@@ -2315,6 +2315,7 @@ main:focus { outline: none; }
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   z-index: 1;
 }
 
@@ -2325,10 +2326,10 @@ main:focus { outline: none; }
   aspect-ratio: 4 / 4.6;
   border-radius: 24px;
   overflow: hidden;
-  border: 1.5px solid rgba(245, 158, 11, 0.45);
+  border: 1.5px solid rgba(56, 189, 248, 0.45);
   box-shadow: 
     0 24px 50px -10px rgba(0, 0, 0, 0.95),
-    0 0 35px rgba(245, 158, 11, 0.22);
+    0 0 35px rgba(14, 165, 233, 0.22);
   background: #090e1d;
   isolation: isolate;
 }
@@ -2336,7 +2337,7 @@ main:focus { outline: none; }
 .leadership-glow-backing {
   position: absolute;
   inset: -20px;
-  background: radial-gradient(circle at 50% 30%, rgba(245, 158, 11, 0.25) 0%, rgba(56, 189, 248, 0.15) 50%, transparent 75%);
+  background: radial-gradient(circle at 50% 30%, rgba(56, 189, 248, 0.25) 0%, rgba(2, 132, 199, 0.15) 50%, transparent 75%);
   filter: blur(35px);
   z-index: -1;
   pointer-events: none;
@@ -2346,7 +2347,7 @@ main:focus { outline: none; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 15%;
   display: block;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -2355,7 +2356,7 @@ main:focus { outline: none; }
   transform: scale(1.035);
 }
 
-/* Floating Gold Verification Badge */
+/* Floating Cyan Verification Badge */
 .leadership-floating-badge {
   position: absolute;
   bottom: 18px;
@@ -2364,7 +2365,7 @@ main:focus { outline: none; }
   background: rgba(9, 14, 28, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1.5px solid rgba(245, 158, 11, 0.5);
+  border: 1.5px solid rgba(56, 189, 248, 0.45);
   border-radius: 16px;
   padding: 12px 18px;
   display: flex;
@@ -2372,21 +2373,21 @@ main:focus { outline: none; }
   gap: 14px;
   box-shadow: 
     0 12px 30px rgba(0, 0, 0, 0.75),
-    0 0 24px rgba(245, 158, 11, 0.22);
+    0 0 24px rgba(14, 165, 233, 0.25);
   z-index: 2;
 }
 
-.badge-icon-gold {
+.badge-icon-cyan {
   width: 42px;
   height: 42px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(217, 119, 6, 0.2));
-  border: 1.5px solid rgba(245, 158, 11, 0.6);
-  color: #fbbf24;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.25), rgba(2, 132, 199, 0.15));
+  border: 1.5px solid rgba(56, 189, 248, 0.6);
+  color: #38bdf8;
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  box-shadow: 0 0 14px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.3);
 }
 
 .badge-text-wrap {
@@ -2420,21 +2421,21 @@ main:focus { outline: none; }
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: #fbbf24;
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #38bdf8;
+  background: rgba(14, 165, 233, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.4);
   border-radius: 9999px;
   padding: 5px 14px;
   margin-bottom: 0.85rem;
-  box-shadow: 0 0 12px rgba(245, 158, 11, 0.15);
+  box-shadow: 0 0 14px rgba(14, 165, 233, 0.2);
 }
 
 .pill-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #fbbf24;
-  box-shadow: 0 0 8px #fbbf24;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
 }
 
 .leadership-name {
@@ -2456,7 +2457,7 @@ main:focus { outline: none; }
 .leadership-quote-card {
   position: relative;
   background: rgba(15, 23, 42, 0.6);
-  border-left: 3px solid #fbbf24;
+  border-left: 3px solid #38bdf8;
   border-radius: 0 16px 16px 0;
   padding: 18px 24px 18px 20px;
   margin-bottom: 1.4rem;
@@ -2464,8 +2465,8 @@ main:focus { outline: none; }
 }
 
 .quote-icon {
-  color: #fbbf24;
-  opacity: 0.75;
+  color: #38bdf8;
+  opacity: 0.9;
   margin-bottom: 6px;
 }
 
@@ -2523,7 +2524,7 @@ main:focus { outline: none; }
 }
 
 .pillar-icon--gold {
-  color: #fbbf24;
+  color: #38bdf8;
   flex-shrink: 0;
 }
 

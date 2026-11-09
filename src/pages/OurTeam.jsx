@@ -120,9 +120,9 @@ export default function OurTeam() {
                     height={650}
                     loading="eager"
                   />
-                  {/* Floating Gold Verification Badge */}
+                  {/* Floating Cyan Verification Badge */}
                   <div className="leadership-floating-badge">
-                    <div className="badge-icon-gold">
+                    <div className="badge-icon-cyan">
                       <Award size={22} />
                     </div>
                     <div className="badge-text-wrap">
@@ -166,7 +166,7 @@ export default function OurTeam() {
 
                   <div className="leadership-pillar-card">
                     <div className="pillar-header">
-                      <CheckCircle2 size={20} className="pillar-icon pillar-icon--gold" />
+                      <CheckCircle2 size={20} className="pillar-icon pillar-icon--cyan" />
                       <h4>Publishing Operations</h4>
                     </div>
                     <p>Proven operational leadership orchestrating high-volume XML, eBook conversion, and automated pipelines.</p>
