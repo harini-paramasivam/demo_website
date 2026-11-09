@@ -28,7 +28,7 @@ export default function VoraChat() {
     {
       id: 'welcome',
       sender: 'vora',
-      text: "Hello! 👋 I'm **VORA**, your Velvora Solutions assistant. I'm dynamically synced with our latest services, publications, leadership details, and live career openings.\n\nHow can I help you today?",
+      text: "Hello! 👋 I'm **Velza**, your Velvora Solutions assistant. I'm dynamically synced with our latest services, publications, leadership details, and live career openings.\n\nHow can I help you today?",
       sources: [
         { title: 'Explore Services', url: '/services' },
         { title: 'View Careers', url: '/careers' },
@@ -279,7 +279,7 @@ export default function VoraChat() {
       });
       const data = await res.json();
       if (data.success) {
-        alert(`New vacancy "${newJobForm.title}" published! VORA can now answer questions about it immediately.`);
+        alert(`New vacancy "${newJobForm.title}" published! Velza can now answer questions about it immediately.`);
         setNewJobForm({
           title: '',
           department: 'Engineering & Technology',
@@ -335,8 +335,8 @@ export default function VoraChat() {
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           className={`vora-launcher-btn ${isOpen ? 'is-active' : ''} ${isAbsorbing ? 'is-absorbing' : ''}`}
-          aria-label={isOpen ? 'Close VORA Assistant' : 'Chat with VORA AI Assistant'}
-          title="Chat with VORA"
+          aria-label={isOpen ? 'Close Velza Assistant' : 'Chat with Velza AI Assistant'}
+          title="Chat with Velza"
         >
           {isAbsorbing && (
             <span className="vora-absorb-ripple-ring" aria-hidden="true" />
@@ -346,7 +346,7 @@ export default function VoraChat() {
             <VoraRobotMascot size={42} isWalking={false} isTalking={isOpen} />
             <span className="vora-online-dot" title="Knowledge Base Live" />
           </div>
-          <span className="vora-launcher-badge">Ask VORA</span>
+          <span className="vora-launcher-badge">Ask Velza</span>
         </button>
       </div>
 
@@ -366,7 +366,7 @@ export default function VoraChat() {
               </div>
               <div>
                 <h3 id="vora-chat-title" className="vora-bot-name">
-                  VORA
+                  Velza
                   <span className="vora-status-chip">AI Assistant</span>
                 </h3>
                 <div className="vora-sync-label">
@@ -385,8 +385,8 @@ export default function VoraChat() {
                   window.dispatchEvent(new CustomEvent('vora_replay_intro'));
                 }}
                 className="vora-hdr-btn"
-                title="Watch / Replay Walking Robot Intro"
-                aria-label="Replay Walking Robot Intro"
+                title="Watch / Replay Velza Mascot Intro"
+                aria-label="Replay Velza Mascot Intro"
               >
                 <Sparkles size={16} />
               </button>
@@ -525,9 +525,9 @@ export default function VoraChat() {
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Ask about publishing, accessibility, or career openings..."
+              placeholder="Ask Velza about services, XML, accessibility, or career openings..."
               className="vora-text-input"
-              aria-label="Ask VORA a question"
+              aria-label="Ask Velza a question"
             />
             <button 
               type="submit" 
@@ -550,7 +550,7 @@ export default function VoraChat() {
             <div className="vora-admin-header">
               <div className="admin-title-row">
                 <ShieldCheck size={22} className="accent" />
-                <h3 id="admin-title">VORA Knowledge Control &amp; Live Recruitment Center</h3>
+                <h3 id="admin-title">Velza Knowledge Control &amp; Live Recruitment Center</h3>
               </div>
               <button 
                 type="button" 

@@ -293,10 +293,22 @@ export class VoraKnowledgeStore {
     // 0. Empty query handling
     if (!q) {
       return {
-        reply: "Hello! I'm VORA, your Velvora Solutions assistant. How can I help you today? You can ask about our digital accessibility audits, ePublishing and XML workflows, software engineering, project quotations, or current career openings.",
+        reply: "Hello! I'm Velza, your Velvora Solutions assistant. How can I help you today? You can ask about our digital accessibility audits, ePublishing and XML workflows, software engineering, project quotations, or current career openings.",
         sources: [
           { title: 'Explore Our Services', url: '/services' },
           { title: 'View Careers', url: '/careers' },
+          { title: 'Contact Our Team', url: '/contact' }
+        ]
+      };
+    }
+
+    // 0.1 Identity queries ("Who are you?", "What is your name?", "Velza")
+    if (/\b(who are you|what is your name|what's your name|tell me about yourself|are you a bot|who is velza|who is vora|your name)\b/i.test(q)) {
+      return {
+        reply: "Hello! I am **Velza**, the official AI assistant for Velvora Solutions. I'm dynamically synced with our verified website knowledge, digital accessibility standards (WCAG 2.2 / PDF/UA), ePublishing & XML workflows, software services, and live career openings. How can I assist you today?",
+        sources: [
+          { title: 'About Velvora Solutions', url: '/about/company-overview' },
+          { title: 'Explore Services', url: '/services' },
           { title: 'Contact Our Team', url: '/contact' }
         ]
       };

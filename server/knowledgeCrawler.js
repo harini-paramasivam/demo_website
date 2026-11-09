@@ -409,6 +409,10 @@ Key Commitments:
     // 6. SYNTHESIZE FREQUENTLY ASKED QUESTIONS (From crawled content)
     faqs.push(
       {
+        q: 'Who is Velza?',
+        a: 'Velza is the official intelligent AI assistant of Velvora Solutions. Velza helps visitors, publishers, and enterprise clients discover services, understand digital accessibility (WCAG 2.2 / PDF/UA), explore XML conversion workflows, request quotations, and view live career openings.'
+      },
+      {
         q: 'How many branches or offices does Velvora Solutions have?',
         a: 'Velvora Solutions operates from two verified physical offices in Tamil Nadu, India: our Head Office & Operations Center in Cuddalore (Indhira Nagar) and our Branch Office in Chennai (Porur). Digital delivery and client collaboration are provided to organizations worldwide.'
       },

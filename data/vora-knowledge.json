@@ -1,24 +1,24 @@
 {
   "syncMetadata": {
-    "version": "v1.3.12",
+    "version": "v1.3.15",
     "status": "Synchronized",
-    "lastSynchronized": "2026-11-09T08:19:03.179Z",
-    "sourceHash": "93dee9cb8b35810dac5aa08e8d5a6dfed25f0e28180cb6125df833d879b95fb5",
+    "lastSynchronized": "2026-11-09T08:33:11.673Z",
+    "sourceHash": "3b1327e703be4e688c472beff20c6af9731177278eae98ab0ee6294fecdd7610",
     "indexedCount": 33,
     "indexedPages": 27,
     "indexedCareers": 6,
     "errorLogs": [],
     "changelog": [
+      "Synced 27 pages & 6 careers at 2026-11-09T08:33:11.673Z",
+      "Synced 27 pages & 6 careers at 2026-11-09T08:27:07.635Z",
+      "Synced 27 pages & 6 careers at 2026-11-09T08:26:56.872Z",
       "Synced 27 pages & 6 careers at 2026-11-09T08:19:03.179Z",
       "Synced 27 pages & 6 careers at 2026-11-09T08:18:49.771Z",
       "Synced 27 pages & 6 careers at 2026-11-09T08:18:48.387Z",
       "Synced 27 pages & 6 careers at 2026-11-09T07:46:55.228Z",
       "Synced 27 pages & 6 careers at 2026-11-09T07:46:51.894Z",
       "Synced 27 pages & 6 careers at 2026-11-09T07:42:35.077Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T07:41:47.048Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T07:41:45.708Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T07:38:49.818Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T07:38:48.537Z"
+      "Synced 27 pages & 6 careers at 2026-11-09T07:41:47.048Z"
     ]
   },
   "documents": [
@@ -781,6 +781,10 @@
     }
   ],
   "faqs": [
+    {
+      "q": "Who is Velza?",
+      "a": "Velza is the official intelligent AI assistant of Velvora Solutions. Velza helps visitors, publishers, and enterprise clients discover services, understand digital accessibility (WCAG 2.2 / PDF/UA), explore XML conversion workflows, request quotations, and view live career openings."
+    },
     {
       "q": "How many branches or offices does Velvora Solutions have?",
       "a": "Velvora Solutions operates from two verified physical offices in Tamil Nadu, India: our Head Office & Operations Center in Cuddalore (Indhira Nagar) and our Branch Office in Chennai (Porur). Digital delivery and client collaboration are provided to organizations worldwide."

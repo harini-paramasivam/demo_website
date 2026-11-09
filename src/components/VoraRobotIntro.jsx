@@ -113,9 +113,9 @@ export default function VoraRobotIntro({ onIntroComplete, onDockingStart }) {
     }, 3250);
 
     scheduleStep(() => {
-      // Welcomes visitor
+      // Welcomes visitor as Velza
       setPhase('greeting-2');
-      setSpeechText("Welcome to Velvora Solutions!");
+      setSpeechText("I'm Velza, your Velvora assistant!");
     }, 4500);
 
     scheduleStep(() => {
@@ -261,7 +261,7 @@ export default function VoraRobotIntro({ onIntroComplete, onDockingStart }) {
       {/* Dev HUD for Quick Scene Testing (Press Ctrl+Alt+D) */}
       {debugMode && (
         <div className="vora-intro-debug-hud">
-          <span className="debug-hud-title">VORA Intro Controls (Ctrl+Alt+D)</span>
+          <span className="debug-hud-title">Velza Intro Controls (Ctrl+Alt+D)</span>
           <div className="debug-hud-btn-group">
             <button type="button" onClick={() => jumpToScene(1)} className="debug-hud-btn">
               S1: Walk In
