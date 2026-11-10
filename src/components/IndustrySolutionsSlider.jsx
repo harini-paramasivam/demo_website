@@ -57,7 +57,7 @@ export default function IndustrySolutionsSlider() {
             </div>
 
             <div className="ind-slide-card__action">
-              <Link to="/contact" className="btn btn--orange">
+              <Link to="/solutions" className="btn btn--orange">
                 View Solution <ArrowRight size={18} aria-hidden="true" />
               </Link>
               <Link to={current.to} className="btn btn--outline">

@@ -157,9 +157,9 @@ export default function Home() {
                   <span>Get in Touch</span>
                   <ArrowRight size={17} aria-hidden="true" />
                 </Link>
-                <a href="#services-glance" className="hero-ref-btn-secondary">
+                <Link to="/services" className="hero-ref-btn-secondary">
                   <span>Explore Services</span>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -214,62 +214,66 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          <p className="scroll" aria-hidden="true">
+            Scroll<i />
+          </p>
         </div>
+      </section>
 
-        {/* NUMBERS STRIP - LUMINOUS METRIC PODS */}
-        <div className="container stats" aria-label="Key company statistics">
-          <div className="stat-card">
-            <div className="stat-card__icon">
-              <Icon name="Globe" size={20} />
+      {/* NUMBERS STRIP - ARCHITECTURAL METRIC BAND (Clean, unique, professional executive surface) */}
+      <section className="metrics-band" aria-label="Key company statistics">
+        <div className="container">
+          <div className="stats">
+            <div className="stat-card">
+              <div className="stat-card__icon">
+                <Icon name="Globe" size={22} />
+              </div>
+              <b className="stat-card__num">
+                <CountUp to={5} /><span className="stat-card__plus">+</span>
+              </b>
+              <span className="stat-card__label">Countries Reached</span>
+              <span className="stat-card__sub">Global Delivery</span>
+              <div className="stat-card__bar" />
             </div>
-            <b className="stat-card__num">
-              <CountUp to={5} /><span className="stat-card__plus">+</span>
-            </b>
-            <span className="stat-card__label">Countries Reached</span>
-            <span className="stat-card__sub">Global Delivery</span>
-            <div className="stat-card__bar" />
-          </div>
 
-          <div className="stat-card">
-            <div className="stat-card__icon">
-              <Icon name="FileCode" size={20} />
+            <div className="stat-card">
+              <div className="stat-card__icon">
+                <Icon name="FileCode" size={22} />
+              </div>
+              <b className="stat-card__num">
+                <CountUp to={500} /><span className="stat-card__plus">+</span>
+              </b>
+              <span className="stat-card__label">XML Titles Structured</span>
+              <span className="stat-card__sub">Publishing Standards</span>
+              <div className="stat-card__bar" />
             </div>
-            <b className="stat-card__num">
-              <CountUp to={500} /><span className="stat-card__plus">+</span>
-            </b>
-            <span className="stat-card__label">XML Titles Structured</span>
-            <span className="stat-card__sub">Publishing Standards</span>
-            <div className="stat-card__bar" />
-          </div>
 
-          <div className="stat-card">
-            <div className="stat-card__icon">
-              <Icon name="GraduationCap" size={20} />
+            <div className="stat-card">
+              <div className="stat-card__icon">
+                <Icon name="GraduationCap" size={22} />
+              </div>
+              <b className="stat-card__num">
+                <CountUp to={2000} /><span className="stat-card__plus">+</span>
+              </b>
+              <span className="stat-card__label">Training Hours Delivered</span>
+              <span className="stat-card__sub">Continuous Upskilling</span>
+              <div className="stat-card__bar" />
             </div>
-            <b className="stat-card__num">
-              <CountUp to={2000} /><span className="stat-card__plus">+</span>
-            </b>
-            <span className="stat-card__label">Training Hours Delivered</span>
-            <span className="stat-card__sub">Continuous Upskilling</span>
-            <div className="stat-card__bar" />
-          </div>
 
-          <div className="stat-card">
-            <div className="stat-card__icon">
-              <Icon name="Users" size={20} />
+            <div className="stat-card">
+              <div className="stat-card__icon">
+                <Icon name="Users" size={22} />
+              </div>
+              <b className="stat-card__num">
+                <CountUp to={30} /><span className="stat-card__plus">+</span>
+              </b>
+              <span className="stat-card__label">Skilled Specialists</span>
+              <span className="stat-card__sub">In-House Experts</span>
+              <div className="stat-card__bar" />
             </div>
-            <b className="stat-card__num">
-              <CountUp to={30} /><span className="stat-card__plus">+</span>
-            </b>
-            <span className="stat-card__label">Skilled Specialists</span>
-            <span className="stat-card__sub">In-House Experts</span>
-            <div className="stat-card__bar" />
           </div>
         </div>
-
-        <p className="scroll" aria-hidden="true">
-          Scroll<i />
-        </p>
       </section>
 
       {/* 2. INTRO SECTION */}

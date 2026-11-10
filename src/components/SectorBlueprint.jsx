@@ -28,12 +28,14 @@ export default function SectorBlueprint() {
               <div className="sector-pod__tech-line" aria-hidden="true" />
               
               <div className="sector-pod__header">
-                <div className="sector-pod__icon-wrap">
-                  <Icon name={item.icon} size={22} />
-                </div>
-                <div className="sector-pod__meta">
-                  <span className="sector-pod__tag">{item.tag}</span>
-                  <span className="sector-pod__code">Sector 0{idx + 1}</span>
+                <div className="sector-pod__header-left">
+                  <div className="sector-pod__icon-wrap">
+                    <Icon name={item.icon} size={22} />
+                  </div>
+                  <div className="sector-pod__meta">
+                    <span className="sector-pod__tag">{item.tag}</span>
+                    <span className="sector-pod__code">Sector 0{idx + 1}</span>
+                  </div>
                 </div>
                 <span className="sector-pod__media-badge">{visual.badge}</span>
               </div>
@@ -54,7 +56,7 @@ export default function SectorBlueprint() {
               </div>
 
               <div className="sector-pod__footer">
-                <Link to="/solutions" className="btn btn--orange sector-pod__btn">
+                <Link to={item.to || '/solutions'} className="btn btn--orange sector-pod__btn">
                   View Solution <ArrowRight size={17} aria-hidden="true" />
                 </Link>
               </div>

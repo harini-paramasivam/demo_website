@@ -126,28 +126,28 @@ const serviceGroups = [
       {
         title: 'AI and Automation',
         desc: 'Practical AI and workflow automation with human quality checks.',
-        to: '/contact?service=AI+and+Automation',
+        to: '/services/ai-automation',
         icon: Bot,
         badge: 'NLP · AI QA · Automated Flow',
       },
       {
         title: 'Business Intelligence and Data Analytics',
         desc: 'Dashboards and analytics that turn data into decisions.',
-        to: '/contact?service=Data+Analytics',
+        to: '/services/data-analytics',
         icon: BarChart3,
         badge: 'Executive Dashboards · ETL',
       },
       {
         title: 'Website Development',
         desc: 'Modern, responsive, and accessible websites tailored to your brand.',
-        to: '/contact?service=Website+Development',
+        to: '/services/software-development',
         icon: Code,
         badge: 'Full-Stack · Accessible Web',
       },
       {
         title: 'Software Development',
         desc: 'Custom applications that solve real business challenges.',
-        to: '/contact?service=Software+Development',
+        to: '/services/software-development',
         icon: Cpu,
         badge: 'Custom Apps · Cloud APIs',
       },
@@ -163,35 +163,35 @@ const serviceGroups = [
       {
         title: 'SEO Optimization',
         desc: 'Structured metadata, keyword research, and accessibility-friendly SEO.',
-        to: '/contact?service=SEO+Optimization',
+        to: '/services/digital-marketing',
         icon: Search,
         badge: 'Technical SEO · Rich Snippets',
       },
       {
         title: 'Social Media Marketing',
         desc: 'Campaigns across LinkedIn, Twitter/X, Facebook, and Instagram.',
-        to: '/contact?service=Social+Media+Marketing',
+        to: '/services/digital-marketing',
         icon: Share2,
         badge: 'LinkedIn · X · Meta Channels',
       },
       {
         title: 'Paid Advertising Campaigns',
         desc: 'Targeted PPC and display ads to boost reach.',
-        to: '/contact?service=Paid+Advertising',
+        to: '/services/digital-marketing',
         icon: Target,
         badge: 'Google Ads · Targeted PPC',
       },
       {
         title: 'Content Marketing',
         desc: 'Blogs, newsletters, and thought leadership pieces.',
-        to: '/contact?service=Content+Marketing',
+        to: '/services/digital-marketing',
         icon: FileText,
         badge: 'Articles · Thought Leadership',
       },
       {
         title: 'Analytics & Reporting',
         desc: 'Dashboards and insights to measure ROI and refine strategy.',
-        to: '/contact?service=Analytics+and+Reporting',
+        to: '/services/digital-marketing',
         icon: TrendingUp,
         badge: 'Conversion Telemetry · ROI',
       },
@@ -236,7 +236,7 @@ export default function ServicesOverview() {
       </section>
 
       {/* 5 SERVICE GROUPS */}
-      <section className="section" style={{ paddingTop: '1rem' }}>
+      <section id="services-catalog" className="section" style={{ paddingTop: '1rem' }}>
         <div className="container">
           <div className="services-groups-wrapper">
             {serviceGroups.map((group) => {
@@ -300,6 +300,12 @@ export default function ServicesOverview() {
         text="Whether you need XML structuring, accessible EPUBs, custom software, or marketing campaigns, our team will provide a transparent proposal within one business day."
         primaryBtnText="Discuss Your Project"
         primaryBtnTo="/contact"
+        secondaryBtnText="Explore Our Services"
+        secondaryBtnTo="/services#services-catalog"
+        secondaryBtnOnClick={(e) => {
+          e.preventDefault();
+          document.getElementById('services-catalog')?.scrollIntoView({ behavior: 'smooth' });
+        }}
       />
     </>
   );

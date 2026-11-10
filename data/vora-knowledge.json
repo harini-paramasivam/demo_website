@@ -1,24 +1,24 @@
 {
   "syncMetadata": {
-    "version": "v1.3.15",
+    "version": "v1.3.35",
     "status": "Synchronized",
-    "lastSynchronized": "2026-11-09T08:33:11.673Z",
-    "sourceHash": "3b1327e703be4e688c472beff20c6af9731177278eae98ab0ee6294fecdd7610",
-    "indexedCount": 33,
-    "indexedPages": 27,
+    "lastSynchronized": "2026-11-10T04:17:11.362Z",
+    "sourceHash": "7c3451e14f25f5b5a19fa5b4fffdc91d80d69147f9be78f6276d794a9022df6d",
+    "indexedCount": 37,
+    "indexedPages": 31,
     "indexedCareers": 6,
     "errorLogs": [],
     "changelog": [
-      "Synced 27 pages & 6 careers at 2026-11-09T08:33:11.673Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T08:27:07.635Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T08:26:56.872Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T08:19:03.179Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T08:18:49.771Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T08:18:48.387Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T07:46:55.228Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T07:46:51.894Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T07:42:35.077Z",
-      "Synced 27 pages & 6 careers at 2026-11-09T07:41:47.048Z"
+      "Synced 31 pages & 6 careers at 2026-11-10T04:17:11.362Z",
+      "Synced 31 pages & 6 careers at 2026-11-10T04:17:08.357Z",
+      "Synced 31 pages & 6 careers at 2026-11-10T04:15:35.357Z",
+      "Synced 31 pages & 6 careers at 2026-11-10T04:15:20.867Z",
+      "Synced 31 pages & 6 careers at 2026-11-10T04:15:12.983Z",
+      "Synced 31 pages & 6 careers at 2026-11-10T04:15:11.731Z",
+      "Synced 31 pages & 6 careers at 2026-11-10T04:14:56.152Z",
+      "Synced 31 pages & 6 careers at 2026-11-10T04:14:42.731Z",
+      "Synced 31 pages & 6 careers at 2026-11-10T04:07:13.214Z",
+      "Synced 31 pages & 6 careers at 2026-11-10T04:07:09.644Z"
     ]
   },
   "documents": [
@@ -306,6 +306,126 @@
       "keywords": [
         "accessibility-training-and-consulting",
         "accessibility training and consulting",
+        "service",
+        "deliverables",
+        "pricing",
+        "process"
+      ]
+    },
+    {
+      "id": "service-ai-automation",
+      "title": "AI and Automation Services",
+      "url": "/services/ai-automation",
+      "category": "service",
+      "summary": "Practical AI pipelines, intelligent document processing, NLP extraction, and human-in-the-loop automated QA workflows engineered by Velvora Solutions.",
+      "content": "AI and Automation Services (AI & Workflow Automation: Accelerate Delivery with Cognitive Pipelines)\nOverview: Modern publishing and enterprise content operations cannot afford manual data re-keying, slow format transformations, or error-prone proofing. Velvora integrates cognitive AI pipelines, intelligent document processing (IDP), and automated QA verification into existing production environments. We combine machine speed with specialized human-in-the-loop validation to ensure complete structural and semantic accuracy.\nWhat We Offer:\n  - Intelligent Document Processing (IDP): Automated ingestion of scanned manuscripts, unstructured PDFs, and complex legacy documents into structured formats.\n  - Cognitive NLP & Entity Extraction: Automated indexing, metadata tagging, key entity extraction, and taxonomy classification.\n  - Automated Accessibility QA: Machine-assisted alt text draft generation, reading order verification, and contrast checks with human audit approval.\n  - Production Pipeline Automation: API-driven ingestion and automated XSLT/XML validation loops that reduce manual touchpoints by over 70%.\n  - Custom LLM & Prompt Workflows: Domain-specific prompt engineering, automated summary generation, and localized translation pipelines.\n  - Continuous Quality Monitoring: Machine telemetry dashboards tracking throughput, error rates, and human verification bottlenecks.\nOur Process:\n  - 1. Workflow Audit: We map your current content production bottlenecks and identify high-ROI automation targets.\n  - 2. Pipeline Design: We architect custom AI modules, schema validators, and human review gates.\n  - 3. Prototype & Test: We benchmark automated accuracy against your verified golden sample files.\n  - 4. Production Integration: We deploy pipelines into your cloud, FTP, or editorial management systems.\n  - 5. Continuous Optimization: Ongoing fine-tuning to elevate automation accuracy and processing throughput.\nTarget Audience / Who It's For:\nPublishers, universities, enterprises, and content creators.",
+      "topics": [
+        "AI and Automation Services",
+        "ai-automation",
+        "ai",
+        "automation",
+        "ai-and-automation",
+        "ai-services",
+        "Deliverables",
+        "Process Steps"
+      ],
+      "keywords": [
+        "ai-automation",
+        "ai and automation services",
+        "ai",
+        "automation",
+        "ai-and-automation",
+        "ai-services",
+        "service",
+        "deliverables",
+        "pricing",
+        "process"
+      ]
+    },
+    {
+      "id": "service-software-development",
+      "title": "Software & Web Development",
+      "url": "/services/software-development",
+      "category": "service",
+      "summary": "Resilient full-stack web applications, React interfaces, cloud microservices, and accessible modern interfaces designed for enterprise reliability by Velvora Solutions.",
+      "content": "Software & Web Development (Software & Web Development: Smarter, Scalable Digital Architecture)\nOverview: Digital products demand uncompromising stability, responsive user experiences, and universal accessibility from day one. Velvora engineers bespoke web applications, enterprise portals, cloud microservices, and content platforms using modern React, Node.js, Python, and cloud infrastructure. We bridge technical precision with accessible design systems to deliver platforms that perform at global scale.\nWhat We Offer:\n  - Custom Web Applications: High-performance single-page and server-rendered web applications built on React and modern frameworks.\n  - Accessible UI Systems & Design Systems: Enterprise component libraries strictly compliant with WCAG 2.2 AA standards and ARIA best practices.\n  - Cloud APIs & Microservices: Scalable RESTful and GraphQL backend architectures engineered for high-concurrency content delivery.\n  - CMS & Publishing Platforms: Headless CMS implementations, custom publishing portals, and editorial workflow applications.\n  - Legacy Modernization: Refactoring outdated codebases into modular, testable, and cloud-native microservices.\n  - Security & DevOps: Automated CI/CD deployment pipelines, containerization (Docker), and cloud infrastructure management.\nOur Process:\n  - 1. Discovery & Architecture: Technical requirements gathering, system architecture planning, and UX wireframing.\n  - 2. Agile Sprint Delivery: Rapid, iterative sprint cycles with continuous demo reviews and automated testing.\n  - 3. Accessibility & Security QA: Full automated and manual screen-reader auditing alongside penetration and load testing.\n  - 4. Production Deployment: Zero-downtime deployment to your preferred cloud environment (AWS, Azure, Vercel).\n  - 5. Ongoing SLA Support: Continuous monitoring, performance tuning, and technical maintenance.\nTarget Audience / Who It's For:\nPublishers, universities, enterprises, and content creators.",
+      "topics": [
+        "Software & Web Development",
+        "software-development",
+        "software",
+        "website-development",
+        "web-development",
+        "custom-software",
+        "Deliverables",
+        "Process Steps"
+      ],
+      "keywords": [
+        "software-development",
+        "software & web development",
+        "software",
+        "website-development",
+        "web-development",
+        "custom-software",
+        "service",
+        "deliverables",
+        "pricing",
+        "process"
+      ]
+    },
+    {
+      "id": "service-data-analytics",
+      "title": "Data Analytics & Business Intelligence",
+      "url": "/services/data-analytics",
+      "category": "service",
+      "summary": "Executive telemetry dashboards, predictive modeling, ETL data pipelines, and actionable business intelligence engineered by Velvora Solutions.",
+      "content": "Data Analytics & Business Intelligence (Data Analytics & BI: Turn Complex Data into Decisive Action)\nOverview: Enterprises and publishers generate massive volumes of reader telemetry, operational data, and financial transactions. Without structured analysis, valuable insights remain trapped in silos. Velvora designs end-to-end data pipelines, predictive models, and interactive executive dashboards that transform complex numbers into strategic clarity and measurable growth.\nWhat We Offer:\n  - Executive BI Dashboards: Real-time interactive visualizations and KPI tracking built on Power BI, Tableau, or custom React interfaces.\n  - ETL Data Pipeline Engineering: Automated data extraction, cleaning, transformation, and warehouse loading from disparate enterprise sources.\n  - Publishing & Content Telemetry: Reader engagement analytics, format adoption tracking, and royalty accounting intelligence.\n  - Predictive Modeling & Forecasting: Machine learning algorithms forecasting demand trends, customer churn, and inventory requirements.\n  - Data Cleaning & Normalization: Standardizing messy legacy databases into clean, query-ready enterprise repositories.\n  - Conversion & ROI Analytics: Deep-funnel attribution and user journey tracking to optimize marketing and operational spend.\nOur Process:\n  - 1. Data Audit: We inventory your data sources, schemas, and analytical requirements.\n  - 2. Pipeline Engineering: We build secure, automated ETL connectors to ingest and clean raw data.\n  - 3. Modeling & Visual Design: We structure dimensional models and design intuitive, accessible dashboards.\n  - 4. Validation & Training: We verify metrics accuracy against source records and train your team on dashboard usage.\n  - 5. Automated Telemetry: Scheduled automated refreshes and alert notifications when key thresholds are reached.\nTarget Audience / Who It's For:\nPublishers, universities, enterprises, and content creators.",
+      "topics": [
+        "Data Analytics & Business Intelligence",
+        "data-analytics",
+        "analytics",
+        "business-intelligence",
+        "bi",
+        "data",
+        "Deliverables",
+        "Process Steps"
+      ],
+      "keywords": [
+        "data-analytics",
+        "data analytics & business intelligence",
+        "analytics",
+        "business-intelligence",
+        "bi",
+        "data",
+        "service",
+        "deliverables",
+        "pricing",
+        "process"
+      ]
+    },
+    {
+      "id": "service-digital-marketing",
+      "title": "Digital Marketing & Growth",
+      "url": "/services/digital-marketing",
+      "category": "service",
+      "summary": "Technical SEO audits, structured schema markup, omnichannel growth campaigns, content marketing, and conversion telemetry crafted by Velvora Solutions.",
+      "content": "Digital Marketing & Growth (Digital Marketing & Growth: Reach Global Audiences with Measurable Impact)\nOverview: High-quality content deserves an engaged audience. In an era of algorithm shifts and crowded search results, organic discovery requires technical precision, structured data markup, and authentic audience engagement. Velvora delivers comprehensive digital marketing solutions that combine technical SEO, content strategy, paid advertising, and attribution analytics to drive sustainable growth.\nWhat We Offer:\n  - Technical SEO & Rich Snippets: Deep technical audits, crawlability optimization, core web vitals remediation, and JSON-LD schema markup.\n  - Search Engine Marketing (PPC): High-intent Google Search and display advertising campaigns focused on low acquisition costs and high ROI.\n  - Omnichannel Social Media Strategy: Strategic audience building across LinkedIn, X, Meta channels, and specialized professional communities.\n  - Content Marketing & Thought Leadership: Authoritative white papers, educational articles, and case snapshots that establish brand credibility.\n  - Conversion Rate Optimization (CRO): A/B testing, heatmap analysis, and friction-free user journeys that convert visitors into active clients.\n  - Attribution & Performance Telemetry: Transparent reporting tracking cost-per-lead, pipeline attribution, and lifetime client value.\nOur Process:\n  - 1. Landscape Audit: We analyze your website health, competitor keywords, and current conversion funnels.\n  - 2. Strategy Roadmap: We define target audience personas, high-intent keyword targets, and channel allocations.\n  - 3. Technical & Content Setup: We fix on-page crawl issues, implement structured schemas, and craft campaign assets.\n  - 4. Campaign Launch: We deploy multi-channel campaigns with real-time conversion tracking and budget guardrails.\n  - 5. Analyze & Scale: Continuous testing and weekly optimizations to scale high-performing channels.\nTarget Audience / Who It's For:\nPublishers, universities, enterprises, and content creators.",
+      "topics": [
+        "Digital Marketing & Growth",
+        "digital-marketing",
+        "marketing",
+        "seo",
+        "seo-optimization",
+        "digital-marketing-services",
+        "Deliverables",
+        "Process Steps"
+      ],
+      "keywords": [
+        "digital-marketing",
+        "digital marketing & growth",
+        "marketing",
+        "seo",
+        "seo-optimization",
+        "digital-marketing-services",
         "service",
         "deliverables",
         "pricing",

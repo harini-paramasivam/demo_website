@@ -42,7 +42,7 @@ export default function ResourcePage({ type }) {
                     <Link to="/contact" className="btn btn--orange">
                       Get in Touch <ArrowRight size={16} aria-hidden="true" />
                     </Link>
-                    <Link to="/contact" className="btn btn--outline" style={{ color: 'var(--ink)' }}>
+                    <Link to="/blog" className="btn btn--outline" style={{ color: 'var(--ink)' }}>
                       Read the Full Case Study <ArrowRight size={16} aria-hidden="true" />
                     </Link>
                   </div>

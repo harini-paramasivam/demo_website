@@ -15,11 +15,23 @@ function DropdownItem({ item, open, onToggle, onClose }) {
       onMouseEnter={enter}
       onMouseLeave={leave}
       onBlur={(e) => { if (!ref.current.contains(e.relatedTarget)) onToggle(false); }}
-      onKeyDown={(e) => { if (e.key === 'Escape') { onToggle(false); ref.current.querySelector('button').focus(); } }}
+      onKeyDown={(e) => { if (e.key === 'Escape') { onToggle(false); ref.current.querySelector('button, a').focus(); } }}
     >
-      <button type="button" className="nav__link" aria-expanded={open} aria-haspopup="true" onClick={() => onToggle(!open)}>
-        {item.label}<ChevronDown size={15} aria-hidden="true" className="nav__chev" />
-      </button>
+      {item.to ? (
+        <NavLink
+          to={item.to}
+          className="nav__link"
+          aria-expanded={open}
+          aria-haspopup="true"
+          onClick={onClose}
+        >
+          {item.label}<ChevronDown size={15} aria-hidden="true" className="nav__chev" />
+        </NavLink>
+      ) : (
+        <button type="button" className="nav__link" aria-expanded={open} aria-haspopup="true" onClick={() => onToggle(!open)}>
+          {item.label}<ChevronDown size={15} aria-hidden="true" className="nav__chev" />
+        </button>
+      )}
       <ul className="dropdown">
         {item.items.map((sub) => (
           <li key={sub.to}><Link to={sub.to} onClick={onClose}>{sub.label}</Link></li>

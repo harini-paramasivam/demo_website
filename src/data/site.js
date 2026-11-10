@@ -71,7 +71,7 @@ export const transitionBannerContent = [
     desc: 'We engineer intelligent neural workflows and automated QA pipelines to eliminate manual bottlenecks, cut processing time, and accelerate delivery.',
     icon: 'Bot',
     tag: 'Next-Gen AI & NLP Automation',
-    to: '/services',
+    to: '/services/ai-automation',
     chips: ['AI Content Ingestion', 'NLP Data Extraction', 'Automated QA Checks', 'Intelligent Workflows', 'Prompt Pipelines', '70% Cycle Reduction'],
     image: '/hero-robot-ai.jpg',
     badgeTop: { label: 'AI Neural Pipelines', sub: '70% Manual Time Reduction', dot: 'cyan' },
@@ -85,7 +85,7 @@ export const transitionBannerContent = [
     desc: 'Our teams deliver resilient full-stack applications, scalable cloud architectures, and accessible modern interfaces designed for enterprise reliability.',
     icon: 'Code',
     tag: 'Enterprise Digital Engineering',
-    to: '/services',
+    to: '/services/software-development',
     chips: ['React & Modern Web', 'Cloud APIs & Microservices', 'Enterprise Scalability', 'Accessible UI Systems', 'Secure Infrastructure', 'Full-Stack Delivery'],
     image: '/hero-slide-4.jpg',
     badgeTop: { label: 'Cloud Architecture', sub: 'Resilient Microservices & APIs', dot: 'cyan' },
@@ -99,7 +99,7 @@ export const transitionBannerContent = [
     desc: 'From predictive models to executive dashboards, we transform complex enterprise data into clear, actionable intelligence and growth telemetry.',
     icon: 'BarChart3',
     tag: 'BI & Predictive Analytics',
-    to: '/services',
+    to: '/services/data-analytics',
     chips: ['Executive BI Dashboards', 'Predictive Modeling', 'ETL Data Pipelines', 'Real-Time Telemetry', 'Conversion Tracking', 'Actionable ROI'],
     image: '/hero-slide-5.jpg',
     badgeTop: { label: 'Predictive BI Models', sub: 'Real-Time Executive Intelligence', dot: 'cyan' },
@@ -113,7 +113,7 @@ export const transitionBannerContent = [
     desc: 'Data-driven SEO, strategic omnichannel campaigns, and conversion analytics crafted by diverse voices to expand reach and drive measurable ROI.',
     icon: 'Megaphone',
     tag: 'SEO & Strategic Audience Growth',
-    to: '/contact',
+    to: '/services/digital-marketing',
     chips: ['Technical SEO Audits', 'Omnichannel Strategy', 'Global Reach Networks', 'Content Marketing', 'Conversion Optimization', 'Performance Analytics'],
     image: '/hero-slide-6.jpg',
     badgeTop: { label: 'Global Market Reach', sub: 'Omnichannel Conversion Networks', dot: 'cyan' },
@@ -160,7 +160,7 @@ export const homeServices = [
     title: 'IT Services',
     desc: 'AI automation, website development, software development, data analytics, and digital marketing that cut manual work, build smarter applications, transform data into insights, and help your content reach the right audience.',
     btnText: 'Explore IT Services',
-    to: '/services',
+    to: '/services/software-development',
     icon: 'Cpu',
     tag: 'Enterprise Engineering',
     badge: 'AI Automation · Software · Data',
@@ -171,7 +171,7 @@ export const homeServices = [
     title: 'Digital Marketing',
     desc: 'SEO, social media, paid campaigns, content marketing, and analytics to amplify your reach and maximize engagement.',
     btnText: 'Explore Digital Marketing',
-    to: '/contact',
+    to: '/services/digital-marketing',
     icon: 'Megaphone',
     tag: 'Audience Amplification',
     badge: 'SEO · Content · Multi-Channel',
@@ -219,7 +219,7 @@ export const industrySolutions = [
     icon: 'Building2',
     tag: 'Corporate & Finance',
     highlights: ['ESG & Annual Reports', 'Office 365 / PDF', 'AI Automation', 'Enterprise SLAs'],
-    to: '/services'
+    to: '/services/ai-automation'
   },
   {
     id: 'government',
@@ -229,7 +229,7 @@ export const industrySolutions = [
     icon: 'Landmark',
     tag: 'Public Administration',
     highlights: ['Section 508 & ADA', 'VPAT / ACR Reports', 'Public Forms Remediation', 'Screen Reader QA'],
-    to: '/contact'
+    to: '/services/digital-accessibility'
   }
 ];
 
@@ -604,10 +604,16 @@ export const nav = [
   },
   {
     label: 'Services',
+    to: '/services',
     items: [
+      { label: 'All Services (Overview)', to: '/services' },
       { label: 'ePublishing Services', to: '/services/epublishing' },
       { label: 'XML Services', to: '/services/xml' },
       { label: 'Digital Accessibility (EPUB 2 & 3, Web, PDF, Word, PowerPoint, Excel)', to: '/services/digital-accessibility' },
+      { label: 'AI & Workflow Automation', to: '/services/ai-automation' },
+      { label: 'Software & Web Development', to: '/services/software-development' },
+      { label: 'Data Analytics & Business Intelligence', to: '/services/data-analytics' },
+      { label: 'Digital Marketing & Growth', to: '/services/digital-marketing' },
       { label: 'Typesetting and Design', to: '/services/typesetting-and-design' },
       { label: 'Math and Equation Typesetting', to: '/services/math-and-equation-typesetting' },
       { label: 'Metadata, Indexing and Taxonomy', to: '/services/metadata-indexing-and-taxonomy' },
@@ -1228,6 +1234,166 @@ export const services = [
       { q: 'Can you customize the training for our team?', a: 'Yes. We tailor content to your roles, tools, and content types.' },
       { q: 'Do you offer follow-up support?', a: 'Yes. We can provide Q&A sessions, document reviews, and ongoing consulting.' },
     ],
+  },
+  {
+    slug: 'ai-automation',
+    aliases: ['ai', 'automation', 'ai-and-automation', 'ai-services'],
+    title: 'AI and Automation Services',
+    pageTitle: 'AI & Workflow Automation Services | Velvora Solutions',
+    metaDesc: 'Practical AI pipelines, intelligent document processing, NLP extraction, and human-in-the-loop automated QA workflows engineered by Velvora Solutions.',
+    heading: 'AI & Workflow Automation: Accelerate Delivery with Cognitive Pipelines',
+    icon: 'Bot',
+    short: 'Practical AI and workflow automation that eliminates manual bottlenecks, cuts processing cycle time by up to 70%, and ensures uncompromising output quality.',
+    buttonText: 'Automate Your Workflows',
+    overview:
+      'Modern publishing and enterprise content operations cannot afford manual data re-keying, slow format transformations, or error-prone proofing. Velvora integrates cognitive AI pipelines, intelligent document processing (IDP), and automated QA verification into existing production environments. We combine machine speed with specialized human-in-the-loop validation to ensure complete structural and semantic accuracy.',
+    whatWeOffer: [
+      { title: 'Intelligent Document Processing (IDP)', desc: 'Automated ingestion of scanned manuscripts, unstructured PDFs, and complex legacy documents into structured formats.' },
+      { title: 'Cognitive NLP & Entity Extraction', desc: 'Automated indexing, metadata tagging, key entity extraction, and taxonomy classification.' },
+      { title: 'Automated Accessibility QA', desc: 'Machine-assisted alt text draft generation, reading order verification, and contrast checks with human audit approval.' },
+      { title: 'Production Pipeline Automation', desc: 'API-driven ingestion and automated XSLT/XML validation loops that reduce manual touchpoints by over 70%.' },
+      { title: 'Custom LLM & Prompt Workflows', desc: 'Domain-specific prompt engineering, automated summary generation, and localized translation pipelines.' },
+      { title: 'Continuous Quality Monitoring', desc: 'Machine telemetry dashboards tracking throughput, error rates, and human verification bottlenecks.' }
+    ],
+    benefits: [
+      'Up to 70% reduction in document processing time',
+      'Elimination of repetitive manual re-keying and copy errors',
+      'Consistent structural and metadata compliance',
+      'Scalable throughput during seasonal volume spikes',
+      '100% human-verified quality assurance guarantee'
+    ],
+    process: [
+      { step: '1. Workflow Audit', desc: 'We map your current content production bottlenecks and identify high-ROI automation targets.' },
+      { step: '2. Pipeline Design', desc: 'We architect custom AI modules, schema validators, and human review gates.' },
+      { step: '3. Prototype & Test', desc: 'We benchmark automated accuracy against your verified golden sample files.' },
+      { step: '4. Production Integration', desc: 'We deploy pipelines into your cloud, FTP, or editorial management systems.' },
+      { step: '5. Continuous Optimization', desc: 'Ongoing fine-tuning to elevate automation accuracy and processing throughput.' }
+    ],
+    faqs: [
+      { q: 'How do you guarantee accuracy with AI pipelines?', a: 'We enforce strict human-in-the-loop verification. AI handles high-speed extraction and initial transformation, while verified subject-matter specialists review and approve outputs before final delivery.' },
+      { q: 'Can your AI pipelines integrate with our existing CMS or DAM?', a: 'Yes. We build modern RESTful API connectors, automated FTP watchers, and webhooks that link directly to your existing content management systems.' },
+      { q: 'Is our sensitive company data kept confidential?', a: 'Strictly yes. All models operate within secure, isolated environments with full non-disclosure protection. Your proprietary content is never used to train public models.' }
+    ]
+  },
+  {
+    slug: 'software-development',
+    aliases: ['software', 'website-development', 'web-development', 'custom-software'],
+    title: 'Software & Web Development',
+    pageTitle: 'Software & Web Development Services | Velvora Solutions',
+    metaDesc: 'Resilient full-stack web applications, React interfaces, cloud microservices, and accessible modern interfaces designed for enterprise reliability by Velvora Solutions.',
+    heading: 'Software & Web Development: Smarter, Scalable Digital Architecture',
+    icon: 'Code',
+    short: 'Resilient full-stack web applications, scalable cloud architectures, and accessible modern interfaces designed for enterprise reliability.',
+    buttonText: 'Build Your Application',
+    overview:
+      'Digital products demand uncompromising stability, responsive user experiences, and universal accessibility from day one. Velvora engineers bespoke web applications, enterprise portals, cloud microservices, and content platforms using modern React, Node.js, Python, and cloud infrastructure. We bridge technical precision with accessible design systems to deliver platforms that perform at global scale.',
+    whatWeOffer: [
+      { title: 'Custom Web Applications', desc: 'High-performance single-page and server-rendered web applications built on React and modern frameworks.' },
+      { title: 'Accessible UI Systems & Design Systems', desc: 'Enterprise component libraries strictly compliant with WCAG 2.2 AA standards and ARIA best practices.' },
+      { title: 'Cloud APIs & Microservices', desc: 'Scalable RESTful and GraphQL backend architectures engineered for high-concurrency content delivery.' },
+      { title: 'CMS & Publishing Platforms', desc: 'Headless CMS implementations, custom publishing portals, and editorial workflow applications.' },
+      { title: 'Legacy Modernization', desc: 'Refactoring outdated codebases into modular, testable, and cloud-native microservices.' },
+      { title: 'Security & DevOps', desc: 'Automated CI/CD deployment pipelines, containerization (Docker), and cloud infrastructure management.' }
+    ],
+    benefits: [
+      'Accessible by design across all assistive devices',
+      'Scalable cloud architecture engineered for enterprise growth',
+      'Rapid release cycles powered by modern CI/CD automation',
+      'Clean, maintainable, and fully documented source code',
+      'Zero vendor lock-in with open, modern standards'
+    ],
+    process: [
+      { step: '1. Discovery & Architecture', desc: 'Technical requirements gathering, system architecture planning, and UX wireframing.' },
+      { step: '2. Agile Sprint Delivery', desc: 'Rapid, iterative sprint cycles with continuous demo reviews and automated testing.' },
+      { step: '3. Accessibility & Security QA', desc: 'Full automated and manual screen-reader auditing alongside penetration and load testing.' },
+      { step: '4. Production Deployment', desc: 'Zero-downtime deployment to your preferred cloud environment (AWS, Azure, Vercel).' },
+      { step: '5. Ongoing SLA Support', desc: 'Continuous monitoring, performance tuning, and technical maintenance.' }
+    ],
+    faqs: [
+      { q: 'What tech stack does your development team specialize in?', a: 'Our core stack includes React, TypeScript, Next.js, Node.js, Express, Python/FastAPI, PostgreSQL, and modern cloud deployment architectures.' },
+      { q: 'Do you ensure web applications are WCAG accessible?', a: 'Yes. Accessibility is embedded into our development process, from keyboard navigability and ARIA landmarks to screen-reader verification with JAWS and NVDA.' },
+      { q: 'Can you work with our existing in-house engineering team?', a: 'Absolutely. We offer dedicated team augmentation, specialized accessibility consulting, and full turnkey project delivery.' }
+    ]
+  },
+  {
+    slug: 'data-analytics',
+    aliases: ['analytics', 'business-intelligence', 'bi', 'data'],
+    title: 'Data Analytics & Business Intelligence',
+    pageTitle: 'Data Analytics & Business Intelligence Services | Velvora Solutions',
+    metaDesc: 'Executive telemetry dashboards, predictive modeling, ETL data pipelines, and actionable business intelligence engineered by Velvora Solutions.',
+    heading: 'Data Analytics & BI: Turn Complex Data into Decisive Action',
+    icon: 'BarChart3',
+    short: 'Executive telemetry dashboards, predictive modeling, ETL data pipelines, and actionable business intelligence that turn data into decisions.',
+    buttonText: 'Unlock Your Data',
+    overview:
+      'Enterprises and publishers generate massive volumes of reader telemetry, operational data, and financial transactions. Without structured analysis, valuable insights remain trapped in silos. Velvora designs end-to-end data pipelines, predictive models, and interactive executive dashboards that transform complex numbers into strategic clarity and measurable growth.',
+    whatWeOffer: [
+      { title: 'Executive BI Dashboards', desc: 'Real-time interactive visualizations and KPI tracking built on Power BI, Tableau, or custom React interfaces.' },
+      { title: 'ETL Data Pipeline Engineering', desc: 'Automated data extraction, cleaning, transformation, and warehouse loading from disparate enterprise sources.' },
+      { title: 'Publishing & Content Telemetry', desc: 'Reader engagement analytics, format adoption tracking, and royalty accounting intelligence.' },
+      { title: 'Predictive Modeling & Forecasting', desc: 'Machine learning algorithms forecasting demand trends, customer churn, and inventory requirements.' },
+      { title: 'Data Cleaning & Normalization', desc: 'Standardizing messy legacy databases into clean, query-ready enterprise repositories.' },
+      { title: 'Conversion & ROI Analytics', desc: 'Deep-funnel attribution and user journey tracking to optimize marketing and operational spend.' }
+    ],
+    benefits: [
+      'Real-time visibility into mission-critical KPIs',
+      'Automated reporting saving hundreds of manual staff hours',
+      'Data-backed strategic decision-making with high confidence',
+      'Unified single source of truth across all business departments',
+      'Accessible, color-blind-compliant dashboard visualizations'
+    ],
+    process: [
+      { step: '1. Data Audit', desc: 'We inventory your data sources, schemas, and analytical requirements.' },
+      { step: '2. Pipeline Engineering', desc: 'We build secure, automated ETL connectors to ingest and clean raw data.' },
+      { step: '3. Modeling & Visual Design', desc: 'We structure dimensional models and design intuitive, accessible dashboards.' },
+      { step: '4. Validation & Training', desc: 'We verify metrics accuracy against source records and train your team on dashboard usage.' },
+      { step: '5. Automated Telemetry', desc: 'Scheduled automated refreshes and alert notifications when key thresholds are reached.' }
+    ],
+    faqs: [
+      { q: 'Can you connect to our custom proprietary databases?', a: 'Yes. We engineer custom API connectors, SQL queries, and webhook listeners for proprietary databases, CRM systems, and cloud storage buckets.' },
+      { q: 'Are your dashboard visualizations accessible for color-blind users?', a: 'Yes. We apply Universal Design principles, utilizing high-contrast color palettes, textural distinctions, and assistive-technology-compatible data tables.' },
+      { q: 'How often can our dashboards refresh?', a: 'Dashboards can be configured for real-time streaming, hourly micro-batches, or daily automated refreshes based on your operational needs.' }
+    ]
+  },
+  {
+    slug: 'digital-marketing',
+    aliases: ['marketing', 'seo', 'seo-optimization', 'digital-marketing-services'],
+    title: 'Digital Marketing & Growth',
+    pageTitle: 'Digital Marketing & SEO Services | Velvora Solutions',
+    metaDesc: 'Technical SEO audits, structured schema markup, omnichannel growth campaigns, content marketing, and conversion telemetry crafted by Velvora Solutions.',
+    heading: 'Digital Marketing & Growth: Reach Global Audiences with Measurable Impact',
+    icon: 'Megaphone',
+    short: 'Data-driven SEO, strategic omnichannel campaigns, content marketing, and conversion telemetry crafted to expand reach and drive measurable ROI.',
+    buttonText: 'Grow Your Audience',
+    overview:
+      'High-quality content deserves an engaged audience. In an era of algorithm shifts and crowded search results, organic discovery requires technical precision, structured data markup, and authentic audience engagement. Velvora delivers comprehensive digital marketing solutions that combine technical SEO, content strategy, paid advertising, and attribution analytics to drive sustainable growth.',
+    whatWeOffer: [
+      { title: 'Technical SEO & Rich Snippets', desc: 'Deep technical audits, crawlability optimization, core web vitals remediation, and JSON-LD schema markup.' },
+      { title: 'Search Engine Marketing (PPC)', desc: 'High-intent Google Search and display advertising campaigns focused on low acquisition costs and high ROI.' },
+      { title: 'Omnichannel Social Media Strategy', desc: 'Strategic audience building across LinkedIn, X, Meta channels, and specialized professional communities.' },
+      { title: 'Content Marketing & Thought Leadership', desc: 'Authoritative white papers, educational articles, and case snapshots that establish brand credibility.' },
+      { title: 'Conversion Rate Optimization (CRO)', desc: 'A/B testing, heatmap analysis, and friction-free user journeys that convert visitors into active clients.' },
+      { title: 'Attribution & Performance Telemetry', desc: 'Transparent reporting tracking cost-per-lead, pipeline attribution, and lifetime client value.' }
+    ],
+    benefits: [
+      'Higher organic search rankings for competitive commercial keywords',
+      'Consistent inbound lead generation from qualified prospects',
+      'Lower cost-per-acquisition through continuous campaign optimization',
+      'Enhanced brand authority and industry thought leadership',
+      'Transparent, data-backed ROI reporting with zero vanity metrics'
+    ],
+    process: [
+      { step: '1. Landscape Audit', desc: 'We analyze your website health, competitor keywords, and current conversion funnels.' },
+      { step: '2. Strategy Roadmap', desc: 'We define target audience personas, high-intent keyword targets, and channel allocations.' },
+      { step: '3. Technical & Content Setup', desc: 'We fix on-page crawl issues, implement structured schemas, and craft campaign assets.' },
+      { step: '4. Campaign Launch', desc: 'We deploy multi-channel campaigns with real-time conversion tracking and budget guardrails.' },
+      { step: '5. Analyze & Scale', desc: 'Continuous testing and weekly optimizations to scale high-performing channels.' }
+    ],
+    faqs: [
+      { q: 'How does technical SEO benefit our publishing or tech platform?', a: 'Technical SEO ensures search engines index every title, paper, and service page accurately. Implementing rich JSON-LD schemas enables Google Rich Snippets, boosting click-through rates by up to 30%.' },
+      { q: 'Do you provide regular progress and ROI reports?', a: 'Yes. Clients receive real-time dashboard access alongside monthly executive briefing reports highlighting organic rankings, traffic growth, and generated leads.' },
+      { q: 'Can you work with our existing marketing and editorial team?', a: 'Yes. We collaborate seamlessly with internal teams, handling technical SEO, ad operations, and specialized content while aligning with your brand voice.' }
+    ]
   },
 ];
 

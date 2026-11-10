@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Info } from 'lucide-react';
 
 export const Eyebrow = ({ children, dark }) => (
@@ -106,7 +106,7 @@ export function PageHero({ eyebrow, title, children, crumbs = [] }) {
               strokeWidth="1.2"
               strokeDasharray="3 5"
             />
-            
+
             {/* Holographic Radar / Telemetry Compass behind right-center */}
             <circle cx="1060" cy="165" r="95" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="1" strokeDasharray="3 6" />
             <circle cx="1060" cy="165" r="140" stroke="rgba(168, 85, 247, 0.25)" strokeWidth="1" strokeDasharray="2 8" />
@@ -187,7 +187,27 @@ export function CtaBand({
   primaryBtnOnClick,
   secondaryBtnText = 'Explore Our Services',
   secondaryBtnTo = '/services',
+  secondaryBtnOnClick,
 }) {
+  const { pathname } = useLocation();
+
+  const handleSecondaryClick = (e) => {
+    if (secondaryBtnOnClick) {
+      secondaryBtnOnClick(e);
+      return;
+    }
+    // If the user is already on the target page (e.g., clicking 'Explore Our Services' while on /services)
+    if (secondaryBtnTo === pathname || (secondaryBtnTo.startsWith('/services') && pathname === '/services')) {
+      e.preventDefault();
+      const catalog = document.getElementById('services-catalog') || document.getElementById('services-glance') || document.getElementById('main');
+      if (catalog) {
+        catalog.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <section className="cta netbg">
       <div className="container cta__in">
@@ -206,7 +226,11 @@ export function CtaBand({
             </Link>
           )}
           {secondaryBtnTo && (
-            <Link to={secondaryBtnTo} className="btn btn--outline">
+            <Link
+              to={secondaryBtnTo}
+              className="btn btn--outline"
+              onClick={handleSecondaryClick}
+            >
               {secondaryBtnText} <ArrowRight size={18} aria-hidden="true" />
             </Link>
           )}
