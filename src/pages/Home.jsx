@@ -130,10 +130,26 @@ export default function Home() {
                 <span>{currentSlide.tag || currentSlide.title}</span>
               </div>
 
-              {/* Bold Stacked Display Headline */}
+              {/* Bold Stacked Display Headline with 1st Word Static Blue & Last Word 7-Shade Rainbow */}
               <h1 id="hero-title" className="hero-ref-headline" key={`head-${heroIdx}`}>
                 <span className="hero-ref-headline__prefix">{currentSlide.headlinePrefix}</span>
-                <span className="hero-ref-headline__accent">{currentSlide.headlineAccent}</span>
+                <span className="hero-ref-headline__accent">
+                  {(() => {
+                    const text = (currentSlide.headlineAccent || '').trim();
+                    const words = text.split(/\s+/);
+                    if (words.length <= 1) {
+                      return <span className="hero-accent-rainbow">{text}</span>;
+                    }
+                    const firstPart = words.slice(0, -1).join(' ');
+                    const lastWord = words[words.length - 1];
+                    return (
+                      <>
+                        <span className="hero-accent-blue">{firstPart}</span>
+                        <span className="hero-accent-rainbow">{lastWord}</span>
+                      </>
+                    );
+                  })()}
+                </span>
               </h1>
 
               {/* Supporting Editorial Description */}
