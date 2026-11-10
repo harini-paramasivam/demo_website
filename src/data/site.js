@@ -20,6 +20,9 @@ export const company = {
   hours: 'Monday to Saturday: 9:00 AM – 6:30 PM',
   founderLinkedin: 'https://www.linkedin.com/in/iyshwariya-senthil-bb7707287/',
   linkedinCompany: 'https://www.linkedin.com/company/118444302/',
+  instagram: 'https://www.instagram.com/velvora_solutions?srtk=MWh0OHlvNmhlaXZwdg==',
+  facebook: 'https://www.facebook.com/share/18faJ9mXpG/',
+  youtube: 'https://www.youtube.com/@VelvoraSolutions',
   aboutLine: 'Velvora Solutions: ePublishing, XML, and Digital Accessibility Services.',
   description:
     'Velvora Solutions delivers ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing services for publishers, universities, enterprises, and government organizations worldwide.',
@@ -147,7 +150,7 @@ export const homeServices = [
   {
     id: 'digital-accessibility',
     title: 'Digital Accessibility',
-    desc: 'Accessible EPUB, web, PDF, Word, PowerPoint, and Excel files that meet WCAG, PDF/UA, and Section 508, plus training and consulting.',
+    desc: 'Accessible EPUB, web, PDF, Word, PowerPoint, and Excel files that meet WCAG, PDF/UA, and Section 508 standards.',
     btnText: 'Explore Digital Accessibility',
     to: '/services/digital-accessibility',
     icon: 'FileCheck2',
@@ -176,17 +179,6 @@ export const homeServices = [
     tag: 'Audience Amplification',
     badge: 'SEO · Content · Multi-Channel',
     image: '/card-marketing.jpg'
-  },
-  {
-    id: 'training-development',
-    title: 'Training and Skill Development',
-    desc: 'Workshops, certification support, and hands‑on sessions in accessibility, publishing workflows, XML, AI automation, software development, data analytics, and digital marketing. We help your team build practical skills, stay current with evolving standards, and apply best practices directly to real projects.',
-    btnText: 'Explore Training',
-    to: '/services/accessibility-training-and-consulting',
-    icon: 'GraduationCap',
-    tag: 'Hands-on Capacity Building',
-    badge: 'CPACC Prep · Workflows · Tooling',
-    image: '/card-training.jpg'
   }
 ];
 
@@ -619,7 +611,21 @@ export const nav = [
       { label: 'Metadata, Indexing and Taxonomy', to: '/services/metadata-indexing-and-taxonomy' },
       { label: 'OCR and Digitization', to: '/services/ocr-and-digitization' },
       { label: 'Captioning, Transcription and Audio Description', to: '/services/captioning-transcription-and-audio-description' },
-      { label: 'Accessibility Training and Consulting', to: '/services/accessibility-training-and-consulting' },
+    ],
+  },
+  {
+    label: 'Training',
+    to: '/training',
+    items: [
+      { label: 'All Programs & Internships', to: '/training' },
+      { label: '⭐ Internship Program (Live Projects)', to: '/training' },
+      { label: 'ePublishing Training', to: '/training' },
+      { label: 'AI/ML & Generative AI Training', to: '/training' },
+      { label: 'Data Analytics & Business Intelligence', to: '/training' },
+      { label: 'Digital Accessibility Training', to: '/training' },
+      { label: 'Software Development Training', to: '/training' },
+      { label: 'Digital Marketing Training', to: '/training' },
+      { label: 'Apply / Enroll Now', to: '/training#enrollment-form-section' },
     ],
   },
   { label: 'Solutions', to: '/solutions' },
@@ -1176,63 +1182,6 @@ export const services = [
     faqs: [
       { q: 'What is the difference between captions and subtitles?', a: 'Captions include dialogue and important sounds, such as music or laughter, for people who cannot hear the audio. Subtitles usually translate or transcribe only the speech.' },
       { q: 'What is audio description?', a: 'Audio description is spoken narration of important visual information, such as actions, scenes, and on-screen text, for people who cannot see the video.' },
-    ],
-  },
-  {
-    slug: 'accessibility-training-and-consulting',
-    title: 'Accessibility Training and Consulting',
-    pageTitle: 'Accessibility Training and Consulting | Velvora Solutions',
-    metaDesc: 'Hands-on accessibility training, workshops, and expert consulting for publishers, universities, and organizations. Build accessibility skills inside your team.',
-    heading: 'Accessibility Training and Consulting: Build Skills That Last',
-    icon: 'GraduationCap',
-    short: 'Practical workshops and expert advice to build accessibility skills inside your team.',
-    buttonText: 'Book a Training Consultation',
-    overview:
-      "Remediation fixes today's files. Training helps your team create accessible content from the start. Velvora's accessibility experts offer practical, role-based training and consulting that help organizations build in-house skills, reduce rework, and meet accessibility goals with confidence.",
-    trainingPrograms: [
-      { name: '1. Accessibility Fundamentals', desc: 'Introduction to disability, assistive technology, and the principles of accessible design. Ideal for all staff.' },
-      { name: '2. Accessible Word, PowerPoint and Excel', desc: 'Hands-on workshop covering styles, headings, alt text, tables, reading order, and checkers.' },
-      { name: '3. Accessible PDF', desc: 'Tagging, reading order, forms, and PDF/UA checks using Adobe Acrobat and PAC.' },
-      { name: '4. EPUB Accessibility', desc: 'Creating accessible EPUB 3 files, accessibility metadata, and EPUB Accessibility 1.1 requirements.' },
-      { name: '5. Web Accessibility for Designers and Developers', desc: 'WCAG 2.2, semantic HTML, ARIA, keyboard support, colour contrast, and testing.' },
-      { name: '6. Writing Alt Text and Image Descriptions', desc: 'How to describe images, charts, diagrams, and maps clearly and usefully.' },
-      { name: '7. Accessibility for Publishers and Editors', desc: 'Workflow changes, author guidelines, vendor requirements, and how to prepare for accessibility regulations.' },
-      { name: '8. Screen Reader Experience Workshop', desc: 'Live demonstrations using JAWS, NVDA, and VoiceOver, so your team can see and hear how users experience content.' },
-    ],
-    trainingFormats: [
-      'Live online sessions',
-      'On-site workshops',
-      'Recorded self-paced modules',
-      'Custom, role-based programs for your tools and workflows',
-      'Train-the-trainer programs',
-    ],
-    consultingServices: [
-      { title: 'Accessibility Maturity Assessment', desc: 'A review of your current policies, workflows, and gaps.' },
-      { title: 'Accessibility Roadmap and Strategy', desc: 'A practical plan with priorities, timelines, and responsibilities.' },
-      { title: 'Workflow Integration', desc: 'Building accessibility into your editorial, production, and procurement processes.' },
-      { title: 'Author and Vendor Guidelines', desc: 'Clear instructions for contributors and suppliers.' },
-      { title: 'Template Development', desc: 'Accessible Word, PowerPoint, Excel, and InDesign templates.' },
-      { title: 'Compliance Support', desc: 'Guidance on WCAG, Section 508, ADA, AODA, EN 301 549, and the European Accessibility Act.' },
-      { title: 'VPAT / ACR Preparation', desc: 'Accessibility Conformance Reports for sales and procurement.' },
-      { title: 'Accessibility Policy and Statement Drafting', desc: 'Formal accessibility commitments and web statements.' },
-    ],
-    whoItsFor: 'Publishers, editorial teams, designers, developers, content authors, instructional designers, HR and procurement teams, and leadership.',
-    whatParticipantsGet: [
-      'Practical skills they can use the same day',
-      'Checklists, templates, and reference guides',
-      'Certificate of participation [optional]',
-      'Follow-up support for questions',
-    ],
-    whyVelvora: [
-      'Trainers who do accessibility work every day, not just teach it',
-      'Real examples from publishing and enterprise projects',
-      'Training tailored to your tools and workflows',
-      'Clear next steps after every session',
-    ],
-    faqs: [
-      { q: 'Do participants need any prior knowledge?', a: 'No. We offer beginner, intermediate, and advanced sessions.' },
-      { q: 'Can you customize the training for our team?', a: 'Yes. We tailor content to your roles, tools, and content types.' },
-      { q: 'Do you offer follow-up support?', a: 'Yes. We can provide Q&A sessions, document reviews, and ongoing consulting.' },
     ],
   },
   {

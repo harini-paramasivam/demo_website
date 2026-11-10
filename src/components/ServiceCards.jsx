@@ -12,7 +12,6 @@ const buttonLabels = {
   'metadata-indexing-and-taxonomy': 'Explore Metadata and Indexing',
   'ocr-and-digitization': 'Explore OCR and Digitization',
   'captioning-transcription-and-audio-description': 'Explore Captioning Services',
-  'accessibility-training-and-consulting': 'Explore Training and Consulting',
 };
 
 export default function ServiceCards({ limit }) {

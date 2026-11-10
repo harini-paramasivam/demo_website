@@ -12,6 +12,7 @@ import ServicesOverview from './pages/ServicesOverview.jsx';
 import SolutionsOverview from './pages/SolutionsOverview.jsx';
 import PartnerWithUs from './pages/PartnerWithUs.jsx';
 import Insights from './pages/Insights.jsx';
+import Training from './pages/Training.jsx';
 import ServicePage from './pages/ServicePage.jsx';
 import ResourcePage from './pages/ResourcePage.jsx';
 import Contact from './pages/Contact.jsx';
@@ -54,6 +55,9 @@ export default function App() {
           <Route path="/partner" element={<PartnerWithUs />} />
           <Route path="/partner-with-us" element={<PartnerWithUs />} />
           <Route path="/services" element={<ServicesOverview />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/training-and-internships" element={<Training />} />
+          <Route path="/services/accessibility-training-and-consulting" element={<Training />} />
           <Route path="/solutions" element={<SolutionsOverview />} />
           <Route path="/solutions-overview" element={<SolutionsOverview />} />
           <Route path="/services/:slug" element={<ServicePage />} />

@@ -102,17 +102,10 @@ const serviceGroups = [
     items: [
       {
         title: 'Digital Accessibility Services',
-        desc: 'EPUB 2 and 3, web, PDF, Word, PowerPoint, and Excel.',
+        desc: 'EPUB 2 and 3, web, PDF, Word, PowerPoint, and Excel remediation.',
         to: '/services/digital-accessibility',
         icon: FileCheck2,
         badge: 'WCAG 2.2 · PDF/UA · Section 508',
-      },
-      {
-        title: 'Accessibility Training and Consulting',
-        desc: 'Workshops and expert advice to build skills inside your team.',
-        to: '/services/accessibility-training-and-consulting',
-        icon: GraduationCap,
-        badge: 'Workshops · CPACC · Consulting',
       },
     ],
   },
@@ -284,11 +277,43 @@ export default function ServicesOverview() {
             })}
           </div>
 
-          {/* Centered CTA Section Button */}
-          <div style={{ textAlign: 'center', marginTop: '4rem' }}>
+          {/* Centered CTA Section Button & Dedicated Training Pathway */}
+          <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
             <Link to="/contact" className="btn btn--orange btn--lg" style={{ padding: '16px 36px', fontSize: '1.1rem' }}>
               <span>Discuss Your Project</span>
               <ArrowRight size={20} aria-hidden="true" />
+            </Link>
+          </div>
+
+          {/* Dedicated Training & Internship Banner */}
+          <div style={{
+            marginTop: '3.5rem',
+            background: 'linear-gradient(135deg, rgba(8, 20, 50, 0.85) 0%, rgba(13, 30, 76, 0.95) 100%)',
+            border: '1px solid rgba(56, 189, 248, 0.25)',
+            borderRadius: '16px',
+            padding: '2rem 2.5rem',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '1.5rem',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)'
+          }}>
+            <div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#38bdf8', fontSize: '0.82rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }}>
+                <GraduationCap size={16} />
+                <span>Velvora Academy & Skill Lab</span>
+              </div>
+              <h4 style={{ color: '#ffffff', fontSize: '1.35rem', fontWeight: 700, margin: '0 0 6px 0' }}>
+                Looking for Professional Training or Student Internships?
+              </h4>
+              <p style={{ color: '#94a3b8', fontSize: '0.95rem', margin: 0, maxWidth: '640px' }}>
+                We provide hands-on training across ePublishing, AI/ML, Generative AI, Data Analytics, Accessibility, and Software Development with 100% live client project exposure.
+              </p>
+            </div>
+            <Link to="/training" className="btn btn--orange" style={{ whiteSpace: 'nowrap' }}>
+              <span>Explore Training & Internships</span>
+              <ArrowRight size={17} aria-hidden="true" />
             </Link>
           </div>
         </div>
@@ -300,12 +325,8 @@ export default function ServicesOverview() {
         text="Whether you need XML structuring, accessible EPUBs, custom software, or marketing campaigns, our team will provide a transparent proposal within one business day."
         primaryBtnText="Discuss Your Project"
         primaryBtnTo="/contact"
-        secondaryBtnText="Explore Our Services"
-        secondaryBtnTo="/services#services-catalog"
-        secondaryBtnOnClick={(e) => {
-          e.preventDefault();
-          document.getElementById('services-catalog')?.scrollIntoView({ behavior: 'smooth' });
-        }}
+        secondaryBtnText="Explore Industry Solutions"
+        secondaryBtnTo="/solutions"
       />
     </>
   );

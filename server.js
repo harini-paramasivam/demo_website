@@ -198,6 +198,181 @@ Reply-To: ${email.trim()}
 });
 
 // -------------------------------------------------------------
+// 1.1 TRAINING & INTERNSHIP ENQUIRY ENDPOINT
+// -------------------------------------------------------------
+app.post('/api/training-enquiry', async (req, res) => {
+  try {
+    const {
+      fullName,
+      email,
+      phone,
+      applicantType,
+      institution,
+      degree,
+      program,
+      trainingMode,
+      duration,
+      message
+    } = req.body || {};
+
+    // Validation
+    if (!fullName || !fullName.trim()) {
+      return res.status(400).json({ success: false, error: 'Full name is required.' });
+    }
+    if (!email || !email.trim()) {
+      return res.status(400).json({ success: false, error: 'Email address is required.' });
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      return res.status(400).json({ success: false, error: 'Please provide a valid email address.' });
+    }
+    if (!phone || !phone.trim()) {
+      return res.status(400).json({ success: false, error: 'Phone or WhatsApp number is required.' });
+    }
+
+    const referenceId = `VEL-TRN-${Date.now().toString().slice(-6)}`;
+    const chosenProgram = (program && program.trim()) ? program.trim() : 'Internship Program (Live Industry Projects)';
+    const cleanMode = (trainingMode && trainingMode.trim()) ? trainingMode.trim() : 'Online Virtual Live';
+    const cleanDuration = (duration && duration.trim()) ? duration.trim() : '3 Months';
+    const cleanType = (applicantType && applicantType.trim()) ? applicantType.trim() : 'Student';
+
+    // Persist to local JSON log
+    try {
+      const enqFile = path.join(process.cwd(), 'data', 'training-enquiries.json');
+      let enquiries = [];
+      if (fs.existsSync(enqFile)) {
+        try {
+          enquiries = JSON.parse(fs.readFileSync(enqFile, 'utf8'));
+        } catch (e) {
+          enquiries = [];
+        }
+      }
+      enquiries.unshift({
+        referenceId,
+        fullName: fullName.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
+        applicantType: cleanType,
+        institution: (institution || '').trim(),
+        degree: (degree || '').trim(),
+        program: chosenProgram,
+        trainingMode: cleanMode,
+        duration: cleanDuration,
+        message: (message || '').trim(),
+        submittedAt: new Date().toISOString()
+      });
+      fs.writeFileSync(enqFile, JSON.stringify(enquiries.slice(0, 500), null, 2), 'utf8');
+    } catch (saveErr) {
+      console.warn('Could not save training enquiry to JSON:', saveErr.message);
+    }
+
+    // Prepare Email
+    const recipient = process.env.EMAIL_TO || 'harinip0301@gmail.com';
+    const sender = process.env.EMAIL_FROM || `"Velvora Academy" <${process.env.SMTP_USER || 'no-reply@velvorasolutions.com'}>`;
+
+    const htmlContent = `
+      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 650px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <div style="background: linear-gradient(135deg, #070e24 0%, #0d1e4c 100%); padding: 24px 28px; color: #ffffff;">
+          <div style="display: inline-block; background: rgba(56, 189, 248, 0.2); color: #38bdf8; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; margin-bottom: 8px;">
+            Academy & Training Admission
+          </div>
+          <h2 style="margin: 0 0 6px 0; font-size: 22px; font-weight: 700; color: #ffffff;">New Training / Internship Enquiry</h2>
+          <p style="margin: 0; font-size: 14px; color: #93c5fd;">Ref ID: <strong style="color: #ffffff;">${referenceId}</strong> | Course: <strong style="color: #ffffff;">${escapeHtml(chosenProgram)}</strong></p>
+        </div>
+
+        <div style="padding: 28px;">
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 13px; width: 140px;"><strong>Applicant Name:</strong></td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #0f172a; font-size: 14px; font-weight: 600;">${escapeHtml(fullName.trim())}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 13px;"><strong>Email Address:</strong></td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #0284c7; font-size: 14px;">
+                <a href="mailto:${escapeHtml(email.trim())}" style="color: #0284c7; text-decoration: none;">${escapeHtml(email.trim())}</a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 13px;"><strong>Phone / WhatsApp:</strong></td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #0f172a; font-size: 14px;">
+                <a href="tel:${escapeHtml(phone.trim().replace(/\s+/g, ''))}" style="color: #0f172a; text-decoration: none;">${escapeHtml(phone.trim())}</a>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 13px;"><strong>Applicant Type:</strong></td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #0f172a; font-size: 14px;">${escapeHtml(cleanType)}</td>
+            </tr>
+            ${institution ? `
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 13px;"><strong>College / Company:</strong></td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #0f172a; font-size: 14px;">${escapeHtml(institution.trim())}</td>
+            </tr>` : ''}
+            ${degree ? `
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 13px;"><strong>Degree & Branch:</strong></td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #0f172a; font-size: 14px;">${escapeHtml(degree.trim())}</td>
+            </tr>` : ''}
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 13px;"><strong>Program Selected:</strong></td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #f97316; font-size: 14px; font-weight: 700;">${escapeHtml(chosenProgram)}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 13px;"><strong>Learning Mode:</strong></td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #0f172a; font-size: 14px;">${escapeHtml(cleanMode)}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 13px;"><strong>Preferred Duration:</strong></td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #0f172a; font-size: 14px;">${escapeHtml(cleanDuration)}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; color: #64748b; font-size: 13px;"><strong>Submitted At:</strong></td>
+              <td style="padding: 10px 0; color: #0f172a; font-size: 14px;">${new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' })} IST</td>
+            </tr>
+          </table>
+
+          ${message && message.trim() ? `
+          <div style="background: #f8fafc; border-left: 4px solid #38bdf8; padding: 16px 20px; border-radius: 6px; margin-top: 16px;">
+            <p style="margin: 0 0 8px 0; font-size: 12px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px;">Candidate Career Goals / Message</p>
+            <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #1e293b; white-space: pre-wrap;">${escapeHtml(message.trim())}</p>
+          </div>` : ''}
+        </div>
+
+        <div style="background: #f1f5f9; padding: 14px 28px; text-align: center; font-size: 12px; color: #64748b; border-top: 1px solid #e2e8f0;">
+          Direct reply to this email will respond to: <strong>${escapeHtml(email.trim())}</strong>
+        </div>
+      </div>
+    `;
+
+    try {
+      const transporter = createTransporter();
+      await transporter.sendMail({
+        from: sender,
+        to: recipient,
+        replyTo: email.trim(),
+        subject: `[Training Admission] ${escapeHtml(chosenProgram)} - ${escapeHtml(fullName.trim())} (${referenceId})`,
+        text: `New Training Enquiry (${referenceId})\nName: ${fullName.trim()}\nEmail: ${email.trim()}\nPhone: ${phone.trim()}\nProgram: ${chosenProgram}\nMode: ${cleanMode}`,
+        html: htmlContent
+      });
+    } catch (mailErr) {
+      console.warn('SMTP Send Warning for Training Enquiry (logged to JSON):', mailErr.message);
+    }
+
+    return res.status(200).json({
+      success: true,
+      referenceId,
+      message: 'Your training enrollment enquiry has been submitted successfully.'
+    });
+
+  } catch (error) {
+    console.error('Training Enquiry Error:', error.message);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Failed to submit enquiry. Please try again or contact us directly.'
+    });
+  }
+});
+
+// -------------------------------------------------------------
 // 2. CAREER APPLICATION ENDPOINT (WITH RESUME ATTACHMENT)
 // -------------------------------------------------------------
 app.post('/api/career', (req, res) => {

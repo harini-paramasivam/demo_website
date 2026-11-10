@@ -22,6 +22,8 @@ export class KnowledgeCrawler {
   constructor() {
     this.sourceFiles = [
       path.join(ROOT_DIR, 'src', 'data', 'site.js'),
+      path.join(ROOT_DIR, 'src', 'data', 'trainingData.js'),
+      path.join(ROOT_DIR, 'src', 'pages', 'Training.jsx'),
       path.join(ROOT_DIR, 'src', 'pages', 'Careers.jsx'),
       path.join(ROOT_DIR, 'src', 'pages', 'Contact.jsx'),
       path.join(ROOT_DIR, 'src', 'pages', 'AccessibilityStatement.jsx'),
@@ -78,9 +80,15 @@ Key Performance Metrics:
 Offices:
 • Head Office & Operations: Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India
 • Branch Office: Velvora Solutions, Porur, Chennai, Tamil Nadu, India
-Contact: ${company.email} | Phone: ${company.phone} | Office Hours: ${company.hours}`,
-        topics: ['About Velvora', 'Content and Technology Partner', 'Global Delivery', 'Company Overview', 'Key Metrics'],
-        keywords: ['velvora', 'velvora solutions', 'home', 'overview', 'about velvora', 'content partner', 'cuddalore', 'chennai', 'metrics']
+Contact: ${company.email} | Phone: ${company.phone} | Office Hours: ${company.hours}
+Official Social Media Channels:
+• LinkedIn: ${company.linkedinCompany || 'https://www.linkedin.com/company/118444302/'}
+• Instagram: ${company.instagram || 'https://www.instagram.com/velvora_solutions?srtk=MWh0OHlvNmhlaXZwdg=='}
+• Facebook: ${company.facebook || 'https://www.facebook.com/share/18faJ9mXpG/'}
+• YouTube: ${company.youtube || 'https://www.youtube.com/@VelvoraSolutions'}
+• Founder LinkedIn (Iyshwariya Senthil): ${company.founderLinkedin || 'https://www.linkedin.com/in/iyshwariya-senthil-bb7707287/'}`,
+        topics: ['About Velvora', 'Content and Technology Partner', 'Global Delivery', 'Company Overview', 'Key Metrics', 'Social Media', 'Instagram', 'Facebook', 'YouTube', 'LinkedIn'],
+        keywords: ['velvora', 'velvora solutions', 'home', 'overview', 'about velvora', 'content partner', 'cuddalore', 'chennai', 'metrics', 'social media', 'instagram', 'facebook', 'youtube', 'linkedin']
       });
 
       // B. COMPANY OVERVIEW & MISSION
@@ -228,6 +236,45 @@ Key Topics Explored:
         topics: ['Knowledge Hub', 'Podcasts', 'Articles', 'Case Studies', 'Best Practices'],
         keywords: ['insights', 'blog', 'podcasts', 'videos', 'knowledge hub', 'case studies', 'articles', 'news']
       });
+
+      // H. TRAINING & INTERNSHIPS (Velvora Academy)
+      try {
+        const trainingPath = path.join(ROOT_DIR, 'src', 'data', 'trainingData.js');
+        const trainingUrl = `file://${trainingPath.replace(/\\/g, '/')}?t=${Date.now()}`;
+        const trainingModule = await import(trainingUrl);
+        const programs = trainingModule.trainingPrograms || [];
+
+        const progListText = programs.map(p => 
+          `• **${p.title}** (${p.tag} | ${p.duration})\n  - Level: ${p.level} | Mode: ${p.mode}\n  - Overview: ${p.lead}\n  - Advanced Topics: ${p.advancedTopics.join('; ')}\n  - Tools Mastered: ${p.toolsLearned.join(', ')}\n  - Career Roles: ${p.careerRoles.join(', ')}`
+        ).join('\n\n');
+
+        documents.push({
+          id: 'page-training-academy',
+          title: 'Velvora Academy: Training Programs & Internships',
+          url: '/training',
+          category: 'training',
+          summary: 'Transforming Knowledge into Skills and Skills into Opportunities. Velvora Solutions provides 8 industry-standard training and internship programs with 100% live project exposure across ePublishing, AI/ML, Generative AI, Data Analytics, Digital Marketing, Accessibility, and Software Development.',
+          content: `Velvora Academy & Skill Development Lab:
+Tagline: "Transforming Knowledge into Skills and Skills into Opportunities."
+Delivery Modes: Online Virtual Live Interactive sessions, In-Person Classroom at Cuddalore Head Office (Indhira Nagar) & Chennai Branch Office (Porur), or Hybrid.
+Key Metrics: 2,000+ Training Hours Delivered | 100% Live Project Experience | 8 Specialized Tracks.
+
+Course & Internship Programs Available:
+${progListText}
+
+Flagship Student Internship Program:
+- Target: College students (B.E, B.Tech, BCA, MCA, B.Sc, M.Sc, Diploma, Arts, Science) and aspiring professionals.
+- Eligibility: Enrolled students or freshers seeking real enterprise experience; no prior corporate experience required.
+- Duration: Flexible 1 Month (Fast-Track), 3 Months (Standard), or 6 Months (Comprehensive Capstone).
+- Live Projects: 100% Guaranteed Live Production Project Exposure.
+- Mentorship & Perks: 1-on-1 mentorship from senior architects, verified Certificate of Completion, recommendation letter, and PPO pathways under the G.R.O.W. Framework.
+- Admission & Enquiry: Submit the online enrollment form at /training or email info@velvorasolutions.com / call +91 9500834236.`,
+          topics: ['Training Programs', 'Student Internships', 'ePublishing Training', 'AI ML Training', 'Generative AI Training', 'Data Analytics Training', 'Digital Marketing Training', 'Accessibility Training', 'Software Development Training'],
+          keywords: ['training', 'internship', 'internships', 'courses', 'students', 'mentorship', 'certification', 'academy', 'live projects', 'enroll', 'admission', 'cuddalore', 'chennai']
+        });
+      } catch (tErr) {
+        errorLogs.push({ source: 'trainingData.js', error: tErr.message, time: new Date().toISOString() });
+      }
 
     } catch (err) {
       errorLogs.push({ source: 'site.js', error: err.message, time: new Date().toISOString() });

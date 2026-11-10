@@ -9,6 +9,9 @@ import {
   CheckCircle, 
   ArrowRight, 
   Linkedin,
+  Instagram,
+  Facebook,
+  Youtube,
   Compass,
   Briefcase,
   BookOpen,
@@ -80,6 +83,24 @@ export default function Contact() {
       icon: Linkedin,
       url: company.linkedinCompany || 'https://www.linkedin.com/company/118444302/',
       color: '#0a66c2'
+    },
+    {
+      name: 'Instagram',
+      icon: Instagram,
+      url: company.instagram || 'https://www.instagram.com/velvora_solutions?srtk=MWh0OHlvNmhlaXZwdg==',
+      color: '#e1306c'
+    },
+    {
+      name: 'Facebook',
+      icon: Facebook,
+      url: company.facebook || 'https://www.facebook.com/share/18faJ9mXpG/',
+      color: '#1877f2'
+    },
+    {
+      name: 'YouTube',
+      icon: Youtube,
+      url: company.youtube || 'https://www.youtube.com/@VelvoraSolutions',
+      color: '#ff0000'
     }
   ];
 
