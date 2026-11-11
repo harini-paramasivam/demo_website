@@ -67,7 +67,15 @@ class VoraKnowledgeStore {
   }
 
   setupLiveFileWatcher() {
+    // Never run file watchers during builds, Vercel deployments, or production
+    const isBuild = process.argv.some(arg => arg && (arg.includes('build') || arg.includes('audit')));
+    const isProduction = process.env.NODE_ENV === 'production' || Boolean(process.env.VERCEL) || isBuild;
+    if (isProduction) {
+      return;
+    }
+
     try {
+      this.watchers = this.watchers || [];
       const watchDirs = [
         path.join(__dirname, '..', 'src', 'data'),
         path.join(__dirname, '..', 'src', 'pages')
@@ -75,7 +83,7 @@ class VoraKnowledgeStore {
 
       watchDirs.forEach(dir => {
         if (fs.existsSync(dir)) {
-          fs.watch(dir, { recursive: true }, (eventType, filename) => {
+          const watcher = fs.watch(dir, { recursive: true }, (eventType, filename) => {
             if (filename && (filename.endsWith('.js') || filename.endsWith('.jsx'))) {
               if (this.debounceTimer) clearTimeout(this.debounceTimer);
               this.debounceTimer = setTimeout(async () => {
@@ -84,10 +92,29 @@ class VoraKnowledgeStore {
               }, 1200);
             }
           });
+
+          // Unref watcher so it never prevents the Node.js event loop from exiting cleanly
+          if (watcher && typeof watcher.unref === 'function') {
+            watcher.unref();
+          }
+          this.watchers.push(watcher);
         }
       });
     } catch (wErr) {
       console.warn('VORA Knowledge: File watcher initialization skipped:', wErr.message);
+    }
+  }
+
+  closeWatchers() {
+    if (this.watchers && this.watchers.length > 0) {
+      this.watchers.forEach(w => {
+        try { w.close(); } catch (e) {}
+      });
+      this.watchers = [];
+    }
+    if (this.debounceTimer) {
+      clearTimeout(this.debounceTimer);
+      this.debounceTimer = null;
     }
   }
 
