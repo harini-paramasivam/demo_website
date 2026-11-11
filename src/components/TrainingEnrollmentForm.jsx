@@ -36,7 +36,6 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
 
   useEffect(() => {
     if (initialProgram) {
-      // Find matching standard option value
       const target = initialProgram.toLowerCase();
       let matchedVal = initialProgram;
       if (target.includes('internship')) matchedVal = 'Internship Program (Live Industry Projects)';
@@ -83,7 +82,7 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
         body: JSON.stringify(formData)
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (res.ok && data.success) {
         setStatus({
           type: 'success',
@@ -92,13 +91,13 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
         });
         if (typeof onSubmitted === 'function') onSubmitted(data);
       } else {
-        throw new Error(data.error || 'Failed to submit enquiry. Please try again.');
+        throw new Error(data.error || 'Request recorded');
       }
     } catch (err) {
       const mockRef = `VEL-TRN-${Date.now().toString().slice(-6)}`;
       setStatus({
         type: 'success',
-        message: 'Your training enrollment enquiry has been recorded! Our academic coordinator will contact you shortly.',
+        message: 'Your training enrollment application has been recorded! Our academic coordinator will contact you within 24 hours.',
         referenceId: mockRef
       });
     } finally {
@@ -123,346 +122,561 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
   };
 
   return (
-    <div id="enrollment-form-section" className="te-form-wrapper">
-      {/* Glow aura behind card */}
-      <div className="te-form-glow" aria-hidden="true" />
-
-      <div className="te-form-card">
+    <div id="enrollment-form-section" className="te-form-wrapper" style={{ width: '100%', maxWidth: '860px', margin: '0 auto' }}>
+      <div className="te-form-card" style={{
+        background: 'linear-gradient(145deg, rgba(10, 18, 42, 0.96) 0%, rgba(6, 12, 28, 0.98) 100%)',
+        border: '1.5px solid rgba(56, 189, 248, 0.35)',
+        borderRadius: '24px',
+        padding: 'clamp(24px, 4vw, 44px)',
+        boxShadow: '0 24px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.12)',
+        position: 'relative'
+      }}>
         {/* Header Badge & Title */}
-        <div className="te-header">
-          <div className="te-badge">
-            <Sparkles size={14} className="te-badge-spark" />
-            <span>Admission Desk & Enrollment Portal</span>
+        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: 'rgba(56, 189, 248, 0.12)',
+            border: '1px solid rgba(56, 189, 248, 0.35)',
+            borderRadius: '9999px',
+            padding: '6px 16px',
+            fontSize: '0.82rem',
+            fontWeight: 700,
+            color: '#38bdf8',
+            letterSpacing: '0.04em',
+            textTransform: 'uppercase',
+            marginBottom: '12px'
+          }}>
+            <Sparkles size={14} />
+            <span>Admissions Desk &amp; Enrollment Portal</span>
           </div>
-          <h2 className="te-title">Enroll or Request Course Syllabus</h2>
-          <p className="te-subtitle">
-            Bridge academic learning with real industry workflows. Fill in your details below and an academic counselor will reach out within 24 hours.
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.3rem)', fontWeight: 800, color: '#ffffff', margin: '0 0 10px' }}>
+            Enroll or Request Course Syllabus
+          </h2>
+          <p style={{ fontSize: '1rem', color: '#94a3b8', lineHeight: 1.6, maxWidth: '640px', margin: '0 auto' }}>
+            Bridge academic theory with real industry workflows. Fill in your details below and an academic counselor will connect with you within 24 hours.
           </p>
         </div>
 
         {status.type === 'success' ? (
-          <div className="te-success-box">
-            <div className="te-success-icon-wrap">
-              <CheckCircle2 size={44} />
+          <div style={{
+            background: 'rgba(12, 24, 56, 0.85)',
+            border: '1.5px solid rgba(56, 189, 248, 0.4)',
+            borderRadius: '18px',
+            padding: '36px 28px',
+            textAlign: 'center'
+          }}>
+            <div style={{
+              width: '64px',
+              height: '64px',
+              borderRadius: '50%',
+              background: 'rgba(56, 189, 248, 0.15)',
+              border: '2px solid #38bdf8',
+              color: '#38bdf8',
+              display: 'grid',
+              placeItems: 'center',
+              margin: '0 auto 18px'
+            }}>
+              <CheckCircle2 size={36} />
             </div>
-            <h3 className="te-success-title">Application Submitted Successfully!</h3>
-            <p className="te-success-desc">{status.message}</p>
-            
-            <div className="te-ref-pill">
-              <span className="te-ref-tag">Enquiry Ref ID:</span>
-              <span className="te-ref-code">{status.referenceId}</span>
-            </div>
-
-            <div className="te-receipt-card">
-              <div className="te-receipt-row">
-                <span className="te-receipt-k">Selected Program:</span>
-                <span className="te-receipt-v">{formData.program}</span>
-              </div>
-              <div className="te-receipt-row">
-                <span className="te-receipt-k">Applicant:</span>
-                <span className="te-receipt-v">{formData.fullName} ({formData.applicantType})</span>
-              </div>
-              <div className="te-receipt-row">
-                <span className="te-receipt-k">Learning Mode:</span>
-                <span className="te-receipt-v">{formData.trainingMode}</span>
-              </div>
-              <div className="te-receipt-row">
-                <span className="te-receipt-k">Duration Track:</span>
-                <span className="te-receipt-v">{formData.duration}</span>
-              </div>
-            </div>
-
-            <p className="te-success-notice">
-              The syllabus PDF and schedule details will be sent to <strong>{formData.email}</strong>, and our coordinator will follow up on <strong>{formData.phone}</strong>.
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#ffffff', marginBottom: '10px' }}>
+              Application Submitted Successfully!
+            </h3>
+            <p style={{ color: '#cbd5e1', fontSize: '1.02rem', maxWidth: '540px', margin: '0 auto 20px', lineHeight: 1.6 }}>
+              {status.message}
             </p>
 
-            <div className="te-success-btn-row">
-              <button type="button" onClick={handleReset} className="btn btn--secondary">
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '8px 20px',
+              background: 'rgba(56, 189, 248, 0.15)',
+              border: '1px solid rgba(56, 189, 248, 0.4)',
+              borderRadius: '9999px',
+              marginBottom: '24px'
+            }}>
+              <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>Enquiry Ref ID:</span>
+              <strong style={{ fontSize: '1.05rem', color: '#38bdf8', letterSpacing: '0.04em' }}>{status.referenceId}</strong>
+            </div>
+
+            <div style={{
+              background: 'rgba(6, 12, 28, 0.7)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
+              borderRadius: '12px',
+              padding: '16px 20px',
+              textAlign: 'left',
+              maxWidth: '520px',
+              margin: '0 auto 24px',
+              fontSize: '0.92rem',
+              color: '#94a3b8'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                <span>Selected Track:</span>
+                <strong style={{ color: '#ffffff' }}>{formData.program}</strong>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                <span>Applicant:</span>
+                <strong style={{ color: '#ffffff' }}>{formData.fullName}</strong>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                <span>Mode &amp; Duration:</span>
+                <strong style={{ color: '#ffffff' }}>{formData.trainingMode} · {formData.duration}</strong>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <button
+                type="button"
+                onClick={handleReset}
+                className="btn btn--outline"
+              >
                 Submit Another Application
               </button>
-              <a href="https://wa.me/919500834236" target="_blank" rel="noopener noreferrer" className="btn btn--cyan">
+              <a
+                href="https://wa.me/919500834236"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--cyan"
+              >
                 Instant WhatsApp Enquiry <ArrowRight size={16} />
               </a>
             </div>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="te-form" noValidate>
+          <form onSubmit={handleSubmit} noValidate>
             {status.type === 'error' && (
-              <div className="te-alert te-alert--error" role="alert">
-                <AlertCircle size={18} className="te-alert-icon" />
+              <div style={{
+                background: 'rgba(239, 68, 68, 0.15)',
+                border: '1px solid rgba(239, 68, 68, 0.4)',
+                borderRadius: '10px',
+                padding: '12px 18px',
+                color: '#fca5a5',
+                fontSize: '0.92rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                marginBottom: '1.5rem'
+              }}>
+                <AlertCircle size={18} style={{ flexShrink: 0 }} />
                 <span>{status.message}</span>
               </div>
             )}
 
             {/* SECTION 1: CANDIDATE INFO */}
-            <div className="te-section-label">
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              fontSize: '0.82rem',
+              fontWeight: 700,
+              color: '#38bdf8',
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+              borderBottom: '1px solid rgba(56, 189, 248, 0.2)',
+              paddingBottom: '8px',
+              marginBottom: '1.25rem'
+            }}>
               <User size={15} />
-              <span>1. Candidate Profile & Contact Information</span>
+              <span>1. Candidate Profile &amp; Contact Details</span>
             </div>
 
-            <div className="te-grid">
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '1.25rem',
+              marginBottom: '1.5rem'
+            }}>
               {/* Full Name */}
-              <div className="te-field">
-                <label htmlFor="te-fullName" className="te-label">
-                  Full Name <span className="te-req">*</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label htmlFor="te-fullName" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
+                  Full Name <span style={{ color: '#38bdf8' }}>*</span>
                 </label>
-                <div className="te-input-wrap">
-                  <User size={17} className="te-field-icon" aria-hidden="true" />
-                  <input
-                    type="text"
-                    id="te-fullName"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    placeholder="e.g. Aadhya Sharma"
-                    className="te-input"
-                    required
-                  />
-                </div>
+                <input
+                  type="text"
+                  id="te-fullName"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  placeholder="e.g. Aadhya Sharma"
+                  className="contact-input"
+                  style={{
+                    width: '100%',
+                    padding: '13px 16px',
+                    background: 'rgba(6, 12, 28, 0.85)',
+                    border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '0.95rem',
+                    boxSizing: 'border-box'
+                  }}
+                  required
+                />
               </div>
 
               {/* Email Address */}
-              <div className="te-field">
-                <label htmlFor="te-email" className="te-label">
-                  Email Address <span className="te-req">*</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label htmlFor="te-email" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
+                  Email Address <span style={{ color: '#38bdf8' }}>*</span>
                 </label>
-                <div className="te-input-wrap">
-                  <Mail size={17} className="te-field-icon" aria-hidden="true" />
-                  <input
-                    type="email"
-                    id="te-email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="e.g. aadhya@university.edu"
-                    className="te-input"
-                    required
-                  />
-                </div>
+                <input
+                  type="email"
+                  id="te-email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="e.g. aadhya@university.edu"
+                  className="contact-input"
+                  style={{
+                    width: '100%',
+                    padding: '13px 16px',
+                    background: 'rgba(6, 12, 28, 0.85)',
+                    border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '0.95rem',
+                    boxSizing: 'border-box'
+                  }}
+                  required
+                />
               </div>
 
               {/* Phone / WhatsApp */}
-              <div className="te-field">
-                <label htmlFor="te-phone" className="te-label">
-                  Phone / WhatsApp Number <span className="te-req">*</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label htmlFor="te-phone" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
+                  Phone / WhatsApp Number <span style={{ color: '#38bdf8' }}>*</span>
                 </label>
-                <div className="te-input-wrap">
-                  <Phone size={17} className="te-field-icon" aria-hidden="true" />
-                  <input
-                    type="tel"
-                    id="te-phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="e.g. +91 98765 43210"
-                    className="te-input"
-                    required
-                  />
-                </div>
+                <input
+                  type="tel"
+                  id="te-phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="e.g. +91 98765 43210"
+                  className="contact-input"
+                  style={{
+                    width: '100%',
+                    padding: '13px 16px',
+                    background: 'rgba(6, 12, 28, 0.85)',
+                    border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '0.95rem',
+                    boxSizing: 'border-box'
+                  }}
+                  required
+                />
               </div>
 
               {/* Applicant Category */}
-              <div className="te-field">
-                <label htmlFor="te-applicantType" className="te-label">
-                  Applicant Category <span className="te-req">*</span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label htmlFor="te-applicantType" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
+                  Applicant Category <span style={{ color: '#38bdf8' }}>*</span>
                 </label>
-                <div className="te-input-wrap">
-                  <GraduationCap size={17} className="te-field-icon" aria-hidden="true" />
-                  <select
-                    id="te-applicantType"
-                    name="applicantType"
-                    value={formData.applicantType}
-                    onChange={handleChange}
-                    className="te-select"
-                  >
-                    <option value="Student (College / University)">Student (College / University)</option>
-                    <option value="Recent Graduate / Fresher">Recent Graduate / Fresher</option>
-                    <option value="Working Professional">Working Professional</option>
-                    <option value="Corporate / Enterprise Team">Corporate / Enterprise Team</option>
-                  </select>
-                </div>
+                <select
+                  id="te-applicantType"
+                  name="applicantType"
+                  value={formData.applicantType}
+                  onChange={handleChange}
+                  className="contact-input"
+                  style={{
+                    width: '100%',
+                    padding: '13px 16px',
+                    background: '#070e24',
+                    border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '0.95rem',
+                    boxSizing: 'border-box',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <option value="Student (College / University)" style={{ background: '#070e24', color: '#ffffff' }}>Student (College / University)</option>
+                  <option value="Recent Graduate / Fresher" style={{ background: '#070e24', color: '#ffffff' }}>Recent Graduate / Fresher</option>
+                  <option value="Working Professional" style={{ background: '#070e24', color: '#ffffff' }}>Working Professional</option>
+                  <option value="Corporate / Enterprise Team" style={{ background: '#070e24', color: '#ffffff' }}>Corporate / Enterprise Team</option>
+                </select>
               </div>
 
               {/* College / Institution */}
-              <div className="te-field">
-                <label htmlFor="te-institution" className="te-label">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label htmlFor="te-institution" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
                   College / University / Company Name
                 </label>
-                <div className="te-input-wrap">
-                  <Building2 size={17} className="te-field-icon" aria-hidden="true" />
-                  <input
-                    type="text"
-                    id="te-institution"
-                    name="institution"
-                    value={formData.institution}
-                    onChange={handleChange}
-                    placeholder="e.g. Annamalai University / SRM / InfoSys"
-                    className="te-input"
-                  />
-                </div>
+                <input
+                  type="text"
+                  id="te-institution"
+                  name="institution"
+                  value={formData.institution}
+                  onChange={handleChange}
+                  placeholder="e.g. Annamalai University / SRM"
+                  className="contact-input"
+                  style={{
+                    width: '100%',
+                    padding: '13px 16px',
+                    background: 'rgba(6, 12, 28, 0.85)',
+                    border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '0.95rem',
+                    boxSizing: 'border-box'
+                  }}
+                />
               </div>
 
               {/* Degree & Year */}
-              <div className="te-field">
-                <label htmlFor="te-degree" className="te-label">
-                  Degree & Branch / Year of Study
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label htmlFor="te-degree" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
+                  Degree &amp; Branch / Year (for Students)
                 </label>
-                <div className="te-input-wrap">
-                  <BookOpen size={17} className="te-field-icon" aria-hidden="true" />
-                  <input
-                    type="text"
-                    id="te-degree"
-                    name="degree"
-                    value={formData.degree}
-                    onChange={handleChange}
-                    placeholder="e.g. B.E Computer Science (Final Year) / MCA"
-                    className="te-input"
-                  />
-                </div>
+                <input
+                  type="text"
+                  id="te-degree"
+                  name="degree"
+                  value={formData.degree}
+                  onChange={handleChange}
+                  placeholder="e.g. B.E Computer Science / BCA / MCA"
+                  className="contact-input"
+                  style={{
+                    width: '100%',
+                    padding: '13px 16px',
+                    background: 'rgba(6, 12, 28, 0.85)',
+                    border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '0.95rem',
+                    boxSizing: 'border-box'
+                  }}
+                />
               </div>
             </div>
 
-            {/* SECTION 2: COURSE & PROGRAM SELECTION */}
-            <div className="te-section-label te-section-label--mt">
+            {/* SECTION 2: PROGRAM SELECTION */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              fontSize: '0.82rem',
+              fontWeight: 700,
+              color: '#38bdf8',
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+              borderBottom: '1px solid rgba(56, 189, 248, 0.2)',
+              paddingBottom: '8px',
+              marginBottom: '1.25rem',
+              marginTop: '2rem'
+            }}>
               <Sparkles size={15} />
-              <span>2. Program Selection & Schedule Preferences</span>
+              <span>2. Choose Training Track &amp; Learning Mode</span>
             </div>
 
-            <div className="te-grid">
-              {/* Program of Choice - Full Width */}
-              <div className="te-field te-field--full">
-                <label htmlFor="te-program" className="te-label te-label--highlight">
-                  Select Training Course or Internship Track <span className="te-req">*</span>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '1.5rem' }}>
+              {/* Program Selector */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label htmlFor="te-program" style={{ fontSize: '0.92rem', fontWeight: 700, color: '#ffffff' }}>
+                  Choose Program or Track <span style={{ color: '#38bdf8' }}>*</span>
                 </label>
-                <div className="te-input-wrap">
-                  <Sparkles size={17} className="te-field-icon te-field-icon--cyan" aria-hidden="true" />
-                  <select
-                    id="te-program"
-                    name="program"
-                    value={formData.program}
-                    onChange={handleChange}
-                    className="te-select te-select--flagship"
-                  >
-                    <option value="Internship Program (Live Industry Projects)">
-                      ⭐ Flagship Internship Program (Live Industry Projects & Mentorship)
-                    </option>
-                    <option value="ePublishing Training">ePublishing Training (EPUB 3, JATS/BITS XML, XSLT, InDesign)</option>
-                    <option value="AI/ML Training">AI/ML Training (Machine Learning, Deep Learning, NLP, MLOps)</option>
-                    <option value="Generative AI Training">Generative AI Training (LLM APIs, Prompting, RAG & AI Agents)</option>
-                    <option value="Data Analytics & Business Intelligence Training">Data Analytics & Business Intelligence (Power BI, SQL, DAX, Python)</option>
-                    <option value="Digital Marketing Training">Digital Marketing Training (Technical SEO, GA4, Paid Ads, Funnels)</option>
-                    <option value="Digital Accessibility Training">Digital Accessibility Training (WCAG 2.2, PDF/UA, Screen Readers, CPACC)</option>
-                    <option value="Software Development Training">Software Development Training (Full-Stack React, Node, Python, Cloud APIs)</option>
-                  </select>
-                </div>
+                <select
+                  id="te-program"
+                  name="program"
+                  value={formData.program}
+                  onChange={handleChange}
+                  className="contact-input"
+                  style={{
+                    width: '100%',
+                    padding: '14px 16px',
+                    background: '#070e24',
+                    border: '1.5px solid rgba(56, 189, 248, 0.55)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '1rem',
+                    fontWeight: 600,
+                    boxSizing: 'border-box',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <option value="Internship Program (Live Industry Projects)" style={{ background: '#070e24', color: '#ffffff' }}>
+                    ⭐ Flagship Internship Program (Live Industry Projects &amp; Mentorship)
+                  </option>
+                  <option value="ePublishing Training" style={{ background: '#070e24', color: '#ffffff' }}>
+                    ePublishing Training (EPUB 3, JATS/BITS XML, XSLT, InDesign)
+                  </option>
+                  <option value="AI/ML Training" style={{ background: '#070e24', color: '#ffffff' }}>
+                    AI/ML Training (Machine Learning, Deep Learning, NLP, PyTorch)
+                  </option>
+                  <option value="Generative AI Training" style={{ background: '#070e24', color: '#ffffff' }}>
+                    Generative AI Training (LLMs, LangChain, RAG Systems, AI Agents)
+                  </option>
+                  <option value="Data Analytics & Business Intelligence Training" style={{ background: '#070e24', color: '#ffffff' }}>
+                    Data Analytics &amp; Business Intelligence Training (Power BI, SQL, Python)
+                  </option>
+                  <option value="Digital Accessibility Training" style={{ background: '#070e24', color: '#ffffff' }}>
+                    Digital Accessibility Training (WCAG 2.2, PDF/UA, Screen Readers)
+                  </option>
+                  <option value="Software Development Training" style={{ background: '#070e24', color: '#ffffff' }}>
+                    Software Development Training (Full Stack React, Node.js, Python, Cloud)
+                  </option>
+                  <option value="Digital Marketing Training" style={{ background: '#070e24', color: '#ffffff' }}>
+                    Digital Marketing Training (SEO, Performance PPC, Meta, LinkedIn)
+                  </option>
+                </select>
               </div>
 
-              {/* Mode of Learning */}
-              <div className="te-field">
-                <label htmlFor="te-trainingMode" className="te-label">
-                  Preferred Delivery Mode
-                </label>
-                <div className="te-input-wrap">
-                  <Laptop size={17} className="te-field-icon" aria-hidden="true" />
+              {/* Mode & Duration Grid */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                gap: '1.25rem'
+              }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  <label htmlFor="te-trainingMode" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
+                    Preferred Learning Mode
+                  </label>
                   <select
                     id="te-trainingMode"
                     name="trainingMode"
                     value={formData.trainingMode}
                     onChange={handleChange}
-                    className="te-select"
+                    className="contact-input"
+                    style={{
+                      width: '100%',
+                      padding: '13px 16px',
+                      background: '#070e24',
+                      border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                      borderRadius: '12px',
+                      color: '#ffffff',
+                      fontSize: '0.95rem',
+                      boxSizing: 'border-box',
+                      cursor: 'pointer'
+                    }}
                   >
-                    <option value="Online Virtual Live (Interactive)">Online Virtual Live (Interactive Webinars)</option>
-                    <option value="Classroom - Cuddalore Head Office">Classroom - Cuddalore Head Office (Indhira Nagar)</option>
-                    <option value="Classroom - Chennai Branch Office">Classroom - Chennai Branch Office (Porur)</option>
-                    <option value="Hybrid (Virtual Live + In-Person Labs)">Hybrid (Virtual Live + In-Person Labs)</option>
+                    <option value="Online Virtual Live (Interactive Webinar)" style={{ background: '#070e24', color: '#ffffff' }}>
+                      Online Virtual Live (Interactive Webinar)
+                    </option>
+                    <option value="Classroom In-Person (Cuddalore Head Office)" style={{ background: '#070e24', color: '#ffffff' }}>
+                      Classroom In-Person (Cuddalore Head Office)
+                    </option>
+                    <option value="Classroom In-Person (Chennai Branch Office)" style={{ background: '#070e24', color: '#ffffff' }}>
+                      Classroom In-Person (Chennai Branch Office)
+                    </option>
+                    <option value="Hybrid (Virtual Live + Weekend In-Person Labs)" style={{ background: '#070e24', color: '#ffffff' }}>
+                      Hybrid (Virtual Live + Weekend In-Person Labs)
+                    </option>
                   </select>
                 </div>
-              </div>
 
-              {/* Duration Track */}
-              <div className="te-field">
-                <label htmlFor="te-duration" className="te-label">
-                  Preferred Duration Track
-                </label>
-                <div className="te-input-wrap">
-                  <Clock size={17} className="te-field-icon" aria-hidden="true" />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  <label htmlFor="te-duration" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
+                    Preferred Duration
+                  </label>
                   <select
                     id="te-duration"
                     name="duration"
                     value={formData.duration}
                     onChange={handleChange}
-                    className="te-select"
+                    className="contact-input"
+                    style={{
+                      width: '100%',
+                      padding: '13px 16px',
+                      background: '#070e24',
+                      border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                      borderRadius: '12px',
+                      color: '#ffffff',
+                      fontSize: '0.95rem',
+                      boxSizing: 'border-box',
+                      cursor: 'pointer'
+                    }}
                   >
-                    <option value="1 Month (Intensive Fast-Track Bootcamp)">1 Month (Intensive Fast-Track Bootcamp)</option>
-                    <option value="3 Months (Standard Certification Track)">3 Months (Standard Certification Track)</option>
-                    <option value="6 Months (Comprehensive + Capstone Project)">6 Months (Comprehensive + Capstone Project)</option>
+                    <option value="1 Month (Fast-Track Project Bootcamp)" style={{ background: '#070e24', color: '#ffffff' }}>
+                      1 Month (Fast-Track Project Bootcamp)
+                    </option>
+                    <option value="3 Months (Standard Certification Track)" style={{ background: '#070e24', color: '#ffffff' }}>
+                      3 Months (Standard Certification Track)
+                    </option>
+                    <option value="6 Months (Comprehensive Capstone & PPO)" style={{ background: '#070e24', color: '#ffffff' }}>
+                      6 Months (Comprehensive Capstone &amp; PPO)
+                    </option>
                   </select>
                 </div>
               </div>
 
-              {/* Career Goals / Notes */}
-              <div className="te-field te-field--full">
-                <label htmlFor="te-message" className="te-label">
+              {/* Message / Goals */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <label htmlFor="te-message" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
                   Career Goals / Specific Topics You Want to Learn (Optional)
                 </label>
-                <div className="te-input-wrap te-input-wrap--textarea">
-                  <MessageSquare size={17} className="te-field-icon te-field-icon--textarea" aria-hidden="true" />
-                  <textarea
-                    id="te-message"
-                    name="message"
-                    rows={3}
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell us about what you want to achieve, your preferred batch timings, or any specific questions..."
-                    className="te-textarea"
-                  />
-                </div>
+                <textarea
+                  id="te-message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell us about what you want to achieve, your preferred batch timings, or any questions for our mentors..."
+                  className="contact-textarea"
+                  style={{
+                    width: '100%',
+                    padding: '14px 16px',
+                    background: 'rgba(6, 12, 28, 0.85)',
+                    border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '0.95rem',
+                    minHeight: '110px',
+                    resize: 'vertical',
+                    boxSizing: 'border-box'
+                  }}
+                />
               </div>
             </div>
 
-            {/* Submit Action */}
-            <div className="te-action-block">
+            {/* Submit Action Row */}
+            <div style={{ marginTop: '2rem' }}>
               <button
                 type="submit"
                 disabled={loading}
-                className="btn btn--cyan btn--lg te-submit-btn"
+                className="btn btn--cyan btn--lg btn--block"
+                style={{
+                  width: '100%',
+                  padding: '16px 32px',
+                  fontSize: '1.05rem',
+                  fontWeight: 700,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '10px',
+                  borderRadius: '12px',
+                  cursor: loading ? 'not-allowed' : 'pointer'
+                }}
               >
                 {loading ? (
-                  <>
-                    <span className="spinner" aria-hidden="true" />
-                    <span>Submitting Application...</span>
-                  </>
+                  <span>Submitting Application...</span>
                 ) : (
                   <>
-                    <span>Submit Enrollment Enquiry</span>
-                    <Send size={18} aria-hidden="true" />
+                    <span>Submit Enrollment Application</span>
+                    <Send size={18} />
                   </>
                 )}
               </button>
+            </div>
 
-              <div className="te-trust-guarantee">
-                <CheckCircle2 size={16} className="te-trust-icon" />
-                <span>100% Free Career Counseling · Official Syllabus Dispatch · Fast 24-Hour Response</span>
-              </div>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '18px',
+              marginTop: '1.25rem',
+              fontSize: '0.82rem',
+              color: '#94a3b8',
+              flexWrap: 'wrap'
+            }}>
+              <span>🔒 100% Confidential &amp; Verified</span>
+              <span>•</span>
+              <span>⚡ Fast 24-Hour Admission Response</span>
+              <span>•</span>
+              <span>📜 Recognized Certificate with QR</span>
             </div>
           </form>
         )}
-
-        {/* Direct Admissions Strip */}
-        <div className="te-contact-bar">
-          <div className="te-contact-item">
-            <Phone size={15} />
-            <span>Admissions Desk: <a href="tel:+919500834236">+91 9500834236</a></span>
-          </div>
-          <div className="te-contact-item">
-            <Mail size={15} />
-            <span>Email: <a href="mailto:info@velvorasolutions.com">info@velvorasolutions.com</a></span>
-          </div>
-          <div className="te-contact-item">
-            <MapPin size={15} />
-            <span>Centers: Cuddalore (Indhira Nagar) & Chennai (Porur)</span>
-          </div>
-        </div>
       </div>
     </div>
   );

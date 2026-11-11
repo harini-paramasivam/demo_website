@@ -1,72 +1,113 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { 
-  Sparkles, 
   ArrowRight, 
   CheckCircle2, 
-  BookOpen, 
-  Cpu, 
-  BarChart3, 
-  Megaphone, 
-  FileCheck2, 
-  Code, 
-  GraduationCap, 
+  Sparkles, 
+  Users, 
   Clock, 
   MapPin, 
-  Award, 
-  Users, 
   ChevronDown, 
-  ChevronUp,
   Phone, 
   Mail, 
-  Briefcase, 
-  Laptop, 
-  ArrowLeft,
-  ShieldCheck,
-  Zap,
-  Target,
+  Award,
   Layers,
-  Terminal,
-  HelpCircle
+  Laptop,
+  Briefcase,
+  FileCheck2,
+  Calendar,
+  Check,
+  Building2,
+  GraduationCap
 } from 'lucide-react';
 import { 
   getTrainingProgramBySlug, 
-  getRelatedTrainingPrograms 
+  getRelatedTrainingPrograms,
+  trainingPrograms 
 } from '../data/trainingData.js';
+import Icon from '../components/Icon.jsx';
+import { PageHero, CtaBand } from '../components/ui.jsx';
 import TrainingEnrollmentForm from '../components/TrainingEnrollmentForm.jsx';
 
-// Icon resolver helper
-function ProgramIcon({ name, size = 24, className = '' }) {
-  switch (name) {
-    case 'BookOpen': return <BookOpen size={size} className={className} />;
-    case 'Cpu': return <Cpu size={size} className={className} />;
-    case 'Sparkles': return <Sparkles size={size} className={className} />;
-    case 'BarChart3': return <BarChart3 size={size} className={className} />;
-    case 'Megaphone': return <Megaphone size={size} className={className} />;
-    case 'FileCheck2': return <FileCheck2 size={size} className={className} />;
-    case 'Code': return <Code size={size} className={className} />;
-    case 'GraduationCap': return <GraduationCap size={size} className={className} />;
-    default: return <GraduationCap size={size} className={className} />;
-  }
+function FaqItem({ q, a }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`faq-item${open ? ' is-open' : ''}`}>
+      <button
+        type="button"
+        className="faq-question"
+        aria-expanded={open}
+        onClick={() => setOpen(!open)}
+      >
+        <span>{q}</span>
+        <ChevronDown
+          size={18}
+          aria-hidden="true"
+          style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s' }}
+        />
+      </button>
+      {open && <div className="faq-answer"><p>{a}</p></div>}
+    </div>
+  );
+}
+
+function ModuleAccordion({ module, idx, isOpenDefault = false }) {
+  const [open, setOpen] = useState(isOpenDefault);
+  return (
+    <div className={`faq-item${open ? ' is-open' : ''}`} style={{ marginBottom: '14px' }}>
+      <button
+        type="button"
+        className="faq-question"
+        aria-expanded={open}
+        onClick={() => setOpen(!open)}
+        style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', textAlign: 'left' }}>
+          <span
+            className="pill"
+            style={{
+              padding: '4px 12px',
+              fontSize: '0.8rem',
+              fontWeight: 700,
+              background: 'rgba(56, 189, 248, 0.12)',
+              color: '#0284c7',
+              border: '1px solid rgba(56, 189, 248, 0.3)'
+            }}
+          >
+            Module {module.moduleNumber || idx + 1}
+          </span>
+          <strong style={{ fontSize: '1.05rem', color: 'var(--ink)' }}>{module.title}</strong>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <span style={{ fontSize: '0.85rem', color: '#64748b', whiteSpace: 'nowrap' }}>{module.duration}</span>
+          <ChevronDown
+            size={18}
+            aria-hidden="true"
+            style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s' }}
+          />
+        </div>
+      </button>
+      {open && (
+        <div className="faq-answer" style={{ padding: '16px 20px', borderTop: '1px solid var(--border)' }}>
+          <ul className="bullets" style={{ margin: 0 }}>
+            {module.topics.map((t, i) => (
+              <li key={i}>{t}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default function TrainingProgramPage() {
   const { slug } = useParams();
   const program = getTrainingProgramBySlug(slug);
 
-  const [openModuleIdx, setOpenModuleIdx] = useState(0);
-  const [openFaqIdx, setOpenFaqIdx] = useState(null);
-  const formSectionRef = useRef(null);
-
-  // Scroll to top on slug change & set SEO title
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (program) {
       document.title = `${program.title} | Velvora Solutions Academy`;
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        metaDesc.setAttribute('content', program.lead);
-      }
     }
   }, [slug, program]);
 
@@ -74,430 +115,331 @@ export default function TrainingProgramPage() {
     return <Navigate to="/training" replace />;
   }
 
-  const related = getRelatedTrainingPrograms(program.id, 3);
-
-  const scrollToEnrollForm = () => {
-    if (formSectionRef.current) {
-      formSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+  const otherPrograms = trainingPrograms.filter((p) => p.id !== program.id);
 
   return (
-    <div className="training-program-page">
-      {/* -------------------------------------------------------------------
-          1. HERO HEADER WITH BREADCRUMBS & CYBERNETIC BADGES
-      --------------------------------------------------------------------- */}
-      <section className="tp-hero">
-        <div className="tp-hero-glow" aria-hidden="true" />
-        <div className="container tp-hero-container">
-          {/* Breadcrumb Navigation */}
-          <nav className="tp-breadcrumb" aria-label="Breadcrumb">
-            <Link to="/training" className="tp-crumb-link">
-              <ArrowLeft size={14} />
-              <span>All Training Programs</span>
-            </Link>
-            <span className="tp-crumb-sep">/</span>
-            <span className="tp-crumb-current">{program.title}</span>
-          </nav>
+    <>
+      <PageHero
+        eyebrow="Training & Internships"
+        title={program.title}
+        crumbs={['Home', 'Training', program.title]}
+      >
+        {program.lead}
+      </PageHero>
 
-          <div className="tp-hero-grid">
-            {/* Left Main Hero Info */}
-            <div className="tp-hero-content">
-              <div className="tp-eyebrow-row">
-                <span className="tp-category-pill">
-                  <ProgramIcon name={program.icon} size={15} />
-                  <span>{program.tag}</span>
-                </span>
-                <span className="tp-status-pill">
-                  <Sparkles size={13} />
-                  <span>{program.badge}</span>
-                </span>
+      <section className="section">
+        <div className="container svc-layout">
+          {/* MAIN COLUMN */}
+          <div className="svc-main">
+            {/* MODERN GLASS HEADER */}
+            <div className="svc-header svc-header--glass">
+              <div className="svc-header__bg-art" aria-hidden="true" />
+
+              {/* Top Bar with Icon & Track Tag */}
+              <div className="svc-header__top-bar">
+                <div className="svc-header__icon-pill">
+                  <span className="svc-header__icon-bubble">
+                    <Icon name={program.icon || 'GraduationCap'} size={20} />
+                  </span>
+                  <span className="svc-header__tag-text">{program.title} Professional Track</span>
+                </div>
+                <div className="svc-header__badge-pill">
+                  <Sparkles size={14} className="accent" aria-hidden="true" />
+                  <span>Velvora Certified Academy Standard</span>
+                </div>
               </div>
 
-              <h1 className="tp-hero-title">
-                {program.title}
-              </h1>
+              {/* Main Headline */}
+              <h2 className="svc-header__title">
+                Master {program.title} with 100% Live Production Projects
+              </h2>
 
-              <p className="tp-hero-lead">
-                {program.lead}
+              {/* Rich Lead Description */}
+              <p className="svc-header__lead">
+                {program.heroDescription || program.lead}
               </p>
 
-              <p className="tp-hero-extended">
-                {program.heroDescription}
-              </p>
+              {/* Key Highlights Chips */}
+              <div className="svc-header__features">
+                <div className="svc-feature-chip">
+                  <CheckCircle2 size={15} className="svc-chip-icon" aria-hidden="true" />
+                  <span>100% Live Client Projects</span>
+                </div>
+                <div className="svc-feature-chip">
+                  <CheckCircle2 size={15} className="svc-chip-icon" aria-hidden="true" />
+                  <span>1-on-1 Architect Mentorship</span>
+                </div>
+                <div className="svc-feature-chip">
+                  <CheckCircle2 size={15} className="svc-chip-icon" aria-hidden="true" />
+                  <span>Official Certificate &amp; PPO Pathway</span>
+                </div>
+              </div>
+            </div>
 
-              {/* Fast Action Buttons */}
-              <div className="tp-hero-btn-row">
-                <button
-                  type="button"
-                  onClick={scrollToEnrollForm}
-                  className="btn btn--cyan btn--lg tp-hero-apply-btn"
+            {/* VALUE PROPOSITION CALLOUT */}
+            <div className="callout-card" style={{ margin: '2rem 0' }}>
+              <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <CheckCircle2 size={20} className="accent" aria-hidden="true" />
+                Why Learn {program.title} at Velvora Academy?
+              </h3>
+              <p>{program.whyChoose}</p>
+            </div>
+
+            {/* INTERNSHIP SPECIAL SPECIFICATIONS (if applicable) */}
+            {program.internshipSpecs && (
+              <div style={{ marginTop: '2.5rem', marginBottom: '2.5rem' }}>
+                <h3 className="section-subtitle">Flagship Internship Specifications</h3>
+                <div className="svc-offers-grid">
+                  <div className="svc-offer-card">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0284c7', marginBottom: '6px' }}>
+                      <Users size={18} />
+                      <strong style={{ fontSize: '1.05rem', color: 'var(--ink)' }}>Target Audience</strong>
+                    </div>
+                    <p>{program.internshipSpecs.whoItsFor}</p>
+                  </div>
+
+                  <div className="svc-offer-card">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0284c7', marginBottom: '6px' }}>
+                      <CheckCircle2 size={18} />
+                      <strong style={{ fontSize: '1.05rem', color: 'var(--ink)' }}>Eligibility Criteria</strong>
+                    </div>
+                    <p>{program.internshipSpecs.eligibility}</p>
+                  </div>
+
+                  <div className="svc-offer-card">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0284c7', marginBottom: '6px' }}>
+                      <Clock size={18} />
+                      <strong style={{ fontSize: '1.05rem', color: 'var(--ink)' }}>Flexible Duration</strong>
+                    </div>
+                    <p>{program.internshipSpecs.duration}</p>
+                  </div>
+
+                  <div className="svc-offer-card">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0284c7', marginBottom: '6px' }}>
+                      <Laptop size={18} />
+                      <strong style={{ fontSize: '1.05rem', color: 'var(--ink)' }}>Live Project Exposure</strong>
+                    </div>
+                    <p>{program.internshipSpecs.liveProjectExposure}</p>
+                  </div>
+                </div>
+
+                <div className="callout-card" style={{ marginTop: '1.5rem' }}>
+                  <h4 style={{ fontSize: '1.1rem', marginBottom: '0.8rem', color: 'var(--ink)' }}>Key Internship Perks &amp; Career Benefits:</h4>
+                  <ul className="bullets">
+                    {program.internshipSpecs.perks.map((perk, i) => (
+                      <li key={i}>{perk}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            )}
+
+            {/* COMPLETE CURRICULUM MODULES */}
+            {program.curriculum && program.curriculum.length > 0 && (
+              <div style={{ marginTop: '3rem' }}>
+                <h3 className="section-subtitle">
+                  Complete Curriculum &amp; Syllabus ({program.curriculum.length} Modules)
+                </h3>
+                <p className="lead" style={{ marginBottom: '1.5rem', color: '#64748b' }}>
+                  Comprehensive module-by-module breakdown designed to take you from foundational concepts to enterprise execution.
+                </p>
+                <div className="faq-list">
+                  {program.curriculum.map((mod, idx) => (
+                    <ModuleAccordion
+                      key={mod.moduleNumber || idx}
+                      module={mod}
+                      idx={idx}
+                      isOpenDefault={idx === 0}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* LIVE CAPSTONE PROJECTS & DELIVERABLES */}
+            {program.projects && program.projects.length > 0 && (
+              <div style={{ marginTop: '3.5rem' }}>
+                <h3 className="section-subtitle">
+                  Live Capstone Projects &amp; Deliverables
+                </h3>
+                <p className="lead" style={{ marginBottom: '1.5rem', color: '#64748b' }}>
+                  Every student and intern completes real production assets that form a verifiable portfolio for employment.
+                </p>
+                <div className="svc-offers-grid">
+                  {program.projects.map((proj, idx) => (
+                    <div key={idx} className="svc-offer-card">
+                      <span className="pill" style={{ marginBottom: '8px', fontSize: '0.78rem' }}>
+                        Project 0{idx + 1}
+                      </span>
+                      <h4 style={{ fontSize: '1.1rem', margin: '4px 0 8px' }}>{proj.title}</h4>
+                      <p style={{ fontSize: '0.92rem', color: '#64748b', lineHeight: 1.6 }}>{proj.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* TOOLS & FRAMEWORKS MASTERED */}
+            {program.tools && program.tools.length > 0 && (
+              <div style={{ marginTop: '3.5rem' }}>
+                <h3 className="section-subtitle">Tools, Technologies &amp; Standards Mastered</h3>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '1rem' }}>
+                  {program.tools.map((tool, idx) => (
+                    <span
+                      key={idx}
+                      className="pill"
+                      style={{
+                        padding: '8px 16px',
+                        fontSize: '0.9rem',
+                        fontWeight: 600,
+                        background: 'rgba(56, 189, 248, 0.08)',
+                        color: '#0284c7',
+                        border: '1px solid rgba(56, 189, 248, 0.25)',
+                        borderRadius: '9999px'
+                      }}
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* FREQUENTLY ASKED QUESTIONS */}
+            {program.faqs && program.faqs.length > 0 && (
+              <div style={{ marginTop: '3.5rem' }}>
+                <h3 className="section-subtitle">Frequently Asked Questions</h3>
+                <div className="faq-list" style={{ marginTop: '1.25rem' }}>
+                  {program.faqs.map((faq, idx) => (
+                    <FaqItem key={idx} q={faq.q} a={faq.a} />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* EMBEDDED ENROLLMENT APPLICATION FORM */}
+            <div style={{ marginTop: '4.5rem' }}>
+              <TrainingEnrollmentForm initialProgram={program.title} />
+            </div>
+          </div>
+
+          {/* SIDEBAR */}
+          <aside className="svc-sidebar">
+            {/* PROGRAM QUICK SPECS CARD */}
+            <div className="svc-sidebar__card">
+              <h3>Program Overview</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '20px' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                  <Clock size={18} style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <span style={{ fontSize: '0.8rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Duration</span>
+                    <p style={{ margin: 0, fontWeight: 600, color: 'var(--ink)' }}>{program.duration}</p>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                  <Users size={18} style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <span style={{ fontSize: '0.8rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Audience Level</span>
+                    <p style={{ margin: 0, fontWeight: 600, color: 'var(--ink)' }}>{program.level}</p>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                  <Laptop size={18} style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <span style={{ fontSize: '0.8rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Learning Mode</span>
+                    <p style={{ margin: 0, fontWeight: 600, color: 'var(--ink)' }}>{program.mode}</p>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                  <Briefcase size={18} style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <span style={{ fontSize: '0.8rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Production Projects</span>
+                    <p style={{ margin: 0, fontWeight: 600, color: 'var(--ink)' }}>{program.liveProjects}</p>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                  <Award size={18} style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <span style={{ fontSize: '0.8rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Credential</span>
+                    <p style={{ margin: 0, fontWeight: 600, color: 'var(--ink)' }}>{program.credential}</p>
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                  <MapPin size={18} style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }} />
+                  <div>
+                    <span style={{ fontSize: '0.8rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Training Centers</span>
+                    <p style={{ margin: 0, fontWeight: 600, color: 'var(--ink)' }}>Cuddalore HQ &amp; Chennai Branch + Virtual</p>
+                  </div>
+                </div>
+              </div>
+
+              <a
+                href="#enrollment-form-section"
+                className="btn btn--cyan btn--block"
+                style={{ textAlign: 'center' }}
+              >
+                <span>Enroll in This Track</span>
+                <ArrowRight size={16} />
+              </a>
+            </div>
+
+            {/* OTHER TRAINING PROGRAMS LIST */}
+            <div className="svc-sidebar__card">
+              <h3>Other Training Tracks</h3>
+              <ul className="svc-sidebar__list">
+                {otherPrograms.map((op) => (
+                  <li key={op.id}>
+                    <Link to={`/training/${op.id}`}>
+                      <Icon name={op.icon || 'GraduationCap'} size={16} />
+                      <span>{op.title}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* ADMISSIONS DESK QUICK CONTACT CARD */}
+            <div className="svc-sidebar__cta gradient-cta">
+              <h4>Questions About Admissions?</h4>
+              <p>
+                Speak directly with an academic counselor to discuss batch schedules, syllabus details, or corporate cohort arrangements.
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <a
+                  href="tel:+919500834236"
+                  className="btn btn--cyan btn--block"
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
                 >
-                  <span>Enroll or Request Syllabus</span>
-                  <ArrowRight size={18} aria-hidden="true" />
-                </button>
+                  <Phone size={16} />
+                  <span>Call +91 95008 34236</span>
+                </a>
                 <a
                   href="https://wa.me/919500834236"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn--secondary tp-hero-wa-btn"
+                  className="btn btn--secondary btn--block"
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
                 >
-                  <Phone size={16} />
-                  <span>Chat with Academic Counselor</span>
+                  <span>Chat on WhatsApp</span>
+                  <ArrowRight size={15} />
                 </a>
               </div>
             </div>
-
-            {/* Right Quick Telemetry Spec Card */}
-            <div className="tp-hero-spec-col">
-              <div className="tp-spec-card">
-                <div className="tp-spec-card-header">
-                  <div className="tp-spec-icon-box">
-                    <ProgramIcon name={program.icon} size={28} />
-                  </div>
-                  <div>
-                    <span className="tp-spec-k">Program Track</span>
-                    <h3 className="tp-spec-v">{program.tag}</h3>
-                  </div>
-                </div>
-
-                <div className="tp-spec-divider" />
-
-                <ul className="tp-spec-list">
-                  <li className="tp-spec-item">
-                    <Clock size={16} className="tp-spec-bullet" />
-                    <div>
-                      <span className="tp-spec-item-k">Duration</span>
-                      <span className="tp-spec-item-v">{program.duration}</span>
-                    </div>
-                  </li>
-                  <li className="tp-spec-item">
-                    <Award size={16} className="tp-spec-bullet" />
-                    <div>
-                      <span className="tp-spec-item-k">Skill Level</span>
-                      <span className="tp-spec-item-v">{program.level}</span>
-                    </div>
-                  </li>
-                  <li className="tp-spec-item">
-                    <Laptop size={16} className="tp-spec-bullet" />
-                    <div>
-                      <span className="tp-spec-item-k">Delivery Mode</span>
-                      <span className="tp-spec-item-v">{program.mode}</span>
-                    </div>
-                  </li>
-                  <li className="tp-spec-item">
-                    <ShieldCheck size={16} className="tp-spec-bullet" />
-                    <div>
-                      <span className="tp-spec-item-k">Live Project Work</span>
-                      <span className="tp-spec-item-v">100% Guaranteed Production Assets</span>
-                    </div>
-                  </li>
-                  <li className="tp-spec-item">
-                    <Briefcase size={16} className="tp-spec-bullet" />
-                    <div>
-                      <span className="tp-spec-item-k">Career Pathway</span>
-                      <span className="tp-spec-item-v">Pre-Placement Offers (PPO) & Hiring</span>
-                    </div>
-                  </li>
-                </ul>
-
-                <button
-                  type="button"
-                  onClick={scrollToEnrollForm}
-                  className="btn btn--cyan btn--block tp-spec-card-action"
-                >
-                  <span>Apply for this Track</span>
-                  <ArrowRight size={16} />
-                </button>
-              </div>
-            </div>
-          </div>
+          </aside>
         </div>
       </section>
 
-      {/* -------------------------------------------------------------------
-          2. CORE HIGHLIGHTS & WHY VELVORA
-      --------------------------------------------------------------------- */}
-      <section className="tp-why-section">
-        <div className="container">
-          <div className="tp-why-grid">
-            <div className="tp-why-box">
-              <div className="tp-why-icon-wrap">
-                <Target size={24} />
-              </div>
-              <h3>Why Choose This Program at Velvora?</h3>
-              <p>{program.whyChoose}</p>
-              <div className="tp-why-points">
-                <div className="tp-point-row">
-                  <CheckCircle2 size={16} className="tp-point-check" />
-                  <span>Direct mentorship from senior practicing tech leads & architects</span>
-                </div>
-                <div className="tp-point-row">
-                  <CheckCircle2 size={16} className="tp-point-check" />
-                  <span>Hands-on work on live enterprise codebases and client deliverables</span>
-                </div>
-                <div className="tp-point-row">
-                  <CheckCircle2 size={16} className="tp-point-check" />
-                  <span>100% verifiable digital credentials with QR validation</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="tp-audience-box">
-              <div className="tp-why-icon-wrap tp-why-icon-wrap--azure">
-                <Users size={24} />
-              </div>
-              <h3>Who This Track Is Built For</h3>
-              <p>{program.targetAudience}</p>
-              <div className="tp-prereq-badge">
-                <Sparkles size={14} />
-                <span><strong>Prerequisites:</strong> {program.prerequisites}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* -------------------------------------------------------------------
-          3. COMPREHENSIVE CURRICULUM SYLLABUS ACCORDION
-      --------------------------------------------------------------------- */}
-      <section className="tp-curriculum-section">
-        <div className="container">
-          <div className="tp-section-header">
-            <span className="tp-section-eyebrow">
-              <Layers size={14} />
-              <span>Step-by-Step Syllabus</span>
-            </span>
-            <h2 className="tp-section-title">In-Depth Curriculum & Learning Modules</h2>
-            <p className="tp-section-desc">
-              Every module is designed to transition you from foundational concepts to production-grade implementation.
-            </p>
-          </div>
-
-          <div className="tp-modules-list">
-            {program.modules && program.modules.map((m, idx) => {
-              const isOpen = openModuleIdx === idx;
-              return (
-                <div key={m.moduleNumber} className={`tp-module-card ${isOpen ? 'is-open' : ''}`}>
-                  <button
-                    type="button"
-                    className="tp-module-header"
-                    onClick={() => setOpenModuleIdx(isOpen ? null : idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <div className="tp-mod-left">
-                      <span className="tp-mod-num">{m.moduleNumber}</span>
-                      <div className="tp-mod-title-wrap">
-                        <span className="tp-mod-duration">{m.duration}</span>
-                        <h3 className="tp-mod-title">{m.title}</h3>
-                      </div>
-                    </div>
-                    <div className="tp-mod-right">
-                      <span className="tp-mod-toggle-label">{isOpen ? 'Collapse' : 'Explore'}</span>
-                      {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                    </div>
-                  </button>
-
-                  {isOpen && (
-                    <div className="tp-module-body">
-                      <p className="tp-mod-overview">{m.overview}</p>
-                      <div className="tp-mod-topics-wrap">
-                        <span className="tp-mod-topics-lbl">Lessons & Hands-On Topics Covered:</span>
-                        <ul className="tp-mod-topics-list">
-                          {m.topics.map((t, i) => (
-                            <li key={i}>
-                              <CheckCircle2 size={16} className="tp-topic-icon" />
-                              <span>{t}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* -------------------------------------------------------------------
-          4. LIVE PRODUCTION CAPSTONE PROJECT
-      --------------------------------------------------------------------- */}
-      {program.liveProject && (
-        <section className="tp-project-section">
-          <div className="container">
-            <div className="tp-project-card">
-              <div className="tp-project-header">
-                <span className="tp-project-pill">
-                  <Terminal size={14} />
-                  <span>Live Industry Capstone Experience</span>
-                </span>
-                <h2 className="tp-project-title">{program.liveProject.title}</h2>
-                <p className="tp-project-scope">{program.liveProject.scope}</p>
-              </div>
-
-              <div className="tp-project-grid">
-                <div className="tp-project-deliverables">
-                  <h4>Key Portfolio Deliverables You Build:</h4>
-                  <ul>
-                    {program.liveProject.deliverables.map((item, i) => (
-                      <li key={i}>
-                        <CheckCircle2 size={16} className="tp-deliv-check" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="tp-project-eval">
-                  <h4>Mentor Review & Evaluation:</h4>
-                  <p>{program.liveProject.evaluation}</p>
-                  <div className="tp-cert-highlight">
-                    <Award size={20} className="tp-cert-icon" />
-                    <div>
-                      <strong>Verified Credential:</strong>
-                      <span>{program.certification}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* -------------------------------------------------------------------
-          5. TOOLS & FRAMEWORKS MASTERED
-      --------------------------------------------------------------------- */}
-      <section className="tp-tools-section">
-        <div className="container">
-          <div className="tp-section-header">
-            <span className="tp-section-eyebrow">
-              <Zap size={14} />
-              <span>Production Stack</span>
-            </span>
-            <h2 className="tp-section-title">Tools & Technologies Mastered</h2>
-            <p className="tp-section-desc">
-              Work with the exact enterprise software, IDEs, and validation tools employed by global tech leaders.
-            </p>
-          </div>
-
-          <div className="tp-tools-grid">
-            {program.toolsLearned.map((tool) => (
-              <div key={tool} className="tp-tool-card">
-                <div className="tp-tool-bullet" />
-                <span className="tp-tool-name">{tool}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Career Roles Prepared For */}
-          <div className="tp-roles-banner">
-            <Briefcase size={22} className="tp-roles-icon" />
-            <div>
-              <strong>Target Career Roles for Graduates:</strong>
-              <p>{program.careerRoles.join(' · ')}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* -------------------------------------------------------------------
-          6. DIRECT ENROLLMENT & SYLLABUS REQUEST FORM
-      --------------------------------------------------------------------- */}
-      <section ref={formSectionRef} className="tp-form-section">
-        <div className="container">
-          <div className="tp-section-header">
-            <span className="tp-section-eyebrow">
-              <Sparkles size={14} />
-              <span>Admissions Desk</span>
-            </span>
-            <h2 className="tp-section-title">Enroll in {program.title}</h2>
-            <p className="tp-section-desc">
-              Reserve your seat or request the complete week-by-week curriculum PDF. Our academic team responds within 24 hours.
-            </p>
-          </div>
-
-          <TrainingEnrollmentForm initialProgram={program.title} />
-        </div>
-      </section>
-
-      {/* -------------------------------------------------------------------
-          7. PROGRAM-SPECIFIC FAQS
-      --------------------------------------------------------------------- */}
-      {program.programFaqs && program.programFaqs.length > 0 && (
-        <section className="tp-faq-section">
-          <div className="container">
-            <div className="tp-section-header">
-              <span className="tp-section-eyebrow">
-                <HelpCircle size={14} />
-                <span>Common Questions</span>
-              </span>
-              <h2 className="tp-section-title">Frequently Asked Questions</h2>
-            </div>
-
-            <div className="tp-faq-list">
-              {program.programFaqs.map((faq, idx) => {
-                const isOpen = openFaqIdx === idx;
-                return (
-                  <div key={idx} className={`tp-faq-item ${isOpen ? 'is-open' : ''}`}>
-                    <button
-                      type="button"
-                      className="tp-faq-q"
-                      onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
-                      aria-expanded={isOpen}
-                    >
-                      <span>{faq.q}</span>
-                      <ChevronDown size={18} className="tp-faq-chev" />
-                    </button>
-                    {isOpen && (
-                      <div className="tp-faq-a">
-                        <p>{faq.a}</p>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* -------------------------------------------------------------------
-          8. EXPLORE RELATED TRAINING TRACKS
-      --------------------------------------------------------------------- */}
-      <section className="tp-related-section">
-        <div className="container">
-          <div className="tp-section-header">
-            <span className="tp-section-eyebrow">
-              <Award size={14} />
-              <span>Expand Your Skillset</span>
-            </span>
-            <h2 className="tp-section-title">Explore Related Training Tracks</h2>
-          </div>
-
-          <div className="tp-related-grid">
-            {related.map((rel) => (
-              <Link key={rel.id} to={`/training/${rel.id}`} className="tp-related-card">
-                <div className="tp-rel-header">
-                  <div className="tp-rel-icon">
-                    <ProgramIcon name={rel.icon} size={20} />
-                  </div>
-                  <span className="tp-rel-tag">{rel.tag}</span>
-                </div>
-                <h3 className="tp-rel-title">{rel.title}</h3>
-                <p className="tp-rel-lead">{rel.lead}</p>
-                <div className="tp-rel-footer">
-                  <span className="tp-rel-duration"><Clock size={13} /> {rel.duration}</span>
-                  <span className="tp-rel-action">View Program <ArrowRight size={14} /></span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
+      <CtaBand
+        title={`Ready to Master ${program.title}?`}
+        lead="Join Velvora's professional training track with real-world industry projects, 1-on-1 mentorship, and recognized certification."
+        btnText="Apply for Enrollment"
+        btnLink="#enrollment-form-section"
+      />
+    </>
   );
 }
-

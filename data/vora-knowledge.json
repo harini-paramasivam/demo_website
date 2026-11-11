@@ -1,9 +1,9 @@
 {
   "syncMetadata": {
-    "version": "v1.3.99",
+    "version": "v1.3.104",
     "status": "Synchronized",
-    "lastSynchronized": "2026-11-11T04:24:58.281Z",
-    "sourceHash": "b70ca6efbd268f722cb0118e1fc2e6527fad1ec40322b194a12c5884efbb082b",
+    "lastSynchronized": "2026-11-11T04:54:52.409Z",
+    "sourceHash": "0ef5c879544c655b36357483a721e1ddfbb13c4375993cd46eceb1fbbd89c01a",
     "indexedCount": 58,
     "indexedPages": 52,
     "indexedCareers": 6,
@@ -11,20 +11,20 @@
       {
         "source": "trainingData.js",
         "error": "Cannot read properties of undefined (reading 'join')",
-        "time": "2026-11-11T04:24:58.277Z"
+        "time": "2026-11-11T04:54:52.391Z"
       }
     ],
     "changelog": [
+      "Synced 52 pages & 6 careers at 2026-11-11T04:54:52.409Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:54:39.185Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:54:06.883Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:54:05.561Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:51:08.319Z",
       "Synced 52 pages & 6 careers at 2026-11-11T04:24:58.281Z",
       "Synced 52 pages & 6 careers at 2026-11-11T04:24:54.805Z",
       "Synced 52 pages & 6 careers at 2026-11-11T04:24:50.711Z",
       "Synced 52 pages & 6 careers at 2026-11-11T04:24:49.373Z",
-      "Synced 52 pages & 6 careers at 2026-11-11T04:16:55.663Z",
-      "Synced 52 pages & 6 careers at 2026-11-11T04:16:54.336Z",
-      "Synced 52 pages & 6 careers at 2026-11-11T04:16:47.983Z",
-      "Synced 52 pages & 6 careers at 2026-11-11T04:16:46.659Z",
-      "Synced 52 pages & 6 careers at 2026-11-11T04:16:41.635Z",
-      "Synced 52 pages & 6 careers at 2026-11-11T04:16:36.702Z"
+      "Synced 52 pages & 6 careers at 2026-11-11T04:16:55.663Z"
     ]
   },
   "documents": [

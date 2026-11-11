@@ -4,13 +4,6 @@ import {
   Sparkles, 
   ArrowRight, 
   CheckCircle2, 
-  BookOpen, 
-  Cpu, 
-  BarChart3, 
-  Megaphone, 
-  FileCheck2, 
-  Code, 
-  GraduationCap, 
   Clock, 
   MapPin, 
   Award, 
@@ -20,7 +13,8 @@ import {
   Mail, 
   Briefcase,
   HelpCircle,
-  Laptop
+  Laptop,
+  GraduationCap
 } from 'lucide-react';
 import { 
   trainingHero, 
@@ -29,60 +23,53 @@ import {
   learningRoadmap, 
   trainingFaqs 
 } from '../data/trainingData.js';
-import TrainingHeroGraphic from '../components/TrainingHeroGraphic.jsx';
+import Icon from '../components/Icon.jsx';
+import { PageHero, CtaBand } from '../components/ui.jsx';
 import TrainingEnrollmentForm from '../components/TrainingEnrollmentForm.jsx';
 
-// Icon resolver helper
-function ProgramIcon({ name, size = 22, className = '' }) {
-  switch (name) {
-    case 'BookOpen': return <BookOpen size={size} className={className} />;
-    case 'Cpu': return <Cpu size={size} className={className} />;
-    case 'Sparkles': return <Sparkles size={size} className={className} />;
-    case 'BarChart3': return <BarChart3 size={size} className={className} />;
-    case 'Megaphone': return <Megaphone size={size} className={className} />;
-    case 'FileCheck2': return <FileCheck2 size={size} className={className} />;
-    case 'Code': return <Code size={size} className={className} />;
-    case 'GraduationCap': return <GraduationCap size={size} className={className} />;
-    default: return <GraduationCap size={size} className={className} />;
-  }
+function FaqItem({ q, a }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`faq-item${open ? ' is-open' : ''}`}>
+      <button
+        type="button"
+        className="faq-question"
+        aria-expanded={open}
+        onClick={() => setOpen(!open)}
+      >
+        <span>{q}</span>
+        <ChevronDown
+          size={18}
+          aria-hidden="true"
+          style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s' }}
+        />
+      </button>
+      {open && <div className="faq-answer"><p>{a}</p></div>}
+    </div>
+  );
 }
 
 export default function Training() {
   const [activeCategory, setActiveCategory] = useState('all');
-  const [selectedProgramForForm, setSelectedProgramForForm] = useState('Internship Program (Live Industry Projects)');
-  const [openFaqIdx, setOpenFaqIdx] = useState(null);
-
   const formSectionRef = useRef(null);
-  const programsSectionRef = useRef(null);
+  const catalogSectionRef = useRef(null);
 
-  // Set document title and SEO meta
   useEffect(() => {
-    document.title = 'Training Programs & Internships | Velvora Solutions';
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute(
-        'content',
-        'Transforming Knowledge into Skills and Skills into Opportunities. Industry-standard training in ePublishing, AI/ML, Generative AI, Data Analytics, Digital Marketing, Accessibility, and Software Development with 100% Live Project Internships.'
-      );
-    }
+    document.title = 'Training Programs & Internships | Velvora Solutions Academy';
   }, []);
 
-  const scrollToForm = (programTitle = '') => {
-    if (programTitle) {
-      setSelectedProgramForForm(programTitle);
-    }
+  const scrollToForm = () => {
     if (formSectionRef.current) {
       formSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
-  const scrollToPrograms = () => {
-    if (programsSectionRef.current) {
-      programsSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const scrollToCatalog = () => {
+    if (catalogSectionRef.current) {
+      catalogSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
-  // Filter programs based on active tab
   const filteredPrograms = trainingPrograms.filter((p) => {
     if (activeCategory === 'all') return true;
     return p.category === activeCategory;
@@ -91,454 +78,390 @@ export default function Training() {
   const featuredInternship = trainingPrograms.find((p) => p.id === 'internship-program');
 
   return (
-    <div className="training-page">
-      {/* -------------------------------------------------------------------
-          1. HERO SECTION WITH 3D INTERACTIVE MASCOT
-      --------------------------------------------------------------------- */}
-      <section className="training-hero-section">
-        <div className="container training-hero-container">
-          <div className="training-hero-grid">
-            {/* Left Column: Editorial Headline & Actions */}
-            <div className="training-hero-left">
-              {/* Category Pill */}
-              <div className="training-hero-eyebrow">
-                <span className="hero-pill-radar" aria-hidden="true" />
-                <GraduationCap size={15} />
-                <span>{trainingHero.badge}</span>
-              </div>
+    <>
+      {/* 1. UNIFIED PAGE HERO MATCHING REST OF SITE */}
+      <PageHero
+        eyebrow="Velvora Academy"
+        title="Training Programs & Internships"
+        crumbs={['Home', 'Training']}
+      >
+        Transforming Knowledge into Skills and Skills into Opportunities. Industry-standard training and 100% live client project internships across 8 core technological disciplines. Learn directly from practicing architects and work on actual production assets.
+      </PageHero>
 
-              {/* Stacked Display Headline */}
-              <h1 className="training-hero-title">
-                <span className="training-title-prefix">{trainingHero.headingPrefix}</span>{' '}
-                <span className="training-title-accent">{trainingHero.headingAccent}</span>
-              </h1>
-
-              {/* Supporting Lead Description */}
-              <p className="training-hero-desc">
-                {trainingHero.subheading}
-              </p>
-
-              {/* Key Highlights Pill Strip */}
-              <div className="training-hero-chips">
-                <span className="training-chip">
-                  <span className="hero-chip-bullet" aria-hidden="true" />
-                  <span>100% Live Production Projects</span>
-                </span>
-                <span className="training-chip">
-                  <span className="hero-chip-bullet" aria-hidden="true" />
-                  <span>8 Specialized Tracks</span>
-                </span>
-                <span className="training-chip">
-                  <span className="hero-chip-bullet" aria-hidden="true" />
-                  <span>Cuddalore & Chennai Centers</span>
-                </span>
-                <span className="training-chip">
-                  <span className="hero-chip-bullet" aria-hidden="true" />
-                  <span>Official Certificate & PPO Pathway</span>
-                </span>
-              </div>
-
-              {/* Primary Call to Action Buttons */}
-              <div className="training-hero-cta-row">
-                <button
-                  type="button"
-                  onClick={() => scrollToForm('Internship Program (Live Industry Projects)')}
-                  className="btn btn--cyan training-hero-btn-primary"
-                >
-                  <span>Apply for Internship / Enroll</span>
-                  <ArrowRight size={17} aria-hidden="true" />
-                </button>
-                <button
-                  type="button"
-                  onClick={scrollToPrograms}
-                  className="btn btn--secondary training-hero-btn-secondary"
-                >
-                  <span>Explore 8 Programs</span>
-                </button>
-              </div>
-
-              {/* Fast Facts Bar */}
-              <div className="training-hero-facts">
-                <div className="th-fact">
-                  <span className="th-fact-num">2,000+</span>
-                  <span className="th-fact-lbl">Training Hours</span>
-                </div>
-                <div className="th-fact-div" />
-                <div className="th-fact">
-                  <span className="th-fact-num">1-on-1</span>
-                  <span className="th-fact-lbl">Architect Mentorship</span>
-                </div>
-                <div className="th-fact-div" />
-                <div className="th-fact">
-                  <span className="th-fact-num">Hybrid</span>
-                  <span className="th-fact-lbl">Online + In-Person</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column: Interactive 3D Holographic AI Academy Graphic */}
-            <div className="training-hero-right">
-              <TrainingHeroGraphic onEnquireClick={() => scrollToForm()} />
-            </div>
+      {/* 2. OVERVIEW & IMPACT METRICS */}
+      <section className="section section--paper">
+        <div className="container" style={{ maxWidth: '880px', textAlign: 'center', marginInline: 'auto' }}>
+          <span className="badge-eyebrow" style={{ justifyContent: 'center' }}>
+            <Sparkles size={16} /> Enterprise-Grade Learning
+          </span>
+          <h2 className="career-section-h2" style={{ color: 'var(--ink)' }}>
+            Empowering Students &amp; Professionals with Production Capabilities
+          </h2>
+          <p className="lead" style={{ marginInline: 'auto', color: '#475569' }}>
+            At Velvora Solutions Academy, we bridge the gap between academic curricula and actual commercial requirements. Whether you are aiming for a career in ePublishing, AI/ML, Data Analytics, Digital Accessibility, or Software Development, our tracks provide rigorous hands-on training backed by guaranteed live production exposure.
+          </p>
+          <div style={{ marginTop: '2rem', display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <button type="button" onClick={scrollToCatalog} className="btn btn--cyan btn--lg">
+              <span>Explore 8 Specialized Tracks</span>
+              <ArrowRight size={18} aria-hidden="true" />
+            </button>
+            <button type="button" onClick={scrollToForm} className="btn btn--secondary btn--lg">
+              <span>Apply for Enrollment</span>
+            </button>
           </div>
         </div>
-      </section>
 
-      {/* -------------------------------------------------------------------
-          2. IMPACT METRICS STRIP
-      --------------------------------------------------------------------- */}
-      <section className="training-stats-strip" aria-label="Key Training Metrics">
-        <div className="container">
-          <div className="training-stats-grid">
+        {/* 4 STATS CARDS */}
+        <div className="container" style={{ marginTop: '3.5rem' }}>
+          <div className="stats-row" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: '1.5rem'
+          }}>
             {trainingHero.stats.map((s, idx) => (
-              <div key={idx} className="training-stat-item">
-                <span className="training-stat-value">{s.value}</span>
-                <span className="training-stat-label">{s.label}</span>
+              <div
+                key={idx}
+                className="stat-card"
+                style={{
+                  background: 'var(--bg)',
+                  border: '1px solid var(--border)',
+                  borderRadius: '16px',
+                  padding: '24px 20px',
+                  textAlign: 'center',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.03)'
+                }}
+              >
+                <div style={{ fontSize: '2.4rem', fontWeight: 800, color: '#0284c7', lineHeight: 1, marginBottom: '8px' }}>
+                  {s.value}
+                </div>
+                <div style={{ fontSize: '0.92rem', color: '#64748b', fontWeight: 600 }}>
+                  {s.label}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* -------------------------------------------------------------------
-          3. FEATURED HIGHLIGHT: THE INTERNSHIP PROGRAM
-      --------------------------------------------------------------------- */}
+      {/* 3. FLAGSHIP INTERNSHIP SPOTLIGHT */}
       {featuredInternship && (
-        <section className="training-featured-section">
+        <section className="section" style={{ paddingTop: '2rem', paddingBottom: '3.5rem' }}>
           <div className="container">
-            <div className="training-featured-card">
-              <div className="tf-badge-row">
-                <span className="tf-tag-pill">
-                  <Sparkles size={14} />
-                  <span>Flagship Student Program</span>
-                </span>
-                <span className="tf-status-badge">Accepting Applications</span>
+            <div
+              className="svc-header--glass"
+              style={{
+                borderRadius: '24px',
+                padding: 'clamp(28px, 4vw, 44px)',
+                marginBottom: 0
+              }}
+            >
+              <div className="svc-header__top-bar">
+                <div className="svc-header__icon-pill">
+                  <span className="svc-header__icon-bubble">
+                    <GraduationCap size={20} />
+                  </span>
+                  <span className="svc-header__tag-text">Flagship Student &amp; Fresher Program</span>
+                </div>
+                <div className="svc-header__badge-pill">
+                  <Sparkles size={14} className="accent" aria-hidden="true" />
+                  <span>Accepting Applications for Next Batch</span>
+                </div>
               </div>
 
-              <div className="tf-grid">
-                <div className="tf-col-main">
-                  <h2 className="tf-title">{featuredInternship.title}</h2>
-                  <p className="tf-lead">{featuredInternship.lead}</p>
+              <h2 className="svc-header__title" style={{ marginTop: '0.5rem' }}>
+                {featuredInternship.title}
+              </h2>
 
-                  <div className="tf-specs-grid">
-                    <div className="tf-spec-pod">
-                      <Users size={16} className="tf-spec-icon" />
-                      <div>
-                        <strong>Who It's For:</strong>
-                        <p>{featuredInternship.internshipSpecs.whoItsFor}</p>
-                      </div>
-                    </div>
+              <p className="svc-header__lead">
+                {featuredInternship.lead}
+              </p>
 
-                    <div className="tf-spec-pod">
-                      <CheckCircle2 size={16} className="tf-spec-icon" />
-                      <div>
-                        <strong>Eligibility:</strong>
-                        <p>{featuredInternship.internshipSpecs.eligibility}</p>
-                      </div>
-                    </div>
-
-                    <div className="tf-spec-pod">
-                      <Clock size={16} className="tf-spec-icon" />
-                      <div>
-                        <strong>Duration:</strong>
-                        <p>{featuredInternship.internshipSpecs.duration}</p>
-                      </div>
-                    </div>
-
-                    <div className="tf-spec-pod">
-                      <Laptop size={16} className="tf-spec-icon" />
-                      <div>
-                        <strong>Live Project Exposure:</strong>
-                        <p>{featuredInternship.internshipSpecs.liveProjectExposure}</p>
-                      </div>
-                    </div>
+              <div className="svc-offers-grid" style={{ marginTop: '1.5rem', marginBottom: '1.5rem' }}>
+                <div className="svc-offer-card">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0284c7', marginBottom: '6px' }}>
+                    <Users size={18} />
+                    <strong style={{ fontSize: '1.02rem', color: 'var(--ink)' }}>Who It's For:</strong>
                   </div>
-
-                  <div className="tf-perks-list">
-                    <strong>What You Gain:</strong>
-                    <ul>
-                      {featuredInternship.internshipSpecs.perks.map((perk, i) => (
-                        <li key={i}>
-                          <CheckCircle2 size={15} aria-hidden="true" />
-                          <span>{perk}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <p style={{ margin: 0, fontSize: '0.92rem', color: '#64748b' }}>
+                    {featuredInternship.internshipSpecs.whoItsFor}
+                  </p>
                 </div>
 
-                <div className="tf-col-action">
-                  <div className="tf-action-box">
-                    <div className="tf-action-icon">
-                      <GraduationCap size={36} />
-                    </div>
-                    <h3>Start Your Internship Journey</h3>
-                    <p>
-                      Gain verified corporate experience across ePublishing, AI/ML, Data Analytics, Digital Accessibility, and Software Development.
-                    </p>
-                    <Link
-                      to="/training/internship-program"
-                      className="btn btn--cyan btn--block tf-action-btn"
-                    >
-                      <span>Explore Full Internship Curriculum</span>
-                      <ArrowRight size={17} />
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={() => scrollToForm(featuredInternship.title)}
-                      className="btn btn--secondary btn--block tf-sub-action-btn"
-                    >
-                      <span>Quick Apply Online</span>
-                    </button>
-                    <span className="tf-action-sub">
-                      Online Live · Cuddalore Head Office · Chennai Branch Office
-                    </span>
+                <div className="svc-offer-card">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0284c7', marginBottom: '6px' }}>
+                    <CheckCircle2 size={18} />
+                    <strong style={{ fontSize: '1.02rem', color: 'var(--ink)' }}>Eligibility:</strong>
                   </div>
+                  <p style={{ margin: 0, fontSize: '0.92rem', color: '#64748b' }}>
+                    {featuredInternship.internshipSpecs.eligibility}
+                  </p>
                 </div>
+
+                <div className="svc-offer-card">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0284c7', marginBottom: '6px' }}>
+                    <Clock size={18} />
+                    <strong style={{ fontSize: '1.02rem', color: 'var(--ink)' }}>Flexible Duration:</strong>
+                  </div>
+                  <p style={{ margin: 0, fontSize: '0.92rem', color: '#64748b' }}>
+                    {featuredInternship.internshipSpecs.duration}
+                  </p>
+                </div>
+
+                <div className="svc-offer-card">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0284c7', marginBottom: '6px' }}>
+                    <Laptop size={18} />
+                    <strong style={{ fontSize: '1.02rem', color: 'var(--ink)' }}>Live Production Projects:</strong>
+                  </div>
+                  <p style={{ margin: 0, fontSize: '0.92rem', color: '#64748b' }}>
+                    {featuredInternship.internshipSpecs.liveProjectExposure}
+                  </p>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center', marginTop: '1rem' }}>
+                <Link to="/training/internship-program" className="btn btn--cyan">
+                  <span>Explore Full Internship Curriculum</span>
+                  <ArrowRight size={16} />
+                </Link>
+                <button type="button" onClick={scrollToForm} className="btn btn--secondary">
+                  <span>Quick Apply Online</span>
+                </button>
+                <span style={{ fontSize: '0.85rem', color: '#64748b', marginLeft: 'auto' }}>
+                  Locations: Cuddalore HQ · Chennai Branch · Virtual Remote
+                </span>
               </div>
             </div>
           </div>
         </section>
       )}
 
-      {/* -------------------------------------------------------------------
-          4. INTERACTIVE PROGRAMS FILTER & SHOWCASE
-      --------------------------------------------------------------------- */}
-      <section ref={programsSectionRef} className="training-programs-section">
+      {/* 4. THE 8 SPECIALIZED TRAINING TRACKS */}
+      <section ref={catalogSectionRef} id="training-catalog" className="section section--paper" style={{ paddingTop: '2.5rem' }}>
         <div className="container">
-          <div className="training-section-header">
-            <span className="section-eyebrow">Comprehensive Curriculum</span>
-            <h2 className="section-title">Industry-Standard Career Programs</h2>
-            <p className="section-desc">
-              Designed and instructed by senior architects. Each program blends fundamental theory with real-world enterprise deliverables, live tools, and modern workflows.
+          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <p className="eyebrow">Curriculum Directory</p>
+            <h2>8 Specialized Industry Training Programs</h2>
+            <p className="lead" style={{ marginInline: 'auto', maxWidth: '640px' }}>
+              Select a specialized track to view its comprehensive syllabus, hands-on modules, tools covered, and live production capstone deliverables.
             </p>
-
-            {/* Filter Tabs */}
-            <div className="training-tabs-bar" role="tablist" aria-label="Course Category Tabs">
-              {trainingCategories.map((cat) => (
-                <button
-                  key={cat.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={activeCategory === cat.id}
-                  className={`training-tab-btn ${activeCategory === cat.id ? 'is-active' : ''}`}
-                  onClick={() => setActiveCategory(cat.id)}
-                >
-                  {cat.label}
-                </button>
-              ))}
-            </div>
           </div>
 
-          {/* Programs Grid */}
-          <div className="training-cards-grid">
-            {filteredPrograms.map((prog) => {
-              const isIntern = prog.id === 'internship-program';
-              return (
-                <div
-                  key={prog.id}
-                  className={`training-course-card ${isIntern ? 'is-internship-card' : ''}`}
-                >
-                  {/* Card Header */}
-                  <div className="tcc-header">
-                    <div className="tcc-icon-pod">
-                      <ProgramIcon name={prog.icon} size={24} />
-                    </div>
-                    <div className="tcc-tags">
-                      <span className="tcc-badge">{prog.badge}</span>
-                      <span className="tcc-category">{prog.tag}</span>
-                    </div>
-                  </div>
+          {/* CATEGORY TABS */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
+            {trainingCategories.map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => setActiveCategory(cat.id)}
+                className={`pill ${activeCategory === cat.id ? 'pill--active' : ''}`}
+                style={{
+                  cursor: 'pointer',
+                  padding: '8px 20px',
+                  fontSize: '0.9rem',
+                  fontWeight: 600,
+                  borderRadius: '9999px',
+                  border: activeCategory === cat.id ? '1.5px solid #0284c7' : '1px solid var(--border)',
+                  background: activeCategory === cat.id ? 'rgba(56, 189, 248, 0.15)' : 'var(--bg)',
+                  color: activeCategory === cat.id ? '#0284c7' : 'var(--body)',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
 
-                  {/* Card Title & Lead */}
-                  <Link to={`/training/${prog.id}`} className="tcc-title-link">
-                    <h3 className="tcc-title">{prog.title}</h3>
-                  </Link>
-                  <p className="tcc-lead">{prog.lead}</p>
-
-                  {/* Program Meta Details */}
-                  <div className="tcc-meta-row">
-                    <div className="tcc-meta-item">
-                      <Clock size={14} />
-                      <span>{prog.duration}</span>
-                    </div>
-                    <div className="tcc-meta-item">
-                      <Award size={14} />
-                      <span>{prog.level}</span>
-                    </div>
-                    <div className="tcc-meta-item">
-                      <MapPin size={14} />
-                      <span>Hybrid / Centers</span>
-                    </div>
+          {/* 8 PROGRAMS GRID */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '24px'
+            }}
+          >
+            {filteredPrograms.map((p) => (
+              <div
+                key={p.id}
+                className="svc-offer-card"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  padding: '28px',
+                  borderRadius: '20px',
+                  background: 'var(--bg)',
+                  border: '1px solid var(--border)',
+                  transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+                  position: 'relative'
+                }}
+              >
+                {/* Meta Top Bar */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
+                  <div
+                    style={{
+                      width: '46px',
+                      height: '46px',
+                      borderRadius: '12px',
+                      background: 'rgba(56, 189, 248, 0.12)',
+                      border: '1px solid rgba(56, 189, 248, 0.3)',
+                      color: '#0284c7',
+                      display: 'grid',
+                      placeItems: 'center'
+                    }}
+                  >
+                    <Icon name={p.icon || 'GraduationCap'} size={22} />
                   </div>
-
-                  {/* Advanced Topics Section */}
-                  <div className="tcc-topics-block">
-                    <span className="tcc-topics-title">Advanced Topics Covered:</span>
-                    <ul className="tcc-topics-list">
-                      {prog.advancedTopics.map((top, idx) => (
-                        <li key={idx}>
-                          <span className="tcc-topic-dot" aria-hidden="true">▸</span>
-                          <span>{top}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Tools & Tech Chips */}
-                  <div className="tcc-tools-block">
-                    <span className="tcc-tools-label">Tools & Frameworks:</span>
-                    <div className="tcc-tools-chips">
-                      {prog.toolsLearned.map((tool) => (
-                        <span key={tool} className="tcc-tool-pill">{tool}</span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Career Roles Prepared For */}
-                  <div className="tcc-roles-block">
-                    <Briefcase size={14} />
-                    <span><strong>Career Roles:</strong> {prog.careerRoles.join(', ')}</span>
-                  </div>
-
-                  {/* Card Footer Action */}
-                  <div className="tcc-footer">
-                    <Link
-                      to={`/training/${prog.id}`}
-                      className="btn btn--cyan btn--block tcc-action-btn"
-                    >
-                      <span>View Full Curriculum & Details</span>
-                      <ArrowRight size={16} aria-hidden="true" />
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={() => scrollToForm(prog.title)}
-                      className="tcc-quick-apply-btn"
-                    >
-                      <span>Quick Apply / Enroll</span>
-                    </button>
-                  </div>
+                  <span
+                    className="pill"
+                    style={{
+                      fontSize: '0.78rem',
+                      fontWeight: 700,
+                      background: 'rgba(56, 189, 248, 0.08)',
+                      color: '#0284c7',
+                      border: '1px solid rgba(56, 189, 248, 0.25)'
+                    }}
+                  >
+                    {p.duration.split('/')[0].trim()}
+                  </span>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* -------------------------------------------------------------------
-          5. THE 4-STEP CAREER ACCELERATION ROADMAP
-      --------------------------------------------------------------------- */}
-      <section className="training-roadmap-section">
-        <div className="container">
-          <div className="training-section-header">
-            <span className="section-eyebrow">Structured Learning Journey</span>
-            <h2 className="section-title">How We Accelerate Your Career</h2>
-            <p className="section-desc">
-              From day one, you transition from passive studying to active engineering with real client workflows, code reviews, and industry mentors.
-            </p>
-          </div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--ink)', marginBottom: '8px' }}>
+                  {p.title}
+                </h3>
 
-          <div className="roadmap-grid">
-            {learningRoadmap.map((item) => (
-              <div key={item.step} className="roadmap-card">
-                <div className="roadmap-step-badge">{item.step}</div>
-                <h3 className="roadmap-title">{item.title}</h3>
-                <p className="roadmap-desc">{item.desc}</p>
-                <div className="roadmap-glow" aria-hidden="true" />
+                <p style={{ fontSize: '0.92rem', color: '#64748b', lineHeight: 1.6, flexGrow: 1, marginBottom: '16px' }}>
+                  {p.lead}
+                </p>
+
+                {/* Specs Chips */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
+                  <span style={{ fontSize: '0.78rem', color: '#0284c7', background: 'rgba(56, 189, 248, 0.08)', padding: '3px 10px', borderRadius: '6px' }}>
+                    {p.level}
+                  </span>
+                  <span style={{ fontSize: '0.78rem', color: '#64748b', background: 'var(--tint)', padding: '3px 10px', borderRadius: '6px' }}>
+                    {p.mode.split(' ')[0]}
+                  </span>
+                  <span style={{ fontSize: '0.78rem', color: '#64748b', background: 'var(--tint)', padding: '3px 10px', borderRadius: '6px' }}>
+                    {p.liveProjects}
+                  </span>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '14px', borderTop: '1px solid var(--border)' }}>
+                  <Link
+                    to={`/training/${p.id}`}
+                    style={{
+                      fontSize: '0.92rem',
+                      fontWeight: 700,
+                      color: '#0284c7',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      textDecoration: 'none'
+                    }}
+                  >
+                    <span>View Track &amp; Syllabus</span>
+                    <ArrowRight size={15} />
+                  </Link>
+
+                  <button
+                    type="button"
+                    onClick={scrollToForm}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: '#64748b',
+                      fontSize: '0.85rem',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      padding: 0
+                    }}
+                  >
+                    Quick Apply
+                  </button>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* -------------------------------------------------------------------
-          6. INTERACTIVE APPLICATION & ENROLLMENT FORM
-      --------------------------------------------------------------------- */}
-      <section ref={formSectionRef} className="training-form-section">
+      {/* 5. 4-STEP ACADEMIC LEARNING PROCESS */}
+      <section className="section" style={{ paddingTop: '3rem', paddingBottom: '3.5rem' }}>
         <div className="container">
-          <TrainingEnrollmentForm initialProgram={selectedProgramForForm} />
-        </div>
-      </section>
-
-      {/* -------------------------------------------------------------------
-          7. FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION)
-      --------------------------------------------------------------------- */}
-      <section className="training-faq-section">
-        <div className="container">
-          <div className="training-section-header">
-            <span className="section-eyebrow">Common Questions</span>
-            <h2 className="section-title">Frequently Asked Questions</h2>
-            <p className="section-desc">
-              Everything you need to know about eligibility, scheduling, certifications, and live project mentorship.
+          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <p className="eyebrow">Academic Methodology</p>
+            <h2>The Velvora Learning Journey</h2>
+            <p className="lead" style={{ marginInline: 'auto', maxWidth: '640px' }}>
+              From foundational concepts to live enterprise delivery, our 4-stage progression ensures job-readiness.
             </p>
           </div>
 
-          <div className="training-faq-list">
-            {trainingFaqs.map((faq, idx) => {
-              const isOpen = openFaqIdx === idx;
-              return (
-                <div key={idx} className={`training-faq-item ${isOpen ? 'is-open' : ''}`}>
-                  <button
-                    type="button"
-                    className="training-faq-q"
-                    aria-expanded={isOpen}
-                    onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
-                  >
-                    <span>{faq.q}</span>
-                    <ChevronDown size={18} className="training-faq-chev" aria-hidden="true" />
-                  </button>
-                  {isOpen && (
-                    <div className="training-faq-a">
-                      <p>{faq.a}</p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* -------------------------------------------------------------------
-          8. FINAL CALL TO ACTION BANNER
-      --------------------------------------------------------------------- */}
-      <section className="training-cta-banner">
-        <div className="container">
-          <div className="training-cta-box">
-            <div className="training-cta-content">
-              <span className="training-cta-eyebrow">Ready to Start Learning?</span>
-              <h2 className="training-cta-title">
-                Talk to our academic team about the right program for you or your organization.
-              </h2>
-              <p className="training-cta-desc">
-                Whether you are a college student building your first enterprise capstone, or an enterprise team upskilling in WCAG 2.2 and Generative AI, we provide tailored counseling within 24 hours.
-              </p>
-              <div className="training-cta-direct">
-                <a href="tel:+919500834236" className="training-direct-link">
-                  <Phone size={16} />
-                  <span>Call: +91 9500834236</span>
-                </a>
-                <a href="mailto:info@velvorasolutions.com" className="training-direct-link">
-                  <Mail size={16} />
-                  <span>Email: info@velvorasolutions.com</span>
-                </a>
-              </div>
-            </div>
-
-            <div className="training-cta-btn-col">
-              <button
-                type="button"
-                onClick={() => scrollToForm()}
-                className="btn btn--cyan btn--lg training-cta-action"
+          <div
+            className="process-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: '24px'
+            }}
+          >
+            {learningRoadmap.map((step) => (
+              <div
+                key={step.step}
+                className="svc-offer-card"
+                style={{
+                  padding: '28px 24px',
+                  borderRadius: '18px',
+                  background: 'var(--paper)',
+                  border: '1px solid var(--border)'
+                }}
               >
-                <span>Enroll or Enquire Now</span>
-                <ArrowRight size={18} aria-hidden="true" />
-              </button>
-            </div>
+                <div style={{ fontSize: '2rem', fontWeight: 800, color: '#0284c7', lineHeight: 1, marginBottom: '12px' }}>
+                  {step.step}
+                </div>
+                <h4 style={{ fontSize: '1.15rem', color: 'var(--ink)', marginBottom: '8px' }}>
+                  {step.title}
+                </h4>
+                <p style={{ fontSize: '0.92rem', color: '#64748b', lineHeight: 1.6, margin: 0 }}>
+                  {step.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-    </div>
+
+      {/* 6. FREQUENTLY ASKED QUESTIONS */}
+      <section className="section section--paper" style={{ paddingTop: '3rem', paddingBottom: '4rem' }}>
+        <div className="container" style={{ maxWidth: '820px' }}>
+          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <p className="eyebrow">Got Questions?</p>
+            <h2>Frequently Asked Questions</h2>
+            <p className="lead" style={{ marginInline: 'auto' }}>
+              Everything you need to know about our training programs, internship structure, and credentials.
+            </p>
+          </div>
+
+          <div className="faq-list">
+            {trainingFaqs.map((faq, idx) => (
+              <FaqItem key={idx} q={faq.q} a={faq.a} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. ADMISSIONS DESK & ENROLLMENT FORM */}
+      <section ref={formSectionRef} id="admissions-portal" className="section" style={{ paddingTop: '3.5rem', paddingBottom: '4.5rem' }}>
+        <div className="container">
+          <TrainingEnrollmentForm />
+        </div>
+      </section>
+
+      {/* 8. UNIFIED CTA BAND */}
+      <CtaBand
+        title="Ready to Build Real-World Engineering Competencies?"
+        lead="Join Velvora Solutions Academy today. Choose from 8 specialized tracks or apply for our flagship internship with 100% live client project exposure."
+        btnText="Apply for Enrollment"
+        btnLink="#enrollment-form-section"
+      />
+    </>
   );
 }
-
