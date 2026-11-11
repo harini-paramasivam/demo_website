@@ -13,6 +13,7 @@ import SolutionsOverview from './pages/SolutionsOverview.jsx';
 import PartnerWithUs from './pages/PartnerWithUs.jsx';
 import Insights from './pages/Insights.jsx';
 import Training from './pages/Training.jsx';
+import TrainingProgramPage from './pages/TrainingProgramPage.jsx';
 import ServicePage from './pages/ServicePage.jsx';
 import ResourcePage from './pages/ResourcePage.jsx';
 import BlogOverview from './pages/BlogOverview.jsx';
@@ -58,6 +59,7 @@ export default function App() {
           <Route path="/partner-with-us" element={<PartnerWithUs />} />
           <Route path="/services" element={<ServicesOverview />} />
           <Route path="/training" element={<Training />} />
+          <Route path="/training/:slug" element={<TrainingProgramPage />} />
           <Route path="/training-and-internships" element={<Training />} />
           <Route path="/services/accessibility-training-and-consulting" element={<Training />} />
           <Route path="/solutions" element={<SolutionsOverview />} />

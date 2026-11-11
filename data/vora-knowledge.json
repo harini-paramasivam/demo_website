@@ -1,24 +1,30 @@
 {
   "syncMetadata": {
-    "version": "v1.3.81",
+    "version": "v1.3.95",
     "status": "Synchronized",
-    "lastSynchronized": "2026-11-11T03:57:30.232Z",
-    "sourceHash": "f2f5a1c10b47d5332b29d3429c001f2c47a2f8b53589eeea965bdfc09aebc4ba",
-    "indexedCount": 59,
-    "indexedPages": 53,
+    "lastSynchronized": "2026-11-11T04:16:55.663Z",
+    "sourceHash": "55d444fa2ee7800402dc761105e0f16063272cce3a5081d67af723c3a5896c31",
+    "indexedCount": 58,
+    "indexedPages": 52,
     "indexedCareers": 6,
-    "errorLogs": [],
+    "errorLogs": [
+      {
+        "source": "trainingData.js",
+        "error": "Cannot read properties of undefined (reading 'join')",
+        "time": "2026-11-11T04:16:55.657Z"
+      }
+    ],
     "changelog": [
-      "Synced 53 pages & 6 careers at 2026-11-11T03:57:30.232Z",
-      "Synced 31 pages & 6 careers at 2026-11-11T03:56:38.837Z",
-      "Synced 31 pages & 6 careers at 2026-11-11T03:53:31.289Z",
-      "Synced 31 pages & 6 careers at 2026-11-11T03:52:52.831Z",
-      "Synced 31 pages & 6 careers at 2026-11-11T03:52:21.916Z",
-      "Synced 31 pages & 6 careers at 2026-11-11T03:52:20.592Z",
-      "Synced 31 pages & 6 careers at 2026-11-11T03:50:02.317Z",
-      "Synced 31 pages & 6 careers at 2026-11-11T03:49:45.962Z",
-      "Synced 31 pages & 6 careers at 2026-11-11T03:49:44.717Z",
-      "Synced 30 pages & 6 careers at 2026-11-10T10:57:38.704Z"
+      "Synced 52 pages & 6 careers at 2026-11-11T04:16:55.663Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:16:54.336Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:16:47.983Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:16:46.659Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:16:41.635Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:16:36.702Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:16:22.484Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:16:21.015Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:14:58.080Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:14:22.673Z"
     ]
   },
   "documents": [
@@ -675,40 +681,6 @@
         "case studies",
         "articles",
         "news"
-      ]
-    },
-    {
-      "id": "page-training-academy",
-      "title": "Velvora Academy: Training Programs & Internships",
-      "url": "/training",
-      "category": "training",
-      "summary": "Transforming Knowledge into Skills and Skills into Opportunities. Velvora Solutions provides 8 industry-standard training and internship programs with 100% live project exposure across ePublishing, AI/ML, Generative AI, Data Analytics, Digital Marketing, Accessibility, and Software Development.",
-      "content": "Velvora Academy & Skill Development Lab:\nTagline: \"Transforming Knowledge into Skills and Skills into Opportunities.\"\nDelivery Modes: Online Virtual Live Interactive sessions, In-Person Classroom at Cuddalore Head Office (Indhira Nagar) & Chennai Branch Office (Porur), or Hybrid.\nKey Metrics: 2,000+ Training Hours Delivered | 100% Live Project Experience | 8 Specialized Tracks.\n\nCourse & Internship Programs Available:\n• **ePublishing Training** (Publishing & Formats | 4 to 8 Weeks)\n  - Level: Beginner to Advanced | Mode: Online Live / Classroom (Cuddalore & Chennai) / Hybrid\n  - Overview: Tight deadlines leave little room for rework. Velvora’s ePublishing training gives your team hands-on experience with industry-standard workflows, XML-based publishing, content conversion, and quality assurance. Build in-house expertise and streamline your publishing process from first file to final output.\n  - Advanced Topics: Advanced EPUB 3 (fixed-layout, media overlays, MathML, SVG); JATS / BITS XML workflows & DTD validation; XSLT & XPath transformations; EPUBCheck validation & QA automation; Accessible EPUB (EPUB Accessibility 1.1 conformance); Conversion automation with Python & regular expressions; InDesign composition to reflowable digital assets\n  - Tools Mastered: JATS / BITS DTD, EPUBCheck, DAISY Ace, Oxygen XML, Python, Adobe InDesign\n  - Career Roles: ePublishing Specialist, XML Production Editor, Digital Typesetter, eBook QA Analyst\n\n• **AI/ML Training** (Artificial Intelligence & Machine Learning | 6 to 12 Weeks)\n  - Level: Intermediate to Advanced | Mode: Online Live / Classroom / Hybrid\n  - Overview: AI is no longer optional in a data-driven world. Velvora’s AI/ML experts provide practical training that builds strong foundations in machine learning, from data preparation and model development to real-world applications, so you can put intelligent solutions to work.\n  - Advanced Topics: Ensemble methods & gradient boosting (XGBoost, LightGBM); Feature engineering & dimensionality selection; Model evaluation, hyperparameter tuning & cross-validation; Deep learning architectures (CNN, RNN, Transformers); Natural Language Processing (NLP) & Computer Vision; Model deployment pipelines, containerization & MLOps; Intelligent Document Processing (IDP) integration\n  - Tools Mastered: Python, Scikit-Learn, PyTorch / TensorFlow, XGBoost, Hugging Face, Docker, FastAPI\n  - Career Roles: Machine Learning Engineer, AI Pipeline Developer, NLP Specialist, Data Scientist\n\n• **Generative AI Training** (Cutting-Edge AI & LLMs | 4 to 8 Weeks)\n  - Level: All Levels | Mode: Online Live / Classroom / Hybrid\n  - Overview: Generative AI is changing how businesses create, automate and innovate. Our hands-on training helps teams understand GenAI technologies, write effective prompts, build AI-powered workflows and apply them to real business needs, while following industry best practices.\n  - Advanced Topics: Structured reasoning prompts & advanced prompting techniques; LLM APIs, function calling & fine-tuning concepts; Retrieval-Augmented Generation (RAG) with vector databases; AI autonomous agents & multi-step tool-use workflows; Evaluation, safety guardrails & responsible AI practices; Enterprise workflow automation & document synthesis\n  - Tools Mastered: LangChain / LlamaIndex, OpenAI / Gemini APIs, ChromaDB / Pinecone, Python, Ollama, Prompt Engineering\n  - Career Roles: Generative AI Engineer, AI Solutions Architect, Prompt Engineer, Automation Specialist\n\n• **Data Analytics & Business Intelligence Training** (BI & Executive Telemetry | 6 to 10 Weeks)\n  - Level: Beginner to Advanced | Mode: Online Live / Classroom / Hybrid\n  - Overview: Data creates value only when it informs a decision. Velvora’s data analytics training builds practical skills in visualization, reporting, business intelligence and analytical thinking, so professionals can turn raw data into clear insights and make smarter decisions.\n  - Advanced Topics: Advanced Excel (Power Query, Power Pivot, dynamic arrays); Advanced SQL (window functions, CTEs, query optimization); Power BI data modelling, star schemas & complex DAX; Row-level security (RLS) & enterprise governance; Statistical analysis, correlation & trend forecasting; Python for data analytics (Pandas, NumPy, Matplotlib, Seaborn)\n  - Tools Mastered: Power BI, Advanced SQL, Microsoft Excel, Python (Pandas), Tableau Basics, ETL Pipelines\n  - Career Roles: Business Intelligence Analyst, Data Analyst, Reporting Specialist, Analytics Consultant\n\n• **Digital Marketing Training** (SEO & Performance Growth | 4 to 8 Weeks)\n  - Level: Beginner to Intermediate | Mode: Online Live / Classroom / Hybrid\n  - Overview: A strong online presence takes both skill and strategy. Our digital marketing experts offer hands-on training in SEO, social media, content marketing, email campaigns, PPC advertising and analytics, so you can plan, run and measure campaigns that make an impact.\n  - Advanced Topics: Technical SEO, schema markup & Core Web Vitals optimization; Advanced PPC search & display bidding strategies; Marketing automation, email sequences & lead funnels; Google Analytics 4 (GA4) setup & custom conversion tracking; A/B testing methodologies & conversion rate optimization (CRO); Multi-touch attribution modelling & executive ROI analysis\n  - Tools Mastered: Google Analytics 4, Google Search Console, SEMrush / Ahrefs, Google Ads, Meta Ads Manager, Mailchimp\n  - Career Roles: SEO Specialist, Digital Marketing Manager, Performance Marketer, Content Strategist\n\n• **Digital Accessibility Training** (Universal Inclusion & Compliance | 4 to 8 Weeks)\n  - Level: Beginner to Professional | Mode: Online Live / Classroom / Hybrid\n  - Overview: Remediation fixes today’s files. Training helps your team create accessible content from the start. Velvora’s accessibility experts offer practical, role-based training and consulting that help organizations build in-house skills, reduce rework and meet their accessibility goals.\n  - Advanced Topics: Advanced PDF remediation (tagging tree, PDF/UA ISO 14289); WCAG 2.2 (Level AA & AAA), Section 508 & EN 301 549 standards; Remediating complex data tables, nested forms, infographics & MathML; Assistive technology audit testing (JAWS, NVDA, VoiceOver, TalkBack); WAI-ARIA design patterns & accessible web components; Accessibility audits, conformance scoring & ACR / VPAT reporting\n  - Tools Mastered: Adobe Acrobat Pro, PAC 2024 / PDF Accessibility Checker, NVDA, JAWS, Colour Contrast Analyser, Axe DevTools\n  - Career Roles: Accessibility Auditor, PDF Remediation Specialist, Digital Inclusion Consultant, VPAT / ACR Analyst\n\n• **Software Development Training** (Full-Stack Modern Engineering | 8 to 14 Weeks)\n  - Level: Beginner to Advanced | Mode: Online Live / Classroom / Hybrid\n  - Overview: Technology moves quickly, and development teams need to keep pace. Velvora’s software development experts provide hands-on training in modern programming languages, frameworks, application development, testing and deployment, helping you build technical expertise and ship high-quality software.\n  - Advanced Topics: Data structures, algorithms & space-time complexity; Design patterns, SOLID principles & clean modular architecture; REST APIs, microservices & authentication (JWT, OAuth 2.0); Advanced relational database design, indexing & ORM optimization; Automated unit/integration testing & CI/CD deployment pipelines; Cloud hosting, Docker containerization & production monitoring\n  - Tools Mastered: React.js, Node.js / Express, Python (FastAPI), PostgreSQL / MongoDB, Git & GitHub, Docker, Linux\n  - Career Roles: Full-Stack Developer, Frontend Engineer, Backend API Developer, Software Engineer\n\n• **Internship Program (Live Industry Projects)** (Career Accelerator & Mentorship | 1 Month / 3 Months / 6 Months (Flexible))\n  - Level: Students & Recent Graduates | Mode: Virtual / Remote or In-Person (Cuddalore & Chennai Centers) or Hybrid\n  - Overview: Real-world experience makes learning stick. Velvora’s internship program gives students and aspiring professionals the chance to work on live projects, learn from industry experts and build practical, career-focused skills across ePublishing, AI/ML, Generative AI, Data Analytics, Digital Marketing, Accessibility and Software Development.\n  - Advanced Topics: Live sprint planning & agile team collaboration; Git version control & professional code review workflows; Real-world client deliverable standards & SLA adherence; Quality assurance verification & dual-layer auditing; Resume refinement, LinkedIn optimization & mock technical interviews\n  - Tools Mastered: Git / GitHub, Enterprise Project Management, Domain-Specific Tools, Production QA Checkers\n  - Career Roles: Publishing Intern, Accessibility QA Intern, AI/ML Intern, Junior Web Developer, Associate Analyst\n\nFlagship Student Internship Program:\n- Target: College students (B.E, B.Tech, BCA, MCA, B.Sc, M.Sc, Diploma, Arts, Science) and aspiring professionals.\n- Eligibility: Enrolled students or freshers seeking real enterprise experience; no prior corporate experience required.\n- Duration: Flexible 1 Month (Fast-Track), 3 Months (Standard), or 6 Months (Comprehensive Capstone).\n- Live Projects: 100% Guaranteed Live Production Project Exposure.\n- Mentorship & Perks: 1-on-1 mentorship from senior architects, verified Certificate of Completion, recommendation letter, and PPO pathways under the G.R.O.W. Framework.\n- Admission & Enquiry: Submit the online enrollment form at /training or email info@velvorasolutions.com / call +91 9500834236.",
-      "topics": [
-        "Training Programs",
-        "Student Internships",
-        "ePublishing Training",
-        "AI ML Training",
-        "Generative AI Training",
-        "Data Analytics Training",
-        "Digital Marketing Training",
-        "Accessibility Training",
-        "Software Development Training"
-      ],
-      "keywords": [
-        "training",
-        "internship",
-        "internships",
-        "courses",
-        "students",
-        "mentorship",
-        "certification",
-        "academy",
-        "live projects",
-        "enroll",
-        "admission",
-        "cuddalore",
-        "chennai"
       ]
     },
     {

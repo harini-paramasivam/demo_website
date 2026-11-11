@@ -143,7 +143,7 @@ export default function Training() {
                 <button
                   type="button"
                   onClick={() => scrollToForm('Internship Program (Live Industry Projects)')}
-                  className="btn btn--orange training-hero-btn-primary"
+                  className="btn btn--cyan training-hero-btn-primary"
                 >
                   <span>Apply for Internship / Enroll</span>
                   <ArrowRight size={17} aria-hidden="true" />
@@ -276,13 +276,19 @@ export default function Training() {
                     <p>
                       Gain verified corporate experience across ePublishing, AI/ML, Data Analytics, Digital Accessibility, and Software Development.
                     </p>
+                    <Link
+                      to="/training/internship-program"
+                      className="btn btn--cyan btn--block tf-action-btn"
+                    >
+                      <span>Explore Full Internship Curriculum</span>
+                      <ArrowRight size={17} />
+                    </Link>
                     <button
                       type="button"
                       onClick={() => scrollToForm(featuredInternship.title)}
-                      className="btn btn--orange btn--block tf-action-btn"
+                      className="btn btn--secondary btn--block tf-sub-action-btn"
                     >
-                      <span>Apply for Internship Now</span>
-                      <ArrowRight size={17} />
+                      <span>Quick Apply Online</span>
                     </button>
                     <span className="tf-action-sub">
                       Online Live · Cuddalore Head Office · Chennai Branch Office
@@ -345,7 +351,9 @@ export default function Training() {
                   </div>
 
                   {/* Card Title & Lead */}
-                  <h3 className="tcc-title">{prog.title}</h3>
+                  <Link to={`/training/${prog.id}`} className="tcc-title-link">
+                    <h3 className="tcc-title">{prog.title}</h3>
+                  </Link>
                   <p className="tcc-lead">{prog.lead}</p>
 
                   {/* Program Meta Details */}
@@ -395,13 +403,19 @@ export default function Training() {
 
                   {/* Card Footer Action */}
                   <div className="tcc-footer">
+                    <Link
+                      to={`/training/${prog.id}`}
+                      className="btn btn--cyan btn--block tcc-action-btn"
+                    >
+                      <span>View Full Curriculum & Details</span>
+                      <ArrowRight size={16} aria-hidden="true" />
+                    </Link>
                     <button
                       type="button"
                       onClick={() => scrollToForm(prog.title)}
-                      className="btn btn--orange btn--block tcc-action-btn"
+                      className="tcc-quick-apply-btn"
                     >
-                      <span>Enquire for this Program</span>
-                      <ArrowRight size={16} aria-hidden="true" />
+                      <span>Quick Apply / Enroll</span>
                     </button>
                   </div>
                 </div>
@@ -515,7 +529,7 @@ export default function Training() {
               <button
                 type="button"
                 onClick={() => scrollToForm()}
-                className="btn btn--orange btn--lg training-cta-action"
+                className="btn btn--cyan btn--lg training-cta-action"
               >
                 <span>Enroll or Enquire Now</span>
                 <ArrowRight size={18} aria-hidden="true" />

@@ -36,7 +36,19 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
 
   useEffect(() => {
     if (initialProgram) {
-      setFormData((prev) => ({ ...prev, program: initialProgram }));
+      // Find matching standard option value
+      const target = initialProgram.toLowerCase();
+      let matchedVal = initialProgram;
+      if (target.includes('internship')) matchedVal = 'Internship Program (Live Industry Projects)';
+      else if (target.includes('epublishing')) matchedVal = 'ePublishing Training';
+      else if (target.includes('generative')) matchedVal = 'Generative AI Training';
+      else if (target.includes('ai') || target.includes('ml')) matchedVal = 'AI/ML Training';
+      else if (target.includes('analytics') || target.includes('bi')) matchedVal = 'Data Analytics & Business Intelligence Training';
+      else if (target.includes('accessibility')) matchedVal = 'Digital Accessibility Training';
+      else if (target.includes('software')) matchedVal = 'Software Development Training';
+      else if (target.includes('marketing')) matchedVal = 'Digital Marketing Training';
+
+      setFormData((prev) => ({ ...prev, program: matchedVal }));
     }
   }, [initialProgram]);
 
@@ -168,7 +180,7 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
               <button type="button" onClick={handleReset} className="btn btn--secondary">
                 Submit Another Application
               </button>
-              <a href="https://wa.me/919500834236" target="_blank" rel="noopener noreferrer" className="btn btn--orange">
+              <a href="https://wa.me/919500834236" target="_blank" rel="noopener noreferrer" className="btn btn--cyan">
                 Instant WhatsApp Enquiry <ArrowRight size={16} />
               </a>
             </div>
@@ -323,7 +335,7 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                   Select Training Course or Internship Track <span className="te-req">*</span>
                 </label>
                 <div className="te-input-wrap">
-                  <Sparkles size={17} className="te-field-icon te-field-icon--orange" aria-hidden="true" />
+                  <Sparkles size={17} className="te-field-icon te-field-icon--cyan" aria-hidden="true" />
                   <select
                     id="te-program"
                     name="program"
@@ -413,7 +425,7 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
               <button
                 type="submit"
                 disabled={loading}
-                className="btn btn--orange btn--lg te-submit-btn"
+                className="btn btn--cyan btn--lg te-submit-btn"
               >
                 {loading ? (
                   <>

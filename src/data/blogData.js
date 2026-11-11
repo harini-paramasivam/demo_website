@@ -1029,3 +1029,4 @@ export function getRelatedArticles(currentSlug, limit = 3) {
   const otherCat = blogArticles.filter(a => a.slug !== current.slug && a.category !== current.category);
   return [...sameCat, ...otherCat].slice(0, limit);
 }
+
