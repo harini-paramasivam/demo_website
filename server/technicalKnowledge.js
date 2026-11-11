@@ -41,16 +41,17 @@ Semantic HTML means using tags that convey the **actual meaning and purpose** of
     id: 'tech-css',
     keywords: ['css', 'css3', 'styling', 'flexbox', 'grid', 'responsive design', 'media queries', 'what is css'],
     title: 'CSS & Responsive Modern Layouts',
-    match: (q) => /\b(what is css|explain css|css flexbox|css grid|responsive design|media queries)\b/i.test(q),
+    match: (q) => /\b(what is css|explain css|css flexbox|css grid|flexbox vs grid|difference between flexbox and grid|responsive design|media queries)\b/i.test(q),
     generate: () => ({
       reply: `**CSS (Cascading Style Sheets)** is the style sheet language used for describing the visual presentation, layout, and formatting of documents written in HTML.
 
 ### Core Concepts:
 • **The Box Model:** Every element in CSS is rendered as a rectangular box comprising **Content**, **Padding** (inner space), **Border**, and **Margin** (outer space).
 • **Cascading & Specificity:** When multiple rules conflict, browsers resolve styles based on importance (\`!important\`), specificity (inline > IDs > classes > elements), and source order.
-• **Modern Layout Modes:**
-  - **Flexbox (1D Layout):** Perfect for arranging items in a single row or column with flexible alignment and space distribution (\`display: flex\`).
-  - **CSS Grid (2D Layout):** Powerful two-dimensional grid system for handling simultaneous rows and columns (\`display: grid\`).
+
+### Modern Layout Systems (Flexbox vs. Grid):
+• **Flexbox (One-Dimensional Layout):** Engineered for arranging items in a single row or column with flexible alignment, spacing, and dynamic reordering (\`display: flex\`). Ideal for navbars, toolbars, and linear component lists.
+• **CSS Grid (Two-Dimensional Layout):** Powerful layout system capable of handling simultaneous rows and columns (\`display: grid\`). Ideal for full-page responsive layouts, dashboard cards, and complex multi-track grids.
 
 ### Responsive Web Design:
 Techniques enabling websites to adapt seamlessly across smartphones, tablets, and desktop displays:
@@ -190,27 +191,27 @@ Modern REST APIs almost universally communicate using lightweight, human-readabl
   // 8. SQL vs NoSQL (PostgreSQL & MongoDB)
   {
     id: 'tech-sql-databases',
-    keywords: ['sql', 'postgresql', 'mongodb', 'database', 'nosql', 'relational database'],
+    keywords: ['sql', 'postgresql', 'mongodb', 'database', 'nosql', 'relational database', 'difference between sql and nosql'],
     title: 'SQL, PostgreSQL & NoSQL Databases',
-    match: (q) => /\b(what is sql|what is postgresql|what is mongodb|sql vs nosql|relational database)\b/i.test(q),
+    match: (q) => /\b(what is sql|what is postgresql|what is mongodb|sql vs nosql|difference between sql and nosql|relational database)\b/i.test(q),
     generate: () => ({
-      reply: `Databases organize, store, and retrieve digital data efficiently. They are broadly divided into **Relational (SQL)** and **Non-Relational (NoSQL)** systems:
+      reply: `Databases organize, store, and manage digital information. They are broadly divided into **Relational (SQL)** and **Non-Relational (NoSQL)** architectures:
 
-### 1. SQL & Relational Databases (e.g. PostgreSQL):
-• **Structure:** Data is organized into strict tabular schemas with rows and columns, enforcing predefined data types and relationships (foreign keys).
-• **ACID Compliance:** Guarantees Atomicity, Consistency, Isolation, and Durability, making SQL ideal for financial transactions, enterprise publishing metadata, and mission-critical records.
-• **PostgreSQL:** An advanced, open-source object-relational database renowned for complex queries, JSONB document querying, high concurrency, and data integrity.
+### 1. SQL & Relational Databases (e.g. PostgreSQL, MySQL):
+• **Structure & Schema:** Data is structured in strict relational tables with rows and columns, enforcing defined schema constraints, primary keys, and foreign keys.
+• **Query Language:** Standard SQL (Structured Query Language) used for joins and aggregations.
+• **ACID Compliance:** Guarantees Atomicity, Consistency, Isolation, and Durability—crucial for financial systems, enterprise inventory, and mission-critical transactions.
 
-### 2. NoSQL & Document Databases (e.g. MongoDB):
-• **Structure:** Stores unstructured or semi-structured data as flexible, schema-less BSON/JSON-like documents.
-• **Scalability:** Engineered for horizontal scaling (sharding across server clusters) and rapid prototyping where data models evolve frequently.
+### 2. NoSQL & Document Databases (e.g. MongoDB, Redis, Cassandra):
+• **Structure & Flexibility:** Stores unstructured or semi-structured data as flexible, schema-less JSON/BSON documents or key-value pairs.
+• **Horizontal Scalability:** Optimized for high-throughput distributed clusters, horizontal sharding, and agile iterative development.
 
-### Which to Choose?
-• Choose **PostgreSQL** when relationships, data integrity, complex queries, and ACID transactions are paramount.
-• Choose **MongoDB** when dealing with rapidly changing hierarchical documents, high-volume real-time ingestion, or catalogs with variable attributes.`,
+### When to Choose Which:
+• Choose **SQL (PostgreSQL)** when structured relationships, data consistency, strict schemas, and relational integrity are paramount.
+• Choose **NoSQL (MongoDB)** for unstructured document storage, real-time streaming, and rapidly changing schema designs.`,
       sources: [
-        { title: 'Data Analytics Services', url: '/services/data-analytics' },
-        { title: 'Software Development', url: '/services/software-development' }
+        { title: 'Software & Web Development', url: '/services/software-development' },
+        { title: 'Data Analytics Services', url: '/services/data-analytics' }
       ]
     })
   },
@@ -220,7 +221,7 @@ Modern REST APIs almost universally communicate using lightweight, human-readabl
     id: 'tech-ai-ml-genai',
     keywords: ['artificial intelligence', 'machine learning', 'generative ai', 'llm', 'what is ai', 'what is machine learning', 'what is generative ai', 'what is an llm'],
     title: 'Artificial Intelligence, Machine Learning & Generative AI',
-    match: (q) => /\b(what is artificial intelligence|what is machine learning|what is generative ai|what is an llm|what is llm|ai vs ml)\b/i.test(q) && !/traditional/i.test(q),
+    match: (q) => /\b(what is artificial intelligence|what is machine learning|what is generative ai|what is an llm|what is llm|ai vs ml|difference between artificial intelligence and machine learning)\b/i.test(q) && !/traditional/i.test(q),
     generate: () => ({
       reply: `Understanding the spectrum of modern Artificial Intelligence:
 
@@ -251,25 +252,24 @@ Deep learning models powered by the **Transformer architecture** (utilizing self
   // 10. RAG & AI Agents
   {
     id: 'tech-rag-agents',
-    keywords: ['rag', 'retrieval augmented generation', 'ai agents', 'what is rag', 'what are ai agents', 'vector embeddings'],
+    keywords: ['rag', 'retrieval augmented generation', 'retrieval-augmented generation', 'ai agents', 'what is rag', 'what are ai agents', 'vector embeddings'],
     title: 'RAG Architecture & Autonomous AI Agents',
-    match: (q) => /\b(what is rag|retrieval augmented generation|what are ai agents|ai agents|how does rag work)\b/i.test(q),
+    match: (q) => /\b(what is rag|retrieval[- ]augmented generation|how does rag work|ai agents|what are autonomous ai agents|what are ai agents|agentic workflows)\b/i.test(q),
     generate: () => ({
       reply: `### 1. What is RAG (Retrieval-Augmented Generation)?
-RAG is an AI architectural technique that enhances Large Language Models by retrieving verified, dynamic external knowledge before generating a response.
+**Retrieval-Augmented Generation (RAG)** is an advanced AI architecture that prevents hallucinations by retrieving verified external factual knowledge before the LLM generates an answer.
 
-**How RAG Works:**
-1. **Document Ingestion & Chunking:** Company documents, web pages, and policies are split into contextual text chunks.
-2. **Embedding Generation:** Chunks are converted into numerical vector representations capturing semantic meaning.
-3. **Retrieval:** When a user asks a question, the system searches the vector space for the most semantically relevant chunks.
-4. **Augmented Generation:** The model receives the user's prompt **alongside** the retrieved factual text as grounded context.
-• **Benefit:** Prevents hallucinations, keeps information up to date without costly model retraining, and provides verifiable source citations.
+**How RAG Operates:**
+1. **Document Ingestion & Chunking:** Enterprise documents, manuals, and web pages are parsed into semantic chunks.
+2. **Vector Embeddings:** Chunks are converted into high-dimensional mathematical vectors storing contextual meaning.
+3. **Retrieval:** When a user queries the system, the vector database retrieves the most relevant factual passages.
+4. **Grounded Generation:** The LLM receives the user prompt alongside the factual context to deliver accurate answers with source citations, preventing hallucination.
 
-### 2. What are AI Agents?
-AI Agents are autonomous systems powered by LLMs that go beyond passive Q&A to **reason, plan, and take actions** in external environments:
-• **Perception & Planning:** Decomposing complex goals into sequential sub-tasks.
-• **Tool-Calling:** Interacting with external APIs, querying databases, running code, or sending emails.
-• **Memory:** Maintaining persistent short-term and long-term state across interactions.`,
+### 2. What are Autonomous AI Agents?
+AI Agents are autonomous systems powered by LLMs that go beyond passive question-answering to **reason, plan, and execute actions** using external tools:
+• **Planning & Decomposition:** Breaking large goals into sequential sub-tasks.
+• **Tool-Calling:** Calling APIs, querying databases, running code, or executing automated web workflows.
+• **Memory & State:** Retaining long-term memory to adapt continuously over multi-step tasks.`,
       sources: [
         { title: 'AI and Automation Services', url: '/services/ai-automation' },
         { title: 'Generative AI Training', url: '/training/generative-ai-training' }
@@ -282,7 +282,7 @@ AI Agents are autonomous systems powered by LLMs that go beyond passive Q&A to *
     id: 'tech-devops-tools',
     keywords: ['cloud computing', 'docker', 'git', 'containers', 'version control', 'what is docker', 'what is git', 'what is cloud computing'],
     title: 'Cloud Infrastructure, Containerization & Git',
-    match: (q) => /\b(what is cloud computing|what is docker|what is git|explain docker|explain git|containerization)\b/i.test(q),
+    match: (q) => /\b(what is cloud computing|what is docker|what is git|explain docker|explain git|containerization|docker containerization)\b/i.test(q),
     generate: () => ({
       reply: `Foundational pillars of modern software engineering and DevOps:
 
@@ -290,9 +290,9 @@ AI Agents are autonomous systems powered by LLMs that go beyond passive Q&A to *
 On-demand delivery of IT resources (computing power, storage, databases, and networking) over the internet with pay-as-you-go pricing (e.g., AWS, Google Cloud, Azure). Eliminates the overhead of managing physical server hardware.
 
 ### 2. Docker & Containerization:
-• **What it is:** An open-source platform that packages an application and all its dependencies, system libraries, and runtime configurations into a lightweight, isolated unit called a **container**.
-• **Why it matters:** Eliminates the *"it works on my machine"* problem, ensuring the application runs identically in development, staging, and production environments.
-• **Difference from Virtual Machines:** Containers share the host OS kernel and require fractions of the CPU, memory, and startup time compared to heavy guest VMs.
+• **What it is:** An open-source platform that packages an application and all its dependencies, system libraries, and runtime configurations into a lightweight, portable container.
+• **Process Isolation:** Provides strict process isolation and namespace sandboxing, guaranteeing that code runs identically across development, staging, and production servers.
+• **Efficiency:** Unlike heavy virtual machines, containers share the host OS kernel and start up in milliseconds with minimal CPU/RAM overhead.
 
 ### 3. Git & Version Control:
 A distributed version control system that tracks changes in source code across engineering teams:
@@ -333,14 +333,14 @@ Velvora Solutions utilizes specialized OCR engines to convert historical backlis
   // 13. Accessible PDF Tag Tree
   {
     id: 'tech-pdf-tag-tree',
-    keywords: ['pdf tag tree', 'accessible pdf tag tree', 'pdf tags', 'document structure', 'screen reader tag tree'],
+    keywords: ['pdf tag tree', 'accessible pdf tag tree', 'pdf tags', 'document structure', 'screen reader tag tree', 'tagged pdf'],
     title: 'Accessible PDF Tag Tree Architecture',
-    match: (q) => /\b(pdf tag tree|accessible pdf tag tree|what are pdf tags|pdf tags|tag tree)\b/i.test(q),
+    match: (q) => /\b(pdf tag tree|accessible pdf tag tree|what are pdf tags|pdf tags|tag tree|tagged pdf)\b/i.test(q),
     generate: () => ({
-      reply: `In digital document accessibility, the **PDF Tag Tree** is the hidden logical structure tree that gives meaning, order, and semantic hierarchy to visual PDF content.
+      reply: `In digital document accessibility, the **PDF Tag Tree** is the hidden logical structure tree that gives meaning, reading order, and semantic hierarchy to visual PDF content.
 
 ### Why Visual Appearance is Not Enough:
-Standard PDF content consists of visual drawing instructions (coordinates of glyphs, lines, and colors) on a canvas. A screen reader cannot inherently tell whether text is a heading, table cell, or paragraph unless it is enclosed in **structural tags**.
+Standard PDF content consists of visual drawing instructions (coordinates of glyphs, lines, and colors) on a canvas. A screen reader cannot inherently tell whether text is a heading, table cell, or paragraph unless it is enclosed in **structural tags**. The tag tree establishes the definitive **reading order** for assistive technologies such as screen readers (NVDA, JAWS), regardless of visual column layout.
 
 ### Standard PDF/UA Structural Tags:
 • \`<Document>\`: The root container element.
@@ -563,6 +563,526 @@ To enroll, visit our **[Training & Internships Portal](/training)** and submit t
         { title: 'Admissions Inquiry', url: '/contact' }
       ]
     })
+  },
+
+  // 19. Private Company Financial Information (Unavailable / Confidential)
+  {
+    id: 'company-finances-unavailable',
+    title: 'Company Financial Records Inquiry',
+    match: (q) => /\b(net profit margin|profit margin|annual revenue|annual turnover|balance sheet|financial margin|company earnings|fiscal year profit)\b/i.test(q),
+    generate: () => ({
+      reply: `**Velvora Solutions** is a privately held enterprise. Detailed internal financial performance records, net profit margins, and private balance sheets are confidential and are not published on our public website.
+
+For enterprise procurement audits, corporate RFP vendor assessments, or formal compliance inquiries, authorized organizational representatives may contact our corporate administration desk directly:
+
+• **Email:** **info@velvorasolutions.com**
+• **Official Portal:** **[Contact Us Page](/contact)**
+• **Phone:** +91 9500834236`,
+      sources: [
+        { title: 'Contact Administration Desk', url: '/contact' },
+        { title: 'About Velvora Solutions', url: '/about/company-overview' }
+      ]
+    })
+  },
+
+  // 20. Quantum Computing Algorithms (Unsupported / Disclaimer)
+  {
+    id: 'solution-quantum-disclaimer',
+    title: 'Quantum Computing Inquiry',
+    match: (q) => /\b(quantum computing|quantum algorithm|quantum algorithms)\b/i.test(q),
+    generate: () => ({
+      reply: `Velvora Solutions focuses on practical, production-ready enterprise technologies including **cloud-native web engineering**, **WCAG 2.2 / PDF/UA digital accessibility**, **XML-first publishing**, and **Intelligent Document Processing (IDP)**.
+
+We do not utilize quantum computing algorithms, cryptocurrency mining, or speculative computational models in our solutions. Our engineering platforms run on proven, secure classical cloud infrastructure (AWS, Azure, Google Cloud) and modern AI/ML frameworks (PyTorch, FastAPI, LangChain).
+
+Explore our verified enterprise solutions on our **[Industry Solutions Page](/solutions)**.`,
+      sources: [
+        { title: 'Industry Solutions', url: '/solutions' },
+        { title: 'Software & Web Development', url: '/services/software-development' }
+      ]
+    })
+  },
+
+  // 21. AI Lottery Prediction (Unavailable / Disallowed Claim)
+  {
+    id: 'ai-lottery-disclaimer',
+    title: 'Lottery Prediction Inquiry',
+    match: (q) => /\b(predict lottery|lottery winning|lottery numbers|lottery model|gambling)\b/i.test(q),
+    generate: () => ({
+      reply: `Lottery drawings are randomized probability events governed by statistical chance, and artificial intelligence models cannot predict lottery winning numbers.
+
+Velvora Solutions engineers practical enterprise AI and workflow automation services, including:
+• **Intelligent Document Processing (IDP):** Ingestion of complex scanned manuscripts into structured XML.
+• **Cognitive NLP Tagging:** Semantic entity extraction and JATS/BITS metadata classification.
+• **Automated Accessibility Auditing:** Machine-assisted alt text drafting and contrast verification.
+
+We do not provide lottery prediction tools, gambling algorithms, or speculative forecasting models. Learn more about our real-world AI applications on our **[AI and Automation Services Page](/services/ai-automation)**.`,
+      sources: [
+        { title: 'AI and Automation Services', url: '/services/ai-automation' },
+        { title: 'Industry Solutions', url: '/solutions' }
+      ]
+    })
+  },
+
+  // 22. Exact Starting Salary & Compensation (HR Stage Evaluation)
+  {
+    id: 'career-salary-inquiry',
+    title: 'Starting Salary & Compensation Structure',
+    match: (q) => /\b(exact starting salary|starting salary|salary for entry-level|what is the salary|salary structure|pay scale for freshers)\b/i.test(q),
+    generate: () => ({
+      reply: `Velvora Solutions offers competitive, merit-based compensation packages aligned with candidate technical evaluation scores, demonstrated domain competencies, and prevailing IT/publishing industry benchmarks.
+
+We do not publish fixed, rigid starting salary figures online because compensation is personalized to each candidate's interview performance, practical skill assessment, and role alignment during the HR discussion stage.
+
+Our compensation framework includes:
+• Competitive base salary with performance incentives.
+• Comprehensive health and wellness coverage.
+• Professional certification support and continuous upskilling.
+• Clear career progression pathways under our **G.R.O.W. Framework**.
+
+We invite prospective candidates to review active vacancies and submit their resumes through our **[Careers Portal](/careers)**.`,
+      sources: [
+        { title: 'Careers Portal & Active Openings', url: '/careers' },
+        { title: 'Life at Velvora', url: '/about/careers' }
+      ]
+    })
+  },
+
+  // 23. Government Job Placement Guarantee Disclaimer
+  {
+    id: 'training-govt-placement-disclaimer',
+    title: 'Government Job Placement Disclaimer',
+    match: (q) => /\b(government job placement|guarantee.*government job|100% government job|govt job guarantee)\b/i.test(q),
+    generate: () => ({
+      reply: `Velvora Solutions provides industry-recognized professional skill training, hands-on live project exposure, and private corporate placement assistance—including Pre-Placement Offers (PPOs) for top performers in our flagship tracks.
+
+However, **we do not guarantee or claim government job placements**, as public sector and government appointments are governed exclusively by official state and central public service commission examinations and statutory recruitment bodies.
+
+Our training programs are designed to equip students and professionals with high-demand competencies for private technology firms, global publishing houses, and digital accessibility consultancies. Visit our **[Training & Internships Page](/training)** to explore available academies.`,
+      sources: [
+        { title: 'Training & Internships', url: '/training' },
+        { title: 'Flagship Internship Curriculum', url: '/training/internship-program' }
+      ]
+    })
+  },
+
+  // 24. Exact Fixed Cost Per Page for Remediation (Dynamic Scoping)
+  {
+    id: 'quotation-pricing-per-page',
+    title: 'PDF Remediation Pricing Per Page',
+    match: (q) => /\b(exact fixed cost per page|cost per page|fixed cost per page|price per page|rate per page|fixed pricing per page)\b/i.test(q),
+    generate: () => ({
+      reply: `Velvora Solutions does not charge a single rigid flat rate per page for PDF accessibility remediation because document structures and technical requirements vary significantly. We provide a customized quotation based on document complexity:
+
+### Factors Influencing Remediation Cost:
+1. **Document Structure & Layout:** Simple single-column narrative text vs. complex multi-column magazine layouts with sidebars and pull quotes.
+2. **Tabular Complexity:** Standard tables vs. nested tables, multi-tier split headers, or borderless data matrices requiring \`<TH>\`/\`<TD>\` ID scoping.
+3. **STEM Figures & Equations:** High density of mathematical formulas requiring LaTeX/MathML tagging, and scientific charts requiring descriptive technical alt text.
+4. **Scanned vs. Born-Digital:** Scanned documents requiring high-accuracy Optical Character Recognition (OCR) before structural tagging.
+5. **Project Volume:** Enterprise volume discount tiers apply for bulk backlists and ongoing publication subscriptions.
+
+To receive an exact, transparent project quotation and customized turnaround schedule within 24–48 hours, share a sample file via our **[Contact Us Page](/contact)** or email **info@velvorasolutions.com**.`,
+      sources: [
+        { title: 'Request a Project Quote', url: '/contact' },
+        { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' }
+      ]
+    })
+  },
+
+  // 25. VPAT (Voluntary Product Accessibility Template)
+  {
+    id: 'standards-vpat',
+    title: 'VPAT & Accessibility Statements',
+    match: (q) => /\b(what is a vpat|voluntary product accessibility template|provide vpat|vpat report|vpat documentation)\b/i.test(q),
+    generate: () => ({
+      reply: `A **VPAT (Voluntary Product Accessibility Template)** is a standardized document produced by organizations to explain how their digital products, software platforms, and websites conform to major accessibility standards such as **Section 508**, **WCAG 2.2**, and the European standard **EN 301 549**.
+
+### Velvora Solutions VPAT & Conformance Services:
+• **Full Accessibility Audits:** Detailed diagnostic testing combining automated scans with manual assistive technology verification (NVDA, JAWS, VoiceOver).
+• **Formal Accessibility Conformance Reports (ACR):** Transforming raw audit data into official, procurement-ready ACRs built on the latest VPAT template.
+• **Section 508 Compliance Verification:** Assisting vendors and government suppliers in verifying product accessibility for US federal procurement.
+• **Remediation Roadmap:** Providing prioritized code-level and document-level remediation recommendations to close identified compliance gaps.
+
+To commission an independent VPAT assessment, connect with our accessibility team via our **[Contact Page](/contact)**.`,
+      sources: [
+        { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' },
+        { title: 'Accessibility Statement', url: '/accessibility-statement' }
+      ]
+    })
+  },
+
+  // 26. Children's Fixed-Layout EPUB with Audio Read-Aloud
+  {
+    id: 'epub-fixed-layout-children',
+    title: 'Fixed-Layout EPUB & Audio Read-Aloud',
+    match: (q) => /\b(fixed-layout epub|fixed layout epub|children'?s illustrated|audio read-aloud|read-aloud)\b/i.test(q),
+    generate: () => ({
+      reply: `Yes! Velvora Solutions specializes in creating **Interactive Fixed-Layout EPUB 3** publications tailored for children's illustrated storybooks, graphic novels, comic books, cookbooks, and high-design textbooks:
+
+### Fixed-Layout & Interactive Features:
+• **Exact Pixel-Perfect Layouts:** Locks text, full-bleed color illustrations, and interactive media to preserve the original print composition across digital reading devices.
+• **Synchronized Audio Read-Aloud (Media Overlays):** Precise timing synchronization between spoken professional narration and highlighted on-screen text, empowering young readers and language learners.
+• **Interactive Touch Elements:** Embedded SVG animations, interactive quizzes, sound effects, and pop-up vocabulary definitions.
+• **Multi-Platform Distribution:** Full rendering compatibility across Apple Books, Amazon Kindle (KPF), Google Play Books, and Kobo.
+• **Accessibility Conformance:** Embedded semantic alt text and structured navigation compliant with EPUB Accessibility 1.1 guidelines.
+
+Explore our book conversion solutions on our **[ePublishing Services Page](/services/epublishing)**.`,
+      sources: [
+        { title: 'ePublishing Services', url: '/services/epublishing' },
+        { title: 'Publishing Solutions', url: '/solutions' }
+      ]
+    })
+  },
+
+  // 27. Conversational Courtesy / Thank You
+  {
+    id: 'conversational-courtesy',
+    title: 'Conversational Courtesy',
+    match: (q) => /\b(thank you|thanks|thank you very much|thanks a lot|appreciate it)\b/i.test(q),
+    generate: () => ({
+      reply: `You are very welcome! 👋 It is my absolute pleasure to assist you. 
+
+If you have any further questions about Velvora Solutions' services, accessibility audits, ePublishing workflows, training tracks, or career opportunities, please feel free to ask anytime. 
+
+Have a wonderful day!`,
+      sources: [
+        { title: 'Explore Services', url: '/services' },
+        { title: 'Contact Team', url: '/contact' }
+      ]
+    })
+  },
+
+  // 28. Dual Multi-Intent: Accessibility and ePublishing
+  {
+    id: 'multi-intent-a11y-epub',
+    title: 'Combined Accessibility and ePublishing Services',
+    match: (q) => /\b(need both|both pdf accessibility and epublishing|both accessibility and epublishing|accessibility and epublishing)\b/i.test(q),
+    generate: () => ({
+      reply: `Velvora Solutions seamlessly unifies **PDF Accessibility** remediation and **ePublishing Services** under an integrated production workflow:
+
+### How We Deliver Both Services Together:
+1. **Single-Source Structured Conversion:** We convert your original manuscripts or PDF archives into valid, structured **XML (JATS/BITS)**, which acts as the master source for both formats.
+2. **Accessible EPUB 3 Generation:** Automatically export certified, reflowable EPUB 3 files conforming to EPUB Accessibility 1.1 and WCAG 2.2 Level AA.
+3. **Dual-Certified PDF/UA Remediation:** Remediate and tag your PDF publications with logical reading order trees, MathML, and PAC-verified ISO 14289 conformance for complete PDF accessibility.
+4. **Cost & Timeline Synergy:** Combining both requirements under one project eliminates duplicate composition work and reduces turnaround time by over 30%.
+
+To scope an integrated publishing and accessibility project, submit your requirements via our **[Contact Us Page](/contact)** or email **info@velvorasolutions.com**.`,
+      sources: [
+        { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' },
+        { title: 'ePublishing Services', url: '/services/epublishing' },
+        { title: 'Publishing Solutions', url: '/solutions' }
+      ]
+    })
+  },
+
+  // 29. Section 508 & Federal Accessibility Compliance
+  {
+    id: 'tech-section-508',
+    title: 'Section 508 & Federal Accessibility Compliance',
+    match: (q) => /\b(what is section 508|section 508 and who does it apply|who does section 508 apply to|section 508 compliance|rehabilitation act)\b/i.test(q),
+    generate: () => ({
+      reply: `### Understanding Section 508 Compliance
+
+**Section 508** is a statutory amendment to the United States **Rehabilitation Act of 1973** that mandates all Information and Communication Technology (ICT) developed, procured, maintained, or used by **federal agencies** must be accessible to people with disabilities.
+
+### Who Section 508 Applies To:
+1. **US Federal Agencies & Departments:** All federal executive branch agencies, departments, and government entities.
+2. **Government Contractors & Vendors:** Private commercial enterprises, software vendors, and digital publishing companies that sell technology, software, or digital documents to the US federal government.
+3. **Federally Funded Organizations:** Higher education institutions, non-profits, and research bodies receiving federal grants and contracts under Section 504 and Section 508.
+
+### Key Technical Standards:
+Under the refreshed Section 508 standards, ICT conformance is harmonized directly with **WCAG 2.0 / 2.1 Level AA** guidelines and applies to public websites, electronic documents (PDF/Word), web applications, and software user interfaces.
+
+Velvora Solutions helps organizations achieve total Section 508 compliance through automated auditing, manual assistive testing, remediation, and official **VPAT (Voluntary Product Accessibility Template)** creation.`,
+      sources: [
+        { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' },
+        { title: 'Section 508 Compliance Guide', url: '/blog/section-508-compliance-what-organizations-need-to-know' }
+      ]
+    })
+  },
+
+  // 30. Common PDF Accessibility Errors & How to Fix Them
+  {
+    id: 'tech-common-pdf-errors',
+    title: 'Common PDF Accessibility Errors & How to Fix Them',
+    match: (q) => /\b(common pdf accessibility errors|most common pdf accessibility errors|common pdf errors|accessibility errors found in documents)\b/i.test(q),
+    generate: () => ({
+      reply: `### Most Common PDF Accessibility Errors & Remediation
+
+Based on enterprise accessibility audits, the most prevalent PDF accessibility errors include:
+
+1. **Untagged or Incomplete Tag Trees:** The document lacks structural tags (\`<Document>\`, \`<H1>\`-\`<H6>\`, \`<P>\`), causing screen readers to announce the document as completely blank or read out disjointed character codes.
+2. **Incorrect Logical Reading Order:** Multi-column layouts, sidebars, and callout boxes that read out of sequence because the visual placement does not match the underlying **reading order** in the tag tree.
+3. **Missing or Inadequate Alternative Text (alt text):** Visual images, charts, and diagrams missing descriptive **alt text** descriptions, or using meaningless placeholders like *"image.png"*, leaving blind users without crucial visual context.
+4. **Poor Color Contrast Violations:** Text-to-background color **contrast** falling below the mandatory WCAG 2.2 threshold of 4.5:1 for normal text or 3:1 for large text.
+5. **Inaccessible Data Tables:** Tables lacking explicit \`<TH>\` header tags, missing \`Scope\` or \`ID/Headers\` attributes, or containing merged cells without structural relationships.
+6. **Missing Document Title and Language:** The document lacks a specified natural language attribute (e.g. \`/Lang (en-US)\`) or fails to display the descriptive Document Title in the window title bar.
+
+Velvora Solutions eliminates all these errors using expert remediation tools, PAC 2024 compliance verifiers, and screen reader audits.`,
+      sources: [
+        { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' },
+        { title: 'Common PDF Accessibility Errors Guide', url: '/blog/common-pdf-accessibility-errors-and-how-to-fix-them' }
+      ]
+    })
+  },
+
+  // 31. Alternative Text for Complex Scientific Charts
+  {
+    id: 'tech-alt-text-charts',
+    title: 'Alternative Text for Complex Scientific Charts',
+    match: (q) => /\b(alternative text.*complex scientific charts|alt text.*scientific charts|alt text.*charts|how.*alt text.*chart)\b/i.test(q),
+    generate: () => ({
+      reply: `### Writing High-Quality Alternative Text (Alt Text) for Complex Scientific Charts
+
+Writing accessible **alt text** for complex scientific charts, scatter plots, and technical figures requires a two-part description approach:
+
+### 1. Short Alternative Text (in the \`/Alt\` attribute):
+Provide a concise 1–2 sentence summary explaining the **chart** type, the variables on the axes, and the overall primary trend or takeaway.
+*Example:* *"Line chart illustrating global mean surface temperature anomalies from 1880 to 2024, showing a sustained upward warming trend accelerating after 1980."*
+
+### 2. Extended Long Description (in surrounding text or linked caption):
+For dense scientific figures, provide an extended narrative detailing:
+• **Axes & Scales:** Clarify independent and dependent variables, linear or logarithmic units, and sample sizes.
+• **Key Data Points & Extremes:** Explicitly state the minimum, maximum, median values, key inflection points, and confidence intervals.
+• **Underlying Data Table Fallback:** Whenever practical, provide an accessible **data** table directly adjacent to the graphic so screen reader users can inspect individual **data** values systematically.
+
+Velvora Solutions' accessibility and STEM editorial teams draft compliant alt text descriptions conforming to W3C WAI and Diagram Center guidelines.`,
+      sources: [
+        { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' },
+        { title: 'Content Services Overview', url: '/services' }
+      ]
+    })
+  },
+
+  // 32. Automated vs Manual Accessibility Testing
+  {
+    id: 'tech-automated-vs-manual',
+    title: 'Automated vs Manual Accessibility Testing',
+    match: (q) => /\b(automated.*checkers.*catch|automated accessibility checkers|automated vs manual.*accessibility|can automated.*catch all|automated.*catch 100)/i.test(q),
+    generate: () => ({
+      reply: `### Can Automated Accessibility Checkers Catch 100% of WCAG Violations?
+
+**No. Automated accessibility checkers cannot catch 100% of WCAG violations.** In fact, industry consensus and empirical studies establish that **automated** tools detect only approximately **25% to 35%** of all digital accessibility barriers.
+
+### Why Automated Checkers Fall Short:
+• **Context and Meaning:** An automated tool can check whether an image has an \`alt\` attribute, but it cannot determine whether the alt text is accurate, meaningful, or contextually relevant.
+• **Reading Order & Logical Flow:** Automated scanners cannot judge whether visual content presents a coherent intellectual reading order for assistive tech users.
+• **Keyboard & Assistive Interaction:** Complex interactive widgets, dropdown modals, and tab orders require human evaluation.
+• **Video & Audio Clarity:** Automated tools cannot verify if video captions synchronize properly or if descriptions convey essential visual cues.
+
+### The Mandatory Dual Approach:
+Complete compliance requires combining high-speed **automated** scanners (for code syntax, contrast ratios, and tag trees) with rigorous **manual** evaluation by certified accessibility specialists using assistive technologies like **screen reader** software (NVDA, JAWS, VoiceOver) and keyboard-only navigation.
+
+Velvora Solutions pairs automated validation with exhaustive manual testing to certify 100% WCAG 2.2 Level AA/AAA and PDF/UA conformance.`,
+      sources: [
+        { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' },
+        { title: 'Manual vs Automated Testing Guide', url: '/blog/manual-vs-automated-pdf-accessibility-testing' }
+      ]
+    })
+  },
+
+  // 33. JATS XML and BITS XML in Academic Publishing
+  {
+    id: 'tech-jats-bits',
+    title: 'JATS XML and BITS XML in Academic Publishing',
+    match: (q) => /\b(jats xml and bits xml|jats and bits|what are jats.*bits used for|jats xml|bits xml)\b/i.test(q),
+    generate: () => ({
+      reply: `### JATS XML and BITS XML in Academic & Scholarly Publishing
+
+**JATS (Journal Article Tag Suite)** and **BITS (Book Interchange Tag Suite)** are the global NISO (Z39.96) XML standards for structured scholarly and academic publishing:
+
+### 1. JATS XML (Journal Article Tag Suite):
+• **Purpose:** Specifically engineered for tagging and archiving peer-reviewed scientific, technical, medical, and humanities **journal** articles.
+• **Key Features:** Granular semantic markup for abstracts, author affiliations, ORCID IDs, peer-review metadata, citations, references, mathematical formulas (MathML), and scientific figure captions.
+• **Distribution:** Standard ingest format for PubMed Central (PMC), CrossRef, JSTOR, and major academic aggregators.
+
+### 2. BITS XML (Book Interchange Tag Suite):
+• **Purpose:** An extension of JATS designed for academic books, monographs, anthologies, and multi-author edited volumes.
+• **Key Features:** Supports hierarchical book components including front matter, parts, chapters, sub-chapters, appendices, and back matter (indexes, glossaries).
+• **Interchange:** Enables publishers to interchange full book structures and individual book chapters seamlessly across scholarly digital libraries.
+
+Velvora Solutions provides turnkey conversion, validation, and Schematron QA for JATS 1.3 and BITS 2.1 workflows.`,
+      sources: [
+        { title: 'XML Services', url: '/services/xml' },
+        { title: 'ePublishing Services', url: '/services/epublishing' }
+      ]
+    })
+  },
+
+  // 34. DITA XML for Technical Documentation
+  {
+    id: 'tech-dita',
+    title: 'DITA XML for Technical Documentation',
+    match: (q) => /\b(what is dita xml|dita xml and what are its advantages|dita xml|advantages of dita)\b/i.test(q),
+    generate: () => ({
+      reply: `### What is DITA XML and Its Advantages for Technical Documentation?
+
+**DITA (Darwin Information Typing Architecture)** is an OASIS open XML standard designed specifically for authoring, producing, and delivering technical documentation, user manuals, and enterprise knowledge bases.
+
+### Key Advantages of DITA XML:
+1. **Topic-Based Modular Authoring:** Content is written in self-contained, **modular** topics (Concepts, Tasks, Reference, and Troubleshooting) rather than monolithic book documents.
+2. **Content Reuse Across Products:** Writers author a single topic once and **reuse** it across dozens of manuals, guides, and localized editions, dramatically reducing authoring costs and eliminating inconsistency.
+3. **Multi-Channel Publishing:** A single DITA source map can compile automatically into responsive HTML5 web portals, searchable PDFs, EPUBs, and in-app help systems.
+4. **Content Lifecycle Management:** Facilitates granular translation tracking and simplified version control in Component Content Management Systems (CCMS).
+
+Velvora Solutions specializes in DITA topic architecture, schema specialization, conversion from legacy Word/InDesign files, and automated DITA Open Toolkit (DITA-OT) publishing pipelines.`,
+      sources: [
+        { title: 'XML Services', url: '/services/xml' },
+        { title: 'ePublishing Services', url: '/services/epublishing' }
+      ]
+    })
+  },
+
+  // 35. Validating EPUB Files with EPUBCheck & Ace by DAISY
+  {
+    id: 'tech-epub-validation',
+    title: 'EPUB Validation with EPUBCheck & Ace by DAISY',
+    match: (q) => /\b(validate epub files against epubcheck|epubcheck and ace by daisy|epubcheck|ace by daisy)\b/i.test(q),
+    generate: () => ({
+      reply: `### Validating EPUB Files with EPUBCheck and Ace by DAISY
+
+High-quality ePublishing requires a two-tiered **validation** pipeline using industry-standard tools:
+
+### 1. Technical Structure Validation: EPUBCheck
+• **What it Does:** **EPUBCheck** is the official open-source tool developed by the DAISY Consortium for the W3C to validate the syntax, schema conformance, and file integrity of EPUB 2 and EPUB 3 files.
+• **What it Checks:** Validates package OPF metadata, manifest files, Spine order, XHTML/HTML5 markup syntax, CSS conformance, encryption, and container zip structures. Zero errors in EPUBCheck is mandatory for distribution on Apple Books, Amazon Kindle, and Google Play.
+
+### 2. Accessibility Compliance Verification: Ace by DAISY
+• **What it Does:** **Ace by DAISY** is the premier accessibility checker specifically designed for EPUB 3 publications.
+• **What it Checks:** Evaluates conformance against the **EPUB Accessibility 1.1** specification and **WCAG 2.2**. It audits heading structures, ARIA roles, color contrast, table semantics, MathML, and verifies required accessibility metadata (accessMode, accessibilityFeature, accessibilityHazard).
+• **Ace Smart Tool:** Complemented by the Ace Smart tool for manual human inspection of images and reading order.
+
+Velvora Solutions guarantees that every delivered EPUB 3 file passes both EPUBCheck and Ace by DAISY validation with zero errors.`,
+      sources: [
+        { title: 'ePublishing Services', url: '/services/epublishing' },
+        { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' }
+      ]
+    })
+  },
+
+  // 36. MathML for Accessible Mathematical Notation
+  {
+    id: 'tech-mathml-equations',
+    title: 'MathML for Accessible Mathematical Notation',
+    match: (q) => /\b(what is mathml|mathml and how does it ensure equations|mathml.*screen reader|mathml.*equations|mathml.*typesetting)\b/i.test(q),
+    generate: () => ({
+      reply: `### What is MathML and How It Makes Equations Accessible
+
+**MathML (Mathematical Markup Language)** is the W3C standard XML application for describing mathematical notation, structure, and content in digital documents, web pages, and EPUBs.
+
+### How MathML Enables Screen Readers:
+1. **Semantic Structure vs. Flat Bitmaps:** In standard documents, math formulas are often flattened into static images, leaving screen readers able to announce only *"image"* or a vague filename. MathML retains the full semantic structure of the **equation**.
+2. **Accessible Math Speech Engines:** Assistive technologies and modern **screen reader** tools (such as NVDA with MathPlayer, JAWS, and VoiceOver) parse the MathML XML tree to pronounce mathematical symbols with precise linguistic syntax (e.g. distinguishing *"x over y"* from *"x divided by y"*, square roots, superscripts, subscripts, and calculus limits).
+3. **Interactive Braille Math:** Screen readers can translate MathML directly into Nemeth Code or Unified English Braille (UEB) on refreshable Braille displays.
+4. **Synchronized Navigation:** Users can navigate into complex formulas step-by-step—moving through numerators, denominators, and radical expressions at their own pace.
+
+### STEM & Scientific Typesetting:
+Velvora Solutions converts complex LaTeX, scanned formulas, and MathType equations into valid, accessible MathML embedded directly into XML, EPUB 3, and PDF/UA documents for scholarly **STEM** publications.`,
+      sources: [
+        { title: 'Content Services Overview', url: '/services' },
+        { title: 'XML Services', url: '/services/xml' },
+        { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' }
+      ]
+    })
+  },
+
+  // 37. Intelligent Document Processing (IDP)
+  {
+    id: 'tech-idp-concept',
+    title: 'Intelligent Document Processing (IDP)',
+    match: (q) => /\b(what is intelligent document processing|intelligent document processing \(idp\)|what is idp)\b/i.test(q),
+    generate: () => ({
+      reply: `### What is Intelligent Document Processing (IDP)?
+
+**Intelligent Document Processing (IDP)** is the next-generation evolution of document capture that combines advanced **Optical Character Recognition (OCR)**, Natural Language Processing (**NLP**), computer vision, and machine learning to automatically extract, categorize, and transform unstructured documents into structured, actionable data.
+
+### How IDP Works:
+1. **Ingestion & Enhancement:** Ingests heterogeneous source files—scanned PDFs, paper forms, invoices, and manuscripts—applying computer vision to deskew, denoise, and segment pages.
+2. **Advanced OCR & Computer Vision:** Converts pixel characters and layout bounding boxes into raw text, identifying tables, figures, and heading hierarchies.
+3. **Cognitive NLP Extraction:** Uses transformer models and **NLP** to understand document context, extract key entities (names, dates, amounts, citations), and map them to standard schemas (JATS XML, JSON, SQL).
+4. **Human-in-the-Loop Validation:** Routes low-confidence extractions to human operators for rapid verification, creating a continuous feedback loop that improves accuracy over time.
+
+Velvora Solutions builds bespoke IDP pipelines that accelerate publishing digitization and content remediation by up to 70%.`,
+      sources: [
+        { title: 'AI and Automation Services', url: '/services/ai-automation' },
+        { title: 'Industry Solutions', url: '/solutions' }
+      ]
+    })
+  },
+
+  // 38. How AI Automation Improves Business Efficiency
+  {
+    id: 'tech-ai-business-efficiency',
+    title: 'How AI Automation Improves Business Efficiency',
+    match: (q) => /\b(how does ai automation improve business efficiency|how ai automation improves|ai automation improve business|ai business efficiency)\b/i.test(q),
+    generate: () => ({
+      reply: `### How AI Automation Improves Business Efficiency
+
+Enterprise **AI automation** transforms modern business workflows by replacing tedious manual tasks with intelligent, cognitive data pipelines:
+
+1. **Dramatic Speed & Turnaround Acceleration:** Routine data extraction, document conversion, and metadata tagging tasks that previously took days can be executed in minutes, dramatically increasing operational **efficiency**.
+2. **Substantial Error Reduction:** Human fatigue is a primary driver of typos, tagging omissions, and inconsistent formatting. AI **automation** applies uniform rules and semantic understanding across millions of records, drastically reducing human **error** rates.
+3. **Resource Reallocation:** Eliminates repetitive clerical burdens, freeing up high-value knowledge workers and editorial specialists to focus on creative, strategic, and quality-critical work.
+4. **Scalability Without Linear Cost:** Companies can scale document remediation and publishing volumes by 10x without linearly expanding their payroll headcount.
+5. **Continuous Quality & Compliance:** AI QA algorithms catch accessibility non-conformance, broken links, and metadata gaps before publications go live.
+
+Velvora Solutions partners with organizations to implement custom AI automation workflows tailored to their enterprise document and publishing pipelines.`,
+      sources: [
+        { title: 'AI and Automation Services', url: '/services/ai-automation' },
+        { title: 'Industry Solutions', url: '/solutions' }
+      ]
+    })
+  },
+
+  // 39. AI in PDF Accessibility & Human-in-the-Loop Review
+  {
+    id: 'tech-ai-accessibility-limits',
+    title: 'AI in PDF Accessibility & Human-in-the-Loop Review',
+    match: (q) => /\b(can ai completely automate pdf accessibility|ai completely automate pdf accessibility|automate pdf accessibility tagging without human review)\b/i.test(q),
+    generate: () => ({
+      reply: `### Can AI Completely Automate PDF Accessibility Tagging Without Human Review?
+
+**No. AI cannot completely automate PDF accessibility tagging without human review if you require true compliance and usable accessibility.**
+
+While modern artificial intelligence models excel at accelerating initial drafts—such as predicting tag types, recognizing heading levels, and proposing image alt text drafts—full automation alone fails critical compliance thresholds:
+
+### Why Human Review is Essential:
+1. **Contextual Alt Text:** AI can identify an object (e.g. *"a line chart"*), but only a **human** specialist understands the pedagogical intent and nuances needed for accurate description.
+2. **Complex Table Semantics:** Automated algorithms frequently misinterpret split headers, multi-tier categories, and irregular tables, requiring human manual tagging of \`<TH>\` and \`<TD>\` relationships.
+3. **Logical Reading Order:** Multi-column layouts, callout sidebars, and footnotes frequently confuse automated parsers.
+4. **Legal & Compliance Accountability:** Regulations like Section 508, the European Accessibility Act (EAA), and ADA carry strict legal penalties. Organizations cannot rely on probabilistic AI without certified **validation**.
+
+### Velvora's Hybrid Approach:
+Velvora Solutions pairs high-speed AI automation with certified human-in-the-loop remediation to guarantee 100% semantic **accuracy** and PAC-verified PDF/UA compliance.`,
+      sources: [
+        { title: 'AI and Automation Services', url: '/services/ai-automation' },
+        { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' }
+      ]
+    })
+  },
+
+  // 40. Preventing Hallucinations in Enterprise Generative AI
+  {
+    id: 'tech-hallucination-prevention',
+    title: 'Preventing Hallucinations in Enterprise Generative AI',
+    match: (q) => /\b(prevent hallucinations in generative ai|prevent hallucinations|how do you prevent hallucinations|hallucinations in generative ai)\b/i.test(q),
+    generate: () => ({
+      reply: `### Preventing Hallucinations in Generative AI & Enterprise Assistants
+
+Minimizing AI **hallucination** and guaranteeing verifiable factual answers requires a multi-layered enterprise architecture:
+
+1. **Retrieval-Augmented Generation (RAG):** Instead of relying solely on the LLM's parametric memory, the system dynamically retrieves verified chunks from a vetted corporate knowledge base to answer user queries based strictly on provided context.
+2. **Contextual Grounding & Strict Citations:** All assistant responses are enforced to provide explicit source **grounding** with clickable links to verified documentation. If information is not in the knowledge base, the model is instructed to state that the data is unverified rather than fabricating an answer.
+3. **Temperature Tuning & Prompt Guardrails:** Setting low sampling temperatures (e.g. \`temperature: 0.1\`) reduces stochastic randomness. System prompts explicitly forbid speculation and require adherence to facts.
+4. **Vector Embeddings & Semantic Search:** Utilizing high-dimension dense embeddings and hybrid BM25/vector search to ensure the most relevant reference passages are retrieved.
+5. **Post-Generation Fact Verification:** Employing secondary critic models or deterministic regex filters to check for prohibited claims and verify numbers, dates, and claims.
+
+Velvora Solutions specializes in designing hallucination-free enterprise **RAG** systems and custom conversational agents for enterprises and publishers.`,
+      sources: [
+        { title: 'AI and Automation Services', url: '/services/ai-automation' },
+        { title: 'Software & Web Development', url: '/services/software-development' }
+      ]
+    })
   }
 ];
 
@@ -625,19 +1145,40 @@ If Artificial Intelligence is the overarching science of *"transportation"*, the
 
   // Traditional Automation vs AI Automation
   {
-    match: (q) => /\b(traditional automation vs ai automation|difference between traditional automation and ai)\b/i.test(q),
+    match: (q) => /\b(traditional automation.*ai automation|traditional automation vs|difference between traditional automation|difference between.*rpa and ai|rpa vs ai)\b/i.test(q),
     generate: () => ({
-      reply: `### Traditional Automation vs. AI Automation
+      reply: `### Traditional Automation (RPA) vs. AI Automation
 
 | Feature | Traditional Automation (RPA / Scripts) | AI Automation (Intelligent Automation) |
 |---|---|---|
-| **Logic** | Strict rule-based: *"If this, then that"* | Probabilistic reasoning and pattern recognition |
+| **Logic** | Strict **rule-based**: *"If this, then that"* | **Cognitive** pattern recognition, NLP, and adaptive machine learning |
 | **Input Data** | Structured data only (standard spreadsheets, exact forms) | Unstructured data (freeform text, scanned PDFs, images, natural language) |
 | **Handling Changes** | Breaks if a button shifts or format changes slightly | Adapts dynamically to layout and semantic variations |
 | **Decision Making** | Deterministic: cannot handle ambiguity | Evaluates context, confidence scores, and nuanced text |
 
-Velvora Solutions unites high-speed automated pipelines with AI-powered document understanding and human-in-the-loop validation for publishing and accessibility.`,
+Velvora Solutions unites high-speed automated pipelines with **AI** document understanding, **RPA**, and human-in-the-loop validation for publishing and accessibility.`,
       sources: [{ title: 'AI and Automation Services', url: '/services/ai-automation' }]
+    })
+  },
+
+  // Reflowable vs Fixed-Layout EPUB
+  {
+    match: (q) => /\b(reflowable vs fixed[- ]layout|fixed[- ]layout vs reflowable|difference between reflowable and fixed[- ]layout|what is reflowable vs fixed)\b/i.test(q),
+    generate: () => ({
+      reply: `### Reflowable vs. Fixed-Layout EPUB: Key Differences
+
+| Feature | Reflowable EPUB | Fixed-Layout (FXL) EPUB |
+|---|---|---|
+| **Text & Page Flow** | **Reflowable**: Text and elements adapt dynamically to any screen dimensions, device orientation, and user-selected font size | **Fixed-layout**: Preserves exact coordinate geometry, pixel-perfect text placement, and locked page margins identical to print |
+| **User Customization** | Readers can change font family, font size, margins, and line spacing | Typography and layout positions are locked; readers zoom rather than reflow |
+| **Best Suited For** | Narrative fiction, academic text, non-fiction books, and accessible monographs | Children's picture books, comic books, graphic novels, cookbooks, and high-design magazines |
+| **Accessibility Conformance** | Highly accessible; screen readers smoothly announce flowing text blocks | Requires specialized overlay tagging and media overlays for read-aloud support |
+
+Velvora Solutions engineers both **reflowable** and **fixed-layout** EPUB 3 publications adhering to IDPF and W3C EPUB Accessibility 1.1 specifications.`,
+      sources: [
+        { title: 'ePublishing Services', url: '/services/epublishing' },
+        { title: 'Publishing Solutions', url: '/solutions' }
+      ]
     })
   },
 
@@ -679,7 +1220,7 @@ Velvora Solutions specializes in converting raw documents into structured XML an
 
   // EPUB vs PDF
   {
-    match: (q) => /\b(epub vs pdf|difference between epub and pdf|pdf vs epub)\b/i.test(q),
+    match: (q) => /\b(difference between epub.*pdf|epub.*vs.*pdf|pdf.*vs.*epub)\b/i.test(q),
     generate: () => ({
       reply: `### EPUB vs. PDF: Key Differences in Digital Publishing
 
