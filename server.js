@@ -57,15 +57,20 @@ function escapeHtml(str) {
 // Nodemailer Transporter Factory
 function createTransporter() {
   dotenv.config({ override: true });
-  const host = process.env.SMTP_HOST || 'smtp.gmail.com';
-  const port = parseInt(process.env.SMTP_PORT, 10) || 465;
-  const secure = process.env.SMTP_SECURE === 'true' || port === 465;
-  const user = process.env.SMTP_USER ? process.env.SMTP_USER.trim() : '';
-  const pass = process.env.SMTP_PASS ? process.env.SMTP_PASS.replace(/\s+/g, '') : '';
+  const user = (process.env.SMTP_USER || process.env.SMTP_USERNAME || '').trim();
+  const pass = (process.env.SMTP_PASS || process.env.SMTP_PASSWORD || '').replace(/\s+/g, '');
 
   if (!user || !pass) {
     throw new Error('SMTP credentials are not configured. Please set SMTP_USER and SMTP_PASS in your .env file.');
   }
+
+  let host = (process.env.SMTP_HOST || '').trim();
+  if (!host || (host === 'smtp.gmail.com' && (user.includes('@velvorasolutions.com') || user.includes('zoho')))) {
+    host = 'smtppro.zoho.in';
+  }
+
+  const port = parseInt(process.env.SMTP_PORT, 10) || 465;
+  const secure = process.env.SMTP_SECURE ? process.env.SMTP_SECURE === 'true' : (port === 465);
 
   return nodemailer.createTransport({
     host,
@@ -81,12 +86,28 @@ function createTransporter() {
 // Health Check
 app.get('/api/health', (req, res) => {
   dotenv.config({ override: true });
-  const user = process.env.SMTP_USER ? process.env.SMTP_USER.trim() : '';
-  const pass = process.env.SMTP_PASS ? process.env.SMTP_PASS.replace(/\s+/g, '') : '';
+  const user = (process.env.SMTP_USER || process.env.SMTP_USERNAME || '').trim();
+  const pass = (process.env.SMTP_PASS || process.env.SMTP_PASSWORD || '').replace(/\s+/g, '');
+  const host = (process.env.SMTP_HOST || '').trim();
+  const port = parseInt(process.env.SMTP_PORT, 10) || 465;
+  const secure = process.env.SMTP_SECURE ? process.env.SMTP_SECURE === 'true' : (port === 465);
+
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
-    smtpConfigured: Boolean(user && pass)
+    smtpConfigured: Boolean(user && pass),
+    details: {
+      hasHost: Boolean(host),
+      hasPort: Boolean(process.env.SMTP_PORT),
+      hasSecure: Boolean(process.env.SMTP_SECURE),
+      hasUser: Boolean(user),
+      hasPass: Boolean(pass),
+      hasFrom: Boolean(process.env.EMAIL_FROM || process.env.SMTP_FROM),
+      hasTo: Boolean(process.env.EMAIL_TO || process.env.SMTP_TO),
+      resolvedHost: host || (user.includes('@velvorasolutions.com') ? 'smtppro.zoho.in' : 'smtp.gmail.com'),
+      port,
+      secure
+    }
   });
 });
 

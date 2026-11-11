@@ -32,18 +32,22 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, error: 'Message content is required.' });
     }
 
-    const host = process.env.SMTP_HOST || 'smtp.gmail.com';
-    const port = parseInt(process.env.SMTP_PORT, 10) || 465;
-    const secure = process.env.SMTP_SECURE === 'true' || port === 465;
-    const user = process.env.SMTP_USER;
-    const pass = process.env.SMTP_PASS;
+    const user = (process.env.SMTP_USER || process.env.SMTP_USERNAME || '').trim();
+    const pass = (process.env.SMTP_PASS || process.env.SMTP_PASSWORD || '').replace(/\s+/g, '');
 
     if (!user || !pass) {
       throw new Error('SMTP credentials are not configured. Please set SMTP_USER and SMTP_PASS environment variables.');
     }
 
-    const recipient = process.env.EMAIL_TO || 'harinip0301@gmail.com';
-    const sender = process.env.EMAIL_FROM || `"Velvora Solutions" <${user}>`;
+    let host = (process.env.SMTP_HOST || '').trim();
+    if (!host || (host === 'smtp.gmail.com' && (user.includes('@velvorasolutions.com') || user.includes('zoho')))) {
+      host = 'smtppro.zoho.in';
+    }
+
+    const port = parseInt(process.env.SMTP_PORT, 10) || 465;
+    const secure = process.env.SMTP_SECURE ? process.env.SMTP_SECURE === 'true' : (port === 465);
+    const recipient = (process.env.EMAIL_TO || process.env.SMTP_TO || 'info@velvorasolutions.com').trim();
+    const sender = (process.env.EMAIL_FROM || process.env.SMTP_FROM || `"Velvora Solutions" <${user}>`).trim();
     const cleanSubject = (subject && subject.trim()) ? subject.trim() : `Contact Enquiry from ${name.trim()}`;
 
     const htmlContent = `
