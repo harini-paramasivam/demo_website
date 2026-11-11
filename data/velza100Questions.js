@@ -1280,3 +1280,4 @@ export const velza100Questions = [
     notes: 'Zero contamination: vendor partnership query after internship turn'
   }
 ];
+

@@ -92,3 +92,4 @@ lines.push('');
 fs.mkdirSync('./audit', { recursive: true });
 fs.writeFileSync('./audit/velza_100_audit_report.md', lines.join('\n'), 'utf8');
 console.log(`Report generated successfully at ./audit/velza_100_audit_report.md (${lines.length} lines)`);
+
