@@ -358,6 +358,211 @@ Velvora Solutions manually reviews and re-engineers PDF tag trees to achieve 100
         { title: 'WCAG vs PDF/UA Comparison', url: '/services/digital-accessibility' }
       ]
     })
+  },
+
+  // 14. WCAG (Web Content Accessibility Guidelines) Dedicated Module
+  {
+    id: 'tech-wcag',
+    keywords: ['wcag', 'what is wcag', 'explain wcag', 'wcag 2.2', 'wcag principles', 'pour principles', 'wcag conformance', 'wcag guidelines', 'web content accessibility guidelines'],
+    title: 'WCAG (Web Content Accessibility Guidelines) Architecture & Conformance',
+    match: (q) => /\b(what is wcag|explain wcag|wcag principles|pour principles|wcag 2\.2|wcag guidelines|web content accessibility guidelines)\b/i.test(q) && !/difference between wcag and pdf|vs pdf/i.test(q),
+    generate: () => ({
+      reply: `**WCAG (Web Content Accessibility Guidelines)** is the globally recognized international standard for digital accessibility, developed by the **World Wide Web Consortium (W3C)** Web Accessibility Initiative (WAI).
+
+### Primary Purpose:
+The primary goal of WCAG is to ensure that web content, mobile apps, and electronic documents are usable and accessible to everyone, including individuals with visual, auditory, cognitive, neurological, speech, and physical disabilities.
+
+### The Four Core Principles (POUR):
+WCAG is structured around four foundational pillars that every digital experience must fulfill:
+
+1. **Perceivable:**
+   Information and user interface components must be presentable to users in ways they can perceive (it cannot be invisible to all of their senses).
+   • *Examples:* Text alternatives (alt text) for non-text content, closed captions for video/audio, and minimum color contrast ratios (at least 4.5:1 for normal text).
+
+2. **Operable:**
+   User interface components and navigation must be operable (users must be able to operate the interface).
+   • *Examples:* Full keyboard navigation without getting trapped in a focus loop, giving users enough time to read/complete tasks, and avoiding flashing content that causes seizures.
+
+3. **Understandable:**
+   Information and the operation of the user interface must be clear and understandable.
+   • *Examples:* Predictable navigation layouts, human-readable text, clear input instructions, and helpful error detection/suggestions in forms.
+
+4. **Robust:**
+   Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including current and evolving assistive technologies (screen readers like NVDA and JAWS).
+   • *Examples:* Clean, valid semantic HTML markup, proper ARIA attributes, and accurate name/role/value relationships.
+
+### Conformance Levels:
+WCAG defines three progressive levels of conformance:
+• **Level A (Essential Baseline):** Minimum accessibility features. Without these, content is completely inaccessible to many assistive technology users.
+• **Level AA (Global Enterprise & Legal Benchmark):** The standard adopted by worldwide laws (e.g., US ADA Title II / Section 508, European Accessibility Act EAA, and UK PSBAR). It addresses the most common and critical barriers.
+• **Level AAA (Specialized Enhancement):** The highest tier of accessibility, providing extended accommodations for specialized audiences.
+
+### Practical Implementation Example:
+Instead of writing an inaccessible image tag like:
+\`<img src="quarterly-report.jpg">\`
+WCAG Level AA compliance requires descriptive alternative text:
+\`<img src="quarterly-report.jpg" alt="Bar chart showing Q3 revenue growth of 24% across digital publishing services">\`
+
+### How Velvora Solutions Supports WCAG Compliance:
+Velvora Solutions provides end-to-end digital accessibility audits, automated and manual screen-reader testing (NVDA/JAWS), remediation for websites and PDF documents conforming to **WCAG 2.2 Level AA/AAA**, and VPAT (Voluntary Product Accessibility Template) certification.`,
+      sources: [
+        { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' },
+        { title: 'WCAG 2.2 Business Guide', url: '/blog/understanding-wcag-2-2-practical-guide-for-businesses' }
+      ]
+    })
+  },
+
+  // 15. Latest Technology Trends
+  {
+    id: 'tech-trends',
+    keywords: ['technology trends', 'latest technology trends', 'tech trends', 'emerging technology trends', 'current tech trends', 'future tech trends'],
+    title: 'Latest Technology & Digital Transformation Trends',
+    match: (q) => /\b(tech trends|technology trends|tech trend|technology trend|latest technology|emerging technologies)\b/i.test(q) && !/statement|accessibility statement/i.test(q),
+    generate: () => ({
+      reply: `The global technology landscape is undergoing rapid transformation driven by autonomous intelligence, stringent accessibility standards, and cloud-native architectures.
+
+### Key Technology Trends Shaping the Industry:
+
+1. **Generative AI & Agentic Workflows:**
+   Organizations are shifting from basic chatbots to **autonomous AI agents** capable of multi-step planning, tool invocation, and executing complex enterprise tasks. Retrieval-Augmented Generation (RAG) and domain-specific Small Language Models (SLMs) ensure accurate, zero-hallucination data access.
+
+2. **Universal Digital Accessibility & Regulatory Compliance:**
+   With upcoming global mandates such as the **European Accessibility Act (EAA 2025)** and the US Department of Justice's updated **ADA Title II rules**, digital accessibility (WCAG 2.2 and PDF/UA) is now a mandatory legal and business imperative for websites, software, and electronic documents.
+
+3. **Intelligent Document Processing (IDP):**
+   The fusion of advanced Optical Character Recognition (OCR), multimodal vision models, and natural language processing (NLP) is automating the extraction of unstructured text, tables, and mathematical formulas from legacy PDFs into clean, validated XML (JATS/BITS) and accessible EPUB 3.
+
+4. **Cloud-Native, Serverless & Edge Computing:**
+   Enterprises are prioritizing resilient microservice architectures using containerization (Docker, Kubernetes) and serverless computing for low-latency, auto-scaling global deployments.
+
+5. **AI-Augmented Software Engineering & DevSecOps:**
+   AI-powered coding assistants, automated test generation, and intelligent continuous integration (CI/CD) pipelines are accelerating development lifecycles while embedding automated security and accessibility scanning.
+
+6. **Data Privacy, Governance & Responsible AI:**
+   As AI becomes pervasive, enterprises are investing heavily in data sovereignty, transparent algorithmic accountability, zero-retention API policies, and robust guardrails to protect user information.
+
+### How Velvora Solutions Aligns with These Trends:
+Velvora Solutions operates at the forefront of these advancements, providing organizations with certified **WCAG 2.2 & PDF/UA accessibility audits**, **AI automation pipelines (IDP)**, **XML-first publishing**, and **accessible full-stack cloud software development**.`,
+      sources: [
+        { title: 'AI & Automation Services', url: '/services/ai-automation' },
+        { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' },
+        { title: 'Industry Solutions', url: '/solutions' }
+      ]
+    })
+  },
+
+  // 16. Recruitment & Selection Process
+  {
+    id: 'careers-selection-process',
+    keywords: ['selection process', 'recruitment process', 'hiring process', 'interview process', 'hiring procedure', 'what is your selection process'],
+    title: 'Velvora Solutions Recruitment & Selection Process',
+    match: (q) => /\b(selection process|recruitment process|hiring process|interview process|hiring procedure|how do you hire|how do you select|candidate selection|how are candidates selected|what happens after (submitting|i submit) (my )?resume|recruitment stages)\b/i.test(q),
+    generate: () => ({
+      reply: `At Velvora Solutions, our **Recruitment and Selection Process** is designed to be transparent, merit-based, and candidate-friendly, ensuring a strong match between candidate aspirations and organizational excellence.
+
+### Standard Recruitment Stages:
+
+1. **Application Submission:**
+   Candidates review open positions and apply directly through our official **[Careers Portal](/careers)** by submitting their contact information and attaching an updated resume (PDF/DOCX), or by emailing **careers@velvorasolutions.com**.
+
+2. **Resume & Profile Screening:**
+   Our talent acquisition team reviews each application against the technical benchmarks and domain experience required for the role (typically completed within 24–48 hours).
+
+3. **Technical Skill Assessment:**
+   Shortlisted candidates participate in a role-specific practical evaluation to demonstrate hands-on ability:
+   • *Software Developers:* Coding exercise or algorithmic problem-solving in React / Python / JavaScript.
+   • *Accessibility Specialists:* Sample document or web page audit identifying WCAG / PDF/UA tagging issues.
+   • *ePublishing & XML Specialists:* Composition, DITA/JATS XML validation, or typesetting review.
+
+4. **Technical & Domain Interview:**
+   A one-on-one technical discussion with our engineering or production leads to discuss your past projects, problem-solving methodologies, and technical competencies.
+
+5. **HR & Cultural Fit Discussion:**
+   A conversation with our HR team discussing role expectations, compensation, professional growth pathways, and work culture under our **G.R.O.W. Framework** (Growth, Respect, Opportunity, Well-being).
+
+6. **Offer Rollout & Onboarding:**
+   Selected candidates receive an official offer letter and onboarding schedule.
+
+*Note:* Candidates shortlisted at each stage receive direct email notifications and scheduling links from our talent acquisition desk. You can explore active vacancies or submit an open application on our **[Careers Portal](/careers)**.`,
+      sources: [
+        { title: 'Careers Portal & Active Openings', url: '/careers' },
+        { title: 'Life at Velvora', url: '/about/careers' },
+        { title: 'Contact Recruitment Team', url: '/contact' }
+      ]
+    })
+  },
+
+  // 17. Training Course Durations
+  {
+    id: 'training-durations',
+    keywords: ['course duration', 'training duration', 'how long is the course', 'duration of course', 'how long is the training', 'internship duration'],
+    title: 'Velvora Solutions Training & Course Durations',
+    match: (q) => /\b(course duration|training duration|what is the course duration|how long is the course|how long is the training|how long is your training|duration of (the |your )?course|duration of (the |your )?training|how many months is the internship|training timeline|internship duration)\b/i.test(q),
+    generate: () => ({
+      reply: `The duration of courses and training programs at Velvora Solutions depends on the track and learning format you select:
+
+### Course Durations by Learning Track:
+
+1. **Fast-Track Bootcamps & Crash Courses:**
+   • **Duration:** **4 Weeks (1 Month)**
+   • *Focus:* Intensive skill acceleration covering core fundamentals in digital publishing, introductory Python, or web accessibility basics.
+
+2. **Standard Professional Certification Programs:**
+   • **Duration:** **8 to 12 Weeks (2 to 3 Months)**
+   • *Focus:* Comprehensive industry-level training with weekly modules, practical assignments, and live mentor feedback:
+     - *Python Full Stack Web Development:* 12 Weeks
+     - *Digital Accessibility & PDF/UA Auditing:* 8 Weeks
+     - *AI & Machine Learning Foundations:* 10 Weeks
+     - *Data Analytics & Power BI:* 8 Weeks
+     - *ePublishing & XML Workflows:* 8 Weeks
+     - *Digital Marketing & Technical SEO:* 6 to 8 Weeks
+
+3. **Flagship Internship & Capstone Program:**
+   • **Duration:** **3 Months or 6 Months**
+   • *Focus:* 100% live client project exposure for students and fresh graduates, culminating in a verified certificate of completion and Pre-Placement Offer (PPO) pathways.
+
+4. **Corporate Upskilling & Customized Workshops:**
+   • **Duration:** **1 to 2 Weeks** intensive customized modules for enterprise teams.
+
+### Flexible Schedules & Delivery Formats:
+• **Batches:** Weekday and weekend batches are available to accommodate both college students and working professionals.
+• **Learning Modes:** Online Virtual Live interactive classes, In-Person Classroom at our Cuddalore Head Office or Chennai Branch Office, or Hybrid.
+
+If you have a specific program in mind, visit our **[Training & Internships Page](/training)** to explore the detailed syllabus or enroll!`,
+      sources: [
+        { title: 'All Training Programs', url: '/training' },
+        { title: 'Flagship Internship Curriculum', url: '/training/internship-program' },
+        { title: 'Contact Admissions', url: '/contact' }
+      ]
+    })
+  },
+
+  // 18. Training Eligibility Criteria
+  {
+    id: 'training-eligibility',
+    keywords: ['training eligibility', 'course eligibility', 'who is eligible', 'who can join', 'eligibility criteria'],
+    title: 'Velvora Training & Internship Eligibility Criteria',
+    match: (q) => /\b(who is eligible|eligibility criteria|course eligibility|training eligibility|who can apply for training|can freshers apply for training|eligibility for internship)\b/i.test(q),
+    generate: () => ({
+      reply: `Our training and internship programs at Velvora Solutions are designed with inclusive eligibility criteria to welcome learners from diverse academic and professional backgrounds:
+
+### Who Can Apply:
+1. **College Students:** Undergraduate and postgraduate students (B.E., B.Tech, B.Sc, BCA, MCA, M.Tech, Arts & Science) seeking summer internships, winter internships, or final-year semester projects.
+2. **Fresh Graduates:** Recent degree holders looking to acquire practical, industry-standard competencies in software development, digital publishing, accessibility, or data analytics to launch their careers.
+3. **Working Professionals:** Individuals in IT, publishing, editorial, or content operations aiming to upskill in emerging technologies like WCAG 2.2 accessibility, AI automation, or full-stack web architectures.
+4. **Career Switchers:** Enthusiastic learners from any discipline transitioning into technology and digital publishing careers.
+
+### Prerequisites:
+• No prior corporate experience is required for foundational tracks.
+• Basic computer literacy and logical thinking are sufficient to start.
+• Dedicated 1-on-1 mentorship is provided throughout each track.
+
+To enroll, visit our **[Training & Internships Portal](/training)** and submit the application form.`,
+      sources: [
+        { title: 'Training & Internships', url: '/training' },
+        { title: 'Admissions Inquiry', url: '/contact' }
+      ]
+    })
   }
 ];
 

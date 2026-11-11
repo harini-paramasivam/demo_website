@@ -296,6 +296,8 @@ class VoraKnowledgeStore {
   /**
    * Resolves conversational references like "the second one", "how can I apply?",
    * "what are its benefits?", "can your company provide it?", using recent chat history.
+   * Guarantees zero contamination: if the query is already self-contained with an explicit topic,
+   * it will NEVER be overwritten by unrelated previous conversation topics.
    */
   resolveConversationContext(query, history = []) {
     if (!history || !Array.isArray(history) || history.length === 0) {
@@ -303,6 +305,24 @@ class VoraKnowledgeStore {
     }
 
     const qLower = query.toLowerCase().trim();
+
+    // Check if current query already contains an explicit entity or topic.
+    // If so, it is completely self-contained and MUST NOT be rewritten or contaminated.
+    const isExplicitlySelfContained = (
+      /\b(vendor|supplier|subcontract|subcontractor|agency partner|b2b partner)\b/i.test(qLower) ||
+      /\b(partnership|collaborate|collaboration|alliance)\b/i.test(qLower) ||
+      /\b(job|jobs|career|careers|hiring|recruitment|vacancy|vacancies|resume|cv|fresher|interview|selection process)\b/i.test(qLower) ||
+      /\b(intern|internship|internships|training|course|duration|syllabus|curriculum|eligibility|admission)\b/i.test(qLower) ||
+      /\b(quote|quotation|pricing|cost|estimate|fee|fees)\b/i.test(qLower) ||
+      /\b(wcag|pdf\/ua|pdf ua|epub|xml|jats|dita|remediation|accessibility|section 508)\b/i.test(qLower) ||
+      /\b(software|react|python|fastapi|javascript|html|css|docker|git|sql|database|api|trends|trend)\b/i.test(qLower) ||
+      /\b(what does (your|the) company do|what is velvora|about velvora|contact|email|phone|office|location|ceo|founder|services|solutions)\b/i.test(qLower)
+    );
+
+    if (isExplicitlySelfContained) {
+      return { resolvedQuery: query, contextTopic: null };
+    }
+
     const lastAssistantMsg = [...history].reverse().find(m => m.role === 'assistant' || m.sender === 'vora')?.content || '';
     const lastUserMsg = [...history].reverse().find(m => m.role === 'user' || m.sender === 'user')?.content || '';
 
@@ -348,8 +368,8 @@ class VoraKnowledgeStore {
       }
     }
 
-    // 2. Follow-up "How can I apply?" or "How do I apply?" after talking about a specific domain
-    if (/^(how\s*(can|do)\s*i\s*apply|how\s*to\s*apply|where\s*to\s*apply|i\s*want\s*to\s*apply)\b/i.test(qLower)) {
+    // 2. Follow-up "How can I apply?" or "Where do I apply?" ONLY when bare and ambiguous
+    if (/^(how\s*(can|do)\s*i\s*apply|how\s*to\s*apply|where\s*to\s*apply|i\s*want\s*to\s*apply)(\s*for\s*(this|it|that))?\??$/i.test(qLower)) {
       if (/vendor|partner|collaboration/i.test(lastAssistantMsg) || /vendor|partner|collaboration/i.test(lastUserMsg)) {
         return { resolvedQuery: 'How to apply for vendor partnership?', contextTopic: 'vendor-partnership' };
       }
@@ -408,16 +428,17 @@ class VoraKnowledgeStore {
 
   /**
    * Retrieves the top N most semantically relevant documents from the crawled website knowledge base.
+   * Employs hybrid keyword & topic weighting with a strict relevance threshold to prevent false positives.
    */
-  retrieveRelevantDocs(query, limit = 3) {
+  retrieveRelevantDocs(query, limit = 3, minScore = 18) {
     const q = this.normalizeQuery(query);
     const STOP_WORDS = new Set([
       'the', 'and', 'what', 'how', 'who', 'where', 'when', 'why', 'can', 'you',
       'your', 'are', 'is', 'for', 'with', 'from', 'about', 'our', 'have', 'does',
       'did', 'will', 'this', 'that', 'all', 'any', 'please', 'tell', 'give', 'much',
       'many', 'some', 'they', 'them', 'their', 'which', 'there', 'been', 'were', 'was',
-      'company', 'provide', 'providing', 'provides'
-    ]);
+      'provide', 'providing', 'provides'
+    ]); // Note: 'company' removed from stop words to support queries like 'what does your company do'
 
     const words = q.split(/[^a-z0-9]+/).filter(w => w.length > 2 && !STOP_WORDS.has(w));
     let ranked = [];
@@ -438,14 +459,14 @@ class VoraKnowledgeStore {
         if (q.includes(top)) score += 14;
       }
       for (const w of words) {
-        if (docTitle.includes(w)) score += 10;
-        if (keywords.some(k => k.includes(w))) score += 7;
-        if (topics.some(t => t.includes(w))) score += 5;
+        if (docTitle.includes(w)) score += 12;
+        if (keywords.some(k => k.includes(w))) score += 8;
+        if (topics.some(t => t.includes(w))) score += 6;
         if (docSummary.includes(w)) score += 3;
         if (docContent.includes(w)) score += 1;
       }
 
-      if (score > 10) {
+      if (score >= minScore) {
         ranked.push({ doc, score });
       }
     }
@@ -718,11 +739,14 @@ class VoraKnowledgeStore {
 
     // -------------------------------------------------------------------------
     // INTENT F: COMPANY PROFILE & ABOUT US
-    // "What is Velvora Solutions?" / "Tell me about Velvora"
+    // "What is Velvora Solutions?" / "What does your company do?" / "Tell me about your business"
     // -------------------------------------------------------------------------
-    if (
-      /\b(what is velvora solutions|what is velvora|tell me about velvora|about velvora solutions|about velvora|who is velvora|company overview|company profile)\b/i.test(q)
-    ) {
+    const isAboutCompany = (
+      /\b(what does (your|the) company do|what do you do|what is velvora solutions|what is velvora|tell me about (your )?company|tell me about your business|tell me about velvora|about velvora solutions|about velvora|who is velvora|company overview|company profile|what does velvora do|what is your company)\b/i.test(q) ||
+      (q === 'about us' || q === 'about company' || q === 'who is velvora' || q === 'what does your company do')
+    );
+
+    if (isAboutCompany) {
       return {
         reply: "### Velvora Solutions — Technology & Content Partner\n\n" +
                "**Velvora Solutions** is a premier technology and digital publishing partner headquartered in Cuddalore with branch operations in Porur, Chennai, Tamil Nadu, India. Founded and led by **Iyshwariya Senthil**, the company specializes in:\n\n" +

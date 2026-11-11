@@ -1,19 +1,107 @@
 import { voraStore } from '../server/voraKnowledgeStore.js';
 
 /**
- * 230-Question Rigorous Evaluation Test Suite for Velza AI Assistant
- * Validates:
- * 1. Zero fallback failure ("connection pause" must NEVER occur)
- * 2. High-quality informative response (> 60 characters)
- * 3. Relevant official source citations
- * 4. Multi-turn conversational context resolution
- * 5. General technical & professional competence beyond website text
+ * MASTER EVALUATION & REGRESSION SUITE FOR VELZA AI ASSISTANT
+ * 
+ * Part 1: 5x Consistency Testing on the 6 Critical Bug Reproduction Scenarios (30 runs)
+ * Part 2: Sequential Cross-Domain Conversation Flow (Contamination Check)
+ * Part 3: Phrasing & Natural Language Variations (12 runs)
+ * Part 4: Broad 235-Question Suite across all 16 Real-World Visitor Categories
+ * 
+ * Total: 284 Evaluated Tests
  */
 
-const testCases = [
-  // ----------------------------------------------------
+// 6 Core Mandatory Tests to be run 5 times each
+const coreReproductionTests = [
+  {
+    id: 'BUG-1: Company Overview',
+    intent: 'COMPANY_ABOUT',
+    q: 'What does your company do?',
+    history: [],
+    mustInclude: ['Velvora Solutions', 'Digital Accessibility', 'ePublishing'],
+    mustNotInclude: ["I don't have verified records", "connection pause"],
+    expectedSource: '/about/company-overview'
+  },
+  {
+    id: 'BUG-2: WCAG Deep Dive',
+    intent: 'STANDARDS_WCAG',
+    q: 'What is WCAG?',
+    history: [],
+    mustInclude: ['Web Content Accessibility Guidelines', 'POUR', 'Perceivable', 'Operable', 'Understandable', 'Robust'],
+    mustNotInclude: ['### WCAG vs PDF/UA', "connection pause"],
+    expectedSource: '/services/digital-accessibility'
+  },
+  {
+    id: 'BUG-3: Selection Process',
+    intent: 'CAREER_SELECTION_PROCESS',
+    q: 'What is your selection process?',
+    history: [],
+    mustInclude: ['Recruitment', 'Screening', 'Technical', 'Careers Portal'],
+    mustNotInclude: ['### AI and Automation Services', "connection pause"],
+    expectedSource: '/careers'
+  },
+  {
+    id: 'BUG-4: Course Duration',
+    intent: 'TRAINING_DURATION',
+    q: 'What is the course duration?',
+    history: [],
+    mustInclude: ['4 Weeks', '8 to 12 Weeks', '3 Months or 6 Months'],
+    mustNotInclude: ['connection pause'],
+    expectedSource: '/training'
+  },
+  {
+    id: 'BUG-5: Vendor Partnership after Internship History',
+    intent: 'VENDOR_PARTNERSHIP_AFTER_INTERNSHIP',
+    q: 'How do I apply for vendor partnership?',
+    history: [
+      { role: 'user', content: 'What internship programs do you have?' },
+      { role: 'assistant', content: 'Our Flagship Internship Program offers 3 to 6 months hands-on projects.' }
+    ],
+    mustInclude: ['Partner With Us', 'collaboration', 'Vendor'],
+    mustNotInclude: ['G.R.O.W. Framework', 'student internship', 'internship curriculum', 'connection pause'],
+    expectedSource: '/partner-with-us'
+  },
+  {
+    id: 'BUG-6: Latest Technology Trends',
+    intent: 'TECH_TRENDS',
+    q: 'What are the latest technology trends?',
+    history: [],
+    mustInclude: ['Generative AI', 'Agentic Workflows', 'Accessibility', 'Cloud-Native'],
+    mustNotInclude: ['### Accessibility Statement', "connection pause"],
+    expectedSource: '/services/ai-automation'
+  }
+];
+
+// Cross-Domain Sequential Conversation Flow (verifies zero context leakage between turns)
+const crossDomainFlow = [
+  { q: 'Tell me about your internship program', expectedDomain: 'internship' },
+  { q: 'What does your company do?', expectedDomain: 'company-overview' },
+  { q: 'How do I apply for vendor partnership?', expectedDomain: 'vendor-partnership' },
+  { q: 'What is WCAG?', expectedDomain: 'wcag-education' },
+  { q: 'What is your selection process?', expectedDomain: 'selection-process' },
+  { q: 'What is the course duration?', expectedDomain: 'course-duration' },
+  { q: 'What are the latest technology trends?', expectedDomain: 'tech-trends' }
+];
+
+// Phrasing & Natural Language Variations
+const variationTests = [
+  { q: 'what does your company do?', expectedTopic: 'company' },
+  { q: 'what does velvora do?', expectedTopic: 'company' },
+  { q: 'tell me about your company business', expectedTopic: 'company' },
+  { q: 'explain wcag principles', expectedTopic: 'wcag' },
+  { q: 'what are pour principles in wcag?', expectedTopic: 'wcag' },
+  { q: 'what is your hiring procedure?', expectedTopic: 'selection' },
+  { q: 'how do you select candidates?', expectedTopic: 'selection' },
+  { q: 'what happens after submitting my resume?', expectedTopic: 'selection' },
+  { q: 'how long is the training course?', expectedTopic: 'duration' },
+  { q: 'what is the duration of your training?', expectedTopic: 'duration' },
+  { q: 'how can our agency register as a vendor partner?', expectedTopic: 'vendor' },
+  { q: 'current emerging tech trends in 2025', expectedTopic: 'trends' }
+];
+
+// Broad 235-Question Suite across 16 Categories
+const broadCategoryTests = [
   // CATEGORY 1: COMPANY BACKGROUND & LEADERSHIP (15)
-  // ----------------------------------------------------
   { cat: 'Company & Leadership', q: 'What is Velvora Solutions?' },
   { cat: 'Company & Leadership', q: 'Tell me about the history and background of Velvora Solutions.' },
   { cat: 'Company & Leadership', q: 'Who founded Velvora Solutions and who are the leaders?' },
@@ -30,9 +118,7 @@ const testCases = [
   { cat: 'Company & Leadership', q: 'Can you give an overview of your management team?' },
   { cat: 'Company & Leadership', q: 'How can an enterprise initiate a business relationship with Velvora?' },
 
-  // ----------------------------------------------------
   // CATEGORY 2: SERVICES & DISCIPLINES (25)
-  // ----------------------------------------------------
   { cat: 'Services & Disciplines', q: 'What services do you provide?' },
   { cat: 'Services & Disciplines', q: 'Can you list all 6 core service disciplines at Velvora?' },
   { cat: 'Services & Disciplines', q: 'Explain your PDF accessibility services.' },
@@ -59,9 +145,7 @@ const testCases = [
   { cat: 'Services & Disciplines', q: 'What is interactive fixed-layout vs reflowable EPUB?' },
   { cat: 'Services & Disciplines', q: 'How does Velvora deliver end-to-end digital transformation?' },
 
-  // ----------------------------------------------------
   // CATEGORY 3: SOLUTIONS & PRODUCTS (15)
-  // ----------------------------------------------------
   { cat: 'Solutions & Products', q: 'Can you explain your solutions?' },
   { cat: 'Solutions & Products', q: 'What enterprise solutions does Velvora offer?' },
   { cat: 'Solutions & Products', q: 'What is your Intelligent Document Processing (IDP) solution?' },
@@ -78,9 +162,7 @@ const testCases = [
   { cat: 'Solutions & Products', q: 'Are your software solutions cloud-native or on-premise?' },
   { cat: 'Solutions & Products', q: 'How do your AI solutions handle sensitive corporate data?' },
 
-  // ----------------------------------------------------
-  // CATEGORY 4: COMPUTER SCIENCE & TECH CONCEPTS (30)
-  // ----------------------------------------------------
+  // CATEGORY 4: TECHNICAL & COMPUTER SCIENCE (30)
   { cat: 'Technical & CS', q: 'What is HTML and how does semantic HTML work?' },
   { cat: 'Technical & CS', q: 'Explain semantic HTML tags and why they matter for accessibility.' },
   { cat: 'Technical & CS', q: 'What is CSS and how does CSS Flexbox differ from CSS Grid?' },
@@ -112,9 +194,7 @@ const testCases = [
   { cat: 'Technical & CS', q: 'What is responsive web design and mobile-first approach?' },
   { cat: 'Technical & CS', q: 'What is WebSockets and how does real-time communication work?' },
 
-  // ----------------------------------------------------
-  // CATEGORY 5: TECHNICAL COMPARISONS (15)
-  // ----------------------------------------------------
+  // CATEGORY 5: COMPARISONS (15)
   { cat: 'Comparisons', q: 'What is the difference between HTML and React?' },
   { cat: 'Comparisons', q: 'Compare HTML vs React.js.' },
   { cat: 'Comparisons', q: 'What is the difference between Python and Java?' },
@@ -131,9 +211,7 @@ const testCases = [
   { cat: 'Comparisons', q: 'Compare EPUB3 vs Accessible PDF for digital publishing.' },
   { cat: 'Comparisons', q: 'What is the difference between WCAG and PDF/UA?' },
 
-  // ----------------------------------------------------
   // CATEGORY 6: CAREERS & RECRUITMENT (15)
-  // ----------------------------------------------------
   { cat: 'Careers & Recruitment', q: 'How can I submit my resume?' },
   { cat: 'Careers & Recruitment', q: 'What are the current career openings at Velvora Solutions?' },
   { cat: 'Careers & Recruitment', q: 'Are you hiring PDF accessibility specialists?' },
@@ -150,9 +228,7 @@ const testCases = [
   { cat: 'Careers & Recruitment', q: 'How can I prepare for a technical interview at Velvora?' },
   { cat: 'Careers & Recruitment', q: 'What should I do if I want to work with your company?' },
 
-  // ----------------------------------------------------
-  // CATEGORY 7: TRAINING PROGRAMS & INTERNSHIPS (15)
-  // ----------------------------------------------------
+  // CATEGORY 7: TRAINING & INTERNSHIPS (15)
   { cat: 'Training & Internships', q: 'What training programs do you offer?' },
   { cat: 'Training & Internships', q: 'Are internships available at Velvora Solutions?' },
   { cat: 'Training & Internships', q: 'Explain your Python Full Stack Web Development training program.' },
@@ -169,9 +245,7 @@ const testCases = [
   { cat: 'Training & Internships', q: 'Do you provide 1-on-1 mentorship during the courses?' },
   { cat: 'Training & Internships', q: 'Where can I find detailed training syllabus on your website?' },
 
-  // ----------------------------------------------------
-  // CATEGORY 8: VENDOR PARTNERSHIPS & COLLABORATIONS (15)
-  // ----------------------------------------------------
+  // CATEGORY 8: VENDOR & PARTNERSHIPS (15)
   { cat: 'Vendor & Partnerships', q: 'How do I apply for vendor partnership?' },
   { cat: 'Vendor & Partnerships', q: 'Can I collaborate with your company?' },
   { cat: 'Vendor & Partnerships', q: 'What are the partnership models available at Velvora?' },
@@ -188,9 +262,7 @@ const testCases = [
   { cat: 'Vendor & Partnerships', q: 'Can university labs collaborate with Velvora on AI research?' },
   { cat: 'Vendor & Partnerships', q: 'What are the benefits of partnering with Velvora Solutions?' },
 
-  // ----------------------------------------------------
-  // CATEGORY 9: QUOTATIONS & PROJECT INQUIRIES (10)
-  // ----------------------------------------------------
+  // CATEGORY 9: QUOTATIONS & INQUIRIES (10)
   { cat: 'Quotations & Inquiries', q: 'How can I request a quotation?' },
   { cat: 'Quotations & Inquiries', q: 'What information is needed to get a project estimate?' },
   { cat: 'Quotations & Inquiries', q: 'How much does it cost to remediate a 500-page PDF document?' },
@@ -202,9 +274,7 @@ const testCases = [
   { cat: 'Quotations & Inquiries', q: 'Do you charge by page or by hourly rate for accessibility?' },
   { cat: 'Quotations & Inquiries', q: 'Who do I contact for urgent enterprise RFP submissions?' },
 
-  // ----------------------------------------------------
   // CATEGORY 10: ACCESSIBILITY & REMEDIATION (15)
-  // ----------------------------------------------------
   { cat: 'Accessibility & Remediation', q: 'What is WCAG 2.2 and what are its conformance levels (A, AA, AAA)?' },
   { cat: 'Accessibility & Remediation', q: 'What is PDF/UA (ISO 14289) and why is it mandatory for accessible PDFs?' },
   { cat: 'Accessibility & Remediation', q: 'What is Section 508 and who does it apply to in the United States?' },
@@ -221,9 +291,7 @@ const testCases = [
   { cat: 'Accessibility & Remediation', q: 'What are artifact tags in PDF document structure?' },
   { cat: 'Accessibility & Remediation', q: 'Do you provide VPAT (Voluntary Product Accessibility Template) reports?' },
 
-  // ----------------------------------------------------
   // CATEGORY 11: AI & AUTOMATION (10)
-  // ----------------------------------------------------
   { cat: 'AI & Automation', q: 'Tell me more about your AI automation services.' },
   { cat: 'AI & Automation', q: 'How does AI improve business operational efficiency?' },
   { cat: 'AI & Automation', q: 'What is Intelligent Document Processing and how does it extract data?' },
@@ -235,9 +303,7 @@ const testCases = [
   { cat: 'AI & Automation', q: 'What frameworks do you use for AI automation (LangChain, LlamaIndex, etc.)?' },
   { cat: 'AI & Automation', q: 'How can small businesses benefit from AI automation?' },
 
-  // ----------------------------------------------------
   // CATEGORY 12: DIGITAL MARKETING & ANALYTICS (10)
-  // ----------------------------------------------------
   { cat: 'Marketing & Analytics', q: 'What digital marketing services does Velvora provide?' },
   { cat: 'Marketing & Analytics', q: 'How do you approach search engine optimization (SEO)?' },
   { cat: 'Marketing & Analytics', q: 'What is technical SEO and website performance optimization?' },
@@ -249,9 +315,7 @@ const testCases = [
   { cat: 'Marketing & Analytics', q: 'What is omnichannel marketing strategy?' },
   { cat: 'Marketing & Analytics', q: 'Can you integrate Google Analytics 4 and Tag Manager for our website?' },
 
-  // ----------------------------------------------------
   // CATEGORY 13: PROFESSIONAL WRITING & DRAFTING (10)
-  // ----------------------------------------------------
   { cat: 'Professional Writing', q: 'Can you draft a business email requesting a quotation for PDF remediation?' },
   { cat: 'Professional Writing', q: 'Draft an email inquiry for enterprise software development.' },
   { cat: 'Professional Writing', q: 'Draft a partnership proposal for collaborating with Velvora.' },
@@ -263,9 +327,7 @@ const testCases = [
   { cat: 'Professional Writing', q: 'Draft a professional follow-up email after submitting a proposal.' },
   { cat: 'Professional Writing', q: 'Write a template for requesting a Non-Disclosure Agreement (NDA).' },
 
-  // ----------------------------------------------------
   // CATEGORY 14: CONVERSATIONAL & GREETINGS (10)
-  // ----------------------------------------------------
   { cat: 'Conversational', q: 'Hello!' },
   { cat: 'Conversational', q: 'Good morning, who are you?' },
   { cat: 'Conversational', q: 'What can you help me with?' },
@@ -277,9 +339,7 @@ const testCases = [
   { cat: 'Conversational', q: 'Can you speak in English?' },
   { cat: 'Conversational', q: 'Tell me about Velza assistant.' },
 
-  // ----------------------------------------------------
   // CATEGORY 15: MULTI-INTENT & EDGE CASES (10)
-  // ----------------------------------------------------
   { cat: 'Multi-Intent & Edge', q: 'I need both PDF accessibility and ePublishing services for my book.' },
   { cat: 'Multi-Intent & Edge', q: 'Can you provide software development and also train our staff?' },
   { cat: 'Multi-Intent & Edge', q: 'What are your contact details, phone number and email address?' },
@@ -291,9 +351,7 @@ const testCases = [
   { cat: 'Multi-Intent & Edge', q: 'hwo can i submt my resme for jb?' }, // Extreme typos
   { cat: 'Multi-Intent & Edge', q: 'Tell me about your blogs and knowledge hub.' },
 
-  // ----------------------------------------------------
   // CATEGORY 16: MULTI-TURN CONTEXTUAL FOLLOW-UPS (15)
-  // ----------------------------------------------------
   {
     cat: 'Contextual Follow-up',
     q: 'Tell me more about the second one.',
@@ -416,100 +474,181 @@ const testCases = [
   }
 ];
 
-async function runEvaluation() {
-  console.log('================================================================');
-  console.log('🚀 STARTING RIGOROUS 230-QUESTION EVALUATION OF VELZA ASSISTANT');
-  console.log('================================================================\n');
+async function runMasterSuite() {
+  console.log('========================================================================');
+  console.log('🚀 RUNNING MASTER 284-TEST SUITE FOR VELZA ASSISTANT');
+  console.log('========================================================================\n');
 
   await voraStore.syncAll(true);
 
-  const stats = {
-    total: testCases.length,
-    passed: 0,
-    failed: 0,
-    categories: {}
-  };
-
-  const failures = [];
+  let passedTests = 0;
+  let totalTests = 0;
+  const failureList = [];
   const startTimer = Date.now();
 
-  for (let i = 0; i < testCases.length; i++) {
-    const { cat, q, history = [] } = testCases[i];
-    if (!stats.categories[cat]) {
-      stats.categories[cat] = { total: 0, passed: 0, failed: 0 };
-    }
-    stats.categories[cat].total++;
+  // Part 1: 5x Consistency on 6 Core Bugs (30 runs)
+  console.log('▶ [1/4] Running 6 Core Bug Repro Scenarios (5x iterations = 30 runs)...');
+  for (const t of coreReproductionTests) {
+    for (let iter = 1; iter <= 5; iter++) {
+      totalTests++;
+      const res = await voraStore.answerQuery(t.q, t.history);
+      const reply = res.reply || '';
+      const sources = res.sources || [];
 
-    try {
-      const response = await voraStore.answerQuery(q, history);
+      let ok = true;
+      let failureReason = '';
 
-      // Validation assertions
-      const hasReply = response && typeof response.reply === 'string' && response.reply.trim().length > 60;
-      const noPauseError = !response.reply.includes("I'm having a brief connection pause") &&
-                           !response.reply.includes("brief connection pause");
-      const hasSources = Array.isArray(response.sources) && response.sources.length > 0;
+      for (const inc of t.mustInclude) {
+        if (!reply.toLowerCase().includes(inc.toLowerCase())) {
+          ok = false;
+          failureReason = `Missing required text: "${inc}"`;
+          break;
+        }
+      }
 
-      if (hasReply && noPauseError && hasSources) {
-        stats.passed++;
-        stats.categories[cat].passed++;
+      if (ok) {
+        for (const notInc of t.mustNotInclude) {
+          if (reply.toLowerCase().includes(notInc.toLowerCase())) {
+            ok = false;
+            failureReason = `Contaminated with prohibited text: "${notInc}"`;
+            break;
+          }
+        }
+      }
+
+      if (ok && t.expectedSource) {
+        const hasExpectedSource = sources.some(s => s.url.includes(t.expectedSource));
+        if (!hasExpectedSource) {
+          ok = false;
+          failureReason = `Expected source link ${t.expectedSource} not found`;
+        }
+      }
+
+      if (ok) {
+        passedTests++;
         process.stdout.write('.');
       } else {
-        stats.failed++;
-        stats.categories[cat].failed++;
         process.stdout.write('F');
-        failures.push({
-          index: i + 1,
-          cat,
-          q,
-          historyCount: history.length,
-          replyLen: response ? (response.reply || '').length : 0,
-          reason: !hasReply ? 'Empty or short response' : (!noPauseError ? 'Connection pause error returned' : 'Missing sources')
-        });
+        failureList.push({ test: `${t.id} [Run ${iter}/5]`, q: t.q, reason: failureReason });
       }
-    } catch (err) {
-      stats.failed++;
-      stats.categories[cat].failed++;
-      process.stdout.write('E');
-      failures.push({
-        index: i + 1,
-        cat,
+    }
+  }
+  console.log(' [30/30 Complete]');
+
+  // Part 2: Cross-Domain Sequential Conversation Flow
+  console.log('\n▶ [2/4] Running Sequential Cross-Domain Conversation Flow (Contamination Check)...');
+  const runningHistory = [];
+  for (let i = 0; i < crossDomainFlow.length; i++) {
+    totalTests++;
+    const step = crossDomainFlow[i];
+    const res = await voraStore.answerQuery(step.q, runningHistory);
+    const reply = res.reply || '';
+
+    runningHistory.push({ role: 'user', content: step.q });
+    runningHistory.push({ role: 'assistant', content: reply.slice(0, 150) });
+
+    let ok = true;
+    let reason = '';
+
+    if (step.expectedDomain === 'vendor-partnership') {
+      if (reply.includes('G.R.O.W.') || reply.includes('student internship')) {
+        ok = false;
+        reason = 'Contaminated with previous internship context';
+      }
+    } else if (step.expectedDomain === 'selection-process') {
+      if (reply.includes('AI and Automation Services')) {
+        ok = false;
+        reason = 'Returned AI Automation instead of Selection Process';
+      }
+    } else if (step.expectedDomain === 'course-duration') {
+      if (!reply.includes('Weeks') && !reply.includes('Months')) {
+        ok = false;
+        reason = 'Failed to answer duration directly';
+      }
+    }
+
+    if (ok) {
+      passedTests++;
+      process.stdout.write('.');
+    } else {
+      process.stdout.write('F');
+      failureList.push({ test: `Cross-Domain Step ${i + 1}`, q: step.q, reason });
+    }
+  }
+  console.log(' [7/7 Complete]');
+
+  // Part 3: Phrasing & Natural Language Variations
+  console.log('\n▶ [3/4] Running Phrasing & Natural Language Variations (12 runs)...');
+  for (const v of variationTests) {
+    totalTests++;
+    const res = await voraStore.answerQuery(v.q);
+    const reply = res.reply || '';
+
+    let ok = reply.length > 80 && !reply.includes("connection pause");
+    if (v.expectedTopic === 'company' && !reply.includes('Velvora Solutions')) ok = false;
+    if (v.expectedTopic === 'wcag' && !reply.includes('WCAG')) ok = false;
+    if (v.expectedTopic === 'selection' && !reply.includes('Recruitment') && !reply.includes('Screening')) ok = false;
+    if (v.expectedTopic === 'duration' && !reply.includes('Weeks') && !reply.includes('Months')) ok = false;
+    if (v.expectedTopic === 'vendor' && !reply.includes('Partner')) ok = false;
+    if (v.expectedTopic === 'trends' && !reply.includes('Technology Trends') && !reply.includes('AI')) ok = false;
+
+    if (ok) {
+      passedTests++;
+      process.stdout.write('.');
+    } else {
+      process.stdout.write('F');
+      failureList.push({ test: `Variation: ${v.expectedTopic}`, q: v.q, reason: 'Failed to answer relevant topic' });
+    }
+  }
+  console.log(' [12/12 Complete]');
+
+  // Part 4: Broad 235-Question Evaluation Suite
+  console.log('\n▶ [4/4] Running Broad 235-Question Real-World Domain Suite...');
+  for (let i = 0; i < broadCategoryTests.length; i++) {
+    totalTests++;
+    const { cat, q, history = [] } = broadCategoryTests[i];
+
+    const res = await voraStore.answerQuery(q, history);
+    const hasReply = res && typeof res.reply === 'string' && res.reply.trim().length > 60;
+    const noPauseError = !res.reply.includes("connection pause");
+    const hasSources = Array.isArray(res.sources) && res.sources.length > 0;
+
+    if (hasReply && noPauseError && hasSources) {
+      passedTests++;
+      process.stdout.write('.');
+    } else {
+      process.stdout.write('F');
+      failureList.push({
+        test: `Broad [${cat}]`,
         q,
-        reason: 'Exception: ' + err.message
+        reason: !hasReply ? 'Short/Empty' : (!noPauseError ? 'Connection Pause' : 'No Sources')
       });
     }
 
-    if ((i + 1) % 50 === 0 || i === testCases.length - 1) {
-      console.log(`  [${i + 1}/${testCases.length}]`);
+    if ((i + 1) % 50 === 0 || i === broadCategoryTests.length - 1) {
+      console.log(`  [${i + 1}/${broadCategoryTests.length}]`);
     }
   }
 
   const durationSec = ((Date.now() - startTimer) / 1000).toFixed(2);
 
-  console.log('\n================================================================');
-  console.log('📊 EVALUATION SUMMARY RESULTS');
-  console.log('================================================================');
-  console.log(`Total Questions Tested : ${stats.total}`);
-  console.log(`Passed (100% Quality)  : ${stats.passed}`);
-  console.log(`Failed                 : ${stats.failed}`);
-  console.log(`Success Rate           : ${((stats.passed / stats.total) * 100).toFixed(2)}%`);
-  console.log(`Total Time Taken       : ${durationSec}s`);
-  console.log('\nBreakdown by Category:');
+  console.log('\n========================================================================');
+  console.log('📊 MASTER EVALUATION RESULTS');
+  console.log('========================================================================');
+  console.log(`Total Tests Run        : ${totalTests}`);
+  console.log(`Passed                 : ${passedTests}`);
+  console.log(`Failed                 : ${totalTests - passedTests}`);
+  console.log(`Success Rate           : ${((passedTests / totalTests) * 100).toFixed(2)}%`);
+  console.log(`Total Execution Time   : ${durationSec}s`);
 
-  for (const [catName, cStats] of Object.entries(stats.categories)) {
-    const pct = ((cStats.passed / cStats.total) * 100).toFixed(1);
-    console.log(`  • ${catName.padEnd(28)}: ${cStats.passed}/${cStats.total} passed (${pct}%)`);
-  }
-
-  if (failures.length > 0) {
-    console.log('\n❌ FAILURES:');
-    failures.forEach(f => {
-      console.log(`  [#${f.index}] ${f.cat} -> "${f.q}": ${f.reason}`);
-    });
+  if (failureList.length > 0) {
+    console.log('\n❌ DETECTED FAILURES:');
+    failureList.forEach(f => console.log(`  • [${f.test}] "${f.q}": ${f.reason}`));
     process.exit(1);
   } else {
-    console.log('\n✅ ALL 230 QUESTIONS PASSED WITH ZERO FAILURES AND 100% RELIABILITY!');
+    console.log('\n✅ 100% PERFECT PASS ACROSS ALL 284 REAL-WORLD TESTS!');
     process.exit(0);
   }
 }
 
-runEvaluation();
+runMasterSuite();
