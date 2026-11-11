@@ -2,6 +2,12 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { crawler } from './knowledgeCrawler.js';
+import { geminiService } from './geminiService.js';
+import { 
+  technicalTopics, 
+  comparisonTopics, 
+  professionalWritingTopics 
+} from './technicalKnowledge.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,7 +22,7 @@ class VoraKnowledgeStore {
   constructor() {
     this.store = {
       syncMetadata: {
-        version: 'v2.1.0',
+        version: 'v2.2.0',
         status: 'Synchronized',
         lastSynchronized: new Date().toISOString(),
         sourceHash: '',
@@ -24,7 +30,7 @@ class VoraKnowledgeStore {
         indexedPages: 0,
         indexedCareers: 0,
         errorLogs: [],
-        changelog: ['Knowledge engine initialized with deep website crawling.']
+        changelog: ['Knowledge engine initialized with deep website crawling and Gemini intelligence.']
       },
       documents: [],
       careers: [],
@@ -171,7 +177,8 @@ class VoraKnowledgeStore {
   getMetadata() {
     return {
       ...this.store.syncMetadata,
-      liveEngine: 'Dynamic Website Crawler & Semantic Context Pipeline v2.1'
+      liveEngine: 'Dual-Engine Semantic Knowledge & Gemini Intelligence v2.2',
+      geminiActive: geminiService.isConfigured()
     };
   }
 
@@ -288,7 +295,7 @@ class VoraKnowledgeStore {
 
   /**
    * Resolves conversational references like "the second one", "how can I apply?",
-   * "tell me more about that", using recent chat history.
+   * "what are its benefits?", "can your company provide it?", using recent chat history.
    */
   resolveConversationContext(query, history = []) {
     if (!history || !Array.isArray(history) || history.length === 0) {
@@ -354,12 +361,97 @@ class VoraKnowledgeStore {
       }
     }
 
-    // 3. Follow-up "Where is it located?" or "What are the hours?"
+    // 3. Pronoun resolution: "What are its benefits?" / "Why is it important?" / "How does it work?"
+    if (/\b(its|it|that|this)\b/i.test(qLower) && /\b(benefit|benefits|important|work|use|needed)\b/i.test(qLower)) {
+      if (/epublishing|epub/i.test(lastUserMsg) || /epublishing/i.test(lastAssistantMsg)) {
+        return { resolvedQuery: 'What are the benefits of ePublishing?', contextTopic: 'epublishing' };
+      }
+      if (/accessibility|pdf/i.test(lastUserMsg) || /accessibility/i.test(lastAssistantMsg)) {
+        return { resolvedQuery: 'Why is PDF accessibility important?', contextTopic: 'accessibility' };
+      }
+      if (/xml/i.test(lastUserMsg) || /xml/i.test(lastAssistantMsg)) {
+        return { resolvedQuery: 'Why are XML workflows important?', contextTopic: 'xml' };
+      }
+      if (/ai|automation/i.test(lastUserMsg) || /ai automation/i.test(lastAssistantMsg)) {
+        return { resolvedQuery: 'How can AI improve business operations?', contextTopic: 'ai-automation' };
+      }
+    }
+
+    // 4. "Can your company provide it?" / "Do you offer this?"
+    if (/\b(can (your|the) company provide it|do you offer it|can you do that|can velvora do this)\b/i.test(qLower)) {
+      if (/epublishing/i.test(lastUserMsg) || /epublishing/i.test(lastAssistantMsg)) {
+        return { resolvedQuery: 'Explain your ePublishing services', contextTopic: 'epublishing' };
+      }
+      if (/accessibility/i.test(lastUserMsg) || /accessibility/i.test(lastAssistantMsg)) {
+        return { resolvedQuery: 'Explain your PDF accessibility services', contextTopic: 'accessibility' };
+      }
+      if (/xml/i.test(lastUserMsg) || /xml/i.test(lastAssistantMsg)) {
+        return { resolvedQuery: 'Explain your XML services', contextTopic: 'xml' };
+      }
+      if (/react|web|software/i.test(lastUserMsg) || /software/i.test(lastAssistantMsg)) {
+        return { resolvedQuery: 'Explain your Software & Web Development services', contextTopic: 'software' };
+      }
+    }
+
+    // 5. "Where is it located?" or "What are the hours?"
     if (/where\s*(is\s*it|are\s*you)\s*located|what\s*is\s*the\s*address/i.test(qLower)) {
       return { resolvedQuery: 'Where are your offices located?', contextTopic: 'locations' };
     }
 
+    // 6. "How do I contact you?"
+    if (/\b(how (do|can) i contact (you|velvora)|how to contact you|where to contact)\b/i.test(qLower)) {
+      return { resolvedQuery: 'How can I contact your team?', contextTopic: 'contact' };
+    }
+
     return { resolvedQuery: query, contextTopic: null };
+  }
+
+  /**
+   * Retrieves the top N most semantically relevant documents from the crawled website knowledge base.
+   */
+  retrieveRelevantDocs(query, limit = 3) {
+    const q = this.normalizeQuery(query);
+    const STOP_WORDS = new Set([
+      'the', 'and', 'what', 'how', 'who', 'where', 'when', 'why', 'can', 'you',
+      'your', 'are', 'is', 'for', 'with', 'from', 'about', 'our', 'have', 'does',
+      'did', 'will', 'this', 'that', 'all', 'any', 'please', 'tell', 'give', 'much',
+      'many', 'some', 'they', 'them', 'their', 'which', 'there', 'been', 'were', 'was',
+      'company', 'provide', 'providing', 'provides'
+    ]);
+
+    const words = q.split(/[^a-z0-9]+/).filter(w => w.length > 2 && !STOP_WORDS.has(w));
+    let ranked = [];
+
+    for (const doc of (this.store.documents || [])) {
+      let score = 0;
+      const docTitle = doc.title.toLowerCase();
+      const docSummary = (doc.summary || '').toLowerCase();
+      const docContent = (doc.content || '').toLowerCase();
+      const keywords = (doc.keywords || []).map(k => k.toLowerCase());
+      const topics = (doc.topics || []).map(t => t.toLowerCase());
+
+      if (docTitle.includes(q)) score += 40;
+      for (const kw of keywords) {
+        if (q.includes(kw)) score += 18;
+      }
+      for (const top of topics) {
+        if (q.includes(top)) score += 14;
+      }
+      for (const w of words) {
+        if (docTitle.includes(w)) score += 10;
+        if (keywords.some(k => k.includes(w))) score += 7;
+        if (topics.some(t => t.includes(w))) score += 5;
+        if (docSummary.includes(w)) score += 3;
+        if (docContent.includes(w)) score += 1;
+      }
+
+      if (score > 10) {
+        ranked.push({ doc, score });
+      }
+    }
+
+    ranked.sort((a, b) => b.score - a.score);
+    return ranked.slice(0, limit).map(r => r.doc);
   }
 
   // =========================================================================
@@ -408,7 +500,31 @@ class VoraKnowledgeStore {
       };
     }
 
-    // 5. Out-of-Scope Domain Guard (Medical, Legal, Flights, etc.)
+    // 5. Check if Gemini Generative Engine is configured & online
+    if (geminiService.isConfigured()) {
+      try {
+        const ragDocs = this.retrieveRelevantDocs(resolvedQuery, 3);
+        const geminiReply = await geminiService.generateResponse(resolvedQuery, history, ragDocs);
+        if (geminiReply && geminiReply.trim()) {
+          const sources = ragDocs.map(d => ({ title: d.title, url: d.url }));
+          if (sources.length === 0) {
+            sources.push(
+              { title: 'Velvora Services', url: '/services' },
+              { title: 'Contact Team', url: '/contact' }
+            );
+          }
+          return {
+            reply: geminiReply,
+            sources: sources,
+            metadata: this.getMetadata()
+          };
+        }
+      } catch (gemErr) {
+        console.warn('Gemini generation error, smoothly engaging autonomous RAG engine:', gemErr.message);
+      }
+    }
+
+    // 6. Out-of-Scope Domain Guard (Medical, Legal, Flights, etc.)
     const outOfScopeRules = [
       { regex: /\b(surgery|medical treatment|hospital|doctor|dentist|healthcare clinic|medicine|prescription)\b/i, category: 'medical or clinical' },
       { regex: /\b(hardware manufacturing|assemble hardware|pc assembly|manufacture chips|hardware production|manufacture computer hardware|computer hardware)\b/i, category: 'computer hardware manufacturing' },
@@ -427,6 +543,27 @@ class VoraKnowledgeStore {
             { title: 'Contact Our Team', url: '/contact' }
           ]
         };
+      }
+    }
+
+    // 7. Check Technical Comparisons (HTML vs React, Python vs Java, AI vs ML, etc.)
+    for (const comp of comparisonTopics) {
+      if (comp.match(q)) {
+        return comp.generate();
+      }
+    }
+
+    // 8. Check General Computer Science & Technical Concepts (HTML, CSS, JS, Python, React, FastAPI, SQL, Docker, RAG, etc.)
+    for (const tech of technicalTopics) {
+      if (tech.match(q)) {
+        return tech.generate();
+      }
+    }
+
+    // 9. Check Professional Writing Assistance (Draft Email, Proposals, Cover Letters)
+    for (const writing of professionalWritingTopics) {
+      if (writing.match(q)) {
+        return writing.generate();
       }
     }
 
@@ -919,58 +1056,12 @@ class VoraKnowledgeStore {
     }
 
     // -------------------------------------------------------------------------
-    // INTENT N: MULTI-FACTOR SEMANTIC RAG RETRIEVAL (Across all 62+ Crawled Documents)
+    // INTENT N: MULTI-FACTOR SEMANTIC RAG RETRIEVAL (Across all 63+ Crawled Documents)
     // -------------------------------------------------------------------------
-    const STOP_WORDS = new Set([
-      'the', 'and', 'what', 'how', 'who', 'where', 'when', 'why', 'can', 'you',
-      'your', 'are', 'is', 'for', 'with', 'from', 'about', 'our', 'have', 'does',
-      'did', 'will', 'this', 'that', 'all', 'any', 'please', 'tell', 'give', 'much',
-      'many', 'some', 'they', 'them', 'their', 'which', 'there', 'been', 'were', 'was',
-      'company', 'provide', 'providing', 'provides'
-    ]);
-
-    const words = q.split(/[^a-z0-9]+/).filter(w => w.length > 2 && !STOP_WORDS.has(w));
-    let rankedDocs = [];
-
-    for (const doc of (this.store.documents || [])) {
-      let score = 0;
-      const docTitle = doc.title.toLowerCase();
-      const docSummary = (doc.summary || '').toLowerCase();
-      const docContent = (doc.content || '').toLowerCase();
-      const keywords = (doc.keywords || []).map(k => k.toLowerCase());
-      const topics = (doc.topics || []).map(t => t.toLowerCase());
-
-      // Exact phrase match in title
-      if (docTitle.includes(q)) score += 40;
-
-      // Exact keyword matches
-      for (const kw of keywords) {
-        if (q.includes(kw)) score += 18;
-      }
-
-      // Exact topic matches
-      for (const top of topics) {
-        if (q.includes(top)) score += 14;
-      }
-
-      // Individual token matches
-      for (const w of words) {
-        if (docTitle.includes(w)) score += 10;
-        if (keywords.some(k => k.includes(w))) score += 7;
-        if (topics.some(t => t.includes(w))) score += 5;
-        if (docSummary.includes(w)) score += 3;
-        if (docContent.includes(w)) score += 1;
-      }
-
-      if (score > 12) {
-        rankedDocs.push({ doc, score });
-      }
-    }
-
-    rankedDocs.sort((a, b) => b.score - a.score);
+    const rankedDocs = this.retrieveRelevantDocs(resolvedQuery, 3);
 
     if (rankedDocs.length > 0) {
-      const best = rankedDocs[0].doc;
+      const best = rankedDocs[0];
       const titleClean = best.title.replace(/^Solution:\s*/i, '').replace(/^Service:\s*/i, '');
 
       // Extract highlights from content lines
@@ -993,8 +1084,8 @@ class VoraKnowledgeStore {
       const sources = [
         { title: best.title, url: best.url }
       ];
-      if (rankedDocs.length > 1 && rankedDocs[1].doc.url !== best.url) {
-        sources.push({ title: rankedDocs[1].doc.title, url: rankedDocs[1].doc.url });
+      if (rankedDocs.length > 1 && rankedDocs[1].url !== best.url) {
+        sources.push({ title: rankedDocs[1].title, url: rankedDocs[1].url });
       }
 
       return {
