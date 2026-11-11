@@ -15,6 +15,8 @@ import Insights from './pages/Insights.jsx';
 import Training from './pages/Training.jsx';
 import ServicePage from './pages/ServicePage.jsx';
 import ResourcePage from './pages/ResourcePage.jsx';
+import BlogOverview from './pages/BlogOverview.jsx';
+import BlogPost from './pages/BlogPost.jsx';
 import Contact from './pages/Contact.jsx';
 import AccessibilityStatement from './pages/AccessibilityStatement.jsx';
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
@@ -66,7 +68,8 @@ export default function App() {
           <Route path="/resources/news-events" element={<ResourcePage type="news-events" />} />
           <Route path="/resources/case-studies" element={<ResourcePage type="case-studies" />} />
           <Route path="/resources/client-testimonials" element={<ResourcePage type="client-testimonials" />} />
-          <Route path="/blog" element={<ResourcePage type="blog" />} />
+          <Route path="/blog" element={<BlogOverview />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/accessibility-statement" element={<AccessibilityStatement />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />

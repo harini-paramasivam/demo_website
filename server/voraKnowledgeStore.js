@@ -880,6 +880,26 @@ export class VoraKnowledgeStore {
       };
     }
 
+    // 9.11 Blog & Industry Publications
+    if (
+      /\b(blog|blogs|articles|publications|industry articles|knowledge hub|read articles|technical guides)\b/i.test(q)
+    ) {
+      return {
+        reply: "Explore our authoritative **Velvora Knowledge Hub & Technical Blog**:\n\n" +
+               "We publish industry-standard technical guides and regulatory analyses covering:\n" +
+               "• **Digital Publishing & ePublishing:** Evolution of digital publishing, XML-first workflows, and accessible EPUB 3.\n" +
+               "• **Digital Accessibility:** Practical WCAG 2.2 guides, Section 508 legal requirements, and European Accessibility Act (EAA).\n" +
+               "• **PDF Accessibility & Remediation:** ISO 14289 (PDF/UA), tag tree architectures, scanned OCR remediation, and manual vs. automated QA.\n" +
+               "• **AI & Automation:** Intelligent Document Processing (IDP), cognitive NLP tagging, and human-in-the-loop validation.\n" +
+               "• **Technology Strategy:** Enterprise digital transformation and multi-tier publishing QA.\n\n" +
+               "Visit our Blog page to read full-length publications and implementation blueprints!",
+        sources: [
+          { title: 'Velvora Blog & Knowledge Hub', url: '/blog' },
+          { title: 'Explore Services', url: '/services' }
+        ]
+      };
+    }
+
     // -------------------------------------------------------------------------
     // 10. MULTI-FACTOR SEMANTIC RETRIEVAL ACROSS CRAWLED DOCUMENTS (Clean Synthesis)
     // -------------------------------------------------------------------------

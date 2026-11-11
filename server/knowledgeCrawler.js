@@ -23,6 +23,9 @@ export class KnowledgeCrawler {
     this.sourceFiles = [
       path.join(ROOT_DIR, 'src', 'data', 'site.js'),
       path.join(ROOT_DIR, 'src', 'data', 'trainingData.js'),
+      path.join(ROOT_DIR, 'src', 'data', 'blogData.js'),
+      path.join(ROOT_DIR, 'src', 'pages', 'BlogOverview.jsx'),
+      path.join(ROOT_DIR, 'src', 'pages', 'BlogPost.jsx'),
       path.join(ROOT_DIR, 'src', 'pages', 'Training.jsx'),
       path.join(ROOT_DIR, 'src', 'pages', 'Careers.jsx'),
       path.join(ROOT_DIR, 'src', 'pages', 'Contact.jsx'),
@@ -452,6 +455,62 @@ Key Commitments:
       topics: ['Privacy Policy', 'Data Protection', 'Confidentiality', 'GDPR Alignment', 'NDA Security'],
       keywords: ['privacy policy', 'privacy', 'data security', 'gdpr', 'confidentiality', 'non-disclosure', 'nda']
     });
+
+    // 5B. CRAWL BLOG ARTICLES & KNOWLEDGE HUB
+    try {
+      const blogPath = path.join(ROOT_DIR, 'src', 'data', 'blogData.js');
+      if (fs.existsSync(blogPath)) {
+        const blogUrl = `file://${blogPath.replace(/\\/g, '/')}?t=${Date.now()}`;
+        const blogModule = await import(blogUrl);
+        const articles = blogModule.blogArticles || [];
+
+        // Blog Overview Hub
+        documents.push({
+          id: 'page-blog-overview',
+          title: 'Velvora Knowledge Hub & Technical Blog',
+          url: '/blog',
+          category: 'blog',
+          summary: 'Comprehensive collection of technical articles, regulatory guides, and industry analyses on Digital Publishing, XML-first workflows, PDF/UA compliance, WCAG 2.2, and AI automation.',
+          content: `Velvora Solutions Blog & Knowledge Hub:
+Topics Covered:
+1. Digital Publishing & ePublishing (EPUB 3, XML workflows, MathML, eBook production)
+2. Digital Accessibility (WCAG 2.2 Level AA, Section 508, European Accessibility Act)
+3. PDF Accessibility & Remediation (ISO 14289 PDF/UA, tag trees, scanned OCR, PAC testing)
+4. AI & Automation (Intelligent Document Processing, cognitive NLP, human-in-the-loop QA)
+5. Technology & Strategy (Digital transformation, enterprise publishing QA, accessibility roadmaps)`,
+          topics: ['Blog Overview', 'ePublishing Guides', 'Accessibility Standards', 'PDF/UA Articles', 'WCAG 2.2 Compliance', 'AI Automation Guides'],
+          keywords: ['blog', 'articles', 'knowledge hub', 'technical guides', 'publishing articles', 'accessibility guides']
+        });
+
+        // Individual Blog Articles
+        for (const art of articles) {
+          documents.push({
+            id: `blog-${art.slug}`,
+            title: art.title,
+            url: `/blog/${art.slug}`,
+            category: 'blog',
+            summary: art.summary,
+            content: `Article: ${art.title}
+Category: ${art.categoryLabel}
+Published: ${art.publishedDate} | Read Time: ${art.readTime}
+Author: ${art.author} (${art.authorRole})
+
+Summary:
+${art.summary}
+
+Key Takeaways:
+${(art.keyTakeaways || []).map(t => `• ${t}`).join('\n')}
+
+Content Overview:
+${(art.content || []).map(c => `### ${c.heading}\n${c.text}`).join('\n\n')}`,
+            topics: [art.categoryLabel, art.title, ...(art.keywords || [])],
+            keywords: ['blog', 'article', art.slug, ...(art.keywords || [])]
+          });
+        }
+      }
+    } catch (blogErr) {
+      errorLogs.push(`Failed to crawl blog data: ${blogErr.message}`);
+    }
 
     // 6. SYNTHESIZE FREQUENTLY ASKED QUESTIONS (From crawled content)
     faqs.push(

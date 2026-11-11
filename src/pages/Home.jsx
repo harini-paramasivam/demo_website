@@ -85,8 +85,8 @@ export default function Home() {
   return (
     <>
       {/* 1. FUTURISTIC HERO BANNER (INSPIRED BY REFERENCE DESIGN) */}
-      <section 
-        className="hero hero--cinematic hero--ref-style" 
+      <section
+        className="hero hero--cinematic hero--ref-style"
         aria-labelledby="hero-title"
       >
         {/* Atmospheric Volumetric Light Beams */}
@@ -97,18 +97,18 @@ export default function Home() {
 
         {/* Minimalist Right Rail Navigation (PREV / NEXT - No 1/6 counter) */}
         <div className="hero-ref-rail-nav">
-          <button 
-            type="button" 
-            onClick={handlePrev} 
+          <button
+            type="button"
+            onClick={handlePrev}
             className="hero-ref-rail-btn"
             aria-label="Previous slide"
           >
             PREV
           </button>
           <span className="hero-ref-rail-line" aria-hidden="true" />
-          <button 
-            type="button" 
-            onClick={handleNext} 
+          <button
+            type="button"
+            onClick={handleNext}
             className="hero-ref-rail-btn"
             aria-label="Next slide"
           >
@@ -180,7 +180,7 @@ export default function Home() {
             </div>
 
             {/* CENTER / RIGHT COLUMN: Borderless 3D Artwork & Glowing Geometric Prism */}
-            <HeroArt 
+            <HeroArt
               activeIdx={heroIdx}
               setActiveIdx={handleSelect}
               onNext={handleNext}
@@ -301,7 +301,7 @@ export default function Home() {
               <div className="intro-card__aurora intro-card__aurora--left" />
               <div className="intro-card__aurora intro-card__aurora--right" />
               <div className="intro-card__aurora intro-card__aurora--center" />
-              
+
               {/* Left Orbit Telemetry HUD behind left heading */}
               <div className="intro-card__hud-left">
                 <svg viewBox="0 0 320 320" className="intro-hud-svg" fill="none">
@@ -375,7 +375,7 @@ export default function Home() {
           >
             We convert, structure, and remediate content so it can be published anywhere and read by anyone.
           </SectionHead>
-          
+
           <ServicesStream />
 
           {/* Centered View All Button */}
@@ -412,7 +412,7 @@ export default function Home() {
           >
             Publishing know-how meets accessibility excellence. Here is why leading publishers and enterprises partner with us.
           </SectionHead>
-          
+
           <TrustArchitecture />
         </div>
       </section>
