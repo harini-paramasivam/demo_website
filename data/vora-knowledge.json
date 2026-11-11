@@ -1,30 +1,24 @@
 {
   "syncMetadata": {
-    "version": "v1.3.104",
+    "version": "v1.3.108",
     "status": "Synchronized",
-    "lastSynchronized": "2026-11-11T04:54:52.409Z",
-    "sourceHash": "0ef5c879544c655b36357483a721e1ddfbb13c4375993cd46eceb1fbbd89c01a",
-    "indexedCount": 58,
-    "indexedPages": 52,
+    "lastSynchronized": "2026-11-11T04:59:14.504Z",
+    "sourceHash": "4998b4c8c1e04bcf4af51adf401082da2bc4c2f894f247f6f98a490c37dd26e5",
+    "indexedCount": 67,
+    "indexedPages": 61,
     "indexedCareers": 6,
-    "errorLogs": [
-      {
-        "source": "trainingData.js",
-        "error": "Cannot read properties of undefined (reading 'join')",
-        "time": "2026-11-11T04:54:52.391Z"
-      }
-    ],
+    "errorLogs": [],
     "changelog": [
-      "Synced 52 pages & 6 careers at 2026-11-11T04:54:52.409Z",
+      "Synced 61 pages & 6 careers at 2026-11-11T04:59:14.504Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:58:46.470Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:56:20.704Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:56:18.878Z",
+      "Synced 52 pages & 6 careers at 2026-11-11T04:54:51.791Z",
       "Synced 52 pages & 6 careers at 2026-11-11T04:54:39.185Z",
       "Synced 52 pages & 6 careers at 2026-11-11T04:54:06.883Z",
       "Synced 52 pages & 6 careers at 2026-11-11T04:54:05.561Z",
       "Synced 52 pages & 6 careers at 2026-11-11T04:51:08.319Z",
-      "Synced 52 pages & 6 careers at 2026-11-11T04:24:58.281Z",
-      "Synced 52 pages & 6 careers at 2026-11-11T04:24:54.805Z",
-      "Synced 52 pages & 6 careers at 2026-11-11T04:24:50.711Z",
-      "Synced 52 pages & 6 careers at 2026-11-11T04:24:49.373Z",
-      "Synced 52 pages & 6 careers at 2026-11-11T04:16:55.663Z"
+      "Synced 52 pages & 6 careers at 2026-11-11T04:24:58.281Z"
     ]
   },
   "documents": [
@@ -681,6 +675,280 @@
         "case studies",
         "articles",
         "news"
+      ]
+    },
+    {
+      "id": "page-training-academy",
+      "title": "Velvora Academy: Training Programs & Internships",
+      "url": "/training",
+      "category": "training",
+      "summary": "Transforming Knowledge into Skills and Skills into Opportunities. Velvora Solutions provides 8 industry-standard training and internship programs with 100% live project exposure across ePublishing, AI/ML, Generative AI, Data Analytics, Digital Marketing, Accessibility, and Software Development.",
+      "content": "Velvora Academy & Skill Development Lab:\nTagline: \"Transforming Knowledge into Skills and Skills into Opportunities.\"\nDelivery Modes: Online Virtual Live Interactive sessions, In-Person Classroom at Cuddalore Head Office (Indhira Nagar) & Chennai Branch Office (Porur), or Hybrid.\nKey Metrics: 2,000+ Training Hours Delivered | 100% Live Project Experience | 8 Specialized Tracks.\n\nCourse & Internship Programs Available:\n• **Internship Program (Live Industry Projects)** (Career Accelerator & Mentorship | 1 Month / 3 Months / 6 Months (Flexible))\n  - Level: Students & Recent Graduates | Mode: Virtual / Remote or In-Person (Cuddalore & Chennai Centers) or Hybrid\n  - Overview: Real-world experience makes learning stick. Velvora’s flagship internship gives students and aspiring professionals the opportunity to work directly on live production projects, learn from seasoned architects, and build a verified portfolio across ePublishing, AI/ML, Data Analytics, Digital Accessibility, or Software Development.\n  - Modules/Topics: \n  - Tools Mastered: Git & GitHub, VS Code / Oxygen XML, Acrobat Pro / PAC 2024, Python / React, Power BI / SQL, Enterprise Project Board\n\n• **ePublishing Training** (Publishing & Formats | 4 to 8 Weeks)\n  - Level: Beginner to Advanced | Mode: Online Live / Classroom (Cuddalore & Chennai) / Hybrid\n  - Overview: Tight deadlines leave zero room for rework. Velvora’s ePublishing training gives trainees hands-on mastery of industry-standard workflows, XML-based publishing, content conversion, EPUB 3 architecture, and automated QA used by global publishing houses.\n  - Modules/Topics: \n  - Tools Mastered: JATS / BITS DTD, EPUBCheck, DAISY Ace, Oxygen XML Editor, Adobe InDesign, Python (XML Automation), Sigil / Calibre\n\n• **AI/ML Training** (Artificial Intelligence & Machine Learning | 6 to 12 Weeks)\n  - Level: Intermediate to Advanced | Mode: Online Live / Classroom / Hybrid\n  - Overview: AI is no longer optional in a data-driven enterprise. Velvora’s AI/ML training builds practical capabilities in machine learning, feature engineering, neural network architectures, and production model deployment so you can engineer cognitive solutions that work.\n  - Modules/Topics: \n  - Tools Mastered: Python, Scikit-Learn, PyTorch, XGBoost, Hugging Face, FastAPI, Docker, Pandas & NumPy\n\n• **Generative AI Training** (Cutting-Edge AI & LLMs | 4 to 8 Weeks)\n  - Level: All Levels | Mode: Online Live / Classroom / Hybrid\n  - Overview: Generative AI is transforming how businesses create, automate, and innovate. Our hands-on training helps engineers understand LLM architectures, craft structured prompts, construct Retrieval-Augmented Generation (RAG) pipelines, and deploy autonomous multi-agent systems.\n  - Modules/Topics: \n  - Tools Mastered: LangChain / LangGraph, LlamaIndex, OpenAI & Gemini APIs, ChromaDB / Pinecone, Ollama (Local LLMs), Streamlit / FastAPI, RAGAS\n\n• **Data Analytics & Business Intelligence Training** (BI & Executive Telemetry | 6 to 10 Weeks)\n  - Level: Beginner to Advanced | Mode: Online Live / Classroom / Hybrid\n  - Overview: Data creates value only when it drives a confident decision. Velvora’s data analytics training builds hands-on capabilities in data modeling, advanced SQL, Power BI executive dashboards, DAX calculations, and Python data storytelling.\n  - Modules/Topics: \n  - Tools Mastered: Microsoft Power BI, Advanced SQL (PostgreSQL/MySQL), Microsoft Excel (Power Query/Pivot), Python (Pandas, Seaborn), Tableau Fundamentals, DAX Studio\n\n• **Digital Accessibility Training** (Universal Inclusion & Compliance | 4 to 8 Weeks)\n  - Level: Beginner to Professional | Mode: Online Live / Classroom / Hybrid\n  - Overview: Remediation fixes today’s files. Training empowers your team to create universally accessible content from the start. Velvora’s accessibility specialists deliver role-based training in WCAG 2.2, PDF/UA (ISO 14289), screen reader auditing, and VPAT / ACR authoring.\n  - Modules/Topics: \n  - Tools Mastered: Adobe Acrobat Pro, PAC 2024 (PDF Accessibility Checker), NVDA Screen Reader, JAWS, Colour Contrast Analyser, Axe DevTools, WAVE\n\n• **Software Development Training** (Full-Stack Modern Engineering | 8 to 14 Weeks)\n  - Level: Beginner to Advanced | Mode: Online Live / Classroom / Hybrid\n  - Overview: Technology moves fast, and development teams must build with resilience. Velvora’s full-stack software development training delivers hands-on mastery in modern JavaScript/TypeScript, React.js, Node.js, Python, relational database architecture, and cloud deployment pipelines.\n  - Modules/Topics: \n  - Tools Mastered: React.js, Node.js / Express, TypeScript, PostgreSQL, Prisma ORM, Git & GitHub, Docker, Linux / Bash\n\n• **Digital Marketing Training** (SEO & Performance Growth | 4 to 8 Weeks)\n  - Level: Beginner to Intermediate | Mode: Online Live / Classroom / Hybrid\n  - Overview: A commanding online presence requires skill and calculated strategy. Velvora’s digital marketing training gives you practical experience in technical SEO, Google Analytics 4 (GA4), paid performance advertising, content funnels, and conversion optimization.\n  - Modules/Topics: \n  - Tools Mastered: Google Analytics 4, Google Tag Manager, Google Search Console, SEMrush / Ahrefs, Google Ads, Meta Ads Manager, Looker Studio\n\nFlagship Student Internship Program:\n- Target: College students (B.E, B.Tech, BCA, MCA, B.Sc, M.Sc, Diploma, Arts, Science) and aspiring professionals.\n- Eligibility: Enrolled students or freshers seeking real enterprise experience; no prior corporate experience required.\n- Duration: Flexible 1 Month (Fast-Track), 3 Months (Standard), or 6 Months (Comprehensive Capstone).\n- Live Projects: 100% Guaranteed Live Production Project Exposure.\n- Mentorship & Perks: 1-on-1 mentorship from senior architects, verified Certificate of Completion, recommendation letter, and PPO pathways under the G.R.O.W. Framework.\n- Admission & Enquiry: Submit the online enrollment form at /training or email info@velvorasolutions.com / call +91 9500834236.",
+      "topics": [
+        "Training Programs",
+        "Student Internships",
+        "ePublishing Training",
+        "AI ML Training",
+        "Generative AI Training",
+        "Data Analytics Training",
+        "Digital Marketing Training",
+        "Accessibility Training",
+        "Software Development Training"
+      ],
+      "keywords": [
+        "training",
+        "internship",
+        "internships",
+        "courses",
+        "students",
+        "mentorship",
+        "certification",
+        "academy",
+        "live projects",
+        "enroll",
+        "admission",
+        "cuddalore",
+        "chennai"
+      ]
+    },
+    {
+      "id": "page-training-internship-program",
+      "title": "Internship Program (Live Industry Projects) | Velvora Academy",
+      "url": "/training/internship-program",
+      "category": "training-program",
+      "summary": "Real-world experience makes learning stick. Velvora’s flagship internship gives students and aspiring professionals the opportunity to work directly on live production projects, learn from seasoned architects, and build a verified portfolio across ePublishing, AI/ML, Data Analytics, Digital Accessibility, or Software Development.",
+      "content": "Internship Program (Live Industry Projects) (Career Accelerator & Mentorship)\nCategory: internship | Badge: 100% Live Projects · PPO Pathway\nDuration: 1 Month / 3 Months / 6 Months (Flexible) | Skill Level: Students & Recent Graduates | Mode: Virtual / Remote or In-Person (Cuddalore & Chennai Centers) or Hybrid\nOverview: Real-world experience makes learning stick. Velvora’s flagship internship gives students and aspiring professionals the opportunity to work directly on live production projects, learn from seasoned architects, and build a verified portfolio across ePublishing, AI/ML, Data Analytics, Digital Accessibility, or Software Development.\nWhy Choose: Not just passive lectures—you will write production code, remediate real client assets, structure XML schemas, build AI models, and defend a verifiable capstone project.\nDetailed Description: The Velvora Internship Program bridges the gap between collegiate academia and the demands of modern enterprise technology. Interns are embedded directly into active engineering and publishing sprints under the direct supervision of senior architects in our Cuddalore Head Office, Chennai Branch, or interactive Virtual Live rooms.\nModules Covered:\n• 01. Enterprise Onboarding & Tooling Setup (Week 1): Familiarization with enterprise dev environments, Git collaboration workflows, agile sprint rituals, and domain fundamentals.\n  Topics: Professional Git workflows: branching, PR reviews, and merge conflicts; Enterprise IDE configuration (VS Code, Oxygen XML, Jupyter, Acrobat Pro); Agile sprint methodologies and ticketing systems; Data confidentiality, security standards, and production SLAs\n• 02. Core Domain Immersion & Guided Labs (Weeks 2–4): Deep dive into your chosen specialization (AI/ML, ePublishing, Accessibility, Software Dev, or Data Analytics) through structured labs.\n  Topics: Hands-on architectural tutorials led by domain specialists; Simulated production sprints with real-time error debugging; Dual-layer quality assurance and compliance auditing; Code review feedback and performance optimization\n• 03. Live Client Deliverable Execution (Weeks 5–8): Full immersion in live production workflows. Interns handle assigned modules of real deliverables under mentor oversight.\n  Topics: Direct asset processing: XML conversion, PDF remediation, or ML training pipelines; Cross-functional team synchronization and daily standups; Adherence to global quality metrics (WCAG 2.2, EPUBCheck, ISO 14289, PEP 8); Iterative refinement based on client QA defect logs\n• 04. Capstone Defense, Certification & PPO Evaluation (Weeks 9–12): Formal presentation of your end-to-end capstone project to our Technical Review Board, followed by appraisal and hiring evaluation.\n  Topics: Comprehensive capstone project packaging and documentation; Technical presentation and oral defense before senior engineering leads; Resume and LinkedIn optimization showcasing live project deliverables; Formal appraisal review and Pre-Placement Offer (PPO) interview round\nLive Project: Enterprise Capstone Project: End-to-End Production Deliverable - Interns deliver an end-to-end production module tailored to their selected track—such as converting a 500-page academic journal to EPUB 3/JATS XML, remediating a complex government PDF to PDF/UA standards, or training and deploying an intelligent NLP extraction microservice.\nTools Mastered: Git & GitHub, VS Code / Oxygen XML, Acrobat Pro / PAC 2024, Python / React, Power BI / SQL, Enterprise Project Board\nCareer Roles: Publishing Intern, Accessibility QA Intern, AI/ML Intern, Junior Web Developer, Associate Data Analyst\nPrerequisites: Open to enrolled college students (any discipline) and recent graduates with basic computer literacy and strong desire to learn.\nCertification: Official Velvora Solutions Certificate of Internship Completion with secure digital verification QR code, hours transcript, and Letter of Recommendation.",
+      "topics": [
+        "Internship Program (Live Industry Projects)",
+        "Career Accelerator & Mentorship",
+        "Training",
+        "Curriculum",
+        "Syllabus"
+      ],
+      "keywords": [
+        "internship program (live industry projects)",
+        "internship-program",
+        "training",
+        "syllabus",
+        "modules",
+        "course",
+        "git & github",
+        "vs code / oxygen xml",
+        "acrobat pro / pac 2024",
+        "python / react",
+        "power bi / sql",
+        "enterprise project board"
+      ]
+    },
+    {
+      "id": "page-training-epublishing-training",
+      "title": "ePublishing Training | Velvora Academy",
+      "url": "/training/epublishing-training",
+      "category": "training-program",
+      "summary": "Tight deadlines leave zero room for rework. Velvora’s ePublishing training gives trainees hands-on mastery of industry-standard workflows, XML-based publishing, content conversion, EPUB 3 architecture, and automated QA used by global publishing houses.",
+      "content": "ePublishing Training (Publishing & Formats)\nCategory: publishing | Badge: Industry Standard\nDuration: 4 to 8 Weeks | Skill Level: Beginner to Advanced | Mode: Online Live / Classroom (Cuddalore & Chennai) / Hybrid\nOverview: Tight deadlines leave zero room for rework. Velvora’s ePublishing training gives trainees hands-on mastery of industry-standard workflows, XML-based publishing, content conversion, EPUB 3 architecture, and automated QA used by global publishing houses.\nWhy Choose: Master the end-to-end publishing pipeline used by global academic presses, STM journals, and leading eBook platforms.\nDetailed Description: Digital publishing requires rigorous structural discipline, precise semantic tagging, and absolute conformance with international standards like IDPF EPUB 3, NLM/JATS, BITS, and MathML. In this intensive program, you learn to transform raw manuscripts, InDesign layouts, and scanned books into commercial-grade digital publications ready for Amazon Kindle, Apple Books, and institutional repositories.\nModules Covered:\n• 01. Publishing Fundamentals & Modern Digital Formats (Week 1): Introduction to digital typography, reflowable vs fixed layout eBooks, document architecture, and semantic styling.\n  Topics: History and evolution of publishing: from print prepress to multi-channel digital; Reflowable EPUB vs Fixed Layout (FXL) for graphic-heavy works; EPUB 3 package structure: OPF package, NCX, NAV, XHTML content documents; Character encoding, UTF-8, CSS3 styling rules for eReaders\n• 02. XML Workflows, JATS / BITS DTD & XSLT (Weeks 2–3): Deep dive into structured academic publishing schemas, journal article tag sets (JATS), book interchange tag sets (BITS), and transformations.\n  Topics: XML syntax, well-formedness, DTDs, and XML Schema validation; JATS 1.3 XML tagging: front matter, body elements, back matter, citations; BITS tagging for academic textbooks and reference volumes; XSLT and XPath foundations for automated batch conversions; Oxygen XML Editor tips, shortcuts, and batch validation workflows\n• 03. MathML, SVG & Advanced EPUB 3 Features (Weeks 4–5): Master complex mathematical typography, interactive vector graphics, media overlays, and embedded fonts in digital books.\n  Topics: MathML markup for scientific, technical, and medical (STM) formulas; Scalable Vector Graphics (SVG) integration and responsive scaling; Synchronized Media Overlays (SMIL) for read-aloud audio eBooks; InDesign to EPUB 3 export pipelines and CSS post-processing\n• 04. EPUB Accessibility 1.1 Conformance & Automated QA (Weeks 6–8): Ensure every digital publication passes EPUBCheck, DAISY Ace, and meets global EPUB Accessibility 1.1 standards.\n  Topics: DAISY Ace accessibility auditor and automated reporting; Structural semantics: epub:type, ARIA role attributes, and reading progression; Alternative text authoring for complex charts, diagrams, and formulas; EPUBCheck validation, debugging fatal parsing errors, and final certification\nLive Project: Full-Cycle Academic Journal & Multi-Format eBook Conversion - Trainees receive a 250-page unformatted academic manuscript with complex tables, MathML formulas, and footnotes. The objective is to convert and validate it into publication-ready JATS XML and an accessible EPUB 3 eBook that achieves a zero-error score on EPUBCheck and Ace by DAISY.\nTools Mastered: JATS / BITS DTD, EPUBCheck, DAISY Ace, Oxygen XML Editor, Adobe InDesign, Python (XML Automation), Sigil / Calibre\nCareer Roles: ePublishing Specialist, XML Production Editor, Digital Typesetter, eBook QA Analyst, Digital Conversion Lead\nPrerequisites: Familiarity with HTML/CSS and basic word processing is helpful; no prior XML experience is required.\nCertification: Velvora Certified ePublishing Specialist credential with verification badge.",
+      "topics": [
+        "ePublishing Training",
+        "Publishing & Formats",
+        "Training",
+        "Curriculum",
+        "Syllabus"
+      ],
+      "keywords": [
+        "epublishing training",
+        "epublishing-training",
+        "training",
+        "syllabus",
+        "modules",
+        "course",
+        "jats / bits dtd",
+        "epubcheck",
+        "daisy ace",
+        "oxygen xml editor",
+        "adobe indesign",
+        "python (xml automation)",
+        "sigil / calibre"
+      ]
+    },
+    {
+      "id": "page-training-ai-ml-training",
+      "title": "AI/ML Training | Velvora Academy",
+      "url": "/training/ai-ml-training",
+      "category": "training-program",
+      "summary": "AI is no longer optional in a data-driven enterprise. Velvora’s AI/ML training builds practical capabilities in machine learning, feature engineering, neural network architectures, and production model deployment so you can engineer cognitive solutions that work.",
+      "content": "AI/ML Training (Artificial Intelligence & Machine Learning)\nCategory: ai-data | Badge: High Demand\nDuration: 6 to 12 Weeks | Skill Level: Intermediate to Advanced | Mode: Online Live / Classroom / Hybrid\nOverview: AI is no longer optional in a data-driven enterprise. Velvora’s AI/ML training builds practical capabilities in machine learning, feature engineering, neural network architectures, and production model deployment so you can engineer cognitive solutions that work.\nWhy Choose: Gain hands-on experience engineering cognitive models and predictive systems with production-grade datasets.\nDetailed Description: Learn how to move machine learning models from Jupyter notebook prototypes into robust, containerized production APIs. This program focuses on mathematical intuition, real-world data pipelines, modern deep learning architectures, Natural Language Processing (NLP), and Computer Vision.\nModules Covered:\n• 01. Python for Data Science & Mathematical Foundations (Weeks 1–2): Core programming, linear algebra, multivariate calculus, probability distributions, NumPy, and Pandas data wrangling.\n  Topics: Vectorized operations and linear algebra with NumPy; High-performance data cleaning and wrangling with Pandas; Exploratory data analysis (EDA) and data visualization with Seaborn; Probability distributions, hypothesis testing, and statistical significance\n• 02. Classical Machine Learning & Feature Engineering (Weeks 3–5): Supervised and unsupervised learning algorithms, ensemble techniques, bias-variance tradeoff, and cross-validation.\n  Topics: Linear & Logistic Regression with regularizations (L1/L2 Lasso & Ridge); Decision Trees, Random Forests, and Gradient Boosting (XGBoost, LightGBM); Unsupervised clustering: K-Means, DBSCAN, and PCA dimensionality reduction; Feature encoding, scaling pipelines, and handling imbalanced datasets (SMOTE)\n• 03. Deep Learning & Neural Architectures with PyTorch (Weeks 6–8): Feedforward neural networks, backpropagation, CNNs for computer vision, and RNNs/LSTMs for sequential data.\n  Topics: Building neural networks from scratch and understanding backpropagation; PyTorch tensors, autograd, and training loops; Convolutional Neural Networks (CNNs) for image classification and OCR; Recurrent Neural Networks (RNN/LSTM) and sequence-to-sequence modeling\n• 04. NLP, Intelligent Document Processing & MLOps Deployment (Weeks 9–12): Hugging Face transformers, text tokenization, named entity recognition (NER), FastAPI model serving, Docker, and CI/CD.\n  Topics: Tokenization, embeddings, and Transformer self-attention mechanisms; Named Entity Recognition (NER) and Intelligent Document Processing (IDP); Serving ML models via high-throughput FastAPI REST microservices; Docker containerization, model latency profiling, and cloud deployment\nLive Project: Cognitive Document Intelligence & Automated Information Extraction Pipeline - Build an end-to-end machine learning system that ingests messy scanned documents, runs computer vision OCR to detect text blocks, classifies document categories, and extracts critical entities (e.g. author, DOI, invoice amount, dates) using a fine-tuned Hugging Face transformer model served via Dockerized FastAPI.\nTools Mastered: Python, Scikit-Learn, PyTorch, XGBoost, Hugging Face, FastAPI, Docker, Pandas & NumPy\nCareer Roles: Machine Learning Engineer, AI Pipeline Developer, NLP Specialist, Data Scientist, MLOps Engineer\nPrerequisites: Basic knowledge of Python or any programming language; familiarity with high school mathematics.\nCertification: Velvora Certified Applied AI/ML Engineer credential with verifiable repository appraisal.",
+      "topics": [
+        "AI/ML Training",
+        "Artificial Intelligence & Machine Learning",
+        "Training",
+        "Curriculum",
+        "Syllabus"
+      ],
+      "keywords": [
+        "ai/ml training",
+        "ai-ml-training",
+        "training",
+        "syllabus",
+        "modules",
+        "course",
+        "python",
+        "scikit-learn",
+        "pytorch",
+        "xgboost",
+        "hugging face",
+        "fastapi",
+        "docker",
+        "pandas & numpy"
+      ]
+    },
+    {
+      "id": "page-training-generative-ai-training",
+      "title": "Generative AI Training | Velvora Academy",
+      "url": "/training/generative-ai-training",
+      "category": "training-program",
+      "summary": "Generative AI is transforming how businesses create, automate, and innovate. Our hands-on training helps engineers understand LLM architectures, craft structured prompts, construct Retrieval-Augmented Generation (RAG) pipelines, and deploy autonomous multi-agent systems.",
+      "content": "Generative AI Training (Cutting-Edge AI & LLMs)\nCategory: ai-data | Badge: Next-Gen Technology\nDuration: 4 to 8 Weeks | Skill Level: All Levels | Mode: Online Live / Classroom / Hybrid\nOverview: Generative AI is transforming how businesses create, automate, and innovate. Our hands-on training helps engineers understand LLM architectures, craft structured prompts, construct Retrieval-Augmented Generation (RAG) pipelines, and deploy autonomous multi-agent systems.\nWhy Choose: Move far beyond simple ChatGPT chat prompts to engineering production autonomous AI agents and enterprise vector RAG systems.\nDetailed Description: The modern enterprise does not need people who merely ask questions to a chat box—it needs engineers who can build software with Large Language Models. In this course, you master LLM APIs, function calling, vector database embeddings, Retrieval-Augmented Generation (RAG), and multi-agent coordination using LangChain and LlamaIndex.\nModules Covered:\n• 01. LLM Foundations & Advanced Prompt Engineering (Week 1): Tokenization, context windows, temperature, hallucinations, zero-shot/few-shot prompting, and structured output formatting.\n  Topics: How LLMs work: transformer architectures, tokens, attention, and probability distributions; Prompt engineering paradigms: Chain-of-Thought (CoT), Tree-of-Thoughts, ReAct; Guaranteed structured JSON generation using schema enforcement and Pydantic; Prompt injection risks, jailbreak defenses, and safety guardrails\n• 02. OpenAI, Gemini & Open-Source LLMs (Ollama) (Weeks 2–3): API integration, function calling, tool use, running local models with Ollama, and cost-latency tradeoffs.\n  Topics: OpenAI API and Google Gemini API integration in Python; Function calling / Tool use: empowering LLMs to query databases and invoke APIs; Running private, cost-free open models locally via Ollama (Llama 3, Mistral, Qwen); Benchmarking token usage, latency optimization, and streaming responses\n• 03. Vector Databases & Enterprise RAG Architectures (Weeks 4–5): Dense vector embeddings, chunking strategies, vector databases (ChromaDB, Pinecone), hybrid search, and semantic retrieval.\n  Topics: Text embedding models (OpenAI text-embedding-3, BGE, HuggingFace embeddings); Intelligent document chunking strategies (semantic, recursive, markdown-aware); Vector database indexing and querying with ChromaDB and Pinecone; Building end-to-end RAG pipelines with LangChain and LlamaIndex; Mitigating hallucinations via rerankers and contextual retrieval verification\n• 04. Autonomous AI Agents & Multi-Agent Swarms (Weeks 6–8): Designing autonomous agents that plan, reason, invoke tools, browse the web, and collaborate to achieve complex objectives.\n  Topics: Agentic design patterns: Reflection, Tool Use, Planning, and Multi-Agent Collaboration; Building agents with LangGraph and CrewAI; Integrating web search, code execution sandboxes, and enterprise databases; Evaluation frameworks (RAGAS) and enterprise deployment monitoring\nLive Project: Enterprise Multi-Source Knowledge Assistant with Hybrid RAG & Verification - Build an enterprise AI assistant capable of ingesting hundreds of internal PDFs, Word documents, and API docs. The assistant performs hybrid vector/BM25 retrieval, synthesizes answers with exact citation page numbers, verifies its own answers against source documents, and provides an interactive web chat UI.\nTools Mastered: LangChain / LangGraph, LlamaIndex, OpenAI & Gemini APIs, ChromaDB / Pinecone, Ollama (Local LLMs), Streamlit / FastAPI, RAGAS\nCareer Roles: Generative AI Engineer, AI Solutions Architect, Prompt Engineer, LLM Application Developer, Automation Specialist\nPrerequisites: Basic Python programming skills. No prior deep learning experience required.\nCertification: Velvora Certified Generative AI Architect credential with live project repository verification.",
+      "topics": [
+        "Generative AI Training",
+        "Cutting-Edge AI & LLMs",
+        "Training",
+        "Curriculum",
+        "Syllabus"
+      ],
+      "keywords": [
+        "generative ai training",
+        "generative-ai-training",
+        "training",
+        "syllabus",
+        "modules",
+        "course",
+        "langchain / langgraph",
+        "llamaindex",
+        "openai & gemini apis",
+        "chromadb / pinecone",
+        "ollama (local llms)",
+        "streamlit / fastapi",
+        "ragas"
+      ]
+    },
+    {
+      "id": "page-training-data-analytics-bi-training",
+      "title": "Data Analytics & Business Intelligence Training | Velvora Academy",
+      "url": "/training/data-analytics-bi-training",
+      "category": "training-program",
+      "summary": "Data creates value only when it drives a confident decision. Velvora’s data analytics training builds hands-on capabilities in data modeling, advanced SQL, Power BI executive dashboards, DAX calculations, and Python data storytelling.",
+      "content": "Data Analytics & Business Intelligence Training (BI & Executive Telemetry)\nCategory: ai-data | Badge: Career Essential\nDuration: 6 to 10 Weeks | Skill Level: Beginner to Advanced | Mode: Online Live / Classroom / Hybrid\nOverview: Data creates value only when it drives a confident decision. Velvora’s data analytics training builds hands-on capabilities in data modeling, advanced SQL, Power BI executive dashboards, DAX calculations, and Python data storytelling.\nWhy Choose: Transform raw, disparate business numbers into executive-level interactive visual dashboards that drive tangible ROI.\nDetailed Description: Organizations around the globe are overwhelmed with raw data but starved for actionable insights. In this comprehensive program, you master the end-to-end data analytics lifecycle: querying relational databases with advanced SQL, building star-schema data models, authoring complex DAX measures, and designing stunning executive dashboards in Microsoft Power BI.\nModules Covered:\n• 01. Advanced Excel & Analytical Thinking (Weeks 1–2): Master dynamic array formulas, XLOOKUP, Power Query ETL transformations, Power Pivot, and data modeling in Excel.\n  Topics: Advanced data manipulation: XLOOKUP, INDEX/MATCH, dynamic arrays, LAMBDA functions; Power Query for automated extraction, transformation, and loading (ETL); Building relational models in Power Pivot with relationships and calculated columns; Executive KPI summary tables, conditional formatting, and interactive slicers\n• 02. Mastering SQL for Business Analytics (Weeks 3–4): Write complex analytical queries, multi-table joins, subqueries, Common Table Expressions (CTEs), and window functions.\n  Topics: Database normalization, schemas, and relational integrity; Multi-table INNER, LEFT, RIGHT, and FULL OUTER joins with business logic; Aggregations with GROUP BY, HAVING, and conditional CASE WHEN expressions; Window functions: ROW_NUMBER, RANK, DENSE_RANK, LEAD, LAG, and running totals; Common Table Expressions (CTEs) and recursive queries for cohort analysis\n• 03. Power BI: Dimensional Modeling & Advanced DAX (Weeks 5–7): Star schema architecture, fact vs dimension tables, DAX measures, time-intelligence calculations, and row-level security (RLS).\n  Topics: Star schema and snowflake dimensional data modeling best practices; Understanding row context vs filter context in DAX; Mastering CALCULATE, FILTER, ALL, ALLEXCEPT, and iterator functions (SUMX, AVERAGEX); Time intelligence: Year-to-Date (YTD), Year-over-Year (YoY) growth, trailing 12 months; Enterprise governance, Row-Level Security (RLS), and workspace publishing\n• 04. Python for Analytics & Executive Storytelling (Weeks 8–10): Exploratory data analysis with Pandas, statistical hypothesis testing, data visualization, and presenting to C-suite leadership.\n  Topics: Data analysis and aggregation with Python Pandas and NumPy; Correlation analysis, outlier detection, and trend forecasting; Data visualization with Seaborn and Plotly interactive charts; Storytelling with data: building structured executive presentations and business case memos\nLive Project: Global Retail & Supply Chain Executive Intelligence Dashboard - Trainees are provided with a multi-million row transactional database spanning sales, inventory, logistics, and customer churn. You will design an end-to-end Power BI report with 4 dedicated pages (Executive Overview, Regional Sales, Customer Retention, Inventory Optimization) utilizing advanced DAX measures and custom drill-through navigation.\nTools Mastered: Microsoft Power BI, Advanced SQL (PostgreSQL/MySQL), Microsoft Excel (Power Query/Pivot), Python (Pandas, Seaborn), Tableau Fundamentals, DAX Studio\nCareer Roles: Business Intelligence Analyst, Data Analyst, Reporting Specialist, Analytics Consultant, Financial Data Analyst\nPrerequisites: Basic numerical literacy and enthusiasm for problem-solving; no coding background required.\nCertification: Velvora Certified Business Intelligence Analyst credential with verified dashboard portfolio.",
+      "topics": [
+        "Data Analytics & Business Intelligence Training",
+        "BI & Executive Telemetry",
+        "Training",
+        "Curriculum",
+        "Syllabus"
+      ],
+      "keywords": [
+        "data analytics & business intelligence training",
+        "data-analytics-bi-training",
+        "training",
+        "syllabus",
+        "modules",
+        "course",
+        "microsoft power bi",
+        "advanced sql (postgresql/mysql)",
+        "microsoft excel (power query/pivot)",
+        "python (pandas, seaborn)",
+        "tableau fundamentals",
+        "dax studio"
+      ]
+    },
+    {
+      "id": "page-training-digital-accessibility-training",
+      "title": "Digital Accessibility Training | Velvora Academy",
+      "url": "/training/digital-accessibility-training",
+      "category": "training-program",
+      "summary": "Remediation fixes today’s files. Training empowers your team to create universally accessible content from the start. Velvora’s accessibility specialists deliver role-based training in WCAG 2.2, PDF/UA (ISO 14289), screen reader auditing, and VPAT / ACR authoring.",
+      "content": "Digital Accessibility Training (Universal Inclusion & Compliance)\nCategory: publishing | Badge: Global Compliance\nDuration: 4 to 8 Weeks | Skill Level: Beginner to Professional | Mode: Online Live / Classroom / Hybrid\nOverview: Remediation fixes today’s files. Training empowers your team to create universally accessible content from the start. Velvora’s accessibility specialists deliver role-based training in WCAG 2.2, PDF/UA (ISO 14289), screen reader auditing, and VPAT / ACR authoring.\nWhy Choose: Prepare for IAAP CPACC certification while mastering hands-on document and web accessibility auditing on live client assets.\nDetailed Description: With the European Accessibility Act (EAA), US Section 508, ADA Title II, and global digital inclusion mandates, accessibility is legally mandated worldwide. This program provides deep technical mastery of WCAG 2.2 Level A, AA, and AAA standards, the PDF/UA ISO 14289 standard, assistive technology testing (JAWS, NVDA, VoiceOver), and accessibility compliance auditing.\nModules Covered:\n• 01. Disability Types, Legal Frameworks & WCAG 2.2 Core Principles (Week 1): Understand sensory, motor, and cognitive disabilities, assistive technologies, ADA, Section 508, EAA, and the POUR principles.\n  Topics: Categories of disability: visual, auditory, motor, speech, and cognitive; Assistive technology landscape: screen readers, screen magnifiers, switch devices, refreshable braille; Global legal mandates: Americans with Disabilities Act (ADA), Section 508, EN 301 549, European Accessibility Act; WCAG 2.2 framework: Perceivable, Operable, Understandable, Robust (POUR) with Level A, AA, AAA criteria\n• 02. Mastering PDF/UA & Document Remediation in Adobe Acrobat Pro (Weeks 2–4): Tagging trees, reading order, complex data tables, form fields, infographics, and mathematical formulas.\n  Topics: The PDF logical structure tree: tags, content containers, and artifacting decorative elements; Remediating complex data tables: row/column headers, id/headers associations, multi-level spans; Accessible digital forms: tooltip labels, tab order, focus indicators, error announcements; Alternative text authoring for complex STEM infographics, charts, and diagrams; PAC 2024 (PDF Accessibility Checker) validation and ISO 14289-1 conformance\n• 03. Web Accessibility & WAI-ARIA Design Patterns (Weeks 5–6): Semantic HTML5, keyboard navigation, color contrast ratios, focus traps, and WAI-ARIA widget roles.\n  Topics: Semantic HTML elements vs generic div/span misuse; Keyboard accessibility: tabindex, focus traps, skip navigation links, visible focus outlines; Color contrast calculation (4.5:1 text, 3:1 non-text) with Colour Contrast Analyser (CCA); WAI-ARIA roles, states, and properties: dialogs, tabs, accordions, comboboxes, and alerts; Automated browser auditing with Axe DevTools, Lighthouse, and WAVE\n• 04. Assistive Tech Testing, Auditing & VPAT / ACR Reporting (Weeks 7–8): Manual screen reader testing with NVDA and JAWS, creating conformance audit reports, and authoring VPATs.\n  Topics: Manual keyboard testing protocols and shortcut masterclasses; Screen reader audit testing using NVDA (Windows) and VoiceOver (macOS/iOS); Documenting accessibility defects: severity classification, reproduction steps, and remediation guidance; Authoring Accessibility Conformance Reports (ACR) using the Voluntary Product Accessibility Template (VPAT 2.5); Preparation roadmap for the IAAP Certified Professional in Accessibility Core Competencies (CPACC)\nLive Project: Full-Cycle Accessibility Audit & Remediation of Enterprise PDF & Web Portal - Trainees audit and remediate a 50-page complex annual government report containing complex data tables, multi-column layouts, forms, and charts, bringing it into 100% compliance with PDF/UA (ISO 14289) and WCAG 2.2 AA. You will also conduct a screen reader audit of an interactive web portal and produce a formal VPAT 2.5 Conformance Report.\nTools Mastered: Adobe Acrobat Pro, PAC 2024 (PDF Accessibility Checker), NVDA Screen Reader, JAWS, Colour Contrast Analyser, Axe DevTools, WAVE\nCareer Roles: Digital Accessibility Auditor, PDF Remediation Specialist, Digital Inclusion Consultant, VPAT / ACR Analyst, Accessibility QA Lead\nPrerequisites: Basic computer literacy; no prior coding knowledge required. Empathy for inclusive design is essential.\nCertification: Velvora Certified Digital Accessibility Specialist credential and CPACC preparation endorsement.",
+      "topics": [
+        "Digital Accessibility Training",
+        "Universal Inclusion & Compliance",
+        "Training",
+        "Curriculum",
+        "Syllabus"
+      ],
+      "keywords": [
+        "digital accessibility training",
+        "digital-accessibility-training",
+        "training",
+        "syllabus",
+        "modules",
+        "course",
+        "adobe acrobat pro",
+        "pac 2024 (pdf accessibility checker)",
+        "nvda screen reader",
+        "jaws",
+        "colour contrast analyser",
+        "axe devtools",
+        "wave"
+      ]
+    },
+    {
+      "id": "page-training-software-development-training",
+      "title": "Software Development Training | Velvora Academy",
+      "url": "/training/software-development-training",
+      "category": "training-program",
+      "summary": "Technology moves fast, and development teams must build with resilience. Velvora’s full-stack software development training delivers hands-on mastery in modern JavaScript/TypeScript, React.js, Node.js, Python, relational database architecture, and cloud deployment pipelines.",
+      "content": "Software Development Training (Full-Stack Modern Engineering)\nCategory: tech-growth | Badge: Enterprise Architecture\nDuration: 8 to 14 Weeks | Skill Level: Beginner to Advanced | Mode: Online Live / Classroom / Hybrid\nOverview: Technology moves fast, and development teams must build with resilience. Velvora’s full-stack software development training delivers hands-on mastery in modern JavaScript/TypeScript, React.js, Node.js, Python, relational database architecture, and cloud deployment pipelines.\nWhy Choose: Build resilient, production-ready full-stack web applications with clean architectural patterns, robust APIs, and modern CI/CD.\nDetailed Description: Become a high-caliber full-stack software engineer capable of architecting scalable web applications from scratch. This intensive engineering program covers computer science fundamentals, modular frontend design with React, high-concurrency backend services with Node.js and Express, relational database schema design with PostgreSQL, RESTful API design, and cloud deployments.\nModules Covered:\n• 01. Modern JavaScript (ES6+), TypeScript & Programming Foundations (Weeks 1–3): Deep dive into asynchronous programming, event loops, promises, functional programming, and TypeScript static typing.\n  Topics: JavaScript under the hood: execution contexts, closures, prototypes, and the event loop; Modern ES6+ syntax: destructuring, rest/spread, modules, arrow functions; Asynchronous JavaScript: Promises, async/await, and error handling patterns; TypeScript essentials: interfaces, types, generics, and compiler configurations\n• 02. Frontend Engineering with React.js & Modern State Architecture (Weeks 4–7): Component lifecycle, hooks (useState, useEffect, useMemo, custom hooks), React Router, component styling, and state management.\n  Topics: Component composition, unidirectional data flow, and virtual DOM diffing; Hooks masterclass: useState, useEffect, useRef, useMemo, useCallback, and custom hooks; Single-page application routing with React Router 6+; Global state management strategies (Context API, Zustand, Redux Toolkit); Responsive design, accessible UI components, and CSS modules\n• 03. Backend Architecture with Node.js, Express & PostgreSQL (Weeks 8–11): RESTful API design, middleware, authentication (JWT/OAuth), relational database design, indexing, and ORM integration.\n  Topics: Node.js runtime architecture, event-driven I/O, and streams; Building RESTful APIs with Express.js: routing, custom middleware, and validation; Relational database modeling with PostgreSQL: tables, foreign keys, indexes, and constraints; Database access using Prisma ORM and raw SQL queries; Security best practices: password hashing (bcrypt), JWT tokens, CORS, and rate limiting\n• 04. Testing, Docker Containerization & Cloud CI/CD (Weeks 12–14): Unit and integration testing, Docker containerization, Git collaboration, and automated deployments.\n  Topics: Unit testing with Jest / Vitest and React Testing Library; API testing with Supertest and Postman collections; Dockerizing full-stack applications: Dockerfile, multi-stage builds, docker-compose; Continuous Integration and Continuous Deployment (CI/CD) with GitHub Actions; Deploying production backends to Linux cloud instances and Vercel/Render\nLive Project: Enterprise Multi-Tenant SaaS Portal with Authentication, Billing & Telemetry - Design, build, and deploy a production full-stack web application featuring role-based access control (Admin, Manager, Member), JWT authentication, interactive dashboard metrics, automated PDF invoice generation, and real-time database updates.\nTools Mastered: React.js, Node.js / Express, TypeScript, PostgreSQL, Prisma ORM, Git & GitHub, Docker, Linux / Bash\nCareer Roles: Full-Stack Developer, Frontend Engineer, Backend API Developer, Software Engineer, React Developer\nPrerequisites: Basic understanding of HTML/CSS and logical thinking. We start from foundational JavaScript before advancing.\nCertification: Velvora Certified Full-Stack Software Engineer credential with live project code review badge.",
+      "topics": [
+        "Software Development Training",
+        "Full-Stack Modern Engineering",
+        "Training",
+        "Curriculum",
+        "Syllabus"
+      ],
+      "keywords": [
+        "software development training",
+        "software-development-training",
+        "training",
+        "syllabus",
+        "modules",
+        "course",
+        "react.js",
+        "node.js / express",
+        "typescript",
+        "postgresql",
+        "prisma orm",
+        "git & github",
+        "docker",
+        "linux / bash"
+      ]
+    },
+    {
+      "id": "page-training-digital-marketing-training",
+      "title": "Digital Marketing Training | Velvora Academy",
+      "url": "/training/digital-marketing-training",
+      "category": "training-program",
+      "summary": "A commanding online presence requires skill and calculated strategy. Velvora’s digital marketing training gives you practical experience in technical SEO, Google Analytics 4 (GA4), paid performance advertising, content funnels, and conversion optimization.",
+      "content": "Digital Marketing Training (SEO & Performance Growth)\nCategory: tech-growth | Badge: Growth Driven\nDuration: 4 to 8 Weeks | Skill Level: Beginner to Intermediate | Mode: Online Live / Classroom / Hybrid\nOverview: A commanding online presence requires skill and calculated strategy. Velvora’s digital marketing training gives you practical experience in technical SEO, Google Analytics 4 (GA4), paid performance advertising, content funnels, and conversion optimization.\nWhy Choose: Execute end-to-end data-backed campaigns with real advertising frameworks, tracking real conversion metrics and positive ROI.\nDetailed Description: Digital marketing has evolved into a quantitative, data-driven discipline. This program equips marketers and entrepreneurs with the technical and strategic skills needed to dominate search rankings, run high-converting Google and Meta ad campaigns, set up enterprise web telemetry with Google Analytics 4, and design high-converting sales funnels.\nModules Covered:\n• 01. Technical & On-Page SEO Architecture (Weeks 1–2): Master search engine indexing, keyword research, on-page optimization, Schema.org structured data, and Core Web Vitals.\n  Topics: How Google crawls, renders, and indexes modern websites; Comprehensive keyword research: search intent, difficulty scores, and topic clustering; On-page SEO: title tags, meta descriptions, header hierarchy, and internal linking; Technical SEO: XML sitemaps, robots.txt, canonicalization, and Schema markup (JSON-LD); Core Web Vitals optimization: LCP, INP, and CLS for organic ranking boosts\n• 02. Content Strategy, Copywriting & Inbound Lead Funnels (Weeks 3–4): Author compelling copy, design multi-step lead nurture funnels, and build high-converting landing pages.\n  Topics: Direct-response copywriting frameworks: AIDA, PAS, and value propositions; Content marketing strategy: pillar pages, case studies, and lead magnets; Landing page conversion rate optimization (CRO) and UX heatmaps; Email marketing automation: welcome sequences, abandoned cart triggers, and newsletters\n• 03. Paid Advertising: Google Ads & Meta Ads Management (Weeks 5–6): Search, display, and performance max campaigns on Google Ads; laser-targeted audience campaigns on Facebook and Instagram.\n  Topics: Google Ads search campaigns: keyword match types, quality score optimization, negative keywords; Smart bidding strategies: Target CPA, Target ROAS, and maximize conversions; Meta Ads Manager: custom audiences, lookalike audiences, and pixel event setup; Creative ad copywriting and video/image asset testing frameworks\n• 04. Web Analytics (GA4), Tag Manager & Multi-Touch Attribution (Weeks 7–8): Master Google Analytics 4, Google Tag Manager (GTM), custom event tracking, and executive ROI reporting.\n  Topics: Google Analytics 4 (GA4) setup: data streams, event-driven tracking model, and user identification; Google Tag Manager (GTM): creating tags, triggers, and variables for button clicks and form submissions; Conversion funnels, path exploration, and drop-off analysis in GA4; Multi-channel attribution models and building automated executive dashboards in Looker Studio\nLive Project: End-to-End Growth Campaign: Technical SEO Audit, Paid Campaign & GA4 Telemetry - Trainees conduct an in-depth technical SEO audit of a live website, fix structured data and meta errors, construct a multi-channel paid ad campaign strategy on Google and Meta with negative keywords and ad copy, and build an automated executive reporting dashboard in Looker Studio connected to GA4.\nTools Mastered: Google Analytics 4, Google Tag Manager, Google Search Console, SEMrush / Ahrefs, Google Ads, Meta Ads Manager, Looker Studio\nCareer Roles: SEO Specialist, Digital Marketing Manager, Performance Marketer, Content Strategist, Growth Marketing Analyst\nPrerequisites: Basic internet literacy and interest in business psychology; no coding required.\nCertification: Velvora Certified Digital Growth Strategist credential with live campaign audit verification.",
+      "topics": [
+        "Digital Marketing Training",
+        "SEO & Performance Growth",
+        "Training",
+        "Curriculum",
+        "Syllabus"
+      ],
+      "keywords": [
+        "digital marketing training",
+        "digital-marketing-training",
+        "training",
+        "syllabus",
+        "modules",
+        "course",
+        "google analytics 4",
+        "google tag manager",
+        "google search console",
+        "semrush / ahrefs",
+        "google ads",
+        "meta ads manager",
+        "looker studio"
       ]
     },
     {

@@ -247,9 +247,11 @@ Key Topics Explored:
         const trainingModule = await import(trainingUrl);
         const programs = trainingModule.trainingPrograms || [];
 
-        const progListText = programs.map(p => 
-          `• **${p.title}** (${p.tag} | ${p.duration})\n  - Level: ${p.level} | Mode: ${p.mode}\n  - Overview: ${p.lead}\n  - Advanced Topics: ${p.advancedTopics.join('; ')}\n  - Tools Mastered: ${p.toolsLearned.join(', ')}\n  - Career Roles: ${p.careerRoles.join(', ')}`
-        ).join('\n\n');
+        const progListText = programs.map(p => {
+          const tools = p.tools || p.toolsLearned || [];
+          const topics = p.curriculum ? p.curriculum.map(c => c.title) : (p.advancedTopics || []);
+          return `• **${p.title}** (${p.tag || ''} | ${p.duration || ''})\n  - Level: ${p.level || ''} | Mode: ${p.mode || ''}\n  - Overview: ${p.lead || ''}\n  - Modules/Topics: ${topics.join('; ')}\n  - Tools Mastered: ${tools.join(', ')}`;
+        }).join('\n\n');
 
         documents.push({
           id: 'page-training-academy',
@@ -278,27 +280,30 @@ Flagship Student Internship Program:
 
         // Index each dedicated program page
         programs.forEach(prog => {
+          const mods = prog.curriculum || prog.modules || [];
+          const tools = prog.tools || prog.toolsLearned || [];
+          const roles = prog.careerRoles || [];
           documents.push({
             id: `page-training-${prog.id}`,
             title: `${prog.title} | Velvora Academy`,
             url: `/training/${prog.id}`,
             category: 'training-program',
             summary: prog.lead,
-            content: `${prog.title} (${prog.tag})
-Category: ${prog.category} | Badge: ${prog.badge}
-Duration: ${prog.duration} | Skill Level: ${prog.level} | Mode: ${prog.mode}
-Overview: ${prog.lead}
-Why Choose: ${prog.whyChoose}
+            content: `${prog.title} (${prog.tag || ''})
+Category: ${prog.category || ''} | Badge: ${prog.badge || ''}
+Duration: ${prog.duration || ''} | Skill Level: ${prog.level || ''} | Mode: ${prog.mode || ''}
+Overview: ${prog.lead || ''}
+Why Choose: ${prog.whyChoose || ''}
 Detailed Description: ${prog.heroDescription || ''}
 Modules Covered:
-${(prog.modules || []).map(m => `• ${m.moduleNumber}. ${m.title} (${m.duration}): ${m.overview}\n  Topics: ${m.topics.join('; ')}`).join('\n')}
-Live Project: ${prog.liveProject ? prog.liveProject.title + ' - ' + prog.liveProject.scope : 'Live production deliverables included'}
-Tools Mastered: ${prog.toolsLearned.join(', ')}
-Career Roles: ${prog.careerRoles.join(', ')}
+${mods.map(m => `• ${m.moduleNumber || ''}. ${m.title || ''} (${m.duration || ''}): ${m.overview || ''}\n  Topics: ${(m.topics || []).join('; ')}`).join('\n')}
+Live Project: ${prog.liveProject ? (prog.liveProject.title + ' - ' + prog.liveProject.scope) : 'Live production deliverables included'}
+Tools Mastered: ${tools.join(', ')}
+Career Roles: ${roles.join(', ')}
 Prerequisites: ${prog.prerequisites || 'Open to motivated learners'}
-Certification: ${prog.certification || 'Official Velvora Solutions verified credential'}`,
-            topics: [prog.title, prog.tag, 'Training', 'Curriculum', 'Syllabus'],
-            keywords: [prog.title.toLowerCase(), prog.id, 'training', 'syllabus', 'modules', 'course', ...prog.toolsLearned.map(t => t.toLowerCase())]
+Certification: ${prog.credential || prog.certification || 'Official Velvora Solutions verified credential'}`,
+            topics: [prog.title, prog.tag || 'Training', 'Training', 'Curriculum', 'Syllabus'],
+            keywords: [prog.title.toLowerCase(), prog.id, 'training', 'syllabus', 'modules', 'course', ...tools.map(t => t.toLowerCase())]
           });
         });
       } catch (tErr) {
