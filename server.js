@@ -540,14 +540,14 @@ Reply-To: ${email.trim()}
 // -------------------------------------------------------------
 
 // Chat query endpoint
-app.post('/api/vora/chat', (req, res) => {
+app.post('/api/vora/chat', async (req, res) => {
   try {
-    const { message } = req.body || {};
-    const result = voraStore.answerQuery(message);
+    const { message, history } = req.body || {};
+    const result = await voraStore.answerQuery(message, history);
     res.json({
       success: true,
       reply: result.reply,
-      sources: result.sources,
+      sources: result.sources || [],
       metadata: voraStore.getMetadata()
     });
   } catch (err) {
@@ -555,10 +555,11 @@ app.post('/api/vora/chat', (req, res) => {
     res.status(500).json({
       success: false,
       error: 'VORA encountered a processing error. Please try again.',
-      reply: "I'm having a brief connection pause. Please feel free to check our Services or Careers pages directly!",
+      reply: "Thank you for reaching out! Our assistant encountered a momentary server issue. You can explore our verified sections or reach out directly to our team at info@velvorasolutions.com / +91 9500834236.",
       sources: [
         { title: 'Services Overview', url: '/services' },
-        { title: 'Careers Portal', url: '/careers' }
+        { title: 'Training & Internships', url: '/training' },
+        { title: 'Contact Our Team', url: '/contact' }
       ]
     });
   }

@@ -8,22 +8,16 @@ const __dirname = path.dirname(__filename);
 const DATA_FILE = path.join(__dirname, '..', 'data', 'vora-knowledge.json');
 
 /**
- * VoraKnowledgeStore
- * Comprehensive, continuously synchronized knowledge base engine for VORA.
- * 
- * Features:
- * - Dynamic crawling of all public pages, services, solutions, team members, careers, blogs, and policies
- * - Real-time file system watcher on source files with automatic incremental indexing & version tracking
- * - High-precision semantic BM25 TF-IDF retrieval + entity relationship awareness
- * - Zero hallucination / honest uncertainty guardrails
- * - Real-time career vacancy management and live knowledge querying
+ * Enterprise RAG Knowledge & Natural Conversation Intelligence Engine for Velza
+ * Built for Velvora Solutions — Continuous Dynamic Website Synchronization,
+ * Context-Aware Follow-up Resolution, and Grounded Factual Accuracy.
  */
-export class VoraKnowledgeStore {
+class VoraKnowledgeStore {
   constructor() {
     this.store = {
       syncMetadata: {
-        version: '2.0.0',
-        status: 'Initialized',
+        version: 'v2.1.0',
+        status: 'Synchronized',
         lastSynchronized: new Date().toISOString(),
         sourceHash: '',
         indexedCount: 0,
@@ -39,7 +33,6 @@ export class VoraKnowledgeStore {
 
     this.debounceTimer = null;
     this.init();
-    this.setupWatcher();
   }
 
   async init() {
@@ -55,24 +48,28 @@ export class VoraKnowledgeStore {
         };
       }
 
-      // Automatically crawl and verify source integrity on startup
+      // Automatically sync and verify source integrity on startup
       await this.syncAll(false);
+
+      // Watch for filesystem changes in data and pages to dynamically synchronize
+      this.setupLiveFileWatcher();
     } catch (err) {
       console.warn('VORA Knowledge: Initial read warning, falling back to full crawl:', err.message);
       await this.syncAll(true);
+      this.setupLiveFileWatcher();
     }
   }
 
-  setupWatcher() {
+  setupLiveFileWatcher() {
     try {
-      const watchTargets = [
+      const watchDirs = [
         path.join(__dirname, '..', 'src', 'data'),
         path.join(__dirname, '..', 'src', 'pages')
       ];
 
-      for (const targetDir of watchTargets) {
-        if (fs.existsSync(targetDir)) {
-          const watcher = fs.watch(targetDir, { recursive: true }, (eventType, filename) => {
+      watchDirs.forEach(dir => {
+        if (fs.existsSync(dir)) {
+          fs.watch(dir, { recursive: true }, (eventType, filename) => {
             if (filename && (filename.endsWith('.js') || filename.endsWith('.jsx'))) {
               if (this.debounceTimer) clearTimeout(this.debounceTimer);
               this.debounceTimer = setTimeout(async () => {
@@ -81,13 +78,10 @@ export class VoraKnowledgeStore {
               }, 1200);
             }
           });
-          if (watcher && typeof watcher.unref === 'function') {
-            watcher.unref();
-          }
         }
-      }
-    } catch (err) {
-      console.warn('[VORA Watcher] Could not attach file watcher:', err.message);
+      });
+    } catch (wErr) {
+      console.warn('VORA Knowledge: File watcher initialization skipped:', wErr.message);
     }
   }
 
@@ -97,72 +91,69 @@ export class VoraKnowledgeStore {
       if (!force && this.store.syncMetadata.sourceHash === currentHash && this.store.documents.length > 0) {
         return {
           success: true,
-          status: 'Up-to-Date',
+          status: 'Up-to-date',
           version: this.store.syncMetadata.version,
           indexedCount: this.store.syncMetadata.indexedCount
         };
       }
 
       const crawled = await crawler.crawlAll();
-      const prevVersion = this.store.syncMetadata.version || '2.0.0';
+      const prevVersion = this.store.syncMetadata.version || 'v2.0.0';
       const versionParts = prevVersion.replace('v', '').split('.').map(n => parseInt(n, 10) || 0);
       versionParts[2] = (versionParts[2] || 0) + 1;
       const nextVersion = `v${versionParts.join('.')}`;
 
-      // Retain any dynamically added careers from admin while merging fresh ones
-      const existingCareersMap = new Map((this.store.careers || []).map(c => [c.id, c]));
+      // Retain custom dynamic career records
       for (const freshCareer of crawled.careers) {
-        if (!existingCareersMap.has(freshCareer.id)) {
-          existingCareersMap.set(freshCareer.id, freshCareer);
-        } else {
-          // Merge while keeping live status if updated via admin
-          const existing = existingCareersMap.get(freshCareer.id);
-          existingCareersMap.set(freshCareer.id, {
-            ...freshCareer,
-            status: existing.status || freshCareer.status
-          });
+        const existingIdx = this.store.careers.findIndex(c => c.id === freshCareer.id);
+        if (existingIdx !== -1) {
+          freshCareer.status = this.store.careers[existingIdx].status || 'Active';
+        }
+      }
+
+      const customCareers = this.store.careers.filter(c => c.isCustom);
+      for (const custom of customCareers) {
+        if (!crawled.careers.some(c => c.id === custom.id)) {
+          crawled.careers.push(custom);
         }
       }
 
       this.store.documents = crawled.documents;
-      this.store.careers = Array.from(existingCareersMap.values());
+      this.store.careers = crawled.careers;
       this.store.faqs = crawled.faqs;
 
-      const now = new Date().toISOString();
       this.store.syncMetadata = {
         version: nextVersion,
         status: 'Synchronized',
-        lastSynchronized: now,
+        lastSynchronized: new Date().toISOString(),
         sourceHash: currentHash,
-        indexedCount: this.store.documents.length + this.store.careers.length,
-        indexedPages: this.store.documents.length,
-        indexedCareers: this.store.careers.length,
+        indexedCount: crawled.documents.length + crawled.careers.length,
+        indexedPages: crawled.documents.length,
+        indexedCareers: crawled.careers.length,
         errorLogs: crawled.errorLogs || [],
         changelog: [
-          `Synced ${this.store.documents.length} pages & ${this.store.careers.length} careers at ${now}`,
+          `Synced ${crawled.documents.length} pages & ${crawled.careers.length} careers at ${new Date().toISOString()}`,
           ...(this.store.syncMetadata.changelog || []).slice(0, 9)
         ]
       };
 
       this.persist();
-
-      console.log(`[VORA Knowledge] Successfully synchronized v${nextVersion}: ${this.store.documents.length} pages, ${this.store.careers.length} careers indexed.`);
+      console.log(`[VORA Knowledge] Successfully synchronized ${nextVersion}: ${crawled.documents.length} pages, ${crawled.careers.length} careers indexed.`);
 
       return {
         success: true,
         version: nextVersion,
         indexedCount: this.store.syncMetadata.indexedCount,
-        indexedPages: this.store.documents.length,
-        indexedCareers: this.store.careers.length,
-        timestamp: now
+        lastSynchronized: this.store.syncMetadata.lastSynchronized
       };
     } catch (err) {
-      console.error('[VORA Sync Error]', err);
+      console.error('[VORA Knowledge] Synchronization Error:', err);
+      this.store.syncMetadata.status = 'Error';
       this.store.syncMetadata.errorLogs.push({
-        time: new Date().toISOString(),
-        error: err.message
+        source: 'syncAll',
+        error: err.message,
+        time: new Date().toISOString()
       });
-      this.persist();
       return { success: false, error: err.message };
     }
   }
@@ -170,93 +161,73 @@ export class VoraKnowledgeStore {
   persist() {
     try {
       const dir = path.dirname(DATA_FILE);
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
-      }
+      if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
       fs.writeFileSync(DATA_FILE, JSON.stringify(this.store, null, 2), 'utf8');
-      return true;
     } catch (err) {
-      console.error('Failed to persist vora-knowledge.json:', err.message);
-      return false;
+      console.error('VORA Knowledge: Persistence failure:', err);
     }
   }
 
   getMetadata() {
     return {
       ...this.store.syncMetadata,
-      indexedCount: (this.store.documents || []).length + (this.store.careers || []).length,
-      indexedPages: (this.store.documents || []).length,
-      indexedCareers: (this.store.careers || []).length
+      liveEngine: 'Dynamic Website Crawler & Semantic Context Pipeline v2.1'
     };
   }
 
   getPages() {
-    return (this.store.documents || []).map(d => ({
-      id: d.id,
-      title: d.title,
-      url: d.url,
-      category: d.category,
-      summary: d.summary
-    }));
+    return this.store.documents || [];
   }
 
-  getCareers(filter = {}) {
+  getCareers(filters = {}) {
     let list = this.store.careers || [];
-    if (filter.status) {
-      list = list.filter(c => c.status.toLowerCase() === filter.status.toLowerCase());
+    if (filters.status) {
+      list = list.filter(c => (c.status || 'Active').toLowerCase() === filters.status.toLowerCase());
     }
-    if (filter.type) {
-      list = list.filter(c => c.type.toLowerCase().includes(filter.type.toLowerCase()));
+    if (filters.type) {
+      list = list.filter(c => (c.type || '').toLowerCase().includes(filters.type.toLowerCase()));
     }
-    if (filter.query) {
-      const q = filter.query.toLowerCase();
+    if (filters.query) {
+      const q = filters.query.toLowerCase();
       list = list.filter(c =>
         c.title.toLowerCase().includes(q) ||
         c.department.toLowerCase().includes(q) ||
-        (Array.isArray(c.skills) ? c.skills : []).some(s => s.toLowerCase().includes(q))
+        (Array.isArray(c.skills) ? c.skills.some(s => s.toLowerCase().includes(q)) : false)
       );
     }
     return list;
   }
 
-  getCareerById(id) {
-    return (this.store.careers || []).find(c => c.id === id);
-  }
-
-  addCareer(data) {
-    const id = data.id || data.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-    const newEntry = {
-      id,
-      title: data.title || 'Untitled Role',
-      department: data.department || 'Technology',
-      type: data.type || 'Full-Time / Hybrid',
-      location: data.location || 'Cuddalore, TN / Hybrid',
-      workMode: data.workMode || 'Hybrid',
-      experience: data.experience || 'Fresher / Experienced',
-      skills: Array.isArray(data.skills) ? data.skills : (data.skills || '').split(',').map(s => s.trim()).filter(Boolean),
-      eligibility: data.eligibility || 'Relevant degree or hands-on domain experience.',
-      summary: data.summary || data.description || 'Join Velvora Solutions team.',
-      status: 'Active'
+  addCareer(careerData) {
+    const newId = `job-custom-${Date.now()}`;
+    const newCareer = {
+      id: newId,
+      title: careerData.title,
+      department: careerData.department || 'Engineering & Operations',
+      type: careerData.type || 'Full-Time / Hybrid',
+      workMode: careerData.workMode || 'Hybrid',
+      location: careerData.location || 'Cuddalore, TN / Hybrid',
+      experience: careerData.experience || 'Fresher / Experienced',
+      skills: Array.isArray(careerData.skills) ? careerData.skills : (careerData.skills || '').split(',').map(s => s.trim()).filter(Boolean),
+      eligibility: careerData.eligibility || 'Relevant degree or equivalent experience.',
+      summary: careerData.summary || `Exciting opportunity for ${careerData.title} at Velvora Solutions.`,
+      status: 'Active',
+      isCustom: true,
+      createdAt: new Date().toISOString()
     };
 
-    const existingIdx = (this.store.careers || []).findIndex(c => c.id === id);
-    if (existingIdx !== -1) {
-      this.store.careers[existingIdx] = { ...this.store.careers[existingIdx], ...newEntry };
-    } else {
-      this.store.careers.push(newEntry);
-    }
-
+    this.store.careers.unshift(newCareer);
     this.store.syncMetadata.lastSynchronized = new Date().toISOString();
     this.store.syncMetadata.indexedCount = this.store.documents.length + this.store.careers.length;
     this.store.syncMetadata.indexedCareers = this.store.careers.length;
     this.persist();
-    return newEntry;
+    return newCareer;
   }
 
   updateCareer(id, updates) {
     const idx = (this.store.careers || []).findIndex(c => c.id === id);
     if (idx === -1) return null;
-    this.store.careers[idx] = { ...this.store.careers[idx], ...updates };
+    this.store.careers[idx] = { ...this.store.careers[idx], ...updates, updatedAt: new Date().toISOString() };
     this.store.syncMetadata.lastSynchronized = new Date().toISOString();
     this.persist();
     return this.store.careers[idx];
@@ -266,91 +237,169 @@ export class VoraKnowledgeStore {
     return this.updateCareer(id, { status: 'Closed' });
   }
 
-  deleteCareer(id) {
-    const initialLen = this.store.careers.length;
-    this.store.careers = this.store.careers.filter(c => c.id !== id);
-    if (this.store.careers.length !== initialLen) {
-      this.store.syncMetadata.lastSynchronized = new Date().toISOString();
-      this.store.syncMetadata.indexedCount = this.store.documents.length + this.store.careers.length;
-      this.store.syncMetadata.indexedCareers = this.store.careers.length;
-      this.persist();
-      return true;
-    }
-    return false;
-  }
-
   getFaqs() {
     return this.store.faqs || [];
   }
 
   // =========================================================================
-  // ADVANCED CONTEXT-AWARE RETRIEVAL & ANSWER GENERATION ENGINE
+  // NORMALIZATION, CONTEXT RESOLUTION & CONVERSATION HANDLING
   // =========================================================================
-  answerQuery(userQuery) {
+  normalizeQuery(text) {
+    let norm = (text || '').toLowerCase().trim();
+    norm = norm.replace(/[?!.,;:'"()[\]{}]/g, ' ').replace(/\s+/g, ' ').trim();
+
+    // Slang & abbreviation normalization
+    norm = norm.replace(/\bur\b/g, 'your')
+               .replace(/\bu\b/g, 'you')
+               .replace(/\br\b/g, 'are')
+               .replace(/\bpls\b|\bplz\b/g, 'please')
+               .replace(/\babt\b/g, 'about')
+               .replace(/\boir\b/g, 'or')
+               .replace(/\btel\b/g, 'tell')
+               .replace(/\bwat\b|\bwht\b/g, 'what')
+               .replace(/\bwer\b|\bwher\b/g, 'where')
+               .replace(/\bco\b/g, 'company');
+
+    // Typo normalization
+    norm = norm.replace(/\btra+i*n+g*i*n*g*s*\b|\btra+i*n+i*g+n*s*\b|\btra+n+i+n+g*s*\b|\btra+i+n+g*\b/g, 'training');
+    norm = norm.replace(/\binte?r+n+h*s+h*i+p+s*\b|\binte?r+n+s+i+p+s*\b|\binte?r+n+s+h+p+s*\b|\bintrenship\b/g, 'internship');
+    norm = norm.replace(/\b(stude?nt|studnt|stdnt|stident|studnet)s?\b/g, 'student');
+    norm = norm.replace(/\b(clg|colg)\b/g, 'college');
+    norm = norm.replace(/\b(provid+e?s?|provid+i+n+g*|provd+e?s?|provideing)\b/g, 'provide');
+    norm = norm.replace(/\b(carrer|carear)s?\b/g, 'career');
+    norm = norm.replace(/\b(vacany|vaccancy|vacancie)s?\b/g, 'vacancy');
+    norm = norm.replace(/\b(acessibility|accesibility|accessiblity|accessability)\b/g, 'accessibility');
+    norm = norm.replace(/\b(publshing|publising|publsihing)\b/g, 'publishing');
+    norm = norm.replace(/\b(softwear|sofftware|softwre)\b/g, 'software');
+    norm = norm.replace(/\b(contct|conatct|contect)\b/g, 'contact');
+    norm = norm.replace(/\b(addres|adress)\b/g, 'address');
+    norm = norm.replace(/\b(locatn|locaton|locatin)\b/g, 'location');
+    norm = norm.replace(/\b(partnr|partnrship|partneship)\b/g, 'partnership');
+    norm = norm.replace(/\b(colaborat|colaborate|collabrate|colab)\b/g, 'collaborate');
+    norm = norm.replace(/\b(submt|sumbit|submitt)\b/g, 'submit');
+    norm = norm.replace(/\b(resme|resum|resume)\b/g, 'resume');
+    norm = norm.replace(/\b(servces|serivces|srevices|servicess)\b/g, 'services');
+    norm = norm.replace(/\b(solutins|soltions|solutons)\b/g, 'solutions');
+    norm = norm.replace(/\b(diffrence|differnce|diference)\b/g, 'difference');
+    norm = norm.replace(/\b(betwen|btwn)\b/g, 'between');
+
+    return norm;
+  }
+
+  /**
+   * Resolves conversational references like "the second one", "how can I apply?",
+   * "tell me more about that", using recent chat history.
+   */
+  resolveConversationContext(query, history = []) {
+    if (!history || !Array.isArray(history) || history.length === 0) {
+      return { resolvedQuery: query, contextTopic: null };
+    }
+
+    const qLower = query.toLowerCase().trim();
+    const lastAssistantMsg = [...history].reverse().find(m => m.role === 'assistant' || m.sender === 'vora')?.content || '';
+    const lastUserMsg = [...history].reverse().find(m => m.role === 'user' || m.sender === 'user')?.content || '';
+
+    // 1. Ordinal References: "the second one", "tell me more about the 2nd one", "option 3"
+    const ordinalMatch = qLower.match(/\b(first|1st|second|2nd|third|3rd|fourth|4th|fifth|5th|sixth|6th|seventh|7th|eighth|8th)\b/i);
+    const numberMatch = qLower.match(/\b(option|item|number|service|program|track)\s*(\d+)\b/i);
+
+    let index = -1;
+    if (ordinalMatch) {
+      const ordMap = {
+        first: 0, '1st': 0,
+        second: 1, '2nd': 1,
+        third: 2, '3rd': 2,
+        fourth: 3, '4th': 3,
+        fifth: 4, '5th': 4,
+        sixth: 5, '6th': 5,
+        seventh: 6, '7th': 6,
+        eighth: 7, '8th': 7
+      };
+      index = ordMap[ordinalMatch[1].toLowerCase()];
+    } else if (numberMatch) {
+      index = parseInt(numberMatch[2], 10) - 1;
+    }
+
+    if (index >= 0 && lastAssistantMsg) {
+      // Find numbered list items in the previous message
+      const lines = lastAssistantMsg.split('\n');
+      const numberedItems = [];
+      for (const line of lines) {
+        const itemMatch = line.match(/^\s*(\d+)[\.\)]\s*\*{0,2}([^\*:\n\r]+)\*{0,2}/i);
+        if (itemMatch) {
+          const num = parseInt(itemMatch[1], 10) - 1;
+          numberedItems[num] = itemMatch[2].trim();
+        }
+      }
+
+      if (numberedItems[index]) {
+        const selectedTopic = numberedItems[index];
+        return {
+          resolvedQuery: `Explain ${selectedTopic} in detail`,
+          contextTopic: selectedTopic
+        };
+      }
+    }
+
+    // 2. Follow-up "How can I apply?" or "How do I apply?" after talking about a specific domain
+    if (/^(how\s*(can|do)\s*i\s*apply|how\s*to\s*apply|where\s*to\s*apply|i\s*want\s*to\s*apply)\b/i.test(qLower)) {
+      if (/vendor|partner|collaboration/i.test(lastAssistantMsg) || /vendor|partner|collaboration/i.test(lastUserMsg)) {
+        return { resolvedQuery: 'How to apply for vendor partnership?', contextTopic: 'vendor-partnership' };
+      }
+      if (/intern|internship|training|student/i.test(lastAssistantMsg) || /intern|internship|training/i.test(lastUserMsg)) {
+        return { resolvedQuery: 'How to apply for training and internship?', contextTopic: 'internship-application' };
+      }
+      if (/career|job|position|hiring|role/i.test(lastAssistantMsg) || /career|job|position/i.test(lastUserMsg)) {
+        return { resolvedQuery: 'How to apply for job and submit resume?', contextTopic: 'job-application' };
+      }
+    }
+
+    // 3. Follow-up "Where is it located?" or "What are the hours?"
+    if (/where\s*(is\s*it|are\s*you)\s*located|what\s*is\s*the\s*address/i.test(qLower)) {
+      return { resolvedQuery: 'Where are your offices located?', contextTopic: 'locations' };
+    }
+
+    return { resolvedQuery: query, contextTopic: null };
+  }
+
+  // =========================================================================
+  // ADVANCED CONTEXT-AWARE RETRIEVAL & ANSWER GENERATION PIPELINE
+  // =========================================================================
+  async answerQuery(userQuery, history = []) {
     const rawQ = (userQuery || '').trim();
-    
-    // Normalize punctuation, colloquial chat slang, and common typos
-    const normalizeQuery = (text) => {
-      let norm = (text || '').toLowerCase().trim();
-      norm = norm.replace(/[?!.,;:'"()[\]{}]/g, ' ').replace(/\s+/g, ' ').trim();
-      
-      // Slang normalization
-      norm = norm.replace(/\bur\b/g, 'your')
-                 .replace(/\bu\b/g, 'you')
-                 .replace(/\br\b/g, 'are')
-                 .replace(/\bpls\b|\bplz\b/g, 'please')
-                 .replace(/\babt\b/g, 'about')
-                 .replace(/\boir\b/g, 'or')
-                 .replace(/\bco\b/g, 'company');
 
-      // Typo normalization
-      norm = norm.replace(/\btra+i*n+g*i*n*g*s*\b|\btra+i*n+i*g+n*s*\b|\btra+n+i+n+g*s*\b|\btra+i+n+g*\b/g, 'training');
-      norm = norm.replace(/\binte?r+n+h*s+h*i+p+s*\b|\binte?r+n+s+i+p+s*\b|\binte?r+n+s+h+p+s*\b|\bintrenship\b/g, 'internship');
-      norm = norm.replace(/\b(stude?nt|studnt|stdnt|stident|studnet)s?\b/g, 'student');
-      norm = norm.replace(/\b(clg|colg)\b/g, 'college');
-      norm = norm.replace(/\b(provid+e?s?|provid+i+n+g*|provd+e?s?|provideing)\b/g, 'provide');
-      norm = norm.replace(/\b(carrer|carear)s?\b/g, 'career');
-      norm = norm.replace(/\b(vacany|vaccancy|vacancie)s?\b/g, 'vacancy');
-      norm = norm.replace(/\b(acessibility|accesibility|accessiblity|accessability)\b/g, 'accessibility');
-      norm = norm.replace(/\b(publshing|publising|publsihing)\b/g, 'publishing');
-      norm = norm.replace(/\b(softwear|sofftware|softwre)\b/g, 'software');
-      norm = norm.replace(/\b(contct|conatct|contect)\b/g, 'contact');
-      norm = norm.replace(/\b(addres|adress)\b/g, 'address');
-      norm = norm.replace(/\b(locatn|locaton)\b/g, 'location');
+    // 1. Resolve conversational history and follow-ups
+    const { resolvedQuery, contextTopic } = this.resolveConversationContext(rawQ, history);
+    const q = this.normalizeQuery(resolvedQuery);
 
-      return norm;
-    };
-
-    const q = normalizeQuery(rawQ);
-
-    // 0. Empty query handling
+    // 2. Empty Query Handling
     if (!q) {
       return {
-        reply: "Hello! I'm Velza, your Velvora Solutions assistant. How can I help you today? You can ask about our digital accessibility audits, ePublishing and XML workflows, corporate and student training, project quotations, or live career openings.",
+        reply: "Hello! I'm **Velza**, your Velvora Solutions assistant. How can I help you today? You can ask about our digital accessibility audits, ePublishing and XML workflows, corporate and student training, vendor partnerships, project quotations, or live career openings.",
         sources: [
           { title: 'Explore Our Services', url: '/services' },
-          { title: 'View Careers & Internships', url: '/careers' },
+          { title: 'Training & Internships', url: '/training' },
           { title: 'Contact Our Team', url: '/contact' }
         ]
       };
     }
 
-    // 0.1 Greetings ("Hi", "Hello", "Hey", "Good morning")
+    // 3. Greetings
     if (/^(hi|hello|hey|good\s*(morning|afternoon|evening)|greetings|howdy)\b/i.test(q)) {
       return {
-        reply: "Hello! 👋 I'm **Velza**, the AI assistant for Velvora Solutions. I'm dynamically synced with our verified digital accessibility standards, publishing & XML pipelines, AI workflows, training programs, and live career openings.\n\nHow can I assist you today? You can ask about our services, student internships, corporate training, project quotations, or office locations.",
+        reply: "Hello! 👋 I'm **Velza**, the official AI assistant for Velvora Solutions. I'm dynamically synced with our verified digital accessibility standards (WCAG 2.2 / PDF/UA), ePublishing pipelines, AI automation workflows, training programs, and live career openings.\n\nHow can I assist you today? You can ask about our services, student internships, corporate training, vendor partnerships, project quotations, or office locations.",
         sources: [
           { title: 'Explore Services', url: '/services' },
-          { title: 'Careers & Internships', url: '/careers' },
-          { title: 'Contact Team', url: '/contact' }
+          { title: 'Training Programs', url: '/training' },
+          { title: 'Contact Us', url: '/contact' }
         ]
       };
     }
 
-    // 0.2 Identity queries ("Who are you?", "What is your name?", "Velza")
+    // 4. Identity Queries
     if (/\b(who are you|what is your name|what's your name|tell me about yourself|are you a bot|who is velza|who is vora|your name)\b/i.test(q)) {
       return {
-        reply: "Hello! I am **Velza**, the official AI assistant for Velvora Solutions. I'm dynamically synced with our verified website knowledge, digital accessibility standards (WCAG 2.2 / PDF/UA), ePublishing & XML workflows, software services, training programs, and live career openings. How can I assist you today?",
+        reply: "Hello! I am **Velza**, the official AI assistant for Velvora Solutions. I am dynamically connected with our entire website knowledge base, digital accessibility standards, ePublishing & XML workflows, software engineering services, training tracks, and career opportunities. How may I help you today?",
         sources: [
           { title: 'About Velvora Solutions', url: '/about/company-overview' },
           { title: 'Explore Services', url: '/services' },
@@ -359,12 +408,10 @@ export class VoraKnowledgeStore {
       };
     }
 
-    // -------------------------------------------------------------------------
-    // 1. OUT-OF-SCOPE / UNSUPPORTED DOMAIN GUARD (Zero Hallucination)
-    // -------------------------------------------------------------------------
+    // 5. Out-of-Scope Domain Guard (Medical, Legal, Flights, etc.)
     const outOfScopeRules = [
       { regex: /\b(surgery|medical treatment|hospital|doctor|dentist|healthcare clinic|medicine|prescription)\b/i, category: 'medical or clinical' },
-      { regex: /\b(hardware manufacturing|assemble hardware|pc assembly|manufacture chips|hardware production|manufacture computer hardware|manufacture hardware|manufacture.*hardware|computer hardware)\b/i, category: 'computer hardware manufacturing' },
+      { regex: /\b(hardware manufacturing|assemble hardware|pc assembly|manufacture chips|hardware production|manufacture computer hardware|computer hardware)\b/i, category: 'computer hardware manufacturing' },
       { regex: /\b(loan|loans|mortgage|credit card|financial loans|banking account|deposit money)\b/i, category: 'banking or loan' },
       { regex: /\b(legal counsel|court lawyer|attorney services|legal lawsuits|bail bond)\b/i, category: 'legal advocacy' },
       { regex: /\b(flight booking|airline tickets|travel agency|hotel reservation|visa booking)\b/i, category: 'travel booking' },
@@ -374,7 +421,7 @@ export class VoraKnowledgeStore {
     for (const rule of outOfScopeRules) {
       if (rule.regex.test(q)) {
         return {
-          reply: `Velvora Solutions is a content and technology partner specializing in **digital accessibility (WCAG 2.2 / PDF/UA)**, **ePublishing**, **XML conversion**, **AI automation**, **software development**, **data analytics**, and **professional training**. We do not provide ${rule.category} services. If you have an inquiry related to our digital and publishing services, our team would be pleased to assist you!`,
+          reply: `Velvora Solutions is a content and technology company specializing in **digital accessibility (WCAG 2.2 / PDF/UA)**, **ePublishing**, **XML conversion**, **AI automation**, **software development**, **data analytics**, and **professional training**. We do not provide ${rule.category} services. If you have an inquiry related to our digital and publishing services, our team would be pleased to assist you!`,
           sources: [
             { title: 'Explore Our Services', url: '/services' },
             { title: 'Contact Our Team', url: '/contact' }
@@ -384,146 +431,198 @@ export class VoraKnowledgeStore {
     }
 
     // -------------------------------------------------------------------------
-    // 2. STUDENT INTERNSHIPS & STUDENT TRAINING (High Priority Match)
-    // Queries: "do your company provides internhsip oir trainign for students?",
-    //          "internship for freshers", "college student internship", etc.
+    // INTENT A: VENDOR PARTNERSHIPS & BUSINESS COLLABORATIONS
+    // Matches: "How to apply for vendor partnership?", "Can I collaborate?",
+    //          "Vendor partnership application", "Partner with us"
     // -------------------------------------------------------------------------
-    const hasStudentOrFresher = /\b(student|students|college|fresher|freshers|graduate|graduates|intern|internship|internships)\b/i.test(q);
-    const hasInternOrTrain = /\b(intern|internship|internships|training|trainee|learn|opportunity|program|work)\b/i.test(q);
+    const isVendorPartnership = (
+      /\b(vendor|supplier|agency partner|subcontract|subcontractor|white label|b2b partner)\b/i.test(q) ||
+      (/\b(partner|partnership|collaborate|collaboration|alliance)\b/i.test(q) &&
+       !/\b(job|career|salary|resume|cv|hiring|recruitment|employee|intern)\b/i.test(q)) ||
+      (/\b(how to apply|how do i apply|how can i apply|application)\b/i.test(q) && /\b(partner|partnership|vendor|collaboration|collaborate)\b/i.test(q))
+    );
 
-    if (
-      (/\b(intern|internship|internships)\b/i.test(q) && !/\b(full-time|experienced)\b/i.test(q)) ||
-      (hasStudentOrFresher && hasInternOrTrain)
-    ) {
-      const activeCareers = this.getCareers({ status: 'Active' });
-      const internships = activeCareers.filter(c => c.type.toLowerCase().includes('intern'));
-
-      const internshipDetails = internships.map(i => {
-        const skillsText = Array.isArray(i.skills) ? i.skills.join(', ') : i.skills;
-        return `• **${i.title}** (${i.department})\n` +
-               `  - **Work Mode:** ${i.workMode} (${i.location})\n` +
-               `  - **Eligibility:** ${i.eligibility}\n` +
-               `  - **Key Focus:** ${i.summary}\n` +
-               `  - **Skills Developed:** ${skillsText}`;
-      }).join('\n\n');
-
+    if (isVendorPartnership) {
       return {
-        reply: "Yes! **Velvora Solutions actively provides structured Internship and Training Programs for students and recent graduates.**\n\n" +
-               "Our student programs bridge academic study with hands-on enterprise publishing, digital accessibility, and software pipelines under our **G.R.O.W. Framework** (Growth, Respect, Opportunity, Well-being).\n\n" +
-               "### Currently Active Student Internship Programs:\n\n" +
-               `${internshipDetails || "• **Digital Publishing & XML Intern** (Publishing Production | Hybrid/Cuddalore/Chennai)\n• **Accessibility Auditing & QA Intern** (Digital Accessibility | Hybrid/Cuddalore/Chennai)"}\n\n` +
-               "### What Velvora Provides for Interns:\n" +
-               "• **1-on-1 Mentorship:** Direct daily guidance from senior production managers and certified accessibility leads.\n" +
-               "• **Live Client Projects:** Hands-on experience with production-grade manuscripts, EPUB 3 files, and WCAG 2.2 remediations.\n" +
-               "• **Certificate of Completion:** Official credentials detailing your specialized project work and technical competencies.\n" +
-               "• **Pre-Placement Offers (PPO):** High-performing interns are regularly offered permanent full-time positions upon graduation.\n\n" +
-               "To apply, visit our **Careers Portal** (`/careers`) to submit your details and resume, or email **careers@velvorasolutions.com**.",
+        reply: "Thank you for your interest in collaborating with Velvora Solutions! We actively partner with technology providers, publishing houses, vendor agencies, accessibility consultants, and independent specialists under our **Partnership & Vendor Collaboration Programs**.\n\n" +
+               "### Available Collaboration Models:\n\n" +
+               "1. **Vendor & Agency Subcontractors:** Strategic white-label subcontracting for high-volume composition, typesetting, XML conversion, and PDF/UA remediation.\n" +
+               "2. **Technology Alliance Partners:** Joint software integrations, AI automation, and API partnerships.\n" +
+               "3. **Referral Partners:** Revenue-sharing commissions for qualified enterprise client referrals.\n" +
+               "4. **Consulting Collaborators:** Joint accessibility auditing, Section 508 / EAA compliance consulting, and CPACC training.\n\n" +
+               "### How to Apply for a Vendor or Business Partnership:\n\n" +
+               "• **Step 1 — Visit the Partnership Portal:** Navigate to our official **[Partner With Us Page](/partner-with-us)** (also accessible at `/partner`).\n" +
+               "• **Step 2 — Submit the Online Partnership Form:** Complete the form with your **Organization Name**, **Contact Person**, **Business Email**, **Partnership Area** (Technology, Publishing, Accessibility Consulting, or Vendor/Agency), and a brief proposal describing your services or synergy.\n" +
+               "• **Step 3 — Direct Email Inquiries:** If you have a formal company deck or vendor portfolio, you can email our business alliances desk directly at **info@velvorasolutions.com** or send a message via our **[Contact Us Page](/contact)** specifying *'Vendor Partnership Inquiry'*.\n" +
+               "• **Confidentiality & NDA:** All active vendor and business collaborations are protected by mutual **Non-Disclosure Agreements (NDAs)** and formal Service-Level Agreements (SLAs).\n\n" +
+               "Our business development team reviews all partnership and vendor submissions within 2–3 business days.",
         sources: [
-          { title: 'Velvora Academy & Training Programs', url: '/training' },
-          { title: 'Apply on Careers Portal', url: '/careers' },
-          { title: 'Contact Admissions Team', url: '/contact' }
+          { title: 'Partner With Velvora Solutions', url: '/partner-with-us' },
+          { title: 'Contact Our Alliances Desk', url: '/contact' }
         ]
       };
     }
 
     // -------------------------------------------------------------------------
-    // 3. CORPORATE & PROFESSIONAL TRAINING / SKILL DEVELOPMENT
-    // Queries: "is there any trainging ur company is providing?",
-    //          "do you offer training?", "courses", "workshops", "cpacc prep"
+    // INTENT B: "WHAT SHOULD I DO IF I WANT TO WORK WITH YOUR COMPANY?"
+    // Intelligent Ambiguity Handling: Disambiguates Client vs Partner vs Career
     // -------------------------------------------------------------------------
     if (
-      /\b(training|trainings|workshop|workshops|certification|certifications|cpacc|course|courses|masterclass|skill development|capacity building|upskilling)\b/i.test(q)
+      /\b(want to work with (your|the) company|how can i work with (you|velvora)|work with your company|work with velvora)\b/i.test(q) &&
+      !/\b(job|career|hiring|vacancy|internship|resume|cv)\b/i.test(q)
     ) {
       return {
-        reply: "Yes! Velvora Solutions provides comprehensive **Training and Skill Development Programs**, having delivered over **2,000+ training hours** across digital accessibility, publishing standards, AI/ML, and modern technology pipelines.\n\n" +
-               "Explore our dedicated **Training & Internships Page** (`/training`) featuring 8 industry-standard tracks:\n\n" +
-               "### Our 8 Core Academy Programs:\n\n" +
-               "1. **ePublishing Training:** EPUB 3, JATS/BITS XML workflows, XSLT, and InDesign conversion.\n" +
-               "2. **AI/ML Training:** XGBoost, deep learning, NLP, computer vision, and MLOps deployment.\n" +
-               "3. **Generative AI Training:** Advanced prompting, LLM APIs, RAG architectures, and autonomous AI agents.\n" +
-               "4. **Data Analytics & BI:** Advanced Excel, Power BI, DAX, complex SQL, and predictive analytics.\n" +
-               "5. **Digital Marketing Training:** Technical SEO, Core Web Vitals, Google Analytics 4, and paid advertising.\n" +
-               "6. **Digital Accessibility Training:** WCAG 2.2 AA/AAA, PDF/UA, screen readers (NVDA/JAWS), and CPACC certification prep.\n" +
-               "7. **Software Development Training:** Full-stack React, FastAPI/Node services, clean architecture, and cloud APIs.\n" +
-               "8. **Flagship Internship Program:** 100% guaranteed live client projects for students & freshers with PPO pathways.\n\n" +
-               "### Delivery Formats:\n" +
-               "• **Online Virtual Live:** Interactive sessions with live mentors.\n" +
-               "• **In-Person Classroom:** Learning centers at Cuddalore Head Office (Indhira Nagar) & Chennai Branch Office (Porur).\n" +
-               "• **Hybrid Mode:** Combines flexible virtual learning with hands-on lab defense.\n\n" +
-               "You can review the full curriculum and submit your enrollment enquiry directly on our **Training Page** (`/training`).",
+        reply: "We would love to collaborate with you! The best way to get started depends on how you would like to work with Velvora Solutions:\n\n" +
+               "### 1. As a Client (Project Services & Quotations):\n" +
+               "If you need digital accessibility audits, PDF/UA remediation, ePublishing, XML workflows, AI automation, or software engineering:\n" +
+               "• Visit our **[Contact Us Page](/contact)** or email **info@velvorasolutions.com**.\n" +
+               "• Share your project scope, volume, and target timeline to receive a comprehensive proposal within 24–48 hours.\n\n" +
+               "### 2. As a Business or Vendor Partner:\n" +
+               "If you are an agency, technology provider, or consultant looking to partner, subcontract, or refer clients:\n" +
+               "• Visit our **[Partner With Us Page](/partner-with-us)** to submit a partnership proposal.\n" +
+               "• Or email our business development team at **info@velvorasolutions.com**.\n\n" +
+               "### 3. As a Career Applicant or Student Intern:\n" +
+               "If you want to join our team as an employee or student intern:\n" +
+               "• Explore active openings on our **[Careers Portal](/careers)** and submit your resume online.\n" +
+               "• For student training and project internships, visit our **[Training Page](/training)**.",
         sources: [
-          { title: 'Velvora Academy: All Training Programs', url: '/training' },
-          { title: 'Apply for Internship / Enroll Now', url: '/training#enrollment-form-section' },
-          { title: 'Contact Admissions Team', url: '/contact' }
+          { title: 'Contact Us for Projects', url: '/contact' },
+          { title: 'Partner With Us', url: '/partner-with-us' },
+          { title: 'Careers & Internships', url: '/careers' }
         ]
       };
     }
 
     // -------------------------------------------------------------------------
-    // 4. OFFICE LOCATIONS, BRANCH COUNT & HEADQUARTERS
-    // "How many branches does your company have?" / "Where are your offices?"
+    // INTENT C: RESUME SUBMISSION & HOW TO APPLY FOR JOBS
+    // Matches: "How can I submit my resume?", "Where to send CV", "How to apply"
     // -------------------------------------------------------------------------
-    if (
-      /\b(how many branches|how many branch|branch count|number of branches|how many offices|total branches|total offices)\b/i.test(q)
-    ) {
-      return {
-        reply: "Velvora Solutions operates from **two verified physical offices** located in Tamil Nadu, India:\n\n" +
-               "1. **Cuddalore Office (Head Office & Operations Center):**\n" +
-               "   Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India\n\n" +
-               "2. **Chennai Office (Branch Office):**\n" +
-               "   Velvora Solutions, Porur, Chennai, Tamil Nadu, India\n\n" +
-               "• **Global Delivery:** While our physical delivery centers are in India, our digital accessibility, ePublishing, and technology workflows serve publishers, universities, and enterprises worldwide across 5+ countries.\n" +
-               "• **Email:** info@velvorasolutions.com\n" +
-               "• **Phone:** +91 9500834236\n" +
-               "• **Business Hours:** Monday to Saturday: 9:00 AM – 6:30 PM IST",
-        sources: [
-          { title: 'Contact Our Offices', url: '/contact' },
-          { title: 'About Velvora Solutions', url: '/about/company-overview' }
-        ]
-      };
-    }
+    const isResumeOrJobApply = (
+      /\b(submit.*resume|upload.*resume|send.*resume|how.*submit.*resume|where.*send.*resume|submit.*cv|upload.*cv|send.*cv)\b/i.test(q) ||
+      (/\b(how to apply|how do i apply|how can i apply|application procedure|application process)\b/i.test(q) &&
+       /\b(job|jobs|career|careers|vacancy|vacancies|role|position|fresher|employment)\b/i.test(q))
+    );
 
-    if (
-      /\b(where is your headquarter|where is your headquarters|headquarters|head office|where are your offices|where are you located|office locations|office address|cuddalore office|chennai office|porur office)\b/i.test(q) ||
-      (/\b(where|location|address)\b/i.test(q) && /\b(office|offices|branch|branches|company|located|situated)\b/i.test(q))
-    ) {
+    if (isResumeOrJobApply) {
       return {
-        reply: "Velvora Solutions operates from two verified offices in Tamil Nadu, India:\n\n" +
-               "• **Head Office & Operations Center (Cuddalore):**\n" +
-               "  Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India\n\n" +
-               "• **Branch Office (Chennai):**\n" +
-               "  Velvora Solutions, Porur, Chennai, Tamil Nadu, India\n\n" +
-               "• **Email:** info@velvorasolutions.com\n" +
-               "• **Phone:** +91 9500834236\n" +
-               "• **Business Hours:** Monday to Saturday: 9:00 AM – 6:30 PM IST",
+        reply: "You can submit your resume to Velvora Solutions in two easy ways:\n\n" +
+               "### 1. Online Through the Careers Portal (Recommended):\n" +
+               "1. Visit our **[Careers Portal](/careers)**.\n" +
+               "2. Review the list of active job openings (or choose *General Open Application*).\n" +
+               "3. Click **Apply Now** to open the candidate application form.\n" +
+               "4. Enter your Full Name, Email, Phone Number, and select your preferred role.\n" +
+               "5. Attach your resume using the upload box (supports PDF, DOC, and DOCX files up to 10MB).\n" +
+               "6. Click **Submit Application** — our talent acquisition team reviews every submission and responds within 24–48 hours.\n\n" +
+               "### 2. Direct Email Submission:\n" +
+               "You can also email your updated resume directly to our recruitment team at **careers@velvorasolutions.com** or **info@velvorasolutions.com** with the subject line *'Job Application: [Your Name] - [Desired Role]'*.",
         sources: [
-          { title: 'View Office Locations', url: '/contact' }
+          { title: 'Careers Portal & Application Form', url: '/careers' },
+          { title: 'Life at Velvora', url: '/about/careers' }
         ]
       };
     }
 
     // -------------------------------------------------------------------------
-    // 5. INTERNATIONAL / OVERSEAS CLIENTS & PHYSICAL PRESENCE
+    // INTENT D: STANDARDS COMPARISON (WCAG vs PDF/UA)
     // -------------------------------------------------------------------------
     if (
-      /\b(international branch|international branches|overseas branch|foreign branch|office outside india|branch outside india)\b/i.test(q)
+      /\b(difference between wcag and pdf\/ua|difference between wcag and pdf ua|wcag vs pdf\/ua|wcag vs pdf ua|compare wcag and pdf\/ua|what is the difference between wcag and pdf)\b/i.test(q) ||
+      (/\b(wcag)\b/i.test(q) && /\b(pdf\/ua|pdf ua)\b/i.test(q) && /\b(difference|different|vs|compare|comparison)\b/i.test(q))
     ) {
       return {
-        reply: "Velvora Solutions does not operate physical branch offices outside India. Our physical facilities are located in **Cuddalore** and **Chennai (Porur)**, Tamil Nadu, India, while our digital accessibility, XML structuring, and software engineering services support global publishers and organizations across North America, Europe, and Asia-Pacific.",
+        reply: "While both standards ensure digital information is accessible to individuals with disabilities, **WCAG** and **PDF/UA** have distinct scopes, technical rules, and testing methodologies:\n\n" +
+               "### 1. Scope & Origin:\n" +
+               "• **WCAG (Web Content Accessibility Guidelines):**\n" +
+               "  - Developed by the W3C (World Wide Web Consortium). Current standard is **WCAG 2.2** (Levels A, AA, AAA).\n" +
+               "  - Governs **all web and digital electronic content**, including websites, web applications, HTML interfaces, mobile apps, and multimedia.\n" +
+               "  - Structured around 4 core principles: **Perceivable, Operable, Understandable, and Robust (POUR)**.\n" +
+               "• **PDF/UA (Universal Accessibility - ISO 14289):**\n" +
+               "  - Developed by the International Organization for Standardization (ISO). Current standard is **ISO 14289-1 / 14289-2**.\n" +
+               "  - Specifically engineered **only for PDF documents**.\n" +
+               "  - Provides clear, file-format-specific technical specifications for PDF tagging, structure trees, and reader interaction.\n\n" +
+               "### 2. Technical Focus:\n" +
+               "• **WCAG** provides general functional criteria (e.g., text must have sufficient contrast, non-text content must have text alternatives).\n" +
+               "• **PDF/UA** provides the exact technical implementation rules inside the PDF specification (e.g., all real content must be enclosed in structural tags like `<P>`, `<H1>`–`<H6>`, `<Table>`, `<Figure>`; artifact content must be marked with `/Artifact`; and fonts must be embedded with valid ToUnicode mappings).\n\n" +
+               "### 3. How They Work Together:\n" +
+               "• PDF/UA acts as the **technical blueprint for achieving WCAG compliance in PDF files**. A document conforming to PDF/UA will satisfy the corresponding WCAG 2.1 and 2.2 Level AA requirements for PDFs.\n" +
+               "• **Velvora Solutions delivers dual-certified remediation** conforming to both WCAG 2.2 Level AA and ISO 14289-1 (PDF/UA).",
         sources: [
-          { title: 'Contact Our Team', url: '/contact' },
-          { title: 'Explore Our Services', url: '/services' }
+          { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' },
+          { title: 'Accessibility Statement', url: '/accessibility-statement' }
         ]
       };
     }
 
+    // -------------------------------------------------------------------------
+    // INTENT E: SOLUTIONS OVERVIEW
+    // "Can you explain your solutions?" / "What solutions do you offer?"
+    // -------------------------------------------------------------------------
     if (
-      /\b(international client|international clients|foreign clients|work globally|work with international|clients abroad|accept international projects|overseas clients|outside india clients)\b/i.test(q) ||
-      (/\b(international|global|foreign|overseas)\b/i.test(q) && /\b(client|clients|project|projects|work|serve)\b/i.test(q))
+      /\b(explain your solutions|what are your solutions|tell me about your solutions|solutions overview|list of solutions|what solutions do you provide)\b/i.test(q) ||
+      (q === 'solutions' || q === 'what are your solutions' || q === 'industry solutions')
     ) {
       return {
-        reply: "Yes, Velvora Solutions actively works with international clients, publishers, university presses, and enterprises globally. We have delivered structured content, accessibility remediations (WCAG 2.2 / PDF/UA), and publishing conversions across 5+ countries. You can reach out to info@velvorasolutions.com to discuss international service arrangements, timezone coordination, or project delivery.",
+        reply: "Velvora Solutions designs end-to-end **Industry Solutions** tailored for publishers, academic institutions, technology enterprises, and corporate organizations:\n\n" +
+               "1. **XML-First Publishing Workflow:**\n" +
+               "   A unified production pipeline that ingests raw Word manuscripts, LaTeX, or print files, converting them into validated JATS, BITS, or DITA XML to automatically generate accessible EPUB 3, web HTML, and print-ready PDFs.\n" +
+               "2. **End-to-End PDF Accessibility Compliance:**\n" +
+               "   Enterprise-grade document remediation for high-volume backlists and live publications, achieving dual conformance to WCAG 2.2 Level AA and PDF/UA (ISO 14289) with screen-reader verification.\n" +
+               "3. **AI-Powered Content Processing:**\n" +
+               "   Intelligent Document Processing (IDP) combining OCR, NLP entity extraction, and automated metadata classification with human-in-the-loop review for 100% semantic accuracy.\n" +
+               "4. **STEM & Mathematical Publishing Pipeline:**\n" +
+               "   High-precision composition for scientific, technical, engineering, and medical publications utilizing LaTeX and MathML to ensure complex formulas are rendered accurately and read aloud correctly by assistive software.\n\n" +
+               "Visit our **[Industry Solutions Page](/solutions)** to explore tailored workflows and case snapshots.",
         sources: [
+          { title: 'Industry Solutions', url: '/solutions' },
+          { title: 'Services Catalog', url: '/services' }
+        ]
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // INTENT F: COMPANY PROFILE & ABOUT US
+    // "What is Velvora Solutions?" / "Tell me about Velvora"
+    // -------------------------------------------------------------------------
+    if (
+      /\b(what is velvora solutions|what is velvora|tell me about velvora|about velvora solutions|about velvora|who is velvora|company overview|company profile)\b/i.test(q)
+    ) {
+      return {
+        reply: "### Velvora Solutions — Technology & Content Partner\n\n" +
+               "**Velvora Solutions** is a premier technology and digital publishing partner headquartered in Cuddalore with branch operations in Porur, Chennai, Tamil Nadu, India. Founded and led by **Iyshwariya Senthil**, the company specializes in:\n\n" +
+               "• **Digital Accessibility & Universal Inclusion:** Conforming to WCAG 2.2 Level AA/AAA, PDF/UA (ISO 14289), Section 508, and the European Accessibility Act (EAA).\n" +
+               "• **ePublishing & Structured XML:** JATS, BITS, DITA, TEI conversion, accessible EPUB 3, and automated typesetting.\n" +
+               "• **AI Automation & Intelligent Solutions:** Intelligent Document Processing (IDP), cognitive NLP tagging, and automated accessibility auditing.\n" +
+               "• **Software & Web Development:** Full-stack web applications, secure cloud microservices, and accessible design systems.\n" +
+               "• **Data Analytics & BI:** Predictive analytics, ETL pipelines, and executive dashboards.\n" +
+               "• **Professional Training & Internships:** 8 specialized academy tracks with 100% live client project experience.\n\n" +
+               "Serving publishers, universities, enterprises, and government agencies across 5+ countries globally.",
+        sources: [
+          { title: 'About Velvora Solutions', url: '/about/company-overview' },
+          { title: 'Explore Services', url: '/services' },
+          { title: 'Contact Our Team', url: '/contact' }
+        ]
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // INTENT G: SERVICES OVERVIEW
+    // "What services do you provide?"
+    // -------------------------------------------------------------------------
+    if (
+      /\b(what services|what do you do|all services|services list|list of services|what can you do|what does velvora do|service overview)\b/i.test(q) ||
+      (q === 'services' || q === 'what are your services' || q === 'our services')
+    ) {
+      return {
+        reply: "Velvora Solutions delivers comprehensive content, technology, and marketing services under one roof across six core disciplines:\n\n" +
+               "1. **Publishing and XML Services:** ePublishing (EPUB 3, reflowable/fixed layout), structured XML workflows (JATS, BITS, DITA, TEI), and conversion pipelines.\n" +
+               "2. **Content Services:** Professional typesetting (InDesign), LaTeX and MathML equation typesetting, OCR & digitization, taxonomy tagging, and multimedia accessibility (captions, audio description).\n" +
+               "3. **Digital Accessibility:** End-to-end audits and manual remediation conforming to WCAG 2.2 Level AA/AAA, PDF/UA (ISO 14289-1), Section 508, and the European Accessibility Act (EAA).\n" +
+               "4. **AI and Automation Services:** Intelligent Document Processing (IDP), cognitive NLP taxonomy tagging, automated reading order detection, and human-in-the-loop validation.\n" +
+               "5. **Software & Web Development:** Enterprise full-stack React and Node/Python applications, cloud microservices, and accessible user interfaces.\n" +
+               "6. **Data Analytics & Digital Marketing:** Executive Power BI dashboards, ETL pipelines, technical SEO, and omnichannel growth marketing.\n\n" +
+               "Combine services in one project or choose only what you need. Visit our **[Services Catalog](/services)** for detailed specifications.",
+        sources: [
+          { title: 'Complete Services Catalog', url: '/services' },
           { title: 'Industry Solutions', url: '/solutions' },
           { title: 'Contact Our Team', url: '/contact' }
         ]
@@ -531,145 +630,276 @@ export class VoraKnowledgeStore {
     }
 
     // -------------------------------------------------------------------------
-    // 6. LEADERSHIP & EXECUTIVE MANAGEMENT
-    // "Who is the founder?" / "Who leads Velvora Solutions?"
+    // INTENT H: SPECIFIC SERVICES (PDF Accessibility, ePublishing, AI Automation)
     // -------------------------------------------------------------------------
     if (
-      /\b(who leads|who founded|founder|managing director|ceo|iyshwariya senthil|iyshwariya|leadership team|executive leadership|who is the owner|who runs velvora)\b/i.test(q)
+      /\b(pdf accessibility|accessible pdf|pdf remediation|document remediation|tagging pdf|tagged pdf|pdf\/ua|remediate pdf|make pdf accessible)\b/i.test(q)
     ) {
       return {
-        reply: "Velvora Solutions is founded and led by **Iyshwariya Senthil** (Founder & Managing Director).\n\n" +
-               "• **Profile:** With over 7 years of executive experience in publishing operations, universal design, and WCAG accessibility standards, she directs Velvora’s strategic roadmap, uniting advanced technology with human dedication.\n" +
-               "• **Key Leadership Team:**\n" +
-               "  - **Rajesh Kumar** — Head of Accessibility (9 yrs exp, certified CPACC & WAS)\n" +
-               "  - **Priya Raman** — Head of Production (8 yrs exp, Editorial & Typesetting Standards)\n" +
-               "  - **Karthik Subramanian** — Head of Technology (10 yrs exp, Cloud Architecture & AI Engineering)\n" +
-               "  - **Anand Natarajan** — Head of Operations (11 yrs exp, Agile Operations & InfoSec)\n" +
-               "  - **Shanmugham** — Head of Digital Marketing (12+ yrs exp, Advanced SEO & Growth)\n" +
-               "  - **Hema** — Business Development Executive (Client Partnerships & Strategic Growth)",
+        reply: "PDF accessibility ensures that PDF documents can be accessed and understood by people with disabilities, including users of screen readers. It involves proper document tagging, logical reading order, headings, alternative text, accessible tables, and other requirements.\n\n" +
+               "Velvora Solutions provides enterprise **PDF Accessibility & Document Remediation Services**:\n\n" +
+               "• **Standards Compliance:** Conforming to **WCAG 2.2 Level AA/AAA**, **PDF/UA (ISO 14289-1)**, **Section 508**, and the **European Accessibility Act (EAA)**.\n" +
+               "• **Logical Tag Tree Architecture:** Rebuilding or fixing document tag hierarchies (`<Document>`, `<Part>`, `<H1>`–`<H6>`, `<P>`, `<Table>`, `<Figure>`, `<List>`) to guarantee correct reading order.\n" +
+               "• **Comprehensive Semantic Remediation:**\n" +
+               "  - Accurate alt text for complex charts, diagrams, and figures.\n" +
+               "  - Properly tagged tabular data associating header cells (`<TH>`) with data cells (`<TD>`).\n" +
+               "  - MathML and accessible formula tagging for STEM academic documents.\n" +
+               "  - Bookmarks, page labels, language attributes, and metadata tags.\n" +
+               "• **Dual-Layer Quality Assurance:** Automated validation (PAC - PDF Accessibility Checker) paired with manual verification using assistive technologies (NVDA and JAWS screen readers).\n" +
+               "• **Scanned Document Remediation:** High-accuracy OCR conversion to turn non-searchable scanned PDFs into fully accessible, tagged documents.",
         sources: [
-          { title: 'Meet Our Leadership & Team', url: '/about/our-team' },
-          { title: 'Company Overview', url: '/about/company-overview' }
-        ]
-      };
-    }
-
-    // -------------------------------------------------------------------------
-    // 7. PROJECT DEADLINES, TIMELINES & QUOTATIONS
-    // "What is the maximum deadline for a project?" / "How do I request a quote?"
-    // -------------------------------------------------------------------------
-    if (
-      !/\b(resume|cv|job|jobs|career|careers|intern|internship|apply|application)\b/i.test(q) &&
-      (/\b(deadline|deadlines|maximum deadline|max deadline|project timeline|project duration|turnaround time|delivery timeline|delivery time|delivery schedule)\b/i.test(q) ||
-       (/\b(how long)\b/i.test(q) && /\b(take|completion|deliver|finish|complete|project)\b/i.test(q)))
-    ) {
-      return {
-        reply: "Project delivery timelines depend on the project's scope, volume, schema complexity, and client validation requirements:\n\n" +
-               "• **Factors Determining Timelines:**\n" +
-               "  - **Volume & Page Count:** Total number of pages, documents, or digital assets.\n" +
-               "  - **Format & Standards:** Standards required (e.g. JATS 1.3 XML, PDF/UA remediation, EPUB 3, or full-stack web software).\n" +
-               "  - **Source Material Quality:** Condition and completeness of input manuscripts, scanned files, or codebases.\n" +
-               "  - **QA & Auditing Cycles:** Dual-layer validation with automated engines and real assistive device testing.\n\n" +
-               "To receive an exact turnaround schedule and quotation, share your project requirements with **info@velvorasolutions.com** or submit our Contact Form.",
-        sources: [
-          { title: 'Request a Project Timeline & Quote', url: '/contact' },
-          { title: 'Explore Our Services', url: '/services' }
+          { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' },
+          { title: 'Request an Accessibility Audit', url: '/contact' }
         ]
       };
     }
 
     if (
-      !/\b(resume|cv|job|jobs|career|careers|intern|internship|apply|application)\b/i.test(q) &&
-      (/\b(submit project|submit requirements|request quotation|request quote|get a quote|get quotation|pricing|project cost|how much does it cost|project inquiry|project enquiry)\b/i.test(q) ||
-       (/\b(how can i submit|how do i submit)\b/i.test(q) && /\b(project|requirement|requirements|scope)\b/i.test(q)))
+      /\b(what is epublishing|explain epublishing|epublishing services|epub services|epub 3|ebook production|ebook conversion)\b/i.test(q)
     ) {
       return {
-        reply: "To submit your project requirements and receive a prompt quotation:\n\n" +
-               "1. Use our online **Contact Form** or email **info@velvorasolutions.com**.\n" +
-               "2. Include key details:\n" +
-               "   • Project scope (service type: e.g. PDF/UA accessibility, JATS XML, EPUB 3, custom software)\n" +
-               "   • Estimated volume (page count, number of publications, or feature specifications)\n" +
-               "   • Desired delivery formats and compliance target (e.g. WCAG 2.2 AA, MathML, React)\n" +
-               "   • Target turnaround timeline or deadline\n" +
-               "3. Our estimation team will evaluate your files and return a comprehensive proposal within 24–48 hours.",
+        reply: "**ePublishing (Electronic Publishing)** refers to the digital production, conversion, formatting, and distribution of books, academic journals, research papers, and corporate documents for digital reading devices and online platforms.\n\n" +
+               "At Velvora Solutions, our ePublishing services include:\n\n" +
+               "• **EPUB 3 & EPUB 2 Creation:** Reflowable and fixed-layout EPUBs with embedded audio, video, interactive quizzes, and semantic navigation.\n" +
+               "• **Accessible eBooks:** Built to EPUB Accessibility 1.1 standards conforming to WCAG 2.2, enabling seamless screen reader navigation for visually impaired readers.\n" +
+               "• **Multi-Format Delivery:** Simultaneous output generation for Amazon Kindle (KPF/MOBI), Apple Books, Google Play, Kobo, and web readers from a single structured source.\n" +
+               "• **Editorial & Composition Precision:** InDesign page composition, complex mathematical formula typesetting (LaTeX/MathML), and font embedding.\n" +
+               "• **Quality Control:** Comprehensive validation against EPUBCheck, Ace by DAISY, and device-level rendering tests.",
         sources: [
-          { title: 'Submit Project for Quotation', url: '/contact' }
+          { title: 'ePublishing Services', url: '/services/epublishing' },
+          { title: 'Publishing Solutions', url: '/solutions' }
+        ]
+      };
+    }
+
+    if (
+      /\b(ai automation|ai services|automation services|artificial intelligence|intelligent document processing|idp|nlp tagging)\b/i.test(q)
+    ) {
+      return {
+        reply: "Velvora Solutions builds practical **AI & Workflow Automation Services** engineered for high-volume publishing, content remediation, and enterprise operations:\n\n" +
+               "• **Intelligent Document Processing (IDP):** Automated extraction of text, tables, mathematical equations, and structural hierarchies from raw PDFs, scanned manuscripts, and legacy documents.\n" +
+               "• **Cognitive NLP & Metadata Tagging:** Automated keyword indexing, JATS/BITS XML metadata classification, subject taxonomy tagging, and named entity recognition.\n" +
+               "• **AI-Assisted Accessibility QA:** Machine-assisted alt text draft generation for complex figures, automated contrast checking, and reading order detection.\n" +
+               "• **Custom AI Agents & RAG Systems:** Building domain-specific retrieval-augmented generation (RAG) assistants and intelligent chatbots grounded in proprietary enterprise knowledge.\n" +
+               "• **Human-in-the-Loop Validation:** Combining high-speed machine algorithms with certified human specialists to guarantee 100% semantic accuracy and zero hallucination.",
+        sources: [
+          { title: 'AI and Automation Services', url: '/services/ai-automation' },
+          { title: 'Industry Solutions', url: '/solutions' }
+        ]
+      };
+    }
+
+    // Specific Content Services (Typesetting, STEM Math, OCR, Metadata, Captions)
+    if (
+      /\b(content services|typesetting|typesetting and design|math typesetting|equation typesetting|stem typesetting|latex typesetting|mathml|ocr and digitization|ocr services|metadata indexing|taxonomy tagging|captioning and transcription|audio description)\b/i.test(q)
+    ) {
+      return {
+        reply: "Velvora Solutions delivers comprehensive **Content Services** supporting every stage of the editorial, production, and digitization life cycle:\n\n" +
+               "• **Typesetting and Design:** Professional page layout for academic books, journals, reports, and trade titles using Adobe InDesign and automated composition templates.\n" +
+               "• **Math and Equation Typesetting:** Precision STEM typesetting transforming complex equations into accessible LaTeX and MathML standards.\n" +
+               "• **Metadata, Indexing and Taxonomy:** Structured metadata classification, back-of-the-book indexing, and controlled vocabulary tagging to maximize discovery.\n" +
+               "• **OCR and Digitization:** Turning legacy print archives, historical volumes, and scanned documents into fully searchable, editable, and accessible digital assets.\n" +
+               "• **Captioning, Transcription and Audio Description:** Accurate timed text, closed captions, and descriptive audio tracks compliant with WCAG video standards.",
+        sources: [
+          { title: 'Content Services Overview', url: '/services' },
+          { title: 'Typesetting & Design', url: '/services/typesetting-and-design' },
+          { title: 'OCR & Digitization', url: '/services/ocr-and-digitization' }
+        ]
+      };
+    }
+
+    // Specific Publishing & XML Services
+    if (
+      /\b(publishing and xml|xml services|jats xml|bits xml|dita xml|tei xml|xml workflows|xml conversion|schema validation)\b/i.test(q)
+    ) {
+      return {
+        reply: "Velvora Solutions provides industry-grade **Publishing & XML Services** built for academic publishers, university presses, and enterprises:\n\n" +
+               "• **Structured XML Conversion:** Rapid, schema-valid transformation from Word, PDF, LaTeX, or print files into JATS 1.3, BITS 2.1, DITA, and custom XML schemas.\n" +
+               "• **XML-First Production Workflows:** Authoring and validation pipelines where XML serves as the single source of truth for automated multi-format delivery.\n" +
+               "• **Automated Quality Checks & Schematron:** Dual-layer validation utilizing automated Schematron rules and manual editorial inspection.\n" +
+               "• **ePublishing Integration:** Seamless output generation to reflowable and fixed-layout EPUB 3, web HTML, and print-ready PDFs.",
+        sources: [
+          { title: 'XML Services', url: '/services/xml' },
+          { title: 'ePublishing Services', url: '/services/epublishing' }
+        ]
+      };
+    }
+
+    // Specific Software & Web Development Services
+    if (
+      /\b(software development|web development|software engineering|react development|frontend development|backend development|api development|cloud architecture|custom software)\b/i.test(q)
+    ) {
+      return {
+        reply: "Velvora Solutions builds enterprise **Software & Web Development Solutions** engineered for speed, security, and universal accessibility:\n\n" +
+               "• **Full-Stack Web Applications:** High-performance single page applications and dynamic web portals built with React, modern JavaScript, and component libraries.\n" +
+               "• **Resilient Backend Microservices:** RESTful and GraphQL APIs engineered using Node.js, Python (FastAPI), Express, and secure database architectures.\n" +
+               "• **Accessible Design Systems:** UI components engineered from scratch to achieve strict WCAG 2.2 AA accessibility and keyboard-navigable conformance.\n" +
+               "• **Cloud Integrations & CI/CD:** Scalable cloud deployment pipelines, automated testing, and secure data storage.",
+        sources: [
+          { title: 'Software & Web Development', url: '/services/software-development' },
+          { title: 'Consult With Engineering Team', url: '/contact' }
+        ]
+      };
+    }
+
+    // Specific Data Analytics & BI Services
+    if (
+      /\b(data analytics|business intelligence|bi dashboards|power bi|predictive modeling|etl pipelines|data visualizations|data engineering)\b/i.test(q)
+    ) {
+      return {
+        reply: "Velvora Solutions delivers end-to-end **Data Analytics & Business Intelligence Services**:\n\n" +
+               "• **Executive BI Dashboards:** Interactive Power BI and custom web dashboards providing real-time KPI telemetry and operational visibility.\n" +
+               "• **ETL Data Pipelines:** Scalable data ingestion, cleaning, transformation, and automated warehousing from disparate enterprise sources.\n" +
+               "• **Predictive Analytics:** Statistical modeling, regression, and trend forecasting to optimize operations and client retention.\n" +
+               "• **Accessible Data Visualizations:** High-contrast, screen-reader-friendly charts and reports compliant with accessibility standards.",
+        sources: [
+          { title: 'Data Analytics & BI Services', url: '/services/data-analytics' },
+          { title: 'Contact Analytics Team', url: '/contact' }
+        ]
+      };
+    }
+
+    // Specific Digital Marketing & SEO Services
+    if (
+      /\b(digital marketing|seo optimization|technical seo|content marketing|social media marketing|performance ppc|paid advertising|growth marketing)\b/i.test(q)
+    ) {
+      return {
+        reply: "Velvora Solutions provides measurable **Digital Marketing & Growth Services**:\n\n" +
+               "• **Technical SEO:** Deep website code audits, Core Web Vitals optimization, schema markup, and accessibility-friendly rich snippets.\n" +
+               "• **Content Marketing & Thought Leadership:** Industry articles, technical whitepapers, and editorial content strategies that build domain authority.\n" +
+               "• **Omnichannel Campaigns:** Targeted paid advertising (PPC) and organic engagement strategies across LinkedIn, Google Ads, and Meta platforms.\n" +
+               "• **Conversion Telemetry & Analytics:** Advanced GA4 tracking, conversion rate optimization (CRO), and executive ROI dashboards.",
+        sources: [
+          { title: 'Digital Marketing Services', url: '/services/digital-marketing' },
+          { title: 'Contact Marketing Team', url: '/contact' }
         ]
       };
     }
 
     // -------------------------------------------------------------------------
-    // 8. CAREERS, JOBS & RESUME APPLICATION
+    // INTENT I: INTERNSHIPS & STUDENT TRAINING
     // -------------------------------------------------------------------------
-    const isJobQuery = /\b(job|jobs|career|careers|vacancy|vacancies|hiring|opening|openings|fresher|eligibility|requirements|apply|application|salary|stipend|recruitment|role|roles|position|positions)\b/i.test(q);
+    const hasStudentOrFresher = /\b(student|students|college|fresher|freshers|graduate|graduates|intern|internship|internships)\b/i.test(q);
+    const hasInternOrTrain = /\b(intern|internship|internships|training|trainee|learn|opportunity|program|work)\b/i.test(q);
 
+    if (
+      (/\b(intern|internship|internships)\b/i.test(q) && !/\b(full-time|experienced)\b/i.test(q)) ||
+      (hasStudentOrFresher && hasInternOrTrain && !/\b(job|vacancy|permanent)\b/i.test(q))
+    ) {
+      return {
+        reply: "Yes! **Velvora Solutions actively provides structured Internship and Training Programs for students and recent graduates.**\n\n" +
+               "Our student programs bridge academic study with hands-on enterprise publishing, digital accessibility, and software pipelines under our **G.R.O.W. Framework** (Growth, Respect, Opportunity, Well-being).\n\n" +
+               "### Core Internship Highlights:\n\n" +
+               "• **100% Live Production Projects:** Work on real client manuscripts, EPUB 3 files, WCAG 2.2 accessibility remediations, AI models, and software codebases.\n" +
+               "• **Specialized Tracks:**\n" +
+               "  1. Digital Publishing & XML Production\n" +
+               "  2. Digital Accessibility Auditing & QA\n" +
+               "  3. AI & Machine Learning Engineering\n" +
+               "  4. Data Analytics & Business Intelligence\n" +
+               "  5. Full-Stack Software Development\n" +
+               "  6. Digital Marketing & Growth SEO\n" +
+               "• **Flexible Durations:** 1 Month (Fast-Track), 3 Months (Standard Certification Track), or 6 Months (Comprehensive Capstone).\n" +
+               "• **Learning Modes:** Virtual Remote, In-Person Classroom at our Cuddalore Head Office or Chennai Branch Office, or Hybrid.\n" +
+               "• **Credentials & Placement:** Official Velvora Solutions Certificate of Completion with QR verification, Letter of Recommendation, and Pre-Placement Offers (PPOs) for top performers.\n\n" +
+               "To apply, visit our **[Training & Internships Page](/training)** to submit your details or apply on our **[Careers Portal](/careers)**.",
+        sources: [
+          { title: 'Flagship Internship Curriculum', url: '/training/internship-program' },
+          { title: 'All Training Programs', url: '/training' },
+          { title: 'Apply on Careers Portal', url: '/careers' }
+        ]
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // INTENT J: TRAINING PROGRAMS OVERVIEW
+    // "What training programs do you offer?"
+    // -------------------------------------------------------------------------
+    if (
+      /\b(training|trainings|workshop|workshops|certification|certifications|cpacc|course|courses|masterclass|skill development|capacity building|upskilling)\b/i.test(q)
+    ) {
+      return {
+        reply: "Yes! Velvora Solutions provides **8 comprehensive industry-standard Training & Skill Development Programs**, having delivered over 2,000+ training hours.\n\n" +
+               "Explore our dedicated **[Training & Internships Page](/training)**:\n\n" +
+               "1. **ePublishing Training:** EPUB 3, JATS/BITS XML workflows, XSLT, and Adobe InDesign conversion.\n" +
+               "2. **AI/ML Training:** Machine learning algorithms, deep learning, PyTorch, computer vision, and NLP.\n" +
+               "3. **Generative AI Training:** Advanced prompting, LLM APIs, LangChain, RAG architectures, and autonomous AI agents.\n" +
+               "4. **Data Analytics & BI:** Advanced Excel, Power BI, DAX formulas, SQL databases, and predictive analytics.\n" +
+               "5. **Digital Accessibility Training:** WCAG 2.2 AA/AAA guidelines, PDF/UA (ISO 14289), screen reader testing (NVDA/JAWS), and CPACC preparation.\n" +
+               "6. **Software Development Training:** Full-stack React, Node.js, Python (FastAPI), microservices, and cloud deployments.\n" +
+               "7. **Digital Marketing Training:** Technical SEO, Core Web Vitals, Google Analytics 4, and performance advertising.\n" +
+               "8. **Flagship Internship Program:** 100% live client project exposure for students and freshers with PPO career pathways.\n\n" +
+               "**Delivery Formats:** Online Virtual Live webinars, In-person at our Cuddalore Head Office or Chennai Branch Office, or Hybrid.",
+        sources: [
+          { title: 'All Training Programs', url: '/training' },
+          { title: 'Apply for Internship / Enroll Now', url: '/training#enrollment-form-section' },
+          { title: 'Contact Admissions Desk', url: '/contact' }
+        ]
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // INTENT K: REQUEST A QUOTATION & PROJECT PRICING
+    // -------------------------------------------------------------------------
+    if (
+      (/\b(request.*quot|get.*quot|quotation|pricing|project cost|how much does it cost|project inquir|project enquir|quote|estimate)\b/i.test(q) ||
+       (/\b(how can i|how do i|how to)\b/i.test(q) && /\b(project|requirement|requirements|scope|quote|quotation|estimate)\b/i.test(q)))
+    ) {
+      return {
+        reply: "To request a customized project quotation and turnaround schedule from Velvora Solutions:\n\n" +
+               "1. **Submit via Online Contact Form:**\n" +
+               "   Visit our **[Contact Us Page](/contact)** and fill out the enquiry form.\n" +
+               "2. **Direct Email Request:**\n" +
+               "   Email your project brief directly to **info@velvorasolutions.com**.\n" +
+               "3. **Helpful Details to Include for an Accurate Quote:**\n" +
+               "   • **Service Required:** e.g., PDF/UA accessibility remediation, JATS XML conversion, EPUB 3 creation, AI workflow automation, or custom software development.\n" +
+               "   • **Project Volume:** Total number of pages, documents, books, or feature specifications.\n" +
+               "   • **Compliance Standard:** e.g., WCAG 2.2 AA, PDF/UA, Section 508, MathML.\n" +
+               "   • **Target Deadline:** Expected completion date or milestone schedule.\n" +
+               "   • **Sample Files:** Providing a representative sample file allows our technical estimation team to assess tagging complexity accurately.\n\n" +
+               "Our estimation team reviews your requirements and returns a comprehensive proposal within 24–48 hours.",
+        sources: [
+          { title: 'Request a Project Quote', url: '/contact' },
+          { title: 'Explore Services', url: '/services' }
+        ]
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // INTENT L: CONTACT & OFFICE LOCATIONS
+    // -------------------------------------------------------------------------
+    if (
+      /\b(how can i contact|contact team|contact us|phone number|email address|get in touch|reach out|contact info|contact details)\b/i.test(q) ||
+      /\b(where is your headquarter|headquarters|head office|where are your offices|office locations|office address|cuddalore office|chennai office|porur office)\b/i.test(q)
+    ) {
+      return {
+        reply: "You can connect directly with the Velvora Solutions team through multiple official channels:\n\n" +
+               "• **Head Office (Cuddalore):**\n" +
+               "  Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India\n" +
+               "• **Branch Office (Chennai):**\n" +
+               "  Velvora Solutions, Porur, Chennai, Tamil Nadu, India\n" +
+               "• **Email:**\n" +
+               "  - General & Project Enquiries: **info@velvorasolutions.com**\n" +
+               "  - Careers & Resumes: **careers@velvorasolutions.com**\n" +
+               "• **Phone / WhatsApp:**\n" +
+               "  - Call: **+91 9500834236**\n" +
+               "  - WhatsApp: **[Chat on WhatsApp](https://wa.me/919500834236)**\n" +
+               "• **Business Hours:**\n" +
+               "  Monday to Saturday: 9:00 AM – 6:30 PM IST (Global projects supported across client timezones)\n" +
+               "• **Online Form:**\n" +
+               "  Submit your inquiry anytime via our **[Contact Us Page](/contact)**.",
+        sources: [
+          { title: 'Contact Us', url: '/contact' },
+          { title: 'About Velvora', url: '/about/company-overview' }
+        ]
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // INTENT M: CAREERS LISTINGS
+    // -------------------------------------------------------------------------
+    const isJobQuery = /\b(job|jobs|career|careers|vacancy|vacancies|hiring|opening|openings|recruitment|role|roles|position|positions)\b/i.test(q);
     if (isJobQuery) {
       const activeCareers = this.getCareers({ status: 'Active' });
-      const closedCareers = (this.store.careers || []).filter(c => c.status === 'Closed');
-
-      // Asking how to apply / resume upload
-      if (
-        /\b(how to apply|how do i apply|how can i apply|submit.*resume|upload.*resume|application procedure|application process|where to apply|apply for a job|how to submit.*application)\b/i.test(q)
-      ) {
-        return {
-          reply: "To apply for an open position or internship at Velvora Solutions:\n\n" +
-                 "1. Visit our **Careers Portal** (`/careers`).\n" +
-                 "2. Review open roles and click **Apply Now** for your chosen position (or select *General Open Application*).\n" +
-                 "3. Fill out the application form with your contact details, experience, and key skills.\n" +
-                 "4. Upload your resume (supports PDF, DOC, and DOCX formats up to 10MB).\n" +
-                 "5. Submit your application — our recruitment team reviews every submission and responds within 24–48 hours.",
-          sources: [
-            { title: 'Visit Careers Portal & Apply', url: '/careers' },
-            { title: 'About Working at Velvora', url: '/about/careers' }
-          ]
-        };
-      }
-
-      // Check if user is asking about a specific closed position
-      const closedMatch = closedCareers.find(c =>
-        q.includes(c.title.toLowerCase()) ||
-        c.title.toLowerCase().split(' ').filter(w => w.length > 4).every(w => q.includes(w))
-      );
-      if (closedMatch) {
-        return {
-          reply: `The **${closedMatch.title}** position is currently closed and not accepting new submissions. However, you can submit an open application on our Careers portal so our team can contact you for upcoming openings!`,
-          sources: [
-            { title: 'Submit Open Application', url: '/careers' }
-          ]
-        };
-      }
-
-      // Check for specific role, skill, or department in active careers
-      const specificMatch = activeCareers.find(c =>
-        q.includes(c.title.toLowerCase()) ||
-        (Array.isArray(c.skills) ? c.skills : []).some(s => q.includes(s.toLowerCase())) ||
-        (c.department && q.includes(c.department.toLowerCase())) ||
-        (q.includes('python') && (Array.isArray(c.skills) ? c.skills : []).some(s => /python/i.test(s))) ||
-        (q.includes('fastapi') && (Array.isArray(c.skills) ? c.skills : []).some(s => /fastapi/i.test(s))) ||
-        (q.includes('accessibility') && /accessibility/i.test(c.title)) ||
-        (q.includes('typesetting') && /typesetting/i.test(c.title)) ||
-        (q.includes('editing') && /editing/i.test(c.title))
-      );
-
-      if (specificMatch) {
-        const skillsText = Array.isArray(specificMatch.skills) ? specificMatch.skills.join(', ') : specificMatch.skills;
-        return {
-          reply: `Yes! We currently have an active opening for **${specificMatch.title}** (${specificMatch.department}):\n\n` +
-                 `• **Work Mode:** ${specificMatch.workMode} (${specificMatch.location})\n` +
-                 `• **Type:** ${specificMatch.type}\n` +
-                 `• **Experience:** ${specificMatch.experience}\n` +
-                 `• **Key Skills:** ${skillsText}\n` +
-                 `• **Eligibility:** ${specificMatch.eligibility}\n` +
-                 `• **Summary:** ${specificMatch.summary}\n\n` +
-                 `You can submit your application and upload your resume (PDF/DOCX up to 10MB) directly on our Careers portal.`,
-          sources: [
-            { title: `Apply for ${specificMatch.title}`, url: '/careers' },
-            { title: 'View All Careers', url: '/careers' }
-          ]
-        };
-      }
-
-      // General listing of active jobs
       if (activeCareers.length > 0) {
         const jobList = activeCareers.map(j => {
           const sk = Array.isArray(j.skills) ? j.skills.slice(0, 3).join(', ') : j.skills;
@@ -689,219 +919,7 @@ export class VoraKnowledgeStore {
     }
 
     // -------------------------------------------------------------------------
-    // 9. HIGH-PRECISION DIRECT SERVICE & DOMAIN QUERY HANDLERS
-    // -------------------------------------------------------------------------
-
-    // 9.1 General "What are your services?" / "What do you do?"
-    if (
-      /\b(what services|what do you do|all services|services list|list of services|what can you do|what does velvora do|service overview)\b/i.test(q) ||
-      (q === 'services' || q === 'what are your services' || q === 'our services')
-    ) {
-      return {
-        reply: "Velvora Solutions provides end-to-end content and technology services across six core disciplines:\n\n" +
-               "1. **Digital Accessibility:** WCAG 2.2 AA/AAA, PDF/UA, Section 508 remediation, assistive tech testing (NVDA/JAWS/VoiceOver), VPAT/ACR reports.\n" +
-               "2. **Publishing & XML:** EPUB 3 (reflowable & fixed), JATS 1.3, BITS, DITA XML structuring, and automated composition.\n" +
-               "3. **Content Services:** Professional typesetting, LaTeX mathematical equations, copyediting, OCR digitization, and indexing.\n" +
-               "4. **AI & Automation:** Intelligent document processing (IDP), cognitive NLP extraction, and human-in-the-loop automated QA.\n" +
-               "5. **Software & Web Development:** Full-stack React, FastAPI/Node services, cloud architectures, and accessible modern interfaces.\n" +
-               "6. **Data Analytics & BI:** Executive BI dashboards, predictive modeling, ETL pipelines, and growth telemetry.\n" +
-               "7. **Training & Skill Development:** 2,000+ training hours delivered in accessibility, CPACC prep, XML, and software engineering.\n\n" +
-               "Which service would you like to explore in detail?",
-        sources: [
-          { title: 'Explore All Services', url: '/services' },
-          { title: 'Industry Solutions', url: '/solutions' },
-          { title: 'Contact Our Team', url: '/contact' }
-        ]
-      };
-    }
-
-    // 9.2 Digital Accessibility
-    if (
-      /\b(accessibility|accessible|wcag|pdf\/ua|pdf ua|section 508|vpat|screen reader|nvda|jaws|voiceover|ada compliance|european accessibility act|eaa)\b/i.test(q)
-    ) {
-      return {
-        reply: "Velvora Solutions is a premier specialist in **Digital Accessibility & Universal Inclusion**:\n\n" +
-               "• **Standards Compliance:** Full conformance auditing and remediation for **WCAG 2.2 (Level AA & AAA)**, **PDF/UA (ISO 14289)**, **Section 508**, and the **European Accessibility Act (EAA)**.\n" +
-               "• **Document Remediation:** Remediation of complex PDFs, Word, PowerPoint, Excel, and EPUB 3 files ensuring logical reading order, tag tree integrity, table headers, and descriptive alt text.\n" +
-               "• **Assistive Technology Audits:** Real-device testing performed by certified specialists using NVDA, JAWS, VoiceOver, and TalkBack.\n" +
-               "• **Compliance Reporting:** Delivery of Voluntary Product Accessibility Templates (VPAT / ACR) and compliance certificates.\n" +
-               "• **Accessibility Training:** Corporate workshops, development team upskilling, and IAAP CPACC certification coaching.",
-        sources: [
-          { title: 'Digital Accessibility Services', url: '/services/digital-accessibility' },
-          { title: 'Velvora Academy: All Training Programs', url: '/training' },
-          { title: 'Request Accessibility Audit', url: '/contact' }
-        ]
-      };
-    }
-
-    // 9.3 ePublishing & eBooks
-    if (
-      /\b(epub|epublishing|ebook|ebooks|reflowable|fixed layout|daisy|kindle|kdp|digital publishing)\b/i.test(q)
-    ) {
-      return {
-        reply: "Velvora Solutions provides industry-grade **ePublishing Services** for global book and journal publishers:\n\n" +
-               "• **EPUB 3 Conversion:** High-fidelity reflowable and fixed-layout EPUB 3 formats engineered to IDPF and W3C specifications.\n" +
-               "• **Accessible eBooks:** Full compliance with EPUB Accessibility 1.1, featuring embedded MathML, synchronized audio (SMIL), and DAISY Ace zero-violation certification.\n" +
-               "• **Backlist Digitization:** Converting print books, legacy PDFs, and scanned archives into modern, searchable, accessible eBook formats.\n" +
-               "• **Multi-Platform Distribution:** Formats optimized for Apple Books, Amazon Kindle, Google Play Books, and academic library platforms.",
-        sources: [
-          { title: 'ePublishing Services', url: '/services/epublishing' },
-          { title: 'Publisher Solutions', url: '/solutions' },
-          { title: 'Request eBook Proposal', url: '/contact' }
-        ]
-      };
-    }
-
-    // 9.4 XML Services
-    if (
-      /\b(xml|jats|bits|dita|tei|pubmed central|pmc|crossref|dtd|schema|jats 1\.3)\b/i.test(q)
-    ) {
-      return {
-        reply: "Velvora Solutions is a recognized authority in **XML Structuring & Conversion Services** with over **500+ titles structured**:\n\n" +
-               "• **Publishing Schemas:** Full compliance with **JATS 1.3 (Journal Article Tag Suite)**, **BITS (Book Interchange Tag Suite)**, and **DITA XML**.\n" +
-               "• **Academic Structuring:** Precise tagging of author affiliations, DOI cross-linking, funding data, bibliographies, and PubMed Central (PMC) readiness.\n" +
-               "• **Complex Mathematics:** MathML 3 integration ensuring accurate equation rendering across both digital screen readers and print outputs.\n" +
-               "• **Automated Validation:** Rigorous DTD and Schematron validation pipelines ensuring 100% semantic and structural accuracy.",
-        sources: [
-          { title: 'XML Conversion Services', url: '/services/xml' },
-          { title: 'XML-First Publishing Solutions', url: '/solutions' },
-          { title: 'Contact Our XML Team', url: '/contact' }
-        ]
-      };
-    }
-
-    // 9.5 Typesetting & Content Services
-    if (
-      /\b(typesetting|composition|indesign|latex|copy editing|copyediting|proofreading|math typesetting|equation|ocr|transcription|indexing)\b/i.test(q)
-    ) {
-      return {
-        reply: "Velvora Solutions provides comprehensive **Content Services & Composition**:\n\n" +
-               "• **Book & Journal Typesetting:** High-volume Adobe InDesign composition, XML-first automated paging, and strict typographic quality.\n" +
-               "• **LaTeX Mathematics:** Advanced mathematical and STM equation typesetting with flawless MathML / LaTeX fidelity.\n" +
-               "• **Editorial & Proofreading:** Line editing, copyediting, bibliographic reference cross-checking, and grammar styling (Chicago, APA, AMA).\n" +
-               "• **OCR & Digitization:** High-accuracy OCR conversion of historical manuscripts, rare books, and degraded print archives.\n" +
-               "• **Transcription & Captions:** Accurate audio/video transcription, closed captioning (SRT/VTT), and audio description for multimedia accessibility.",
-        sources: [
-          { title: 'Typesetting & Design', url: '/services/typesetting-and-design' },
-          { title: 'Math & Equation Typesetting', url: '/services/math-and-equation-typesetting' },
-          { title: 'OCR & Digitization', url: '/services/ocr-and-digitization' },
-          { title: 'Contact Production Team', url: '/contact' }
-        ]
-      };
-    }
-
-    // 9.6 AI & Automation Services
-    if (
-      /\b(ai automation|idp|intelligent document processing|nlp|entity extraction|cognitive pipeline|automated qa|artificial intelligence)\b/i.test(q)
-    ) {
-      return {
-        reply: "Velvora Solutions builds practical **AI & Workflow Automation Services** engineered for high-volume enterprise content:\n\n" +
-               "• **Intelligent Document Processing (IDP):** Automated ingestion of unstructured manuscripts, complex PDFs, and scanned archives into clean XML/JSON.\n" +
-               "• **Cognitive NLP & Extraction:** Automated keyword indexing, metadata tagging, taxonomy classification, and named entity extraction.\n" +
-               "• **Automated Accessibility QA:** Machine-assisted alt text draft generation, automated reading order detection, and contrast validation.\n" +
-               "• **Human-in-the-Loop Validation:** Combining high-speed machine algorithms with specialized human expert review to guarantee 100% semantic accuracy.",
-        sources: [
-          { title: 'AI and Automation Services', url: '/services/ai-automation' },
-          { title: 'AI-Powered Solutions', url: '/solutions' },
-          { title: 'Consult With Our AI Team', url: '/contact' }
-        ]
-      };
-    }
-
-    // 9.7 Software & Web Development
-    if (
-      /\b(software development|web development|react|frontend|backend|cloud|api|microservices|full stack|fullstack|website development)\b/i.test(q)
-    ) {
-      return {
-        reply: "Velvora Solutions provides enterprise-grade **Software & Web Development Services**:\n\n" +
-               "• **Modern Web Applications:** Full-stack development using React, modern JavaScript/TypeScript, and responsive frameworks.\n" +
-               "• **Backend & Cloud APIs:** Resilient microservices engineered with Node.js, Python (FastAPI), RESTful APIs, and secure cloud architectures.\n" +
-               "• **Accessible UI Systems:** Design systems and enterprise interfaces built from the ground up for strict WCAG 2.2 AA compliance.\n" +
-               "• **Content Portals & CMS:** Custom publishing portals, digital asset management workflows, and searchable archive systems.",
-        sources: [
-          { title: 'Software & Web Development', url: '/services/software-development' },
-          { title: 'Enterprise Solutions', url: '/solutions' },
-          { title: 'Discuss Your Software Project', url: '/contact' }
-        ]
-      };
-    }
-
-    // 9.8 Data Analytics & BI
-    if (
-      /\b(data analytics|business intelligence|bi dashboards|power bi|predictive modeling|etl|data pipeline|telemetry)\b/i.test(q)
-    ) {
-      return {
-        reply: "Velvora Solutions delivers transformative **Data Analytics & Business Intelligence Services**:\n\n" +
-               "• **Executive BI Dashboards:** Interactive visual dashboards built in Power BI, Tableau, and modern web analytics frameworks.\n" +
-               "• **ETL Data Pipelines:** Scalable data ingestion, cleaning, transformation, and automated warehousing from disparate sources.\n" +
-               "• **Predictive Analytics:** Statistical modeling and trend forecasting to optimize operational workflows and revenue growth.\n" +
-               "• **Accessible Data Visualizations:** High-contrast, screen-reader-friendly charts and reports compliant with accessibility standards.",
-        sources: [
-          { title: 'Data Analytics & BI Services', url: '/services/data-analytics' },
-          { title: 'Accessible Dashboards Solution', url: '/solutions' },
-          { title: 'Contact Analytics Team', url: '/contact' }
-        ]
-      };
-    }
-
-    // 9.9 Digital Marketing & SEO
-    if (
-      /\b(digital marketing|seo|search engine optimization|technical seo|content marketing|social media marketing|growth marketing)\b/i.test(q)
-    ) {
-      return {
-        reply: "Velvora Solutions offers strategic **Digital Marketing & SEO Services**:\n\n" +
-               "• **Technical SEO:** Deep website code audits, Core Web Vitals optimization, schema markup, and crawlability improvements.\n" +
-               "• **Content Marketing & Outreach:** High-authority thought leadership, industry articles, and editorial content strategy.\n" +
-               "• **Omnichannel Growth:** Data-driven campaigns across search, social networks, and email newsletters to build verified audience engagement.\n" +
-               "• **Conversion Tracking:** Comprehensive ROI dashboards and conversion rate optimization (CRO).",
-        sources: [
-          { title: 'Digital Marketing & Growth', url: '/services/digital-marketing' },
-          { title: 'Contact Marketing Team', url: '/contact' }
-        ]
-      };
-    }
-
-    // 9.10 Social Media Profiles & Official Channels
-    if (
-      /\b(social media|instagram|facebook|youtube|linkedin|social links|social page|follow you|social channels)\b/i.test(q)
-    ) {
-      return {
-        reply: "You can connect with and follow **Velvora Solutions** across all our official social channels:\n\n" +
-               "• **LinkedIn:** [Velvora Solutions on LinkedIn](https://www.linkedin.com/company/118444302/)\n" +
-               "• **Instagram:** [@velvora_solutions](https://www.instagram.com/velvora_solutions?srtk=MWh0OHlvNmhlaXZwdg==)\n" +
-               "• **Facebook:** [Velvora Solutions Facebook Page](https://www.facebook.com/share/18faJ9mXpG/)\n" +
-               "• **YouTube:** [@VelvoraSolutions](https://www.youtube.com/@VelvoraSolutions)\n" +
-               "• **Founder LinkedIn:** [Iyshwariya Senthil](https://www.linkedin.com/in/iyshwariya-senthil-bb7707287/)\n\n" +
-               "Stay tuned for updates on digital accessibility guidelines, XML conversion pipelines, AI automation breakthroughs, and career opportunities!",
-        sources: [
-          { title: 'Contact Us', url: '/contact' },
-          { title: 'Company Overview', url: '/about/company-overview' }
-        ]
-      };
-    }
-
-    // 9.11 Blog & Industry Publications
-    if (
-      /\b(blog|blogs|articles|publications|industry articles|knowledge hub|read articles|technical guides)\b/i.test(q)
-    ) {
-      return {
-        reply: "Explore our authoritative **Velvora Knowledge Hub & Technical Blog**:\n\n" +
-               "We publish industry-standard technical guides and regulatory analyses covering:\n" +
-               "• **Digital Publishing & ePublishing:** Evolution of digital publishing, XML-first workflows, and accessible EPUB 3.\n" +
-               "• **Digital Accessibility:** Practical WCAG 2.2 guides, Section 508 legal requirements, and European Accessibility Act (EAA).\n" +
-               "• **PDF Accessibility & Remediation:** ISO 14289 (PDF/UA), tag tree architectures, scanned OCR remediation, and manual vs. automated QA.\n" +
-               "• **AI & Automation:** Intelligent Document Processing (IDP), cognitive NLP tagging, and human-in-the-loop validation.\n" +
-               "• **Technology Strategy:** Enterprise digital transformation and multi-tier publishing QA.\n\n" +
-               "Visit our Blog page to read full-length publications and implementation blueprints!",
-        sources: [
-          { title: 'Velvora Blog & Knowledge Hub', url: '/blog' },
-          { title: 'Explore Services', url: '/services' }
-        ]
-      };
-    }
-
-    // -------------------------------------------------------------------------
-    // 10. MULTI-FACTOR SEMANTIC RETRIEVAL ACROSS CRAWLED DOCUMENTS (Clean Synthesis)
+    // INTENT N: MULTI-FACTOR SEMANTIC RAG RETRIEVAL (Across all 62+ Crawled Documents)
     // -------------------------------------------------------------------------
     const STOP_WORDS = new Set([
       'the', 'and', 'what', 'how', 'who', 'where', 'when', 'why', 'can', 'you',
@@ -912,8 +930,7 @@ export class VoraKnowledgeStore {
     ]);
 
     const words = q.split(/[^a-z0-9]+/).filter(w => w.length > 2 && !STOP_WORDS.has(w));
-    let bestDoc = null;
-    let highestScore = 0;
+    let rankedDocs = [];
 
     for (const doc of (this.store.documents || [])) {
       let score = 0;
@@ -924,40 +941,42 @@ export class VoraKnowledgeStore {
       const topics = (doc.topics || []).map(t => t.toLowerCase());
 
       // Exact phrase match in title
-      if (docTitle.includes(q)) score += 30;
+      if (docTitle.includes(q)) score += 40;
 
       // Exact keyword matches
       for (const kw of keywords) {
-        if (q.includes(kw)) score += 15;
+        if (q.includes(kw)) score += 18;
       }
 
       // Exact topic matches
       for (const top of topics) {
-        if (q.includes(top)) score += 12;
+        if (q.includes(top)) score += 14;
       }
 
-      // Individual meaningful token matches
+      // Individual token matches
       for (const w of words) {
-        if (docTitle.includes(w)) score += 8;
-        if (keywords.some(k => k.includes(w))) score += 6;
+        if (docTitle.includes(w)) score += 10;
+        if (keywords.some(k => k.includes(w))) score += 7;
         if (topics.some(t => t.includes(w))) score += 5;
         if (docSummary.includes(w)) score += 3;
         if (docContent.includes(w)) score += 1;
       }
 
-      if (score > highestScore) {
-        highestScore = score;
-        bestDoc = doc;
+      if (score > 12) {
+        rankedDocs.push({ doc, score });
       }
     }
 
-    if (bestDoc && highestScore >= 16) {
-      const titleClean = bestDoc.title.replace(/^Solution:\s*/i, '').replace(/^Service:\s*/i, '');
-      
-      // Synthesize clean highlights rather than raw slicing
+    rankedDocs.sort((a, b) => b.score - a.score);
+
+    if (rankedDocs.length > 0) {
+      const best = rankedDocs[0].doc;
+      const titleClean = best.title.replace(/^Solution:\s*/i, '').replace(/^Service:\s*/i, '');
+
+      // Extract highlights from content lines
       let highlights = [];
-      if (bestDoc.content) {
-        const lines = bestDoc.content.split('\n')
+      if (best.content) {
+        const lines = best.content.split('\n')
           .map(l => l.trim())
           .filter(l => l.startsWith('•') || l.startsWith('-') || l.startsWith('▸'));
         if (lines.length > 0) {
@@ -965,29 +984,36 @@ export class VoraKnowledgeStore {
         }
       }
 
-      let reply = `### ${titleClean}\n\n${bestDoc.summary}`;
+      let reply = `### ${titleClean}\n\n${best.summary}`;
       if (highlights.length > 0) {
-        reply += `\n\n**Key Capabilities & Highlights:**\n${highlights.join('\n')}`;
+        reply += `\n\n**Key Highlights & Capabilities:**\n${highlights.join('\n')}`;
       }
-      reply += `\n\nFor customized project scopes, technical consultations, or sample files, please contact our team at **info@velvorasolutions.com**.`;
+      reply += `\n\nFor customized project scopes, technical consultations, or inquiries, please connect with our team through our **[Contact Page](/contact)** or email **info@velvorasolutions.com**.`;
+
+      const sources = [
+        { title: best.title, url: best.url }
+      ];
+      if (rankedDocs.length > 1 && rankedDocs[1].doc.url !== best.url) {
+        sources.push({ title: rankedDocs[1].doc.title, url: rankedDocs[1].doc.url });
+      }
 
       return {
         reply: reply,
-        sources: [
-          { title: bestDoc.title, url: bestDoc.url },
-          { title: 'Contact Our Team', url: '/contact' }
-        ]
+        sources: sources
       };
     }
 
     // -------------------------------------------------------------------------
-    // 11. HONEST UNCERTAINTY ACKNOWLEDGEMENT (Never Guess)
+    // INTENT O: HONEST GROUNDED FALLBACK (Never Hallucinate or Invent)
     // -------------------------------------------------------------------------
     return {
-      reply: "I don't have verified records regarding that specific question in my knowledge base. Please reach out directly to our team at **info@velvorasolutions.com** or call **+91 9500834236**, and our team will be pleased to provide you with verified assistance.",
+      reply: "Thank you for reaching out! I don't have verified records regarding that specific question in my knowledge base. To ensure you receive accurate and up-to-date information, please connect directly with our specialist team:\n\n" +
+             "• **Email:** info@velvorasolutions.com\n" +
+             "• **Phone:** +91 9500834236\n" +
+             "• **Official Contact Page:** You can submit your inquiry directly through our **[Contact Us Page](/contact)**, and our team will get back to you within 24 hours.",
       sources: [
         { title: 'Explore Our Services', url: '/services' },
-        { title: 'View Careers & Internships', url: '/careers' },
+        { title: 'Training & Internships', url: '/training' },
         { title: 'Contact Our Team', url: '/contact' }
       ]
     };

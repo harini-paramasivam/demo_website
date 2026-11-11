@@ -6,12 +6,12 @@ export default async function handler(req, res) {
 
   try {
     if (action === 'chat' && req.method === 'POST') {
-      const { message } = req.body || {};
-      const result = voraStore.answerQuery(message);
+      const { message, history } = req.body || {};
+      const result = await voraStore.answerQuery(message, history);
       return res.status(200).json({
         success: true,
         reply: result.reply,
-        sources: result.sources,
+        sources: result.sources || [],
         metadata: voraStore.getMetadata()
       });
     }

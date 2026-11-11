@@ -182,10 +182,21 @@ export default function VoraChat() {
     setIsTyping(true);
 
     try {
+      const chatHistory = messages
+        .filter(m => m.id !== 'welcome')
+        .slice(-8)
+        .map(m => ({
+          role: m.sender === 'user' ? 'user' : 'assistant',
+          content: m.text
+        }));
+
       const res = await fetch('/api/vora/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: textToSend.trim() })
+        body: JSON.stringify({
+          message: textToSend.trim(),
+          history: chatHistory
+        })
       });
 
       const data = await res.json();
@@ -212,10 +223,11 @@ export default function VoraChat() {
         {
           id: `v-${Date.now()}`,
           sender: 'vora',
-          text: "I'm having a brief connection pause. You can explore our verified sections below or contact our team directly!",
+          text: "I'm temporarily experiencing a network communication pause with the server. While we reconnect, please explore our verified sections or reach out directly to our team:\n\n• **Services Overview:** [/services](/services)\n• **Training & Internships:** [/training](/training)\n• **Careers & Jobs:** [/careers](/careers)\n• **Partner With Us:** [/partner-with-us](/partner-with-us)\n• **Contact Us:** [/contact](/contact) (info@velvorasolutions.com | +91 9500834236)",
           sources: [
             { title: 'Explore Services', url: '/services' },
-            { title: 'Careers Portal', url: '/careers' },
+            { title: 'Training Programs', url: '/training' },
+            { title: 'Partner With Us', url: '/partner-with-us' },
             { title: 'Contact Us', url: '/contact' }
           ],
           time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })

@@ -168,6 +168,32 @@ ${s.whoItsFor || 'Publishers, universities, enterprises, and content creators.'}
 
       // E. SOLUTIONS (Industry Solutions)
       const solutions = site.solutionsData || [];
+      const solutionListSummary = solutions.map((s, idx) => 
+        `• **${s.title}** (${s.tag || 'Tailored Workflow'}): Solves key challenges including ${(s.challenges || []).slice(0, 1).join('')}. Flow: ${(s.flow || []).join(' → ')}`
+      ).join('\n\n');
+
+      documents.push({
+        id: 'page-solutions-overview',
+        title: 'Industry Solutions & Tailored Workflows Overview',
+        url: '/solutions',
+        category: 'solution',
+        summary: 'Velvora Solutions designs end-to-end industry solutions for publishers, enterprises, and educational institutions, combining automated pipelines with specialized human quality control.',
+        content: `Industry Solutions & Tailored Workflows at Velvora Solutions:
+We combine automated engineering, standards compliance, and domain expertise to solve complex content production and digital accessibility challenges across four primary solution suites:
+
+${solutionListSummary}
+
+Key Enterprise Advantages:
+• End-to-End Pipeline Integration: Seamless ingestion from raw manuscripts to validated deliverables.
+• Multi-Standard Conformance: Dual validation adhering to WCAG 2.2 AA/AAA, PDF/UA, JATS/BITS XML, and EPUB 3.
+• Scalability & High Turnaround: Capable of handling high-volume seasonal backlists and real-time releases.
+• Human-in-the-Loop Quality Assurance: Dual validation pairing automated algorithms with certified manual inspection.
+
+For bespoke enterprise implementation blueprints or technical demos, contact our solutions architects at info@velvorasolutions.com.`,
+        topics: ['Industry Solutions', 'Enterprise Workflows', 'Publishing Solutions', 'Accessibility Solutions', 'Automation'],
+        keywords: ['solutions', 'all solutions', 'explain your solutions', 'industry solutions', 'tailored workflows', 'enterprise solutions', 'workflow']
+      });
+
       for (const sol of solutions) {
         const challengesText = (sol.challenges || []).map(c => `  - ${c}`).join('\n');
         const benefitsText = (sol.benefits || []).map(b => `  - ${b}`).join('\n');
@@ -195,7 +221,7 @@ Case Study Reference: ${sol.caseStudy || 'Enterprise Implementation'}`,
         });
       }
 
-      // F. PARTNERSHIPS
+      // F. PARTNERSHIPS & VENDOR COLLABORATIONS
       const partnership = site.partnershipData || {};
       const partnerTiers = (partnership.tiers || []).map(t => 
         `• **${t.title}**: ${t.description || t.desc} (Benefits: ${(t.benefits || []).join(', ')})`
@@ -203,17 +229,65 @@ Case Study Reference: ${sol.caseStudy || 'Enterprise Implementation'}`,
 
       documents.push({
         id: 'page-partnerships',
-        title: 'Partner With Velvora Solutions',
+        title: 'Partner With Velvora Solutions & Vendor Collaborations',
         url: '/partner-with-us',
         category: 'partnership',
-        summary: 'Collaborate with Velvora Solutions as a Technology Alliance, Referral Partner, or Agency Subcontractor to scale innovation, accessibility compliance, and digital publishing.',
-        content: `Partnership Programs at Velvora Solutions:
+        summary: 'Collaborate with Velvora Solutions as a Technology Alliance, Referral Partner, Vendor, or Agency Subcontractor to scale innovation, accessibility compliance, and digital publishing.',
+        content: `Partnership & Vendor Collaboration Programs at Velvora Solutions:
+We actively welcome collaborations with technology providers, publishing houses, vendor agencies, accessibility consultants, and independent specialists.
+
 Collaboration Models:
-${partnerTiers || '1. Technology Alliance Partners: Joint software and AI integration\n2. Referral Partners: Revenue sharing for enterprise referrals\n3. Agency & Publishing Subcontractors: White-label high-volume composition and remediation\n4. Consulting Collaborators: Unified accessibility auditing and compliance'}
-Confidentiality & NDA: All partnership collaborations are bound by strict Non-Disclosure Agreements (NDA) and secure data exchange protocols.
-How to Partner: Submit requirements via the Partner With Us form on our website or email info@velvorasolutions.com.`,
-        topics: ['Partnership Programs', 'Technology Alliance', 'Referral Network', 'Subcontracting', 'White Label Services'],
-        keywords: ['partner', 'partnerships', 'collaboration', 'referral', 'alliance', 'subcontractor', 'affiliate', 'nda']
+1. Technology Alliance Partners: Joint software, API, and AI automation integrations.
+2. Vendor & Agency Subcontractors: Strategic vendor subcontracting for high-volume typesetting, XML conversion, and PDF/UA remediation.
+3. Referral Partners: Revenue-sharing and commissions for enterprise client referrals.
+4. Consulting Collaborators: Unified accessibility auditing, Section 508 / EAA consulting, and CPACC training.
+
+How to Apply for a Vendor or Business Partnership:
+Step 1: Visit our dedicated Partner With Us page (/partner-with-us or /partner).
+Step 2: Complete the online Partnership Request form with your Organization Name, Contact Person, Business Email, Partnership Area (Technology, Publishing, Accessibility, or Vendor/Agency), and a brief proposal.
+Step 3: If you prefer direct communication or have specific vendor documentation, email our alliances desk directly at info@velvorasolutions.com or submit a message via /contact mentioning "Vendor Partnership Inquiry".
+Step 4: All active vendor and business collaborations are protected by mutual Non-Disclosure Agreements (NDAs) and formal service-level agreements (SLAs).
+
+What to Include in Your Partnership Inquiry:
+- Company/Agency profile and official website
+- Core capabilities, tools, and past project experience
+- Proposed scope of collaboration or vendor services offered
+- Direct contact details of your partnership lead`,
+        topics: ['Partnership Programs', 'Vendor Partnership', 'Business Collaboration', 'Technology Alliance', 'Referral Network', 'Subcontracting', 'White Label Services', 'Agency Collaboration'],
+        keywords: ['partner', 'partnerships', 'vendor', 'vendor partnership', 'collaborate', 'collaboration', 'business partner', 'supplier', 'subcontractor', 'agency', 'alliance', 'b2b', 'referral', 'affiliate', 'nda']
+      });
+
+      // F.1 DEDICATED ACCESSIBILITY STANDARDS COMPARISON (WCAG vs PDF/UA)
+      documents.push({
+        id: 'topic-wcag-vs-pdfua',
+        title: 'WCAG vs PDF/UA: Digital Accessibility Standards Explained',
+        url: '/services/digital-accessibility',
+        category: 'standard',
+        summary: 'Understanding the technical differences between WCAG 2.2 and PDF/UA (ISO 14289) accessibility standards for websites and digital documents.',
+        content: `Understanding the Difference Between WCAG and PDF/UA:
+
+1. What is WCAG (Web Content Accessibility Guidelines)?
+• Origin: Developed by the W3C (World Wide Web Consortium) Web Accessibility Initiative (WAI).
+• Current Standard: WCAG 2.2 (conformance levels A, AA, and AAA).
+• Scope: Broad global standard governing all electronic content, including HTML websites, web applications, mobile apps, digital media, and digital documents.
+• Core Principles: Built around four foundational pillars known as POUR:
+  - Perceivable: Information must be presentable in ways users can perceive (e.g. text alternatives, captions, sufficient color contrast).
+  - Operable: User interfaces must be fully navigable via keyboard, without trapped focus or disruptive timing limits.
+  - Understandable: Text and operations must be legible, predictable, and offer error correction.
+  - Robust: Content must remain compatible with current and future assistive technologies (screen readers like NVDA, JAWS, VoiceOver).
+
+2. What is PDF/UA (ISO 14289)?
+• Origin: Published by the International Organization for Standardization (ISO) as ISO 14289-1 and ISO 14289-2.
+• Scope: Specifically engineered for Adobe Portable Document Format (PDF) files.
+• Core Focus: Provides clear, machine-verifiable requirements for document tagging, structural semantics, reading order, alternative text on <Figure> tags, table header association (<TH> and <TD>), and vector content.
+• Machine Validation: Verified using PAC (PDF Accessibility Checker) engines alongside manual screen reader validation.
+
+3. How Do WCAG and PDF/UA Work Together?
+• WCAG provides the general accessibility criteria, while PDF/UA provides the exact, file-format-specific technical implementation rules for PDFs.
+• A PDF that strictly meets PDF/UA standards will also satisfy the corresponding PDF accessibility requirements of WCAG 2.1 and WCAG 2.2 Level AA.
+• Velvora Solutions delivers dual-certified remediation conforming simultaneously to WCAG 2.2 Level AA and ISO 14289-1 (PDF/UA).`,
+        topics: ['WCAG 2.2', 'PDF/UA', 'ISO 14289', 'Accessibility Standards', 'Screen Readers', 'Document Remediation'],
+        keywords: ['wcag', 'pdf/ua', 'pdf ua', 'iso 14289', 'difference between wcag and pdf/ua', 'accessibility standards', 'section 508', 'screen reader']
       });
 
       // G. INSIGHTS, BLOGS, PODCASTS & RESOURCES
