@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { ArrowUp, Phone } from 'lucide-react';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
@@ -8,6 +8,7 @@ import Home from './pages/Home.jsx';
 import CompanyOverview from './pages/CompanyOverview.jsx';
 import OurTeam from './pages/OurTeam.jsx';
 import Careers from './pages/Careers.jsx';
+import JobDetailPage from './pages/JobDetailPage.jsx';
 import AboutCareers from './pages/AboutCareers.jsx';
 import ServicesOverview from './pages/ServicesOverview.jsx';
 import SolutionsOverview from './pages/SolutionsOverview.jsx';
@@ -53,9 +54,10 @@ export default function App() {
 
           <Route path="/about/company-overview" element={<CompanyOverview />} />
           <Route path="/about/our-team" element={<OurTeam />} />
-          <Route path="/about/careers" element={<AboutCareers />} />
+          <Route path="/about/careers" element={<Navigate to="/careers" replace />} />
           <Route path="/about/partner-with-us" element={<PartnerWithUs />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/careers/:jobId" element={<JobDetailPage />} />
           <Route path="/partner" element={<PartnerWithUs />} />
           <Route path="/partner-with-us" element={<PartnerWithUs />} />
           <Route path="/services" element={<ServicesOverview />} />

@@ -1,10 +1,10 @@
 {
-  "auditDate": "2026-11-12T06:26:04.311Z",
+  "auditDate": "2026-11-12T06:40:00.076Z",
   "totalQuestions": 100,
   "passed": 100,
   "failed": 0,
   "accuracyPct": "100.00%",
-  "durationSec": "0.10s",
+  "durationSec": "0.49s",
   "hallucinatedCount": 0,
   "irrelevantCount": 0,
   "incorrectRetrievalCount": 0,
@@ -1008,7 +1008,7 @@
       "isUnavailableInfo": false,
       "result": "PASS",
       "issues": "None",
-      "actualReply": "We currently have **6 active positions and job openings** open at Velvora Solutions:\n\n• **Copy Editing Specialist** (Editorial & Quality Assurance) — *Hybrid / Full-Time / Hybrid*\n  Experience: Experience in academic, technical, or corporate editing. | Skills: Strong command of English grammar, syntax, and publishing style guides., Experience in academic, technical, or corporate editing., Exceptional attention to detail and ability to meet project deadlines.\n\n• **PPT Accessibility Specialist** (Digital Accessibility) — *Hybrid / Full-Time / Hybrid*\n  Experience: Hands‑on experience with accessible document remediation and slide design. | Skills: Knowledge of accessibility guidelines (WCAG, Section 508) and assistive technologies (JAWS, NVDA)., Hands‑on experience with accessible document remediation and slide design., Strong communication, problem‑solving skills, and empathy for diverse users.\n\n• **Typesetting Specialist** (Publishing Production) — *Hybrid / Full-Time / Hybrid*\n  Experience: Strong eye for typography, layout design, grid structure, and detail. | Skills: Hands-on experience with typesetting tools (InDesign, LaTeX, MathML, or XML workflows)., Strong eye for typography, layout design, grid structure, and detail., Ability to manage multiple concurrent titles and meet delivery schedules.\n\n• **AI & Automation Engineer** (Engineering & Innovation) — *Hybrid / Full-Time / Hybrid*\n  Experience: Interest in accessibility standards and automated document processing. | Skills: Proficiency with Python, API integration, and machine learning/NLP concepts., Interest in accessibility standards and automated document processing., Strong problem-solving and proactive debugging abilities.\n\n• **Digital Publishing & XML Intern** (Publishing Production) — *Remote / Internship*\n  Experience: Fresher / College Students | Skills: HTML, XML Basics, Content Structuring\n\n• **Accessibility Auditing & QA Intern** (Digital Accessibility) — *Remote / Internship*\n  Experience: Fresher / Final Year Students | Skills: WCAG Guidelines, Screen Reader Testing, Alt-Text Drafting\n\nOur career framework is built on **G.R.O.W. (Growth, Respect, Opportunity, Well-being)**. You can review full role details and submit your resume directly on our Careers page.",
+      "actualReply": "We currently have **3 active positions and job openings** open at Velvora Solutions:\n\n• **AI & Automation Engineer** (Engineering & Innovation) — *Hybrid / Full-Time / Hybrid*\n  Experience: Fresher / 1-2 years experience | Skills: Python, FastAPI, NLP\n\n• **Digital Publishing & XML Intern** (Publishing Production) — *Remote / Internship*\n  Experience: Fresher / College Students | Skills: HTML, XML Basics, Content Structuring\n\n• **Accessibility Auditing & QA Intern** (Digital Accessibility) — *Remote / Internship*\n  Experience: Fresher / Final Year Students | Skills: WCAG Guidelines, Screen Reader Testing, Alt-Text Drafting\n\nOur career framework is built on **G.R.O.W. (Growth, Respect, Opportunity, Well-being)**. You can review full role details and submit your resume directly on our Careers page.",
       "sources": [
         "/careers",
         "/about/careers"

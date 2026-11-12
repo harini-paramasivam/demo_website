@@ -603,7 +603,7 @@ export const nav = [
     items: [
       { label: 'Company Overview', to: '/about/company-overview' },
       { label: 'Our Team', to: '/about/our-team' },
-      { label: 'Careers', to: '/about/careers' },
+      { label: 'Careers', to: '/careers' },
       { label: 'Partner With Velvora', to: '/partner' },
     ],
   },

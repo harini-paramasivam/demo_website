@@ -1,24 +1,24 @@
 {
   "syncMetadata": {
-    "version": "v1.3.181",
+    "version": "v1.3.187",
     "status": "Synchronized",
-    "lastSynchronized": "2026-11-12T06:26:04.205Z",
-    "sourceHash": "42fc6f38502d8c4afde26b802d1c3113371a3e694cd0b22e3037aa9905a2374d",
-    "indexedCount": 69,
+    "lastSynchronized": "2026-11-12T06:40:29.366Z",
+    "sourceHash": "e841c5ae0f7d248a7d806f9f5e5ab47827ab3b2696174c7f70f7948360e5dc26",
+    "indexedCount": 66,
     "indexedPages": 63,
-    "indexedCareers": 6,
+    "indexedCareers": 3,
     "errorLogs": [],
     "changelog": [
-      "Synced 63 pages & 6 careers at 2026-11-12T06:26:04.205Z",
+      "Synced 63 pages & 3 careers at 2026-11-12T06:40:29.366Z",
+      "Synced 63 pages & 3 careers at 2026-11-12T06:39:41.266Z",
+      "Synced 63 pages & 3 careers at 2026-11-12T06:39:38.449Z",
+      "Synced 63 pages & 6 careers at 2026-11-12T06:37:27.090Z",
+      "Synced 63 pages & 6 careers at 2026-11-12T06:36:45.466Z",
+      "Synced 63 pages & 6 careers at 2026-11-12T06:36:44.087Z",
+      "Synced 63 pages & 6 careers at 2026-11-12T06:34:47.125Z",
       "Synced 63 pages & 6 careers at 2026-11-12T06:24:08.047Z",
       "Synced 63 pages & 6 careers at 2026-11-12T06:24:06.189Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T06:17:58.594Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T06:17:42.406Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T06:11:04.774Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T06:11:03.499Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T06:09:54.348Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T06:09:52.975Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T06:07:34.575Z"
+      "Synced 63 pages & 6 careers at 2026-11-12T06:17:58.594Z"
     ]
   },
   "documents": [
@@ -1708,71 +1708,23 @@
   ],
   "careers": [
     {
-      "id": "copy-editing-specialist",
-      "title": "Copy Editing Specialist",
-      "department": "Editorial & Quality Assurance",
-      "type": "Full-Time / Hybrid",
-      "location": "Cuddalore, TN / Hybrid",
-      "workMode": "Hybrid",
-      "experience": "Experience in academic, technical, or corporate editing.",
-      "skills": [
-        "Strong command of English grammar, syntax, and publishing style guides.",
-        "Experience in academic, technical, or corporate editing.",
-        "Exceptional attention to detail and ability to meet project deadlines."
-      ],
-      "eligibility": "Strong command of English grammar, syntax, and publishing style guides.",
-      "summary": "Review and refine content for accuracy, clarity, and consistency across academic and enterprise publications.",
-      "status": "Active"
-    },
-    {
-      "id": "ppt-accessibility-specialist",
-      "title": "PPT Accessibility Specialist",
-      "department": "Digital Accessibility",
-      "type": "Full-Time / Hybrid",
-      "location": "Cuddalore, TN / Hybrid",
-      "workMode": "Hybrid",
-      "experience": "Hands‑on experience with accessible document remediation and slide design.",
-      "skills": [
-        "Knowledge of accessibility guidelines (WCAG, Section 508) and assistive technologies (JAWS, NVDA).",
-        "Hands‑on experience with accessible document remediation and slide design.",
-        "Strong communication, problem‑solving skills, and empathy for diverse users."
-      ],
-      "eligibility": "Knowledge of accessibility guidelines (WCAG, Section 508) and assistive technologies (JAWS, NVDA).",
-      "summary": "Remediate PowerPoint presentations to conform to WCAG 2.2, PDF/UA, and Section 508 standards.",
-      "status": "Active"
-    },
-    {
-      "id": "typesetting-specialist",
-      "title": "Typesetting Specialist",
-      "department": "Publishing Production",
-      "type": "Full-Time / Hybrid",
-      "location": "Cuddalore, TN / Hybrid",
-      "workMode": "Hybrid",
-      "experience": "Strong eye for typography, layout design, grid structure, and detail.",
-      "skills": [
-        "Hands-on experience with typesetting tools (InDesign, LaTeX, MathML, or XML workflows).",
-        "Strong eye for typography, layout design, grid structure, and detail.",
-        "Ability to manage multiple concurrent titles and meet delivery schedules."
-      ],
-      "eligibility": "Hands-on experience with typesetting tools (InDesign, LaTeX, MathML, or XML workflows).",
-      "summary": "Format and design manuscripts, journals, and books for print and multi-format digital publishing.",
-      "status": "Active"
-    },
-    {
       "id": "ai-automation-engineer",
       "title": "AI & Automation Engineer",
       "department": "Engineering & Innovation",
       "type": "Full-Time / Hybrid",
-      "location": "Cuddalore, TN / Hybrid",
+      "location": "Remote / Hybrid",
       "workMode": "Hybrid",
-      "experience": "Interest in accessibility standards and automated document processing.",
+      "experience": "Fresher / 1-2 years experience",
       "skills": [
-        "Proficiency with Python, API integration, and machine learning/NLP concepts.",
-        "Interest in accessibility standards and automated document processing.",
-        "Strong problem-solving and proactive debugging abilities."
+        "Python",
+        "FastAPI",
+        "NLP",
+        "Prompt Engineering",
+        "LangChain",
+        "Workflow Automation"
       ],
-      "eligibility": "Proficiency with Python, API integration, and machine learning/NLP concepts.",
-      "summary": "Build intelligent workflow pipelines using Python, NLP, and modern LLMs to accelerate content publishing.",
+      "eligibility": "Degree in Computer Science/IT or equivalent hands-on experience in Python backend development and AI pipelines.",
+      "summary": "Build intelligent publishing workflows, OCR extraction pipelines, and automated text processing integrations.",
       "status": "Active"
     },
     {

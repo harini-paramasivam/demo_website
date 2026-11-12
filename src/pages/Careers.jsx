@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import { 
   HeartHandshake, 
@@ -35,82 +36,10 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { company } from '../data/site.js';
+import { careersJobs } from '../data/careersData.js';
 import { PageHero } from '../components/ui.jsx';
 
-const jobOpenings = [
-  {
-    id: 'copy-editing-specialist',
-    title: 'Copy Editing Specialist',
-    department: 'Editorial & Quality Assurance',
-    type: 'Full-Time / Hybrid',
-    location: 'Cuddalore, TN / Hybrid',
-    summary: 'Review and refine content for accuracy, clarity, and consistency across academic and enterprise publications.',
-    responsibilities: [
-      'Review and refine content for accuracy, clarity, and consistency.',
-      'Ensure adherence to publishing standards and client style guides (APA, Chicago, MLA, etc.).',
-      'Collaborate with content, design, and accessibility teams to guarantee editorial excellence.',
-    ],
-    requirements: [
-      'Strong command of English grammar, syntax, and publishing style guides.',
-      'Experience in academic, technical, or corporate editing.',
-      'Exceptional attention to detail and ability to meet project deadlines.',
-    ],
-  },
-  {
-    id: 'ppt-accessibility-specialist',
-    title: 'PPT Accessibility Specialist',
-    department: 'Digital Accessibility',
-    type: 'Full-Time / Hybrid',
-    location: 'Cuddalore, TN / Hybrid',
-    summary: 'Remediate PowerPoint presentations to conform to WCAG 2.2, PDF/UA, and Section 508 standards.',
-    responsibilities: [
-      'Remediate PowerPoint files to meet accessibility standards (WCAG 2.2, Section 508).',
-      'Add meaningful alt text, proper reading order in selection panes, and accessible slide formatting.',
-      'Collaborate with clients and internal teams to deliver fully inclusive presentation decks.',
-    ],
-    requirements: [
-      'Knowledge of accessibility guidelines (WCAG, Section 508) and assistive technologies (JAWS, NVDA).',
-      'Hands‑on experience with accessible document remediation and slide design.',
-      'Strong communication, problem‑solving skills, and empathy for diverse users.',
-    ],
-  },
-  {
-    id: 'typesetting-specialist',
-    title: 'Typesetting Specialist',
-    department: 'Publishing Production',
-    type: 'Full-Time / Hybrid',
-    location: 'Cuddalore, TN / Hybrid',
-    summary: 'Format and design manuscripts, journals, and books for print and multi-format digital publishing.',
-    responsibilities: [
-      'Format and design manuscripts, journals, and books for digital and print publishing.',
-      'Apply consistent styles, layouts, and templates across large volumes of complex content.',
-      'Ensure compliance with publishing standards (EPUB 3, JATS/BITS XML, PDF).',
-    ],
-    requirements: [
-      'Hands-on experience with typesetting tools (InDesign, LaTeX, MathML, or XML workflows).',
-      'Strong eye for typography, layout design, grid structure, and detail.',
-      'Ability to manage multiple concurrent titles and meet delivery schedules.',
-    ],
-  },
-  {
-    id: 'ai-automation-engineer',
-    title: 'AI & Automation Engineer',
-    department: 'Engineering & Innovation',
-    type: 'Full-Time / Hybrid',
-    location: 'Cuddalore, TN / Hybrid',
-    summary: 'Build intelligent workflow pipelines using Python, NLP, and modern LLMs to accelerate content publishing.',
-    responsibilities: [
-      'Architect AI pipelines that parse, remediate, and validate complex publication manuscripts.',
-      'Develop automated quality gates for XML and EPUB conversion pipelines.',
-      'Collaborate across cross-disciplinary teams to integrate generative AI safely and accurately.',
-    ],
-    requirements: [
-      'Proficiency with Python, API integration, and machine learning/NLP concepts.',
-      'Interest in accessibility standards and automated document processing.',
-      'Strong problem-solving and proactive debugging abilities.',
-    ],
-  },
-];
+const jobOpenings = careersJobs;
 
 export default function Careers() {
   const [selectedJob, setSelectedJob] = useState('Copy Editing Specialist');
@@ -725,7 +654,7 @@ export default function Careers() {
           {/* JOB OPENINGS LIST */}
           <div className="job-openings-grid">
             {jobOpenings.map((job) => (
-              <article key={job.id} className="job-opening-card">
+              <article key={job.id} className="job-opening-card job-opening-card--concise">
                 <div className="job-opening-card__head">
                   <div>
                     <span className="job-opening-card__dept">{job.department}</span>
@@ -734,35 +663,32 @@ export default function Careers() {
                   <span className="job-opening-card__type">{job.type}</span>
                 </div>
 
-                <p className="job-opening-card__summary">{job.summary}</p>
-
                 <div className="job-opening-card__meta">
                   <span><MapPin size={14} /> {job.location}</span>
+                  <span><Clock size={14} /> {job.experience}</span>
                 </div>
 
-                <div className="job-opening-card__details">
-                  <div className="job-col">
-                    <strong>Key Responsibilities:</strong>
-                    <ul>
-                      {job.responsibilities.map((r, i) => (
-                        <li key={i}>{r}</li>
-                      ))}
-                    </ul>
+                <p className="job-opening-card__summary">{job.shortSummary || job.summary}</p>
+
+                {job.keyTags && (
+                  <div className="job-opening-card__tags">
+                    {job.keyTags.map((tag) => (
+                      <span key={tag} className="job-tag-pill">{tag}</span>
+                    ))}
                   </div>
-                  <div className="job-col">
-                    <strong>Requirements:</strong>
-                    <ul>
-                      {job.requirements.map((req, i) => (
-                        <li key={i}>{req}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                )}
 
                 <div className="job-opening-card__action">
+                  <Link
+                    to={`/careers/${job.id}`}
+                    className="btn btn--orange job-card-primary-btn"
+                  >
+                    <span>View Full Job Description &amp; Apply</span>
+                    <ArrowRight size={16} />
+                  </Link>
                   <button
                     type="button"
-                    className="btn btn--orange"
+                    className="btn btn--outline job-card-quick-btn"
                     onClick={() => {
                       setSelectedJob(job.title);
                       setFormData((prev) => ({ ...prev, role: job.title }));
@@ -770,8 +696,7 @@ export default function Careers() {
                       if (formEl) formEl.scrollIntoView({ behavior: 'smooth' });
                     }}
                   >
-                    <span>Apply for this Role</span>
-                    <ArrowRight size={16} />
+                    <span>Quick Apply Form</span>
                   </button>
                 </div>
               </article>
