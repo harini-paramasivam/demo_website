@@ -21,14 +21,18 @@ export default function ServicesStream() {
             {/* Top Category Badge & Telemetry */}
             <div className="glance-card__top">
               <span className="glance-card__badge">
-                <Icon name={svc.icon} size={15} />
                 <span>{svc.tag}</span>
               </span>
               <span className="glance-card__code">0{idx + 1}</span>
             </div>
 
-            {/* Header in Bold */}
-            <h3 className="glance-card__title">{svc.title}</h3>
+            {/* Header in Bold with Parallel Icon */}
+            <div className="glance-card__title-row">
+              <span className="glance-card__title-icon">
+                <Icon name={svc.icon} size={20} />
+              </span>
+              <h3 className="glance-card__title">{svc.title}</h3>
+            </div>
 
             {/* About it (Description) */}
             <p className="glance-card__desc">{svc.desc}</p>
@@ -48,4 +52,3 @@ export default function ServicesStream() {
     </div>
   );
 }
-

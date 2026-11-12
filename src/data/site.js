@@ -963,6 +963,18 @@ export const services = [
       { step: '4. Validate', desc: 'Automated and manual quality checks.' },
       { step: '5. Deliver', desc: 'Final files, delivered on time with a quality report.' },
     ],
+    benefits: [
+      '100% Guaranteed Retailer Acceptance on Amazon Kindle, Apple Books, Kobo, and Google Play',
+      'Zero-Error EPUBCheck Certification and complete WCAG accessibility compliance',
+      'Preserved editorial integrity for footnotes, multi-column layouts, and typography',
+      'Global distribution ready with embedded ONIX metadata and retail packaging',
+      'Rapid SLA turnaround for frontlist releases and high-volume backlist catalogues',
+    ],
+    whyVelvora: [
+      'Specialist Publishing Craft: Deep domain expertise in book typography, grid layouts, and reader engines.',
+      'Comprehensive Physical Device QA: Verified across iPads, Kindle Paperwhites, Android, and screen readers.',
+      'High-Volume Conversion Capacity: Scalable pipelines capable of delivering 500+ titles per month without quality degradation.',
+    ],
     whoItsFor: 'Book publishers, journal publishers, educational publishers, authors, and corporate content teams.',
     faqs: [
       { q: 'What digital book formats do you convert and support?', a: 'We produce and convert reflowable EPUB 3, fixed-layout EPUB 3, legacy EPUB 2, Kindle (KPF/MOBI), interactive PDFs, and accessible web editions.' },

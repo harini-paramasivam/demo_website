@@ -307,40 +307,48 @@ export default function Careers() {
 
           <div className="career-grow-grid">
             <div className="grow-pod">
-              <div className="grow-pod__icon-wrap">
-                <TrendingUp size={24} />
+              <div className="grow-pod__head">
+                <div className="grow-pod__icon-wrap">
+                  <TrendingUp size={22} />
+                </div>
+                <h3 className="grow-pod__title">Growth</h3>
               </div>
-              <h3 className="grow-pod__title">Growth</h3>
               <p className="grow-pod__desc">
                 Continuous learning and skill development through training, mentorship, and global exposure.
               </p>
             </div>
 
             <div className="grow-pod">
-              <div className="grow-pod__icon-wrap">
-                <HeartHandshake size={24} />
+              <div className="grow-pod__head">
+                <div className="grow-pod__icon-wrap">
+                  <HeartHandshake size={22} />
+                </div>
+                <h3 className="grow-pod__title">Respect</h3>
               </div>
-              <h3 className="grow-pod__title">Respect</h3>
               <p className="grow-pod__desc">
                 Valuing every perspective, background, and contribution across our teams.
               </p>
             </div>
 
             <div className="grow-pod">
-              <div className="grow-pod__icon-wrap">
-                <Rocket size={24} />
+              <div className="grow-pod__head">
+                <div className="grow-pod__icon-wrap">
+                  <Rocket size={22} />
+                </div>
+                <h3 className="grow-pod__title">Opportunity</h3>
               </div>
-              <h3 className="grow-pod__title">Opportunity</h3>
               <p className="grow-pod__desc">
                 Equal chances to innovate in publishing, web development, software, AI, and marketing.
               </p>
             </div>
 
             <div className="grow-pod">
-              <div className="grow-pod__icon-wrap">
-                <ShieldCheck size={24} />
+              <div className="grow-pod__head">
+                <div className="grow-pod__icon-wrap">
+                  <ShieldCheck size={22} />
+                </div>
+                <h3 className="grow-pod__title">Well‑being</h3>
               </div>
-              <h3 className="grow-pod__title">Well‑being</h3>
               <p className="grow-pod__desc">
                 A supportive environment that balances professional success with personal health.
               </p>

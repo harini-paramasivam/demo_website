@@ -252,14 +252,15 @@ export default function ServicesOverview() {
                       const SvcIcon = svc.icon;
                       return (
                         <article key={svc.title} className="service-overview-card">
-                          <div className="service-overview-card__top">
+                          <div className="service-overview-card__head">
                             <span className="service-overview-card__icon-wrap">
                               <SvcIcon size={22} />
                             </span>
-                            <span className="service-overview-card__tag">{svc.badge}</span>
+                            <div className="service-overview-card__head-content">
+                              <span className="service-overview-card__tag">{svc.badge}</span>
+                              <h4 className="service-overview-card__title">{svc.title}</h4>
+                            </div>
                           </div>
-
-                          <h4 className="service-overview-card__title">{svc.title}</h4>
                           <p className="service-overview-card__desc">{svc.desc}</p>
 
                           <div className="service-overview-card__action">
