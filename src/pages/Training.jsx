@@ -404,13 +404,13 @@ export default function Training() {
         </div>
       </section>
 
-      {/* 5. 4-STEP ACADEMIC LEARNING PROCESS */}
-      <section className="section" style={{ paddingTop: '3rem', paddingBottom: '3.5rem' }}>
+      {/* 5. 4-STEP ACADEMIC LEARNING PROCESS (DARK THEME) */}
+      <section className="section why-section-dark netbg" style={{ paddingTop: '3.5rem', paddingBottom: '4.5rem' }}>
         <div className="container">
-          <div className="sec-head" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <p className="eyebrow">Academic Methodology</p>
-            <h2>The Velvora Learning Journey</h2>
-            <p className="lead" style={{ marginInline: 'auto', maxWidth: '640px' }}>
+          <div className="sec-head sec-head--dark" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <p className="eyebrow" style={{ color: '#38bdf8' }}>Academic Methodology</p>
+            <h2 style={{ color: '#ffffff' }}>The Velvora Learning Journey</h2>
+            <p className="lead" style={{ marginInline: 'auto', maxWidth: '640px', color: '#cbd5e1' }}>
               From foundational concepts to live enterprise delivery, our 4-stage progression ensures job-readiness.
             </p>
           </div>
@@ -430,17 +430,18 @@ export default function Training() {
                 style={{
                   padding: '28px 24px',
                   borderRadius: '18px',
-                  background: 'var(--paper)',
-                  border: '1px solid var(--border)'
+                  background: 'linear-gradient(165deg, rgba(14, 20, 36, 0.95) 0%, rgba(8, 12, 22, 0.98) 100%)',
+                  border: '1px solid rgba(56, 189, 248, 0.25)',
+                  boxShadow: '0 12px 30px rgba(0, 0, 0, 0.5)'
                 }}
               >
-                <div style={{ fontSize: '2rem', fontWeight: 800, color: '#0284c7', lineHeight: 1, marginBottom: '12px' }}>
+                <div style={{ fontSize: '2rem', fontWeight: 800, color: '#38bdf8', lineHeight: 1, marginBottom: '12px' }}>
                   {step.step}
                 </div>
-                <h4 style={{ fontSize: '1.15rem', color: 'var(--ink)', marginBottom: '8px' }}>
+                <h4 style={{ fontSize: '1.15rem', color: '#ffffff', marginBottom: '8px' }}>
                   {step.title}
                 </h4>
-                <p style={{ fontSize: '0.92rem', color: '#64748b', lineHeight: 1.6, margin: 0 }}>
+                <p style={{ fontSize: '0.92rem', color: '#94a3b8', lineHeight: 1.6, margin: 0 }}>
                   {step.desc}
                 </p>
               </div>
@@ -465,7 +466,7 @@ export default function Training() {
       </section>
 
       {/* 7. ADMISSIONS DESK & ENROLLMENT FORM */}
-      <section ref={formSectionRef} id="admissions-portal" className="section" style={{ paddingTop: '3.5rem', paddingBottom: '4.5rem' }}>
+      <section ref={formSectionRef} id="admissions-portal" className="section why-section-dark netbg" style={{ paddingTop: '3.5rem', paddingBottom: '4.5rem' }}>
         <div className="container">
           <TrainingEnrollmentForm />
         </div>

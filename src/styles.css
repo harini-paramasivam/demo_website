@@ -17768,7 +17768,6 @@ main:focus { outline: none; }
   height: 100% !important;
   display: flex !important;
   flex-direction: column !important;
-  justify-content: flex-start !important;
   background: #ffffff !important;
   border: 1.5px solid rgba(226, 232, 240, 0.95) !important;
   border-radius: 24px !important;
@@ -17788,7 +17787,7 @@ main:focus { outline: none; }
 }
 
 .sol-rail-advisory {
-  margin-top: 14px !important;
+  margin-top: auto !important;
   margin-bottom: 0 !important;
   padding: 14px 16px !important;
 }
@@ -17907,4 +17906,250 @@ main:focus { outline: none; }
 .sol-stage-footer {
   padding-top: 18px !important;
   margin-top: 0 !important;
+}
+
+
+/* ========================================================= */
+/* CAREERS LIGHT/DARK ALTERNATING SECTION THEME ENHANCEMENTS  */
+/* ========================================================= */
+
+/* 1. Philosophy Section (LIGHT THEME) */
+.career-philosophy-section {
+  padding: clamp(55px, 6.5vw, 90px) 0 !important;
+  background: #f8fafc !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.career-philosophy-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 24px !important;
+  padding: clamp(2rem, 4vw, 3.2rem) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
+  color: #0f172a !important;
+  backdrop-filter: none !important;
+}
+
+.career-philosophy-card::before {
+  background: linear-gradient(90deg, transparent, rgba(2, 132, 199, 0.4), transparent) !important;
+}
+
+.career-philosophy-card .badge-eyebrow {
+  color: #0284c7 !important;
+  background: rgba(2, 132, 199, 0.08) !important;
+  border: 1px solid rgba(2, 132, 199, 0.22) !important;
+}
+
+.career-philosophy-card .badge-eyebrow svg {
+  color: #0284c7 !important;
+}
+
+.career-philosophy-card .career-section-h2 {
+  color: #0f172a !important;
+}
+
+.career-philosophy-card__text {
+  color: #334155 !important;
+  font-size: 1.15rem !important;
+  line-height: 1.8 !important;
+}
+
+.career-philosophy-card__text strong {
+  color: #0284c7 !important;
+}
+
+/* 2. G.R.O.W. Framework Section (DARK THEME) */
+.career-grow-section {
+  padding: clamp(65px, 7vw, 105px) 0 !important;
+  background: radial-gradient(circle at 50% 18%, #0d152c 0%, #060a17 55%, #03050c 100%) !important;
+}
+
+.career-grow-header .career-section-h2 {
+  color: #ffffff !important;
+}
+
+.career-grow-header .lead {
+  color: #cbd5e1 !important;
+}
+
+/* 3. Inclusion & Innovation Section (LIGHT THEME) */
+.career-inclusion-section {
+  padding: clamp(65px, 7vw, 100px) 0 !important;
+  background: #ffffff !important;
+  border-top: 1px solid #e2e8f0 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.career-inclusion-box {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
+}
+
+.career-inclusion-box__left .career-section-h2 {
+  color: #0f172a !important;
+}
+
+.career-inclusion-lead {
+  color: #334155 !important;
+}
+
+.career-inclusion-list li {
+  color: #1e293b !important;
+}
+
+.career-inclusion-card {
+  background: #f8fafc !important;
+  border: 1.5px solid #e2e8f0 !important;
+}
+
+.career-inclusion-card__title {
+  color: #0f172a !important;
+}
+
+.career-inclusion-card__text {
+  color: #475569 !important;
+}
+
+/* 4. Why Join Us Section (DARK THEME) */
+.career-why-section {
+  padding: clamp(65px, 7vw, 105px) 0 !important;
+  background: radial-gradient(circle at 50% 18%, #0d152c 0%, #060a17 55%, #03050c 100%) !important;
+}
+
+/* 5. Quality Framework & Client Charter Section (LIGHT THEME) */
+.quality-framework-section {
+  padding: clamp(65px, 7vw, 100px) 0 !important;
+  background: #f8fafc !important;
+  border-top: 1px solid #e2e8f0 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.client-charter-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 24px !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
+}
+
+.client-charter-card .client-charter-badge {
+  background: rgba(2, 132, 199, 0.08) !important;
+  border: 1px solid rgba(2, 132, 199, 0.22) !important;
+  color: #0284c7 !important;
+}
+
+.client-charter-card .career-section-h2 {
+  color: #0f172a !important;
+}
+
+.client-charter-sub {
+  color: #475569 !important;
+}
+
+.client-charter-point {
+  background: #f8fafc !important;
+  border: 1.5px solid #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+.client-charter-point__icon {
+  color: #0284c7 !important;
+}
+
+.client-charter-point p {
+  color: #334155 !important;
+}
+
+.client-charter-point p strong {
+  color: #0f172a !important;
+}
+
+.client-charter-footer {
+  border-top: 1px solid #e2e8f0 !important;
+  background: #eff6ff !important;
+  border-radius: 16px !important;
+  padding: 1.4rem 1.6rem !important;
+  margin-top: 1.5rem !important;
+}
+
+.client-charter-footer .career-quote-icon {
+  color: #0284c7 !important;
+}
+
+.client-charter-footer p {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+.quality-framework-section .career-section-h2 {
+  color: #0f172a !important;
+}
+
+.quality-framework-section .lead {
+  color: #475569 !important;
+}
+
+.quality-step-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04) !important;
+}
+
+.quality-step-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 12px 28px rgba(2, 132, 199, 0.12) !important;
+}
+
+.quality-step-card__num {
+  font-size: 0.85rem !important;
+  font-weight: 800 !important;
+  color: #0284c7 !important;
+  background: rgba(2, 132, 199, 0.08) !important;
+  border: 1px solid rgba(2, 132, 199, 0.22) !important;
+  display: inline-block !important;
+  padding: 3px 9px !important;
+  border-radius: 999px !important;
+  margin-bottom: 0.6rem !important;
+}
+
+.quality-step-card__title {
+  color: #0f172a !important;
+}
+
+.quality-step-card__list li {
+  color: #334155 !important;
+}
+
+.quality-step-card__list li::before {
+  color: #0284c7 !important;
+}
+
+.quality-extra-box {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04) !important;
+}
+
+.quality-extra-box__title {
+  color: #0f172a !important;
+}
+
+.quality-extra-pod {
+  background: #f8fafc !important;
+  border: 1.5px solid #e2e8f0 !important;
+}
+
+.quality-extra-pod strong {
+  color: #0284c7 !important;
+}
+
+.quality-extra-pod p {
+  color: #475569 !important;
+}
+
+/* 6. Current Openings & Application Form Section (DARK THEME) */
+.career-apply-section {
+  padding: clamp(65px, 7vw, 105px) 0 !important;
+  background: radial-gradient(circle at 50% 15%, #0d152c 0%, #060a17 55%, #03050c 100%) !important;
 }

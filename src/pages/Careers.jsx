@@ -276,8 +276,8 @@ export default function Careers() {
         </div>
       </section>
 
-      {/* 2. OUR PHILOSOPHY & CAREER FRAMEWORK: G.R.O.W. */}
-      <section id="philosophy" className="section career-philosophy-section">
+      {/* 1. OUR PHILOSOPHY (LIGHT THEME) */}
+      <section id="philosophy" className="section section--paper career-philosophy-section">
         <div className="container">
           {/* Philosophy Banner */}
           <div className="career-philosophy-card">
@@ -291,9 +291,13 @@ export default function Careers() {
               At Velvora Solutions, we believe careers thrive when people can <strong>GROW</strong> — with opportunities to learn, respect for individuality, and a workplace that values well‑being. We don’t just hire talent; we nurture it, ensuring every team member has the chance to rise, contribute, and make an impact across content, technology, and digital innovation.
             </p>
           </div>
+        </div>
+      </section>
 
-          {/* G.R.O.W. Cards */}
-          <div id="grow-framework" className="career-grow-header" style={{ marginTop: '4rem' }}>
+      {/* 2. CAREER FRAMEWORK: G.R.O.W. (DARK THEME) */}
+      <section id="grow-framework" className="section why-section-dark netbg career-grow-section">
+        <div className="container">
+          <div className="career-grow-header text-center">
             <span className="pill"><i /> Career Progression</span>
             <h2 className="career-section-h2">Our Career Framework: G.R.O.W.</h2>
             <p className="lead" style={{ color: '#cbd5e1', fontSize: '1.18rem', lineHeight: 1.7, maxWidth: '68ch' }}>
@@ -414,7 +418,7 @@ export default function Careers() {
       </section>
 
       {/* 4. WHY JOIN US? */}
-      <section id="why-join" className="section why-section-dark netbg">
+      <section id="why-join" className="section why-section-dark netbg career-why-section">
         <div className="container">
           <div className="career-panel-header text-center">
             <span className="pill"><i /> The Velvora Advantage</span>
@@ -486,15 +490,16 @@ export default function Careers() {
         </div>
       </section>
 
-      {/* 5. MESSAGE TO OUR TEAM: CLIENTS COME FIRST */}
-      <section className="section client-charter-section">
+      {/* 5. QUALITY FRAMEWORK & CLIENT CHARTER (LIGHT THEME) */}
+      <section id="quality-framework" className="section section--paper quality-framework-section">
         <div className="container">
+          {/* CLIENT CHARTER */}
           <div className="client-charter-card">
             <div className="client-charter-card__header">
               <div className="client-charter-badge">
                 <Target size={16} /> Internal Culture Charter
               </div>
-              <h2 className="career-section-h2" style={{ color: '#fff' }}>
+              <h2 className="career-section-h2">
                 Message to Our Team: Clients Come First
               </h2>
               <p className="client-charter-sub">
@@ -532,16 +537,13 @@ export default function Careers() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* 6. DELIVERING QUALITY WORK: OUR FRAMEWORK */}
-      <section id="quality-framework" className="section why-section-dark netbg quality-framework-section">
-        <div className="container">
-          <div className="career-panel-header text-center">
-            <span className="pill"><i /> Delivery Lifecycle</span>
-            <h2 className="career-section-h2">Delivering Quality Work: Our Framework</h2>
-            <p className="lead" style={{ maxWidth: '64ch', margin: '0 auto' }}>
+          {/* QUALITY FRAMEWORK */}
+          <div style={{ marginTop: '4.5rem' }}>
+            <div className="career-panel-header text-center">
+              <span className="pill"><i /> Delivery Lifecycle</span>
+              <h2 className="career-section-h2">Delivering Quality Work: Our Framework</h2>
+              <p className="lead" style={{ maxWidth: '64ch', margin: '0 auto' }}>
               How our teams guarantee precision, compliance, and excellence on every single engagement.
             </p>
           </div>
@@ -637,11 +639,12 @@ export default function Careers() {
               </div>
             </div>
           </div>
+          </div>
         </div>
       </section>
 
       {/* 7. CURRENT OPENINGS & APPLICATION FORM */}
-      <section ref={applySectionRef} id="apply-section" className="section career-apply-section">
+      <section ref={applySectionRef} id="apply-section" className="section why-section-dark netbg career-apply-section">
         <div className="container">
           <div className="career-panel-header text-center">
             <span className="pill"><i /> Join Our Team</span>

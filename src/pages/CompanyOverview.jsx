@@ -108,9 +108,9 @@ export default function CompanyOverview() {
       </section>
 
       {/* OUR VALUES */}
-      <section className="section section--tint">
+      <section className="section why-section-dark netbg">
         <div className="container">
-          <div className="sec-head">
+          <div className="sec-head sec-head--dark">
             <p className="eyebrow">Guiding Principles</p>
             <h2>Our Values</h2>
             <p className="lead">How we think, work, and collaborate with our clients every single day.</p>
