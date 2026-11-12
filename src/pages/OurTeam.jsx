@@ -117,8 +117,8 @@ export default function OurTeam() {
                       src="/team-iyshwariya.jpg"
                       alt={leader.alt || 'Portrait of Iyshwariya Senthil, Founder / Managing Director'}
                       className="leadership-img"
-                      width={520}
-                      height={520}
+                      width={400}
+                      height={400}
                       loading="eager"
                     />
                   </div>

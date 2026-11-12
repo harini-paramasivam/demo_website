@@ -3371,7 +3371,7 @@ main:focus { outline: none; }
 /* Asymmetric 2-Column Editorial Glass Showcase */
 .leadership-showcase {
   display: grid;
-  grid-template-columns: 460px 1fr;
+  grid-template-columns: 370px 1fr;
   gap: clamp(36px, 5vw, 64px);
   align-items: center;
   background: linear-gradient(145deg, rgba(15, 23, 42, 0.72) 0%, rgba(10, 16, 32, 0.55) 50%, rgba(6, 10, 23, 0.85) 100%);
@@ -3417,7 +3417,7 @@ main:focus { outline: none; }
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 430px;
+  max-width: 340px;
   margin: 0 auto;
   padding-bottom: 20px;
 }
@@ -3981,7 +3981,7 @@ main:focus { outline: none; }
     gap: 36px;
   }
   .leadership-portrait-wrapper {
-    max-width: 380px;
+    max-width: 310px;
     margin: 0 auto;
   }
   .specialists-grid {
@@ -3998,7 +3998,7 @@ main:focus { outline: none; }
     grid-template-columns: 1fr;
   }
   .leadership-portrait-wrapper {
-    max-width: 300px;
+    max-width: 250px;
   }
   .leadership-floating-badge {
     padding: 7px 14px;
