@@ -192,20 +192,24 @@ export default function TrainingProgramPage() {
               </div>
             </div>
 
-            {/* VALUE PROPOSITION CALLOUT */}
-            <div className="callout-card" style={{ margin: '2rem 0' }}>
-              <h3 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <CheckCircle2 size={20} className="accent" aria-hidden="true" />
-                Why Learn {program.title} at Velvora Academy?
-              </h3>
-              <p>{program.whyChoose}</p>
+            {/* VALUE PROPOSITION CALLOUT (White inner card with crisp dark text, Blue outside container) */}
+            <div className="training-value-outer-blue" style={{ margin: '2.5rem 0', borderRadius: '24px', padding: '22px', background: 'linear-gradient(145deg, #0a173b 0%, #060e24 100%)', border: '1.5px solid rgba(56, 189, 248, 0.35)', boxShadow: '0 20px 50px -10px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.1)' }}>
+              <div className="training-value-inner-white" style={{ background: '#ffffff', borderRadius: '16px', padding: '26px 30px', boxShadow: '0 8px 25px rgba(0, 0, 0, 0.08)' }}>
+                <h3 style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#0a1630', fontSize: '1.32rem', fontWeight: 800, marginBottom: '12px' }}>
+                  <CheckCircle2 size={22} style={{ color: '#0284c7', flexShrink: 0 }} aria-hidden="true" />
+                  Why Learn {program.title} at Velvora Academy?
+                </h3>
+                <p style={{ margin: 0, color: '#334155', fontSize: '1.02rem', lineHeight: 1.75 }}>
+                  {program.whyChoose}
+                </p>
+              </div>
             </div>
 
-            {/* INTERNSHIP SPECIAL SPECIFICATIONS (if applicable) */}
+            {/* INTERNSHIP SPECIAL SPECIFICATIONS (2:2 Grid on Desktop) */}
             {program.internshipSpecs && (
               <div style={{ marginTop: '2.5rem', marginBottom: '2.5rem' }}>
                 <h3 className="section-subtitle">Flagship Internship Specifications</h3>
-                <div className="svc-offers-grid">
+                <div className="internship-highlights-2x2">
                   <div className="svc-offer-card">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0284c7', marginBottom: '6px' }}>
                       <Users size={18} />

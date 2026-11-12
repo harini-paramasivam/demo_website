@@ -23,8 +23,6 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
     email: '',
     phone: '',
     applicantType: 'Student (College / University)',
-    institution: '',
-    degree: '',
     program: initialProgram || 'Internship Program (Live Industry Projects)',
     trainingMode: 'Online Virtual Live (Interactive)',
     duration: '3 Months (Standard Certification Track)',
@@ -111,8 +109,6 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
       email: '',
       phone: '',
       applicantType: 'Student (College / University)',
-      institution: '',
-      degree: '',
       program: 'Internship Program (Live Industry Projects)',
       trainingMode: 'Online Virtual Live (Interactive)',
       duration: '3 Months (Standard Certification Track)',
@@ -397,58 +393,6 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                   <option value="Working Professional" style={{ background: '#070e24', color: '#ffffff' }}>Working Professional</option>
                   <option value="Corporate / Enterprise Team" style={{ background: '#070e24', color: '#ffffff' }}>Corporate / Enterprise Team</option>
                 </select>
-              </div>
-
-              {/* College / Institution */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label htmlFor="te-institution" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
-                  College / University / Company Name
-                </label>
-                <input
-                  type="text"
-                  id="te-institution"
-                  name="institution"
-                  value={formData.institution}
-                  onChange={handleChange}
-                  placeholder="e.g. Annamalai University / SRM"
-                  className="contact-input"
-                  style={{
-                    width: '100%',
-                    padding: '13px 16px',
-                    background: 'rgba(6, 12, 28, 0.85)',
-                    border: '1.5px solid rgba(56, 189, 248, 0.3)',
-                    borderRadius: '12px',
-                    color: '#ffffff',
-                    fontSize: '0.95rem',
-                    boxSizing: 'border-box'
-                  }}
-                />
-              </div>
-
-              {/* Degree & Year */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label htmlFor="te-degree" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
-                  Degree &amp; Branch / Year (for Students)
-                </label>
-                <input
-                  type="text"
-                  id="te-degree"
-                  name="degree"
-                  value={formData.degree}
-                  onChange={handleChange}
-                  placeholder="e.g. B.E Computer Science / BCA / MCA"
-                  className="contact-input"
-                  style={{
-                    width: '100%',
-                    padding: '13px 16px',
-                    background: 'rgba(6, 12, 28, 0.85)',
-                    border: '1.5px solid rgba(56, 189, 248, 0.3)',
-                    borderRadius: '12px',
-                    color: '#ffffff',
-                    fontSize: '0.95rem',
-                    boxSizing: 'border-box'
-                  }}
-                />
               </div>
             </div>
 

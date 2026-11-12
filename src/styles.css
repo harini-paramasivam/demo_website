@@ -3094,7 +3094,6 @@ main:focus { outline: none; }
   .hero__in { grid-template-columns: 1fr; gap: 40px; }
   .hero__art, .hero__art--modern { width: min(100%, 460px); margin: 0 auto; }
   .about, .split, .careers, .svc, .flow { grid-template-columns: 1fr; }
-  .why { grid-template-columns: 1fr 1fr; }
   .span3, .span4 { grid-column: span 6; }
   .rcards { grid-template-columns: 1fr 1fr; }
   .process { grid-template-columns: 1fr 1fr; }
@@ -4209,28 +4208,129 @@ main:focus { outline: none; }
   color: #e11d48;
 }
 
-.svc-offer-card h4, .svc-offer-card h5 {
-  margin: 0 0 .5rem;
-  color: var(--ink);
-  font-size: 1.15rem;
-  font-weight: 700;
+/* ===== Service Offer Cards & Categories (Equal Point Level & Standardized Typography) ===== */
+.svc-offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 24px;
+  align-items: stretch;
 }
+
+.svc-offer-cat,
+.svc-offer-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 28px 24px;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(10, 22, 48, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-sizing: border-box;
+}
+
+.svc-offer-cat:hover,
+.svc-offer-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 16px 36px -10px rgba(10, 22, 48, 0.12), 0 0 20px rgba(56, 189, 248, 0.15);
+}
+
+.svc-offer-cat h4,
+.svc-offer-card h4,
+.svc-offer-card h5 {
+  margin: 0 0 1rem;
+  color: #0a1630;
+  font-size: 1.22rem !important;
+  font-weight: 700;
+  line-height: 1.38;
+  min-height: 2.8rem;
+  display: flex;
+  align-items: center;
+}
+
 .svc-offer-card p {
   margin: 0;
-  font-size: .95rem;
-  color: var(--body);
-  line-height: 1.55;
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.65;
+  flex-grow: 1;
 }
-.svc-offer-cat {
-  padding: 24px;
-  background: var(--paper);
-  border: 1px solid var(--border);
-  border-radius: var(--r-md);
+
+.section-subtitle {
+  font-size: 1.55rem !important;
+  font-weight: 800;
+  color: #0a1630;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
 }
-.svc-offer-cat h4 {
-  font-size: 1.25rem;
-  color: var(--ink);
-  margin-bottom: 1rem;
+
+/* Even bullet point styling across all service grid cards */
+.svc-offer-cat .bullets,
+.svc-offer-card .bullets,
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.svc-offer-cat .bullets li,
+.svc-offer-card .bullets li,
+.bullets li {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.94rem;
+  line-height: 1.62;
+  color: #475569;
+  margin: 0;
+  padding: 0;
+}
+
+.svc-offer-cat .bullets li::before,
+.svc-offer-card .bullets li::before,
+.bullets li::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #0284c7;
+  margin-top: 0.52rem;
+  flex-shrink: 0;
+}
+
+/* ===== 2:2 Grid Layout for 4-Card Highlights & Internship Blue Theme ===== */
+.internship-highlights-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+@media (max-width: 768px) {
+  .internship-highlights-2x2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.internship-card-blue {
+  background: rgba(12, 25, 58, 0.78);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 16px;
+  padding: 22px 24px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.internship-card-blue:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45), 0 0 22px rgba(56, 189, 248, 0.18);
 }
 
 /* ===== Subservices (Digital Accessibility) ===== */

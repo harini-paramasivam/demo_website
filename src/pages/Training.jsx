@@ -159,90 +159,94 @@ export default function Training() {
         </div>
       </section>
 
-      {/* 3. FLAGSHIP INTERNSHIP SPOTLIGHT */}
+      {/* 3. FLAGSHIP INTERNSHIP SPOTLIGHT (2:2 Grid on Desktop & Rich Blue Theme) */}
       {featuredInternship && (
         <section className="section" style={{ paddingTop: '2rem', paddingBottom: '3.5rem' }}>
           <div className="container">
             <div
-              className="svc-header--glass"
+              className="svc-header--glass internship-spotlight-blue"
               style={{
                 borderRadius: '24px',
                 padding: 'clamp(28px, 4vw, 44px)',
-                marginBottom: 0
+                marginBottom: 0,
+                background: 'linear-gradient(145deg, #0a173b 0%, #060e24 100%)',
+                border: '1.5px solid rgba(56, 189, 248, 0.38)',
+                boxShadow: '0 24px 60px -12px rgba(0, 0, 0, 0.7), 0 0 35px rgba(56, 189, 248, 0.12)'
               }}
             >
               <div className="svc-header__top-bar">
-                <div className="svc-header__icon-pill">
-                  <span className="svc-header__icon-bubble">
+                <div className="svc-header__icon-pill" style={{ background: 'rgba(56, 189, 248, 0.15)', borderColor: 'rgba(56, 189, 248, 0.35)', color: '#38bdf8' }}>
+                  <span className="svc-header__icon-bubble" style={{ background: '#38bdf8', color: '#070f26' }}>
                     <GraduationCap size={20} />
                   </span>
-                  <span className="svc-header__tag-text">Flagship Student &amp; Fresher Program</span>
+                  <span className="svc-header__tag-text" style={{ color: '#e0f2fe' }}>Flagship Student &amp; Fresher Program</span>
                 </div>
-                <div className="svc-header__badge-pill">
+                <div className="svc-header__badge-pill" style={{ background: 'rgba(56, 189, 248, 0.12)', borderColor: 'rgba(56, 189, 248, 0.3)', color: '#38bdf8' }}>
                   <Sparkles size={14} className="accent" aria-hidden="true" />
                   <span>Accepting Applications for Next Batch</span>
                 </div>
               </div>
 
-              <h2 className="svc-header__title" style={{ marginTop: '0.5rem' }}>
+              <h2 className="svc-header__title" style={{ marginTop: '0.75rem', color: '#ffffff' }}>
                 {featuredInternship.title}
               </h2>
 
-              <p className="svc-header__lead">
+              <p className="svc-header__lead" style={{ color: '#cbd5e1' }}>
                 {featuredInternship.lead}
               </p>
 
-              <div className="svc-offers-grid" style={{ marginTop: '1.5rem', marginBottom: '1.5rem' }}>
-                <div className="svc-offer-card">
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0284c7', marginBottom: '6px' }}>
-                    <Users size={18} />
-                    <strong style={{ fontSize: '1.02rem', color: 'var(--ink)' }}>Who It's For:</strong>
+              {/* 2:2 Grid Layout for 4 Internship Cards */}
+              <div className="internship-highlights-2x2" style={{ marginTop: '1.5rem', marginBottom: '1.5rem' }}>
+                <div className="internship-card-blue">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#38bdf8', marginBottom: '8px' }}>
+                    <Users size={19} />
+                    <strong style={{ fontSize: '1.05rem', color: '#ffffff' }}>Who It's For:</strong>
                   </div>
-                  <p style={{ margin: 0, fontSize: '0.92rem', color: '#64748b' }}>
+                  <p style={{ margin: 0, fontSize: '0.94rem', color: '#cbd5e1', lineHeight: 1.65 }}>
                     {featuredInternship.internshipSpecs.whoItsFor}
                   </p>
                 </div>
 
-                <div className="svc-offer-card">
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0284c7', marginBottom: '6px' }}>
-                    <CheckCircle2 size={18} />
-                    <strong style={{ fontSize: '1.02rem', color: 'var(--ink)' }}>Eligibility:</strong>
+                <div className="internship-card-blue">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#38bdf8', marginBottom: '8px' }}>
+                    <CheckCircle2 size={19} />
+                    <strong style={{ fontSize: '1.05rem', color: '#ffffff' }}>Eligibility:</strong>
                   </div>
-                  <p style={{ margin: 0, fontSize: '0.92rem', color: '#64748b' }}>
+                  <p style={{ margin: 0, fontSize: '0.94rem', color: '#cbd5e1', lineHeight: 1.65 }}>
                     {featuredInternship.internshipSpecs.eligibility}
                   </p>
                 </div>
 
-                <div className="svc-offer-card">
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0284c7', marginBottom: '6px' }}>
-                    <Clock size={18} />
-                    <strong style={{ fontSize: '1.02rem', color: 'var(--ink)' }}>Flexible Duration:</strong>
+                <div className="internship-card-blue">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#38bdf8', marginBottom: '8px' }}>
+                    <Clock size={19} />
+                    <strong style={{ fontSize: '1.05rem', color: '#ffffff' }}>Flexible Duration:</strong>
                   </div>
-                  <p style={{ margin: 0, fontSize: '0.92rem', color: '#64748b' }}>
+                  <p style={{ margin: 0, fontSize: '0.94rem', color: '#cbd5e1', lineHeight: 1.65 }}>
                     {featuredInternship.internshipSpecs.duration}
                   </p>
                 </div>
 
-                <div className="svc-offer-card">
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#0284c7', marginBottom: '6px' }}>
-                    <Laptop size={18} />
-                    <strong style={{ fontSize: '1.02rem', color: 'var(--ink)' }}>Live Production Projects:</strong>
+                <div className="internship-card-blue">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#38bdf8', marginBottom: '8px' }}>
+                    <Laptop size={19} />
+                    <strong style={{ fontSize: '1.05rem', color: '#ffffff' }}>Live Production Projects:</strong>
                   </div>
-                  <p style={{ margin: 0, fontSize: '0.92rem', color: '#64748b' }}>
+                  <p style={{ margin: 0, fontSize: '0.94rem', color: '#cbd5e1', lineHeight: 1.65 }}>
                     {featuredInternship.internshipSpecs.liveProjectExposure}
                   </p>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center', marginTop: '1rem' }}>
+              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', alignItems: 'center', marginTop: '1.25rem' }}>
                 <Link to="/training/internship-program" className="btn btn--cyan">
                   <span>Explore Full Internship Curriculum</span>
                   <ArrowRight size={16} />
                 </Link>
-                <button type="button" onClick={scrollToForm} className="btn btn--secondary">
+                <button type="button" onClick={scrollToForm} className="btn btn--outline" style={{ borderColor: 'rgba(56, 189, 248, 0.4)', color: '#ffffff' }}>
                   <span>Quick Apply Online</span>
                 </button>
-                <span style={{ fontSize: '0.85rem', color: '#64748b', marginLeft: 'auto' }}>
+                <span style={{ fontSize: '0.85rem', color: '#94a3b8', marginLeft: 'auto' }}>
                   Locations: Cuddalore HQ · Chennai Branch · Virtual Remote
                 </span>
               </div>
