@@ -2336,11 +2336,13 @@ main:focus { outline: none; }
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
-  background-size: 52px 52px;
+    linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at 75% 50%, black 25%, rgba(0, 0, 0, 0.35) 65%, transparent 92%);
+  -webkit-mask-image: radial-gradient(ellipse at 75% 50%, black 25%, rgba(0, 0, 0, 0.35) 65%, transparent 92%);
   pointer-events: none;
-  opacity: 0.75;
+  opacity: 0.65;
   z-index: 1;
 }
 
@@ -2391,20 +2393,20 @@ main:focus { outline: none; }
   width: clamp(260px, 28vw, 380px);
   height: clamp(260px, 28vw, 380px);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(37, 99, 235, 0.05) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.14) 0%, rgba(37, 99, 235, 0.05) 50%, transparent 70%);
   filter: blur(55px);
   pointer-events: none;
   z-index: 1;
 }
 
-/* ===== Abstract Modern Pure Art Stage (PageHero Banners - Purely Visual, Zero Letters) ===== */
+/* ===== Rich 3D Volumetric Art Stage (PageHero Banners - Solid Isometric Solids, No Text) ===== */
 .phero-art-stage {
   position: absolute;
   top: 50%;
-  right: clamp(10px, 3.5vw, 60px);
+  right: clamp(15px, 4vw, 80px);
   transform: translateY(-50%);
-  width: clamp(280px, 28vw, 420px);
-  height: clamp(280px, 28vw, 420px);
+  width: clamp(340px, 33vw, 480px);
+  height: clamp(340px, 33vw, 480px);
   pointer-events: none;
   z-index: 2;
   display: flex;
@@ -2415,8 +2417,8 @@ main:focus { outline: none; }
   width: 100%;
   height: 100%;
   overflow: visible;
-  filter: drop-shadow(0 0 35px rgba(56, 189, 248, 0.25));
-  animation: pheroArtFloat 12s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 45px rgba(56, 189, 248, 0.32));
+  animation: pheroArtFloat 10s ease-in-out infinite alternate;
 }
 @keyframes pheroArtFloat {
   0% { transform: translateY(0) rotate(0deg) scale(1); }
