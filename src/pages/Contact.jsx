@@ -8,17 +8,13 @@ import {
   ShieldCheck, 
   CheckCircle, 
   ArrowRight, 
-  Linkedin,
-  Instagram,
-  Facebook,
-  Youtube,
-  Compass,
-  Briefcase,
-  BookOpen,
-  FileCheck2,
-  Clock,
-  Sparkles,
-  AlertCircle
+  Compass, 
+  Briefcase, 
+  BookOpen, 
+  FileCheck2, 
+  Clock, 
+  Sparkles, 
+  AlertCircle 
 } from 'lucide-react';
 import { company } from '../data/site.js';
 import { PageHero } from '../components/ui.jsx';
@@ -31,7 +27,8 @@ export default function Contact() {
   const [f, setF] = useState({
     name: '',
     email: '',
-    subject: '',
+    phone: '',
+    lookingFor: 'ePublishing Services',
     message: '',
   });
 
@@ -47,12 +44,21 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
+      const payload = {
+        name: f.name,
+        email: f.email,
+        phone: f.phone,
+        lookingFor: f.lookingFor,
+        subject: f.lookingFor || 'Project Consultation',
+        message: f.message
+      };
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(f),
+        body: JSON.stringify(payload),
       });
 
       let data = {};
@@ -69,40 +75,13 @@ export default function Contact() {
       }
 
       setSubmitted(true);
-      setF({ name: '', email: '', subject: '', message: '' });
+      setF({ name: '', email: '', phone: '', lookingFor: 'ePublishing Services', message: '' });
     } catch (err) {
       setErrorMessage(err.message || 'Something went wrong while delivering your message. Please try again or reach out to us directly.');
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  const socialLinks = [
-    {
-      name: 'LinkedIn',
-      icon: Linkedin,
-      url: company.linkedinCompany || 'https://www.linkedin.com/company/118444302/',
-      color: '#0a66c2'
-    },
-    {
-      name: 'Instagram',
-      icon: Instagram,
-      url: company.instagram || 'https://www.instagram.com/velvora_solutions?srtk=MWh0OHlvNmhlaXZwdg==',
-      color: '#e1306c'
-    },
-    {
-      name: 'Facebook',
-      icon: Facebook,
-      url: company.facebook || 'https://www.facebook.com/share/18faJ9mXpG/',
-      color: '#1877f2'
-    },
-    {
-      name: 'YouTube',
-      icon: Youtube,
-      url: company.youtube || 'https://www.youtube.com/@VelvoraSolutions',
-      color: '#ff0000'
-    }
-  ];
 
   const quickLinks = [
     {
@@ -149,7 +128,7 @@ export default function Contact() {
       <section className="section contact-page-section">
         <div className="container">
           <div className="contact-grid-main">
-            {/* LEFT COLUMN: CONTACT FORM */}
+            {/* LEFT COLUMN: CONTACT FORM (Clean White Card on Light Background) */}
             <div className="contact-card contact-card--form">
               <div className="contact-card__badge">
                 <Sparkles size={16} /> Direct Message
@@ -177,7 +156,7 @@ export default function Contact() {
                     onClick={() => {
                       setSubmitted(false);
                       setErrorMessage('');
-                      setF({ name: '', email: '', subject: '', message: '' });
+                      setF({ name: '', email: '', phone: '', lookingFor: 'ePublishing Services', message: '' });
                     }}
                     className="btn btn--outline"
                     style={{ marginTop: '1.25rem' }}
@@ -194,6 +173,7 @@ export default function Contact() {
                     </div>
                   )}
 
+                  {/* 1. Name */}
                   <div className="form-group">
                     <label htmlFor="contact-name">
                       Name <span className="req">*</span>
@@ -210,6 +190,7 @@ export default function Contact() {
                     />
                   </div>
 
+                  {/* 2. Email */}
                   <div className="form-group">
                     <label htmlFor="contact-email">
                       Email <span className="req">*</span>
@@ -226,21 +207,49 @@ export default function Contact() {
                     />
                   </div>
 
+                  {/* 3. Phone Number */}
                   <div className="form-group">
-                    <label htmlFor="contact-subject">
-                      Subject <span className="req">*</span>
+                    <label htmlFor="contact-phone">
+                      Phone / WhatsApp Number <span className="req">*</span>
                     </label>
                     <input
-                      id="contact-subject"
+                      id="contact-phone"
                       required
-                      type="text"
-                      value={f.subject}
-                      onChange={set('subject')}
-                      placeholder="e.g. Project Consultation / Publishing Enquiry"
+                      type="tel"
+                      value={f.phone}
+                      onChange={set('phone')}
+                      placeholder="e.g. +91 95008 34236"
+                      autoComplete="tel"
                       className="contact-input"
                     />
                   </div>
 
+                  {/* 4. Looking For (Services Dropdown replacing Subject) */}
+                  <div className="form-group">
+                    <label htmlFor="contact-lookingFor">
+                      Looking For (Services) <span className="req">*</span>
+                    </label>
+                    <select
+                      id="contact-lookingFor"
+                      required
+                      value={f.lookingFor}
+                      onChange={set('lookingFor')}
+                      className="contact-input contact-select"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <option value="ePublishing Services">ePublishing Services (EPUB 3, Reflow, Fixed)</option>
+                      <option value="XML Conversion">XML Conversion (JATS 1.3, BITS, DITA)</option>
+                      <option value="Digital Accessibility">Digital Accessibility (WCAG 2.2 AA/AAA, PDF/UA, Section 508)</option>
+                      <option value="AI Automation & Workflows">AI Automation &amp; Cognitive Pipelines</option>
+                      <option value="Software & Web Development">Software &amp; Web Development</option>
+                      <option value="Data Analytics & BI">Data Analytics &amp; Executive BI Dashboards</option>
+                      <option value="Digital Marketing & Growth">Digital Marketing &amp; SEO Growth</option>
+                      <option value="Training & Internships">Training &amp; Internship Programs</option>
+                      <option value="General Project Consultation">General Project Consultation</option>
+                    </select>
+                  </div>
+
+                  {/* 5. Message */}
                   <div className="form-group">
                     <label htmlFor="contact-message">
                       Message <span className="req">*</span>
@@ -269,7 +278,7 @@ export default function Contact() {
               )}
             </div>
 
-            {/* RIGHT COLUMN: OUR OFFICES, ONLINE CONNECT & QUICK LINKS */}
+            {/* RIGHT COLUMN: OUR OFFICES & QUICK LINKS (Clean White Theme Cards, No Connect Online) */}
             <div className="contact-sidebar">
               {/* 1. OUR OFFICES & DIRECT INFO */}
               <div className="contact-card contact-card--info">
@@ -328,33 +337,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* 2. CONNECT ONLINE */}
-              <div className="contact-card contact-card--social">
-                <h3 className="contact-sidebar-heading">Connect Online</h3>
-                <div className="social-links-list">
-                  {socialLinks.map((s) => {
-                    const IconComp = s.icon;
-                    return (
-                      <a
-                        key={s.name}
-                        href={s.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="social-pill-link"
-                        aria-label={`${s.name} (opens in new tab)`}
-                      >
-                        <span className="social-pill-link__icon" style={{ color: s.color }}>
-                          <IconComp size={18} />
-                        </span>
-                        <span className="social-pill-link__name">{s.name}</span>
-                        <ArrowRight size={15} className="social-pill-link__arrow" />
-                      </a>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* 3. QUICK LINKS */}
+              {/* 2. QUICK LINKS */}
               <div className="contact-card contact-card--quicklinks">
                 <h3 className="contact-sidebar-heading">Quick Links</h3>
                 <div className="quick-links-list">

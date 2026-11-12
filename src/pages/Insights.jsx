@@ -504,7 +504,7 @@ export default function Insights() {
                       <p>{cs.result}</p>
                     </div>
 
-                    <Link to="/resources/case-studies" className="btn btn--outline btn--block" style={{ marginTop: '16px' }}>
+                    <Link to="/resources/case-studies" className="btn btn--outline btn--block case-snapshot-btn" style={{ marginTop: '16px' }}>
                       <span>View Full Case Report</span>
                       <ArrowRight size={15} aria-hidden="true" />
                     </Link>

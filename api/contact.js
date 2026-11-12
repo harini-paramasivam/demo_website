@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, subject, message } = req.body || {};
+    const { name, email, phone, lookingFor, subject, message } = req.body || {};
 
     if (!name || !name.trim()) {
       return res.status(400).json({ success: false, error: 'Full name is required.' });
@@ -48,7 +48,9 @@ export default async function handler(req, res) {
     const secure = process.env.SMTP_SECURE ? process.env.SMTP_SECURE === 'true' : (port === 465);
     const recipient = (process.env.EMAIL_TO || process.env.SMTP_TO || 'info@velvorasolutions.com').trim();
     const sender = (process.env.EMAIL_FROM || process.env.SMTP_FROM || `"Velvora Solutions" <${user}>`).trim();
-    const cleanSubject = (subject && subject.trim()) ? subject.trim() : `Contact Enquiry from ${name.trim()}`;
+    const cleanSubject = (lookingFor && lookingFor.trim()) 
+      ? `Contact Enquiry [${lookingFor.trim()}] from ${name.trim()}`
+      : ((subject && subject.trim()) ? subject.trim() : `Contact Enquiry from ${name.trim()}`);
 
     const htmlContent = `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
@@ -60,7 +62,7 @@ export default async function handler(req, res) {
         <div style="padding: 28px;">
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
             <tr>
-              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 13px; width: 120px;"><strong>Sender Name:</strong></td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 13px; width: 130px;"><strong>Sender Name:</strong></td>
               <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #0f172a; font-size: 14px; font-weight: 600;">${escapeHtml(name.trim())}</td>
             </tr>
             <tr>
@@ -69,9 +71,17 @@ export default async function handler(req, res) {
                 <a href="mailto:${escapeHtml(email.trim())}" style="color: #0284c7; text-decoration: none;">${escapeHtml(email.trim())}</a>
               </td>
             </tr>
+            ${phone ? `
             <tr>
-              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 13px;"><strong>Subject:</strong></td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #0f172a; font-size: 14px;">${escapeHtml(cleanSubject)}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 13px;"><strong>Phone / WhatsApp:</strong></td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #0f172a; font-size: 14px; font-weight: 600;">
+                <a href="tel:${escapeHtml(phone.replace(/\s+/g, ''))}" style="color: #0f172a; text-decoration: none;">${escapeHtml(phone.trim())}</a>
+              </td>
+            </tr>
+            ` : ''}
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #64748b; font-size: 13px;"><strong>Looking For:</strong></td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #0284c7; font-size: 14px; font-weight: 600;">${escapeHtml(lookingFor || cleanSubject)}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; color: #64748b; font-size: 13px;"><strong>Submitted At:</strong></td>

@@ -769,7 +769,7 @@ export const nav = [
         id: 'internships',
         name: 'Internships & Careers',
         icon: 'Award',
-        count: 2,
+        count: 1,
         subtopics: [
           {
             title: '⭐ Internship Program (Live Projects)',
@@ -778,13 +778,7 @@ export const nav = [
             icon: 'Sparkles',
             color: 'amber',
           },
-          {
-            title: 'All Programs & Career Paths',
-            desc: 'Comprehensive training tracks, hands-on modules & placement paths.',
-            to: '/training',
-            icon: 'GraduationCap',
-            color: 'cyan',
-          },
+          
         ],
       },
       {
