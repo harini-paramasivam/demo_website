@@ -112,26 +112,6 @@ export default function HeroArt({
             loading="eager"
           />
         </div>
-
-        {/* Floating Verified Standards Capsule with Reverse Parallax for Enhanced Depth */}
-        {current.badgeTop && (
-          <div 
-            className="hero-ref-float-badge" 
-            key={`badge-top-${activeIdx}`}
-            style={{
-              transform: isHovering 
-                ? `translate3d(${-tilt.x * 1.6}px, ${tilt.y * 1.6}px, 25px)` 
-                : 'translate3d(0, 0, 0)',
-              transition: isHovering ? 'transform 0.15s ease-out' : 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)'
-            }}
-          >
-            <span className="hero-ref-badge-dot" />
-            <div className="hero-ref-badge-text">
-              <strong className="hero-ref-badge-label">{current.badgeTop.label}</strong>
-              <span className="hero-ref-badge-sub">{current.badgeTop.sub}</span>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

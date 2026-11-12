@@ -179,6 +179,17 @@ export const homeServices = [
     tag: 'Audience Amplification',
     badge: 'SEO · Content · Multi-Channel',
     image: '/card-marketing.jpg'
+  },
+  {
+    id: 'training-development',
+    title: 'Training & Skill Development',
+    desc: 'Industry-aligned corporate and student upskilling in digital publishing, accessibility, AI automation, and modern software technologies.',
+    btnText: 'Explore Training',
+    to: '/training',
+    icon: 'GraduationCap',
+    tag: 'Talent & Skill Development',
+    badge: 'Publishing · Accessibility · Tech',
+    image: '/card-training.jpg'
   }
 ];
 
