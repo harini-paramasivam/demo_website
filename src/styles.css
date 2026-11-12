@@ -2336,14 +2336,44 @@ main:focus { outline: none; }
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(ellipse at 75% 50%, black 25%, rgba(0, 0, 0, 0.35) 65%, transparent 92%);
-  -webkit-mask-image: radial-gradient(ellipse at 75% 50%, black 25%, rgba(0, 0, 0, 0.35) 65%, transparent 92%);
+    linear-gradient(rgba(56, 189, 248, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
   pointer-events: none;
-  opacity: 0.65;
+  opacity: 0.5;
   z-index: 1;
+}
+
+/* Full-Bleed Panoramic Cyber Wave Backdrop (Covers entire banner from left to right) */
+.phero-panoramic-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+.phero-panoramic-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Optical Read-Contrast Scrim (Guarantees text on the left is 100% crisp and NEVER disturbed by graphics) */
+.phero-read-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    90deg, 
+    rgba(2, 6, 18, 0.94) 0%, 
+    rgba(2, 6, 18, 0.88) 35%, 
+    rgba(2, 6, 18, 0.6) 58%, 
+    rgba(2, 6, 18, 0.2) 78%, 
+    transparent 100%
+  );
 }
 
 /* 1. Volumetric Multi-Spectrum Aurora Glow DIRECTLY BEHIND THE LETTERS ("Letter ku pinadi") */
@@ -2408,7 +2438,7 @@ main:focus { outline: none; }
   width: clamp(340px, 33vw, 480px);
   height: clamp(340px, 33vw, 480px);
   pointer-events: none;
-  z-index: 2;
+  z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2567,7 +2597,7 @@ main:focus { outline: none; }
 
 .phero .container { 
   position: relative; 
-  z-index: 3; 
+  z-index: 5; 
 }
 .crumbs { font-size: .88rem; color: var(--on-navy-muted); margin-bottom: 2rem; }
 .crumbs a { text-decoration: none; color: #94a3b8; transition: color .2s; }

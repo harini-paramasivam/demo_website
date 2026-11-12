@@ -38,12 +38,116 @@ export function PageHero({ eyebrow, title, children, crumbs = [] }) {
 
   return (
     <section className="phero phero--futuristic">
-      {/* 1. Volumetric Multi-Spectrum Aurora Glow */}
+      {/* 1. Full-Bleed Panoramic Cyber Wave & Constellation Landscape (Covers Entire Banner Width from Left to Right) */}
+      <div className="phero-panoramic-backdrop" aria-hidden="true">
+        <svg
+          viewBox="0 0 1440 500"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          className="phero-panoramic-svg"
+        >
+          <defs>
+            <linearGradient id={`panoGradPrimary-${pageTheme}`} x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.18" />
+              <stop offset="35%" stopColor="#0284c7" stopOpacity="0.32" />
+              <stop offset="70%" stopColor={pageTheme === 'solutions' ? '#c084fc' : pageTheme === 'training' ? '#34d399' : pageTheme === 'careers' ? '#f59e0b' : '#38bdf8'} stopOpacity="0.55" />
+              <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.75" />
+            </linearGradient>
+            <linearGradient id={`panoGradSecondary-${pageTheme}`} x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#0284c7" stopOpacity="0.12" />
+              <stop offset="40%" stopColor="#38bdf8" stopOpacity="0.28" />
+              <stop offset="75%" stopColor="#60a5fa" stopOpacity="0.45" />
+              <stop offset="100%" stopColor="#00d2ff" stopOpacity="0.6" />
+            </linearGradient>
+            <filter id={`panoGlow-${pageTheme}`} x="-10%" y="-10%" width="120%" height="120%">
+              <feGaussianBlur stdDeviation="4" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          {/* Undulating Panoramic Topography Wave Mesh Spanning Full Width (0px to 1440px) */}
+          <g filter={`url(#panoGlow-${pageTheme})`}>
+            {/* Wave 1 */}
+            <path
+              d="M -50 380 Q 280 320, 580 360 T 1150 310 Q 1320 280, 1500 340"
+              stroke={`url(#panoGradPrimary-${pageTheme})`}
+              strokeWidth="1.8"
+              strokeDasharray="4 8"
+            />
+            {/* Wave 2 */}
+            <path
+              d="M -50 410 Q 300 360, 600 400 T 1180 340 Q 1340 310, 1500 370"
+              stroke={`url(#panoGradSecondary-${pageTheme})`}
+              strokeWidth="1.6"
+              strokeDasharray="3 7"
+            />
+            {/* Wave 3 */}
+            <path
+              d="M -50 440 Q 320 400, 620 430 T 1200 380 Q 1350 340, 1500 410"
+              stroke={`url(#panoGradPrimary-${pageTheme})`}
+              strokeWidth="1.5"
+              strokeDasharray="4 10"
+            />
+            {/* Wave 4 */}
+            <path
+              d="M -50 470 Q 340 430, 640 465 T 1220 420 Q 1360 380, 1500 450"
+              stroke={`url(#panoGradSecondary-${pageTheme})`}
+              strokeWidth="1.4"
+              strokeDasharray="2 8"
+            />
+            {/* Upper Flow Ribbon */}
+            <path
+              d="M -50 160 Q 320 220, 720 180 T 1500 130"
+              stroke={`url(#panoGradSecondary-${pageTheme})`}
+              strokeWidth="1.2"
+              strokeDasharray="6 12"
+              opacity="0.35"
+            />
+
+            {/* Connecting Perspective Grid Rays Across Terrain */}
+            <line x1="120" y1="430" x2="160" y2="350" stroke={`url(#panoGradPrimary-${pageTheme})`} strokeWidth="1.2" strokeDasharray="3 6" opacity="0.4" />
+            <line x1="280" y1="440" x2="320" y2="360" stroke={`url(#panoGradPrimary-${pageTheme})`} strokeWidth="1.2" strokeDasharray="3 6" opacity="0.45" />
+            <line x1="450" y1="450" x2="490" y2="370" stroke={`url(#panoGradPrimary-${pageTheme})`} strokeWidth="1.2" strokeDasharray="3 6" opacity="0.5" />
+            <line x1="640" y1="465" x2="680" y2="385" stroke={`url(#panoGradPrimary-${pageTheme})`} strokeWidth="1.2" strokeDasharray="3 6" opacity="0.55" />
+            <line x1="840" y1="450" x2="880" y2="370" stroke={`url(#panoGradPrimary-${pageTheme})`} strokeWidth="1.4" strokeDasharray="3 6" opacity="0.6" />
+            <line x1="1050" y1="430" x2="1090" y2="350" stroke={`url(#panoGradPrimary-${pageTheme})`} strokeWidth="1.4" strokeDasharray="3 6" opacity="0.65" />
+            <line x1="1260" y1="410" x2="1300" y2="330" stroke={`url(#panoGradPrimary-${pageTheme})`} strokeWidth="1.5" strokeDasharray="3 6" opacity="0.7" />
+
+            {/* Constellation Nodes across Upper Sky */}
+            <circle cx="80" cy="180" r="3.5" fill="#38bdf8" opacity="0.5" />
+            <circle cx="210" cy="140" r="4" fill="#38bdf8" opacity="0.6" />
+            <circle cx="360" cy="190" r="3.5" fill="#38bdf8" opacity="0.5" />
+            <circle cx="520" cy="130" r="4.5" fill="#60a5fa" opacity="0.65" />
+            <circle cx="700" cy="170" r="4" fill="#38bdf8" opacity="0.6" />
+            <circle cx="890" cy="120" r="5" fill="#38bdf8" opacity="0.7" />
+            <circle cx="1080" cy="160" r="5.5" fill="#60a5fa" opacity="0.75" />
+            <circle cx="1290" cy="110" r="6" fill="#38bdf8" opacity="0.8" />
+
+            {/* Constellation Link Vectors */}
+            <line x1="80" y1="180" x2="210" y2="140" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 6" opacity="0.25" />
+            <line x1="210" y1="140" x2="360" y2="190" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 6" opacity="0.25" />
+            <line x1="360" y1="190" x2="520" y2="130" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 6" opacity="0.3" />
+            <line x1="520" y1="130" x2="700" y2="170" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 6" opacity="0.3" />
+            <line x1="700" y1="170" x2="890" y2="120" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 6" opacity="0.35" />
+            <line x1="890" y1="120" x2="1080" y2="160" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 6" opacity="0.4" />
+            <line x1="1080" y1="160" x2="1290" y2="110" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 6" opacity="0.45" />
+          </g>
+        </svg>
+      </div>
+
+      {/* 2. Optical Read-Contrast Scrim (Protects text on the left so graphics NEVER disturb words) */}
+      <div className="phero-read-scrim" aria-hidden="true" />
+
+      {/* 3. Volumetric Multi-Spectrum Aurora Glow */}
       <div className="phero-backglow phero-backglow--cyan" aria-hidden="true" />
       <div className="phero-backglow phero-backglow--sapphire" aria-hidden="true" />
       <div className="phero-ambient-orb" aria-hidden="true" />
 
-      {/* 2. Rich 3D Volumetric Isometric & Prismatic Showcase Art (Strictly NO text/letters, customized per category) */}
+      {/* 4. Rich 3D Volumetric Isometric & Prismatic Showcase Art (Strictly NO text/letters, customized per category) */}
       <div className={`phero-art-stage phero-art-stage--${pageTheme}`} aria-hidden="true">
         <svg
           viewBox="0 0 500 500"
