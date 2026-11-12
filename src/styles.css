@@ -17747,3 +17747,164 @@ main:focus { outline: none; }
     height: auto !important;
   }
 }
+
+
+/* ===== COMPACT EQUALIZED LAYOUT - ZERO ARTIFICIAL BLANK SPACE ===== */
+.sol-blueprint-console {
+  display: grid !important;
+  grid-template-columns: 330px 1fr !important;
+  gap: 28px !important;
+  align-items: stretch !important;
+}
+
+.sol-rail {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  position: static !important;
+}
+
+.sol-rail-card {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  background: #ffffff !important;
+  border: 1.5px solid rgba(226, 232, 240, 0.95) !important;
+  border-radius: 24px !important;
+  padding: 22px !important;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.04) !important;
+  box-sizing: border-box !important;
+}
+
+.sol-rail-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+}
+
+.sol-rail-item {
+  padding: 8px 10px !important;
+}
+
+.sol-rail-advisory {
+  margin-top: 14px !important;
+  margin-bottom: 0 !important;
+  padding: 14px 16px !important;
+}
+
+.sol-stage {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+}
+
+.sol-stage-card {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background: #ffffff !important;
+  border: 1.5px solid rgba(226, 232, 240, 0.95) !important;
+  border-radius: 24px !important;
+  padding: 28px !important;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.04) !important;
+  box-sizing: border-box !important;
+}
+
+.sol-stage-header {
+  padding-bottom: 18px !important;
+  margin-bottom: 20px !important;
+}
+
+.sol-stage-body {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 18px !important;
+  align-items: stretch !important;
+  margin-bottom: 18px !important;
+  flex: 1 1 auto !important;
+}
+
+.sol-stage-col {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  height: 100% !important;
+}
+
+.sol-module {
+  margin-bottom: 0 !important;
+  padding: 16px 18px !important;
+  border-radius: 16px !important;
+  background: #f8fafc !important;
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  box-sizing: border-box !important;
+}
+
+.sol-module-head {
+  margin-bottom: 12px !important;
+}
+
+.sol-flow-timeline {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  align-items: center !important;
+}
+.sol-flow-step-wrap {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+.sol-flow-step-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 5px 11px !important;
+  border-radius: 999px !important;
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  color: #1e293b !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+}
+.sol-flow-step-idx {
+  font-size: 0.72rem !important;
+  color: #0284c7 !important;
+  font-weight: 700 !important;
+}
+.sol-flow-arrow {
+  color: #94a3b8 !important;
+}
+
+.sol-direct-card {
+  margin-top: auto !important;
+  margin-bottom: 0 !important;
+  padding: 20px !important;
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, #0b1329 0%, #0e1c3d 100%) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  color: #ffffff !important;
+  box-sizing: border-box !important;
+}
+
+.sol-direct-card__title {
+  font-size: 1.15rem !important;
+  margin: 0 0 6px !important;
+}
+.sol-direct-card__desc {
+  font-size: 0.84rem !important;
+  line-height: 1.5 !important;
+  margin: 0 0 14px !important;
+}
+.sol-direct-card__btn {
+  padding: 10px 16px !important;
+  font-size: 0.88rem !important;
+}
+
+.sol-stage-footer {
+  padding-top: 18px !important;
+  margin-top: 0 !important;
+}

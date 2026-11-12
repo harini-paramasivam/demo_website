@@ -163,13 +163,13 @@ export default function SolutionsOverview() {
                             aria-selected={isSelected}
                           >
                             <span className="sol-rail-item__icon">
-                              <Icon name={sol.icon} size={18} />
+                              <Icon name={sol.icon} size={17} />
                             </span>
                             <div className="sol-rail-item__text">
                               <strong>{sol.title}</strong>
                               <span>{sol.tag}</span>
                             </div>
-                            <ChevronRight size={15} className="sol-rail-item__arrow" aria-hidden="true" />
+                            <ChevronRight size={14} className="sol-rail-item__arrow" aria-hidden="true" />
                           </button>
                         );
                       })}
@@ -177,7 +177,7 @@ export default function SolutionsOverview() {
                   </div>
 
                   {/* Operational Need Group */}
-                  <div className="sol-rail-group" style={{ marginTop: '18px' }}>
+                  <div className="sol-rail-group" style={{ marginTop: '14px' }}>
                     <span className="sol-rail-group-label">By Operational Need (5)</span>
                     <div className="sol-rail-list">
                       {needSolutions.map((sol) => {
@@ -191,13 +191,13 @@ export default function SolutionsOverview() {
                             aria-selected={isSelected}
                           >
                             <span className="sol-rail-item__icon">
-                              <Icon name={sol.icon} size={18} />
+                              <Icon name={sol.icon} size={17} />
                             </span>
                             <div className="sol-rail-item__text">
                               <strong>{sol.title}</strong>
                               <span>{sol.tag}</span>
                             </div>
-                            <ChevronRight size={15} className="sol-rail-item__arrow" aria-hidden="true" />
+                            <ChevronRight size={14} className="sol-rail-item__arrow" aria-hidden="true" />
                           </button>
                         );
                       })}
@@ -209,7 +209,7 @@ export default function SolutionsOverview() {
                     <span className="sol-rail-advisory__title">Custom Enterprise SLA?</span>
                     <p className="sol-rail-advisory__text">We configure bespoke multi-system delivery pipelines.</p>
                     <Link to="/contact" className="sol-rail-advisory__btn">
-                      Request Custom Architecture <ArrowRight size={14} />
+                      Request Custom Architecture <ArrowRight size={13} />
                     </Link>
                   </div>
                 </div>
@@ -221,7 +221,7 @@ export default function SolutionsOverview() {
                   {/* Stage Top Banner */}
                   <header className="sol-stage-header">
                     <div className="sol-stage-header__icon-box">
-                      <Icon name={activeSolution.icon} size={32} />
+                      <Icon name={activeSolution.icon} size={30} />
                     </div>
                     <div className="sol-stage-header__info">
                       <div className="sol-stage-header__meta">
@@ -245,15 +245,15 @@ export default function SolutionsOverview() {
                     </div>
                   </header>
 
-                  {/* TOP STAGE DUAL COLUMNS (EQUALIZED HEIGHTS) */}
+                  {/* BALANCED 2-COLUMN STAGE BODY - ZERO ARTIFICIAL GAPS */}
                   <div className="sol-stage-body">
-                    {/* LEFT COLUMN: CHALLENGES & WORKFLOW PIPELINE */}
+                    {/* LEFT COLUMN */}
                     <div className="sol-stage-col sol-stage-col--workflow">
                       {/* 1. THE CHALLENGE */}
                       <div className="sol-module sol-module--challenges">
                         <div className="sol-module-head">
                           <span className="sol-module-head__icon sol-module-head__icon--alert">
-                            <AlertCircle size={16} aria-hidden="true" />
+                            <AlertCircle size={15} aria-hidden="true" />
                           </span>
                           <h3 className="sol-module-head__title">The Operational Challenge</h3>
                         </div>
@@ -267,58 +267,74 @@ export default function SolutionsOverview() {
                         </ul>
                       </div>
 
-                      {/* 2. SOLUTION FLOW PIPELINE */}
+                      {/* 2. SOLUTION FLOW PIPELINE (COMPACT CONNECTED ROADMAP) */}
                       <div className="sol-module sol-module--flow">
                         <div className="sol-module-head">
                           <span className="sol-module-head__icon sol-module-head__icon--flow">
-                            <Workflow size={16} aria-hidden="true" />
+                            <Workflow size={15} aria-hidden="true" />
                           </span>
                           <h3 className="sol-module-head__title">Velvora Solution Flow Pipeline</h3>
                         </div>
                         <div className="sol-flow-timeline">
                           {activeSolution.flow.map((step, idx) => (
-                            <div key={idx} className="sol-flow-timeline__step">
-                              <div className="sol-flow-timeline__node">
-                                <span className="sol-flow-timeline__num">0{idx + 1}</span>
-                              </div>
-                              <div className="sol-flow-timeline__content">
-                                <strong>{step}</strong>
-                              </div>
+                            <span key={idx} className="sol-flow-step-wrap">
+                              <span className="sol-flow-step-pill">
+                                <span className="sol-flow-step-idx">0{idx + 1}</span>
+                                <span className="sol-flow-step-text">{step}</span>
+                              </span>
                               {idx < activeSolution.flow.length - 1 && (
-                                <ChevronRight size={16} className="sol-flow-timeline__arrow" aria-hidden="true" />
+                                <ChevronRight size={13} className="sol-flow-arrow" aria-hidden="true" />
                               )}
-                            </div>
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* 3. INTEGRATED SERVICES */}
+                      <div className="sol-module sol-module--services">
+                        <div className="sol-module-head">
+                          <span className="sol-module-head__icon sol-module-head__icon--services">
+                            <Layers size={15} aria-hidden="true" />
+                          </span>
+                          <h3 className="sol-module-head__title">Velvora Services Integrated</h3>
+                        </div>
+                        <div className="sol-services-wrap">
+                          {activeSolution.servicesIncluded.map((s, idx) => (
+                            <span key={idx} className="sol-service-chip">
+                              <Check size={12} className="sol-service-chip__check" />
+                              <span>{s}</span>
+                            </span>
                           ))}
                         </div>
                       </div>
                     </div>
 
-                    {/* RIGHT COLUMN: BENEFITS & STANDARDS / CASE STUDY */}
+                    {/* RIGHT COLUMN */}
                     <div className="sol-stage-col sol-stage-col--impact">
-                      {/* 3. BENEFITS DELIVERED */}
+                      {/* 4. BENEFITS DELIVERED */}
                       <div className="sol-module sol-module--benefits">
                         <div className="sol-module-head">
                           <span className="sol-module-head__icon sol-module-head__icon--benefits">
-                            <CheckCircle2 size={16} aria-hidden="true" />
+                            <CheckCircle2 size={15} aria-hidden="true" />
                           </span>
                           <h3 className="sol-module-head__title">Verified Benefits Delivered</h3>
                         </div>
                         <ul className="sol-benefits-list">
                           {activeSolution.benefits.map((b, i) => (
                             <li key={i}>
-                              <CheckCircle2 size={16} className="sol-benefit-check" aria-hidden="true" />
+                              <CheckCircle2 size={15} className="sol-benefit-check" aria-hidden="true" />
                               <span>{b}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
 
-                      {/* 4. STANDARDS OR CASE STUDY SPOTLIGHT */}
+                      {/* 5. STANDARDS OR CASE STUDY SPOTLIGHT */}
                       {activeSolution.standards ? (
                         <div className="sol-module sol-module--standards">
                           <div className="sol-module-head">
                             <span className="sol-module-head__icon sol-module-head__icon--award">
-                              <Award size={16} aria-hidden="true" />
+                              <Award size={15} aria-hidden="true" />
                             </span>
                             <h3 className="sol-module-head__title">Verified Standards &amp; Regulations</h3>
                           </div>
@@ -337,7 +353,7 @@ export default function SolutionsOverview() {
                           {activeSolution.caseStudyLink && (
                             <Link to={activeSolution.caseStudyLink} className="sol-casestudy-link">
                               <span>Read Case Report</span>
-                              <ChevronRight size={14} aria-hidden="true" />
+                              <ChevronRight size={13} aria-hidden="true" />
                             </Link>
                           )}
                         </div>
@@ -345,7 +361,7 @@ export default function SolutionsOverview() {
                         <div className="sol-module sol-module--assurance">
                           <div className="sol-module-head">
                             <span className="sol-module-head__icon sol-module-head__icon--award">
-                              <Award size={16} aria-hidden="true" />
+                              <Award size={15} aria-hidden="true" />
                             </span>
                             <h3 className="sol-module-head__title">Enterprise Quality Guarantee</h3>
                           </div>
@@ -354,43 +370,22 @@ export default function SolutionsOverview() {
                           </p>
                         </div>
                       )}
-                    </div>
-                  </div>
 
-                  {/* BOTTOM BALANCED GRID: SERVICES (LEFT) & DEPLOY ACTION (RIGHT) - GUARANTEED EXACT SAME BOTTOM LEVEL */}
-                  <div className="sol-stage-bottom-grid">
-                    {/* LEFT: INTEGRATED SERVICES */}
-                    <div className="sol-module sol-module--services sol-bottom-card">
-                      <div className="sol-module-head">
-                        <span className="sol-module-head__icon sol-module-head__icon--services">
-                          <Layers size={16} aria-hidden="true" />
-                        </span>
-                        <h3 className="sol-module-head__title">Velvora Services Integrated</h3>
+                      {/* 6. DEPLOY ACTION CARD */}
+                      <div className="sol-direct-card">
+                        <span className="sol-direct-card__badge">Execution SLA</span>
+                        <h4 className="sol-direct-card__title">Deploy this Architecture</h4>
+                        <p className="sol-direct-card__desc">
+                          Our solutions architects will analyze your content repositories and establish a zero-disruption timeline within 24 hours.
+                        </p>
+                        <Link
+                          to={`/contact?subject=${encodeURIComponent(activeSolution.ctaSubject || activeSolution.title)}`}
+                          className="btn btn--orange btn--block sol-direct-card__btn"
+                        >
+                          <span>{activeSolution.ctaText}</span>
+                          <ArrowRight size={15} aria-hidden="true" />
+                        </Link>
                       </div>
-                      <div className="sol-services-wrap">
-                        {activeSolution.servicesIncluded.map((s, idx) => (
-                          <span key={idx} className="sol-service-chip">
-                            <Check size={13} className="sol-service-chip__check" />
-                            <span>{s}</span>
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* RIGHT: DEPLOY ACTION CARD */}
-                    <div className="sol-direct-card sol-bottom-card">
-                      <span className="sol-direct-card__badge">Execution SLA</span>
-                      <h4 className="sol-direct-card__title">Deploy this Architecture</h4>
-                      <p className="sol-direct-card__desc">
-                        Our solutions architects will analyze your content repositories and establish a zero-disruption timeline within 24 hours.
-                      </p>
-                      <Link
-                        to={`/contact?subject=${encodeURIComponent(activeSolution.ctaSubject || activeSolution.title)}`}
-                        className="btn btn--orange btn--block sol-direct-card__btn"
-                      >
-                        <span>{activeSolution.ctaText}</span>
-                        <ArrowRight size={16} aria-hidden="true" />
-                      </Link>
                     </div>
                   </div>
 
