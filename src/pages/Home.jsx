@@ -367,11 +367,12 @@ export default function Home() {
       </section>
 
       {/* 3. SERVICES AT A GLANCE */}
-      <section id="services-glance" className="section section--tint" aria-labelledby="services-head">
+      <section id="services-glance" className="section why-section-dark netbg" aria-labelledby="services-head">
         <div className="container">
           <SectionHead
             eyebrow="Capabilities Overview"
             title="Services at a Glance"
+            dark={true}
           >
             We convert, structure, and remediate content so it can be published anywhere and read by anyone.
           </SectionHead>

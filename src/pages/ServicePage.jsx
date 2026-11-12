@@ -99,19 +99,19 @@ function getOfferIcon(title = '', idx = 0) {
 }
 
 function FaqAccordion({ items = [] }) {
-  const [openIdx, setOpenIdx] = useState(0); // 1st Q&A opened by default!
+  const [openIdx, setOpenIdx] = useState(0);
 
   return (
     <div className="faq-list">
       {items.map((f, idx) => {
         const isOpen = openIdx === idx;
         return (
-          <div key={f.q || idx} className={`faq-item${isOpen ? ' is-open' : ''}`}>
+          <div key={idx} className="faq-item">
             <button
               type="button"
-              className="faq-question"
+              className="faq-item__btn"
+              onClick={() => setOpenIdx(isOpen ? -1 : idx)}
               aria-expanded={isOpen}
-              onClick={() => setOpenIdx(isOpen ? null : idx)}
             >
               <span>{f.q}</span>
               <ChevronDown
@@ -144,17 +144,33 @@ export default function ServicePage() {
 
   const others = services.filter((x) => x.slug !== s.slug);
 
+  const hasBenefitsOrImpact = !!(
+    s.subServices ||
+    s.whyVelvora ||
+    s.benefits ||
+    s.whyItMatters ||
+    s.whoItsFor ||
+    s.subjects ||
+    s.whatParticipantsGet
+  );
+
   return (
     <>
+      {/* ========================================================================= */}
+      {/* HEADER: PAGE HERO (STRICTLY DARK THEME)                                   */}
+      {/* ========================================================================= */}
       <PageHero
-        eyebrow="Services"
+        eyebrow="Specialized Practice"
         title={s.title}
         crumbs={['Services', s.title]}
       >
         {s.overview}
       </PageHero>
 
-      <section className="section">
+      {/* ========================================================================= */}
+      {/* SECTION 1: SERVICE OVERVIEW & CORE DELIVERABLES (LIGHT THEME)            */}
+      {/* ========================================================================= */}
+      <section className="section section--paper svc-section-overview">
         <div className="container svc-layout">
           <div className="svc-main">
             {/* HEADING & OVERVIEW */}
@@ -211,7 +227,7 @@ export default function ServicePage() {
 
             {/* WHAT WE OFFER - Categorized or Card list */}
             {s.whatWeOffer && (
-              <div style={{ marginTop: '3rem' }}>
+              <div style={{ marginTop: '2.5rem' }}>
                 <h3 className="section-subtitle">What We Offer</h3>
                 <div className="svc-offers-grid">
                   {s.whatWeOffer.map((item, idx) => {
@@ -241,186 +257,9 @@ export default function ServicePage() {
                 </div>
               </div>
             )}
-
-            {/* SUB-SERVICES (Digital Accessibility: EPUB 3, EPUB 2, Web, PDF, Word, PPT, Excel) */}
-            {s.subServices && (
-              <div style={{ marginTop: '3.5rem' }}>
-                <h3 className="section-subtitle">Our Accessibility Services</h3>
-                <div className="subservices-list">
-                  {s.subServices.map((sub) => (
-                    <div key={sub.id} id={sub.id} className="subservice-block">
-                      <div className="subservice-header">
-                        <h4>{sub.title}</h4>
-                        <p className="lead">{sub.overview}</p>
-                      </div>
-                      <h5>What We Do</h5>
-                      <ul className="bullets">
-                        {sub.whatWeDo.map((w) => (
-                          <li key={w}>{w}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* TRAINING PROGRAMS (for Training & Consulting) */}
-            {s.trainingPrograms && (
-              <div style={{ marginTop: '3.5rem' }}>
-                <h3 className="section-subtitle">Training Programs</h3>
-                <div className="svc-offers-grid">
-                  {s.trainingPrograms.map((tp, idx) => {
-                    const { IconCmp, color } = getOfferIcon(tp.name, idx);
-                    return (
-                      <div key={tp.name} className="svc-offer-card">
-                        <div className={`svc-offer-card__icon svc-offer-card__icon--${color}`}>
-                          <IconCmp size={22} />
-                        </div>
-                        <h4>{tp.name}</h4>
-                        <p>{tp.desc}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-
-                {s.trainingFormats && (
-                  <div style={{ marginTop: '2.5rem' }}>
-                    <h4>Training Formats</h4>
-                    <ul className="bullets">
-                      {s.trainingFormats.map((tf) => (
-                        <li key={tf}>{tf}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {s.consultingServices && (
-                  <div style={{ marginTop: '2.5rem' }}>
-                    <h4>Consulting Services</h4>
-                    <div className="svc-offers-grid" style={{ marginTop: '1rem' }}>
-                      {s.consultingServices.map((cs, idx) => {
-                        const { IconCmp, color } = getOfferIcon(cs.title, idx);
-                        return (
-                          <div key={cs.title} className="svc-offer-card">
-                            <div className={`svc-offer-card__icon svc-offer-card__icon--${color}`}>
-                              <IconCmp size={22} />
-                            </div>
-                            <h5>{cs.title}</h5>
-                            <p>{cs.desc}</p>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* PROCESS */}
-            {s.process && (
-              <div style={{ marginTop: '3.5rem' }}>
-                <h3 className="section-subtitle">Our Process</h3>
-                <ol className="svc-process-list">
-                  {s.process.map((p, idx) => {
-                    const cleanTitle = p.step.replace(/^\d+[\.\s\-]+/, '');
-                    return (
-                      <li key={idx} className="svc-process-item">
-                        <div className="svc-process-header">
-                          <span className="step-num">{String(idx + 1).padStart(2, '0')}</span>
-                          <h4 className="svc-process-title">{cleanTitle}</h4>
-                        </div>
-                        <p className="svc-process-desc">{p.desc}</p>
-                      </li>
-                    );
-                  })}
-                </ol>
-              </div>
-            )}
-
-            {/* WHY VELVORA / BENEFITS / WHY IT MATTERS */}
-            {s.whyVelvora && (
-              <div style={{ marginTop: '3.5rem' }}>
-                <h3 className="section-subtitle">Why Velvora</h3>
-                <ul className="bullets">
-                  {s.whyVelvora.map((w) => (
-                    <li key={w}>{w}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {s.benefits && (
-              <div style={{ marginTop: '3.5rem' }}>
-                <h3 className="section-subtitle">Benefits</h3>
-                <ul className="bullets">
-                  {s.benefits.map((b) => (
-                    <li key={b}>{b}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {s.whyItMatters && (
-              <div style={{ marginTop: '3.5rem' }}>
-                <h3 className="section-subtitle">Why It Matters</h3>
-                <div className="svc-offers-grid">
-                  {s.whyItMatters.map((m) => (
-                    <div key={m.title} className="svc-offer-card">
-                      <h4>{m.title}</h4>
-                      <p>{m.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* WHO IT'S FOR / SUBJECTS */}
-            {s.whoItsFor && (
-              <div className="callout-card" style={{ marginTop: '2.5rem' }}>
-                <h4>Who It&apos;s For</h4>
-                <p>{s.whoItsFor}</p>
-              </div>
-            )}
-
-            {s.subjects && (
-              <div className="callout-card" style={{ marginTop: '2.5rem' }}>
-                <h4>Subjects We Handle</h4>
-                <p>{s.subjects}</p>
-              </div>
-            )}
-
-            {s.whatParticipantsGet && (
-              <div style={{ marginTop: '2.5rem' }}>
-                <h4>What Participants Get</h4>
-                <ul className="bullets">
-                  {s.whatParticipantsGet.map((pg) => (
-                    <li key={pg}>{pg}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* FAQS */}
-            {s.faqs && (
-              <div style={{ marginTop: '3.5rem' }}>
-                <h3 className="section-subtitle" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <HelpCircle size={22} className="accent" aria-hidden="true" />
-                  Frequently Asked Questions
-                </h3>
-                <FaqAccordion items={s.faqs} />
-              </div>
-            )}
-
-            {/* ACTION BUTTON */}
-            <div style={{ marginTop: '3rem' }}>
-              <Link to={`/contact?service=${encodeURIComponent(s.title)}`} className="btn btn--orange btn--lg">
-                {s.buttonText || 'Request a Quote'} <ArrowRight size={18} aria-hidden="true" />
-              </Link>
-            </div>
           </div>
 
-          {/* SIDEBAR */}
+          {/* SIDEBAR: ALL SERVICES DIRECTORY */}
           <aside className="svc-sidebar" aria-label="Other services">
             <div className="svc-sidebar__card">
               <h3>All Services</h3>
@@ -447,6 +286,174 @@ export default function ServicePage() {
         </div>
       </section>
 
+      {/* ========================================================================= */}
+      {/* SECTION 2: PRODUCTION & DELIVERY PROCESS (DARK THEME)                     */}
+      {/* ========================================================================= */}
+      {s.process && (
+        <section className="section why-section-dark netbg svc-section-process">
+          <div className="container">
+            <div className="sec-head sec-head--dark text-center" style={{ marginBottom: '3rem' }}>
+              <p className="eyebrow" style={{ color: '#38bdf8' }}>Delivery Methodology</p>
+              <h2 style={{ color: '#ffffff' }}>Our Production &amp; Delivery Process</h2>
+              <p className="lead" style={{ marginInline: 'auto', maxWidth: '640px', color: '#cbd5e1' }}>
+                A disciplined lifecycle combining automated tooling with human subject-matter expertise.
+              </p>
+            </div>
+
+            <ol className="svc-process-list">
+              {s.process.map((p, idx) => {
+                const cleanTitle = p.step.replace(/^\d+[\.\s\-]+/, '');
+                return (
+                  <li key={idx} className="svc-process-item">
+                    <div className="svc-process-header">
+                      <span className="step-num">{String(idx + 1).padStart(2, '0')}</span>
+                      <h4 className="svc-process-title">{cleanTitle}</h4>
+                    </div>
+                    <p className="svc-process-desc">{p.desc}</p>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+        </section>
+      )}
+
+      {/* ========================================================================= */}
+      {/* SECTION 3: STRATEGIC VALUE, BENEFITS & SUB-SERVICES (LIGHT THEME)         */}
+      {/* ========================================================================= */}
+      {hasBenefitsOrImpact && (
+        <section className="section section--paper svc-section-benefits">
+          <div className="container">
+            {/* SUB-SERVICES (Digital Accessibility: EPUB 3, EPUB 2, Web, PDF, Word, PPT, Excel) */}
+            {s.subServices && (
+              <div style={{ marginBottom: '3.5rem' }}>
+                <h3 className="section-subtitle">Our Accessibility Services</h3>
+                <div className="subservices-list">
+                  {s.subServices.map((sub) => (
+                    <div key={sub.id} id={sub.id} className="subservice-block">
+                      <div className="subservice-header">
+                        <h4>{sub.title}</h4>
+                        <p className="lead">{sub.overview}</p>
+                      </div>
+                      <h5>What We Do</h5>
+                      <ul className="bullets">
+                        {sub.whatWeDo.map((w) => (
+                          <li key={w}>{w}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* WHY VELVORA / BENEFITS / WHY IT MATTERS */}
+            {s.whyVelvora && (
+              <div style={{ marginBottom: '3rem' }}>
+                <h3 className="section-subtitle">Why Velvora</h3>
+                <ul className="bullets">
+                  {s.whyVelvora.map((w) => (
+                    <li key={w}>{w}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {s.benefits && (
+              <div style={{ marginBottom: '3rem' }}>
+                <h3 className="section-subtitle">Verified Benefits</h3>
+                <ul className="bullets">
+                  {s.benefits.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {s.whyItMatters && (
+              <div style={{ marginBottom: '3rem' }}>
+                <h3 className="section-subtitle">Why It Matters</h3>
+                <div className="svc-offers-grid">
+                  {s.whyItMatters.map((m) => (
+                    <div key={m.title} className="svc-offer-card">
+                      <h4>{m.title}</h4>
+                      <p>{m.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* WHO IT'S FOR / SUBJECTS */}
+            {s.whoItsFor && (
+              <div className="callout-card" style={{ marginTop: '2rem' }}>
+                <h4>Who It&apos;s For</h4>
+                <p>{s.whoItsFor}</p>
+              </div>
+            )}
+
+            {s.subjects && (
+              <div className="callout-card" style={{ marginTop: '2rem' }}>
+                <h4>Subjects We Handle</h4>
+                <p>{s.subjects}</p>
+              </div>
+            )}
+
+            {s.whatParticipantsGet && (
+              <div style={{ marginTop: '2rem' }}>
+                <h4>What Participants Get</h4>
+                <ul className="bullets">
+                  {s.whatParticipantsGet.map((pg) => (
+                    <li key={pg}>{pg}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* ========================================================================= */}
+      {/* SECTION 4: FAQS & PROJECT CONSULTATION (DARK THEME)                      */}
+      {/* ========================================================================= */}
+      <section className="section why-section-dark netbg svc-section-faqs">
+        <div className="container">
+          {s.faqs && (
+            <div>
+              <div className="sec-head sec-head--dark text-center" style={{ marginBottom: '3rem' }}>
+                <p className="eyebrow" style={{ color: '#38bdf8' }}>Expert Answers</p>
+                <h2 style={{ color: '#ffffff' }}>Frequently Asked Questions</h2>
+                <p className="lead" style={{ marginInline: 'auto', maxWidth: '640px', color: '#cbd5e1' }}>
+                  Clear, transparent answers to help you evaluate and launch your project with confidence.
+                </p>
+              </div>
+              <FaqAccordion items={s.faqs} />
+            </div>
+          )}
+
+          {/* Action / Consultation Banner */}
+          <div className="svc-faqs-action-banner">
+            <div>
+              <span className="badge-eyebrow" style={{ color: '#38bdf8', marginBottom: '8px' }}>
+                <Sparkles size={16} /> Enterprise Advisory
+              </span>
+              <h3 style={{ color: '#ffffff', fontSize: '1.45rem', fontWeight: 800, margin: '0 0 8px 0' }}>
+                Ready to Get Started with {s.title}?
+              </h3>
+              <p style={{ color: '#94a3b8', fontSize: '1rem', margin: 0, maxWidth: '600px' }}>
+                Our solutions architects will analyze your content requirements and propose a tailored delivery roadmap within 24 hours.
+              </p>
+            </div>
+            <Link to={`/contact?service=${encodeURIComponent(s.title)}`} className="btn btn--orange btn--lg" style={{ whiteSpace: 'nowrap' }}>
+              {s.buttonText || 'Request a Quote'} <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* CLOSING CTA BAND (STRICTLY DARK THEME)                                    */}
+      {/* ========================================================================= */}
       <CtaBand
         title="Ready to Make Your Content Accessible and Future-Ready?"
         text="Tell us about your project and our team will respond within one business day."

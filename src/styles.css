@@ -18153,3 +18153,291 @@ main:focus { outline: none; }
   padding: clamp(65px, 7vw, 105px) 0 !important;
   background: radial-gradient(circle at 50% 15%, #0d152c 0%, #060a17 55%, #03050c 100%) !important;
 }
+
+
+/* ========================================================= */
+/* HOME: SERVICES AT A GLANCE (DARK THEME)                  */
+/* ========================================================= */
+#services-glance.why-section-dark {
+  background: radial-gradient(circle at 50% 20%, #0d152c 0%, #060a17 55%, #03050c 100%) !important;
+}
+
+#services-glance .glance-card {
+  background: linear-gradient(155deg, rgba(14, 22, 42, 0.94) 0%, rgba(8, 14, 28, 0.98) 100%) !important;
+  border: 1px solid rgba(56, 189, 248, 0.28) !important;
+  box-shadow: 0 20px 48px -15px rgba(0, 0, 0, 0.75), 0 0 25px -5px rgba(56, 189, 248, 0.12) !important;
+}
+
+#services-glance .glance-card:hover {
+  transform: translateY(-8px) scale(1.015) !important;
+  border-color: rgba(56, 189, 248, 0.75) !important;
+  background: linear-gradient(155deg, rgba(18, 28, 56, 0.98) 0%, rgba(10, 18, 36, 1) 100%) !important;
+  box-shadow: 0 28px 60px -12px rgba(2, 132, 199, 0.35), 0 0 35px -5px rgba(56, 189, 248, 0.25) !important;
+}
+
+#services-glance .glance-card__title {
+  color: #ffffff !important;
+}
+
+#services-glance .glance-card__desc {
+  color: #cbd5e1 !important;
+}
+
+#services-glance .glance-card__code {
+  color: #38bdf8 !important;
+}
+
+#services-glance .glance-card__badge {
+  background: rgba(56, 189, 248, 0.12) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  color: #38bdf8 !important;
+}
+
+#services-glance .glance-card__link {
+  color: #38bdf8 !important;
+}
+
+#services-glance .glance-card__link:hover {
+  color: #ffffff !important;
+}
+
+#services-glance .glance-card__arrow-wrap {
+  background: rgba(56, 189, 248, 0.15) !important;
+  color: #38bdf8 !important;
+}
+
+/* ========================================================= */
+/* SERVICES OVERVIEW: 5 GROUPS CATALOG (DARK THEME)          */
+/* ========================================================= */
+#services-catalog.why-section-dark {
+  background: radial-gradient(circle at 50% 15%, #0d152c 0%, #060a17 55%, #03050c 100%) !important;
+}
+
+#services-catalog.why-section-dark .service-group-block__title {
+  color: #ffffff !important;
+}
+
+#services-catalog.why-section-dark .service-group-block__desc {
+  color: #cbd5e1 !important;
+}
+
+#services-catalog.why-section-dark .service-overview-card {
+  background: linear-gradient(155deg, rgba(14, 22, 42, 0.92) 0%, rgba(8, 14, 28, 0.96) 100%) !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5) !important;
+}
+
+#services-catalog.why-section-dark .service-overview-card:hover {
+  transform: translateY(-5px) !important;
+  border-color: rgba(56, 189, 248, 0.65) !important;
+  box-shadow: 0 20px 45px rgba(2, 132, 199, 0.25) !important;
+}
+
+#services-catalog.why-section-dark .service-overview-card__title {
+  color: #ffffff !important;
+}
+
+#services-catalog.why-section-dark .service-overview-card__desc {
+  color: #cbd5e1 !important;
+}
+
+#services-catalog.why-section-dark .service-overview-card__tag {
+  color: #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.12) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+}
+
+#services-catalog.why-section-dark .service-overview-card__link {
+  color: #38bdf8 !important;
+}
+
+/* ========================================================= */
+/* INDIVIDUAL SERVICE WEBPAGE: ALTERNATING SECTIONS          */
+/* ========================================================= */
+
+/* Section 1: Overview & What We Offer (LIGHT THEME) */
+.svc-section-overview {
+  background: #f8fafc !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  padding: clamp(50px, 6vw, 85px) 0 !important;
+}
+
+.svc-section-overview .svc-header--glass {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
+}
+
+.svc-section-overview .svc-header__title {
+  color: #0f172a !important;
+}
+
+.svc-section-overview .svc-header__lead {
+  color: #334155 !important;
+}
+
+.svc-section-overview .section-subtitle {
+  color: #0f172a !important;
+}
+
+.svc-section-overview .svc-offer-card,
+.svc-section-overview .svc-offer-cat,
+.svc-section-overview .callout-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04) !important;
+}
+
+.svc-section-overview .svc-offer-card h4,
+.svc-section-overview .svc-offer-cat h4,
+.svc-section-overview .callout-card h3,
+.svc-section-overview .callout-card h4 {
+  color: #0f172a !important;
+}
+
+.svc-section-overview .svc-offer-card p,
+.svc-section-overview .svc-offer-cat li,
+.svc-section-overview .callout-card p {
+  color: #334155 !important;
+}
+
+/* Sidebar styling in Light Section */
+.svc-section-overview .svc-sidebar__card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
+}
+
+.svc-section-overview .svc-sidebar__card h3 {
+  color: #0f172a !important;
+}
+
+.svc-section-overview .svc-sidebar__list a {
+  color: #334155 !important;
+}
+
+.svc-section-overview .svc-sidebar__list a:hover {
+  background: rgba(2, 132, 199, 0.08) !important;
+  color: #0284c7 !important;
+}
+
+/* Section 2: Production Process (DARK THEME) */
+.svc-section-process {
+  padding: clamp(65px, 7vw, 105px) 0 !important;
+  background: radial-gradient(circle at 50% 18%, #0d152c 0%, #060a17 55%, #03050c 100%) !important;
+}
+
+.svc-section-process .svc-process-item {
+  background: linear-gradient(155deg, rgba(14, 22, 42, 0.95) 0%, rgba(8, 14, 28, 0.98) 100%) !important;
+  border: 1px solid rgba(56, 189, 248, 0.28) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5) !important;
+  border-radius: 20px !important;
+}
+
+.svc-section-process .svc-process-item:hover {
+  border-color: rgba(56, 189, 248, 0.65) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 45px rgba(2, 132, 199, 0.2) !important;
+}
+
+.svc-section-process .step-num {
+  color: #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.12) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+}
+
+.svc-section-process .svc-process-title {
+  color: #ffffff !important;
+}
+
+.svc-section-process .svc-process-desc {
+  color: #cbd5e1 !important;
+}
+
+/* Section 3: Benefits & Strategic Impact (LIGHT THEME) */
+.svc-section-benefits {
+  background: #f8fafc !important;
+  border-top: 1px solid #e2e8f0 !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  padding: clamp(65px, 7vw, 100px) 0 !important;
+}
+
+.svc-section-benefits .section-subtitle,
+.svc-section-benefits h2,
+.svc-section-benefits h3,
+.svc-section-benefits h4,
+.svc-section-benefits h5 {
+  color: #0f172a !important;
+}
+
+.svc-section-benefits .bullets li {
+  color: #334155 !important;
+}
+
+.svc-section-benefits .subservice-block {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04) !important;
+  padding: 24px 28px !important;
+  margin-bottom: 20px !important;
+}
+
+.svc-section-benefits .subservice-header h4 {
+  color: #0f172a !important;
+}
+
+.svc-section-benefits .subservice-header .lead {
+  color: #475569 !important;
+}
+
+.svc-section-benefits .svc-offer-card,
+.svc-section-benefits .callout-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04) !important;
+}
+
+.svc-section-benefits .svc-offer-card h4,
+.svc-section-benefits .callout-card h4 {
+  color: #0f172a !important;
+}
+
+.svc-section-benefits .svc-offer-card p,
+.svc-section-benefits .callout-card p {
+  color: #334155 !important;
+}
+
+/* Section 4: Technical FAQs & Advisory Consultation (DARK THEME) */
+.svc-section-faqs {
+  padding: clamp(65px, 7vw, 105px) 0 !important;
+  background: radial-gradient(circle at 50% 18%, #0d152c 0%, #060a17 55%, #03050c 100%) !important;
+}
+
+.svc-section-faqs .faq-item {
+  background: linear-gradient(155deg, rgba(14, 22, 42, 0.94) 0%, rgba(8, 14, 28, 0.98) 100%) !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.svc-section-faqs .faq-item__btn {
+  color: #ffffff !important;
+}
+
+.svc-section-faqs .faq-item__body p {
+  color: #cbd5e1 !important;
+}
+
+.svc-faqs-action-banner {
+  margin-top: 3.5rem;
+  background: linear-gradient(135deg, rgba(8, 20, 50, 0.85) 0%, rgba(13, 30, 76, 0.95) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 20px;
+  padding: 2.2rem 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}

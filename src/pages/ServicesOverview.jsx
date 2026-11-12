@@ -229,7 +229,7 @@ export default function ServicesOverview() {
       </section>
 
       {/* 5 SERVICE GROUPS */}
-      <section id="services-catalog" className="section" style={{ paddingTop: '1rem' }}>
+      <section id="services-catalog" className="section why-section-dark netbg" style={{ paddingTop: '3.5rem', paddingBottom: '4.5rem' }}>
         <div className="container">
           <div className="services-groups-wrapper">
             {serviceGroups.map((group) => {
