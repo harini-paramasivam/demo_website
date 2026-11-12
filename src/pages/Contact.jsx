@@ -280,7 +280,7 @@ export default function Contact() {
                     <MapPin size={20} />
                   </div>
                   <div className="office-block__details">
-                    <strong className="office-block__label">Cuddalore Office</strong>
+                    <strong className="office-block__label">Main Office (Cuddalore)</strong>
                     <p className="office-block__text">
                       {company.office1}
                     </p>
@@ -292,7 +292,7 @@ export default function Contact() {
                     <MapPin size={20} />
                   </div>
                   <div className="office-block__details">
-                    <strong className="office-block__label">Chennai Office (Porur)</strong>
+                    <strong className="office-block__label">Branch Office (Chennai)</strong>
                     <p className="office-block__text">
                       {company.office2}
                     </p>

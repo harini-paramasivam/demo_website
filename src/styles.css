@@ -1508,7 +1508,7 @@ main:focus { outline: none; }
   background: radial-gradient(circle, rgba(2, 132, 199, 0.14) 0%, transparent 70%);
 }
 
-/* Left Orbit Telemetry HUD Graphic */
+/* Left Orbit Telemetry HUD Graphic (Subtle, non-interfering) */
 .intro-card__hud-left {
   position: absolute;
   left: -40px;
@@ -1517,15 +1517,15 @@ main:focus { outline: none; }
   width: 320px;
   height: 320px;
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.22;
   transition: opacity 0.4s ease, transform 0.6s ease;
 }
 .intro-card:hover .intro-card__hud-left {
-  opacity: 0.9;
+  opacity: 0.38;
   transform: translateY(-50%) scale(1.05);
 }
 
-/* Right Cyber Mesh & Node Constellation Graphic */
+/* Right Cyber Mesh & Node Constellation Graphic (Subtle, non-interfering) */
 .intro-card__hud-right {
   position: absolute;
   right: -30px;
@@ -1534,11 +1534,11 @@ main:focus { outline: none; }
   width: 380px;
   height: 320px;
   pointer-events: none;
-  opacity: 0.65;
+  opacity: 0.22;
   transition: opacity 0.4s ease, transform 0.6s ease;
 }
 .intro-card:hover .intro-card__hud-right {
-  opacity: 0.95;
+  opacity: 0.4;
   transform: translateY(-50%) scale(1.04);
 }
 
@@ -1755,8 +1755,92 @@ main:focus { outline: none; }
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.in { opacity: 1; transform: none; }
 
-/* Why cards (Company Values & Guiding Principles) */
-.why { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+/* Why cards (Company Values & Guiding Principles: 5-Card Funnel Layout: 3 in Row 1, 2 Centered in Row 2) */
+.why { 
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+  display: grid; 
+  grid-template-columns: repeat(6, 1fr); 
+  gap: 24px; 
+}
+.why > :nth-child(1),
+.why > :nth-child(2),
+.why > :nth-child(3) {
+  grid-column: span 2;
+}
+.why > :nth-child(4) {
+  grid-column: 2 / span 2;
+}
+.why > :nth-child(5) {
+  grid-column: 4 / span 2;
+}
+
+@media (max-width: 960px) {
+  .why {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .why > :nth-child(1),
+  .why > :nth-child(2),
+  .why > :nth-child(3),
+  .why > :nth-child(4) {
+    grid-column: auto;
+  }
+  .why > :nth-child(5) {
+    grid-column: 1 / -1;
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .why {
+    grid-template-columns: 1fr;
+  }
+  .why > :nth-child(n) {
+    grid-column: auto;
+    max-width: none;
+  }
+}
+
+/* Universal 5-Card Funnel Grid Utility (3 on Row 1, 2 Centered on Row 2) */
+.grid-5-funnel {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+}
+.grid-5-funnel > :nth-child(1),
+.grid-5-funnel > :nth-child(2),
+.grid-5-funnel > :nth-child(3) {
+  grid-column: span 2;
+}
+.grid-5-funnel > :nth-child(4) {
+  grid-column: 2 / span 2;
+}
+.grid-5-funnel > :nth-child(5) {
+  grid-column: 4 / span 2;
+}
+@media (max-width: 960px) {
+  .grid-5-funnel { grid-template-columns: repeat(2, 1fr); }
+  .grid-5-funnel > :nth-child(n) { grid-column: auto; }
+  .grid-5-funnel > :nth-child(5) { grid-column: 1 / -1; max-width: 500px; margin: 0 auto; width: 100%; }
+}
+@media (max-width: 640px) {
+  .grid-5-funnel { grid-template-columns: 1fr; }
+  .grid-5-funnel > :nth-child(n) { grid-column: auto; max-width: none; }
+}
+
+/* Universal 4-Card 2x2 Grid Utility */
+.grid-4-quad {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+@media (max-width: 640px) {
+  .grid-4-quad { grid-template-columns: 1fr; }
+}
 .why__card { 
   padding: 36px 32px; 
   background: #ffffff; 
@@ -1981,7 +2065,7 @@ main:focus { outline: none; }
   100% { transform: translate(15px, -20px) scale(0.95); }
 }
 
-/* 2. Innovative 3D Cybernetic Topographic SVG Layer (Transparent Behind Text) */
+/* 2. Innovative 3D Cybernetic Topographic SVG Layer (Soft, dull, non-interfering background) */
 .phero-cyber-graphic {
   position: absolute;
   inset: 0;
@@ -1990,7 +2074,9 @@ main:focus { outline: none; }
   pointer-events: none;
   z-index: 2;
   overflow: hidden;
-  opacity: 0.95;
+  opacity: 0.22;
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.12) 30%, rgba(0, 0, 0, 0.85) 75%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.12) 30%, rgba(0, 0, 0, 0.85) 75%);
 }
 
 .phero-cyber-svg {
@@ -1999,17 +2085,17 @@ main:focus { outline: none; }
   display: block;
 }
 
-/* 3. Floating Holographic Prismatic Diamond Plane (Transparent 3D Graphic behind letters) */
+/* 3. Floating Holographic Prismatic Diamond Plane (Dull, gentle atmospheric accent) */
 .phero-prism-plane {
   position: absolute;
   top: 10%;
-  right: 14%;
-  width: clamp(240px, 26vw, 360px);
-  height: clamp(240px, 26vw, 360px);
-  background: linear-gradient(135deg, rgba(0, 210, 255, 0.22) 0%, rgba(168, 85, 247, 0.16) 50%, rgba(37, 99, 235, 0.08) 100%);
+  right: 4%;
+  width: clamp(220px, 24vw, 320px);
+  height: clamp(220px, 24vw, 320px);
+  background: linear-gradient(135deg, rgba(0, 210, 255, 0.14) 0%, rgba(168, 85, 247, 0.1) 50%, rgba(37, 99, 235, 0.05) 100%);
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  filter: drop-shadow(0 0 35px rgba(0, 210, 255, 0.35)) drop-shadow(0 0 65px rgba(168, 85, 247, 0.2));
-  opacity: 0.72;
+  filter: drop-shadow(0 0 25px rgba(0, 210, 255, 0.18)) drop-shadow(0 0 45px rgba(168, 85, 247, 0.12));
+  opacity: 0.14;
   transform: rotate(15deg);
   pointer-events: none;
   z-index: 2;
@@ -2025,13 +2111,14 @@ main:focus { outline: none; }
 .phero-cyber-orbit-ring {
   position: absolute;
   top: 30px;
-  right: 10%;
-  width: clamp(340px, 36vw, 480px);
-  height: clamp(340px, 36vw, 480px);
+  right: 2%;
+  width: clamp(320px, 34vw, 440px);
+  height: clamp(320px, 34vw, 440px);
   border-radius: 50%;
-  border: 1.5px dashed rgba(56, 189, 248, 0.35);
-  box-shadow: 0 0 35px rgba(0, 210, 255, 0.14), inset 0 0 25px rgba(0, 210, 255, 0.08);
+  border: 1px dashed rgba(56, 189, 248, 0.22);
+  box-shadow: 0 0 25px rgba(0, 210, 255, 0.08), inset 0 0 18px rgba(0, 210, 255, 0.05);
   pointer-events: none;
+  opacity: 0.15;
   z-index: 2;
   animation: pheroOrbitRotate 55s linear infinite;
 }
@@ -2775,7 +2862,10 @@ main:focus { outline: none; }
 .leadership-section {
   position: relative;
   z-index: 2;
-  padding: clamp(70px, 8vw, 110px) 0 clamp(40px, 5vw, 60px) 0;
+  padding: clamp(70px, 8vw, 110px) 0 clamp(60px, 7vw, 90px) 0;
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .leadership-header {
@@ -2791,47 +2881,45 @@ main:focus { outline: none; }
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #ffffff 0%, #38bdf8 55%, #0ea5e9 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-color: rgba(15, 23, 42, 0.92);
-  border: 1.5px solid rgba(56, 189, 248, 0.5);
+  background: #ffffff;
+  color: #0284c7 !important;
+  -webkit-text-fill-color: #0284c7 !important;
+  border: 1.5px solid rgba(2, 132, 199, 0.4);
   border-radius: 9999px;
   padding: 8px 22px;
   margin-bottom: 1.2rem;
   box-shadow: 
-    0 0 30px rgba(14, 165, 233, 0.25),
-    0 0 15px rgba(56, 189, 248, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 4px 16px rgba(2, 132, 199, 0.12),
+    0 0 15px rgba(56, 189, 248, 0.15);
   transition: all 0.3s ease;
 }
 
 .leadership-eyebrow svg {
-  color: #38bdf8 !important;
-  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.8));
+  color: #0284c7 !important;
+  filter: none;
   -webkit-text-fill-color: initial;
 }
 
 .leadership-eyebrow:hover {
-  border-color: rgba(56, 189, 248, 0.8);
+  border-color: rgba(2, 132, 199, 0.7);
   box-shadow: 
-    0 0 40px rgba(14, 165, 233, 0.4),
-    0 0 25px rgba(56, 189, 248, 0.35);
+    0 6px 20px rgba(2, 132, 199, 0.2),
+    0 0 25px rgba(56, 189, 248, 0.25);
   transform: translateY(-2px);
 }
 
 .leadership-title {
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   font-weight: 800;
-  color: #ffffff;
+  color: #0f172a !important;
   letter-spacing: -0.02em;
   margin-bottom: 0.85rem;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  text-shadow: none !important;
 }
 
 .leadership-subtitle {
   font-size: clamp(1.02rem, 1.3vw, 1.15rem);
-  color: #94a3b8;
+  color: #475569 !important;
   line-height: 1.7;
   margin: 0;
 }

@@ -242,7 +242,11 @@ export default function Footer() {
             </a>
             <span className="footer__contact-text">
               <MapPin size={16} />
-              <span>{company.office1}</span>
+              <span><strong>Main Office:</strong> {company.mainOffice || 'Indhira Nagar, Cuddalore'}</span>
+            </span>
+            <span className="footer__contact-text">
+              <MapPin size={16} />
+              <span><strong>Branch Office:</strong> {company.branchOffice || 'Porur, Chennai'}</span>
             </span>
           </div>
         </div>

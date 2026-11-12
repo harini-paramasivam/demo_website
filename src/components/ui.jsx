@@ -64,65 +64,65 @@ export function PageHero({ eyebrow, title, children, crumbs = [] }) {
             </filter>
           </defs>
 
-          {/* Perspective 3D Isometric Wave Lines sweeping across the canvas */}
-          <g filter="url(#pheroGlow)" opacity="0.9">
+          {/* Perspective 3D Isometric Wave Lines sweeping across the canvas (Subtle & soft) */}
+          <g filter="url(#pheroGlow)" opacity="0.32">
             <path
               d="M -50 280 C 220 220, 480 320, 820 240 C 1120 170, 1320 250, 1500 210"
               stroke="url(#pheroLineCyan)"
-              strokeWidth="2"
+              strokeWidth="1.5"
               strokeDasharray="4 8"
             />
             <path
               d="M -50 320 C 240 260, 510 360, 860 280 C 1150 210, 1350 290, 1500 250"
               stroke="url(#pheroLineViolet)"
-              strokeWidth="1.6"
+              strokeWidth="1.2"
             />
             <path
               d="M -50 360 C 260 300, 540 400, 900 320 C 1180 250, 1380 330, 1500 290"
               stroke="url(#pheroLineCyan)"
-              strokeWidth="1.4"
+              strokeWidth="1"
               strokeDasharray="2 6"
             />
             <path
               d="M -50 240 C 200 180, 450 280, 780 200 C 1080 130, 1280 210, 1500 170"
               stroke="url(#pheroLineViolet)"
-              strokeWidth="1.4"
+              strokeWidth="1"
               strokeDasharray="6 12"
             />
           </g>
 
-          {/* 3D Isometric Geometric Nodes and Telemetry directly behind the letters */}
-          <g opacity="0.75" filter="url(#pheroGlow)">
+          {/* 3D Isometric Geometric Nodes and Telemetry directly behind the letters (Soft & dull) */}
+          <g opacity="0.25" filter="url(#pheroGlow)">
             {/* Hexagonal cyber telemetry ring */}
             <polygon
               points="980,120 1060,75 1140,120 1140,210 1060,255 980,210"
               stroke="url(#pheroHexGrad)"
-              strokeWidth="1.8"
-              fill="rgba(0, 210, 255, 0.04)"
+              strokeWidth="1.2"
+              fill="rgba(0, 210, 255, 0.02)"
             />
             <polygon
               points="1010,135 1060,105 1110,135 1110,195 1060,225 1010,195"
               stroke="url(#pheroLineCyan)"
-              strokeWidth="1.2"
+              strokeWidth="1"
               strokeDasharray="3 5"
             />
 
             {/* Holographic Radar / Telemetry Compass behind right-center */}
-            <circle cx="1060" cy="165" r="95" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="1" strokeDasharray="3 6" />
-            <circle cx="1060" cy="165" r="140" stroke="rgba(168, 85, 247, 0.25)" strokeWidth="1" strokeDasharray="2 8" />
-            <line x1="1060" y1="20" x2="1060" y2="310" stroke="rgba(56, 189, 248, 0.2)" strokeWidth="1" />
-            <line x1="915" y1="165" x2="1205" y2="165" stroke="rgba(56, 189, 248, 0.2)" strokeWidth="1" />
+            <circle cx="1060" cy="165" r="95" stroke="rgba(56, 189, 248, 0.25)" strokeWidth="1" strokeDasharray="3 6" />
+            <circle cx="1060" cy="165" r="140" stroke="rgba(168, 85, 247, 0.2)" strokeWidth="1" strokeDasharray="2 8" />
+            <line x1="1060" y1="20" x2="1060" y2="310" stroke="rgba(56, 189, 248, 0.15)" strokeWidth="1" />
+            <line x1="915" y1="165" x2="1205" y2="165" stroke="rgba(56, 189, 248, 0.15)" strokeWidth="1" />
 
             {/* Glowing isometric light nodes right behind the text */}
-            <circle cx="280" cy="180" r="3.5" fill="#00d2ff" />
-            <circle cx="480" cy="140" r="3" fill="#a855f7" />
-            <circle cx="720" cy="220" r="4" fill="#38bdf8" />
-            <circle cx="180" cy="260" r="2.5" fill="#00d2ff" />
-            <circle cx="360" cy="290" r="3.5" fill="#60a5fa" />
+            <circle cx="280" cy="180" r="2.5" fill="#00d2ff" opacity="0.4" />
+            <circle cx="480" cy="140" r="2" fill="#a855f7" opacity="0.4" />
+            <circle cx="720" cy="220" r="2.5" fill="#38bdf8" opacity="0.4" />
+            <circle cx="180" cy="260" r="2" fill="#00d2ff" opacity="0.4" />
+            <circle cx="360" cy="290" r="2.5" fill="#60a5fa" opacity="0.4" />
           </g>
 
           {/* Isometric Perspective Grid Floor Ray Lines */}
-          <g opacity="0.4" stroke="url(#pheroLineCyan)" strokeWidth="1">
+          <g opacity="0.12" stroke="url(#pheroLineCyan)" strokeWidth="1">
             <line x1="100" y1="440" x2="350" y2="240" />
             <line x1="300" y1="440" x2="500" y2="240" />
             <line x1="500" y1="440" x2="650" y2="240" />

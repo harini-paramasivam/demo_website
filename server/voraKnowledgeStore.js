@@ -1261,10 +1261,10 @@ class VoraKnowledgeStore {
     ) {
       return {
         reply: "You can connect directly with the Velvora Solutions team through multiple official channels:\n\n" +
-               "• **Head Office (Cuddalore):**\n" +
-               "  Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India\n" +
+               "• **Main Office (Cuddalore):**\n" +
+               "  Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India\n" +
                "• **Branch Office (Chennai):**\n" +
-               "  Velvora Solutions, Porur, Chennai, Tamil Nadu, India\n" +
+               "  Porur, Chennai, Tamil Nadu, India\n" +
                "• **Email:**\n" +
                "  - General & Project Enquiries: **info@velvorasolutions.com**\n" +
                "  - Careers & Resumes: **careers@velvorasolutions.com**\n" +
