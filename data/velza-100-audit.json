@@ -1,10 +1,10 @@
 {
-  "auditDate": "2026-11-12T03:37:31.461Z",
+  "auditDate": "2026-11-12T03:53:32.647Z",
   "totalQuestions": 100,
   "passed": 100,
   "failed": 0,
   "accuracyPct": "100.00%",
-  "durationSec": "0.11s",
+  "durationSec": "0.12s",
   "hallucinatedCount": 0,
   "irrelevantCount": 0,
   "incorrectRetrievalCount": 0,
@@ -114,7 +114,7 @@
       "isUnavailableInfo": false,
       "result": "PASS",
       "issues": "None",
-      "actualReply": "You can connect directly with the Velvora Solutions team through multiple official channels:\n\n• **Head Office (Cuddalore):**\n  Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India\n• **Branch Office (Chennai):**\n  Velvora Solutions, Porur, Chennai, Tamil Nadu, India\n• **Email:**\n  - General & Project Enquiries: **info@velvorasolutions.com**\n  - Careers & Resumes: **careers@velvorasolutions.com**\n• **Phone / WhatsApp:**\n  - Call: **+91 9500834236**\n  - WhatsApp: **[Chat on WhatsApp](https://wa.me/919500834236)**\n• **Business Hours:**\n  Monday to Saturday: 9:00 AM – 6:30 PM IST (Global projects supported across client timezones)\n• **Online Form:**\n  Submit your inquiry anytime via our **[Contact Us Page](/contact)**.",
+      "actualReply": "You can connect directly with the Velvora Solutions team through multiple official channels:\n\n• **Head Office (Cuddalore):**\n  Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India\n• **Branch Office (Chennai):**\n  Velvora Solutions, Porur, Chennai, Tamil Nadu, India\n• **Email:**\n  - General & Project Enquiries: **info@velvorasolutions.com**\n  - Careers & Resumes: **careers@velvorasolutions.com**\n• **Phone / WhatsApp:**\n  - Call: **+91 9500834236**\n  - WhatsApp: **[Chat on WhatsApp](https://wa.me/919500834236)**\n• **Online Form:**\n  Submit your inquiry anytime via our **[Contact Us Page](/contact)**.",
       "sources": [
         "/contact",
         "/about/company-overview"
@@ -1350,7 +1350,7 @@
       "isUnavailableInfo": false,
       "result": "PASS",
       "issues": "None",
-      "actualReply": "You can connect directly with the Velvora Solutions team through multiple official channels:\n\n• **Head Office (Cuddalore):**\n  Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India\n• **Branch Office (Chennai):**\n  Velvora Solutions, Porur, Chennai, Tamil Nadu, India\n• **Email:**\n  - General & Project Enquiries: **info@velvorasolutions.com**\n  - Careers & Resumes: **careers@velvorasolutions.com**\n• **Phone / WhatsApp:**\n  - Call: **+91 9500834236**\n  - WhatsApp: **[Chat on WhatsApp](https://wa.me/919500834236)**\n• **Business Hours:**\n  Monday to Saturday: 9:00 AM – 6:30 PM IST (Global projects supported across client timezones)\n• **Online Form:**\n  Submit your inquiry anytime via our **[Contact Us Page](/contact)**.",
+      "actualReply": "You can connect directly with the Velvora Solutions team through multiple official channels:\n\n• **Head Office (Cuddalore):**\n  Velvora Solutions, Indhira Nagar, Cuddalore - 607002, Tamil Nadu, India\n• **Branch Office (Chennai):**\n  Velvora Solutions, Porur, Chennai, Tamil Nadu, India\n• **Email:**\n  - General & Project Enquiries: **info@velvorasolutions.com**\n  - Careers & Resumes: **careers@velvorasolutions.com**\n• **Phone / WhatsApp:**\n  - Call: **+91 9500834236**\n  - WhatsApp: **[Chat on WhatsApp](https://wa.me/919500834236)**\n• **Online Form:**\n  Submit your inquiry anytime via our **[Contact Us Page](/contact)**.",
       "sources": [
         "/contact",
         "/about/company-overview"

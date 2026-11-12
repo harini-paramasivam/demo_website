@@ -301,18 +301,6 @@ export default function Contact() {
 
                 <div className="office-block">
                   <div className="office-block__icon">
-                    <Clock size={20} />
-                  </div>
-                  <div className="office-block__details">
-                    <strong className="office-block__label">Office Hours</strong>
-                    <p className="office-block__text">
-                      {company.hours}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="office-block">
-                  <div className="office-block__icon">
                     <Mail size={20} />
                   </div>
                   <div className="office-block__details">

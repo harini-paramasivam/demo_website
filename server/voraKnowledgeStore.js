@@ -1271,8 +1271,6 @@ class VoraKnowledgeStore {
                "• **Phone / WhatsApp:**\n" +
                "  - Call: **+91 9500834236**\n" +
                "  - WhatsApp: **[Chat on WhatsApp](https://wa.me/919500834236)**\n" +
-               "• **Business Hours:**\n" +
-               "  Monday to Saturday: 9:00 AM – 6:30 PM IST (Global projects supported across client timezones)\n" +
                "• **Online Form:**\n" +
                "  Submit your inquiry anytime via our **[Contact Us Page](/contact)**.",
         sources: [

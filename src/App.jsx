@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Phone } from 'lucide-react';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
+import { company } from './data/site.js';
 import Home from './pages/Home.jsx';
 import CompanyOverview from './pages/CompanyOverview.jsx';
 import OurTeam from './pages/OurTeam.jsx';
@@ -87,6 +88,21 @@ export default function App() {
       >
         <ArrowUp size={22} aria-hidden="true" />
       </button>
+
+      {/* Floating Call Button strictly for Mobile View Alone */}
+      <a
+        href={`tel:${company.phone.replace(/\s+/g, '')}`}
+        className="mobile-phone-launcher"
+        aria-label={`Call Velvora Solutions at ${company.phoneFormatted}`}
+        title="Call Us"
+      >
+        <span className="mobile-phone-pulse" aria-hidden="true" />
+        <div className="mobile-phone-inner">
+          <Phone size={22} className="mobile-phone-icon" />
+          <span className="mobile-phone-online-dot" aria-hidden="true" />
+        </div>
+      </a>
+
       <VoraChat />
     </>
   );

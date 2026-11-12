@@ -2181,10 +2181,15 @@ main:focus { outline: none; }
   position: relative;
   z-index: 2;
   display: grid; 
-  grid-template-columns: 1.35fr 0.85fr 1.15fr 1.15fr 1.5fr; 
-  gap: 36px; 
+  grid-template-columns: 1.25fr 1.15fr 1.15fr 1.25fr; 
+  gap: clamp(28px, 3.2vw, 44px); 
   padding-bottom: 56px; 
-  align-items: start;
+  align-items: stretch;
+}
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .footer__brand img {
   width: 190px;
@@ -2196,7 +2201,13 @@ main:focus { outline: none; }
   filter: drop-shadow(0 0 16px rgba(56, 189, 248, 0.35));
 }
 .footer__brand p { max-width: 34ch; }
-.social { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.social { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 10px; 
+  margin-top: auto; 
+  padding-top: 24px; 
+}
 .social a {
   display: grid;
   place-items: center;
@@ -2287,10 +2298,18 @@ main:focus { outline: none; }
   background: rgba(16, 185, 129, 0.12);
   border-color: rgba(16, 185, 129, 0.28);
 }
+.footer__col-services,
+.footer__col-standards {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .footer__pills-list {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 8px;
+  flex-grow: 1;
+  justify-content: space-between;
 }
 .footer-spec-pill {
   display: flex;
@@ -2424,6 +2443,9 @@ main:focus { outline: none; }
   box-shadow: 0 20px 48px -15px rgba(0,0,0,.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .footer__talk .footer__h { margin-bottom: .8rem; }
 .footer__talk-lead { font-size: .88rem; line-height: 1.5; color: #b4c2dc; margin-bottom: 16px; }
@@ -2435,6 +2457,7 @@ main:focus { outline: none; }
   border-top: 1px solid rgba(255,255,255,.08);
   padding-top: 16px;
   font-size: .83rem;
+  margin-top: auto;
 }
 .footer__contact-link {
   display: flex;
@@ -2454,19 +2477,118 @@ main:focus { outline: none; }
   color: #97a8c6;
 }
 
-.footer__legal { border-top: 1px solid var(--navy-line); padding: 26px 0; font-size: .88rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; } 
+.footer__legal { 
+  border-top: 1px solid rgba(56, 189, 248, 0.18); 
+  padding: 26px 0; 
+  font-size: .88rem; 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  align-items: center; 
+  gap: 16px; 
+} 
 .footer__legal p { margin: 0; }
-.footer__legal-links { display: flex; align-items: center; gap: 12px; }
+.footer__legal-links { display: flex; align-items: center; gap: 16px; }
 .footer__legal-links a { color: var(--on-navy-muted); text-decoration: none; transition: color .2s; }
 .footer__legal-links a:hover { color: var(--orange); }
 .footer__tagline { font-weight: 600; color: var(--orange); margin-bottom: 8px; }
 .footer__desc { font-size: .92rem; line-height: 1.5; color: var(--on-navy-muted); }
 
+/* Floating Mobile Phone Call Button (Strictly for Mobile View Alone) */
+.mobile-phone-launcher {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .mobile-phone-launcher {
+    position: fixed;
+    bottom: 18px;
+    left: 18px;
+    z-index: 9985;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(7, 14, 36, 0.95) 0%, rgba(13, 30, 76, 0.92) 100%);
+    border: 1.5px solid rgba(56, 189, 248, 0.65);
+    box-shadow: 
+      0 12px 35px -6px rgba(0, 0, 0, 0.85),
+      0 0 25px rgba(14, 165, 233, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    text-decoration: none;
+    color: #38bdf8;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-phone-launcher:active {
+    transform: scale(0.92);
+    border-color: #00d2ff;
+  }
+
+  .mobile-phone-pulse {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1.5px solid #00d2ff;
+    animation: mobilePhonePulse 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    pointer-events: none;
+  }
+
+  @keyframes mobilePhonePulse {
+    0% { transform: scale(0.85); opacity: 0.9; }
+    60%, 100% { transform: scale(1.45); opacity: 0; }
+  }
+
+  .mobile-phone-inner {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mobile-phone-icon {
+    color: #38bdf8;
+    filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.6));
+    animation: mobilePhoneWiggle 4s ease-in-out infinite;
+  }
+
+  @keyframes mobilePhoneWiggle {
+    0%, 80%, 100% { transform: rotate(0deg); }
+    85% { transform: rotate(-14deg); }
+    90% { transform: rotate(14deg); }
+    95% { transform: rotate(-8deg); }
+  }
+
+  .mobile-phone-online-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #10b981;
+    border: 2px solid #070e24;
+    box-shadow: 0 0 8px #10b981;
+  }
+
+  .totop {
+    left: 18px !important;
+    bottom: 80px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 1240px) {
   .container { width: min(var(--w), 100% - 64px); }
-  .footer__grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
-  .footer__brand, .footer__talk { grid-column: 1 / -1; }
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 36px 32px; }
 }
 @media (max-width: 1080px) {
   .hero__in { grid-template-columns: 1fr; gap: 40px; }
@@ -2500,7 +2622,7 @@ main:focus { outline: none; }
   .btn-row .btn, .cta .btn { width: 100%; }
   .pill { font-size: .68rem; letter-spacing: .1em; padding: 10px 16px; }
   .caps > div { grid-template-columns: 1fr; gap: 4px; }
-  .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+  .footer__grid { grid-template-columns: 1fr; gap: 36px; }
   .mcard { width: 280px; padding: 24px; }
   .totop { left: 16px; bottom: 16px; width: 54px; height: 54px; }
   .stats { grid-template-columns: 1fr; gap: 14px; }

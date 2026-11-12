@@ -17,7 +17,7 @@ export const company = {
   office2: 'Velvora Solutions, Porur, Chennai',
   address: 'Velvora Solutions, Indhira Nagar, Cuddalore',
   address2: 'Velvora Solutions, Porur, Chennai',
-  hours: 'Monday to Saturday: 9:00 AM – 6:30 PM',
+  hours: '',
   founderLinkedin: 'https://www.linkedin.com/in/iyshwariya-senthil-bb7707287/',
   linkedinCompany: 'https://www.linkedin.com/company/118444302/',
   instagram: 'https://www.instagram.com/velvora_solutions?srtk=MWh0OHlvNmhlaXZwdg==',

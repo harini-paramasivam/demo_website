@@ -6,8 +6,6 @@ import {
   Facebook,
   Youtube,
   ArrowRight, 
-  Phone, 
-  Clock, 
   MapPin,
   BookOpen,
   Code2,
@@ -25,19 +23,6 @@ import {
 import { company } from '../data/site.js';
 
 export default function Footer() {
-  const quickLinks = [
-    { label: 'Home', to: '/' },
-    { label: 'About Us', to: '/about/company-overview' },
-    { label: 'Services', to: '/services' },
-    { label: 'Training & Internships', to: '/training' },
-    { label: 'Solutions', to: '/solutions' },
-    { label: 'Partner With Us', to: '/partner' },
-    { label: 'Careers', to: '/careers' },
-    { label: 'Insights', to: '/resources/insights' },
-    { label: 'Blog', to: '/blog' },
-    { label: 'Contact Us', to: '/contact' },
-  ];
-
   const serviceLinks = [
     { 
       label: 'ePublishing', 
@@ -185,31 +170,8 @@ export default function Footer() {
             >
               <Mail size={18} />
             </a>
-            <a 
-              href={`tel:${company.phone.replace(/\s+/g, '')}`} 
-              className="social-btn social-btn--phone"
-              aria-label={`Call ${company.phone}`}
-              title="Call Us"
-            >
-              <Phone size={18} />
-            </a>
           </div>
         </div>
-
-        {/* Quick Links */}
-        <nav aria-label="Footer – Quick Links" className="footer__col-quick">
-          <h2 className="footer__h">Quick Links</h2>
-          <ul className="footer-quick-list">
-            {quickLinks.map((item) => (
-              <li key={item.to}>
-                <Link to={item.to} className="footer-quick-link">
-                  <span className="footer-quick-bullet" aria-hidden="true" />
-                  <span>{item.label}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
 
         {/* 6 Services - Rich Interactive Pills */}
         <nav aria-label="Footer – Services" className="footer__col-services">
@@ -278,14 +240,6 @@ export default function Footer() {
               <Mail size={16} />
               <span>{company.email}</span>
             </a>
-            <a href={`tel:${company.phone.replace(/\s+/g, '')}`} className="footer__contact-link">
-              <Phone size={16} />
-              <span>{company.phoneFormatted}</span>
-            </a>
-            <span className="footer__contact-text">
-              <Clock size={16} />
-              <span>{company.hours}</span>
-            </span>
             <span className="footer__contact-text">
               <MapPin size={16} />
               <span>{company.office1}</span>
