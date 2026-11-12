@@ -1,24 +1,24 @@
 {
   "syncMetadata": {
-    "version": "v1.3.146",
+    "version": "v1.3.158",
     "status": "Synchronized",
-    "lastSynchronized": "2026-11-12T04:53:02.181Z",
-    "sourceHash": "3dd72620dc537efcaafc55fadfb1acb7b98514fbc5a6226dd5284c8687904b70",
+    "lastSynchronized": "2026-11-12T05:15:23.451Z",
+    "sourceHash": "c4094839bdb7988a91a25b51b08201fde7b7b4483fbc7fb4359e347704a84711",
     "indexedCount": 69,
     "indexedPages": 63,
     "indexedCareers": 6,
     "errorLogs": [],
     "changelog": [
-      "Synced 63 pages & 6 careers at 2026-11-12T04:53:02.181Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T04:44:43.673Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T04:42:36.347Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T04:42:34.665Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T04:40:50.283Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T04:40:24.290Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T04:39:26.297Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T04:34:42.375Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T04:34:41.098Z",
-      "Synced 63 pages & 6 careers at 2026-11-12T04:12:56.981Z"
+      "Synced 63 pages & 6 careers at 2026-11-12T05:15:23.451Z",
+      "Synced 63 pages & 6 careers at 2026-11-12T05:14:57.569Z",
+      "Synced 63 pages & 6 careers at 2026-11-12T05:14:43.502Z",
+      "Synced 63 pages & 6 careers at 2026-11-12T05:14:10.515Z",
+      "Synced 63 pages & 6 careers at 2026-11-12T05:13:38.303Z",
+      "Synced 63 pages & 6 careers at 2026-11-12T05:13:25.177Z",
+      "Synced 63 pages & 6 careers at 2026-11-12T05:13:23.875Z",
+      "Synced 63 pages & 6 careers at 2026-11-12T05:13:02.627Z",
+      "Synced 63 pages & 6 careers at 2026-11-12T05:12:48.459Z",
+      "Synced 63 pages & 6 careers at 2026-11-12T05:12:47.062Z"
     ]
   },
   "documents": [
@@ -144,7 +144,7 @@
       "url": "/services/xml",
       "category": "service",
       "summary": "Structured XML creation, conversion (JATS, BITS, DITA, DocBook), and workflows that make your content reusable, searchable, and future-ready.",
-      "content": "XML Services (XML Services: Structured Content That Lasts)\nOverview: Well-structured XML is the foundation of efficient publishing. It lets you create content once and publish it many times, across print, web, EPUB, and beyond. Velvora's XML specialists build and convert content to industry-standard structures, so your content stays consistent, searchable, and easy to maintain.\nWhat We Offer:\n  - XML Conversion: Word, PDF, and InDesign files converted to XML.\n  - Industry DTDs and Schemas: JATS (journals), BITS (books), DITA, DocBook, TEI, and custom DTDs or schemas.\n  - XML Tagging and Markup: Detailed, accurate structural and semantic tagging.\n  - XML Quality Assurance: Validation against DTD or schema, plus manual review.\n  - XML-First Workflow Setup: Help planning and implementing XML-based publishing workflows.\n  - Output Transformation: XML to HTML, EPUB, PDF, and other formats using XSLT.\nOur Process:\n\nTarget Audience / Who It's For:\nPublishers, universities, enterprises, and content creators.",
+      "content": "XML Services (XML Services: Structured Content That Lasts)\nOverview: Well-structured XML is the foundation of efficient publishing. It lets you create content once and publish it many times, across print, web, EPUB, and beyond. Velvora's XML specialists build and convert content to industry-standard structures, so your content stays consistent, searchable, and easy to maintain.\nWhat We Offer:\n  - XML Conversion: Word, PDF, and InDesign files converted to XML.\n  - Industry DTDs and Schemas: JATS (journals), BITS (books), DITA, DocBook, TEI, and custom DTDs or schemas.\n  - XML Tagging and Markup: Detailed, accurate structural and semantic tagging.\n  - XML Quality Assurance: Validation against DTD or schema, plus manual review.\n  - XML-First Workflow Setup: Help planning and implementing XML-based publishing workflows.\n  - Output Transformation: XML to HTML, EPUB, PDF, and other formats using XSLT.\nOur Process:\n  - 01. Analyze & Audit: We inspect your input manuscripts, citation styles, and target DTD schemas.\n  - 02. Schema Mapping: We configure custom XSLT parsers, semantic tag mappings, and validation rules.\n  - 03. Tagging & Conversion: Our specialists extract structured elements, MathML, and Crossref metadata.\n  - 04. Validation QA: Rigorous automated DTD parsing, Schematron checks, and manual editorial verification.\n  - 05. Delivery & Transformation: Delivery of 100% valid XML packages ready for PubMed, Crossref, and web CMS.\nTarget Audience / Who It's For:\nPublishers, universities, enterprises, and content creators.",
       "topics": [
         "XML Services",
         "xml",

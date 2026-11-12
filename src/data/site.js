@@ -971,6 +971,13 @@ export const services = [
       { step: '5. Deliver', desc: 'Final files, delivered on time with a quality report.' },
     ],
     whoItsFor: 'Book publishers, journal publishers, educational publishers, authors, and corporate content teams.',
+    faqs: [
+      { q: 'What digital book formats do you convert and support?', a: 'We produce and convert reflowable EPUB 3, fixed-layout EPUB 3, legacy EPUB 2, Kindle (KPF/MOBI), interactive PDFs, and accessible web editions.' },
+      { q: 'Do your EPUB files pass EPUBCheck and retail store validation?', a: 'Yes, 100%. Every title is validated against the latest EPUBCheck standard and manually tested on real Apple Books, Kindle, Kobo, and Google Play devices before delivery.' },
+      { q: 'Can you convert complex backlist print books or PDF archives to EPUB?', a: 'Absolutely. We handle high-volume backlist conversions from scanned hard copies, legacy PDFs, and InDesign packages, preserving footnotes, complex tables, and image layouts.' },
+      { q: 'How do you handle multi-column layouts, poetry, and children’s picture books?', a: 'We design custom fixed-layout EPUBs with pixel-accurate CSS positioning, audio narration sync (read-aloud), and responsive font-scaling specifically tailored for complex visual layouts.' },
+      { q: 'What is your typical turnaround time and delivery SLA for titles?', a: 'Standard book conversions typically take 3 to 5 business days, with rush express turnarounds available for time-sensitive frontlist publications and high-volume journal issues.' },
+    ],
   },
   {
     slug: 'xml',
@@ -998,6 +1005,20 @@ export const services = [
       'Better searchability and discoverability',
       'Lower long-term production cost',
       'Easier accessibility compliance',
+    ],
+    process: [
+      { step: '01. Analyze & Audit', desc: 'We inspect your input manuscripts, citation styles, and target DTD schemas.' },
+      { step: '02. Schema Mapping', desc: 'We configure custom XSLT parsers, semantic tag mappings, and validation rules.' },
+      { step: '03. Tagging & Conversion', desc: 'Our specialists extract structured elements, MathML, and Crossref metadata.' },
+      { step: '04. Validation QA', desc: 'Rigorous automated DTD parsing, Schematron checks, and manual editorial verification.' },
+      { step: '05. Delivery & Transformation', desc: 'Delivery of 100% valid XML packages ready for PubMed, Crossref, and web CMS.' },
+    ],
+    faqs: [
+      { q: 'Which standard XML DTDs and schemas do you support?', a: 'We specialize in JATS 1.3, BITS 2.1, PubMed Central (PMC), DITA, DocBook 5, TEI, Crossref schema, and bespoke proprietary publisher XML DTDs.' },
+      { q: 'Can you convert unstructured Word and PDF documents directly into JATS XML?', a: 'Yes. We extract semantic headings, author affiliations, ORCID IDs, bibliographic references, math equations, and tables into 100% schema-valid XML.' },
+      { q: 'Do you validate XML files before delivery?', a: 'Yes. Every document undergoes automated Schematron and DTD parsing, Crossref DOI resolution checks, MathML syntax verification, and manual specialist editorial review.' },
+      { q: 'Can you automate multi-format publishing (HTML, EPUB, PDF) from a single XML source?', a: 'Yes. We design custom XSLT stylesheets, automated publishing pipelines, and headless transformations that compile print PDFs, web HTML, and EPUBs from one master XML file.' },
+      { q: 'Can you handle non-English languages and multilingual XML tagging?', a: 'Yes. Our XML pipelines fully support UTF-8 encoding, multi-script typography (including European languages, CJK, and Indic scripts), and language attribute tagging.' },
     ],
   },
   {
@@ -1153,11 +1174,26 @@ export const services = [
       { title: 'Strengthen your brand', desc: 'Show that your organization values inclusion.' },
     ],
     faqs: [
-      { q: 'What is the difference between an accessibility audit and remediation?', a: 'An audit finds and documents issues. Remediation fixes them. We offer both, together or separately.' },
-      { q: 'Do you use only automated tools?', a: 'No. Automated tools catch only a portion of issues. We always add manual review and assistive technology testing.' },
-      { q: 'Can you make our existing back-catalogue accessible?', a: 'Yes. We handle both new content and large back-catalogue projects in bulk.' },
-      { q: 'Which standards do you follow?', a: 'WCAG 2.1 and 2.2, PDF/UA, EPUB Accessibility 1.1, Section 508, and other regional standards, depending on your needs.' },
-      { q: 'Do you provide an accessibility report?', a: 'Yes. Every project includes a report, and we can prepare a VPAT or ACR on request.' },
+        {
+            "q": "What is the difference between an accessibility audit and remediation?",
+            "a": "An audit finds and documents non-compliance issues with detailed severity ratings. Remediation directly fixes the source files and tag trees to ensure full compliance. We offer both."
+        },
+        {
+            "q": "Do you use only automated tools for accessibility testing?",
+            "a": "No. Automated tools catch only a portion of issues. We always add comprehensive manual review and assistive technology testing with JAWS, NVDA, and VoiceOver."
+        },
+        {
+            "q": "Can you make our existing back-catalogue accessible in bulk?",
+            "a": "Yes. We handle both new content and high-volume back-catalogue projects, remediating PDFs, EPUBs, and office documents with guaranteed SLAs."
+        },
+        {
+            "q": "Which international accessibility standards do you follow?",
+            "a": "We strictly follow WCAG 2.1 and 2.2 (Level A, AA, AAA), PDF/UA (ISO 14289), EPUB Accessibility 1.1, Section 508, ADA Title III, and the European Accessibility Act (EAA)."
+        },
+        {
+            "q": "Do you provide formal VPAT / ACR documentation upon completion?",
+            "a": "Yes. Every project includes a compliance report, and we prepare formal VPAT / ACR documentation required for enterprise procurement and government contracts."
+        }
     ],
   },
   {
@@ -1199,9 +1235,26 @@ export const services = [
     ],
     whoItsFor: 'Book publishers, university presses, scholarly journals, societies, authors, and corporate communications teams.',
     faqs: [
-      { q: 'Can you work to our existing template?', a: 'Yes. We can follow your existing templates and style guides, or design new ones.' },
-      { q: 'Which software do you use?', a: 'We work in Adobe InDesign, LaTeX, and other industry tools, depending on your needs.' },
-      { q: 'Can the same files be used for EPUB and accessible PDF?', a: 'Yes. We build files with clean structure and styles so they convert smoothly to other formats.' },
+        {
+            "q": "Can you work to our existing publisher house style and InDesign templates?",
+            "a": "Yes. We can strictly follow your in-house style manuals and template specifications, or design fresh, modern grid systems tailored to your brand."
+        },
+        {
+            "q": "Which composition software and platforms do you operate in?",
+            "a": "We work in Adobe InDesign, QuarkXPress, LaTeX, and 3B2 (Advent Arbortext), handling high-complexity academic, trade, and corporate publications."
+        },
+        {
+            "q": "Can the same typesetting files be used for EPUB and accessible PDF generation?",
+            "a": "Yes. We construct InDesign files with rigorous paragraph styles, object exports, and XML tags so they convert seamlessly into reflowable EPUB 3 and accessible tagged PDF."
+        },
+        {
+            "q": "How do you handle complex math, scientific tables, and multilingual scripts?",
+            "a": "We use dedicated equation editors (MathType, LaTeX) and advanced tabular composition tools, ensuring perfect typographical kerning, alignment, and diacritic rendering."
+        },
+        {
+            "q": "What review and proofing stages are included in your typesetting workflow?",
+            "a": "We provide structured First Proofs (galley proofs), Author Correction passes, and Final Press-Ready PDF sign-offs with detailed revision comparison tracking."
+        }
     ],
   },
   {
@@ -1242,8 +1295,26 @@ export const services = [
       'One workflow for print, EPUB, web, and PDF',
     ],
     faqs: [
-      { q: 'Why is MathML important for accessibility?', a: 'MathML describes the structure of an equation, so screen readers and Braille tools can read it. Equations saved as images cannot be read in the same way.' },
-      { q: 'Can you convert our old image-based equations?', a: 'Yes. We rebuild them as editable LaTeX or MathML.' },
+        {
+            "q": "Why is MathML essential for STEM accessibility?",
+            "a": "MathML describes the mathematical and structural meaning of an equation, allowing screen readers and Braille embossers to read it accurately. Equations saved as images cannot be read in the same way."
+        },
+        {
+            "q": "Can you convert our old image-based equations into editable MathML or LaTeX?",
+            "a": "Yes. We rebuild legacy bitmap equations and low-resolution screenshots into editable LaTeX syntax or clean, scalable MathML vectors."
+        },
+        {
+            "q": "Do you support both Inline and Display equations in complex journal formats?",
+            "a": "Yes. We format both inline mathematical variables and numbered display equations, adhering to AMS-LaTeX, MathJax, and journal-specific DTD requirements."
+        },
+        {
+            "q": "How do your editors verify formula accuracy in advanced physics and engineering?",
+            "a": "Our team includes STEM specialists trained in higher mathematics, chemical formulas, and physics notations, ensuring zero typographical transposition errors."
+        },
+        {
+            "q": "Can MathML equations be embedded directly into EPUB 3 and web HTML5?",
+            "a": "Yes. We embed native MathML into EPUB 3 and HTML5 files with fallback SVG vectors to ensure seamless cross-browser and e-reader compatibility."
+        }
     ],
   },
   {
@@ -1312,8 +1383,26 @@ export const services = [
       'Support for compliance and accessibility requirements',
     ],
     faqs: [
-      { q: 'Do you provide indexing for non-English books?', a: 'Please ask us. We will confirm language availability for your project.' },
-      { q: 'Can you clean up our existing metadata?', a: 'Yes. We audit and correct metadata across your catalogue and align it to the standards you need.' },
+        {
+            "q": "What classification taxonomies and subject schemas do you utilize?",
+            "a": "We work with BISAC, BIC/THEMA, Library of Congress (LCSH), MeSH (Medical Subject Headings), Dewey Decimal, and custom corporate taxonomies."
+        },
+        {
+            "q": "Can you create back-of-the-book indexes for academic monographs and trade titles?",
+            "a": "Yes. Professional indexers analyze your manuscript to build comprehensive subject, author, and citation indexes with accurate locators and cross-references."
+        },
+        {
+            "q": "Can you clean up and enrich our existing catalog metadata?",
+            "a": "Yes. We audit, normalize, and enrich existing catalog databases, appending missing ONIX 3.0 tags, ISBNs, DOIs, contributor roles, and rich marketing descriptions."
+        },
+        {
+            "q": "Do you support ONIX for Books 3.0 packaging for global book retailers?",
+            "a": "Yes. We generate and validate ONIX 3.0 XML feeds tailored to specifications for Amazon, Ingram, Baker & Taylor, Nielsen BookScan, and European distributors."
+        },
+        {
+            "q": "Do you provide indexing and metadata services for non-English publications?",
+            "a": "Yes. We provide indexing and multilingual metadata tagging across major European languages and regional scripts upon consultation."
+        }
     ],
   },
   {
@@ -1354,8 +1443,26 @@ export const services = [
       'Secure handling of valuable and confidential material',
     ],
     faqs: [
-      { q: 'Is OCR alone enough to make a document accessible?', a: 'No. OCR gives you text, but a document also needs correct structure, reading order, and alternative text to be truly accessible. We handle those steps too.' },
-      { q: 'Can you handle poor quality or old documents?', a: 'Yes. Our team can work with faded, damaged, or complex material. We will review samples first.' },
+        {
+            "q": "Is OCR text alone sufficient to make a digital document accessible?",
+            "a": "No. Raw OCR provides unstructured character streams. True accessibility requires logical heading hierarchies, proper reading order, tagged tables, and descriptive alt text."
+        },
+        {
+            "q": "Can you process fragile, aged, or low-contrast historical archives?",
+            "a": "Yes. We utilize advanced image pre-processing (deskew, binarization, artifact removal, background contrast enhancement) before multi-pass OCR recognition."
+        },
+        {
+            "q": "What accuracy guarantee do you provide for scanned documents?",
+            "a": "We achieve 99.9% character accuracy through multi-engine optical recognition paired with human editorial proofreading and word-frequency validation."
+        },
+        {
+            "q": "What output file formats can you deliver from digitization projects?",
+            "a": "We deliver Searchable PDF (PDF/A), structured XML/HTML, editable Word DOCX, and fully formatted EPUB 3 files with embedded high-resolution scans."
+        },
+        {
+            "q": "How do you handle non-standard fonts, fraktur, and mathematical notations in OCR?",
+            "a": "We employ custom OCR training dictionaries and manual editorial transcription for historic typefaces, mathematical symbols, and non-Latin character sets."
+        }
     ],
   },
   {
@@ -1426,8 +1533,26 @@ export const services = [
       'Support learners using a second language',
     ],
     faqs: [
-      { q: 'What is the difference between captions and subtitles?', a: 'Captions include dialogue and important sounds, such as music or laughter, for people who cannot hear the audio. Subtitles usually translate or transcribe only the speech.' },
-      { q: 'What is audio description?', a: 'Audio description is spoken narration of important visual information, such as actions, scenes, and on-screen text, for people who cannot see the video.' },
+        {
+            "q": "What is the difference between closed captions and subtitles?",
+            "a": "Closed captions include dialogue and important sounds (music, sound effects, speaker ID) for people who cannot hear audio. Subtitles translate or transcribe spoken dialogue only."
+        },
+        {
+            "q": "What is audio description (described video) and when is it required?",
+            "a": "Audio description is spoken narration of important visual information (actions, facial expressions, on-screen text) during natural pauses in dialogue for blind users."
+        },
+        {
+            "q": "What caption and subtitle file formats do you deliver?",
+            "a": "We provide WebVTT (.vtt), SubRip (.srt), Scenarist (.scc), SMPTE-TT, DFXP, and burnt-in open captions matching all LMS and video streaming platforms."
+        },
+        {
+            "q": "What accuracy rate do you guarantee for verbatim transcripts?",
+            "a": "We deliver 99%+ verbatim and clean-read transcripts through professional human transcriptionists who verify industry jargon, accents, and multiple speakers."
+        },
+        {
+            "q": "Do your captioning services comply with WCAG 2.2 AA and FCC standards?",
+            "a": "Yes. Our captions strictly adhere to WCAG 2.2 AA Criteria (1.2.2, 1.2.4), FCC television standards, and Section 508 accessibility guidelines for video."
+        }
     ],
   },
   {
@@ -1465,9 +1590,26 @@ export const services = [
       { step: '5. Continuous Optimization', desc: 'Ongoing fine-tuning to elevate automation accuracy and processing throughput.' }
     ],
     faqs: [
-      { q: 'How do you guarantee accuracy with AI pipelines?', a: 'We enforce strict human-in-the-loop verification. AI handles high-speed extraction and initial transformation, while verified subject-matter specialists review and approve outputs before final delivery.' },
-      { q: 'Can your AI pipelines integrate with our existing CMS or DAM?', a: 'Yes. We build modern RESTful API connectors, automated FTP watchers, and webhooks that link directly to your existing content management systems.' },
-      { q: 'Is our sensitive company data kept confidential?', a: 'Strictly yes. All models operate within secure, isolated environments with full non-disclosure protection. Your proprietary content is never used to train public models.' }
+        {
+            "q": "How do you guarantee accuracy and prevent hallucinations in automated pipelines?",
+            "a": "We enforce strict human-in-the-loop verification. AI handles high-speed extraction and preliminary structuring, while verified subject-matter specialists review and approve outputs before final delivery."
+        },
+        {
+            "q": "Can your AI pipelines integrate with our existing CMS or DAM?",
+            "a": "Yes. We build modern RESTful API connectors, automated FTP watchers, and webhooks that link directly to your existing content management systems."
+        },
+        {
+            "q": "Is our sensitive company data kept confidential and secure?",
+            "a": "Strictly yes. All models operate within secure, isolated environments with full non-disclosure protection. Your proprietary content is never used to train public models."
+        },
+        {
+            "q": "What common publishing and document workflows do you automate?",
+            "a": "We automate metadata extraction, XML tagging, citation validation, language translation assistance, automated PDF preflighting, and content summarization."
+        },
+        {
+            "q": "What is the typical timeframe to deploy a custom automation pipeline?",
+            "a": "Initial pilot prototypes are typically deployed within 1 to 2 weeks, with full production integration and SLA monitoring completed within 4 to 6 weeks."
+        }
     ]
   },
   {
@@ -1505,9 +1647,26 @@ export const services = [
       { step: '5. Ongoing SLA Support', desc: 'Continuous monitoring, performance tuning, and technical maintenance.' }
     ],
     faqs: [
-      { q: 'What tech stack does your development team specialize in?', a: 'Our core stack includes React, TypeScript, Next.js, Node.js, Express, Python/FastAPI, PostgreSQL, and modern cloud deployment architectures.' },
-      { q: 'Do you ensure web applications are WCAG accessible?', a: 'Yes. Accessibility is embedded into our development process, from keyboard navigability and ARIA landmarks to screen-reader verification with JAWS and NVDA.' },
-      { q: 'Can you work with our existing in-house engineering team?', a: 'Absolutely. We offer dedicated team augmentation, specialized accessibility consulting, and full turnkey project delivery.' }
+        {
+            "q": "What tech stack does your development engineering team specialize in?",
+            "a": "Our core stack includes React, TypeScript, Next.js, Node.js, Express, Python/FastAPI, PostgreSQL, MongoDB, Docker, and modern AWS/Vercel cloud architectures."
+        },
+        {
+            "q": "How do you guarantee web applications meet WCAG 2.2 AA accessibility standards?",
+            "a": "Accessibility is embedded into our development process, from keyboard navigability and ARIA landmarks to screen-reader verification with JAWS and NVDA."
+        },
+        {
+            "q": "Can you augment our existing in-house development team?",
+            "a": "Absolutely. We offer dedicated team augmentation, specialized full-stack sprint squads, and complete end-to-end turnkey software project delivery."
+        },
+        {
+            "q": "What development methodology and code quality standards do you follow?",
+            "a": "We practice Agile/Scrum with bi-weekly sprints, comprehensive automated unit testing, strict GitHub pull request reviews, and continuous CI/CD integration."
+        },
+        {
+            "q": "Do you provide post-launch maintenance, monitoring, and SLA support?",
+            "a": "Yes. We offer 24/7 uptime monitoring, security patching, API version updates, database optimization, and guaranteed response SLAs for production systems."
+        }
     ]
   },
   {
@@ -1545,9 +1704,26 @@ export const services = [
       { step: '5. Automated Telemetry', desc: 'Scheduled automated refreshes and alert notifications when key thresholds are reached.' }
     ],
     faqs: [
-      { q: 'Can you connect to our custom proprietary databases?', a: 'Yes. We engineer custom API connectors, SQL queries, and webhook listeners for proprietary databases, CRM systems, and cloud storage buckets.' },
-      { q: 'Are your dashboard visualizations accessible for color-blind users?', a: 'Yes. We apply Universal Design principles, utilizing high-contrast color palettes, textural distinctions, and assistive-technology-compatible data tables.' },
-      { q: 'How often can our dashboards refresh?', a: 'Dashboards can be configured for real-time streaming, hourly micro-batches, or daily automated refreshes based on your operational needs.' }
+        {
+            "q": "Can your analytics team connect to our custom proprietary databases and cloud lakes?",
+            "a": "Yes. We engineer custom API connectors, SQL queries, and webhook listeners for proprietary databases (PostgreSQL, MySQL, SQL Server, Snowflake, BigQuery) and cloud storage buckets."
+        },
+        {
+            "q": "Which BI visualization platforms do you build dashboards in?",
+            "a": "We build interactive, executive-grade dashboards in Microsoft Power BI, Tableau, Looker Studio, and custom web dashboards using React and D3.js."
+        },
+        {
+            "q": "Are your dashboard visualizations accessible for color-blind users?",
+            "a": "Yes. We apply Universal Design principles, utilizing CVD-safe high-contrast color palettes, textural distinctions, and assistive-technology-compatible data tables."
+        },
+        {
+            "q": "How frequently can our business intelligence dashboards refresh data?",
+            "a": "Dashboards can be configured for real-time streaming telemetry, hourly scheduled micro-batches, or automated overnight ETL synchronization based on your operational needs."
+        },
+        {
+            "q": "Do you provide executive training and documentation on how to use the dashboards?",
+            "a": "Yes. Every BI project includes comprehensive user documentation, data dictionary definitions, and live hands-on training sessions for your leadership team."
+        }
     ]
   },
   {
@@ -1585,9 +1761,26 @@ export const services = [
       { step: '5. Analyze & Scale', desc: 'Continuous testing and weekly optimizations to scale high-performing channels.' }
     ],
     faqs: [
-      { q: 'How does technical SEO benefit our publishing or tech platform?', a: 'Technical SEO ensures search engines index every title, paper, and service page accurately. Implementing rich JSON-LD schemas enables Google Rich Snippets, boosting click-through rates by up to 30%.' },
-      { q: 'Do you provide regular progress and ROI reports?', a: 'Yes. Clients receive real-time dashboard access alongside monthly executive briefing reports highlighting organic rankings, traffic growth, and generated leads.' },
-      { q: 'Can you work with our existing marketing and editorial team?', a: 'Yes. We collaborate seamlessly with internal teams, handling technical SEO, ad operations, and specialized content while aligning with your brand voice.' }
+        {
+            "q": "How does technical SEO benefit our publishing, education, or technology platform?",
+            "a": "Technical SEO ensures search engines index every title, paper, and service page accurately. Implementing rich JSON-LD schemas enables Google Rich Snippets, boosting click-through rates by up to 30%."
+        },
+        {
+            "q": "How frequently do you provide performance analytics and ROI reporting?",
+            "a": "Clients receive 24/7 dashboard access alongside weekly campaign insights and comprehensive monthly executive briefing reports highlighting organic rankings, traffic growth, and generated leads."
+        },
+        {
+            "q": "Can you collaborate with our existing in-house marketing and content team?",
+            "a": "Yes. We collaborate seamlessly with internal teams, handling technical SEO, ad operations, and specialized content while aligning with your brand voice."
+        },
+        {
+            "q": "What ad channels do you manage for performance marketing campaigns?",
+            "a": "We manage high-ROI campaigns across Google Search & Display Ads, LinkedIn Sponsored Content, Meta Ads (Facebook & Instagram), and YouTube Video Advertising."
+        },
+        {
+            "q": "Do you conduct Conversion Rate Optimization (CRO) on our landing pages?",
+            "a": "Yes. We perform heuristic UX audits, heatmap analysis, A/B split testing, and form optimization to maximize the percentage of visitors who convert into leads."
+        }
     ]
   },
 ];

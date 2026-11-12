@@ -27,24 +27,40 @@ import Icon from '../components/Icon.jsx';
 import { PageHero, CtaBand } from '../components/ui.jsx';
 import TrainingEnrollmentForm from '../components/TrainingEnrollmentForm.jsx';
 
-function FaqItem({ q, a }) {
-  const [open, setOpen] = useState(false);
+function FaqAccordion({ items = [] }) {
+  const [openIdx, setOpenIdx] = useState(0); // 1st Q&A opened by default!
+
   return (
-    <div className={`faq-item${open ? ' is-open' : ''}`}>
-      <button
-        type="button"
-        className="faq-question"
-        aria-expanded={open}
-        onClick={() => setOpen(!open)}
-      >
-        <span>{q}</span>
-        <ChevronDown
-          size={18}
-          aria-hidden="true"
-          style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s' }}
-        />
-      </button>
-      {open && <div className="faq-answer"><p>{a}</p></div>}
+    <div className="faq-list">
+      {items.map((faq, idx) => {
+        const isOpen = openIdx === idx;
+        return (
+          <div key={faq.q || idx} className={`faq-item${isOpen ? ' is-open' : ''}`}>
+            <button
+              type="button"
+              className="faq-question"
+              aria-expanded={isOpen}
+              onClick={() => setOpenIdx(isOpen ? null : idx)}
+            >
+              <span>{faq.q}</span>
+              <ChevronDown
+                size={18}
+                aria-hidden="true"
+                style={{
+                  transform: isOpen ? 'rotate(180deg)' : 'none',
+                  transition: 'transform .2s ease',
+                  flexShrink: 0,
+                }}
+              />
+            </button>
+            {isOpen && (
+              <div className="faq-answer">
+                <p>{faq.a}</p>
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -440,11 +456,7 @@ export default function Training() {
             </p>
           </div>
 
-          <div className="faq-list">
-            {trainingFaqs.map((faq, idx) => (
-              <FaqItem key={idx} q={faq.q} a={faq.a} />
-            ))}
-          </div>
+          <FaqAccordion items={trainingFaqs} />
         </div>
       </section>
 

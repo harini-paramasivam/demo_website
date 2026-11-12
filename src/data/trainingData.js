@@ -119,23 +119,27 @@ export const trainingPrograms = [
     targetAudience: 'Pre-final and final year B.E/B.Tech, BCA, MCA, B.Sc/M.Sc students seeking accredited internships and high-growth tech careers.',
     certification: 'Official Velvora Solutions Certificate of Internship Completion with secure digital verification QR code, hours transcript, and Letter of Recommendation.',
     programFaqs: [
-      {
-        q: 'Can college students balance this internship with regular college classes?',
-        a: 'Yes! We provide flexible virtual remote schedules and weekend review slots tailored specifically for enrolled college students so it never conflicts with college attendance.'
-      },
-      {
-        q: 'Is there a stipend or Pre-Placement Offer (PPO)?',
-        a: 'High-performing interns who complete their milestones with distinction are actively evaluated for Pre-Placement Offers (PPO) and permanent entry-level hiring at Velvora Solutions.'
-      },
-      {
-        q: 'Can I choose my domain for the internship?',
-        a: 'Absolutely. You can select your focus track: ePublishing, AI/ML, Generative AI, Data Analytics, Digital Accessibility, Software Development, or Digital Marketing during enrollment.'
-      },
-      {
-        q: 'Will my college accept this internship for academic credits?',
-        a: 'Yes. We issue formal Offer Letters, Weekly Attendance Logs, Mid-Term Progress Reports, and Final Completion Certificates formatted to meet university academic credit requirements.'
-      }
-    ]
+            {
+                  "q": "Can college students balance this internship with regular college classes?",
+                  "a": "Yes! We provide flexible virtual remote schedules and weekend review slots tailored specifically for enrolled college students so it never conflicts with college attendance."
+            },
+            {
+                  "q": "Is there a stipend or Pre-Placement Offer (PPO)?",
+                  "a": "High-performing interns who complete their milestones with distinction are actively evaluated for Pre-Placement Offers (PPO) and permanent entry-level hiring at Velvora Solutions."
+            },
+            {
+                  "q": "Can I choose my domain for the internship?",
+                  "a": "Absolutely. You can select your focus track: ePublishing, AI/ML, Generative AI, Data Analytics, Digital Accessibility, Software Development, or Digital Marketing during enrollment."
+            },
+            {
+                  "q": "Will my college accept this internship for academic credits?",
+                  "a": "Yes. We issue formal Offer Letters, Weekly Attendance Logs, Mid-Term Progress Reports, and Final Completion Certificates formatted to meet university academic credit requirements."
+            },
+            {
+                  "q": "What kind of projects do interns work on during the program?",
+                  "a": "Interns contribute directly to real client deliverables: live XML tagging, accessible document remediation, production dashboard engineering, or NLP model pipelines under senior mentor guidance."
+            }
+      ]
   },
   {
     id: 'epublishing-training',
@@ -219,19 +223,27 @@ export const trainingPrograms = [
     targetAudience: 'Content production professionals, copyeditors, typesetting operators, and graduates looking to break into global publishing houses.',
     certification: 'Velvora Certified ePublishing Specialist credential with verification badge.',
     programFaqs: [
-      {
-        q: 'Do I need a computer science degree to learn ePublishing?',
-        a: 'Not at all. ePublishing is a specialized blend of editorial structure, typography, and clean markup (HTML/XML/CSS). Candidates from Arts, Science, and Engineering succeed equally well.'
-      },
-      {
-        q: 'Are global publishing houses hiring ePublishing specialists in India?',
-        a: 'Yes. Major global publishers like Springer Nature, Elsevier, Taylor & Francis, Wiley, and Pearson run massive content conversion and QA centers in Chennai, Bengaluru, and across India.'
-      },
-      {
-        q: 'Is software like Oxygen XML and InDesign provided during training?',
-        a: 'Yes. In our Cuddalore and Chennai labs, workstations are fully equipped with licensed enterprise tools. Virtual students receive trial setups and guided cloud lab access.'
-      }
-    ]
+            {
+                  "q": "Do I need a computer science degree to learn ePublishing?",
+                  "a": "Not at all. ePublishing is a specialized blend of editorial structure, typography, and clean markup (HTML/XML/CSS). Candidates from Arts, Science, and Engineering succeed equally well."
+            },
+            {
+                  "q": "Are global publishing houses hiring ePublishing specialists in India?",
+                  "a": "Yes. Major global publishers like Springer Nature, Elsevier, Taylor & Francis, Wiley, and Pearson run massive content conversion and QA centers in Chennai, Bengaluru, and across India."
+            },
+            {
+                  "q": "Is software like Oxygen XML and InDesign provided during training?",
+                  "a": "Yes. In our Cuddalore and Chennai labs, workstations are fully equipped with licensed enterprise tools. Virtual students receive trial setups and guided cloud lab access."
+            },
+            {
+                  "q": "Does this course cover EPUB Accessibility 1.1 standards?",
+                  "a": "Yes. You will learn DAISY Ace validation, MathML integration, structural semantic inflection, and accessible pagination directly conforming to European Accessibility Act requirements."
+            },
+            {
+                  "q": "What job roles can I apply for after completing this training?",
+                  "a": "Graduates qualify for roles like ePub Developer, XML Production Specialist, Digital Content Executive, Editorial Quality Analyst, and Typesetting Specialist."
+            }
+      ]
   },
   {
     id: 'ai-ml-training',
@@ -314,19 +326,27 @@ export const trainingPrograms = [
     targetAudience: 'Software developers, data analysts, STEM graduates, and engineers looking to specialize in applied machine learning.',
     certification: 'Velvora Certified Applied AI/ML Engineer credential with verifiable repository appraisal.',
     programFaqs: [
-      {
-        q: 'Do I need an advanced mathematics or Ph.D background for this course?',
-        a: 'No. We teach the necessary linear algebra, calculus, and probability through intuitive geometric visualizations and practical Python implementations.'
-      },
-      {
-        q: 'Do we use PyTorch or TensorFlow?',
-        a: 'We focus primarily on PyTorch, which is the dominant framework in modern industry and research, while also covering Scikit-Learn for classical tabular workflows.'
-      },
-      {
-        q: 'Are GPU computing environments provided?',
-        a: 'Yes. Trainees are guided in using Google Colab Pro, Kaggle GPU clusters, and our in-house lab workstations for training deep learning models.'
-      }
-    ]
+            {
+                  "q": "Do I need an advanced mathematics or Ph.D background for this course?",
+                  "a": "No. We teach the necessary linear algebra, calculus, and probability through intuitive geometric visualizations and practical Python implementations."
+            },
+            {
+                  "q": "Do we use PyTorch or TensorFlow?",
+                  "a": "We focus primarily on PyTorch, which is the dominant framework in modern industry and research, while also covering Scikit-Learn for classical tabular workflows."
+            },
+            {
+                  "q": "Are GPU computing environments provided?",
+                  "a": "Yes. Trainees are guided in using Google Colab Pro, Kaggle GPU clusters, and our in-house lab workstations for training deep learning models."
+            },
+            {
+                  "q": "What real-world projects will I build during the training?",
+                  "a": "You will build real-world models: a customer churn predictor, an NLP document classification transformer, a convolutional computer vision model, and a FastAPI containerized inference service."
+            },
+            {
+                  "q": "Does this program cover MLOps and cloud deployment?",
+                  "a": "Yes. We cover Docker containerization, REST API model serving with FastAPI, and automated CI/CD deployment pipelines on modern cloud environments."
+            }
+      ]
   },
   {
     id: 'generative-ai-training',
@@ -410,19 +430,27 @@ export const trainingPrograms = [
     targetAudience: 'Software developers, product engineers, system architects, and tech enthusiasts eager to lead the GenAI wave.',
     certification: 'Velvora Certified Generative AI Architect credential with live project repository verification.',
     programFaqs: [
-      {
-        q: 'Do I need expensive GPU hardware to run the code in this course?',
-        a: 'No. You will interact with cloud LLM APIs (OpenAI, Gemini) and run lightweight quantized models (Llama 3 8B) on standard laptops via Ollama, plus free Google Colab.'
-      },
-      {
-        q: 'How does this course differ from generic ChatGPT tutorials on YouTube?',
-        a: 'This is an engineering course. You write Python code, design vector retrieval architectures, handle API retries, build autonomous agents, and evaluate hallucination metrics with industry tools.'
-      },
-      {
-        q: 'Will I learn how to build private AI systems that do not leak company data?',
-        a: 'Yes. We specifically cover local open-source LLMs (Ollama) and on-premises vector databases where data never leaves the organization.'
-      }
-    ]
+            {
+                  "q": "Do I need expensive GPU hardware to run the code in this course?",
+                  "a": "No. You will interact with cloud LLM APIs (OpenAI, Gemini) and run lightweight quantized models (Llama 3 8B) on standard laptops via Ollama, plus free Google Colab."
+            },
+            {
+                  "q": "What is the difference between Prompt Engineering and Fine-Tuning?",
+                  "a": "We explain when to use in-context prompting, RAG (Retrieval-Augmented Generation), and parameter-efficient fine-tuning (PEFT/LoRA), and practice all three with real datasets."
+            },
+            {
+                  "q": "Will we learn how to build autonomous AI agents?",
+                  "a": "Yes. A major section of the curriculum is dedicated to LangChain, LangGraph, and multi-agent coordination frameworks that can search tools, query databases, and execute multi-step workflows."
+            },
+            {
+                  "q": "How do you handle enterprise data privacy with Generative AI?",
+                  "a": "We cover enterprise security architectures: local private LLM hosting, vector database access controls, input/output guardrails, and data anonymization pipelines."
+            },
+            {
+                  "q": "What capstone project will I complete by graduation?",
+                  "a": "You will engineer a full-stack Enterprise RAG Assistant with citation telemetry, hybrid semantic vector search, and a conversational React frontend."
+            }
+      ]
   },
   {
     id: 'data-analytics-bi-training',
@@ -507,19 +535,27 @@ export const trainingPrograms = [
     targetAudience: 'Graduates in commerce, business, science, engineering, or professionals wanting to transition into high-paying analytics careers.',
     certification: 'Velvora Certified Business Intelligence Analyst credential with verified dashboard portfolio.',
     programFaqs: [
-      {
-        q: 'Is coding in Python mandatory to become a Data Analyst?',
-        a: 'No. The majority of industry analytics roles focus heavily on SQL, Power BI, and Excel. We cover Python as an advanced accelerator, but SQL and Power BI are the core foundation.'
-      },
-      {
-        q: 'Does this course prepare me for the Microsoft PL-300 Power BI Data Analyst certification?',
-        a: 'Yes. Our curriculum aligns closely with Microsoft’s official PL-300 exam objectives, giving you full confidence to clear the certification.'
-      },
-      {
-        q: 'Can non-engineering students succeed in this field?',
-        a: 'Absolutely. Business intelligence values domain logic, communication, and clear thinking above all else. Commerce, Arts, and Science graduates thrive in this domain.'
-      }
-    ]
+            {
+                  "q": "Is coding in Python mandatory to become a Data Analyst?",
+                  "a": "No. SQL, Excel, and Power BI alone unlock the vast majority of enterprise data analyst openings. Python is taught as an optional superpower for data wrangling and automation."
+            },
+            {
+                  "q": "Does this course prepare me for the Microsoft PL-300 Power BI Data Analyst certification?",
+                  "a": "Yes. Our curriculum aligns closely with Microsoft’s official PL-300 exam objectives, giving you full confidence to clear the certification."
+            },
+            {
+                  "q": "Can non-engineering students succeed in this field?",
+                  "a": "Absolutely. Business intelligence values domain logic, communication, and clear thinking above all else. Commerce, Arts, and Science graduates thrive in this domain."
+            },
+            {
+                  "q": "Will I learn complex DAX formulas and star-schema data modeling?",
+                  "a": "Yes, extensively. We dedicate multiple weeks to DAX calculated columns, measures, time-intelligence functions, and dimensional star/snowflake schema modeling."
+            },
+            {
+                  "q": "What portfolio assets will I have upon graduation?",
+                  "a": "You will finish with an interactive portfolio of 4 executive dashboards (Sales, Financial Performance, HR Analytics, and Logistics) hosted live on Power BI Service."
+            }
+      ]
   },
   {
     id: 'digital-accessibility-training',
@@ -605,19 +641,27 @@ export const trainingPrograms = [
     targetAudience: 'Publishing staff, QA engineers, web developers, document controllers, and candidates seeking high-demand global remote careers.',
     certification: 'Velvora Certified Digital Accessibility Specialist credential and CPACC preparation endorsement.',
     programFaqs: [
-      {
-        q: 'Is digital accessibility a growing career field?',
-        a: 'Enormously. With global legal enforcement like the European Accessibility Act taking effect and US Department of Justice regulations, global companies face intense pressure to hire certified accessibility talent.'
-      },
-      {
-        q: 'Do I need to be a programmer to work in accessibility?',
-        a: 'No! PDF remediation and accessibility QA auditing are largely tag-tree and assistive technology workflows that do not require writing software code.'
-      },
-      {
-        q: 'Does this course help me prepare for the IAAP CPACC exam?',
-        a: 'Yes. Our curriculum covers the official International Association of Accessibility Professionals (IAAP) Body of Knowledge, preparing you directly for CPACC certification.'
-      }
-    ]
+            {
+                  "q": "Is digital accessibility a growing career field?",
+                  "a": "Enormously. With global legal enforcement like the European Accessibility Act taking effect and US Department of Justice regulations, global companies face intense pressure to hire certified accessibility talent."
+            },
+            {
+                  "q": "Do I need to be a programmer to work in accessibility?",
+                  "a": "No! PDF remediation and accessibility QA auditing are largely tag-tree and assistive technology workflows that do not require writing software code."
+            },
+            {
+                  "q": "Does this course help me prepare for the IAAP CPACC exam?",
+                  "a": "Yes. Our curriculum covers the official International Association of Accessibility Professionals (IAAP) Body of Knowledge, preparing you directly for CPACC certification."
+            },
+            {
+                  "q": "Which screen readers and testing software will I learn to use?",
+                  "a": "You will get hands-on mastery with JAWS, NVDA, Apple VoiceOver, Colour Contrast Analyser, PAC (PDF Accessibility Checker), and axe DevTools."
+            },
+            {
+                  "q": "What hands-on remediation practice is included?",
+                  "a": "You will remediate complex real-world documents: inaccessible government PDF forms, academic textbooks, Word documents, and live multi-page React websites."
+            }
+      ]
   },
   {
     id: 'software-development-training',
@@ -703,19 +747,27 @@ export const trainingPrograms = [
     targetAudience: 'Engineering and computer science students, career switchers, and developers looking to modernize their stack to React and Node.',
     certification: 'Velvora Certified Full-Stack Software Engineer credential with live project code review badge.',
     programFaqs: [
-      {
-        q: 'Do we learn modern React with Hooks or older class components?',
-        a: 'We teach 100% modern React with functional components, hooks, custom hooks, and modern ecosystem tools like Vite and Zustand.'
-      },
-      {
-        q: 'Will I have a working portfolio by the end of this course?',
-        a: 'Yes. You will complete at least 3 portfolio-ready applications, culminating in a complex full-stack SaaS capstone hosted live on the web.'
-      },
-      {
-        q: 'How are code reviews conducted?',
-        a: 'Every trainee submits assignments via GitHub pull requests. Senior engineers review your code line-by-line, providing feedback on architecture, security, and cleanliness.'
-      }
-    ]
+            {
+                  "q": "Do we learn modern React with Hooks or older class components?",
+                  "a": "We teach 100% modern React with functional components, hooks, custom hooks, and modern ecosystem tools like Vite and Zustand."
+            },
+            {
+                  "q": "Will I have a working portfolio by the end of this course?",
+                  "a": "Yes. You will complete at least 3 portfolio-ready applications, culminating in a complex full-stack SaaS capstone hosted live on the web."
+            },
+            {
+                  "q": "How are code reviews conducted during the training?",
+                  "a": "Every trainee submits assignments via GitHub pull requests. Senior engineers review your code line-by-line, providing feedback on architecture, security, and cleanliness."
+            },
+            {
+                  "q": "Is backend API engineering and database design covered?",
+                  "a": "Yes. You will learn Node.js, Express, PostgreSQL, RESTful architecture, JWT authentication, and database indexing for production-ready performance."
+            },
+            {
+                  "q": "Do you cover deployment and cloud hosting?",
+                  "a": "Yes. You will learn how to deploy frontends to Vercel/Netlify, backends to Railway/Render, databases to Neon/Supabase, and set up automated GitHub Actions CI/CD."
+            }
+      ]
   },
   {
     id: 'digital-marketing-training',
@@ -799,19 +851,27 @@ export const trainingPrograms = [
     targetAudience: 'Marketing professionals, entrepreneurs, commerce/arts graduates, and career changers aiming for digital growth roles.',
     certification: 'Velvora Certified Digital Growth Strategist credential with live campaign audit verification.',
     programFaqs: [
-      {
-        q: 'Does this course teach Google Analytics 4 (GA4)?',
-        a: 'Yes, extensively. Since Universal Analytics was retired, GA4 is the world standard, and we cover its event-based data model, GTM tags, and custom conversions from scratch.'
-      },
-      {
-        q: 'Do I need a large advertising budget to practice during the course?',
-        a: 'No. We demonstrate campaign setups using structured simulation environments and live enterprise accounts so you understand bidding without spending your own money.'
-      },
-      {
-        q: 'Can this training help me market my own business or freelance practice?',
-        a: '100%. Many of our trainees are small business owners and freelancers who apply these exact SEO, ads, and email funnels to generate their own client pipeline.'
-      }
-    ]
+            {
+                  "q": "Does this course teach Google Analytics 4 (GA4)?",
+                  "a": "Yes, extensively. Since Universal Analytics was retired, GA4 is the world standard, and we cover its event-based data model, GTM tags, and custom conversions from scratch."
+            },
+            {
+                  "q": "Do I need a large advertising budget to practice during the course?",
+                  "a": "No. We demonstrate campaign setups using structured simulation environments and live enterprise accounts so you understand bidding without spending your own money."
+            },
+            {
+                  "q": "Can this training help me market my own business or freelance practice?",
+                  "a": "100%. Many of our trainees are small business owners and freelancers who apply these exact SEO, ads, and email funnels to generate their own client pipeline."
+            },
+            {
+                  "q": "Will I learn how to rank websites on Google via Technical and On-Page SEO?",
+                  "a": "Yes. You will master keyword research, search intent mapping, schema markup, Core Web Vitals optimization, and high-authority link-building outreach."
+            },
+            {
+                  "q": "What certifications can I earn through this program?",
+                  "a": "In addition to the Velvora Solutions Certificate, we guide you to clear Google Search Ads, Google Analytics Individual Qualification (GAIQ), and HubSpot Inbound Marketing certifications."
+            }
+      ]
   }
 ];
 

@@ -8,30 +8,130 @@ import {
   Sparkles,
   Layers,
   FileCheck2,
-  Users
+  Users,
+  BarChart3,
+  Bot,
+  BrainCircuit,
+  Code,
+  Cpu,
+  Globe,
+  Search,
+  ShieldCheck,
+  Zap,
+  Activity,
+  Target,
+  Award,
+  BookOpen,
+  FileCode,
+  Palette,
+  Sigma,
+  Bookmark,
+  ScanText,
+  Video,
+  Megaphone,
 } from 'lucide-react';
 import { services } from '../data/site.js';
 import Icon from '../components/Icon.jsx';
 import { PageHero, CtaBand } from '../components/ui.jsx';
 
-function FaqItem({ q, a }) {
-  const [open, setOpen] = useState(false);
+function getOfferIcon(title = '', idx = 0) {
+  const t = title.toLowerCase();
+  if (t.includes('bi') || t.includes('dashboard') || t.includes('analytics') || t.includes('report')) {
+    return { IconCmp: BarChart3, color: 'blue' };
+  }
+  if (t.includes('pipeline') || t.includes('etl') || t.includes('database') || t.includes('data')) {
+    return { IconCmp: Cpu, color: 'indigo' };
+  }
+  if (t.includes('ai') || t.includes('model') || t.includes('predictive') || t.includes('forecast')) {
+    return { IconCmp: BrainCircuit, color: 'purple' };
+  }
+  if (t.includes('automate') || t.includes('automation') || t.includes('bot')) {
+    return { IconCmp: Bot, color: 'cyan' };
+  }
+  if (t.includes('clean') || t.includes('normalize') || t.includes('qa') || t.includes('audit')) {
+    return { IconCmp: Sparkles, color: 'emerald' };
+  }
+  if (t.includes('conversion') || t.includes('roi') || t.includes('growth') || t.includes('telemetry')) {
+    return { IconCmp: Zap, color: 'amber' };
+  }
+  if (t.includes('seo') || t.includes('marketing') || t.includes('campaign')) {
+    return { IconCmp: Megaphone, color: 'rose' };
+  }
+  if (t.includes('epub') || t.includes('book') || t.includes('print')) {
+    return { IconCmp: BookOpen, color: 'blue' };
+  }
+  if (t.includes('xml') || t.includes('schema') || t.includes('tag')) {
+    return { IconCmp: FileCode, color: 'cyan' };
+  }
+  if (t.includes('accessib') || t.includes('screen reader') || t.includes('wcag')) {
+    return { IconCmp: ShieldCheck, color: 'emerald' };
+  }
+  if (t.includes('typeset') || t.includes('design') || t.includes('layout')) {
+    return { IconCmp: Palette, color: 'indigo' };
+  }
+  if (t.includes('math') || t.includes('equation') || t.includes('latex')) {
+    return { IconCmp: Sigma, color: 'purple' };
+  }
+  if (t.includes('meta') || t.includes('index') || t.includes('taxonom')) {
+    return { IconCmp: Bookmark, color: 'amber' };
+  }
+  if (t.includes('ocr') || t.includes('scan') || t.includes('digitiz')) {
+    return { IconCmp: ScanText, color: 'emerald' };
+  }
+  if (t.includes('caption') || t.includes('transcription') || t.includes('audio') || t.includes('video')) {
+    return { IconCmp: Video, color: 'rose' };
+  }
+  if (t.includes('web') || t.includes('software') || t.includes('app') || t.includes('dev')) {
+    return { IconCmp: Code, color: 'indigo' };
+  }
+
+  // Fallback palette
+  const fallbacks = [
+    { IconCmp: Sparkles, color: 'cyan' },
+    { IconCmp: Target, color: 'blue' },
+    { IconCmp: Layers, color: 'indigo' },
+    { IconCmp: Cpu, color: 'purple' },
+    { IconCmp: Award, color: 'amber' },
+    { IconCmp: CheckCircle2, color: 'emerald' },
+    { IconCmp: Zap, color: 'rose' },
+  ];
+  return fallbacks[idx % fallbacks.length];
+}
+
+function FaqAccordion({ items = [] }) {
+  const [openIdx, setOpenIdx] = useState(0); // 1st Q&A opened by default!
+
   return (
-    <div className={`faq-item${open ? ' is-open' : ''}`}>
-      <button
-        type="button"
-        className="faq-question"
-        aria-expanded={open}
-        onClick={() => setOpen(!open)}
-      >
-        <span>{q}</span>
-        <ChevronDown
-          size={18}
-          aria-hidden="true"
-          style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s' }}
-        />
-      </button>
-      {open && <div className="faq-answer"><p>{a}</p></div>}
+    <div className="faq-list">
+      {items.map((f, idx) => {
+        const isOpen = openIdx === idx;
+        return (
+          <div key={f.q || idx} className={`faq-item${isOpen ? ' is-open' : ''}`}>
+            <button
+              type="button"
+              className="faq-question"
+              aria-expanded={isOpen}
+              onClick={() => setOpenIdx(isOpen ? null : idx)}
+            >
+              <span>{f.q}</span>
+              <ChevronDown
+                size={18}
+                aria-hidden="true"
+                style={{
+                  transform: isOpen ? 'rotate(180deg)' : 'none',
+                  transition: 'transform .2s ease',
+                  flexShrink: 0,
+                }}
+              />
+            </button>
+            {isOpen && (
+              <div className="faq-answer">
+                <p>{f.a}</p>
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -114,9 +214,13 @@ export default function ServicePage() {
               <div style={{ marginTop: '3rem' }}>
                 <h3 className="section-subtitle">What We Offer</h3>
                 <div className="svc-offers-grid">
-                  {s.whatWeOffer.map((item, idx) => (
-                    item.category ? (
+                  {s.whatWeOffer.map((item, idx) => {
+                    const { IconCmp, color } = getOfferIcon(item.title || item.category, idx);
+                    return item.category ? (
                       <div key={item.category} className="svc-offer-cat">
+                        <div className={`svc-offer-card__icon svc-offer-card__icon--${color}`}>
+                          <IconCmp size={22} />
+                        </div>
                         <h4>{item.category}</h4>
                         <ul className="bullets">
                           {item.items.map((it) => (
@@ -126,11 +230,14 @@ export default function ServicePage() {
                       </div>
                     ) : (
                       <div key={item.title || idx} className="svc-offer-card">
+                        <div className={`svc-offer-card__icon svc-offer-card__icon--${color}`}>
+                          <IconCmp size={22} />
+                        </div>
                         <h4>{item.title}</h4>
                         <p>{item.desc}</p>
                       </div>
-                    )
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -163,12 +270,18 @@ export default function ServicePage() {
               <div style={{ marginTop: '3.5rem' }}>
                 <h3 className="section-subtitle">Training Programs</h3>
                 <div className="svc-offers-grid">
-                  {s.trainingPrograms.map((tp) => (
-                    <div key={tp.name} className="svc-offer-card">
-                      <h4>{tp.name}</h4>
-                      <p>{tp.desc}</p>
-                    </div>
-                  ))}
+                  {s.trainingPrograms.map((tp, idx) => {
+                    const { IconCmp, color } = getOfferIcon(tp.name, idx);
+                    return (
+                      <div key={tp.name} className="svc-offer-card">
+                        <div className={`svc-offer-card__icon svc-offer-card__icon--${color}`}>
+                          <IconCmp size={22} />
+                        </div>
+                        <h4>{tp.name}</h4>
+                        <p>{tp.desc}</p>
+                      </div>
+                    );
+                  })}
                 </div>
 
                 {s.trainingFormats && (
@@ -186,12 +299,18 @@ export default function ServicePage() {
                   <div style={{ marginTop: '2.5rem' }}>
                     <h4>Consulting Services</h4>
                     <div className="svc-offers-grid" style={{ marginTop: '1rem' }}>
-                      {s.consultingServices.map((cs) => (
-                        <div key={cs.title} className="svc-offer-card">
-                          <h5>{cs.title}</h5>
-                          <p>{cs.desc}</p>
-                        </div>
-                      ))}
+                      {s.consultingServices.map((cs, idx) => {
+                        const { IconCmp, color } = getOfferIcon(cs.title, idx);
+                        return (
+                          <div key={cs.title} className="svc-offer-card">
+                            <div className={`svc-offer-card__icon svc-offer-card__icon--${color}`}>
+                              <IconCmp size={22} />
+                            </div>
+                            <h5>{cs.title}</h5>
+                            <p>{cs.desc}</p>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
@@ -203,15 +322,18 @@ export default function ServicePage() {
               <div style={{ marginTop: '3.5rem' }}>
                 <h3 className="section-subtitle">Our Process</h3>
                 <ol className="svc-process-list">
-                  {s.process.map((p, idx) => (
-                    <li key={p.step} className="svc-process-item">
-                      <span className="step-num">{String(idx + 1).padStart(2, '0')}</span>
-                      <div>
-                        <h4>{p.step}</h4>
-                        <p>{p.desc}</p>
-                      </div>
-                    </li>
-                  ))}
+                  {s.process.map((p, idx) => {
+                    const cleanTitle = p.step.replace(/^\d+[\.\s\-]+/, '');
+                    return (
+                      <li key={idx} className="svc-process-item">
+                        <div className="svc-process-header">
+                          <span className="step-num">{String(idx + 1).padStart(2, '0')}</span>
+                          <h4 className="svc-process-title">{cleanTitle}</h4>
+                        </div>
+                        <p className="svc-process-desc">{p.desc}</p>
+                      </li>
+                    );
+                  })}
                 </ol>
               </div>
             )}
@@ -286,11 +408,7 @@ export default function ServicePage() {
                   <HelpCircle size={22} className="accent" aria-hidden="true" />
                   Frequently Asked Questions
                 </h3>
-                <div className="faq-list">
-                  {s.faqs.map((f) => (
-                    <FaqItem key={f.q} q={f.q} a={f.a} />
-                  ))}
-                </div>
+                <FaqAccordion items={s.faqs} />
               </div>
             )}
 
