@@ -11,16 +11,10 @@ import {
   Sparkles,
   Award,
   SlidersHorizontal,
-  Compass,
-  Search,
-  Filter,
   Workflow,
-  ShieldCheck,
   Check,
   LayoutGrid,
-  MonitorCheck,
-  BookOpen,
-  GraduationCap
+  Filter
 } from 'lucide-react';
 import { PageHero, CtaBand } from '../components/ui.jsx';
 import { solutionsData } from '../data/site.js';
@@ -36,9 +30,8 @@ export default function SolutionsOverview() {
   // View mode: 'console' (Interactive Architecture Blueprint) vs 'grid' (Full Catalog Matrix)
   const [viewMode, setViewMode] = useState('console');
 
-  // Filter & Search states
+  // Filter state for catalog view
   const [filter, setFilter] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
 
   // Active solution object
   const activeSolution = useMemo(() => {
@@ -60,17 +53,12 @@ export default function SolutionsOverview() {
     setActiveSolutionId(solutionsData[nextIndex].id);
   };
 
-  // Filtered solutions for grid view or search
+  // Filtered solutions for grid view
   const filteredSolutions = useMemo(() => {
     return solutionsData.filter((sol) => {
-      const matchesCategory = filter === 'all' || sol.category === filter;
-      const matchesSearch = !searchQuery.trim() || 
-        sol.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        sol.tag.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        sol.servicesIncluded.some((s) => s.toLowerCase().includes(searchQuery.toLowerCase()));
-      return matchesCategory && matchesSearch;
+      return filter === 'all' || sol.category === filter;
     });
-  }, [filter, searchQuery]);
+  }, [filter]);
 
   const industrySolutions = useMemo(() => {
     return solutionsData.filter((s) => s.category === 'industry');
@@ -102,12 +90,12 @@ export default function SolutionsOverview() {
             <div className="sol-metric-pill">
               <span className="sol-metric-dot sol-metric-dot--cyan" />
               <strong>4 Industry Frameworks</strong>
-              <span>Publishers, EdTech & Corporate</span>
+              <span>Publishers, EdTech &amp; Corporate</span>
             </div>
             <div className="sol-metric-pill">
               <span className="sol-metric-dot sol-metric-dot--emerald" />
               <strong>5 Operational Needs</strong>
-              <span>Modernization, AI & Backlists</span>
+              <span>Modernization, AI &amp; Backlists</span>
             </div>
             <div className="sol-metric-pill">
               <span className="sol-metric-dot sol-metric-dot--purple" />
@@ -121,56 +109,29 @@ export default function SolutionsOverview() {
       {/* SOLUTIONS COMMAND CENTER SECTION */}
       <section className="section section--paper sol-command-section" aria-labelledby="solutions-hub-heading">
         <div className="container">
-          {/* TOP CONTROLS: VIEW SWITCHER & CATEGORY FILTERS */}
-          <div className="sol-top-bar">
-            <div className="sol-top-bar__left">
-              <div className="sol-view-switcher" role="tablist" aria-label="Solutions display mode">
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={viewMode === 'console'}
-                  className={`sol-view-btn${viewMode === 'console' ? ' is-active' : ''}`}
-                  onClick={() => setViewMode('console')}
-                >
-                  <Workflow size={17} aria-hidden="true" />
-                  <span>Interactive Blueprint</span>
-                </button>
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={viewMode === 'grid'}
-                  className={`sol-view-btn${viewMode === 'grid' ? ' is-active' : ''}`}
-                  onClick={() => setViewMode('grid')}
-                >
-                  <LayoutGrid size={17} aria-hidden="true" />
-                  <span>Full Portfolio Catalog</span>
-                </button>
-              </div>
-            </div>
-
-            <div className="sol-top-bar__right">
-              {/* Live Search */}
-              <div className="sol-search-wrap">
-                <Search size={16} className="sol-search-icon" aria-hidden="true" />
-                <input
-                  type="text"
-                  placeholder="Search challenges, services, tags..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="sol-search-field"
-                  aria-label="Search solutions"
-                />
-                {searchQuery && (
-                  <button 
-                    type="button" 
-                    className="sol-search-clear-btn" 
-                    onClick={() => setSearchQuery('')}
-                    aria-label="Clear search"
-                  >
-                    ×
-                  </button>
-                )}
-              </div>
+          {/* TOP CONTROLS: VIEW SWITCHER */}
+          <div className="sol-top-bar sol-top-bar--centered">
+            <div className="sol-view-switcher" role="tablist" aria-label="Solutions display mode">
+              <button
+                type="button"
+                role="tab"
+                aria-selected={viewMode === 'console'}
+                className={`sol-view-btn${viewMode === 'console' ? ' is-active' : ''}`}
+                onClick={() => setViewMode('console')}
+              >
+                <Workflow size={17} aria-hidden="true" />
+                <span>Interactive Blueprint</span>
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={viewMode === 'grid'}
+                className={`sol-view-btn${viewMode === 'grid' ? ' is-active' : ''}`}
+                onClick={() => setViewMode('grid')}
+              >
+                <LayoutGrid size={17} aria-hidden="true" />
+                <span>Full Portfolio Catalog</span>
+              </button>
             </div>
           </div>
 
@@ -284,9 +245,9 @@ export default function SolutionsOverview() {
                     </div>
                   </header>
 
-                  {/* Dual Architecture Stage Columns */}
+                  {/* TOP STAGE DUAL COLUMNS (EQUALIZED HEIGHTS) */}
                   <div className="sol-stage-body">
-                    {/* LEFT COLUMN: THE PROBLEM & WORKFLOW ROADMAP */}
+                    {/* LEFT COLUMN: CHALLENGES & WORKFLOW PIPELINE */}
                     <div className="sol-stage-col sol-stage-col--workflow">
                       {/* 1. THE CHALLENGE */}
                       <div className="sol-module sol-module--challenges">
@@ -330,29 +291,11 @@ export default function SolutionsOverview() {
                           ))}
                         </div>
                       </div>
-
-                      {/* 3. INTEGRATED SERVICES */}
-                      <div className="sol-module sol-module--services">
-                        <div className="sol-module-head">
-                          <span className="sol-module-head__icon sol-module-head__icon--services">
-                            <Layers size={16} aria-hidden="true" />
-                          </span>
-                          <h3 className="sol-module-head__title">Velvora Services Integrated</h3>
-                        </div>
-                        <div className="sol-services-wrap">
-                          {activeSolution.servicesIncluded.map((s, idx) => (
-                            <span key={idx} className="sol-service-chip">
-                              <Check size={13} className="sol-service-chip__check" />
-                              <span>{s}</span>
-                            </span>
-                          ))}
-                        </div>
-                      </div>
                     </div>
 
-                    {/* RIGHT COLUMN: BUSINESS IMPACT & TRANSFORMATION */}
+                    {/* RIGHT COLUMN: BENEFITS & STANDARDS / CASE STUDY */}
                     <div className="sol-stage-col sol-stage-col--impact">
-                      {/* 4. BENEFITS DELIVERED */}
+                      {/* 3. BENEFITS DELIVERED */}
                       <div className="sol-module sol-module--benefits">
                         <div className="sol-module-head">
                           <span className="sol-module-head__icon sol-module-head__icon--benefits">
@@ -370,14 +313,14 @@ export default function SolutionsOverview() {
                         </ul>
                       </div>
 
-                      {/* 5. STANDARDS WE WORK TO (IF APPLICABLE) */}
-                      {activeSolution.standards && (
+                      {/* 4. STANDARDS OR CASE STUDY SPOTLIGHT */}
+                      {activeSolution.standards ? (
                         <div className="sol-module sol-module--standards">
                           <div className="sol-module-head">
                             <span className="sol-module-head__icon sol-module-head__icon--award">
                               <Award size={16} aria-hidden="true" />
                             </span>
-                            <h3 className="sol-module-head__title">Verified Standards & Regulations</h3>
+                            <h3 className="sol-module-head__title">Verified Standards &amp; Regulations</h3>
                           </div>
                           <div className="sol-standards-tags-grid">
                             {activeSolution.standards.map((st) => (
@@ -387,10 +330,7 @@ export default function SolutionsOverview() {
                             ))}
                           </div>
                         </div>
-                      )}
-
-                      {/* 6. RELATED CASE STUDY (IF APPLICABLE) */}
-                      {activeSolution.caseStudy && (
+                      ) : activeSolution.caseStudy ? (
                         <div className="sol-module sol-module--casestudy">
                           <span className="sol-casestudy-tag">Verified Production Case</span>
                           <h4 className="sol-casestudy-title">{activeSolution.caseStudy}</h4>
@@ -401,23 +341,56 @@ export default function SolutionsOverview() {
                             </Link>
                           )}
                         </div>
+                      ) : (
+                        <div className="sol-module sol-module--assurance">
+                          <div className="sol-module-head">
+                            <span className="sol-module-head__icon sol-module-head__icon--award">
+                              <Award size={16} aria-hidden="true" />
+                            </span>
+                            <h3 className="sol-module-head__title">Enterprise Quality Guarantee</h3>
+                          </div>
+                          <p className="sol-assurance-text">
+                            Backed by Velvora’s 99.9% quality compliance SLA, multi-tier QA gates, and automated regression testing across all formats.
+                          </p>
+                        </div>
                       )}
+                    </div>
+                  </div>
 
-                      {/* DIRECT ENGAGEMENT ACTION CARD */}
-                      <div className="sol-direct-card">
-                        <span className="sol-direct-card__badge">Execution SLA</span>
-                        <h4 className="sol-direct-card__title">Deploy this Architecture</h4>
-                        <p className="sol-direct-card__desc">
-                          Our solutions architects will analyze your content repositories and establish a zero-disruption timeline within 24 hours.
-                        </p>
-                        <Link
-                          to={`/contact?subject=${encodeURIComponent(activeSolution.ctaSubject || activeSolution.title)}`}
-                          className="btn btn--orange btn--block sol-direct-card__btn"
-                        >
-                          <span>{activeSolution.ctaText}</span>
-                          <ArrowRight size={16} aria-hidden="true" />
-                        </Link>
+                  {/* BOTTOM BALANCED GRID: SERVICES (LEFT) & DEPLOY ACTION (RIGHT) - GUARANTEED EXACT SAME BOTTOM LEVEL */}
+                  <div className="sol-stage-bottom-grid">
+                    {/* LEFT: INTEGRATED SERVICES */}
+                    <div className="sol-module sol-module--services sol-bottom-card">
+                      <div className="sol-module-head">
+                        <span className="sol-module-head__icon sol-module-head__icon--services">
+                          <Layers size={16} aria-hidden="true" />
+                        </span>
+                        <h3 className="sol-module-head__title">Velvora Services Integrated</h3>
                       </div>
+                      <div className="sol-services-wrap">
+                        {activeSolution.servicesIncluded.map((s, idx) => (
+                          <span key={idx} className="sol-service-chip">
+                            <Check size={13} className="sol-service-chip__check" />
+                            <span>{s}</span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* RIGHT: DEPLOY ACTION CARD */}
+                    <div className="sol-direct-card sol-bottom-card">
+                      <span className="sol-direct-card__badge">Execution SLA</span>
+                      <h4 className="sol-direct-card__title">Deploy this Architecture</h4>
+                      <p className="sol-direct-card__desc">
+                        Our solutions architects will analyze your content repositories and establish a zero-disruption timeline within 24 hours.
+                      </p>
+                      <Link
+                        to={`/contact?subject=${encodeURIComponent(activeSolution.ctaSubject || activeSolution.title)}`}
+                        className="btn btn--orange btn--block sol-direct-card__btn"
+                      >
+                        <span>{activeSolution.ctaText}</span>
+                        <ArrowRight size={16} aria-hidden="true" />
+                      </Link>
                     </div>
                   </div>
 
@@ -490,68 +463,56 @@ export default function SolutionsOverview() {
                 </button>
               </div>
 
-              {/* Empty state if search returned 0 */}
-              {filteredSolutions.length === 0 ? (
-                <div className="sol-empty-notice">
-                  <p>No solution architectures match your search for "{searchQuery}".</p>
-                  <button type="button" className="btn btn--outline" onClick={() => { setSearchQuery(''); setFilter('all'); }}>
-                    Reset Filters
-                  </button>
-                </div>
-              ) : (
-                <>
-                  {/* If filter is ALL: Display 2 distinct sections (Industry 2x2, Need 3:2 Funnel) */}
-                  {filter === 'all' && !searchQuery ? (
-                    <div className="sol-catalog-sections">
-                      {/* SECTION 1: BY INDUSTRY SECTOR (2x2 GRID) */}
-                      <div className="sol-catalog-group">
-                        <div className="sol-group-head">
-                          <div className="sol-group-head__badge">
-                            <Building2 size={16} />
-                            <span>Industry Sectors</span>
-                          </div>
-                          <h3 className="sol-group-head__title">Solutions by Industry (4 Frameworks)</h3>
-                          <p className="sol-group-head__desc">
-                            Domain-tailored transformation pipelines addressing publishers, higher education, enterprises, and global compliance.
-                          </p>
-                        </div>
-
-                        <div className="grid-4-even">
-                          {industrySolutions.map((sol) => (
-                            <CatalogSolutionCard key={sol.id} sol={sol} onSelect={() => { setActiveSolutionId(sol.id); setViewMode('console'); }} />
-                          ))}
-                        </div>
+              {/* If filter is ALL: Display 2 distinct sections (Industry 2x2, Need 3:2 Funnel) */}
+              {filter === 'all' ? (
+                <div className="sol-catalog-sections">
+                  {/* SECTION 1: BY INDUSTRY SECTOR (2x2 GRID) */}
+                  <div className="sol-catalog-group">
+                    <div className="sol-group-head">
+                      <div className="sol-group-head__badge">
+                        <Building2 size={16} />
+                        <span>Industry Sectors</span>
                       </div>
-
-                      {/* SECTION 2: BY OPERATIONAL NEED (3:2 FUNNEL GRID) */}
-                      <div className="sol-catalog-group" style={{ marginTop: '56px' }}>
-                        <div className="sol-group-head">
-                          <div className="sol-group-head__badge">
-                            <Sparkles size={16} />
-                            <span>Organizational Needs</span>
-                          </div>
-                          <h3 className="sol-group-head__title">Solutions by Need (5 Architectures)</h3>
-                          <p className="sol-group-head__desc">
-                            Targeted workflows addressing backlists, automated XML ingestion, custom application engineering, and executive BI.
-                          </p>
-                        </div>
-
-                        <div className="grid-5-funnel">
-                          {needSolutions.map((sol) => (
-                            <CatalogSolutionCard key={sol.id} sol={sol} onSelect={() => { setActiveSolutionId(sol.id); setViewMode('console'); }} />
-                          ))}
-                        </div>
-                      </div>
+                      <h3 className="sol-group-head__title">Solutions by Industry (4 Frameworks)</h3>
+                      <p className="sol-group-head__desc">
+                        Domain-tailored transformation pipelines addressing publishers, higher education, enterprises, and global compliance.
+                      </p>
                     </div>
-                  ) : (
-                    /* Filtered / Searched Grid */
-                    <div className="solutions-grid" style={{ marginTop: '28px' }}>
-                      {filteredSolutions.map((sol) => (
+
+                    <div className="grid-4-even">
+                      {industrySolutions.map((sol) => (
                         <CatalogSolutionCard key={sol.id} sol={sol} onSelect={() => { setActiveSolutionId(sol.id); setViewMode('console'); }} />
                       ))}
                     </div>
-                  )}
-                </>
+                  </div>
+
+                  {/* SECTION 2: BY OPERATIONAL NEED (3:2 FUNNEL GRID) */}
+                  <div className="sol-catalog-group" style={{ marginTop: '56px' }}>
+                    <div className="sol-group-head">
+                      <div className="sol-group-head__badge">
+                        <Sparkles size={16} />
+                        <span>Organizational Needs</span>
+                      </div>
+                      <h3 className="sol-group-head__title">Solutions by Need (5 Architectures)</h3>
+                      <p className="sol-group-head__desc">
+                        Targeted workflows addressing backlists, automated XML ingestion, custom application engineering, and executive BI.
+                      </p>
+                    </div>
+
+                    <div className="grid-5-funnel">
+                      {needSolutions.map((sol) => (
+                        <CatalogSolutionCard key={sol.id} sol={sol} onSelect={() => { setActiveSolutionId(sol.id); setViewMode('console'); }} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                /* Filtered Grid */
+                <div className="solutions-grid" style={{ marginTop: '28px' }}>
+                  {filteredSolutions.map((sol) => (
+                    <CatalogSolutionCard key={sol.id} sol={sol} onSelect={() => { setActiveSolutionId(sol.id); setViewMode('console'); }} />
+                  ))}
+                </div>
               )}
             </div>
           )}
@@ -571,7 +532,6 @@ export default function SolutionsOverview() {
 
 /**
  * Standardized High-Impact Solution Card for Catalog View
- * Fully aligned heights, guaranteed even button baselines, and complete content preservation
  */
 function CatalogSolutionCard({ sol, onSelect }) {
   return (

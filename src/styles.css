@@ -17617,3 +17617,65 @@ main:focus { outline: none; }
     gap: 14px;
   }
 }
+
+
+/* ===== PERFECTLY EQUALIZED BOTTOM ALIGNMENT FOR SOLUTIONS STAGE ===== */
+.sol-top-bar--centered {
+  justify-content: center !important;
+  margin-bottom: 28px !important;
+}
+
+.sol-stage-body {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 24px !important;
+  align-items: stretch !important;
+  margin-bottom: 24px !important;
+}
+
+.sol-stage-col {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.sol-stage-col > .sol-module:last-child {
+  margin-bottom: 0 !important;
+}
+
+.sol-stage-bottom-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 24px !important;
+  align-items: stretch !important;
+  margin-bottom: 16px !important;
+}
+
+.sol-bottom-card {
+  height: 100% !important;
+  margin-bottom: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+}
+
+.sol-module--assurance {
+  background: #f8fafc;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 20px;
+  padding: 22px;
+}
+.sol-assurance-text {
+  font-size: 0.92rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .sol-stage-bottom-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
