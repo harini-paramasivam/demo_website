@@ -247,7 +247,7 @@ export default function ServicesOverview() {
                     <p className="service-group-block__desc">{group.desc}</p>
                   </div>
 
-                  <div className="service-group-block__grid">
+                  <div className={`service-group-block__grid ${group.items.length === 5 ? 'service-group-block__grid--5' : ''} ${group.items.length === 4 ? 'service-group-block__grid--4' : ''}`}>
                     {group.items.map((svc) => {
                       const SvcIcon = svc.icon;
                       return (

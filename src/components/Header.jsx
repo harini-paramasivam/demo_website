@@ -1,21 +1,90 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react';
+import {
+  ArrowRight,
+  Award,
+  BarChart3,
+  BookOpen,
+  Bookmark,
+  Bot,
+  BrainCircuit,
+  ChevronDown,
+  ChevronRight,
+  Code,
+  Cpu,
+  FileCode,
+  GraduationCap,
+  Globe,
+  Layers,
+  Megaphone,
+  Menu,
+  Palette,
+  ScanText,
+  ShieldCheck,
+  Sigma,
+  Sparkles,
+  Terminal,
+  Video,
+  X,
+} from 'lucide-react';
 import { nav } from '../data/site.js';
+
+const ICON_MAP = {
+  Award,
+  BarChart3,
+  BookOpen,
+  Bookmark,
+  Bot,
+  BrainCircuit,
+  Code,
+  Cpu,
+  FileCode,
+  GraduationCap,
+  Globe,
+  Layers,
+  Megaphone,
+  Palette,
+  ScanText,
+  ShieldCheck,
+  Sigma,
+  Sparkles,
+  Terminal,
+  Video,
+};
 
 function DropdownItem({ item, open, onToggle, onClose }) {
   const ref = useRef(null);
   const timer = useRef(null);
-  const enter = () => { clearTimeout(timer.current); if (!open) onToggle(true); };
-  const leave = () => { timer.current = setTimeout(() => onToggle(false), 120); };
+  const [activeCategory, setActiveCategory] = useState(0);
+
+  const enter = () => {
+    clearTimeout(timer.current);
+    if (!open) onToggle(true);
+  };
+  const leave = () => {
+    timer.current = setTimeout(() => {
+      onToggle(false);
+      setActiveCategory(0);
+    }, 120);
+  };
+
+  const isMega = Boolean(item.megaMenu && item.categories && item.categories.length > 0);
+
   return (
     <li
       ref={ref}
-      className={`nav__item${open ? ' is-open' : ''}`}
+      className={`nav__item${open ? ' is-open' : ''}${isMega ? ' nav__item--mega' : ''}`}
       onMouseEnter={enter}
       onMouseLeave={leave}
-      onBlur={(e) => { if (!ref.current.contains(e.relatedTarget)) onToggle(false); }}
-      onKeyDown={(e) => { if (e.key === 'Escape') { onToggle(false); ref.current.querySelector('button, a').focus(); } }}
+      onBlur={(e) => {
+        if (!ref.current.contains(e.relatedTarget)) onToggle(false);
+      }}
+      onKeyDown={(e) => {
+        if (e.key === 'Escape') {
+          onToggle(false);
+          ref.current.querySelector('button, a').focus();
+        }
+      }}
     >
       {item.to ? (
         <NavLink
@@ -25,18 +94,115 @@ function DropdownItem({ item, open, onToggle, onClose }) {
           aria-haspopup="true"
           onClick={onClose}
         >
-          {item.label}<ChevronDown size={15} aria-hidden="true" className="nav__chev" />
+          {item.label}
+          <ChevronDown size={15} aria-hidden="true" className="nav__chev" />
         </NavLink>
       ) : (
-        <button type="button" className="nav__link" aria-expanded={open} aria-haspopup="true" onClick={() => onToggle(!open)}>
-          {item.label}<ChevronDown size={15} aria-hidden="true" className="nav__chev" />
+        <button
+          type="button"
+          className="nav__link"
+          aria-expanded={open}
+          aria-haspopup="true"
+          onClick={() => onToggle(!open)}
+        >
+          {item.label}
+          <ChevronDown size={15} aria-hidden="true" className="nav__chev" />
         </button>
       )}
-      <ul className="dropdown">
-        {item.items.map((sub) => (
-          <li key={sub.to}><Link to={sub.to} onClick={onClose}>{sub.label}</Link></li>
-        ))}
-      </ul>
+
+      {isMega ? (
+        <div className="nav__megamenu" role="region" aria-label={`${item.label} menu`}>
+          <div className="nav__megamenu-inner">
+            {/* Left Column: Vertical Category List (Image 2) */}
+            <div className="nav__megamenu-sidebar">
+              <div className="nav__megamenu-sidebar-head">
+                <span>Categories</span>
+              </div>
+              <div className="nav__megamenu-categories" role="tablist">
+                {item.categories.map((cat, idx) => {
+                  const CatIcon = ICON_MAP[cat.icon] || BookOpen;
+                  const isActive = activeCategory === idx;
+                  return (
+                    <button
+                      key={cat.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      className={`nav__megamenu-cat-btn ${isActive ? 'is-active' : ''}`}
+                      onMouseEnter={() => setActiveCategory(idx)}
+                      onFocus={() => setActiveCategory(idx)}
+                      onClick={() => setActiveCategory(idx)}
+                    >
+                      <span className="nav__megamenu-cat-label">
+                        <CatIcon size={16} className="nav__megamenu-cat-icon" />
+                        <span>{cat.name}</span>
+                      </span>
+                      <span className="nav__megamenu-cat-badge">
+                        <span className="nav__megamenu-cat-count">{cat.count}</span>
+                        {isActive && <ChevronRight size={14} className="nav__megamenu-cat-chev" />}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right Column: Segregated Subtopics with Unique Icons (Image 2) */}
+            <div className="nav__megamenu-content">
+              <div className="nav__megamenu-content-head">
+                <h4 className="nav__megamenu-active-title">
+                  {item.categories[activeCategory]?.name}
+                </h4>
+                <span className="nav__megamenu-active-count">
+                  {item.categories[activeCategory]?.subtopics.length} Specializations
+                </span>
+              </div>
+
+              <div className="nav__megamenu-subtopics">
+                {item.categories[activeCategory]?.subtopics.map((sub) => {
+                  const SubIcon = ICON_MAP[sub.icon] || BookOpen;
+                  return (
+                    <Link
+                      key={sub.title}
+                      to={sub.to}
+                      className="nav__megamenu-card"
+                      onClick={onClose}
+                    >
+                      <div className={`nav__megamenu-card-icon nav__megamenu-card-icon--${sub.color || 'blue'}`}>
+                        <SubIcon size={20} />
+                      </div>
+                      <div className="nav__megamenu-card-body">
+                        <div className="nav__megamenu-card-title">
+                          <span>{sub.title}</span>
+                          <ArrowRight size={13} className="nav__megamenu-card-arrow" />
+                        </div>
+                        <p className="nav__megamenu-card-desc">{sub.desc}</p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Mega-menu footer link */}
+          <div className="nav__megamenu-footer">
+            <span className="nav__megamenu-footer-note">Looking for end-to-end delivery or customized engagement?</span>
+            <Link to={item.to} className="nav__megamenu-footer-link" onClick={onClose}>
+              <span>Explore All {item.label} Overview</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <ul className="dropdown">
+          {item.items.map((sub) => (
+            <li key={sub.to}>
+              <Link to={sub.to} onClick={onClose}>{sub.label}</Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </li>
   );
 }
