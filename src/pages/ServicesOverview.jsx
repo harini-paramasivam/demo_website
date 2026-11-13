@@ -320,7 +320,7 @@ export default function ServicesOverview() {
         </div>
       </section>
 
-      {/* CLOSING CTA BAND */}
+      {/* CLOSING CTA BAND (STRICTLY LIGHT THEME) */}
       <CtaBand
         title="Ready to Combine Services for Your Next Project?"
         text="Whether you need XML structuring, accessible EPUBs, custom software, or marketing campaigns, our team will provide a transparent proposal within one business day."
@@ -328,6 +328,7 @@ export default function ServicesOverview() {
         primaryBtnTo="/contact"
         secondaryBtnText="Explore Industry Solutions"
         secondaryBtnTo="/solutions"
+        theme="light"
       />
     </>
   );

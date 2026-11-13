@@ -472,12 +472,13 @@ export default function Training() {
         </div>
       </section>
 
-      {/* 8. UNIFIED CTA BAND */}
+      {/* 8. UNIFIED CTA BAND (STRICTLY LIGHT THEME AS REQUESTED) */}
       <CtaBand
         title="Ready to Build Real-World Engineering Competencies?"
         lead="Join Velvora Solutions Academy today. Choose from 8 specialized tracks or apply for our flagship internship with 100% live client project exposure."
         btnText="Apply for Enrollment"
         btnLink="#enrollment-form-section"
+        theme="light"
       />
     </>
   );

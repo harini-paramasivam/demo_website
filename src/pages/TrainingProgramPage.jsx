@@ -333,11 +333,6 @@ export default function TrainingProgramPage() {
                 <FaqAccordion items={program.programFaqs || program.faqs} />
               </div>
             )}
-
-            {/* EMBEDDED ENROLLMENT APPLICATION FORM */}
-            <div style={{ marginTop: '4.5rem' }}>
-              <TrainingEnrollmentForm initialProgram={program.title} />
-            </div>
           </div>
 
           {/* SIDEBAR */}
@@ -471,11 +466,19 @@ export default function TrainingProgramPage() {
         </div>
       </section>
 
+      {/* 4. DEDICATED FULL-WIDTH CENTERED ENROLLMENT APPLICATION PORTAL */}
+      <section className="section section--paper" style={{ paddingTop: '2.5rem', paddingBottom: '4.5rem' }}>
+        <div className="container" style={{ maxWidth: '960px', margin: '0 auto', display: 'flex', justifyContent: 'center' }}>
+          <TrainingEnrollmentForm initialProgram={program.title} />
+        </div>
+      </section>
+
       <CtaBand
         title={`Ready to Master ${program.title}?`}
         lead="Join Velvora's professional training track with real-world industry projects, 1-on-1 mentorship, and recognized certification."
         btnText="Apply for Enrollment"
         btnLink="#enrollment-form-section"
+        theme="light"
       />
     </>
   );

@@ -478,15 +478,33 @@ export const Notice = ({ children }) => (
 
 export function CtaBand({
   title = 'Ready to Make Your Content Accessible and Future-Ready?',
-  text = 'Tell us about your project and our team will respond within one business day.',
-  primaryBtnText = 'Get in Touch',
-  primaryBtnTo = '/contact',
+  text,
+  desc,
+  lead,
+  primaryBtnText,
+  primaryText,
+  btnText,
+  primaryBtnTo,
+  primaryTo,
+  btnLink,
   primaryBtnOnClick,
-  secondaryBtnText = 'Explore Our Services',
-  secondaryBtnTo = '/services',
+  secondaryBtnText,
+  secondaryText,
+  secondaryBtnTo,
+  secondaryTo,
   secondaryBtnOnClick,
+  theme = 'light',
+  className = '',
 }) {
   const { pathname } = useLocation();
+
+  const resolvedText = desc || lead || text || 'Tell us about your project and our team will respond within one business day.';
+  const resolvedPrimaryText = primaryBtnText || primaryText || btnText || 'Get in Touch';
+  const resolvedPrimaryTo = primaryBtnTo || primaryTo || btnLink || '/contact';
+  const resolvedSecondaryText = secondaryBtnText || secondaryText || 'Explore Our Services';
+  const resolvedSecondaryTo = secondaryBtnTo || secondaryTo || (secondaryBtnTo === undefined && secondaryTo === undefined && !btnLink ? '/services' : secondaryBtnTo);
+
+  const isLight = theme === 'light';
 
   const handleSecondaryClick = (e) => {
     if (secondaryBtnOnClick) {
@@ -494,7 +512,7 @@ export function CtaBand({
       return;
     }
     // If the user is already on the target page (e.g., clicking 'Explore Our Services' while on /services)
-    if (secondaryBtnTo === pathname || (secondaryBtnTo.startsWith('/services') && pathname === '/services')) {
+    if (resolvedSecondaryTo && (resolvedSecondaryTo === pathname || (resolvedSecondaryTo.startsWith('/services') && pathname === '/services'))) {
       e.preventDefault();
       const catalog = document.getElementById('services-catalog') || document.getElementById('services-glance') || document.getElementById('main');
       if (catalog) {
@@ -506,29 +524,29 @@ export function CtaBand({
   };
 
   return (
-    <section className="cta netbg">
+    <section className={`cta ${isLight ? 'cta--light' : 'netbg'} ${className}`}>
       <div className="container cta__in">
         <div>
           <h2>{title}</h2>
-          <p>{text}</p>
+          <p>{resolvedText}</p>
         </div>
         <div className="btn-row">
           {primaryBtnOnClick ? (
-            <button type="button" onClick={primaryBtnOnClick} className="btn btn--orange">
-              {primaryBtnText} <ArrowRight size={18} aria-hidden="true" />
+            <button type="button" onClick={primaryBtnOnClick} className="btn btn--cyan">
+              {resolvedPrimaryText} <ArrowRight size={18} aria-hidden="true" />
             </button>
           ) : (
-            <Link to={primaryBtnTo} className="btn btn--orange">
-              {primaryBtnText} <ArrowRight size={18} aria-hidden="true" />
+            <Link to={resolvedPrimaryTo} className="btn btn--cyan">
+              {resolvedPrimaryText} <ArrowRight size={18} aria-hidden="true" />
             </Link>
           )}
-          {secondaryBtnTo && (
+          {resolvedSecondaryTo && (
             <Link
-              to={secondaryBtnTo}
-              className="btn btn--outline"
+              to={resolvedSecondaryTo}
+              className={`btn ${isLight ? 'btn--outline-dark' : 'btn--outline'}`}
               onClick={handleSecondaryClick}
             >
-              {secondaryBtnText} <ArrowRight size={18} aria-hidden="true" />
+              {resolvedSecondaryText} <ArrowRight size={18} aria-hidden="true" />
             </Link>
           )}
         </div>

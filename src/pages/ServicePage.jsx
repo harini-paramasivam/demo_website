@@ -819,13 +819,16 @@ export default function ServicePage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* CLOSING CTA BAND (STRICTLY DARK THEME)                                    */}
+      {/* CLOSING CTA BAND (STRICTLY LIGHT THEME AS REQUESTED)                     */}
       {/* ========================================================================= */}
       <CtaBand
         title="Ready to Make Your Content Accessible and Future-Ready?"
         text="Tell us about your project and our team will respond within one business day."
         primaryBtnText="Get in Touch"
         primaryBtnTo="/contact"
+        secondaryBtnText="Explore Our Services"
+        secondaryBtnTo="/services"
+        theme="light"
       />
     </>
   );
