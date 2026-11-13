@@ -3033,15 +3033,16 @@ main:focus { outline: none; }
 
 @media (max-width: 768px) {
   .mobile-phone-launcher {
-    position: fixed;
-    bottom: 18px;
-    left: 18px;
-    z-index: 9985;
+    position: fixed !important;
+    right: 18px !important;
+    left: auto !important;
+    bottom: 74px !important;
+    z-index: 9985 !important;
     display: flex !important;
     align-items: center;
     justify-content: center;
-    width: 52px;
-    height: 52px;
+    width: 44px !important;
+    height: 44px !important;
     border-radius: 50%;
     background: linear-gradient(135deg, rgba(7, 14, 36, 0.95) 0%, rgba(13, 30, 76, 0.92) 100%);
     border: 1.5px solid rgba(56, 189, 248, 0.65);
@@ -3064,7 +3065,7 @@ main:focus { outline: none; }
 
   .mobile-phone-pulse {
     position: absolute;
-    inset: -6px;
+    inset: -5px;
     border-radius: 50%;
     border: 1.5px solid #00d2ff;
     animation: mobilePhonePulse 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
@@ -3085,6 +3086,8 @@ main:focus { outline: none; }
   }
 
   .mobile-phone-icon {
+    width: 19px;
+    height: 19px;
     color: #38bdf8;
     filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.6));
     animation: mobilePhoneWiggle 4s ease-in-out infinite;
@@ -3101,8 +3104,8 @@ main:focus { outline: none; }
     position: absolute;
     bottom: 2px;
     right: 2px;
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: #10b981;
     border: 2px solid #070e24;
@@ -3110,10 +3113,12 @@ main:focus { outline: none; }
   }
 
   .totop {
-    left: 18px !important;
-    bottom: 80px !important;
-    width: 48px !important;
-    height: 48px !important;
+    right: 18px !important;
+    left: auto !important;
+    bottom: 126px !important;
+    width: 44px !important;
+    height: 44px !important;
+    z-index: 9980 !important;
   }
 }
 
@@ -5029,8 +5034,21 @@ main:focus { outline: none; }
 }
 
 @media (max-width: 960px) {
-  .svc-layout { grid-template-columns: 1fr; }
-  .svc-sidebar { position: static; }
+  .svc-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 36px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .svc-main,
+  .svc-sidebar {
+    position: static !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
   .form-grid { grid-template-columns: 1fr; }
 }
 
@@ -19124,8 +19142,20 @@ main:focus { outline: none; }
 /* COMPREHENSIVE MOBILE VIEWPORT ALIGNMENT & RESPONSIVE POLISH               */
 /* ========================================================================= */
 @media (max-width: 768px) {
+  *, *::before, *::after {
+    box-sizing: border-box !important;
+  }
+
   html, body {
     width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+  }
+
+  #root, main {
+    width: 100% !important;
+    max-width: 100% !important;
     overflow-x: hidden !important;
   }
 
@@ -19142,7 +19172,14 @@ main:focus { outline: none; }
     width: 100% !important;
   }
 
-  /* Prevent fixed card blowout on narrow viewports */
+  /* Universal text wrapping - never clip or push width */
+  h1, h2, h3, h4, h5, h6, p, span, li, a, label, button, input, textarea {
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+  }
+
+  /* Prevent grid columns from expanding beyond mobile viewport */
+  .svc-layout,
   .contact-grid-main,
   .career-openings-grid,
   .job-opening-card,
@@ -19152,10 +19189,116 @@ main:focus { outline: none; }
   .testimonial-card,
   .news-card,
   .blog-card,
-  .svc-audience-matrix-wrap {
-    grid-template-columns: 1fr !important;
+  .svc-audience-matrix-wrap,
+  .svc-offers-grid,
+  .svc-benefits-showcase-grid,
+  .sol-blueprint-console,
+  .sol-stage-body,
+  .job-detail-layout,
+  .training-hero-grid,
+  .leadership-showcase,
+  .solutions-hub-layout,
+  .blog-featured-card,
+  .service-group-block__grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
+  /* Service page overview and sidebar cards */
+  .svc-main,
+  .svc-sidebar {
+    position: static !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .svc-header--glass {
+    padding: 20px 16px !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+  }
+
+  .svc-header__bg-art {
+    display: none !important;
+  }
+
+  .svc-header__top-bar {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+
+  .svc-header__icon-pill {
+    max-width: 100% !important;
+    padding: 6px 12px 6px 6px !important;
+  }
+
+  .svc-header__tag-text {
+    font-size: 0.78rem !important;
+    white-space: normal !important;
+    line-height: 1.3 !important;
+  }
+
+  .svc-sidebar__card,
+  .svc-sidebar__cta {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 22px 18px !important;
+    border-radius: 18px !important;
+    box-sizing: border-box !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+  }
+
+  .svc-sidebar__cta h4 {
+    font-size: 1.18rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .svc-sidebar__cta p {
+    font-size: 0.92rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1.25rem !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+  }
+
+  .svc-sidebar__cta .btn {
+    width: 100% !important;
+    padding: 12px 16px !important;
+    font-size: 0.92rem !important;
+    justify-content: center !important;
+  }
+
+  /* Process delivery methodology lead pill */
+  .svc-process-lead-pill {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 10px 14px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    text-align: left !important;
+    border-radius: 14px !important;
+  }
+
+  .svc-process-lead-text {
+    font-size: 0.85rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .svc-process-lead-icon-bubble {
+    flex-shrink: 0 !important;
+    margin-top: 2px !important;
+  }
+
+  /* Contact page */
   .contact-card {
     padding: 22px 18px !important;
     border-radius: 18px !important;
