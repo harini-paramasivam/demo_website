@@ -115,26 +115,63 @@ export default async function handler(req, res) {
       html: htmlContent
     });
 
-    // 2. Automatically Send Confirmation Email to the user
+    // 2. Automatically Send Confirmation Email to the user (Client Consultation Specific)
     let userConfirmationSent = false;
     try {
+      const serviceTitle = escapeHtml(lookingFor || 'Project Consultation & Services');
       const userHtml = `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
           <div style="background: linear-gradient(135deg, #070e24 0%, #0d1e4c 100%); padding: 28px 32px; color: #ffffff;">
-            <h2 style="margin: 0 0 4px 0; font-size: 22px; font-weight: 700; color: #ffffff;">VELVORA<span style="color: #00d2ff;">.</span>SOLUTIONS</h2>
-            <p style="margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8;">Content &bull; Accessibility &bull; Technology</p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>
+                  <h2 style="margin: 0 0 4px 0; font-size: 22px; font-weight: 700; color: #ffffff;">VELVORA<span style="color: #00d2ff;">.</span>SOLUTIONS</h2>
+                  <p style="margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8;">Client Consultation &bull; Solutions &bull; Support</p>
+                </td>
+                <td align="right" valign="middle">
+                  <span style="display: inline-block; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); color: #38bdf8; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 999px; text-transform: uppercase;">
+                    Enquiry Confirmed
+                  </span>
+                </td>
+              </tr>
+            </table>
+            <div style="height: 2px; background: linear-gradient(90deg, #00d2ff, #38bdf8, transparent); margin-top: 18px;"></div>
           </div>
           <div style="padding: 32px; font-size: 15px; line-height: 1.7; color: #1e293b;">
             <p style="margin: 0 0 16px 0; font-size: 16px; font-weight: 700; color: #0f172a;">Dear ${escapeHtml(name.trim())},</p>
-            <p style="margin: 0 0 16px 0;">Thank you for contacting <strong>Velvora Solutions</strong>.</p>
+            <p style="margin: 0 0 16px 0; color: #334155;">Thank you for contacting <strong>Velvora Solutions</strong> regarding our professional content and digital technology services.</p>
             <div style="background: #f0fdf4; border-left: 4px solid #22c55e; border-radius: 6px; padding: 14px 18px; margin: 18px 0; color: #15803d; font-weight: 600;">
-              &#10003; We are pleased to confirm that we have successfully received your enquiry.
+              &#10003; We are pleased to confirm that we have successfully received your project enquiry.
             </div>
-            <p style="margin: 0 0 16px 0;">Our client relations and solutions team will carefully review your requirements regarding <strong>${escapeHtml(lookingFor || 'your project')}</strong> and reach out to you within <strong>24 business hours</strong>.</p>
-            <p style="margin: 0 0 24px 0; color: #64748b; font-size: 13.5px;">We appreciate your interest in collaborating with us.</p>
+            
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin: 18px 0; background-color: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 13.5px;">
+              <tr>
+                <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #64748b; width: 140px;">Service Focus:</td>
+                <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #0f172a; font-weight: 600;">${serviceTitle}</td>
+              </tr>
+              ${phone ? `
+              <tr>
+                <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #64748b;">Contact Phone:</td>
+                <td style="padding: 10px 14px; border-bottom: 1px solid #e2e8f0; color: #0f172a;">${escapeHtml(phone.trim())}</td>
+              </tr>` : ''}
+              <tr>
+                <td style="padding: 10px 14px; color: #64748b;">Enquiry Status:</td>
+                <td style="padding: 10px 14px; color: #0284c7; font-weight: 600;">Assigned to Solutions Specialist</td>
+              </tr>
+            </table>
+
+            <p style="margin: 0 0 16px 0; color: #334155;">Our technical directors and engagement managers are reviewing your project requirements to prepare an initial consultation, scope assessment, and workflow proposal.</p>
+            
+            <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 14px 18px; margin: 20px 0; color: #1e40af; font-weight: 600; font-size: 14px;">
+              &#9201; A dedicated solutions manager will connect with you within 24 business hours.
+            </div>
+
+            <p style="margin: 0 0 24px 0; color: #64748b; font-size: 13.5px;">If you have immediate project deadlines or urgent requests, you may also reach our team directly at <a href="tel:+919500834236" style="color: #0284c7; text-decoration: none; font-weight: 600;">+91 95008 34236</a>.</p>
+
             <div style="border-top: 1px solid #e2e8f0; padding-top: 20px; font-size: 13.5px; color: #64748b;">
-              <strong style="color: #0f172a;">Client Solutions &amp; Support Team</strong><br>
-              Velvora Solutions<br>
+              <strong style="color: #0f172a;">Best Regards,</strong><br>
+              <span style="color: #0284c7; font-weight: 600;">Client Relations &amp; Technical Solutions Team</span><br>
+              <strong style="color: #0f172a;">Velvora Solutions</strong><br>
               Email: <a href="mailto:info@velvorasolutions.com" style="color: #0284c7; text-decoration: none;">info@velvorasolutions.com</a><br>
               Website: <a href="https://velvorasolutions.com" style="color: #0284c7; text-decoration: none;">https://velvorasolutions.com</a>
             </div>
@@ -145,12 +182,12 @@ export default async function handler(req, res) {
       await transporter.sendMail({
         from: sender,
         to: email.trim(),
-        subject: `Thank you for contacting Velvora Solutions – Message Received`,
-        text: `Dear ${name.trim()},\n\nThank you for contacting Velvora Solutions. We have received your message regarding ${lookingFor || 'your enquiry'}.\n\nOur client team will contact you within 24 business hours.\n\nBest Regards,\nClient Solutions Team\nVelvora Solutions\nEmail: info@velvorasolutions.com\nWebsite: https://velvorasolutions.com`,
+        subject: `Enquiry Received – ${lookingFor || 'Project Consultation'} | Velvora Solutions`,
+        text: `Dear ${name.trim()},\n\nThank you for contacting Velvora Solutions.\nWe have received your enquiry regarding ${lookingFor || 'our services'}.\n\nOur client team will contact you within 24 business hours.\n\nBest Regards,\nClient Solutions Team\nVelvora Solutions\nEmail: info@velvorasolutions.com\nWebsite: https://velvorasolutions.com`,
         html: userHtml
       });
       userConfirmationSent = true;
-      console.log(`[Contact API] Confirmation email sent successfully to ${email.trim()}`);
+      console.log(`[Contact API] Client confirmation email sent successfully to ${email.trim()}`);
     } catch (candErr) {
       console.error(`[Contact API] Failed to send user confirmation email:`, candErr);
     }
@@ -160,11 +197,6 @@ export default async function handler(req, res) {
       userConfirmationSent,
       message: 'Your message has been sent successfully and a confirmation email has been dispatched to your inbox.'
     });
-  } catch (error) {
-    console.error('Contact Handler Error:', error);
-    return res.status(500).json({ success: false, error: error.message || 'Failed to send message.' });
-  }
-}
   } catch (error) {
     console.error('Contact Handler Error:', error);
     return res.status(500).json({ success: false, error: error.message || 'Failed to send message.' });
