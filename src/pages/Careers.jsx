@@ -209,6 +209,7 @@ export default function Careers() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setErrorMessage('');
 
     const nameErr = validateCareerField('name', formData.name);
@@ -804,8 +805,11 @@ export default function Careers() {
                     <CheckCircle size={44} />
                   </div>
                   <h3>Application Submitted Successfully!</h3>
-                  <p>
-                    Thank you for applying, <strong>{formData.name}</strong>. Our talent team will review your application for the <strong>{formData.role}</strong> position and reach out within 24–48 hours.
+                  <p style={{ marginBottom: '10px' }}>
+                    Thank you for applying, <strong>{formData.name}</strong>. We have sent an automated confirmation email to your registered address: <strong>{formData.email}</strong>.
+                  </p>
+                  <p style={{ fontSize: '13.5px', color: 'var(--color-text-muted, #64748b)', lineHeight: 1.6 }}>
+                    Our recruitment team will carefully review your qualifications for the <strong>{formData.role}</strong> position and contact you regarding the next steps within 48 business hours.
                   </p>
                   <button
                     type="button"
