@@ -807,7 +807,7 @@ export default function ServicePage() {
               <h3 style={{ color: '#ffffff', fontSize: '1.45rem', fontWeight: 800, margin: '0 0 8px 0' }}>
                 Ready to Get Started with {s.title}?
               </h3>
-              <p style={{ color: '#94a3b8', fontSize: '1rem', margin: 0, maxWidth: '600px' }}>
+              <p style={{ color: '#e2e8f0', fontSize: '1rem', margin: 0, maxWidth: '600px' }}>
                 Our solutions architects will analyze your content requirements and propose a tailored delivery roadmap within 24 hours.
               </p>
             </div>

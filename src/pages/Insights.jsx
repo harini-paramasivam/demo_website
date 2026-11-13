@@ -694,7 +694,7 @@ export default function Insights() {
                     <span className="video-now-playing">
                       {isPlaying ? 'Playing Explainer Audio & Visual Preview' : 'Click to Play Explainer'}
                     </span>
-                    <span style={{ fontSize: '.78rem', color: '#94a3b8' }}>
+                    <span style={{ fontSize: '.78rem', color: '#cbd5e1' }}>
                       {formatSecs(currentTime)} / {formatSecs(totalDuration)}
                     </span>
                   </div>

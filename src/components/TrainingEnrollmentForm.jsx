@@ -155,7 +155,7 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
           <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.3rem)', fontWeight: 800, color: '#ffffff', margin: '0 0 10px' }}>
             Enroll or Request Course Syllabus
           </h2>
-          <p style={{ fontSize: '1rem', color: '#94a3b8', lineHeight: 1.6, maxWidth: '640px', margin: '0 auto' }}>
+          <p style={{ fontSize: '1rem', color: '#e2e8f0', lineHeight: 1.6, maxWidth: '640px', margin: '0 auto' }}>
             Bridge academic theory with real industry workflows. Fill in your details below and an academic counselor will connect with you within 24 hours.
           </p>
         </div>
@@ -198,7 +198,7 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
               borderRadius: '9999px',
               marginBottom: '24px'
             }}>
-              <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>Enquiry Ref ID:</span>
+              <span style={{ fontSize: '0.85rem', color: '#cbd5e1' }}>Enquiry Ref ID:</span>
               <strong style={{ fontSize: '1.05rem', color: '#38bdf8', letterSpacing: '0.04em' }}>{status.referenceId}</strong>
             </div>
 
@@ -211,7 +211,7 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
               maxWidth: '520px',
               margin: '0 auto 24px',
               fontSize: '0.92rem',
-              color: '#94a3b8'
+              color: '#cbd5e1'
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
                 <span>Selected Track:</span>
@@ -614,8 +614,8 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
               justifyContent: 'center',
               gap: '18px',
               marginTop: '1.25rem',
-              fontSize: '0.82rem',
-              color: '#94a3b8',
+              fontSize: '0.84rem',
+              color: '#cbd5e1',
               flexWrap: 'wrap'
             }}>
               <span>🔒 100% Confidential &amp; Verified</span>

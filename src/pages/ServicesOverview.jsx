@@ -308,7 +308,7 @@ export default function ServicesOverview() {
               <h4 style={{ color: '#ffffff', fontSize: '1.35rem', fontWeight: 700, margin: '0 0 6px 0' }}>
                 Looking for Professional Training or Student Internships?
               </h4>
-              <p style={{ color: '#94a3b8', fontSize: '0.95rem', margin: 0, maxWidth: '640px' }}>
+              <p style={{ color: '#e2e8f0', fontSize: '0.96rem', margin: 0, maxWidth: '640px', lineHeight: 1.6 }}>
                 We provide hands-on training across ePublishing, AI/ML, Generative AI, Data Analytics, Accessibility, and Software Development with 100% live client project exposure.
               </p>
             </div>

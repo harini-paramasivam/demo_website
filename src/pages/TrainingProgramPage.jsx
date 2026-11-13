@@ -18,7 +18,8 @@ import {
   Calendar,
   Check,
   Building2,
-  GraduationCap
+  GraduationCap,
+  Headphones
 } from 'lucide-react';
 import { 
   getTrainingProgramBySlug, 
@@ -95,7 +96,7 @@ function ModuleAccordion({ module, idx, isOpenDefault = false }) {
           <strong style={{ fontSize: '1.05rem', color: 'var(--ink)' }}>{module.title}</strong>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span style={{ fontSize: '0.85rem', color: '#64748b', whiteSpace: 'nowrap' }}>{module.duration}</span>
+          <span style={{ fontSize: '0.85rem', color: '#1e293b', fontWeight: 600, whiteSpace: 'nowrap' }}>{module.duration}</span>
           <ChevronDown
             size={18}
             aria-hidden="true"
@@ -260,7 +261,7 @@ export default function TrainingProgramPage() {
                 <h3 className="section-subtitle">
                   Complete Curriculum &amp; Syllabus ({program.curriculum.length} Modules)
                 </h3>
-                <p className="lead" style={{ marginBottom: '1.5rem', color: '#64748b' }}>
+                <p className="lead" style={{ marginBottom: '1.5rem', color: '#334155' }}>
                   Comprehensive module-by-module breakdown designed to take you from foundational concepts to enterprise execution.
                 </p>
                 <div className="faq-list">
@@ -282,7 +283,7 @@ export default function TrainingProgramPage() {
                 <h3 className="section-subtitle">
                   Live Capstone Projects &amp; Deliverables
                 </h3>
-                <p className="lead" style={{ marginBottom: '1.5rem', color: '#64748b' }}>
+                <p className="lead" style={{ marginBottom: '1.5rem', color: '#334155' }}>
                   Every student and intern completes real production assets that form a verifiable portfolio for employment.
                 </p>
                 <div className="svc-offers-grid">
@@ -292,7 +293,7 @@ export default function TrainingProgramPage() {
                         Project 0{idx + 1}
                       </span>
                       <h4 style={{ fontSize: '1.1rem', margin: '4px 0 8px' }}>{proj.title}</h4>
-                      <p style={{ fontSize: '0.92rem', color: '#64748b', lineHeight: 1.6 }}>{proj.desc}</p>
+                      <p style={{ fontSize: '0.92rem', color: '#334155', lineHeight: 1.6 }}>{proj.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -348,48 +349,48 @@ export default function TrainingProgramPage() {
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                   <Clock size={18} style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <span style={{ fontSize: '0.8rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Duration</span>
-                    <p style={{ margin: 0, fontWeight: 600, color: 'var(--ink)' }}>{program.duration}</p>
+                    <span style={{ fontSize: '0.8rem', color: '#475569', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.04em' }}>Duration</span>
+                    <p style={{ margin: 0, fontWeight: 700, color: 'var(--ink)' }}>{program.duration}</p>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                   <Users size={18} style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <span style={{ fontSize: '0.8rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Audience Level</span>
-                    <p style={{ margin: 0, fontWeight: 600, color: 'var(--ink)' }}>{program.level}</p>
+                    <span style={{ fontSize: '0.8rem', color: '#475569', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.04em' }}>Audience Level</span>
+                    <p style={{ margin: 0, fontWeight: 700, color: 'var(--ink)' }}>{program.level}</p>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                   <Laptop size={18} style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <span style={{ fontSize: '0.8rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Learning Mode</span>
-                    <p style={{ margin: 0, fontWeight: 600, color: 'var(--ink)' }}>{program.mode}</p>
+                    <span style={{ fontSize: '0.8rem', color: '#475569', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.04em' }}>Learning Mode</span>
+                    <p style={{ margin: 0, fontWeight: 700, color: 'var(--ink)' }}>{program.mode}</p>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                   <Briefcase size={18} style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <span style={{ fontSize: '0.8rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Production Projects</span>
-                    <p style={{ margin: 0, fontWeight: 600, color: 'var(--ink)' }}>{program.liveProjects}</p>
+                    <span style={{ fontSize: '0.8rem', color: '#475569', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.04em' }}>Production Projects</span>
+                    <p style={{ margin: 0, fontWeight: 700, color: 'var(--ink)' }}>{program.liveProjects}</p>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                   <Award size={18} style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <span style={{ fontSize: '0.8rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Credential</span>
-                    <p style={{ margin: 0, fontWeight: 600, color: 'var(--ink)' }}>{program.credential}</p>
+                    <span style={{ fontSize: '0.8rem', color: '#475569', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.04em' }}>Credential</span>
+                    <p style={{ margin: 0, fontWeight: 700, color: 'var(--ink)' }}>{program.credential}</p>
                   </div>
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                   <MapPin size={18} style={{ color: '#0284c7', flexShrink: 0, marginTop: '2px' }} />
                   <div>
-                    <span style={{ fontSize: '0.8rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 600 }}>Training Centers</span>
-                    <p style={{ margin: 0, fontWeight: 600, color: 'var(--ink)' }}>Cuddalore HQ &amp; Chennai Branch + Virtual</p>
+                    <span style={{ fontSize: '0.8rem', color: '#475569', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.04em' }}>Training Centers</span>
+                    <p style={{ margin: 0, fontWeight: 700, color: 'var(--ink)' }}>Cuddalore HQ &amp; Chennai Branch + Virtual</p>
                   </div>
                 </div>
               </div>
@@ -419,17 +420,37 @@ export default function TrainingProgramPage() {
               </ul>
             </div>
 
-            {/* ADMISSIONS DESK QUICK CONTACT CARD */}
-            <div className="svc-sidebar__cta gradient-cta">
-              <h4>Questions About Admissions?</h4>
-              <p>
+            {/* ADMISSIONS DESK QUICK CONTACT CARD (LUXURY OBSIDIAN DARK THEME WITH BRIGHT CONTRAST) */}
+            <div className="svc-sidebar__cta netbg gradient-cta">
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '7px',
+                padding: '4px 12px',
+                borderRadius: '100px',
+                background: 'rgba(56, 189, 248, 0.16)',
+                border: '1px solid rgba(56, 189, 248, 0.4)',
+                color: '#38bdf8',
+                fontSize: '0.78rem',
+                fontWeight: 700,
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                marginBottom: '14px'
+              }}>
+                <Headphones size={13} />
+                <span>Admissions Desk</span>
+              </div>
+              <h4 style={{ color: '#ffffff', fontSize: '1.3rem', fontWeight: 800, margin: '0 0 10px 0', letterSpacing: '-0.01em' }}>
+                Questions About Admissions?
+              </h4>
+              <p style={{ color: '#f1f5f9', fontSize: '0.96rem', lineHeight: 1.65, margin: '0 0 1.5rem 0' }}>
                 Speak directly with an academic counselor to discuss batch schedules, syllabus details, or corporate cohort arrangements.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 <a
                   href="tel:+919500834236"
                   className="btn btn--cyan btn--block"
-                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontWeight: 700 }}
                 >
                   <Phone size={16} />
                   <span>Call +91 95008 34236</span>

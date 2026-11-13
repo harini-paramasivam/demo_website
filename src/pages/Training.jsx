@@ -150,7 +150,7 @@ export default function Training() {
                 <div style={{ fontSize: '2.4rem', fontWeight: 800, color: '#0284c7', lineHeight: 1, marginBottom: '8px' }}>
                   {s.value}
                 </div>
-                <div style={{ fontSize: '0.92rem', color: '#64748b', fontWeight: 600 }}>
+                <div style={{ fontSize: '0.92rem', color: '#1e293b', fontWeight: 700 }}>
                   {s.label}
                 </div>
               </div>
@@ -246,7 +246,7 @@ export default function Training() {
                 <button type="button" onClick={scrollToForm} className="btn btn--outline" style={{ borderColor: 'rgba(56, 189, 248, 0.4)', color: '#ffffff' }}>
                   <span>Quick Apply Online</span>
                 </button>
-                <span style={{ fontSize: '0.85rem', color: '#94a3b8', marginLeft: 'auto' }}>
+                <span style={{ fontSize: '0.85rem', color: '#e2e8f0', marginLeft: 'auto', fontWeight: 500 }}>
                   Locations: Cuddalore HQ · Chennai Branch · Virtual Remote
                 </span>
               </div>
@@ -348,19 +348,19 @@ export default function Training() {
                   {p.title}
                 </h3>
 
-                <p style={{ fontSize: '0.92rem', color: '#64748b', lineHeight: 1.6, flexGrow: 1, marginBottom: '16px' }}>
+                <p style={{ fontSize: '0.92rem', color: '#334155', lineHeight: 1.6, flexGrow: 1, marginBottom: '16px' }}>
                   {p.lead}
                 </p>
 
                 {/* Specs Chips */}
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
-                  <span style={{ fontSize: '0.78rem', color: '#0284c7', background: 'rgba(56, 189, 248, 0.08)', padding: '3px 10px', borderRadius: '6px' }}>
+                  <span style={{ fontSize: '0.78rem', color: '#0284c7', background: 'rgba(56, 189, 248, 0.08)', padding: '3px 10px', borderRadius: '6px', fontWeight: 600 }}>
                     {p.level}
                   </span>
-                  <span style={{ fontSize: '0.78rem', color: '#64748b', background: 'var(--tint)', padding: '3px 10px', borderRadius: '6px' }}>
+                  <span style={{ fontSize: '0.78rem', color: '#334155', background: 'var(--tint)', border: '1px solid rgba(56, 189, 248, 0.2)', padding: '3px 10px', borderRadius: '6px', fontWeight: 600 }}>
                     {p.mode.split(' ')[0]}
                   </span>
-                  <span style={{ fontSize: '0.78rem', color: '#64748b', background: 'var(--tint)', padding: '3px 10px', borderRadius: '6px' }}>
+                  <span style={{ fontSize: '0.78rem', color: '#334155', background: 'var(--tint)', border: '1px solid rgba(56, 189, 248, 0.2)', padding: '3px 10px', borderRadius: '6px', fontWeight: 600 }}>
                     {p.liveProjects}
                   </span>
                 </div>
@@ -441,7 +441,7 @@ export default function Training() {
                 <h4 style={{ fontSize: '1.15rem', color: '#ffffff', marginBottom: '8px' }}>
                   {step.title}
                 </h4>
-                <p style={{ fontSize: '0.92rem', color: '#94a3b8', lineHeight: 1.6, margin: 0 }}>
+                <p style={{ fontSize: '0.92rem', color: '#e2e8f0', lineHeight: 1.6, margin: 0 }}>
                   {step.desc}
                 </p>
               </div>
