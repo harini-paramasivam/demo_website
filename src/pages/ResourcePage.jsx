@@ -153,7 +153,7 @@ export default function ResourcePage({ type }) {
                   <h4>Ready to Achieve the Same Results for Your Organization?</h4>
                   <p>Our solutions architects are available to discuss tailored timelines, sample audits, and fixed-scope delivery roadmaps.</p>
                 </div>
-                <Link to="/contact" className="btn btn--orange btn--lg" style={{ whiteSpace: 'nowrap' }}>
+                <Link to="/contact" className="btn btn--orange btn--lg testimonials-cta-spotlight__btn">
                   <span>Discuss Your Project</span>
                   <ArrowRight size={18} />
                 </Link>

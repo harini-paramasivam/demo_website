@@ -811,8 +811,9 @@ export default function ServicePage() {
                 Our solutions architects will analyze your content requirements and propose a tailored delivery roadmap within 24 hours.
               </p>
             </div>
-            <Link to={`/contact?service=${encodeURIComponent(s.title)}`} className="btn btn--orange btn--lg" style={{ whiteSpace: 'nowrap' }}>
-              {s.buttonText || 'Request a Quote'} <ArrowRight size={18} aria-hidden="true" />
+            <Link to={`/contact?service=${encodeURIComponent(s.title)}`} className="btn btn--orange btn--lg svc-faqs-action-banner__btn">
+              <span>{s.buttonText || 'Request a Quote'}</span>
+              <ArrowRight size={18} aria-hidden="true" />
             </Link>
           </div>
         </div>

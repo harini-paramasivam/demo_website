@@ -77,9 +77,9 @@ function ModuleAccordion({ module, idx, isOpenDefault = false }) {
         className="faq-question"
         aria-expanded={open}
         onClick={() => setOpen(!open)}
-        style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}
+        style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', flexWrap: 'wrap', gap: '10px' }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', textAlign: 'left' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', textAlign: 'left', flexWrap: 'wrap', flex: '1 1 auto', minWidth: '0' }}>
           <span
             className="pill"
             style={{
@@ -95,8 +95,8 @@ function ModuleAccordion({ module, idx, isOpenDefault = false }) {
           </span>
           <strong style={{ fontSize: '1.05rem', color: 'var(--ink)' }}>{module.title}</strong>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span style={{ fontSize: '0.85rem', color: '#1e293b', fontWeight: 600, whiteSpace: 'nowrap' }}>{module.duration}</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0, marginLeft: 'auto' }}>
+          <span style={{ fontSize: '0.85rem', color: '#1e293b', fontWeight: 600 }}>{module.duration}</span>
           <ChevronDown
             size={18}
             aria-hidden="true"

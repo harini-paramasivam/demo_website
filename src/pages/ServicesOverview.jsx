@@ -369,19 +369,7 @@ export default function ServicesOverview() {
           </div>
 
           {/* Dedicated Training & Internship Banner */}
-          <div style={{
-            marginTop: '3.5rem',
-            background: 'linear-gradient(135deg, rgba(8, 20, 50, 0.85) 0%, rgba(13, 30, 76, 0.95) 100%)',
-            border: '1px solid rgba(56, 189, 248, 0.25)',
-            borderRadius: '16px',
-            padding: '2rem 2.5rem',
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '1.5rem',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)'
-          }}>
+          <div className="so-training-banner">
             <div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#38bdf8', fontSize: '0.82rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px' }}>
                 <GraduationCap size={16} />
@@ -394,7 +382,7 @@ export default function ServicesOverview() {
                 We provide hands-on training across ePublishing, AI/ML, Generative AI, Data Analytics, Accessibility, and Software Development with 100% live client project exposure.
               </p>
             </div>
-            <Link to="/training" className="btn btn--orange" style={{ whiteSpace: 'nowrap' }}>
+            <Link to="/training" className="btn btn--orange so-training-banner__btn">
               <span>Explore Training & Internships</span>
               <ArrowRight size={17} aria-hidden="true" />
             </Link>

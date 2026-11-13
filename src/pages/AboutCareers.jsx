@@ -128,7 +128,7 @@ export default function AboutCareers() {
             <p className="lead" style={{ color: '#cbd5e1', margin: '0 auto 2rem' }}>
               We do not have open positions right now. Send your resume to <strong className="accent">info@velvorasolutions.com</strong> and we will keep it on file.
             </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '14px', flexWrap: 'wrap' }}>
+            <div className="career-openings-btn-row">
               <a
                 href="mailto:info@velvorasolutions.com?subject=Resume%20Submission%20-%20Velvora%20Solutions"
                 className="btn btn--orange btn--lg"

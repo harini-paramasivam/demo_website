@@ -20270,6 +20270,103 @@ main:focus { outline: none; }
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
+.so-training-banner {
+  margin-top: 3.5rem;
+  background: linear-gradient(135deg, rgba(8, 20, 50, 0.85) 0%, rgba(13, 30, 76, 0.95) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.career-openings-btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .svc-faqs-action-banner,
+  .so-training-banner,
+  .testimonials-cta-spotlight,
+  .why-join-cta-banner,
+  .career-modal-cta {
+    padding: 22px 18px !important;
+    border-radius: 16px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+  }
+
+  .svc-faqs-action-banner .btn,
+  .svc-faqs-action-banner__btn,
+  .so-training-banner .btn,
+  .so-training-banner__btn,
+  .testimonials-cta-spotlight .btn,
+  .testimonials-cta-spotlight__btn,
+  .why-join-cta-banner .btn,
+  .career-modal-cta .btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 13px 18px !important;
+    font-size: 0.92rem !important;
+    line-height: 1.4 !important;
+    box-sizing: border-box !important;
+    word-break: break-word !important;
+  }
+
+  .career-openings-btn-row {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+  .career-openings-btn-row .btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Pre-Footer CTA Band: Safe Mobile Clearance */
+  .cta {
+    padding: 44px 0 72px !important;
+  }
+  .cta h2 {
+    font-size: clamp(1.4rem, 5.5vw, 1.85rem) !important;
+    max-width: 100% !important;
+    line-height: 1.3 !important;
+  }
+  .cta p {
+    font-size: 0.95rem !important;
+    max-width: 100% !important;
+    line-height: 1.6 !important;
+  }
+  .cta .btn-row {
+    width: 100% !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-top: 1.5rem !important;
+  }
+  .cta .btn-row .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 13px 18px !important;
+    font-size: 0.92rem !important;
+  }
+}
+
 
 /* ========================================================= */
 /* UNIVERSAL PARALLEL ICON & TITLE RULES ACROSS ALL PAGES     */
