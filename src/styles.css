@@ -1960,25 +1960,73 @@ main:focus { outline: none; }
   z-index: 3;
 }
 
-/* ===== Sections ===== */
-.section { padding: clamp(64px, 9vw, 120px) 0; }
-.section--tint { background: var(--tint); }
+/* ===== Sections (Atmospheric Graphic Backdrops for Light Mode - Never Plain) ===== */
+.section { 
+  position: relative;
+  padding: clamp(64px, 9vw, 120px) 0;
+  background-color: #f8fafc;
+  background-image:
+    radial-gradient(ellipse at 10% 15%, rgba(14, 165, 233, 0.07) 0%, transparent 48%),
+    radial-gradient(ellipse at 90% 85%, rgba(99, 102, 241, 0.06) 0%, transparent 48%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.96) 0%, #f1f5f9 100%),
+    linear-gradient(rgba(14, 165, 233, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 44px 44px, 44px 44px;
+  border-top: 1px solid rgba(56, 189, 248, 0.14);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.14);
+  overflow: hidden;
+}
+
+.section--tint { 
+  position: relative;
+  background-color: #f1f5f9;
+  background-image:
+    radial-gradient(ellipse at 85% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 15% 85%, rgba(129, 140, 248, 0.07) 0%, transparent 50%),
+    linear-gradient(rgba(14, 165, 233, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 165, 233, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 44px 44px, 44px 44px;
+  border-top: 1px solid rgba(56, 189, 248, 0.15);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+}
+
 .section--paper {
   position: relative;
   background-color: #f8fafc;
   background-image:
-    radial-gradient(circle at 12% 18%, rgba(37, 99, 235, 0.05) 0%, transparent 48%),
-    radial-gradient(circle at 88% 82%, rgba(56, 189, 248, 0.06) 0%, transparent 48%),
+    radial-gradient(circle at 12% 18%, rgba(37, 99, 235, 0.07) 0%, transparent 48%),
+    radial-gradient(circle at 88% 82%, rgba(56, 189, 248, 0.08) 0%, transparent 48%),
     linear-gradient(rgba(14, 165, 233, 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgba(14, 165, 233, 0.035) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 42px 42px, 42px 42px;
+  border-top: 1px solid rgba(56, 189, 248, 0.14);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.14);
   overflow: hidden;
 }
-.sec-head { max-width: 860px; margin-bottom: clamp(32px, 5vw, 56px); }
+
+.sec-head { 
+  max-width: 860px; 
+  margin-bottom: clamp(32px, 5vw, 56px); 
+  position: relative;
+}
+.sec-head::after {
+  content: '';
+  display: block;
+  width: 58px;
+  height: 3px;
+  background: linear-gradient(90deg, #0284c7, #6366f1, transparent);
+  border-radius: 999px;
+  margin-top: 14px;
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
+}
 .sec-head--dark h2 { color: #ffffff; }
 .sec-head--dark .lead,
 .sec-head--dark p { color: #f8fafc; opacity: .95; }
 .sec-head--dark .eyebrow { color: var(--orange); }
+.sec-head--dark::after {
+  background: linear-gradient(90deg, #38bdf8, #f59e0b, transparent);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.6);
+}
 .about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
 .about .lead { margin-top: 1.5rem; }
 
@@ -2217,6 +2265,255 @@ main:focus { outline: none; }
   font-size: 1.02rem;
   line-height: 1.65;
 }
+
+/* ========================================================================= */
+/* DARK MODE WHY CARDS & COMPANY VALUES (NEVER PLAIN WHITE ON DARK)          */
+/* ========================================================================= */
+.why-section-dark .why__card {
+  position: relative !important;
+  background: linear-gradient(155deg, rgba(13, 22, 45, 0.94) 0%, rgba(6, 12, 28, 0.98) 100%) !important;
+  border: 1.5px solid rgba(56, 189, 248, 0.28) !important;
+  border-radius: 22px !important;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.75), 0 0 25px -8px rgba(56, 189, 248, 0.15) !important;
+  color: #ffffff !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
+}
+
+.why-section-dark .why__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 2.5px;
+  background: linear-gradient(90deg, transparent, #38bdf8 50%, transparent);
+  transition: all 0.35s ease;
+}
+
+.why-section-dark .why__card:hover {
+  transform: translateY(-8px) !important;
+  border-color: rgba(56, 189, 248, 0.75) !important;
+  box-shadow: 0 24px 55px -10px rgba(0, 0, 0, 0.85), 0 0 35px rgba(56, 189, 248, 0.35) !important;
+}
+
+.why-section-dark .why__card:hover::before {
+  left: 0;
+  right: 0;
+}
+
+.why-section-dark .why__icon {
+  background: rgba(56, 189, 248, 0.14) !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  color: #38bdf8 !important;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.25) !important;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-section-dark .why__card:hover .why__icon {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.45) !important;
+}
+
+.why-section-dark .why__card h3 {
+  color: #ffffff !important;
+  font-size: 1.4rem !important;
+  font-weight: 850 !important;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px 0 !important;
+}
+
+.why-section-dark .why__card p {
+  color: #cbd5e1 !important;
+  font-size: 1.02rem !important;
+  line-height: 1.68 !important;
+}
+
+/* Individual Value Card Themes (Company Overview & Guiding Principles) */
+/* 1. Quality (Azure Cyan) */
+.why-val-card--quality::before {
+  background: linear-gradient(90deg, transparent, #00d2ff 50%, transparent) !important;
+}
+.why-val-card--quality:hover {
+  border-color: #00d2ff !important;
+  box-shadow: 0 24px 55px -10px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0, 210, 255, 0.4) !important;
+}
+.why-val-card--quality .why__icon {
+  background: rgba(0, 210, 255, 0.15) !important;
+  border-color: rgba(0, 210, 255, 0.45) !important;
+  color: #00d2ff !important;
+  box-shadow: 0 0 18px rgba(0, 210, 255, 0.3) !important;
+}
+
+/* 2. Inclusion (Emerald Mint) */
+.why-val-card--inclusion::before {
+  background: linear-gradient(90deg, transparent, #10b981 50%, transparent) !important;
+}
+.why-val-card--inclusion:hover {
+  border-color: #10b981 !important;
+  box-shadow: 0 24px 55px -10px rgba(0, 0, 0, 0.85), 0 0 35px rgba(16, 185, 129, 0.4) !important;
+}
+.why-val-card--inclusion .why__icon {
+  background: rgba(16, 185, 129, 0.15) !important;
+  border-color: rgba(16, 185, 129, 0.45) !important;
+  color: #34d399 !important;
+  box-shadow: 0 0 18px rgba(16, 185, 129, 0.3) !important;
+}
+
+/* 3. Integrity (Amber Gold) */
+.why-val-card--integrity::before {
+  background: linear-gradient(90deg, transparent, #f59e0b 50%, transparent) !important;
+}
+.why-val-card--integrity:hover {
+  border-color: #f59e0b !important;
+  box-shadow: 0 24px 55px -10px rgba(0, 0, 0, 0.85), 0 0 35px rgba(245, 158, 11, 0.4) !important;
+}
+.why-val-card--integrity .why__icon {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(245, 158, 11, 0.45) !important;
+  color: #fbbf24 !important;
+  box-shadow: 0 0 18px rgba(245, 158, 11, 0.3) !important;
+}
+
+/* 4. Collaboration (Royal Indigo/Purple) */
+.why-val-card--collaboration::before {
+  background: linear-gradient(90deg, transparent, #818cf8 50%, transparent) !important;
+}
+.why-val-card--collaboration:hover {
+  border-color: #818cf8 !important;
+  box-shadow: 0 24px 55px -10px rgba(0, 0, 0, 0.85), 0 0 35px rgba(129, 140, 248, 0.4) !important;
+}
+.why-val-card--collaboration .why__icon {
+  background: rgba(129, 140, 248, 0.15) !important;
+  border-color: rgba(129, 140, 248, 0.45) !important;
+  color: #c084fc !important;
+  box-shadow: 0 0 18px rgba(129, 140, 248, 0.3) !important;
+}
+
+/* 5. Continuous Learning (Sunset Coral/Flame) */
+.why-val-card--learning::before {
+  background: linear-gradient(90deg, transparent, #f97316 50%, transparent) !important;
+}
+.why-val-card--learning:hover {
+  border-color: #f97316 !important;
+  box-shadow: 0 24px 55px -10px rgba(0, 0, 0, 0.85), 0 0 35px rgba(249, 115, 22, 0.4) !important;
+}
+.why-val-card--learning .why__icon {
+  background: rgba(249, 115, 22, 0.15) !important;
+  border-color: rgba(249, 115, 22, 0.45) !important;
+  color: #fb7185 !important;
+  box-shadow: 0 0 18px rgba(249, 115, 22, 0.3) !important;
+}
+
+/* Card Header Strip, Badges & Highlights */
+.why-val-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.why-val-card__pill {
+  font-size: 0.74rem;
+  font-weight: 750;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #f1f5f9;
+}
+.why-val-card__tagline {
+  font-size: 0.82rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+.why-val-card__highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.why-val-card__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.76rem;
+  font-weight: 650;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+}
+
+/* ===== Company Ecosystem Graphic & Accreditation Strip ===== */
+.company-ecosystem-visual {
+  position: relative;
+  background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.12) 0%, rgba(15, 23, 42, 0.03) 70%, transparent 100%),
+              linear-gradient(145deg, #070e24 0%, #0d1a3c 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 24px;
+  padding: clamp(1.8rem, 3vw, 2.5rem);
+  box-shadow: 0 25px 60px -15px rgba(7, 14, 36, 0.5), 0 0 35px -5px rgba(56, 189, 248, 0.25);
+  overflow: hidden;
+  color: #ffffff;
+}
+.company-ecosystem-visual::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 10%; right: 10%; height: 2px;
+  background: linear-gradient(90deg, transparent, #00d2ff 50%, transparent);
+}
+.company-ecosystem-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.accreditation-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 2.5rem;
+}
+.accreditation-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.9) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(10, 22, 48, 0.05);
+  font-size: 0.85rem;
+  font-weight: 750;
+  color: #0f172a;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.accreditation-pill:hover {
+  transform: translateY(-3px);
+  border-color: #0284c7;
+  box-shadow: 0 10px 25px rgba(2, 132, 199, 0.15);
+}
+.accreditation-pill__icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  flex-shrink: 0;
+}
+
 
 /* Service cards */
 .scards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
