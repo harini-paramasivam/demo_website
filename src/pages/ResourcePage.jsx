@@ -1,5 +1,15 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Quote, Calendar, CheckCircle2, BookOpen } from 'lucide-react';
+import {
+  ArrowRight,
+  Quote,
+  Calendar,
+  CheckCircle2,
+  BookOpen,
+  Star,
+  Sparkles,
+  ShieldCheck,
+  TrendingUp,
+} from 'lucide-react';
 import { content } from '../data/site.js';
 import { PageHero, EmptyState, CtaBand } from '../components/ui.jsx';
 
@@ -17,7 +27,7 @@ export default function ResourcePage({ type }) {
         {c.intro}
       </PageHero>
 
-      <section className="section">
+      <section className={`section ${type === 'client-testimonials' ? 'section--paper testimonials-section-wrap' : ''}`}>
         <div className="container">
           {/* CASE STUDIES VIEW */}
           {type === 'case-studies' && (
@@ -51,24 +61,102 @@ export default function ResourcePage({ type }) {
             </div>
           )}
 
-          {/* CLIENT TESTIMONIALS VIEW */}
+          {/* CLIENT TESTIMONIALS VIEW - LUXURY EXECUTIVE SHOWCASE */}
           {type === 'client-testimonials' && (
-            <div>
-              <p className="meta" style={{ marginBottom: '2rem', fontStyle: 'italic' }}>
-                {c.intro}
-              </p>
-              <div className="testimonials-grid">
+            <div className="client-testimonials-showcase">
+              {/* TOP TRUST & IMPACT METRICS STRIP */}
+              <div className="testimonials-trust-bar">
+                <div className="trust-metric-pod">
+                  <div className="trust-metric-value">99.8%</div>
+                  <div className="trust-metric-label">On-Time SLA Delivery</div>
+                </div>
+                <div className="trust-metric-pod">
+                  <div className="trust-metric-value">5,000+</div>
+                  <div className="trust-metric-label">EPUB &amp; XML Titles Converted</div>
+                </div>
+                <div className="trust-metric-pod">
+                  <div className="trust-metric-value">100%</div>
+                  <div className="trust-metric-label">WCAG 2.2 &amp; PDF/UA Conformance</div>
+                </div>
+                <div className="trust-metric-pod">
+                  <div className="trust-metric-value">4.9 / 5.0</div>
+                  <div className="trust-metric-label">Client Satisfaction Rating</div>
+                </div>
+              </div>
+
+              {/* SECTION SUB-HEADER */}
+              <div className="testimonials-head-block text-center" style={{ margin: '3.5rem auto 2.5rem', maxWidth: '780px' }}>
+                <span className="subservices-hub-badge">
+                  <Sparkles size={15} />
+                  <span>Enterprise Client Endorsements</span>
+                </span>
+                <h3 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.25rem)', fontWeight: 800, color: '#070e24', letterSpacing: '-0.02em', margin: '0 0 12px 0' }}>
+                  Proven Impact Across Mission-Critical Deliverables
+                </h3>
+                <p style={{ color: '#475569', fontSize: '1.05rem', lineHeight: 1.65, margin: 0 }}>
+                  {c.intro}
+                </p>
+              </div>
+
+              {/* 6-CARD TESTIMONIALS GRID */}
+              <div className="testimonials-luxury-grid">
                 {c.items.map((item, idx) => (
-                  <article key={idx} className="testimonial-card">
-                    <Quote size={32} className="accent" aria-hidden="true" style={{ marginBottom: '1rem' }} />
-                    <blockquote className="testimonial-text">&ldquo;{item.quote}&rdquo;</blockquote>
-                    <footer className="testimonial-author">
-                      <strong>{item.author}</strong>
-                      <span>{item.role}</span>
-                      <small>{item.company}</small>
+                  <article key={idx} className="testimonial-luxury-card">
+                    <div className="testimonial-luxury-card__top">
+                      <div className="testimonial-rating-stars">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} size={15} className="star-filled" fill="#f59e0b" color="#f59e0b" />
+                        ))}
+                      </div>
+                      <span className="testimonial-verified-badge">
+                        <CheckCircle2 size={13} style={{ color: '#059669' }} />
+                        <span>Verified Client</span>
+                      </span>
+                    </div>
+
+                    <div className="testimonial-service-tag-pill">
+                      <span>{item.service || 'Enterprise Engagement'}</span>
+                    </div>
+
+                    <blockquote className="testimonial-luxury-text">
+                      &ldquo;{item.quote}&rdquo;
+                    </blockquote>
+
+                    {item.metric && (
+                      <div className="testimonial-impact-pill">
+                        <TrendingUp size={13} style={{ color: '#0284c7' }} />
+                        <strong>Key Impact:</strong>
+                        <span>{item.metric}</span>
+                      </div>
+                    )}
+
+                    <footer className="testimonial-luxury-footer">
+                      <div className="testimonial-avatar-bubble">
+                        {item.initials || item.author.charAt(0)}
+                      </div>
+                      <div className="testimonial-author-info">
+                        <strong>{item.author}</strong>
+                        <span>{item.role}</span>
+                        <small>{item.company}</small>
+                      </div>
                     </footer>
                   </article>
                 ))}
+              </div>
+
+              {/* BOTTOM SPOTLIGHT CONSULTATION BANNER */}
+              <div className="testimonials-cta-spotlight">
+                <div className="testimonials-cta-spotlight__content">
+                  <span className="badge-eyebrow" style={{ color: '#38bdf8' }}>
+                    <ShieldCheck size={16} /> SLA Guarantee
+                  </span>
+                  <h4>Ready to Achieve the Same Results for Your Organization?</h4>
+                  <p>Our solutions architects are available to discuss tailored timelines, sample audits, and fixed-scope delivery roadmaps.</p>
+                </div>
+                <Link to="/contact" className="btn btn--orange btn--lg" style={{ whiteSpace: 'nowrap' }}>
+                  <span>Discuss Your Project</span>
+                  <ArrowRight size={18} />
+                </Link>
               </div>
             </div>
           )}

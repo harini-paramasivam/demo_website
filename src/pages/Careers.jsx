@@ -61,6 +61,49 @@ export default function Careers() {
     resumeSize: '',
     message: '',
   });
+  const [formErrors, setFormErrors] = useState({});
+
+  const validateCareerField = (name, value) => {
+    switch (name) {
+      case 'name':
+        if (!value || !value.trim()) return 'Full name is required.';
+        if (!/^[a-zA-Z\s.'-]{2,60}$/.test(value.trim())) {
+          return 'Full name must contain only letters and spaces (2–60 characters).';
+        }
+        return '';
+      case 'email':
+        if (!value || !value.trim()) return 'Email address is required.';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim())) {
+          return 'Please enter a valid email address (e.g. name@domain.com).';
+        }
+        return '';
+      case 'phone': {
+        if (!value || !value.trim()) return 'Phone number is required.';
+        const digits = value.replace(/\D/g, '');
+        if (!/^\+?[0-9\s\-()]{8,20}$/.test(value.trim()) || digits.length < 8 || digits.length > 15) {
+          return 'Please enter a valid phone number (8–15 digits, e.g. +91 98765 43210).';
+        }
+        return '';
+      }
+      case 'portfolio':
+        if (value && value.trim() && !/^https?:\/\/.+/i.test(value.trim())) {
+          return 'Please enter a valid URL starting with http:// or https://';
+        }
+        return '';
+      case 'websiteUrl':
+        if (value && value.trim() && !/^https?:\/\/.+/i.test(value.trim())) {
+          return 'Please enter a valid URL starting with http:// or https://';
+        }
+        return '';
+      case 'message':
+        if (value && value.trim() && value.trim().length < 10) {
+          return 'Please provide a message with at least 10 characters.';
+        }
+        return '';
+      default:
+        return '';
+    }
+  };
 
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef(null);
@@ -158,15 +201,37 @@ export default function Careers() {
   };
 
   const handleFormChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    const error = validateCareerField(name, value);
+    setFormErrors((prev) => ({ ...prev, [name]: error }));
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage('');
 
-    if (!formData.resumeFile) {
-      setErrorMessage('Please upload your resume document (PDF, DOC, DOCX up to 10MB) before submitting.');
+    const nameErr = validateCareerField('name', formData.name);
+    const emailErr = validateCareerField('email', formData.email);
+    const phoneErr = validateCareerField('phone', formData.phone);
+    const resumeErr = !formData.resumeFile ? 'Please upload your resume document (.pdf, .doc, .docx up to 10MB).' : '';
+    const portErr = validateCareerField('portfolio', formData.portfolio || '');
+    const webErr = validateCareerField('websiteUrl', formData.websiteUrl || '');
+    const msgErr = validateCareerField('message', formData.message || '');
+
+    const newErrors = {
+      name: nameErr,
+      email: emailErr,
+      phone: phoneErr,
+      resume: resumeErr,
+      portfolio: portErr,
+      websiteUrl: webErr,
+      message: msgErr,
+    };
+    setFormErrors(newErrors);
+
+    if (nameErr || emailErr || phoneErr || resumeErr || portErr || webErr || msgErr) {
+      setErrorMessage(nameErr || emailErr || phoneErr || resumeErr || 'Please correct the highlighted form errors before submitting.');
       return;
     }
 
@@ -651,12 +716,12 @@ export default function Careers() {
         </div>
       </section>
 
-      {/* 7. CURRENT OPENINGS & APPLICATION FORM */}
-      <section ref={applySectionRef} id="apply-section" className="section why-section-dark netbg career-apply-section">
+      {/* 7. CURRENT OPENINGS (DARK THEME) */}
+      <section id="openings-section" className="section why-section-dark netbg career-apply-section">
         <div className="container">
           <div className="career-panel-header text-center">
             <span className="pill"><i /> Join Our Team</span>
-            <h2 className="career-section-h2">Explore Current Openings &amp; Apply</h2>
+            <h2 className="career-section-h2">Explore Current Openings</h2>
             <p className="lead" style={{ color: '#cbd5e1', maxWidth: '64ch', margin: '0 auto' }}>
               Find your next role with Velvora Solutions. Select an opening or submit an open application below.
             </p>
@@ -713,10 +778,14 @@ export default function Careers() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* APPLICATION FORM WITH FILE UPLOAD & BROWSER URL */}
+      {/* 8. APPLICATION PORTAL (LIGHT THEME) */}
+      <section ref={applySectionRef} id="apply-section" className="section section--paper career-apply-section-light">
+        <div className="container">
           <div id="careers-application-form" className="career-application-wrapper">
-            <div className="career-apply-card">
+            <div className="career-apply-card career-apply-card--light">
               <div className="career-apply-card__header">
                 <span className="badge-eyebrow">
                   <Send size={16} /> Application Portal
@@ -787,8 +856,13 @@ export default function Careers() {
                         value={formData.name}
                         onChange={handleFormChange}
                         placeholder="e.g. Jane Doe"
-                        className="contact-input"
+                        className={`contact-input ${formErrors.name ? 'is-invalid' : ''}`}
                       />
+                      {formErrors.name && (
+                        <span className="field-error-msg">
+                          <AlertCircle size={13} /> {formErrors.name}
+                        </span>
+                      )}
                     </div>
 
                     <div className="form-group">
@@ -803,8 +877,13 @@ export default function Careers() {
                         value={formData.email}
                         onChange={handleFormChange}
                         placeholder="e.g. jane@organization.com"
-                        className="contact-input"
+                        className={`contact-input ${formErrors.email ? 'is-invalid' : ''}`}
                       />
+                      {formErrors.email && (
+                        <span className="field-error-msg">
+                          <AlertCircle size={13} /> {formErrors.email}
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -821,8 +900,13 @@ export default function Careers() {
                         value={formData.phone}
                         onChange={handleFormChange}
                         placeholder="e.g. +91 98765 43210"
-                        className="contact-input"
+                        className={`contact-input ${formErrors.phone ? 'is-invalid' : ''}`}
                       />
+                      {formErrors.phone && (
+                        <span className="field-error-msg">
+                          <AlertCircle size={13} /> {formErrors.phone}
+                        </span>
+                      )}
                     </div>
 
                     <div className="form-group">
@@ -858,8 +942,13 @@ export default function Careers() {
                         value={formData.portfolio}
                         onChange={handleFormChange}
                         placeholder="https://linkedin.com/in/username"
-                        className="contact-input"
+                        className={`contact-input ${formErrors.portfolio ? 'is-invalid' : ''}`}
                       />
+                      {formErrors.portfolio && (
+                        <span className="field-error-msg">
+                          <AlertCircle size={13} /> {formErrors.portfolio}
+                        </span>
+                      )}
                     </div>
 
                     <div className="form-group">
@@ -873,8 +962,13 @@ export default function Careers() {
                         value={formData.websiteUrl}
                         onChange={handleFormChange}
                         placeholder="https://yourwebsite.com or GitHub"
-                        className="contact-input"
+                        className={`contact-input ${formErrors.websiteUrl ? 'is-invalid' : ''}`}
                       />
+                      {formErrors.websiteUrl && (
+                        <span className="field-error-msg">
+                          <AlertCircle size={13} /> {formErrors.websiteUrl}
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -930,6 +1024,11 @@ export default function Careers() {
                         </p>
                         <span className="file-dropzone__hint">Supports PDF, DOC, DOCX up to 10MB</span>
                       </div>
+                    )}
+                    {formErrors.resume && (
+                      <span className="field-error-msg" style={{ marginTop: '8px', display: 'flex' }}>
+                        <AlertCircle size={13} /> {formErrors.resume}
+                      </span>
                     )}
                   </div>
 

@@ -57,16 +57,21 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.fullName.trim()) {
-      setStatus({ type: 'error', message: 'Please enter your full name.' });
+    if (!formData.fullName.trim() || !/^[a-zA-Z\s.'-]{2,60}$/.test(formData.fullName.trim())) {
+      setStatus({ type: 'error', message: 'Please enter a valid full name (letters and spaces only, 2–60 characters).' });
       return;
     }
-    if (!formData.email.trim() || !formData.email.includes('@')) {
-      setStatus({ type: 'error', message: 'Please provide a valid email address.' });
+    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(formData.email.trim())) {
+      setStatus({ type: 'error', message: 'Please provide a valid email address (e.g. name@domain.com).' });
       return;
     }
-    if (!formData.phone.trim() || formData.phone.length < 8) {
-      setStatus({ type: 'error', message: 'Please provide a valid phone or WhatsApp number.' });
+    const phoneDigits = formData.phone.replace(/\D/g, '');
+    if (!formData.phone.trim() || !/^\+?[0-9\s\-()]{8,20}$/.test(formData.phone.trim()) || phoneDigits.length < 8 || phoneDigits.length > 15) {
+      setStatus({ type: 'error', message: 'Please provide a valid phone or WhatsApp number (8–15 digits, e.g. +91 98765 43210).' });
+      return;
+    }
+    if (!formData.education.trim()) {
+      setStatus({ type: 'error', message: 'Please specify your degree or highest educational qualification.' });
       return;
     }
 

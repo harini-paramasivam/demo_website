@@ -1,24 +1,24 @@
 {
   "syncMetadata": {
-    "version": "v1.3.237",
+    "version": "v1.3.259",
     "status": "Synchronized",
-    "lastSynchronized": "2026-11-13T05:45:38.040Z",
-    "sourceHash": "1a06183412ff58b5d99000ea0fea0ceeb68ef4e99661c2efc6f8cda97d143a30",
+    "lastSynchronized": "2026-11-13T06:35:29.317Z",
+    "sourceHash": "94efe2ee2c4f7d5fa4dae2c7f361e48e1045968e8402db9c072e09ef3a8eeeb1",
     "indexedCount": 66,
     "indexedPages": 63,
     "indexedCareers": 3,
     "errorLogs": [],
     "changelog": [
-      "Synced 63 pages & 3 careers at 2026-11-13T05:45:38.040Z",
-      "Synced 63 pages & 3 careers at 2026-11-13T05:40:46.880Z",
-      "Synced 63 pages & 3 careers at 2026-11-13T05:40:23.944Z",
-      "Synced 63 pages & 3 careers at 2026-11-13T05:40:03.153Z",
-      "Synced 63 pages & 3 careers at 2026-11-13T05:40:01.852Z",
-      "Synced 63 pages & 3 careers at 2026-11-13T05:34:22.852Z",
-      "Synced 63 pages & 3 careers at 2026-11-13T05:34:05.723Z",
-      "Synced 63 pages & 3 careers at 2026-11-13T05:33:32.072Z",
-      "Synced 63 pages & 3 careers at 2026-11-13T05:05:13.661Z",
-      "Synced 63 pages & 3 careers at 2026-11-13T05:05:09.280Z"
+      "Synced 63 pages & 3 careers at 2026-11-13T06:35:29.317Z",
+      "Synced 63 pages & 3 careers at 2026-11-13T06:35:03.502Z",
+      "Synced 63 pages & 3 careers at 2026-11-13T06:34:42.494Z",
+      "Synced 63 pages & 3 careers at 2026-11-13T06:34:41.149Z",
+      "Synced 63 pages & 3 careers at 2026-11-13T06:33:16.575Z",
+      "Synced 63 pages & 3 careers at 2026-11-13T06:31:10.591Z",
+      "Synced 63 pages & 3 careers at 2026-11-13T06:30:08.418Z",
+      "Synced 63 pages & 3 careers at 2026-11-13T06:30:06.841Z",
+      "Synced 63 pages & 3 careers at 2026-11-13T06:28:22.487Z",
+      "Synced 63 pages & 3 careers at 2026-11-13T06:27:27.390Z"
     ]
   },
   "documents": [
@@ -168,7 +168,7 @@
       "url": "/services/digital-accessibility",
       "category": "service",
       "summary": "Complete digital accessibility audits, remediation and creation for EPUB 2/3, web, PDF, Word, PowerPoint, and Excel conforming to WCAG 2.2, PDF/UA, and Section 508.",
-      "content": "Digital Accessibility (Digital Accessibility Services: Content Everyone Can Use)\nOverview: More than a billion people worldwide live with some form of disability. Inaccessible content shuts them out, and it can expose organizations to legal and reputational risk. Velvora provides complete accessibility services, including audits, remediation, and new accessible content creation, across all major formats. Our specialists test with real assistive technologies such as JAWS, NVDA, VoiceOver, and TalkBack, not just automated tools.\nWhat We Offer:\n\nOur Process:\n  - 1. Assess: We review your files and goals, and agree on the standard to meet.\n  - 2. Audit: Automated and manual testing, with a clear report of issues.\n  - 3. Remediate: Our specialists fix issues at the source whenever possible.\n  - 4. Verify: Testing with assistive technologies.\n  - 5. Certify and Report: Delivery of fixed files with an accessibility compliance report.\n  - 6. Train and Support: Optional training and ongoing support for your team.\nTarget Audience / Who It's For:\nCommercial book publishers, university presses, higher education institutions, government bodies, healthcare systems, and corporate communications teams.",
+      "content": "Digital Accessibility (Digital Accessibility Services: Content Everyone Can Use)\nOverview: More than a billion people worldwide live with some form of disability. Inaccessible content shuts them out, and it can expose organizations to legal and reputational risk. Velvora provides complete accessibility services, including audits, remediation, and new accessible content creation, across all major formats. Our specialists test with real assistive technologies such as JAWS, NVDA, VoiceOver, and TalkBack, not just automated tools.\nWhat We Offer:\n  - EPUB 3 & EPUB 2 Remediation: Semantic HTML5 structure, ARIA roles, navigation documents, MathML, and full EPUBCheck certification.\n  - PDF/UA & Document Accessibility: ISO 14289-1 compliance, logical tag trees, PAC 2024 verification, and certified screen reader testing.\n  - Web Apps & Enterprise Portals: WCAG 2.2 AA / AAA audits, keyboard navigation, focus management, color contrast, and automated CI/CD checks.\n  - Microsoft Office Conformance: Accessible Word documents, PowerPoint decks, and Excel workbooks engineered with native accessibility hierarchies.\n  - Multimedia Accessibility: Synchronized captions, audio descriptions, multi-language transcripts, and media overlay integration.\n  - VPAT & Conformance Reporting: Comprehensive Section 508 and European Accessibility Act (EN 301 549) ACR reports for enterprise procurement.\nOur Process:\n  - 1. Assess: We review your files and goals, and agree on the standard to meet.\n  - 2. Audit: Automated and manual testing, with a clear report of issues.\n  - 3. Remediate: Our specialists fix issues at the source whenever possible.\n  - 4. Verify: Testing with assistive technologies.\n  - 5. Certify and Report: Delivery of fixed files with an accessibility compliance report.\n  - 6. Train and Support: Optional training and ongoing support for your team.\nTarget Audience / Who It's For:\nCommercial book publishers, university presses, higher education institutions, government bodies, healthcare systems, and corporate communications teams.",
       "topics": [
         "Digital Accessibility",
         "digital-accessibility",

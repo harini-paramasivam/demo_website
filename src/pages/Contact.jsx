@@ -35,12 +35,75 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [errors, setErrors] = useState({});
 
-  const set = (k) => (e) => setF({ ...f, [k]: e.target.value });
+  const validateContactField = (field, val) => {
+    switch (field) {
+      case 'name':
+        if (!val || !val.trim()) return 'Name is required.';
+        if (!/^[a-zA-Z\s.'-]{2,60}$/.test(val.trim())) {
+          return 'Name must contain only letters and spaces (2–60 characters).';
+        }
+        return '';
+      case 'email':
+        if (!val || !val.trim()) return 'Email is required.';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val.trim())) {
+          return 'Please enter a valid email address (e.g. name@domain.com).';
+        }
+        return '';
+      case 'phone': {
+        if (!val || !val.trim()) return 'Phone number is required.';
+        const digits = val.replace(/\D/g, '');
+        if (!/^\+?[0-9\s\-()]{8,20}$/.test(val.trim()) || digits.length < 8 || digits.length > 15) {
+          return 'Please enter a valid phone number (8–15 digits, e.g. +91 95008 34236).';
+        }
+        return '';
+      }
+      case 'lookingFor':
+        if (!val || !val.trim()) return 'Please select a service.';
+        return '';
+      case 'message':
+        if (!val || !val.trim()) return 'Message is required.';
+        if (val.trim().length < 15) {
+          return 'Please enter at least 15 characters describing your project requirements.';
+        }
+        return '';
+      default:
+        return '';
+    }
+  };
+
+  const set = (k) => (e) => {
+    const val = e.target.value;
+    setF({ ...f, [k]: val });
+    const err = validateContactField(k, val);
+    setErrors((prev) => ({ ...prev, [k]: err }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage('');
+
+    const nameErr = validateContactField('name', f.name);
+    const emailErr = validateContactField('email', f.email);
+    const phoneErr = validateContactField('phone', f.phone);
+    const lookingErr = validateContactField('lookingFor', f.lookingFor);
+    const msgErr = validateContactField('message', f.message);
+
+    const newErrors = {
+      name: nameErr,
+      email: emailErr,
+      phone: phoneErr,
+      lookingFor: lookingErr,
+      message: msgErr,
+    };
+    setErrors(newErrors);
+
+    if (nameErr || emailErr || phoneErr || lookingErr || msgErr) {
+      setErrorMessage(nameErr || emailErr || phoneErr || lookingErr || msgErr || 'Please correct the highlighted form errors before submitting.');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -186,8 +249,13 @@ export default function Contact() {
                       onChange={set('name')}
                       placeholder="e.g. Jane Doe"
                       autoComplete="name"
-                      className="contact-input"
+                      className={`contact-input ${errors.name ? 'is-invalid' : ''}`}
                     />
+                    {errors.name && (
+                      <span className="field-error-msg">
+                        <AlertCircle size={13} /> {errors.name}
+                      </span>
+                    )}
                   </div>
 
                   {/* 2. Email */}
@@ -203,8 +271,13 @@ export default function Contact() {
                       onChange={set('email')}
                       placeholder="e.g. jane@organization.com"
                       autoComplete="email"
-                      className="contact-input"
+                      className={`contact-input ${errors.email ? 'is-invalid' : ''}`}
                     />
+                    {errors.email && (
+                      <span className="field-error-msg">
+                        <AlertCircle size={13} /> {errors.email}
+                      </span>
+                    )}
                   </div>
 
                   {/* 3. Phone Number */}
@@ -220,8 +293,13 @@ export default function Contact() {
                       onChange={set('phone')}
                       placeholder="e.g. +91 95008 34236"
                       autoComplete="tel"
-                      className="contact-input"
+                      className={`contact-input ${errors.phone ? 'is-invalid' : ''}`}
                     />
+                    {errors.phone && (
+                      <span className="field-error-msg">
+                        <AlertCircle size={13} /> {errors.phone}
+                      </span>
+                    )}
                   </div>
 
                   {/* 4. Looking For (Services Dropdown replacing Subject) */}
@@ -261,8 +339,13 @@ export default function Contact() {
                       value={f.message}
                       onChange={set('message')}
                       placeholder="Tell us about your project requirements, document volume, or accessibility goals..."
-                      className="contact-textarea"
+                      className={`contact-textarea ${errors.message ? 'is-invalid' : ''}`}
                     />
+                    {errors.message && (
+                      <span className="field-error-msg">
+                        <AlertCircle size={13} /> {errors.message}
+                      </span>
+                    )}
                   </div>
 
                   <button type="submit" disabled={isSubmitting} className="btn btn--orange btn--lg contact-submit-btn">

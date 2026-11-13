@@ -1,5 +1,5 @@
 {
-  "auditDate": "2026-11-13T05:45:38.146Z",
+  "auditDate": "2026-11-13T06:35:29.424Z",
   "totalQuestions": 100,
   "passed": 100,
   "failed": 0,
@@ -214,7 +214,7 @@
       "isUnavailableInfo": false,
       "result": "PASS",
       "issues": "None",
-      "actualReply": "### Digital Accessibility\n\nComplete digital accessibility audits, remediation and creation for EPUB 2/3, web, PDF, Word, PowerPoint, and Excel conforming to WCAG 2.2, PDF/UA, and Section 508.\n\n**Key Highlights & Capabilities:**\n- 1. Assess: We review your files and goals, and agree on the standard to meet.\n- 2. Audit: Automated and manual testing, with a clear report of issues.\n- 3. Remediate: Our specialists fix issues at the source whenever possible.\n- 4. Verify: Testing with assistive technologies.\n\nFor customized project scopes, technical consultations, or inquiries, please connect with our team through our **[Contact Page](/contact)** or email **info@velvorasolutions.com**.",
+      "actualReply": "### Digital Accessibility\n\nComplete digital accessibility audits, remediation and creation for EPUB 2/3, web, PDF, Word, PowerPoint, and Excel conforming to WCAG 2.2, PDF/UA, and Section 508.\n\n**Key Highlights & Capabilities:**\n- EPUB 3 & EPUB 2 Remediation: Semantic HTML5 structure, ARIA roles, navigation documents, MathML, and full EPUBCheck certification.\n- PDF/UA & Document Accessibility: ISO 14289-1 compliance, logical tag trees, PAC 2024 verification, and certified screen reader testing.\n- Web Apps & Enterprise Portals: WCAG 2.2 AA / AAA audits, keyboard navigation, focus management, color contrast, and automated CI/CD checks.\n- Microsoft Office Conformance: Accessible Word documents, PowerPoint decks, and Excel workbooks engineered with native accessibility hierarchies.\n\nFor customized project scopes, technical consultations, or inquiries, please connect with our team through our **[Contact Page](/contact)** or email **info@velvorasolutions.com**.",
       "sources": [
         "/services/digital-accessibility",
         "/services/ai-automation"

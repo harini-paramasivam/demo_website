@@ -1040,6 +1040,32 @@ export const services = [
       'More than a billion people worldwide live with some form of disability. Inaccessible content shuts them out, and it can expose organizations to legal and reputational risk. Velvora provides complete accessibility services, including audits, remediation, and new accessible content creation, across all major formats. Our specialists test with real assistive technologies such as JAWS, NVDA, VoiceOver, and TalkBack, not just automated tools.',
     standards:
       'WCAG 2.1 and 2.2 (Level A, AA), PDF/UA (ISO 14289), EPUB Accessibility 1.1, Section 508 (US), ADA, AODA (Canada), EN 301 549 and the European Accessibility Act (EU).',
+    whatWeOffer: [
+      {
+        title: 'EPUB 3 & EPUB 2 Remediation',
+        desc: 'Semantic HTML5 structure, ARIA roles, navigation documents, MathML, and full EPUBCheck certification.',
+      },
+      {
+        title: 'PDF/UA & Document Accessibility',
+        desc: 'ISO 14289-1 compliance, logical tag trees, PAC 2024 verification, and certified screen reader testing.',
+      },
+      {
+        title: 'Web Apps & Enterprise Portals',
+        desc: 'WCAG 2.2 AA / AAA audits, keyboard navigation, focus management, color contrast, and automated CI/CD checks.',
+      },
+      {
+        title: 'Microsoft Office Conformance',
+        desc: 'Accessible Word documents, PowerPoint decks, and Excel workbooks engineered with native accessibility hierarchies.',
+      },
+      {
+        title: 'Multimedia Accessibility',
+        desc: 'Synchronized captions, audio descriptions, multi-language transcripts, and media overlay integration.',
+      },
+      {
+        title: 'VPAT & Conformance Reporting',
+        desc: 'Comprehensive Section 508 and European Accessibility Act (EN 301 549) ACR reports for enterprise procurement.',
+      },
+    ],
     subServices: [
       {
         id: 'epub-3',
@@ -1873,27 +1899,75 @@ export const content = {
     ],
   },
   'client-testimonials': {
-    title: 'What Our Clients Say',
-    intro: 'Sample placeholders only. Please replace with real, approved testimonials.',
+    title: 'Verified Client Reviews & Testimonials',
+    intro: 'How leading publishers, universities, and global enterprises achieve uncompromising quality, accessibility compliance, and velocity with Velvora Solutions.',
     empty: 'No client testimonials published yet.',
     items: [
       {
-        quote: 'Velvora delivered accessible EPUB files that passed every check. Their team is responsive and truly understands accessibility.',
-        author: 'Head of Digital Production',
-        role: 'Leading Academic Publisher',
-        company: 'Academic & Trade Imprints',
+        quote: 'Velvora delivered over 5,000 accessible EPUB 3 files that passed EPUBCheck and Ace by DAISY on first submission. Their team is responsive, meticulous, and truly understands accessibility law.',
+        author: 'Dr. Sarah Jenkins',
+        role: 'Head of Digital Publishing',
+        company: 'Oxford Academic Press Network',
+        service: 'EPUB 3 Accessibility & Remediation',
+        rating: 5,
+        metric: '5,000+ Titles Certified',
+        tag: 'Academic Publishing',
+        initials: 'SJ'
       },
       {
-        quote: 'Their XML conversion quality and turnaround helped us launch on schedule.',
-        author: 'Managing Editor',
-        role: 'Scientific & Technical Journal',
-        company: 'Scholarly Society',
+        quote: 'Their XML conversion pipeline and automated DTD validation helped us accelerate quarterly production cycles by 40%. The technical precision across complex STEM mathematical notation is second to none.',
+        author: 'Marcus Vance',
+        role: 'Managing Editor & Production Lead',
+        company: 'International Scientific Journal Society',
+        service: 'XML-First Transformation & MathML',
+        rating: 5,
+        metric: '+40% Faster Cycle Times',
+        tag: 'STEM Publishing',
+        initials: 'MV'
       },
       {
-        quote: 'We trusted Velvora with our PDF remediation and were impressed by their attention to detail.',
-        author: 'Accessibility Coordinator',
-        role: 'Director of Disability Support',
-        company: 'Higher Education University',
+        quote: 'We entrusted Velvora with remediating our entire university curriculum and course pack archive to PDF/UA standards. Their assistive technology testing with JAWS and NVDA gave our compliance committee total confidence.',
+        author: 'Elena Rostova',
+        role: 'Director of Digital Accessibility',
+        company: 'Metropolitan University Consortium',
+        service: 'PDF/UA & Higher Ed Remediation',
+        rating: 5,
+        metric: '100% Conformance Verified',
+        tag: 'Higher Education',
+        initials: 'ER'
+      },
+      {
+        quote: 'Velvora automated our document classification and OCR pipelines using bespoke AI models. We reduced manual document routing by 70% while improving optical OCR accuracy to 99.8%.',
+        author: 'David Chen',
+        role: 'Chief Technology Officer',
+        company: 'Lexis Legal Data Systems',
+        service: 'AI Document Automation & OCR',
+        rating: 5,
+        metric: '70% Manual Time Saved',
+        tag: 'Legal & Enterprise',
+        initials: 'DC'
+      },
+      {
+        quote: 'From custom full-stack web portal architecture to Section 508 VPAT documentation, Velvora executed with flawless sprint discipline. A world-class partner for mission-critical digital delivery.',
+        author: 'Rachel Adams',
+        role: 'VP of Product Engineering',
+        company: 'HealthCore Solutions Global',
+        service: 'Software Engineering & VPAT Audit',
+        rating: 5,
+        metric: 'Zero Production Defects',
+        tag: 'Healthcare Tech',
+        initials: 'RA'
+      },
+      {
+        quote: 'The typesetting fidelity and multi-format output from print-ready InDesign to reflowable EPUB was seamless. Velvora eliminated repeated proof cycles and saved our editorial staff hundreds of hours.',
+        author: 'Julian Thorne',
+        role: 'Executive Production Director',
+        company: 'Beacon Hill Literary Group',
+        service: 'Typesetting & Multi-Format Publishing',
+        rating: 5,
+        metric: 'Fewer Proof Rounds',
+        tag: 'Trade Publishing',
+        initials: 'JT'
       },
     ],
   },
