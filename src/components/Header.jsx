@@ -16,9 +16,11 @@ import {
   GraduationCap,
   Globe,
   Layers,
+  Mail,
   Megaphone,
   Menu,
   Palette,
+  Phone,
   ScanText,
   ShieldCheck,
   Sigma,
@@ -27,7 +29,7 @@ import {
   Video,
   X,
 } from 'lucide-react';
-import { nav } from '../data/site.js';
+import { nav, company } from '../data/site.js';
 
 const ICON_MAP = {
   Award,
@@ -113,7 +115,7 @@ function DropdownItem({ item, open, onToggle, onClose }) {
       {isMega ? (
         <div className="nav__megamenu" role="region" aria-label={`${item.label} menu`}>
           <div className="nav__megamenu-inner">
-            {/* Left Column: Vertical Category List (Image 2) */}
+            {/* Left Column: Vertical Category List */}
             <div className="nav__megamenu-sidebar">
               <div className="nav__megamenu-sidebar-head">
                 <span>Categories</span>
@@ -147,7 +149,7 @@ function DropdownItem({ item, open, onToggle, onClose }) {
               </div>
             </div>
 
-            {/* Right Column: Segregated Subtopics with Unique Icons (Image 2) */}
+            {/* Right Column: Segregated Subtopics with Unique Icons */}
             <div className="nav__megamenu-content">
               <div className="nav__megamenu-content-head">
                 <h4 className="nav__megamenu-active-title">
@@ -215,11 +217,26 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
 
-  useEffect(() => { setOpenMenu(null); setMobile(false); setMobileSub(null); }, [pathname]);
   useEffect(() => {
-    document.body.style.overflow = mobile ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    setOpenMenu(null);
+    setMobile(false);
+    setMobileSub(null);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (mobile) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
   }, [mobile]);
+
   useEffect(() => {
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -231,57 +248,191 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  return (
-    <header className={`header${scrolled ? ' is-scrolled' : ''}`}>
-      <a href="#main" className="skip">Skip to main content</a>
-      <div className="container header__bar">
-        <Link to="/" className="header__logo" aria-label="Velvora Solutions – home">
-          <img src="/logo.png" alt="Velvora Solutions" width="910" height="305" />
-        </Link>
-        <nav className="nav" aria-label="Main">
-          <ul className="nav__list">
-            {nav.map((item) =>
-              item.items ? (
-                <DropdownItem key={item.label} item={item} open={openMenu === item.label}
-                  onToggle={(v) => setOpenMenu(v ? item.label : null)} onClose={() => setOpenMenu(null)} />
-              ) : (
-                <li key={item.label} className="nav__item">
-                  <NavLink to={item.to} end className="nav__link">{item.label}</NavLink>
-                </li>
-              )
-            )}
-          </ul>
-        </nav>
-        <Link to="/contact" className="btn btn--orange header__cta">Get in Touch <ArrowRight size={18} aria-hidden="true" /></Link>
-        <button type="button" className="header__toggle" aria-label={mobile ? 'Close menu' : 'Open menu'}
-          aria-expanded={mobile} aria-controls="mobile-nav" onClick={() => setMobile(!mobile)}>
-          {mobile ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-      <div className="progress" style={{ width: `${progress}%` }} aria-hidden="true" />
+  const closeMobile = () => {
+    setMobile(false);
+    setMobileSub(null);
+  };
 
-      <div id="mobile-nav" className={`mobile${mobile ? ' is-open' : ''}`} hidden={!mobile}>
-        <nav aria-label="Mobile">
-          <ul>
-            {nav.map((item) =>
-              item.items ? (
-                <li key={item.label}>
-                  <button type="button" className="mobile__row" aria-expanded={mobileSub === item.label}
-                    onClick={() => setMobileSub(mobileSub === item.label ? null : item.label)}>
-                    {item.label}<ChevronDown size={18} aria-hidden="true" className={mobileSub === item.label ? 'rot' : ''} />
-                  </button>
-                  {mobileSub === item.label && (
-                    <ul className="mobile__sub">{item.items.map((s) => <li key={s.to}><Link to={s.to}>{s.label}</Link></li>)}</ul>
-                  )}
-                </li>
-              ) : (
-                <li key={item.label}><Link to={item.to} className="mobile__row">{item.label}</Link></li>
-              )
-            )}
-          </ul>
-          <Link to="/contact" className="btn btn--orange btn--block">Get in Touch <ArrowRight size={18} aria-hidden="true" /></Link>
-        </nav>
+  return (
+    <>
+      <header className={`header${scrolled ? ' is-scrolled' : ''}`}>
+        <a href="#main" className="skip">Skip to main content</a>
+        <div className="container header__bar">
+          <Link to="/" className="header__logo" aria-label="Velvora Solutions – home" onClick={closeMobile}>
+            <img src="/logo.png" alt="Velvora Solutions" width="910" height="305" />
+          </Link>
+          <nav className="nav" aria-label="Main">
+            <ul className="nav__list">
+              {nav.map((item) =>
+                item.items ? (
+                  <DropdownItem
+                    key={item.label}
+                    item={item}
+                    open={openMenu === item.label}
+                    onToggle={(v) => setOpenMenu(v ? item.label : null)}
+                    onClose={() => setOpenMenu(null)}
+                  />
+                ) : (
+                  <li key={item.label} className="nav__item">
+                    <NavLink to={item.to} end className="nav__link">{item.label}</NavLink>
+                  </li>
+                )
+              )}
+            </ul>
+          </nav>
+          <Link to="/contact" className="btn btn--orange header__cta">
+            Get in Touch <ArrowRight size={18} aria-hidden="true" />
+          </Link>
+          <button
+            type="button"
+            className="header__toggle"
+            aria-label={mobile ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={mobile}
+            aria-controls="mobile-nav"
+            onClick={() => setMobile(!mobile)}
+          >
+            {mobile ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
+        <div className="progress" style={{ width: `${progress}%` }} aria-hidden="true" />
+      </header>
+
+      {/* MOBILE NAVIGATION DRAWER: Rendered outside <header> to escape backdrop-filter containing-block coordinate trap */}
+      <div
+        id="mobile-nav"
+        className={`mobile${mobile ? ' is-open' : ''}`}
+        aria-hidden={!mobile}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile Navigation"
+      >
+        <div className="mobile__backdrop" onClick={closeMobile} aria-hidden="true" />
+        <div className="mobile__panel">
+          <nav aria-label="Mobile Navigation" className="mobile__nav">
+            <ul className="mobile__list">
+              {nav.map((item) => {
+                const hasChildren = Boolean(item.items || item.categories);
+                const isOpen = mobileSub === item.label;
+
+                if (!hasChildren) {
+                  return (
+                    <li key={item.label} className="mobile__item">
+                      <NavLink
+                        to={item.to}
+                        end={item.to === '/'}
+                        className={({ isActive }) => `mobile__row ${isActive ? 'is-active' : ''}`}
+                        onClick={closeMobile}
+                      >
+                        <span className="mobile__row-text">{item.label}</span>
+                        <ChevronRight size={18} className="mobile__row-arrow" />
+                      </NavLink>
+                    </li>
+                  );
+                }
+
+                return (
+                  <li key={item.label} className={`mobile__item ${isOpen ? 'is-expanded' : ''}`}>
+                    <button
+                      type="button"
+                      className={`mobile__row mobile__row--btn ${isOpen ? 'is-active' : ''}`}
+                      aria-expanded={isOpen}
+                      onClick={() => setMobileSub(isOpen ? null : item.label)}
+                    >
+                      <span className="mobile__row-text">{item.label}</span>
+                      <ChevronDown size={18} className={`mobile__row-chev ${isOpen ? 'rot' : ''}`} />
+                    </button>
+
+                    {isOpen && (
+                      <div className="mobile__sub-panel">
+                        {item.categories ? (
+                          <div className="mobile__cats">
+                            <Link
+                              to={item.to}
+                              className="mobile__overview-link"
+                              onClick={closeMobile}
+                            >
+                              <span>Explore All {item.label} (Overview)</span>
+                              <ArrowRight size={15} />
+                            </Link>
+
+                            {item.categories.map((cat) => {
+                              const CatIcon = ICON_MAP[cat.icon] || BookOpen;
+                              return (
+                                <div key={cat.id} className="mobile__cat-section">
+                                  <div className="mobile__cat-heading">
+                                    <CatIcon size={15} className="mobile__cat-heading-icon" />
+                                    <span>{cat.name}</span>
+                                    <span className="mobile__cat-heading-count">({cat.subtopics.length})</span>
+                                  </div>
+                                  <ul className="mobile__cat-links">
+                                    {cat.subtopics.map((sub) => {
+                                      const SubIcon = ICON_MAP[sub.icon] || BookOpen;
+                                      return (
+                                        <li key={sub.title}>
+                                          <Link
+                                            to={sub.to}
+                                            className="mobile__subtopic-card"
+                                            onClick={closeMobile}
+                                          >
+                                            <span className={`mobile__subtopic-icon mobile__subtopic-icon--${sub.color || 'blue'}`}>
+                                              <SubIcon size={16} />
+                                            </span>
+                                            <span className="mobile__subtopic-content">
+                                              <span className="mobile__subtopic-title">{sub.title}</span>
+                                              {sub.desc && <span className="mobile__subtopic-desc">{sub.desc}</span>}
+                                            </span>
+                                            <ChevronRight size={14} className="mobile__subtopic-arrow" />
+                                          </Link>
+                                        </li>
+                                      );
+                                    })}
+                                  </ul>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        ) : (
+                          <ul className="mobile__sub-list">
+                            {item.items.map((sub) => (
+                              <li key={sub.to}>
+                                <NavLink
+                                  to={sub.to}
+                                  className={({ isActive }) => `mobile__sub-link ${isActive ? 'is-active' : ''}`}
+                                  onClick={closeMobile}
+                                >
+                                  <span>{sub.label}</span>
+                                  <ChevronRight size={14} className="mobile__sub-arrow" />
+                                </NavLink>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="mobile__cta-wrap">
+              <Link to="/contact" className="btn btn--orange btn--block mobile__contact-btn" onClick={closeMobile}>
+                <span>Get in Touch</span>
+                <ArrowRight size={18} aria-hidden="true" />
+              </Link>
+              <div className="mobile__quick-info">
+                <a href={`mailto:${company.email}`} className="mobile__info-row">
+                  <Mail size={15} />
+                  <span>{company.email}</span>
+                </a>
+                <a href={`tel:${company.phone.replace(/\s+/g, '')}`} className="mobile__info-row">
+                  <Phone size={15} />
+                  <span>{company.phone}</span>
+                </a>
+              </div>
+            </div>
+          </nav>
+        </div>
       </div>
-    </header>
+    </>
   );
 }
