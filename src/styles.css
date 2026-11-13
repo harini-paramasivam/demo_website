@@ -2019,6 +2019,7 @@ main:focus { outline: none; }
   border-top: 1px solid rgba(56, 189, 248, 0.14);
   border-bottom: 1px solid rgba(56, 189, 248, 0.14);
   overflow: hidden;
+  transform: translateZ(0);
 }
 
 .section--tint { 
@@ -2032,6 +2033,7 @@ main:focus { outline: none; }
   background-size: 100% 100%, 100% 100%, 44px 44px, 44px 44px;
   border-top: 1px solid rgba(56, 189, 248, 0.15);
   border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+  transform: translateZ(0);
 }
 
 .section--paper {
@@ -2046,6 +2048,7 @@ main:focus { outline: none; }
   border-top: 1px solid rgba(56, 189, 248, 0.14);
   border-bottom: 1px solid rgba(56, 189, 248, 0.14);
   overflow: hidden;
+  transform: translateZ(0);
 }
 
 .sec-head { 
@@ -2184,8 +2187,16 @@ main:focus { outline: none; }
 .artpanel svg { width: 100%; height: auto; }
 
 /* Reveal on scroll */
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.in { opacity: 1; transform: none; }
+.reveal { 
+  opacity: 0; 
+  transform: translateY(12px); 
+  transition: opacity .35s ease, transform .35s ease; 
+  will-change: opacity, transform;
+}
+.reveal.in { 
+  opacity: 1; 
+  transform: none; 
+}
 
 /* Why cards (Company Values & Guiding Principles: 5-Card Funnel Layout: 3 in Row 1, 2 Centered in Row 2) */
 .why { 
@@ -7134,6 +7145,7 @@ main:focus { outline: none; }
               radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.12) 0%, transparent 55%),
               #040711;
   overflow: hidden;
+  transform: translateZ(0);
 }
 .why-section-dark::before {
   content: '';
@@ -21418,6 +21430,20 @@ main:focus { outline: none; }
     width: 100% !important;
     justify-content: center !important;
     text-align: center !important;
+  }
+
+  /* GPU-Accelerated Smooth Scrolling Optimizations */
+  /* On mobile, relax expensive backdrop-filter shaders on scrolling content cards to achieve solid 60-120 FPS */
+  .why-section-dark .why__card,
+  .service-overview-card,
+  .glance-card,
+  .testimonial-luxury-card,
+  .company-callout-card,
+  .case-badge-glass,
+  .ind-tab,
+  .svc-offer-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 }
 

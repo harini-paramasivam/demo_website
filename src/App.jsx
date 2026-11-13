@@ -38,7 +38,21 @@ function ScrollToTop() {
 export default function App() {
   const [showTop, setShowTop] = useState(false);
   useEffect(() => {
-    const f = () => setShowTop(window.scrollY > 500);
+    let ticking = false;
+    let currentShow = false;
+    const f = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const shouldShow = window.scrollY > 500;
+          if (shouldShow !== currentShow) {
+            currentShow = shouldShow;
+            setShowTop(shouldShow);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
     f();
     window.addEventListener('scroll', f, { passive: true });
     return () => window.removeEventListener('scroll', f);

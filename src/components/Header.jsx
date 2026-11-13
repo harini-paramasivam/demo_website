@@ -213,8 +213,8 @@ export default function Header() {
   const [openMenu, setOpenMenu] = useState(null);
   const [mobile, setMobile] = useState(false);
   const [mobileSub, setMobileSub] = useState(null);
-  const [progress, setProgress] = useState(0);
   const [scrolled, setScrolled] = useState(false);
+  const progressRef = useRef(null);
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -238,10 +238,26 @@ export default function Header() {
   }, [mobile]);
 
   useEffect(() => {
+    let ticking = false;
+    let lastScrolled = false;
+
     const onScroll = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(max > 0 ? (window.scrollY / max) * 100 : 0);
-      setScrolled(window.scrollY > 24);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const max = document.documentElement.scrollHeight - window.innerHeight;
+          const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+          if (progressRef.current) {
+            progressRef.current.style.width = `${pct}%`;
+          }
+          const isScrolledNow = window.scrollY > 24;
+          if (isScrolledNow !== lastScrolled) {
+            lastScrolled = isScrolledNow;
+            setScrolled(isScrolledNow);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -294,7 +310,7 @@ export default function Header() {
             {mobile ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
-        <div className="progress" style={{ width: `${progress}%` }} aria-hidden="true" />
+        <div ref={progressRef} className="progress" style={{ width: '0%' }} aria-hidden="true" />
       </header>
 
       {/* MOBILE NAVIGATION DRAWER: Rendered outside <header> to escape backdrop-filter containing-block coordinate trap */}
