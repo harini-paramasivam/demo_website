@@ -1172,6 +1172,21 @@ export const services = [
       { step: '5. Certify and Report', desc: 'Delivery of fixed files with an accessibility compliance report.' },
       { step: '6. Train and Support', desc: 'Optional training and ongoing support for your team.' },
     ],
+    benefits: [
+      '100% Guaranteed Conformance to WCAG 2.2 Level AA / AAA, PDF/UA, and Section 508',
+      'Dual Verification: Automated scanner passes plus certified assistive tech testing (JAWS, NVDA, VoiceOver)',
+      'Mitigate Legal & Regulatory Exposure under ADA Title III and the European Accessibility Act (EAA)',
+      'Formal VPAT / ACR documentation delivered ready for government and institutional procurement',
+      'High-velocity batch remediation pipelines for legacy back-catalogues and continuous publishing',
+    ],
+    whyVelvora: [
+      'Certified Universal Design and IAAP-aligned accessibility engineering specialists',
+      'Zero distortion of visual layout, branding aesthetics, or typographical precision',
+      'Full multi-format coverage spanning EPUB, PDF, Web Apps, Word, PowerPoint, and Excel workbooks',
+      'Direct integration with enterprise CMS and publishing workflows for automated compliance checks',
+      'Dedicated compliance specialist assigned to every account with SLA-backed delivery turnaround',
+    ],
+    whoItsFor: 'Commercial book publishers, university presses, higher education institutions, government bodies, healthcare systems, and corporate communications teams.',
     whyItMatters: [
       { title: 'Reach more readers', desc: 'Include people with visual, hearing, motor, and cognitive disabilities.' },
       { title: 'Meet legal requirements', desc: 'Laws such as the ADA, Section 508, AODA, and the European Accessibility Act increasingly require accessible content, including e-books.' },

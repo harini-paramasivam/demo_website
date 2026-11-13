@@ -22,6 +22,7 @@ import {
   Target,
   Award,
   BookOpen,
+  Building2,
   FileCode,
   Palette,
   Sigma,
@@ -36,6 +37,75 @@ import {
 import { services } from '../data/site.js';
 import Icon from '../components/Icon.jsx';
 import { PageHero, CtaBand } from '../components/ui.jsx';
+
+function getSubServiceMeta(id = '') {
+  switch (id) {
+    case 'epub-3':
+      return {
+        IconComp: BookOpen,
+        color: 'blue',
+        tag: 'EPUB Accessibility 1.1',
+        standardBadge: 'WCAG 2.2 AA / AAA Verified',
+        highlight: 'Modern Semantic E-Book Publishing'
+      };
+    case 'epub-2':
+      return {
+        IconComp: FileCode,
+        color: 'cyan',
+        tag: 'Backlist Modernization',
+        standardBadge: 'EPUB 3 Upgrade & Conformance',
+        highlight: 'Catalogue Remediation & DAISY QA'
+      };
+    case 'web':
+      return {
+        IconComp: Globe,
+        color: 'emerald',
+        tag: 'Web & Portal Compliance',
+        standardBadge: 'WCAG 2.1 & 2.2 Level AA / AAA',
+        highlight: 'Screen Reader & Keyboard Verification'
+      };
+    case 'pdf':
+      return {
+        IconComp: FileCheck2,
+        color: 'rose',
+        tag: 'Document Remediation',
+        standardBadge: 'PDF/UA & ISO 14289-1 Standard',
+        highlight: 'PAC & Matterhorn Conformance Verified'
+      };
+    case 'word':
+      return {
+        IconComp: ScanText,
+        color: 'indigo',
+        tag: 'Source Authoring Systems',
+        standardBadge: 'Accessible Enterprise Templates',
+        highlight: 'Structural Hierarchy & Heading Rules'
+      };
+    case 'powerpoint':
+      return {
+        IconComp: Palette,
+        color: 'amber',
+        tag: 'Presentation Deck QA',
+        standardBadge: 'Magnification & Screen Reader Ready',
+        highlight: 'Visual Structure, Contrast & Transcripts'
+      };
+    case 'excel':
+      return {
+        IconComp: BarChart3,
+        color: 'purple',
+        tag: 'Data Workbook Architecture',
+        standardBadge: 'Accessible Spreadsheet Formatting',
+        highlight: 'Semantic Cell Scopes & Formula Audit'
+      };
+    default:
+      return {
+        IconComp: ShieldCheck,
+        color: 'blue',
+        tag: 'Universal Accessibility',
+        standardBadge: 'WCAG 2.2 AA Standard',
+        highlight: 'Full Digital Conformance Audit'
+      };
+  }
+}
 
 function getOfferIcon(title = '', idx = 0) {
   const t = title.toLowerCase();
@@ -141,6 +211,7 @@ function FaqAccordion({ items = [] }) {
 
 export default function ServicePage() {
   const { slug } = useParams();
+  const [activeSubTab, setActiveSubTab] = useState(0);
   const s = services.find((x) => x.slug === slug || (x.aliases && x.aliases.includes(slug)));
 
   if (!s) return <Navigate to="/not-found" replace />;
@@ -348,25 +419,165 @@ export default function ServicePage() {
       {hasBenefitsOrImpact && (
         <section className="section section--paper svc-section-benefits">
           <div className="container">
-            {/* SUB-SERVICES (Digital Accessibility: EPUB 3, EPUB 2, Web, PDF, Word, PPT, Excel) */}
+            {/* SUB-SERVICES BREAKDOWN (Digital Accessibility: EPUB 3, EPUB 2, Web, PDF, Word, PPT, Excel) */}
             {s.subServices && (
-              <div style={{ marginBottom: '3.5rem' }}>
-                <h3 className="section-subtitle">Our Accessibility Services</h3>
-                <div className="subservices-list">
-                  {s.subServices.map((sub) => (
-                    <div key={sub.id} id={sub.id} className="subservice-block">
-                      <div className="subservice-header">
-                        <h4>{sub.title}</h4>
-                        <p className="lead">{sub.overview}</p>
+              <div className="subservices-hub-wrapper" style={{ marginBottom: '4rem' }}>
+                <div className="subservices-hub-header">
+                  <div className="subservices-hub-badge">
+                    <ShieldCheck size={16} />
+                    <span>Universal Accessibility Engineering</span>
+                  </div>
+                  <h3 className="subservices-hub-title">Specialized Formats &amp; Compliance Suites</h3>
+                  <p className="subservices-hub-desc">
+                    From digital publishing (EPUB 3/2) to enterprise web portals, PDFs, and Microsoft Office architectures, we remediate and certify every format to strict WCAG 2.2 Level AA / AAA and PDF/UA standards.
+                  </p>
+                </div>
+
+                {/* Format Navigation Pill Tabs Bar */}
+                <div className="subservices-nav-bar" role="tablist" aria-label="Accessibility Formats">
+                  {s.subServices.map((sub, idx) => {
+                    const meta = getSubServiceMeta(sub.id);
+                    const MetaIcon = meta.IconComp;
+                    const isActive = activeSubTab === idx;
+                    return (
+                      <button
+                        key={sub.id}
+                        type="button"
+                        role="tab"
+                        aria-selected={isActive}
+                        className={`subservices-tab-pill ${isActive ? 'is-active' : ''}`}
+                        onClick={() => setActiveSubTab(idx)}
+                      >
+                        <span className={`subservices-tab-icon subservices-tab-icon--${meta.color}`}>
+                          <MetaIcon size={16} />
+                        </span>
+                        <span className="subservices-tab-title">{sub.title.replace(' Accessibility', '')}</span>
+                        {isActive && <span className="subservices-tab-dot" aria-hidden="true" />}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Active Spotlight Showcase Card */}
+                {(() => {
+                  const activeSub = s.subServices[activeSubTab] || s.subServices[0];
+                  const activeMeta = getSubServiceMeta(activeSub.id);
+                  const ActiveIcon = activeMeta.IconComp;
+
+                  return (
+                    <div className="subservices-spotlight-card" id={activeSub.id}>
+                      <div className="subservices-spotlight-glow" aria-hidden="true" />
+
+                      {/* Header */}
+                      <div className="subservices-spotlight-head">
+                        <div className="subservices-spotlight-brand">
+                          <div className={`subservices-spotlight-icon-bubble subservices-spotlight-icon-bubble--${activeMeta.color}`}>
+                            <ActiveIcon size={26} />
+                          </div>
+                          <div>
+                            <div className="subservices-spotlight-tags">
+                              <span className="subservices-chip-tag">{activeMeta.tag}</span>
+                              <span className="subservices-chip-standard">
+                                <Sparkles size={13} />
+                                {activeMeta.standardBadge}
+                              </span>
+                            </div>
+                            <h4 className="subservices-spotlight-title">{activeSub.title}</h4>
+                          </div>
+                        </div>
+
+                        <Link
+                          to={`/contact?subject=${encodeURIComponent(activeSub.title + ' Remediation Project')}`}
+                          className="btn btn--orange subservices-spotlight-cta"
+                        >
+                          <span>Discuss {activeSub.title.split(' ')[0]} Project</span>
+                          <ArrowRight size={16} />
+                        </Link>
                       </div>
-                      <h5>What We Do</h5>
-                      <ul className="bullets">
-                        {sub.whatWeDo.map((w) => (
-                          <li key={w}>{w}</li>
-                        ))}
-                      </ul>
+
+                      {/* Overview Box */}
+                      <div className="subservices-overview-box">
+                        <p className="subservices-overview-text">{activeSub.overview}</p>
+                        <div className="subservices-overview-feature">
+                          <Zap size={15} />
+                          <span>{activeMeta.highlight}</span>
+                        </div>
+                      </div>
+
+                      {/* Deliverables Checklist Grid */}
+                      <div className="subservices-deliverables-wrap">
+                        <div className="subservices-deliverables-header">
+                          <div className="subservices-deliverables-label">
+                            <CheckCircle2 size={16} style={{ color: '#059669' }} />
+                            <span>Core Audit Protocols &amp; Conformance Deliverables</span>
+                          </div>
+                          <span className="subservices-deliverables-count">
+                            {activeSub.whatWeDo.length} Verified Deliverables
+                          </span>
+                        </div>
+
+                        <div className="subservices-deliverables-grid">
+                          {activeSub.whatWeDo.map((item, wIdx) => {
+                            const parts = item.includes(':') ? item.split(':') : [null, item];
+                            return (
+                              <div key={wIdx} className="subservices-deliverable-pod">
+                                <span className="subservices-check-badge">
+                                  <Check size={13} />
+                                </span>
+                                <div className="subservices-deliverable-body">
+                                  {parts[0] ? (
+                                    <>
+                                      <strong className="subservices-deliverable-lead">{parts[0].trim()}:</strong>{' '}
+                                      <span>{parts.slice(1).join(':').trim()}</span>
+                                    </>
+                                  ) : (
+                                    <span>{item}</span>
+                                  )}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
                     </div>
-                  ))}
+                  );
+                })()}
+
+                {/* Format Overview Matrix Grid (All 7 formats at a glance) */}
+                <div className="subservices-matrix-wrap">
+                  <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#070e24', marginBottom: '1rem', letterSpacing: '-0.01em' }}>
+                    Browse All 7 Accessibility Engineering Suites
+                  </h4>
+                  <div className="subservices-matrix-grid">
+                    {s.subServices.map((sub, idx) => {
+                      const meta = getSubServiceMeta(sub.id);
+                      const MetaIcon = meta.IconComp;
+                      const isSel = activeSubTab === idx;
+                      return (
+                        <div
+                          key={sub.id}
+                          className={`subservices-matrix-card ${isSel ? 'is-active' : ''}`}
+                          onClick={() => {
+                            setActiveSubTab(idx);
+                            document.getElementById(sub.id)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                          }}
+                        >
+                          <div className="subservices-matrix-card__head">
+                            <span className={`subservices-matrix-card__icon-wrap subservices-tab-icon--${meta.color}`}>
+                              <MetaIcon size={18} />
+                            </span>
+                            <span className="subservices-matrix-card__badge">{meta.tag}</span>
+                          </div>
+                          <h5 className="subservices-matrix-card__title">{sub.title}</h5>
+                          <p className="subservices-matrix-card__snippet">{sub.overview}</p>
+                          <span className="subservices-matrix-card__action">
+                            <span>{isSel ? 'Active Protocol' : 'Inspect Protocols'}</span>
+                            <ArrowRight size={13} />
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             )}
@@ -442,47 +653,126 @@ export default function ServicePage() {
             )}
 
             {/* AUDIENCE & TARGET SECTOR MATRIX */}
-            <div className="svc-audience-matrix-wrap" style={{ marginTop: '3rem' }}>
-              {s.whoItsFor && (
-                <div className="svc-audience-box">
-                  <div className="svc-offer-card__head" style={{ marginBottom: '8px' }}>
-                    <div className="svc-offer-card__icon svc-offer-card__icon--indigo" style={{ width: '36px', height: '36px' }}>
-                      <Users size={18} />
-                    </div>
-                    <h4 style={{ margin: 0, fontSize: '1.15rem', color: '#0f172a' }}>Who It&apos;s For</h4>
+            {(s.whoItsFor || s.subjects || s.whatParticipantsGet) && (
+              <div className="svc-audience-ecosystem" style={{ marginTop: '3.75rem' }}>
+                <div className="svc-audience-head">
+                  <div className="subservices-hub-badge" style={{ marginBottom: '0.85rem' }}>
+                    <Users size={15} />
+                    <span>Target Sectors &amp; Deployment Scope</span>
                   </div>
-                  <p style={{ margin: 0, color: '#334155', fontSize: '1rem', lineHeight: 1.65 }}>{s.whoItsFor}</p>
+                  <h3 style={{ fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 800, color: '#070e24', margin: '0 0 0.5rem 0', letterSpacing: '-0.02em' }}>
+                    Who This Architecture Empowers
+                  </h3>
+                  <p style={{ color: '#475569', fontSize: '1rem', margin: 0, maxWidth: '720px' }}>
+                    Engineered for high-volume content producers, academic presses, institutional libraries, regulatory bodies, and global enterprise teams.
+                  </p>
                 </div>
-              )}
 
-              {s.subjects && (
-                <div className="svc-audience-box">
-                  <div className="svc-offer-card__head" style={{ marginBottom: '8px' }}>
-                    <div className="svc-offer-card__icon svc-offer-card__icon--purple" style={{ width: '36px', height: '36px' }}>
-                      <BookOpen size={18} />
-                    </div>
-                    <h4 style={{ margin: 0, fontSize: '1.15rem', color: '#0f172a' }}>Subjects We Handle</h4>
-                  </div>
-                  <p style={{ margin: 0, color: '#334155', fontSize: '1rem', lineHeight: 1.65 }}>{s.subjects}</p>
-                </div>
-              )}
+                <div className="svc-audience-showcase-grid">
+                  {s.whoItsFor && (
+                    <div className="svc-audience-card svc-audience-card--primary">
+                      <div className="svc-audience-card__header">
+                        <span className="svc-audience-card__icon-bubble">
+                          <Building2 size={22} />
+                        </span>
+                        <div>
+                          <span className="svc-audience-card__tag">Verified Stakeholders</span>
+                          <h4 className="svc-audience-card__title">Primary Industry Sectors</h4>
+                        </div>
+                      </div>
 
-              {s.whatParticipantsGet && (
-                <div className="svc-audience-box">
-                  <div className="svc-offer-card__head" style={{ marginBottom: '8px' }}>
-                    <div className="svc-offer-card__icon svc-offer-card__icon--amber" style={{ width: '36px', height: '36px' }}>
-                      <Award size={18} />
+                      {/* Split into rich badges/chips */}
+                      <div className="svc-audience-pills-wrap">
+                        {s.whoItsFor.split(/,\s*(?:and\s+)?|\s+and\s+/).filter(Boolean).map((aud, aIdx) => (
+                          <div key={aIdx} className="svc-audience-pill">
+                            <span className="svc-audience-pill__dot" />
+                            <span className="svc-audience-pill__text">{aud.trim().replace(/\.$/, '')}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <p className="svc-audience-card__summary">{s.whoItsFor}</p>
                     </div>
-                    <h4 style={{ margin: 0, fontSize: '1.15rem', color: '#0f172a' }}>What Participants Get</h4>
+                  )}
+
+                  {/* Enterprise Assurance Graphic Pod */}
+                  <div className="svc-audience-card svc-audience-card--assurance">
+                    <div className="svc-audience-card__header">
+                      <span className="svc-audience-card__icon-bubble svc-audience-card__icon-bubble--cyan">
+                        <ShieldCheck size={22} />
+                      </span>
+                      <div>
+                        <span className="svc-audience-card__tag">Enterprise Delivery</span>
+                        <h4 className="svc-audience-card__title">Production Guarantees</h4>
+                      </div>
+                    </div>
+
+                    <div className="svc-assurance-list">
+                      <div className="svc-assurance-item">
+                        <CheckCircle2 size={16} className="svc-assurance-check" />
+                        <div>
+                          <strong>Zero-Disruption Migration</strong>
+                          <span>Seamless onboarding without interrupting active editorial or business workflows.</span>
+                        </div>
+                      </div>
+                      <div className="svc-assurance-item">
+                        <CheckCircle2 size={16} className="svc-assurance-check" />
+                        <div>
+                          <strong>Guaranteed Standards SLA</strong>
+                          <span>100% compliance certified against international accessibility and XML schema benchmarks.</span>
+                        </div>
+                      </div>
+                      <div className="svc-assurance-item">
+                        <CheckCircle2 size={16} className="svc-assurance-check" />
+                        <div>
+                          <strong>Dedicated Solutions Architect</strong>
+                          <span>Direct technical consultation, sprint reporting, and continuous quality assurance.</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <ul className="bullets" style={{ marginTop: '6px' }}>
-                    {s.whatParticipantsGet.map((pg) => (
-                      <li key={pg}>{pg}</li>
-                    ))}
-                  </ul>
                 </div>
-              )}
-            </div>
+
+                {/* Additional subjects or participant outcomes if present */}
+                {(s.subjects || s.whatParticipantsGet) && (
+                  <div className="svc-audience-secondary-grid" style={{ marginTop: '1.5rem' }}>
+                    {s.subjects && (
+                      <div className="svc-audience-card">
+                        <div className="svc-audience-card__header">
+                          <span className="svc-audience-card__icon-bubble svc-audience-card__icon-bubble--purple">
+                            <BookOpen size={20} />
+                          </span>
+                          <div>
+                            <span className="svc-audience-card__tag">Domain Coverage</span>
+                            <h4 className="svc-audience-card__title">Subjects &amp; Disciplines Handled</h4>
+                          </div>
+                        </div>
+                        <p className="svc-audience-card__summary">{s.subjects}</p>
+                      </div>
+                    )}
+
+                    {s.whatParticipantsGet && (
+                      <div className="svc-audience-card">
+                        <div className="svc-audience-card__header">
+                          <span className="svc-audience-card__icon-bubble svc-audience-card__icon-bubble--amber">
+                            <Award size={20} />
+                          </span>
+                          <div>
+                            <span className="svc-audience-card__tag">Deliverables</span>
+                            <h4 className="svc-audience-card__title">What Participants Receive</h4>
+                          </div>
+                        </div>
+                        <ul className="bullets" style={{ marginTop: '8px' }}>
+                          {s.whatParticipantsGet.map((pg) => (
+                            <li key={pg}>{pg}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </section>
       )}
