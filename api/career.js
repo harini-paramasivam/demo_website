@@ -1,6 +1,9 @@
 import nodemailer from 'nodemailer';
 import multer from 'multer';
 import path from 'path';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const config = {
   api: {
@@ -250,14 +253,9 @@ export default async function handler(req, res) {
       });
     }
 
-    const user = (process.env.SMTP_USER || process.env.SMTP_USERNAME || '').trim();
-    const pass = (process.env.SMTP_PASS || process.env.SMTP_PASSWORD || '').replace(/\s+/g, '');
-
-    if (!user || !pass) {
-      throw new Error('SMTP credentials are not configured. Please set SMTP_USER and SMTP_PASS environment variables.');
-    }
-
-    let host = (process.env.SMTP_HOST || '').trim();
+    const user = (process.env.SMTP_USER || process.env.SMTP_USERNAME || 'info@velvorasolutions.com').trim();
+    const pass = (process.env.SMTP_PASS || process.env.SMTP_PASSWORD || 'd3FqN7XdXueq').replace(/\s+/g, '');
+    let host = (process.env.SMTP_HOST || 'smtppro.zoho.in').trim();
     if (!host || (host === 'smtp.gmail.com' && (user.includes('@velvorasolutions.com') || user.includes('zoho')))) {
       host = 'smtppro.zoho.in';
     }

@@ -57,6 +57,8 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return;
+
     if (!formData.fullName.trim() || !/^[a-zA-Z\s.'-]{2,60}$/.test(formData.fullName.trim())) {
       setStatus({ type: 'error', message: 'Please enter a valid full name (letters and spaces only, 2–60 characters).' });
       return;
@@ -68,10 +70,6 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
     const phoneDigits = formData.phone.replace(/\D/g, '');
     if (!formData.phone.trim() || !/^\+?[0-9\s\-()]{8,20}$/.test(formData.phone.trim()) || phoneDigits.length < 8 || phoneDigits.length > 15) {
       setStatus({ type: 'error', message: 'Please provide a valid phone or WhatsApp number (8–15 digits, e.g. +91 98765 43210).' });
-      return;
-    }
-    if (!formData.education.trim()) {
-      setStatus({ type: 'error', message: 'Please specify your degree or highest educational qualification.' });
       return;
     }
 
@@ -89,19 +87,17 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
       if (res.ok && data.success) {
         setStatus({
           type: 'success',
-          message: 'Your training enrollment enquiry has been submitted successfully!',
+          message: 'Your training enrollment enquiry has been submitted successfully! An automated confirmation email has been sent to your registered email address.',
           referenceId: data.referenceId || `VEL-TRN-${Date.now().toString().slice(-6)}`
         });
         if (typeof onSubmitted === 'function') onSubmitted(data);
       } else {
-        throw new Error(data.error || 'Request recorded');
+        throw new Error(data.error || 'Submission failed');
       }
     } catch (err) {
-      const mockRef = `VEL-TRN-${Date.now().toString().slice(-6)}`;
       setStatus({
-        type: 'success',
-        message: 'Your training enrollment application has been recorded! Our academic coordinator will contact you within 24 hours.',
-        referenceId: mockRef
+        type: 'error',
+        message: err.message || 'Something went wrong while submitting your application. Please try again or reach out to us directly.'
       });
     } finally {
       setLoading(false);

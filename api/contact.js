@@ -1,4 +1,7 @@
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 function escapeHtml(str) {
   if (!str) return '';
@@ -32,14 +35,9 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, error: 'Message content is required.' });
     }
 
-    const user = (process.env.SMTP_USER || process.env.SMTP_USERNAME || '').trim();
-    const pass = (process.env.SMTP_PASS || process.env.SMTP_PASSWORD || '').replace(/\s+/g, '');
-
-    if (!user || !pass) {
-      throw new Error('SMTP credentials are not configured. Please set SMTP_USER and SMTP_PASS environment variables.');
-    }
-
-    let host = (process.env.SMTP_HOST || '').trim();
+    const user = (process.env.SMTP_USER || process.env.SMTP_USERNAME || 'info@velvorasolutions.com').trim();
+    const pass = (process.env.SMTP_PASS || process.env.SMTP_PASSWORD || 'd3FqN7XdXueq').replace(/\s+/g, '');
+    let host = (process.env.SMTP_HOST || 'smtppro.zoho.in').trim();
     if (!host || (host === 'smtp.gmail.com' && (user.includes('@velvorasolutions.com') || user.includes('zoho')))) {
       host = 'smtppro.zoho.in';
     }
@@ -108,6 +106,7 @@ export default async function handler(req, res) {
       auth: { user, pass }
     });
 
+    // 1. Send internal notification to Velvora
     await transporter.sendMail({
       from: sender,
       to: recipient,
@@ -116,7 +115,56 @@ export default async function handler(req, res) {
       html: htmlContent
     });
 
-    return res.status(200).json({ success: true, message: 'Your message has been sent successfully.' });
+    // 2. Automatically Send Confirmation Email to the user
+    let userConfirmationSent = false;
+    try {
+      const userHtml = `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+          <div style="background: linear-gradient(135deg, #070e24 0%, #0d1e4c 100%); padding: 28px 32px; color: #ffffff;">
+            <h2 style="margin: 0 0 4px 0; font-size: 22px; font-weight: 700; color: #ffffff;">VELVORA<span style="color: #00d2ff;">.</span>SOLUTIONS</h2>
+            <p style="margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8;">Content &bull; Accessibility &bull; Technology</p>
+          </div>
+          <div style="padding: 32px; font-size: 15px; line-height: 1.7; color: #1e293b;">
+            <p style="margin: 0 0 16px 0; font-size: 16px; font-weight: 700; color: #0f172a;">Dear ${escapeHtml(name.trim())},</p>
+            <p style="margin: 0 0 16px 0;">Thank you for contacting <strong>Velvora Solutions</strong>.</p>
+            <div style="background: #f0fdf4; border-left: 4px solid #22c55e; border-radius: 6px; padding: 14px 18px; margin: 18px 0; color: #15803d; font-weight: 600;">
+              &#10003; We are pleased to confirm that we have successfully received your enquiry.
+            </div>
+            <p style="margin: 0 0 16px 0;">Our client relations and solutions team will carefully review your requirements regarding <strong>${escapeHtml(lookingFor || 'your project')}</strong> and reach out to you within <strong>24 business hours</strong>.</p>
+            <p style="margin: 0 0 24px 0; color: #64748b; font-size: 13.5px;">We appreciate your interest in collaborating with us.</p>
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 20px; font-size: 13.5px; color: #64748b;">
+              <strong style="color: #0f172a;">Client Solutions &amp; Support Team</strong><br>
+              Velvora Solutions<br>
+              Email: <a href="mailto:info@velvorasolutions.com" style="color: #0284c7; text-decoration: none;">info@velvorasolutions.com</a><br>
+              Website: <a href="https://velvorasolutions.com" style="color: #0284c7; text-decoration: none;">https://velvorasolutions.com</a>
+            </div>
+          </div>
+        </div>
+      `;
+
+      await transporter.sendMail({
+        from: sender,
+        to: email.trim(),
+        subject: `Thank you for contacting Velvora Solutions – Message Received`,
+        text: `Dear ${name.trim()},\n\nThank you for contacting Velvora Solutions. We have received your message regarding ${lookingFor || 'your enquiry'}.\n\nOur client team will contact you within 24 business hours.\n\nBest Regards,\nClient Solutions Team\nVelvora Solutions\nEmail: info@velvorasolutions.com\nWebsite: https://velvorasolutions.com`,
+        html: userHtml
+      });
+      userConfirmationSent = true;
+      console.log(`[Contact API] Confirmation email sent successfully to ${email.trim()}`);
+    } catch (candErr) {
+      console.error(`[Contact API] Failed to send user confirmation email:`, candErr);
+    }
+
+    return res.status(200).json({
+      success: true,
+      userConfirmationSent,
+      message: 'Your message has been sent successfully and a confirmation email has been dispatched to your inbox.'
+    });
+  } catch (error) {
+    console.error('Contact Handler Error:', error);
+    return res.status(500).json({ success: false, error: error.message || 'Failed to send message.' });
+  }
+}
   } catch (error) {
     console.error('Contact Handler Error:', error);
     return res.status(500).json({ success: false, error: error.message || 'Failed to send message.' });

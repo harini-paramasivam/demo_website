@@ -208,7 +208,7 @@ export default function Contact() {
                   </div>
                   <h3>Thank You for Reaching Out!</h3>
                   <p>
-                    Your message has been received successfully. We appreciate your interest and our team will get back to you within 24–48 hours.
+                    Your message has been received successfully and an automated confirmation email has been dispatched to your inbox. We appreciate your interest and our team will get back to you within 24–48 hours.
                   </p>
                   <div className="contact-form-success__note">
                     <Clock size={16} />

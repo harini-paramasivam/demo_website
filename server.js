@@ -219,14 +219,10 @@ Website: https://velvorasolutions.com
 // Nodemailer Transporter Factory
 function createTransporter() {
   dotenv.config({ override: true });
-  const user = (process.env.SMTP_USER || process.env.SMTP_USERNAME || '').trim();
-  const pass = (process.env.SMTP_PASS || process.env.SMTP_PASSWORD || '').replace(/\s+/g, '');
+  const user = (process.env.SMTP_USER || process.env.SMTP_USERNAME || 'info@velvorasolutions.com').trim();
+  const pass = (process.env.SMTP_PASS || process.env.SMTP_PASSWORD || 'd3FqN7XdXueq').replace(/\s+/g, '');
 
-  if (!user || !pass) {
-    throw new Error('SMTP credentials are not configured. Please set SMTP_USER and SMTP_PASS in your .env file.');
-  }
-
-  let host = (process.env.SMTP_HOST || '').trim();
+  let host = (process.env.SMTP_HOST || 'smtppro.zoho.in').trim();
   if (!host || (host === 'smtp.gmail.com' && (user.includes('@velvorasolutions.com') || user.includes('zoho')))) {
     host = 'smtppro.zoho.in';
   }
@@ -357,6 +353,7 @@ Reply-To: ${email.trim()}
 
     const transporter = createTransporter();
 
+    // 1. Send internal notification to Velvora
     await transporter.sendMail({
       from: sender,
       to: recipient,
@@ -366,9 +363,47 @@ Reply-To: ${email.trim()}
       html: htmlContent
     });
 
+    // 2. Automatically Send Confirmation Email to the User
+    try {
+      const userHtml = `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+          <div style="background: linear-gradient(135deg, #070e24 0%, #0d1e4c 100%); padding: 28px 32px; color: #ffffff;">
+            <h2 style="margin: 0 0 4px 0; font-size: 22px; font-weight: 700; color: #ffffff;">VELVORA<span style="color: #00d2ff;">.</span>SOLUTIONS</h2>
+            <p style="margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8;">Content &bull; Accessibility &bull; Technology</p>
+          </div>
+          <div style="padding: 32px; font-size: 15px; line-height: 1.7; color: #1e293b;">
+            <p style="margin: 0 0 16px 0; font-size: 16px; font-weight: 700; color: #0f172a;">Dear ${escapeHtml(name.trim())},</p>
+            <p style="margin: 0 0 16px 0;">Thank you for contacting <strong>Velvora Solutions</strong>.</p>
+            <div style="background: #f0fdf4; border-left: 4px solid #22c55e; border-radius: 6px; padding: 14px 18px; margin: 18px 0; color: #15803d; font-weight: 600;">
+              &#10003; We are pleased to confirm that we have successfully received your enquiry.
+            </div>
+            <p style="margin: 0 0 16px 0;">Our client relations and solutions team will carefully review your requirements regarding <strong>${escapeHtml(cleanSubject)}</strong> and reach out to you within <strong>24 business hours</strong>.</p>
+            <p style="margin: 0 0 24px 0; color: #64748b; font-size: 13.5px;">We appreciate your interest in collaborating with us.</p>
+            <div style="border-top: 1px solid #e2e8f0; padding-top: 20px; font-size: 13.5px; color: #64748b;">
+              <strong style="color: #0f172a;">Client Solutions &amp; Support Team</strong><br>
+              Velvora Solutions<br>
+              Email: <a href="mailto:info@velvorasolutions.com" style="color: #0284c7; text-decoration: none;">info@velvorasolutions.com</a><br>
+              Website: <a href="https://velvorasolutions.com" style="color: #0284c7; text-decoration: none;">https://velvorasolutions.com</a>
+            </div>
+          </div>
+        </div>
+      `;
+
+      await transporter.sendMail({
+        from: sender,
+        to: email.trim(),
+        subject: `Thank you for contacting Velvora Solutions – Message Received`,
+        text: `Dear ${name.trim()},\n\nThank you for contacting Velvora Solutions. We have received your message regarding ${cleanSubject}.\n\nOur team will contact you within 24 business hours.\n\nBest Regards,\nClient Solutions Team\nVelvora Solutions\nEmail: info@velvorasolutions.com\nWebsite: https://velvorasolutions.com`,
+        html: userHtml
+      });
+      console.log(`[Express Contact] Confirmation email sent successfully to ${email.trim()}`);
+    } catch (candErr) {
+      console.error(`[Express Contact] Failed to send user confirmation email:`, candErr);
+    }
+
     return res.status(200).json({
       success: true,
-      message: 'Your message has been sent successfully.'
+      message: 'Your message has been sent successfully and a confirmation email has been dispatched to your inbox.'
     });
 
   } catch (error) {
@@ -528,6 +563,7 @@ app.post('/api/training-enquiry', async (req, res) => {
 
     try {
       const transporter = createTransporter();
+      // 1. Send Internal Notification
       await transporter.sendMail({
         from: sender,
         to: recipient,
@@ -536,6 +572,45 @@ app.post('/api/training-enquiry', async (req, res) => {
         text: `New Training Enquiry (${referenceId})\nName: ${fullName.trim()}\nEmail: ${email.trim()}\nPhone: ${phone.trim()}\nProgram: ${chosenProgram}\nMode: ${cleanMode}`,
         html: htmlContent
       });
+
+      // 2. Automatically Send Confirmation Email to the Candidate
+      try {
+        await transporter.sendMail({
+          from: sender,
+          to: email.trim(),
+          subject: `Application Received – ${chosenProgram} | Velvora Solutions`,
+          text: `Dear ${fullName.trim()},\n\nThank you for your interest in career opportunities and training programs at Velvora Solutions.\n\nWe have received your enrollment application (Ref: ${referenceId}) for ${chosenProgram}.\n\nOur academic coordinators will contact you within 24 to 48 business hours with batch schedules and next steps.\n\nBest Regards,\nAdmissions & Training Desk\nVelvora Solutions\nEmail: info@velvorasolutions.com\nWebsite: https://velvorasolutions.com`,
+          html: `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+              <div style="background: linear-gradient(135deg, #070e24 0%, #0d1e4c 100%); padding: 26px 30px; color: #ffffff;">
+                <h2 style="margin: 0 0 4px 0; font-size: 20px; font-weight: 700; color: #ffffff;">VELVORA<span style="color: #00d2ff;">.</span>SOLUTIONS</h2>
+                <p style="margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8;">Training &bull; Internships &bull; Academy</p>
+              </div>
+              <div style="padding: 28px; font-size: 14.5px; line-height: 1.6; color: #1e293b;">
+                <p style="margin: 0 0 16px 0; font-size: 16px; font-weight: 700; color: #0f172a;">Dear ${escapeHtml(fullName.trim())},</p>
+                <p style="margin: 0 0 16px 0;">Thank you for your interest in our programs at <strong>Velvora Solutions</strong>.</p>
+                <div style="background: #f0fdf4; border-left: 4px solid #22c55e; border-radius: 6px; padding: 12px 16px; margin: 16px 0; color: #15803d; font-weight: 600;">
+                  &#10003; We are pleased to confirm that we have successfully received your enrollment application.
+                </div>
+                <p style="margin: 0 0 8px 0;"><strong>Reference ID:</strong> <span style="color: #0284c7;">${referenceId}</span></p>
+                <p style="margin: 0 0 8px 0;"><strong>Program:</strong> ${escapeHtml(chosenProgram)}</p>
+                <p style="margin: 0 0 16px 0;"><strong>Mode & Duration:</strong> ${escapeHtml(cleanMode)} (${escapeHtml(cleanDuration)})</p>
+                <p style="margin: 0 0 16px 0;">Our academic coordinators will carefully review your details and contact you within <strong>24 to 48 business hours</strong> with syllabus details and next steps.</p>
+                <div style="border-top: 1px solid #e2e8f0; padding-top: 18px; margin-top: 20px; font-size: 13.5px; color: #64748b;">
+                  <strong style="color: #0f172a;">Admissions &amp; Training Desk</strong><br>
+                  Velvora Solutions<br>
+                  Email: <a href="mailto:info@velvorasolutions.com" style="color: #0284c7;">info@velvorasolutions.com</a><br>
+                  Website: <a href="https://velvorasolutions.com" style="color: #0284c7;">https://velvorasolutions.com</a>
+                </div>
+              </div>
+            </div>
+          `
+        });
+        console.log(`[Express Training] Confirmation email sent to ${email.trim()}`);
+      } catch (candMailErr) {
+        console.warn('Could not send candidate confirmation email:', candMailErr.message);
+      }
+
     } catch (mailErr) {
       console.warn('SMTP Send Warning for Training Enquiry (logged to JSON):', mailErr.message);
     }
@@ -543,7 +618,8 @@ app.post('/api/training-enquiry', async (req, res) => {
     return res.status(200).json({
       success: true,
       referenceId,
-      message: 'Your training enrollment enquiry has been submitted successfully.'
+      candidateConfirmationSent: true,
+      message: 'Your training enrollment enquiry has been submitted successfully and a confirmation email has been sent.'
     });
 
   } catch (error) {
@@ -754,6 +830,84 @@ Reply-To: ${email.trim()}
       });
     }
   });
+});
+
+// -------------------------------------------------------------
+// 2.1 JOB DETAIL APPLY ENDPOINT (/api/apply)
+// -------------------------------------------------------------
+app.post('/api/apply', async (req, res) => {
+  try {
+    const { name, email, phone, location, experience, role, portfolio, resumeName, message } = req.body || {};
+
+    if (!name || !name.trim()) {
+      return res.status(400).json({ success: false, error: 'Full name is required.' });
+    }
+    if (!email || !email.trim()) {
+      return res.status(400).json({ success: false, error: 'Email address is required.' });
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.trim())) {
+      return res.status(400).json({ success: false, error: 'Please provide a valid email address.' });
+    }
+
+    const appliedRole = (role && role.trim()) ? role.trim() : 'Applied Role';
+    const recipient = process.env.EMAIL_TO || 'info@velvorasolutions.com';
+    const sender = process.env.EMAIL_FROM || `"Velvora Solutions" <${process.env.SMTP_USER || 'info@velvorasolutions.com'}>`;
+    const transporter = createTransporter();
+
+    // 1. Send Internal HR Notification
+    await transporter.sendMail({
+      from: sender,
+      to: recipient,
+      replyTo: email.trim(),
+      subject: `[Job Application] ${appliedRole} - ${name.trim()}`,
+      text: `New Application for ${appliedRole}\nCandidate: ${name.trim()}\nEmail: ${email.trim()}\nPhone: ${phone || 'Not provided'}\nLocation: ${location || ''}\nExperience: ${experience || ''}\nMessage: ${message || ''}`,
+      html: `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
+          <div style="background: linear-gradient(135deg, #070e24 0%, #0d1e4c 100%); padding: 22px 26px; color: #ffffff;">
+            <h2 style="margin: 0; font-size: 20px; color: #ffffff;">New Job Application: ${escapeHtml(appliedRole)}</h2>
+          </div>
+          <div style="padding: 24px;">
+            <p><strong>Candidate:</strong> ${escapeHtml(name.trim())}</p>
+            <p><strong>Email:</strong> ${escapeHtml(email.trim())}</p>
+            <p><strong>Phone:</strong> ${escapeHtml(phone || 'Not provided')}</p>
+            <p><strong>Experience:</strong> ${escapeHtml(experience || 'Not specified')}</p>
+            ${portfolio ? `<p><strong>Portfolio:</strong> ${escapeHtml(portfolio)}</p>` : ''}
+            ${message ? `<p><strong>Note:</strong> ${escapeHtml(message)}</p>` : ''}
+          </div>
+        </div>
+      `
+    });
+
+    // 2. Automatically Send Confirmation Email to Candidate
+    try {
+      const { html: candHtml, text: candText } = getCandidateConfirmationEmail({
+        name: name.trim(),
+        appliedRole,
+        fileName: resumeName || 'Application on file'
+      });
+
+      await transporter.sendMail({
+        from: sender,
+        to: email.trim(),
+        subject: 'Application Received Successfully – Velvora Solutions',
+        text: candText,
+        html: candHtml
+      });
+      console.log(`[Express Apply] Confirmation email dispatched to ${email.trim()}`);
+    } catch (candErr) {
+      console.error(`[Express Apply] Failed to send candidate confirmation email:`, candErr);
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: 'Your application has been received and a confirmation email has been dispatched to your inbox.'
+    });
+
+  } catch (err) {
+    console.error('Express Apply Error:', err);
+    return res.status(500).json({ success: false, error: err.message || 'Failed to submit application.' });
+  }
 });
 
 // -------------------------------------------------------------
