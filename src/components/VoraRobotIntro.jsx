@@ -69,8 +69,9 @@ export default function VoraRobotIntro({ onIntroComplete, onDockingStart }) {
     setVisible(true);
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.innerWidth <= 768;
 
-    if (prefersReducedMotion) {
+    if (prefersReducedMotion || isMobile) {
       completeIntro();
       return;
     }
@@ -79,7 +80,6 @@ export default function VoraRobotIntro({ onIntroComplete, onDockingStart }) {
     // SCENE 1: 3D ROBOT WALKS IN FROM BEYOND LEFT VIEWPORT
     // Natural human-like bipedal step cadence with weight transfer (3 cycles = 6 steps)
     // =========================================================================
-    const isMobile = window.innerWidth <= 640;
     const baseScale = isMobile ? 0.72 : 1;
 
     setPhase('walking-in');
