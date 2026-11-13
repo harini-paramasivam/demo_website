@@ -83,24 +83,24 @@ export default function SolutionsOverview() {
         <div className="container">
           <div className="sol-metrics-grid">
             <div className="sol-metric-pill">
-              <span className="sol-metric-dot sol-metric-dot--blue" />
-              <strong>9 Enterprise Architectures</strong>
-              <span>End-to-End Solutions</span>
+              <span className="sol-metric-dot sol-metric-dot--blue" aria-hidden="true" />
+              <strong className="sol-metric-title">9 Enterprise Architectures</strong>
+              <span className="sol-metric-sub">End-to-End Solutions</span>
             </div>
             <div className="sol-metric-pill">
-              <span className="sol-metric-dot sol-metric-dot--cyan" />
-              <strong>4 Industry Frameworks</strong>
-              <span>Publishers, EdTech &amp; Corporate</span>
+              <span className="sol-metric-dot sol-metric-dot--cyan" aria-hidden="true" />
+              <strong className="sol-metric-title">4 Industry Frameworks</strong>
+              <span className="sol-metric-sub">Publishers, EdTech &amp; Corporate</span>
             </div>
             <div className="sol-metric-pill">
-              <span className="sol-metric-dot sol-metric-dot--emerald" />
-              <strong>5 Operational Needs</strong>
-              <span>Modernization, AI &amp; Backlists</span>
+              <span className="sol-metric-dot sol-metric-dot--emerald" aria-hidden="true" />
+              <strong className="sol-metric-title">5 Operational Needs</strong>
+              <span className="sol-metric-sub">Modernization, AI &amp; Backlists</span>
             </div>
             <div className="sol-metric-pill">
-              <span className="sol-metric-dot sol-metric-dot--purple" />
-              <strong>100% Verified SLAs</strong>
-              <span>Zero Production Disruption</span>
+              <span className="sol-metric-dot sol-metric-dot--purple" aria-hidden="true" />
+              <strong className="sol-metric-title">100% Verified SLAs</strong>
+              <span className="sol-metric-sub">Zero Production Disruption</span>
             </div>
           </div>
         </div>
