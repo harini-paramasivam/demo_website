@@ -10,6 +10,7 @@ import {
   ScanText, 
   Video, 
   FileCheck2, 
+  ShieldCheck,
   GraduationCap, 
   Bot, 
   BarChart3, 
@@ -21,28 +22,36 @@ import {
   FileText, 
   TrendingUp, 
   Sparkles,
-  CheckCircle2
+  CheckCircle2,
+  Zap
 } from 'lucide-react';
 import { PageHero, CtaBand } from '../components/ui.jsx';
 
 const serviceGroups = [
   {
     id: 'group-1',
+    themeClass: 'service-group-block--publishing',
     groupNum: 'Group 01',
+    tagline: 'Scholarly Editorial Architecture & Schema',
     title: 'Publishing and XML',
-    desc: 'Structured, future-ready workflows and multi-format delivery for academic books, journals, and publications.',
+    desc: 'Structured, future-ready workflows and multi-format delivery for academic books, journals, and global publications.',
     icon: BookOpen,
+    specs: [
+      'JATS 1.3 & BITS 2.1 Validated',
+      'EPUB 3.3 Multi-Format Delivery',
+      'Automated Schematron QA',
+    ],
     items: [
       {
         title: 'ePublishing Services',
-        desc: 'Conversion, formatting, and multi-format delivery in EPUB, PDF, and web formats.',
+        desc: 'Conversion, formatting, and multi-format delivery in EPUB 2/3, accessible PDF, and digital web formats.',
         to: '/services/epublishing',
         icon: BookOpen,
-        badge: 'EPUB 2 & 3 · PDF · Web',
+        badge: 'EPUB 2 & 3 · Reflowable & Fixed',
       },
       {
         title: 'XML Services',
-        desc: 'Structured XML creation, conversion, and workflows.',
+        desc: 'Structured XML creation, schema conversion, DTD normalization, and multichannel automated workflows.',
         to: '/services/xml',
         icon: FileCode,
         badge: 'JATS · BITS · DITA · TEI',
@@ -51,142 +60,195 @@ const serviceGroups = [
   },
   {
     id: 'group-2',
+    themeClass: 'service-group-block--content',
     groupNum: 'Group 02',
+    tagline: 'High-Volume Production Lab & Composition',
     title: 'Content Services',
     desc: 'End-to-end editorial composition, mathematical typesetting, metadata tagging, digitization, and multimedia accessibility.',
     icon: Layers,
+    specs: [
+      'InDesign Page Layout Precision',
+      'LaTeX & MathML STEM Equations',
+      'Dublin Core & Schema.org Taxonomy',
+      'Searchable OCR Archival Digitization',
+      'Timed-Text WCAG 1.2 Captions',
+    ],
     items: [
       {
         title: 'Typesetting and Design',
-        desc: 'Professional page layout for books, journals, and reports.',
+        desc: 'Professional page layout for books, journals, and reports with zero-error composition.',
         to: '/services/typesetting-and-design',
         icon: Layers,
         badge: 'InDesign · Page Layout · Print',
       },
       {
         title: 'Math and Equation Typesetting',
-        desc: 'Accurate LaTeX and MathML for STEM content.',
+        desc: 'Accurate LaTeX and MathML formatting for high-complexity STEM monographs and journals.',
         to: '/services/math-and-equation-typesetting',
         icon: Sigma,
-        badge: 'LaTeX · MathML · STEM',
+        badge: 'LaTeX · MathML · STEM Formulas',
       },
       {
         title: 'Metadata, Indexing and Taxonomy',
-        desc: 'Indexes, metadata, and subject tagging that improve discoverability.',
+        desc: 'Semantic indexes, metadata schema, and subject tagging that maximize global discoverability.',
         to: '/services/metadata-indexing-and-taxonomy',
         icon: Tags,
-        badge: 'Taxonomy · Schema · SEO Tags',
+        badge: 'Taxonomy · Schema.org · Discovery',
       },
       {
         title: 'OCR and Digitization',
-        desc: 'Turn print books, journals, and archives into searchable digital content.',
+        desc: 'Turn print books, journals, and legacy archives into crystal-clear, searchable digital content.',
         to: '/services/ocr-and-digitization',
         icon: ScanText,
         badge: 'Searchable PDF · Text Capture',
       },
       {
         title: 'Captioning, Transcription and Audio Description',
-        desc: 'Accurate captions, transcripts, and audio description.',
+        desc: 'Accurate closed captions, transcripts, and synchronized audio description for multimedia.',
         to: '/services/captioning-transcription-and-audio-description',
         icon: Video,
-        badge: 'Timed Text · WCAG Video',
+        badge: 'Timed Text · WCAG 1.2 Video',
       },
     ],
   },
   {
     id: 'group-3',
+    themeClass: 'service-group-block--accessibility',
     groupNum: 'Group 03',
+    tagline: 'Universal Inclusion & Regulatory Conformance',
+    liveBadge: '100% WCAG 2.2 AA Verified',
     title: 'Digital Accessibility',
-    desc: 'Universal digital inclusion conforming to WCAG 2.2 AA/AAA, PDF/UA, Section 508, and the European Accessibility Act.',
-    icon: FileCheck2,
+    desc: 'Universal digital inclusion conforming strictly to WCAG 2.2 AA/AAA, PDF/UA (ISO 14289), Section 508, ADA Title III, and the European Accessibility Act (EAA).',
+    icon: ShieldCheck,
+    specs: [
+      '100% WCAG 2.2 AA/AAA Guarantee',
+      'PDF/UA (ISO 14289) Tagged Documents',
+      'Assistive Tech Verified (NVDA, JAWS, VoiceOver)',
+      'Court-Defensible VPAT 2.4 & ACR Reports',
+    ],
     items: [
       {
-        title: 'Digital Accessibility Services',
-        desc: 'EPUB 2 and 3, web, PDF, Word, PowerPoint, and Excel remediation.',
-        to: '/services/digital-accessibility',
+        title: 'EPUB 3 Accessibility Remediation',
+        desc: 'Semantic HTML5 structure, ARIA landmarks, MathML, and navigation document compliance for global e-books.',
+        to: '/services/digital-accessibility#epub-3',
+        icon: BookOpen,
+        badge: 'EPUB 3.3 · EPUB Accessibility 1.1',
+      },
+      {
+        title: 'PDF/UA & Document Remediation',
+        desc: 'ISO 14289 and Section 508 accessible tagged PDFs, Word, Excel, and PowerPoint documents with logical reading order.',
+        to: '/services/digital-accessibility#pdf',
+        icon: FileText,
+        badge: 'PDF/UA · Section 508 · PAC Verified',
+      },
+      {
+        title: 'Web & Mobile App WCAG Audits',
+        desc: 'Thorough manual and automated auditing conforming strictly to WCAG 2.1 & 2.2 Level A, AA, and AAA standards.',
+        to: '/services/digital-accessibility#web-audits',
         icon: FileCheck2,
-        badge: 'WCAG 2.2 · PDF/UA · Section 508',
+        badge: 'WCAG 2.2 Level AA / AAA',
+      },
+      {
+        title: 'VPAT & Conformance Reports (ACR)',
+        desc: 'Defensible compliance documentation prepared by certified IAAP specialists for enterprise and public procurement.',
+        to: '/services/digital-accessibility#vpat',
+        icon: ShieldCheck,
+        badge: 'VPAT 2.4 · EAA 2025 · ADA Title III',
       },
     ],
   },
   {
     id: 'group-4',
+    themeClass: 'service-group-block--it',
     groupNum: 'Group 04',
+    tagline: 'Intelligent Neural Systems & IT Engineering',
     title: 'IT Services',
-    desc: 'Intelligent automation, business telemetry dashboards, modern accessible websites, and custom software systems.',
+    desc: 'Intelligent automation, business telemetry dashboards, modern accessible web applications, and custom enterprise software.',
     icon: Cpu,
+    specs: [
+      'Enterprise Cloud & API Microservices',
+      'Human-in-the-Loop AI Automation',
+      'Real-Time Power BI Telemetry Dashboards',
+    ],
     items: [
       {
-        title: 'AI and Automation',
-        desc: 'Practical AI and workflow automation with human quality checks.',
+        title: 'AI and Automation Services',
+        desc: 'Practical AI pipelines, document parsing, and automated workflows with human-in-the-loop QA.',
         to: '/services/ai-automation',
         icon: Bot,
         badge: 'NLP · AI QA · Automated Flow',
       },
       {
         title: 'Business Intelligence and Data Analytics',
-        desc: 'Dashboards and analytics that turn data into decisions.',
+        desc: 'Telemetry dashboards and predictive analytics that transform raw data into executive decisions.',
         to: '/services/data-analytics',
         icon: BarChart3,
-        badge: 'Executive Dashboards · ETL',
+        badge: 'Executive Dashboards · ETL Pipelines',
       },
       {
         title: 'Website Development',
-        desc: 'Modern, responsive, and accessible websites tailored to your brand.',
+        desc: 'Modern, high-performance, and strictly accessible web applications tailored to your enterprise brand.',
         to: '/services/software-development',
         icon: Code,
-        badge: 'Full-Stack · Accessible Web',
+        badge: 'Full-Stack · Accessible Web App',
       },
       {
         title: 'Software Development',
-        desc: 'Custom applications that solve real business challenges.',
+        desc: 'Custom enterprise applications, robust microservices, and secure cloud API integrations.',
         to: '/services/software-development',
         icon: Cpu,
-        badge: 'Custom Apps · Cloud APIs',
+        badge: 'Custom Architecture · Cloud APIs',
       },
     ],
   },
   {
     id: 'group-5',
+    themeClass: 'service-group-block--marketing',
     groupNum: 'Group 05',
+    tagline: 'Performance Growth Engine & ROI Telemetry',
     title: 'Digital Marketing',
-    desc: 'Measurable audience growth, authentic social campaigns, performance advertising, and executive ROI telemetry.',
+    desc: 'Measurable audience expansion, authentic social campaigns, high-intent performance advertising, and executive ROI telemetry.',
     icon: TrendingUp,
+    specs: [
+      'High-Intent Technical SEO',
+      'Targeted Multi-Channel PPC Campaigns',
+      'Executive ROI & Attribution Telemetry',
+    ],
     items: [
       {
-        title: 'SEO Optimization',
-        desc: 'Structured metadata, keyword research, and accessibility-friendly SEO.',
+        title: 'Technical SEO Optimization',
+        desc: 'Structured schema metadata, search keyword architecture, and accessibility-compliant organic search rankings.',
         to: '/services/digital-marketing',
         icon: Search,
         badge: 'Technical SEO · Rich Snippets',
       },
       {
         title: 'Social Media Marketing',
-        desc: 'Campaigns across LinkedIn, Twitter/X, Facebook, and Instagram.',
+        desc: 'Strategic B2B and consumer campaigns across LinkedIn, Twitter/X, Facebook, and Instagram.',
         to: '/services/digital-marketing',
         icon: Share2,
-        badge: 'LinkedIn · X · Meta Channels',
+        badge: 'LinkedIn · Meta · X Channels',
       },
       {
         title: 'Paid Advertising Campaigns',
-        desc: 'Targeted PPC and display ads to boost reach.',
+        desc: 'Targeted Google Ads, paid social ads, and programmatic display to drive qualified inbound conversions.',
         to: '/services/digital-marketing',
         icon: Target,
         badge: 'Google Ads · Targeted PPC',
       },
       {
-        title: 'Content Marketing',
-        desc: 'Blogs, newsletters, and thought leadership pieces.',
+        title: 'Content Marketing & Editorial',
+        desc: 'Thought leadership articles, technical whitepapers, newsletters, and engaging brand narratives.',
         to: '/services/digital-marketing',
         icon: FileText,
         badge: 'Articles · Thought Leadership',
       },
       {
-        title: 'Analytics & Reporting',
-        desc: 'Dashboards and insights to measure ROI and refine strategy.',
+        title: 'Analytics & Attribution Reporting',
+        desc: 'Custom telemetry dashboards and conversion tracking to measure exact ROI and campaign refinement.',
         to: '/services/digital-marketing',
         icon: TrendingUp,
-        badge: 'Conversion Telemetry · ROI',
+        badge: 'Conversion Telemetry · Attribution',
       },
     ],
   },
@@ -235,16 +297,36 @@ export default function ServicesOverview() {
             {serviceGroups.map((group) => {
               const GroupIcon = group.icon;
               return (
-                <div key={group.id} className="service-group-block">
+                <div key={group.id} className={`service-group-block ${group.themeClass}`}>
                   <div className="service-group-block__header">
-                    <div className="service-group-block__meta">
-                      <span className="service-group-block__badge">
-                        <GroupIcon size={16} />
-                        <span>{group.groupNum}</span>
-                      </span>
-                      <h3 className="service-group-block__title">{group.title}</h3>
+                    <div className="service-group-block__top-strip">
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                        <span className="service-group-block__badge">
+                          <GroupIcon size={16} />
+                          <span>{group.groupNum}</span>
+                        </span>
+                        <span className="service-group-block__tagline">{group.tagline}</span>
+                      </div>
+                      {group.liveBadge && (
+                        <span className="service-group-block__live-badge">
+                          <span className="service-group-block__pulse-dot" />
+                          <span>{group.liveBadge}</span>
+                        </span>
+                      )}
                     </div>
+                    <h3 className="service-group-block__title">{group.title}</h3>
                     <p className="service-group-block__desc">{group.desc}</p>
+
+                    {group.specs && (
+                      <div className="service-group-block__specs">
+                        {group.specs.map((spec, sIdx) => (
+                          <span key={sIdx} className="service-group-block__spec-chip">
+                            <CheckCircle2 size={13} />
+                            <span>{spec}</span>
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   <div className={`service-group-block__grid ${group.items.length === 5 ? 'service-group-block__grid--5' : ''} ${group.items.length === 4 ? 'service-group-block__grid--4' : ''}`}>

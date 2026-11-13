@@ -10778,61 +10778,386 @@ main:focus { outline: none; }
   gap: 3.5rem;
 }
 .service-group-block {
-  background: linear-gradient(145deg, rgba(22, 28, 44, 0.88) 0%, rgba(14, 18, 28, 0.96) 100%);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  border-radius: 24px;
-  padding: clamp(2rem, 3.5vw, 2.75rem);
-  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.65), 0 0 30px -10px rgba(56, 189, 248, 0.1);
+  border-radius: 26px;
+  padding: clamp(2rem, 3.5vw, 2.85rem);
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
-.service-group-block::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 8%;
-  right: 8%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.5), transparent);
-}
+
 .service-group-block__header {
-  margin-bottom: 2rem;
+  margin-bottom: 2.2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 1.5rem;
+  padding-bottom: 1.6rem;
 }
-.service-group-block__meta {
+
+.service-group-block__top-strip {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.85rem;
 }
+
+.service-group-block__tagline {
+  font-size: 0.8rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.service-group-block__live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  font-weight: 750;
+  padding: 5px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+
+.service-group-block__pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 10px currentColor;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.service-group-block__specs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+.service-group-block__spec-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 650;
+  padding: 4px 12px;
+  border-radius: 8px;
+  letter-spacing: 0.02em;
+}
+
 .service-group-block__badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--orange);
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.28);
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: 999px;
 }
+
 .service-group-block__title {
-  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
-  font-weight: 800;
-  color: #ffffff;
-  margin: 0;
+  font-size: clamp(1.5rem, 2.5vw, 2rem) !important;
+  font-weight: 850 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.02em !important;
+  margin: 0 0 0.5rem 0 !important;
 }
+
 .service-group-block__desc {
-  font-size: 0.98rem;
-  line-height: 1.6;
-  color: #cbd5e1;
-  margin: 0;
-  max-width: 75ch;
+  font-size: 1.02rem !important;
+  line-height: 1.65 !important;
+  color: #f1f5f9 !important;
+  margin: 0 !important;
+  max-width: 78ch !important;
+}
+
+/* ========================================================================= */
+/* 1. GROUP 01: PUBLISHING & XML (SCHOLARLY BLUEPRINT & AMBER GOLD)          */
+/* ========================================================================= */
+.service-group-block.service-group-block--publishing {
+  background: 
+    radial-gradient(circle at 92% 15%, rgba(245, 158, 11, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 8% 85%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+    linear-gradient(145deg, #060e22 0%, #0c1b38 50%, #040816 100%) !important;
+  border: 1.5px solid rgba(56, 189, 248, 0.38) !important;
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.75), 0 0 35px -5px rgba(56, 189, 248, 0.2) !important;
+}
+.service-group-block.service-group-block--publishing::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 5%; right: 5%; height: 2.5px;
+  background: linear-gradient(90deg, transparent, #38bdf8 30%, #f59e0b 70%, transparent);
+}
+.service-group-block.service-group-block--publishing .service-group-block__badge {
+  color: #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.14) !important;
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.3) !important;
+}
+.service-group-block.service-group-block--publishing .service-group-block__tagline {
+  color: #f59e0b !important;
+}
+.service-group-block.service-group-block--publishing .service-group-block__spec-chip {
+  background: rgba(56, 189, 248, 0.08) !important;
+  border: 1px solid rgba(56, 189, 248, 0.28) !important;
+  color: #e0f2fe !important;
+}
+.service-group-block.service-group-block--publishing .service-overview-card {
+  background: linear-gradient(155deg, rgba(8, 18, 44, 0.94) 0%, rgba(5, 12, 30, 0.98) 100%) !important;
+  border: 1.5px solid rgba(56, 189, 248, 0.25) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55) !important;
+}
+.service-group-block.service-group-block--publishing .service-overview-card:hover {
+  border-color: #38bdf8 !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 45px rgba(14, 165, 233, 0.3) !important;
+}
+.service-group-block.service-group-block--publishing .service-overview-card__icon-wrap {
+  background: rgba(56, 189, 248, 0.14) !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  color: #38bdf8 !important;
+}
+.service-group-block.service-group-block--publishing .service-overview-card__tag {
+  color: #f59e0b !important;
+  background: rgba(245, 158, 11, 0.12) !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+}
+.service-group-block.service-group-block--publishing .service-overview-card__link {
+  color: #38bdf8 !important;
+}
+
+/* ========================================================================= */
+/* 2. GROUP 02: CONTENT SERVICES (ROYAL INDIGO & SAPPHIRE PURPLE)            */
+/* ========================================================================= */
+.service-group-block.service-group-block--content {
+  background: 
+    radial-gradient(circle at 88% 20%, rgba(168, 85, 247, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 12% 80%, rgba(99, 102, 241, 0.16) 0%, transparent 50%),
+    linear-gradient(145deg, #0c0b24 0%, #151138 50%, #060515 100%) !important;
+  border: 1.5px solid rgba(168, 85, 247, 0.38) !important;
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.75), 0 0 35px -5px rgba(168, 85, 247, 0.2) !important;
+}
+.service-group-block.service-group-block--content::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 5%; right: 5%; height: 2.5px;
+  background: linear-gradient(90deg, transparent, #818cf8 30%, #c084fc 70%, transparent);
+}
+.service-group-block.service-group-block--content .service-group-block__badge {
+  color: #c084fc !important;
+  background: rgba(168, 85, 247, 0.15) !important;
+  border: 1px solid rgba(168, 85, 247, 0.45) !important;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.3) !important;
+}
+.service-group-block.service-group-block--content .service-group-block__tagline {
+  color: #c084fc !important;
+}
+.service-group-block.service-group-block--content .service-group-block__spec-chip {
+  background: rgba(168, 85, 247, 0.08) !important;
+  border: 1px solid rgba(168, 85, 247, 0.28) !important;
+  color: #f3e8ff !important;
+}
+.service-group-block.service-group-block--content .service-overview-card {
+  background: linear-gradient(155deg, rgba(20, 14, 46, 0.94) 0%, rgba(10, 8, 28, 0.98) 100%) !important;
+  border: 1.5px solid rgba(168, 85, 247, 0.25) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55) !important;
+}
+.service-group-block.service-group-block--content .service-overview-card:hover {
+  border-color: #c084fc !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 45px rgba(168, 85, 247, 0.3) !important;
+}
+.service-group-block.service-group-block--content .service-overview-card__icon-wrap {
+  background: rgba(168, 85, 247, 0.15) !important;
+  border: 1px solid rgba(168, 85, 247, 0.4) !important;
+  color: #c084fc !important;
+}
+.service-group-block.service-group-block--content .service-overview-card__tag {
+  color: #e9d5ff !important;
+  background: rgba(168, 85, 247, 0.14) !important;
+  border: 1px solid rgba(168, 85, 247, 0.3) !important;
+}
+.service-group-block.service-group-block--content .service-overview-card__link {
+  color: #c084fc !important;
+}
+
+/* ========================================================================= */
+/* 3. GROUP 03: DIGITAL ACCESSIBILITY (EMERALD COMPLIANCE & MINT SHIELD)     */
+/* ========================================================================= */
+.service-group-block.service-group-block--accessibility {
+  background: 
+    radial-gradient(circle at 90% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 45%),
+    radial-gradient(circle at 10% 80%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+    linear-gradient(145deg, #031416 0%, #052427 50%, #020d0f 100%) !important;
+  border: 1.5px solid rgba(16, 185, 129, 0.48) !important;
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.8), 0 0 45px -5px rgba(16, 185, 129, 0.25) !important;
+}
+.service-group-block.service-group-block--accessibility::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 5%; right: 5%; height: 2.5px;
+  background: linear-gradient(90deg, transparent, #10b981 30%, #38bdf8 70%, transparent);
+}
+.service-group-block.service-group-block--accessibility .service-group-block__badge {
+  color: #34d399 !important;
+  background: rgba(16, 185, 129, 0.16) !important;
+  border: 1px solid rgba(16, 185, 129, 0.48) !important;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.35) !important;
+}
+.service-group-block.service-group-block--accessibility .service-group-block__tagline {
+  color: #34d399 !important;
+}
+.service-group-block.service-group-block--accessibility .service-group-block__live-badge {
+  color: #34d399 !important;
+  background: rgba(16, 185, 129, 0.15) !important;
+  border: 1px solid rgba(16, 185, 129, 0.45) !important;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.3) !important;
+}
+.service-group-block.service-group-block--accessibility .service-group-block__spec-chip {
+  background: rgba(16, 185, 129, 0.1) !important;
+  border: 1px solid rgba(16, 185, 129, 0.32) !important;
+  color: #ecfdf5 !important;
+}
+.service-group-block.service-group-block--accessibility .service-overview-card {
+  background: linear-gradient(155deg, rgba(6, 28, 28, 0.94) 0%, rgba(3, 16, 18, 0.98) 100%) !important;
+  border: 1.5px solid rgba(16, 185, 129, 0.3) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55) !important;
+}
+.service-group-block.service-group-block--accessibility .service-overview-card:hover {
+  border-color: #34d399 !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 45px rgba(16, 185, 129, 0.32) !important;
+}
+.service-group-block.service-group-block--accessibility .service-overview-card__icon-wrap {
+  background: rgba(16, 185, 129, 0.16) !important;
+  border: 1px solid rgba(16, 185, 129, 0.45) !important;
+  color: #34d399 !important;
+}
+.service-group-block.service-group-block--accessibility .service-overview-card__tag {
+  color: #6ee7b7 !important;
+  background: rgba(16, 185, 129, 0.14) !important;
+  border: 1px solid rgba(16, 185, 129, 0.35) !important;
+}
+.service-group-block.service-group-block--accessibility .service-overview-card__link {
+  color: #34d399 !important;
+}
+
+/* ========================================================================= */
+/* 4. GROUP 04: IT SERVICES (NEON COBALT & CYBERNETIC AZURE)                 */
+/* ========================================================================= */
+.service-group-block.service-group-block--it {
+  background: 
+    radial-gradient(circle at 85% 15%, rgba(0, 210, 255, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(37, 99, 235, 0.18) 0%, transparent 50%),
+    linear-gradient(145deg, #04102c 0%, #0a1f4e 50%, #03081a 100%) !important;
+  border: 1.5px solid rgba(0, 210, 255, 0.42) !important;
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.75), 0 0 38px -5px rgba(0, 210, 255, 0.22) !important;
+}
+.service-group-block.service-group-block--it::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 5%; right: 5%; height: 2.5px;
+  background: linear-gradient(90deg, transparent, #00d2ff 30%, #2563eb 70%, transparent);
+}
+.service-group-block.service-group-block--it .service-group-block__badge {
+  color: #00d2ff !important;
+  background: rgba(0, 210, 255, 0.15) !important;
+  border: 1px solid rgba(0, 210, 255, 0.48) !important;
+  box-shadow: 0 0 16px rgba(0, 210, 255, 0.32) !important;
+}
+.service-group-block.service-group-block--it .service-group-block__tagline {
+  color: #00d2ff !important;
+}
+.service-group-block.service-group-block--it .service-group-block__spec-chip {
+  background: rgba(0, 210, 255, 0.08) !important;
+  border: 1px solid rgba(0, 210, 255, 0.3) !important;
+  color: #e0f2fe !important;
+}
+.service-group-block.service-group-block--it .service-overview-card {
+  background: linear-gradient(155deg, rgba(8, 20, 52, 0.94) 0%, rgba(4, 10, 30, 0.98) 100%) !important;
+  border: 1.5px solid rgba(0, 210, 255, 0.25) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55) !important;
+}
+.service-group-block.service-group-block--it .service-overview-card:hover {
+  border-color: #00d2ff !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 45px rgba(0, 210, 255, 0.3) !important;
+}
+.service-group-block.service-group-block--it .service-overview-card__icon-wrap {
+  background: rgba(0, 210, 255, 0.14) !important;
+  border: 1px solid rgba(0, 210, 255, 0.42) !important;
+  color: #00d2ff !important;
+}
+.service-group-block.service-group-block--it .service-overview-card__tag {
+  color: #bae6fd !important;
+  background: rgba(0, 210, 255, 0.12) !important;
+  border: 1px solid rgba(0, 210, 255, 0.32) !important;
+}
+.service-group-block.service-group-block--it .service-overview-card__link {
+  color: #00d2ff !important;
+}
+
+/* ========================================================================= */
+/* 5. GROUP 05: DIGITAL MARKETING (SUNSET AMBER & CORAL FLAME)               */
+/* ========================================================================= */
+.service-group-block.service-group-block--marketing {
+  background: 
+    radial-gradient(circle at 90% 20%, rgba(249, 115, 22, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 10% 80%, rgba(236, 72, 153, 0.16) 0%, transparent 50%),
+    linear-gradient(145deg, #1e0912 0%, #2b0e22 50%, #12040c 100%) !important;
+  border: 1.5px solid rgba(249, 115, 22, 0.44) !important;
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.75), 0 0 38px -5px rgba(249, 115, 22, 0.24) !important;
+}
+.service-group-block.service-group-block--marketing::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 5%; right: 5%; height: 2.5px;
+  background: linear-gradient(90deg, transparent, #f97316 30%, #ec4899 70%, transparent);
+}
+.service-group-block.service-group-block--marketing .service-group-block__badge {
+  color: #fb923c !important;
+  background: rgba(249, 115, 22, 0.16) !important;
+  border: 1px solid rgba(249, 115, 22, 0.48) !important;
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.3) !important;
+}
+.service-group-block.service-group-block--marketing .service-group-block__tagline {
+  color: #fb923c !important;
+}
+.service-group-block.service-group-block--marketing .service-group-block__spec-chip {
+  background: rgba(249, 115, 22, 0.09) !important;
+  border: 1px solid rgba(249, 115, 22, 0.3) !important;
+  color: #ffedd5 !important;
+}
+.service-group-block.service-group-block--marketing .service-overview-card {
+  background: linear-gradient(155deg, rgba(38, 12, 24, 0.94) 0%, rgba(20, 6, 14, 0.98) 100%) !important;
+  border: 1.5px solid rgba(249, 115, 22, 0.25) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55) !important;
+}
+.service-group-block.service-group-block--marketing .service-overview-card:hover {
+  border-color: #fb923c !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 20px 45px rgba(249, 115, 22, 0.3) !important;
+}
+.service-group-block.service-group-block--marketing .service-overview-card__icon-wrap {
+  background: rgba(249, 115, 22, 0.16) !important;
+  border: 1px solid rgba(249, 115, 22, 0.45) !important;
+  color: #fb923c !important;
+}
+.service-group-block.service-group-block--marketing .service-overview-card__tag {
+  color: #fed7aa !important;
+  background: rgba(249, 115, 22, 0.14) !important;
+  border: 1px solid rgba(249, 115, 22, 0.32) !important;
+}
+.service-group-block.service-group-block--marketing .service-overview-card__link {
+  color: #fb923c !important;
 }
 .service-group-block__grid {
   display: grid;
@@ -18753,36 +19078,6 @@ main:focus { outline: none; }
 
 #services-catalog.why-section-dark .service-group-block__desc {
   color: #cbd5e1 !important;
-}
-
-#services-catalog.why-section-dark .service-overview-card {
-  background: linear-gradient(155deg, rgba(14, 22, 42, 0.92) 0%, rgba(8, 14, 28, 0.96) 100%) !important;
-  border: 1px solid rgba(56, 189, 248, 0.25) !important;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5) !important;
-}
-
-#services-catalog.why-section-dark .service-overview-card:hover {
-  transform: translateY(-5px) !important;
-  border-color: rgba(56, 189, 248, 0.65) !important;
-  box-shadow: 0 20px 45px rgba(2, 132, 199, 0.25) !important;
-}
-
-#services-catalog.why-section-dark .service-overview-card__title {
-  color: #ffffff !important;
-}
-
-#services-catalog.why-section-dark .service-overview-card__desc {
-  color: #cbd5e1 !important;
-}
-
-#services-catalog.why-section-dark .service-overview-card__tag {
-  color: #38bdf8 !important;
-  background: rgba(56, 189, 248, 0.12) !important;
-  border: 1px solid rgba(56, 189, 248, 0.3) !important;
-}
-
-#services-catalog.why-section-dark .service-overview-card__link {
-  color: #38bdf8 !important;
 }
 
 /* ========================================================= */
