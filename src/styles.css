@@ -8748,26 +8748,27 @@ main:focus { outline: none; }
   margin: 0;
 }
 
-/* Partnership Opportunities (Dark Surface) */
+/* Partnership Opportunities (Light Mode High-Contrast Cards) */
 .partner-opp-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
 }
 .partner-opp-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border: 1.5px solid rgba(226, 232, 240, 0.95);
   border-radius: 20px;
-  padding: 30px 26px;
+  padding: 30px 24px;
   display: flex;
   flex-direction: column;
-  transition: all .28s ease;
+  transition: all .28s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 .partner-opp-card:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(56, 189, 248, 0.5);
+  background: #ffffff;
+  border-color: #0284c7;
   transform: translateY(-4px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 16px 36px -8px rgba(2, 132, 199, 0.16), 0 0 20px rgba(56, 189, 248, 0.1);
 }
 .partner-opp-card__header {
   display: flex;
@@ -8778,40 +8779,41 @@ main:focus { outline: none; }
 .partner-opp-card__icon-box {
   display: grid;
   place-items: center;
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 14px;
-  background: rgba(56, 189, 248, 0.25);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.55);
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+  background: rgba(2, 132, 199, 0.10);
+  color: #0284c7;
+  border: 1.5px solid rgba(2, 132, 199, 0.28);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.12);
   flex-shrink: 0;
-  transition: transform .3s, box-shadow .3s, background .3s;
+  transition: transform .3s, box-shadow .3s, background .3s, color .3s;
 }
 .partner-opp-card:hover .partner-opp-card__icon-box {
-  transform: scale(1.1) rotate(4deg);
-  background: rgba(56, 189, 248, 0.4);
-  color: #7dd3fc;
-  box-shadow: 0 0 26px rgba(56, 189, 248, 0.55);
+  transform: scale(1.08) rotate(3deg);
+  background: #0284c7;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35);
 }
 .partner-opp-card__category {
   display: block;
-  font-size: .72rem;
+  font-size: .75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .08em;
-  color: var(--orange-light);
-  margin-bottom: 2px;
+  color: #ea580c;
+  margin-bottom: 3px;
 }
 .partner-opp-card__title {
-  font-size: 1.2rem;
-  color: #ffffff;
+  font-size: 1.25rem;
+  color: #0f172a;
   margin: 0;
   font-weight: 700;
+  line-height: 1.3;
 }
 .partner-opp-card__desc {
-  font-size: .92rem;
-  color: #cbd5e1;
+  font-size: .94rem;
+  color: #334155;
   line-height: 1.6;
   margin: 0 0 18px;
   flex: 1;
@@ -8819,37 +8821,66 @@ main:focus { outline: none; }
 .partner-opp-card__chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
   margin-bottom: 22px;
 }
 .partner-opp-chip {
-  font-size: .76rem;
+  font-size: .78rem;
   font-weight: 600;
-  color: #94a3b8;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 3px 10px;
+  color: #1e293b;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 4px 12px;
   border-radius: 999px;
+  transition: all .2s;
+}
+.partner-opp-card:hover .partner-opp-chip {
+  background: #e0f2fe;
+  border-color: #bae6fd;
+  color: #0369a1;
 }
 .partner-opp-btn {
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 10px 16px;
+  padding: 12px 18px;
   border-radius: 12px;
-  background: rgba(56, 189, 248, 0.12);
-  color: #ffffff;
-  font-size: .88rem;
-  font-weight: 600;
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(14, 165, 233, 0.12) 100%);
+  color: #0284c7;
+  font-size: .90rem;
+  font-weight: 700;
+  border: 1.5px solid rgba(2, 132, 199, 0.32);
   cursor: pointer;
-  transition: all .2s;
+  transition: all .22s ease;
 }
 .partner-opp-btn:hover {
   background: var(--orange);
   border-color: var(--orange);
-  color: #0b1120;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .partner-opp-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .partner-opp-card {
+    padding: 22px 18px !important;
+    border-radius: 18px !important;
+  }
+  .partner-opp-card__title {
+    font-size: 1.15rem !important;
+  }
+  .partner-opp-card__desc {
+    font-size: 0.90rem !important;
+  }
+  .partner-opp-btn {
+    padding: 12px 16px !important;
+    font-size: 0.88rem !important;
+  }
 }
 
 /* Partnership Application Form Section */
