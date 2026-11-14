@@ -5530,14 +5530,35 @@ main:focus { outline: none; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  gap: 12px;
+  line-height: 1;
+}
+.news-card__meta .eyebrow,
+.news-card__meta .news-tag {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.12em !important;
+  font-weight: 800 !important;
 }
 .news-date {
-  font-size: .85rem;
-  color: var(--body);
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  font-size: 0.84rem !important;
+  color: #475569 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  white-space: nowrap !important;
+}
+.news-date svg {
+  flex-shrink: 0;
+  color: #0284c7;
 }
 .news-card h3 {
   font-size: 1.25rem;
@@ -15106,12 +15127,46 @@ main:focus { outline: none; }
   flex-wrap: wrap;
 }
 
+.te-select-input {
+  font-size: 0.95rem;
+  padding: 13px 36px 13px 14px;
+}
+.te-submit-btn {
+  padding: 16px 32px;
+  font-size: 1.05rem;
+}
+
 @media (max-width: 768px) {
+  .training-form-section {
+    padding-bottom: 7rem !important;
+  }
+  .te-form-wrapper {
+    padding-bottom: 2.5rem !important;
+  }
   .te-grid {
     grid-template-columns: 1fr;
   }
   .te-form-card {
-    padding: 2.25rem 1.5rem;
+    padding: 2rem 1.15rem 3.5rem !important;
+    border-radius: 20px !important;
+  }
+  .te-select-input {
+    font-size: 0.88rem !important;
+    padding: 12px 30px 12px 12px !important;
+  }
+  .te-submit-row {
+    margin-top: 1.75rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+  .te-submit-btn {
+    padding: 15px 18px !important;
+    font-size: 0.96rem !important;
+    letter-spacing: 0.02em !important;
+  }
+  .te-trust-row {
+    padding-bottom: 1.5rem !important;
+    font-size: 0.8rem !important;
+    gap: 12px !important;
   }
 }
 

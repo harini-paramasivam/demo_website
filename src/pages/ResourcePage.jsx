@@ -167,7 +167,7 @@ export default function ResourcePage({ type }) {
               {c.items.map((item) => (
                 <article key={item.title} className="news-card">
                   <div className="news-card__meta">
-                    <span className="eyebrow">{item.tag}</span>
+                    <span className="news-tag eyebrow">{item.tag}</span>
                     <span className="news-date">
                       <Calendar size={14} aria-hidden="true" /> {item.date}
                     </span>

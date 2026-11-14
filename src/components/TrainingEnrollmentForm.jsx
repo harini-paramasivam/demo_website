@@ -376,15 +376,13 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                   name="applicantType"
                   value={formData.applicantType}
                   onChange={handleChange}
-                  className="contact-input"
+                  className="contact-input te-select-input"
                   style={{
                     width: '100%',
-                    padding: '13px 16px',
                     background: '#070e24',
                     border: '1.5px solid rgba(56, 189, 248, 0.3)',
                     borderRadius: '12px',
                     color: '#ffffff',
-                    fontSize: '0.95rem',
                     boxSizing: 'border-box',
                     cursor: 'pointer'
                   }}
@@ -427,43 +425,41 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                   name="program"
                   value={formData.program}
                   onChange={handleChange}
-                  className="contact-input"
+                  className="contact-input te-select-input"
                   style={{
                     width: '100%',
-                    padding: '14px 16px',
                     background: '#070e24',
                     border: '1.5px solid rgba(56, 189, 248, 0.55)',
                     borderRadius: '12px',
                     color: '#ffffff',
-                    fontSize: '1rem',
                     fontWeight: 600,
                     boxSizing: 'border-box',
                     cursor: 'pointer'
                   }}
                 >
                   <option value="Internship Program (Live Industry Projects)" style={{ background: '#070e24', color: '#ffffff' }}>
-                    ⭐ Flagship Internship Program (Live Industry Projects &amp; Mentorship)
+                    ⭐ Flagship Internship Program
                   </option>
                   <option value="ePublishing Training" style={{ background: '#070e24', color: '#ffffff' }}>
-                    ePublishing Training (EPUB 3, JATS/BITS XML, XSLT, InDesign)
+                    ePublishing Training (EPUB 3, XML)
                   </option>
                   <option value="AI/ML Training" style={{ background: '#070e24', color: '#ffffff' }}>
-                    AI/ML Training (Machine Learning, Deep Learning, NLP, PyTorch)
+                    AI/ML Training (Deep Learning, NLP)
                   </option>
                   <option value="Generative AI Training" style={{ background: '#070e24', color: '#ffffff' }}>
-                    Generative AI Training (LLMs, LangChain, RAG Systems, AI Agents)
+                    Generative AI Training (LLMs, RAG)
                   </option>
                   <option value="Data Analytics & Business Intelligence Training" style={{ background: '#070e24', color: '#ffffff' }}>
-                    Data Analytics &amp; Business Intelligence Training (Power BI, SQL, Python)
+                    Data Analytics &amp; BI (Power BI, SQL)
                   </option>
                   <option value="Digital Accessibility Training" style={{ background: '#070e24', color: '#ffffff' }}>
-                    Digital Accessibility Training (WCAG 2.2, PDF/UA, Screen Readers)
+                    Digital Accessibility (WCAG 2.2)
                   </option>
                   <option value="Software Development Training" style={{ background: '#070e24', color: '#ffffff' }}>
-                    Software Development Training (Full Stack React, Node.js, Python, Cloud)
+                    Software Development (Full Stack)
                   </option>
                   <option value="Digital Marketing Training" style={{ background: '#070e24', color: '#ffffff' }}>
-                    Digital Marketing Training (SEO, Performance PPC, Meta, LinkedIn)
+                    Digital Marketing (SEO, Performance)
                   </option>
                 </select>
               </div>
@@ -483,30 +479,28 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                     name="trainingMode"
                     value={formData.trainingMode}
                     onChange={handleChange}
-                    className="contact-input"
+                    className="contact-input te-select-input"
                     style={{
                       width: '100%',
-                      padding: '13px 16px',
                       background: '#070e24',
                       border: '1.5px solid rgba(56, 189, 248, 0.3)',
                       borderRadius: '12px',
                       color: '#ffffff',
-                      fontSize: '0.95rem',
                       boxSizing: 'border-box',
                       cursor: 'pointer'
                     }}
                   >
                     <option value="Online Virtual Live (Interactive Webinar)" style={{ background: '#070e24', color: '#ffffff' }}>
-                      Online Virtual Live (Interactive Webinar)
+                      Online Virtual Live (Webinar)
                     </option>
                     <option value="Classroom In-Person (Cuddalore Head Office)" style={{ background: '#070e24', color: '#ffffff' }}>
-                      Classroom In-Person (Cuddalore Head Office)
+                      Classroom (Cuddalore Office)
                     </option>
                     <option value="Classroom In-Person (Chennai Branch Office)" style={{ background: '#070e24', color: '#ffffff' }}>
-                      Classroom In-Person (Chennai Branch Office)
+                      Classroom (Chennai Office)
                     </option>
                     <option value="Hybrid (Virtual Live + Weekend In-Person Labs)" style={{ background: '#070e24', color: '#ffffff' }}>
-                      Hybrid (Virtual Live + Weekend In-Person Labs)
+                      Hybrid (Virtual + Weekend Labs)
                     </option>
                   </select>
                 </div>
@@ -520,27 +514,25 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                     name="duration"
                     value={formData.duration}
                     onChange={handleChange}
-                    className="contact-input"
+                    className="contact-input te-select-input"
                     style={{
                       width: '100%',
-                      padding: '13px 16px',
                       background: '#070e24',
                       border: '1.5px solid rgba(56, 189, 248, 0.3)',
                       borderRadius: '12px',
                       color: '#ffffff',
-                      fontSize: '0.95rem',
                       boxSizing: 'border-box',
                       cursor: 'pointer'
                     }}
                   >
                     <option value="1 Month (Fast-Track Project Bootcamp)" style={{ background: '#070e24', color: '#ffffff' }}>
-                      1 Month (Fast-Track Project Bootcamp)
+                      1 Month (Fast-Track Bootcamp)
                     </option>
                     <option value="3 Months (Standard Certification Track)" style={{ background: '#070e24', color: '#ffffff' }}>
-                      3 Months (Standard Certification Track)
+                      3 Months (Standard Track)
                     </option>
                     <option value="6 Months (Comprehensive Capstone & PPO)" style={{ background: '#070e24', color: '#ffffff' }}>
-                      6 Months (Comprehensive Capstone &amp; PPO)
+                      6 Months (Capstone &amp; PPO)
                     </option>
                   </select>
                 </div>
@@ -575,15 +567,13 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
             </div>
 
             {/* Submit Action Row */}
-            <div style={{ marginTop: '2rem' }}>
+            <div className="te-submit-row" style={{ marginTop: '2rem' }}>
               <button
                 type="submit"
                 disabled={loading}
-                className="btn btn--cyan btn--lg btn--block"
+                className="btn btn--cyan btn--lg btn--block te-submit-btn"
                 style={{
                   width: '100%',
-                  padding: '16px 32px',
-                  fontSize: '1.05rem',
                   fontWeight: 700,
                   display: 'flex',
                   alignItems: 'center',
@@ -604,7 +594,7 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
               </button>
             </div>
 
-            <div style={{
+            <div className="te-trust-row" style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
