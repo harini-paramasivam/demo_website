@@ -7051,7 +7051,6 @@ main:focus { outline: none; }
   border: 1px solid rgba(56, 189, 248, 0.32);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  margin-left: auto;
   box-shadow: 0 2px 8px rgba(2, 132, 199, 0.08);
   white-space: nowrap;
   flex-shrink: 0;
@@ -7074,9 +7073,9 @@ main:focus { outline: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 14px;
   margin-bottom: 22px;
-  min-height: 54px;
+  flex-wrap: wrap;
 }
 .sector-pod__header-left {
   display: flex;
@@ -7450,7 +7449,58 @@ main:focus { outline: none; }
 }
 @media (max-width: 768px) {
   .sector-hub__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .sector-pod {
+    padding: 22px 18px !important;
+    border-radius: 22px !important;
+  }
+  .sector-pod__header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    margin-bottom: 16px !important;
+    min-height: auto !important;
+  }
+  .sector-pod__header-left {
+    width: 100% !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+  }
+  .sector-pod__icon-wrap {
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 14px !important;
+  }
+  .sector-pod__meta {
+    gap: 3px !important;
+    min-width: 0 !important;
+  }
+  .sector-pod__tag {
+    font-size: 0.74rem !important;
+    letter-spacing: 0.06em !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+  .sector-pod__media-badge {
+    margin-left: 0 !important;
+    align-self: flex-start !important;
+    font-size: 0.72rem !important;
+    padding: 5px 12px !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    line-height: 1.35 !important;
+    word-break: break-word !important;
+  }
+  .sector-pod__title {
+    font-size: 1.32rem !important;
+  }
+  .sector-pod__headline {
+    font-size: 0.98rem !important;
+  }
+  .sector-pod__desc {
+    font-size: 0.90rem !important;
   }
   .svc-stream-item {
     padding: 14px 18px;
