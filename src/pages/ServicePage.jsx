@@ -691,7 +691,9 @@ export default function ServicePage() {
                         ))}
                       </div>
 
-                      <p className="svc-audience-card__summary">{s.whoItsFor}</p>
+                      <p className="svc-audience-card__summary">
+                        Tailored multi-format production pipelines, automated QA schematron, and dedicated compliance SLAs designed for high-volume stakeholders.
+                      </p>
                     </div>
                   )}
 
@@ -778,59 +780,38 @@ export default function ServicePage() {
       )}
 
       {/* ========================================================================= */}
-      {/* SECTION 4: FAQS & PROJECT CONSULTATION (DARK THEME)                      */}
-      {/* ========================================================================= */}
-      <section className="section why-section-dark netbg svc-section-faqs">
-        <div className="container">
-          {s.faqs && (
-            <div>
-              <div className="sec-head sec-head--dark text-center" style={{ marginBottom: '3rem' }}>
-                <p className="eyebrow" style={{ color: '#38bdf8' }}>
-                  <HelpCircle size={15} style={{ verticalAlign: 'middle', marginRight: '6px' }} />
-                  Expert Answers
-                </p>
-                <h2 style={{ color: '#ffffff' }}>Frequently Asked Questions</h2>
-                <p className="lead" style={{ marginInline: 'auto', maxWidth: '640px', color: '#cbd5e1' }}>
-                  Clear, transparent answers to help you evaluate and launch your project with confidence.
-                </p>
-              </div>
-              <FaqAccordion items={s.faqs} />
-            </div>
-          )}
-
-          {/* Action / Consultation Banner */}
-          <div className="svc-faqs-action-banner">
-            <div>
-              <span className="badge-eyebrow" style={{ color: '#38bdf8', marginBottom: '8px' }}>
-                <Sparkles size={16} /> Enterprise Advisory
-              </span>
-              <h3 style={{ color: '#ffffff', fontSize: '1.45rem', fontWeight: 800, margin: '0 0 8px 0' }}>
-                Ready to Get Started with {s.title}?
-              </h3>
-              <p style={{ color: '#e2e8f0', fontSize: '1rem', margin: 0, maxWidth: '600px' }}>
-                Our solutions architects will analyze your content requirements and propose a tailored delivery roadmap within 24 hours.
-              </p>
-            </div>
-            <Link to={`/contact?service=${encodeURIComponent(s.title)}`} className="btn btn--orange btn--lg svc-faqs-action-banner__btn">
-              <span>{s.buttonText || 'Request a Quote'}</span>
-              <ArrowRight size={18} aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* CLOSING CTA BAND (STRICTLY LIGHT THEME AS REQUESTED)                     */}
+      {/* CLOSING CTA BAND (POSITIONED BEFORE FAQS AS REQUESTED)                   */}
       {/* ========================================================================= */}
       <CtaBand
-        title="Ready to Make Your Content Accessible and Future-Ready?"
-        text="Tell us about your project and our team will respond within one business day."
-        primaryBtnText="Get in Touch"
-        primaryBtnTo="/contact"
-        secondaryBtnText="Explore Our Services"
+        title={`Ready to Get Started with ${s.title}?`}
+        text="Tell us about your project and our solutions architects will respond with a tailored delivery roadmap within 24 hours."
+        primaryBtnText={s.buttonText || 'Request a Quote'}
+        primaryBtnTo={`/contact?service=${encodeURIComponent(s.title)}`}
+        secondaryBtnText="Explore All Services"
         secondaryBtnTo="/services"
         theme="light"
       />
+
+      {/* ========================================================================= */}
+      {/* FREQUENTLY ASKED QUESTIONS (POSITIONED UNDER CTA, ABOVE FOOTER)          */}
+      {/* ========================================================================= */}
+      {s.faqs && (
+        <section className="section why-section-dark netbg svc-section-faqs">
+          <div className="container">
+            <div className="sec-head sec-head--dark text-center" style={{ marginBottom: '3rem' }}>
+              <p className="eyebrow" style={{ color: '#38bdf8' }}>
+                <HelpCircle size={15} style={{ verticalAlign: 'middle', marginRight: '6px' }} />
+                Expert Answers
+              </p>
+              <h2 style={{ color: '#ffffff' }}>Frequently Asked Questions</h2>
+              <p className="lead" style={{ marginInline: 'auto', maxWidth: '640px', color: '#cbd5e1' }}>
+                Clear, transparent answers to help you evaluate and launch your project with confidence.
+              </p>
+            </div>
+            <FaqAccordion items={s.faqs} />
+          </div>
+        </section>
+      )}
     </>
   );
 }

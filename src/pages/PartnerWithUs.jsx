@@ -26,6 +26,7 @@ export default function PartnerWithUs() {
     organizationName: '',
     contactPerson: '',
     email: '',
+    phone: '',
     partnershipArea: 'Technology',
     proposal: '',
   });
@@ -59,6 +60,7 @@ export default function PartnerWithUs() {
 Organization Name: ${formData.organizationName}
 Contact Person: ${formData.contactPerson}
 Email: ${formData.email}
+Mobile Number: ${formData.phone || 'Not provided'}
 Partnership Area: ${formData.partnershipArea}
 
 Proposal / Message:
@@ -224,6 +226,7 @@ Submitted via Velvora Solutions Partnership Portal.`;
                         organizationName: '',
                         contactPerson: '',
                         email: '',
+                        phone: '',
                         partnershipArea: 'Technology',
                         proposal: '',
                       });
@@ -236,22 +239,22 @@ Submitted via Velvora Solutions Partnership Portal.`;
                 </div>
               ) : (
                 <form className="partner-form" onSubmit={handleSubmit}>
-                  <div className="partner-field">
-                    <label htmlFor="partner-org" className="partner-label">
-                      Organization Name <span className="req" aria-hidden="true">*</span>
-                    </label>
-                    <input
-                      id="partner-org"
-                      required
-                      type="text"
-                      placeholder="e.g. Acme Publishing or CloudTech Labs"
-                      value={formData.organizationName}
-                      onChange={handleChange('organizationName')}
-                      className="partner-input"
-                    />
-                  </div>
-
                   <div className="partner-field-row">
+                    <div className="partner-field">
+                      <label htmlFor="partner-org" className="partner-label">
+                        Organization Name <span className="req" aria-hidden="true">*</span>
+                      </label>
+                      <input
+                        id="partner-org"
+                        required
+                        type="text"
+                        placeholder="e.g. Acme Publishing or CloudTech Labs"
+                        value={formData.organizationName}
+                        onChange={handleChange('organizationName')}
+                        className="partner-input"
+                      />
+                    </div>
+
                     <div className="partner-field">
                       <label htmlFor="partner-person" className="partner-label">
                         Contact Person <span className="req" aria-hidden="true">*</span>
@@ -266,7 +269,9 @@ Submitted via Velvora Solutions Partnership Portal.`;
                         className="partner-input"
                       />
                     </div>
+                  </div>
 
+                  <div className="partner-field-row">
                     <div className="partner-field">
                       <label htmlFor="partner-email" className="partner-label">
                         Email Address <span className="req" aria-hidden="true">*</span>
@@ -278,6 +283,21 @@ Submitted via Velvora Solutions Partnership Portal.`;
                         placeholder="you@company.com"
                         value={formData.email}
                         onChange={handleChange('email')}
+                        className="partner-input"
+                      />
+                    </div>
+
+                    <div className="partner-field">
+                      <label htmlFor="partner-phone" className="partner-label">
+                        Mobile Number <span className="req" aria-hidden="true">*</span>
+                      </label>
+                      <input
+                        id="partner-phone"
+                        required
+                        type="tel"
+                        placeholder="+91 98765 43210"
+                        value={formData.phone}
+                        onChange={handleChange('phone')}
                         className="partner-input"
                       />
                     </div>

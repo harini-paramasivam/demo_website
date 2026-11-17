@@ -450,8 +450,24 @@ export default function Training() {
         </div>
       </section>
 
-      {/* 6. FREQUENTLY ASKED QUESTIONS */}
-      <section className="section section--paper" style={{ paddingTop: '3rem', paddingBottom: '4rem' }}>
+      {/* 6. ADMISSIONS DESK & ENROLLMENT FORM */}
+      <section ref={formSectionRef} id="admissions-portal" className="section why-section-dark netbg" style={{ paddingTop: '3.5rem', paddingBottom: '4.5rem' }}>
+        <div className="container">
+          <TrainingEnrollmentForm />
+        </div>
+      </section>
+
+      {/* 7. UNIFIED CTA BAND (STRICTLY LIGHT THEME AS REQUESTED) */}
+      <CtaBand
+        title="Ready to Build Real-World Engineering Competencies?"
+        lead="Join Velvora Solutions Academy today. Choose from 8 specialized tracks or apply for our flagship internship with 100% live client project exposure."
+        btnText="Apply for Enrollment"
+        btnLink="#enrollment-form-section"
+        theme="light"
+      />
+
+      {/* 8. FREQUENTLY ASKED QUESTIONS (UNDER CTA, ABOVE FOOTER) */}
+      <section className="section section--paper" style={{ paddingTop: '3.5rem', paddingBottom: '4.5rem' }}>
         <div className="container" style={{ maxWidth: '820px' }}>
           <div className="sec-head" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
             <p className="eyebrow">Got Questions?</p>
@@ -464,22 +480,6 @@ export default function Training() {
           <FaqAccordion items={trainingFaqs} />
         </div>
       </section>
-
-      {/* 7. ADMISSIONS DESK & ENROLLMENT FORM */}
-      <section ref={formSectionRef} id="admissions-portal" className="section why-section-dark netbg" style={{ paddingTop: '3.5rem', paddingBottom: '4.5rem' }}>
-        <div className="container">
-          <TrainingEnrollmentForm />
-        </div>
-      </section>
-
-      {/* 8. UNIFIED CTA BAND (STRICTLY LIGHT THEME AS REQUESTED) */}
-      <CtaBand
-        title="Ready to Build Real-World Engineering Competencies?"
-        lead="Join Velvora Solutions Academy today. Choose from 8 specialized tracks or apply for our flagship internship with 100% live client project exposure."
-        btnText="Apply for Enrollment"
-        btnLink="#enrollment-form-section"
-        theme="light"
-      />
     </>
   );
 }

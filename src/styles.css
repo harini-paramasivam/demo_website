@@ -21024,11 +21024,11 @@ main:focus { outline: none; }
   background: #0284c7;
 }
 .svc-audience-card__summary {
-  font-size: 0.95rem;
-  line-height: 1.65;
+  font-size: 0.92rem;
+  line-height: 1.6;
   color: #475569;
-  margin: auto 0 0 0;
-  padding-top: 12px;
+  margin: 1.25rem 0 0 0;
+  padding-top: 14px;
   border-top: 1px dashed rgba(203, 213, 225, 0.8);
 }
 .svc-assurance-list {

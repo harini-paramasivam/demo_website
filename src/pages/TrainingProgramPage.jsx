@@ -325,14 +325,6 @@ export default function TrainingProgramPage() {
                 </div>
               </div>
             )}
-
-            {/* FREQUENTLY ASKED QUESTIONS */}
-            {(program.programFaqs || program.faqs) && (program.programFaqs || program.faqs).length > 0 && (
-              <div style={{ marginTop: '3.5rem' }}>
-                <h3 className="section-subtitle">Frequently Asked Questions</h3>
-                <FaqAccordion items={program.programFaqs || program.faqs} />
-              </div>
-            )}
           </div>
 
           {/* SIDEBAR */}
@@ -480,6 +472,22 @@ export default function TrainingProgramPage() {
         btnLink="#enrollment-form-section"
         theme="light"
       />
+
+      {/* FREQUENTLY ASKED QUESTIONS (UNDER CTA, ABOVE FOOTER) */}
+      {(program.programFaqs || program.faqs) && (program.programFaqs || program.faqs).length > 0 && (
+        <section className="section section--paper" style={{ paddingTop: '3.5rem', paddingBottom: '4.5rem' }}>
+          <div className="container" style={{ maxWidth: '820px' }}>
+            <div className="sec-head" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+              <p className="eyebrow">Program Clarifications</p>
+              <h2>Frequently Asked Questions</h2>
+              <p className="lead" style={{ marginInline: 'auto' }}>
+                Key answers about curriculum structure, project deliverables, and mentorship for {program.title}.
+              </p>
+            </div>
+            <FaqAccordion items={program.programFaqs || program.faqs} />
+          </div>
+        </section>
+      )}
     </>
   );
 }
