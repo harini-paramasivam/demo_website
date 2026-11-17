@@ -36,7 +36,7 @@ import {
 } from 'lucide-react';
 import { services } from '../data/site.js';
 import Icon from '../components/Icon.jsx';
-import { PageHero, CtaBand } from '../components/ui.jsx';
+import { PageHero } from '../components/ui.jsx';
 
 function getSubServiceMeta(id = '') {
   switch (id) {
@@ -780,17 +780,29 @@ export default function ServicePage() {
       )}
 
       {/* ========================================================================= */}
-      {/* CLOSING CTA BAND (DARK SHADE AS REQUESTED)                               */}
+      {/* ENTERPRISE ADVISORY CTA (DARK SHADE - 1ST CTA)                           */}
       {/* ========================================================================= */}
-      <CtaBand
-        title={`Ready to Get Started with ${s.title}?`}
-        text="Tell us about your project and our solutions architects will respond with a tailored delivery roadmap within 24 hours."
-        primaryBtnText={s.buttonText || 'Request a Quote'}
-        primaryBtnTo={`/contact?service=${encodeURIComponent(s.title)}`}
-        secondaryBtnText="Explore All Services"
-        secondaryBtnTo="/services"
-        theme="dark"
-      />
+      <section className="section why-section-dark netbg svc-section-advisory-cta" style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem' }}>
+        <div className="container">
+          <div className="svc-faqs-action-banner" style={{ marginTop: 0 }}>
+            <div>
+              <span className="badge-eyebrow" style={{ color: '#38bdf8', marginBottom: '8px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <Sparkles size={16} /> Enterprise Advisory
+              </span>
+              <h3 style={{ color: '#ffffff', fontSize: '1.5rem', fontWeight: 800, margin: '0 0 8px 0', letterSpacing: '-0.01em' }}>
+                Ready to Get Started with {s.title}?
+              </h3>
+              <p style={{ color: '#e2e8f0', fontSize: '1rem', margin: 0, maxWidth: '620px', lineHeight: 1.6 }}>
+                Our solutions architects will analyze your content requirements and propose a tailored delivery roadmap within 24 hours.
+              </p>
+            </div>
+            <Link to={`/contact?service=${encodeURIComponent(s.title)}`} className="btn btn--cyan btn--lg svc-faqs-action-banner__btn">
+              <span>{s.buttonText || 'Request a Quote'}</span>
+              <ArrowRight size={18} aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* ========================================================================= */}
       {/* FREQUENTLY ASKED QUESTIONS (LIGHT MODE - POSITIONED UNDER CTA, ABOVE FOOTER) */}

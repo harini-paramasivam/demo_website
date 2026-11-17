@@ -21,7 +21,7 @@ import {
   CheckCircle
 } from 'lucide-react';
 import { careersJobs } from '../data/careersData.js';
-import { PageHero, CtaBand } from '../components/ui.jsx';
+import { PageHero } from '../components/ui.jsx';
 
 export default function JobDetailPage() {
   const { jobId } = useParams();
@@ -537,14 +537,6 @@ export default function JobDetailPage() {
           </div>
         </div>
       </section>
-
-      {/* CLOSING CTA BAND */}
-      <CtaBand
-        title="Have Questions About this Role or the Hiring Process?"
-        text="Our talent acquisition team is available to assist you. Contact us directly at info@velvorasolutions.com."
-        primaryBtnText="Contact Talent Team"
-        primaryBtnTo="/contact"
-      />
     </>
   );
 }

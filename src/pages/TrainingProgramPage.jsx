@@ -27,7 +27,7 @@ import {
   trainingPrograms 
 } from '../data/trainingData.js';
 import Icon from '../components/Icon.jsx';
-import { PageHero, CtaBand } from '../components/ui.jsx';
+import { PageHero } from '../components/ui.jsx';
 import TrainingEnrollmentForm from '../components/TrainingEnrollmentForm.jsx';
 
 function FaqAccordion({ items = [] }) {
@@ -465,15 +465,7 @@ export default function TrainingProgramPage() {
         </div>
       </section>
 
-      <CtaBand
-        title={`Ready to Master ${program.title}?`}
-        lead="Join Velvora's professional training track with real-world industry projects, 1-on-1 mentorship, and recognized certification."
-        btnText="Apply for Enrollment"
-        btnLink="#enrollment-form-section"
-        theme="dark"
-      />
-
-      {/* FREQUENTLY ASKED QUESTIONS (UNDER CTA, ABOVE FOOTER) */}
+      {/* FREQUENTLY ASKED QUESTIONS */}
       {(program.programFaqs || program.faqs) && (program.programFaqs || program.faqs).length > 0 && (
         <section className="section section--paper" style={{ paddingTop: '3.5rem', paddingBottom: '4.5rem' }}>
           <div className="container" style={{ maxWidth: '820px' }}>

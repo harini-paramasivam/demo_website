@@ -20,7 +20,7 @@ import {
   Zap,
   TrendingUp
 } from 'lucide-react';
-import { PageHero, CtaBand } from '../components/ui.jsx';
+import { PageHero } from '../components/ui.jsx';
 
 const values = [
   {
@@ -331,14 +331,6 @@ export default function CompanyOverview() {
           </ul>
         </div>
       </section>
-
-      {/* CLOSING CTA */}
-      <CtaBand
-        title="Ready to Partner with Velvora Solutions?"
-        text="Tell us about your publishing, accessibility, or technology project and our specialists will respond within one business day."
-        primaryBtnText="Get in Touch"
-        primaryBtnTo="/contact"
-      />
     </>
   );
 }

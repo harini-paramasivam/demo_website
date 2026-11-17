@@ -18,7 +18,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { teamMembers } from '../data/site.js';
-import { PageHero, CtaBand } from '../components/ui.jsx';
+import { PageHero } from '../components/ui.jsx';
 
 // Verified department metadata for the 6 specialists (strictly NO photographs)
 const specialistMeta = {
@@ -269,13 +269,6 @@ export default function OurTeam() {
           </div>
         </section>
       </div>
-
-      <CtaBand
-        title="Want to Collaborate with Our Specialists?"
-        text="Discuss your project with our accessibility, XML, engineering, and production leads today."
-        primaryBtnText="Get in Touch"
-        primaryBtnTo="/contact"
-      />
     </>
   );
 }

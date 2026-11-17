@@ -24,7 +24,7 @@ import {
   trainingFaqs 
 } from '../data/trainingData.js';
 import Icon from '../components/Icon.jsx';
-import { PageHero, CtaBand } from '../components/ui.jsx';
+import { PageHero } from '../components/ui.jsx';
 import TrainingEnrollmentForm from '../components/TrainingEnrollmentForm.jsx';
 
 function FaqAccordion({ items = [] }) {
@@ -457,16 +457,7 @@ export default function Training() {
         </div>
       </section>
 
-      {/* 7. UNIFIED CTA BAND (STRICTLY LIGHT THEME AS REQUESTED) */}
-      <CtaBand
-        title="Ready to Build Real-World Engineering Competencies?"
-        lead="Join Velvora Solutions Academy today. Choose from 8 specialized tracks or apply for our flagship internship with 100% live client project exposure."
-        btnText="Apply for Enrollment"
-        btnLink="#enrollment-form-section"
-        theme="dark"
-      />
-
-      {/* 8. FREQUENTLY ASKED QUESTIONS (UNDER CTA, ABOVE FOOTER) */}
+      {/* 7. FREQUENTLY ASKED QUESTIONS */}
       <section className="section section--paper" style={{ paddingTop: '3.5rem', paddingBottom: '4.5rem' }}>
         <div className="container" style={{ maxWidth: '820px' }}>
           <div className="sec-head" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>

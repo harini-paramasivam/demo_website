@@ -9,7 +9,7 @@ import ServicesStream from '../components/ServicesStream.jsx';
 import SectorBlueprint from '../components/SectorBlueprint.jsx';
 import TrustArchitecture from '../components/TrustArchitecture.jsx';
 import CaseStudySpotlight from '../components/CaseStudySpotlight.jsx';
-import { SectionHead, CtaBand } from '../components/ui.jsx';
+import { SectionHead } from '../components/ui.jsx';
 import { useReveal, CountUp } from '../components/hooks.jsx';
 
 export default function Home() {
@@ -420,16 +420,6 @@ export default function Home() {
 
       {/* 7. CASE STUDY TEASER */}
       <CaseStudySpotlight />
-
-      {/* 8. CLOSING CALL TO ACTION */}
-      <CtaBand
-        title="Ready to Make Your Content Accessible and Future-Ready?"
-        text="Tell us about your project and our team will respond within one business day."
-        primaryBtnText="Get in Touch"
-        primaryBtnTo="/contact"
-        secondaryBtnText="Explore Our Services"
-        secondaryBtnTo="/services"
-      />
     </>
   );
 }

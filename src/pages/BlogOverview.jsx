@@ -17,7 +17,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { blogArticles, blogCategories, getFeaturedArticle } from '../data/blogData.js';
-import { PageHero, CtaBand } from '../components/ui.jsx';
+import { PageHero } from '../components/ui.jsx';
 
 export default function BlogOverview() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -364,16 +364,6 @@ export default function BlogOverview() {
           </div>
         </div>
       </section>
-
-      {/* 7. CLOSING CTA BAND */}
-      <CtaBand
-        title="Need Expert Assistance with Digital Publishing or Accessibility?"
-        text="Whether you require bulk PDF remediation, EPUB 3 conversion, or a comprehensive WCAG 2.2 audit, our certified specialists are ready to help."
-        primaryBtnText="Discuss Your Project"
-        primaryBtnTo="/contact"
-        secondaryBtnText="Explore All Services"
-        secondaryBtnTo="/services"
-      />
     </div>
   );
 }

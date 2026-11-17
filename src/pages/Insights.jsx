@@ -25,7 +25,7 @@ import {
   FileText,
   Radio
 } from 'lucide-react';
-import { PageHero, CtaBand } from '../components/ui.jsx';
+import { PageHero } from '../components/ui.jsx';
 import { content, insightsData, company } from '../data/site.js';
 import { useReveal } from '../components/hooks.jsx';
 import Icon from '../components/Icon.jsx';
@@ -726,16 +726,6 @@ export default function Insights() {
           </div>
         </div>
       )}
-
-      {/* CLOSING CALL TO ACTION BAND */}
-      <CtaBand
-        title="Stay Ahead in Publishing, Accessibility, and AI"
-        text="Discuss a custom team training masterclass, podcast guest collaboration, or workflow audit."
-        primaryBtnText="Consult Our Specialists"
-        primaryBtnTo="/contact"
-        secondaryBtnText="Explore All Solutions"
-        secondaryBtnTo="/solutions"
-      />
     </>
   );
 }

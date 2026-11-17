@@ -14,7 +14,7 @@ import {
   Layers,
   HelpCircle
 } from 'lucide-react';
-import { PageHero, CtaBand } from '../components/ui.jsx';
+import { PageHero } from '../components/ui.jsx';
 import { company, partnershipData } from '../data/site.js';
 import { useReveal } from '../components/hooks.jsx';
 import Icon from '../components/Icon.jsx';
@@ -362,14 +362,6 @@ Submitted via Velvora Solutions Partnership Portal.`;
           </div>
         </div>
       </section>
-
-      {/* CLOSING CALL TO ACTION BAND */}
-      <CtaBand
-        title="Let’s build the future together."
-        text="Partner with Velvora Solutions and join us in creating inclusive, innovative, and impactful solutions."
-        primaryBtnText="Submit Partnership Request"
-        primaryBtnOnClick={scrollToForm}
-      />
     </>
   );
 }

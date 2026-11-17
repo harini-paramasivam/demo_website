@@ -13,7 +13,7 @@ import {
   Bot,
   Send
 } from 'lucide-react';
-import { PageHero, CtaBand } from '../components/ui.jsx';
+import { PageHero } from '../components/ui.jsx';
 
 const whyWorkPoints = [
   {
@@ -144,13 +144,6 @@ export default function AboutCareers() {
           </div>
         </div>
       </section>
-
-      <CtaBand
-        title="Ready to Shape the Future with Us?"
-        text="Whether you are an accessibility tester, XML expert, or developer, we always welcome passionate talent."
-        primaryBtnText="Get in Touch"
-        primaryBtnTo="/contact"
-      />
     </>
   );
 }

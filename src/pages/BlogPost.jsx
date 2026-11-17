@@ -19,7 +19,6 @@ import {
   MessageSquare
 } from 'lucide-react';
 import { getArticleBySlug, getRelatedArticles } from '../data/blogData.js';
-import { CtaBand } from '../components/ui.jsx';
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -505,16 +504,6 @@ export default function BlogPost() {
           </div>
         </section>
       )}
-
-      {/* 5. CLOSING CTA BAND */}
-      <CtaBand
-        title="Ready to Ensure Complete Accessibility and Publishing Precision?"
-        text="Connect with our practice leaders to schedule a technical discovery call, review sample files, or discuss enterprise SLAs."
-        primaryBtnText="Get in Touch with Our Team"
-        primaryBtnTo="/contact"
-        secondaryBtnText="Explore All Services"
-        secondaryBtnTo="/services"
-      />
     </article>
   );
 }

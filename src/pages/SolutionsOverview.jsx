@@ -16,7 +16,7 @@ import {
   LayoutGrid,
   Filter
 } from 'lucide-react';
-import { PageHero, CtaBand } from '../components/ui.jsx';
+import { PageHero } from '../components/ui.jsx';
 import { solutionsData } from '../data/site.js';
 import Icon from '../components/Icon.jsx';
 import { useReveal } from '../components/hooks.jsx';
@@ -513,14 +513,6 @@ export default function SolutionsOverview() {
           )}
         </div>
       </section>
-
-      {/* CLOSING CTA BAND */}
-      <CtaBand
-        title="Need a Custom Workflow Tailored for Your Organization?"
-        text="Discuss your content specifications, accessibility targets, or automation goals with our solutions specialists."
-        primaryBtnText="Consult Our Specialists"
-        primaryBtnTo="/contact"
-      />
     </>
   );
 }

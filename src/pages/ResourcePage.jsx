@@ -11,7 +11,7 @@ import {
   TrendingUp,
 } from 'lucide-react';
 import { content } from '../data/site.js';
-import { PageHero, EmptyState, CtaBand } from '../components/ui.jsx';
+import { PageHero, EmptyState } from '../components/ui.jsx';
 
 export default function ResourcePage({ type }) {
   const c = content[type] || { title: 'Resources', intro: '', items: [] };
@@ -210,13 +210,6 @@ export default function ResourcePage({ type }) {
           )}
         </div>
       </section>
-
-      <CtaBand
-        title="Ready to Make Your Content Accessible and Future-Ready?"
-        text="Tell us about your project and our team will respond within one business day."
-        primaryBtnText="Get in Touch"
-        primaryBtnTo="/contact"
-      />
     </>
   );
 }
