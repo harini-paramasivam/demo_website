@@ -5772,29 +5772,10 @@ main:focus { outline: none; }
   box-shadow: 0 30px 80px -20px rgba(0,0,0,.88), 0 0 36px -8px rgba(56, 189, 248, .28);
 }
 .t-held-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: rgba(56, 189, 248, .16);
-  border: 1px solid rgba(56, 189, 248, .4);
-  color: var(--orange);
-  font: 700 .75rem var(--sans);
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  margin-left: auto;
-  user-select: none;
-  animation: fadeIn .2s ease;
+  display: none !important;
 }
 .t-held-hint {
-  font-size: .75rem;
-  color: var(--on-navy-muted);
-  opacity: .5;
-  margin-left: auto;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  transition: opacity .2s;
+  display: none !important;
 }
 .t-slide-card:hover .t-held-hint {
   opacity: .85;

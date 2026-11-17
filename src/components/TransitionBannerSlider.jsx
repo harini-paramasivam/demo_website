@@ -30,7 +30,7 @@ export default function TransitionBannerSlider() {
       clearInterval(timerRef.current);
       return;
     }
-    timerRef.current = setInterval(nextSlide, 4000); // 4 seconds auto slide
+    timerRef.current = setInterval(nextSlide, 12000); // 12 seconds auto slide
     return () => clearInterval(timerRef.current);
   }, [activeIdx, isHeld]);
 
@@ -96,17 +96,16 @@ export default function TransitionBannerSlider() {
                   <span>{current.tag}</span>
                 </span>
 
-                {/* Subtle Hold Status Pill */}
-                {isHeld ? (
-                  <span className="t-held-pill" title="Slide is on hold. Tap to resume automatic sliding.">
-                    <Pause size={12} />
-                    <span>Held · Tap to Resume</span>
-                  </span>
-                ) : (
-                  <span className="t-held-hint" title="Tap banner to hold this slide">
-                    Tap to Hold
-                  </span>
-                )}
+                {/* Hold status button kept completely invisible as requested */}
+                <button
+                  type="button"
+                  onClick={() => setIsHeld((prev) => !prev)}
+                  className="sr-only"
+                  aria-label={isHeld ? 'Resume automatic sliding' : 'Hold automatic sliding'}
+                  aria-pressed={isHeld}
+                >
+                  {isHeld ? 'Resume' : 'Hold'}
+                </button>
               </div>
 
               <h2 className="t-slide-card__title">

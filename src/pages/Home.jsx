@@ -29,6 +29,7 @@ export default function Home() {
   }, []);
 
   const [heroIdx, setHeroIdx] = useState(0);
+  const [isHeld, setIsHeld] = useState(false);
   const totalSlides = transitionBannerContent.length;
 
   const nextHeroSlide = () => {
@@ -51,13 +52,23 @@ export default function Home() {
     setHeroIdx(idx);
   };
 
-  // Automatic slide rotation every 3 seconds seamlessly & continuously
+  // Automatic slide rotation every 12 seconds; pauses if user holds
   useEffect(() => {
+    if (isHeld) return;
     const timer = setInterval(() => {
       setHeroIdx((prev) => (prev + 1) % totalSlides);
-    }, 3000);
+    }, 12000); // 12 seconds auto slide rotation
     return () => clearInterval(timer);
-  }, [totalSlides]);
+  }, [heroIdx, isHeld, totalSlides]);
+
+  const handleBannerClick = (e) => {
+    // If clicking a link or button directly, allow its normal action
+    if (e.target.closest('a') || e.target.closest('button')) {
+      return;
+    }
+    // Hold / resume banner when clicking anywhere on the banner
+    setIsHeld((prev) => !prev);
+  };
 
   // Keyboard navigation support (Left / Right arrow keys)
   useEffect(() => {
@@ -86,9 +97,22 @@ export default function Home() {
     <>
       {/* 1. FUTURISTIC HERO BANNER (INSPIRED BY REFERENCE DESIGN) */}
       <section
-        className="hero hero--cinematic hero--ref-style"
+        className={`hero hero--cinematic hero--ref-style${isHeld ? ' is-held' : ''}`}
         aria-labelledby="hero-title"
+        onClick={handleBannerClick}
+        title={isHeld ? 'Slide rotation paused. Click anywhere on banner to resume.' : 'Click anywhere on banner to pause rotation.'}
       >
+        {/* Invisible hold button (button kept completely invisible as requested) */}
+        <button
+          type="button"
+          onClick={() => setIsHeld((prev) => !prev)}
+          className="sr-only"
+          aria-label={isHeld ? 'Resume automatic banner rotation' : 'Hold automatic banner rotation'}
+          aria-pressed={isHeld}
+        >
+          {isHeld ? 'Resume Banner' : 'Hold Banner'}
+        </button>
+
         {/* Atmospheric Volumetric Light Beams */}
         <div className="hero-ambient-mesh" aria-hidden="true" />
         <HeroCyberWave />
@@ -220,8 +244,8 @@ export default function Home() {
                       <span
                         className="hero-ref-dock__fill"
                         style={{
-                          animationDuration: heroIdx === idx ? '3000ms' : '0s',
-                          animationPlayState: 'running',
+                          animationDuration: heroIdx === idx ? '12000ms' : '0s',
+                          animationPlayState: isHeld ? 'paused' : 'running',
                         }}
                       />
                     </span>
