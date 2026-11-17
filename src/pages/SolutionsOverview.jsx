@@ -392,27 +392,29 @@ export default function SolutionsOverview() {
 
                   {/* STAGE FOOTER: PREVIOUS / NEXT SOLUTION STEPPERS */}
                   <footer className="sol-stage-footer">
-                    <button
-                      type="button"
-                      className="sol-nav-stepper sol-nav-stepper--prev"
-                      onClick={handlePrev}
-                      aria-label="View previous solution"
-                    >
-                      <ArrowLeft size={16} aria-hidden="true" />
-                      <span>Previous Solution</span>
-                    </button>
+                    <div className="sol-stage-footer__controls">
+                      <button
+                        type="button"
+                        className="sol-nav-stepper sol-nav-stepper--prev"
+                        onClick={handlePrev}
+                        aria-label="View previous solution"
+                      >
+                        <ArrowLeft size={16} aria-hidden="true" />
+                        <span>Previous Solution</span>
+                      </button>
+                      <button
+                        type="button"
+                        className="sol-nav-stepper sol-nav-stepper--next"
+                        onClick={handleNext}
+                        aria-label="View next solution"
+                      >
+                        <span>Next Solution</span>
+                        <ArrowRight size={16} aria-hidden="true" />
+                      </button>
+                    </div>
                     <div className="sol-stepper-indicator">
                       <span>Architecture <strong>{activeIndex + 1}</strong> of <strong>{solutionsData.length}</strong></span>
                     </div>
-                    <button
-                      type="button"
-                      className="sol-nav-stepper sol-nav-stepper--next"
-                      onClick={handleNext}
-                      aria-label="View next solution"
-                    >
-                      <span>Next Solution</span>
-                      <ArrowRight size={16} aria-hidden="true" />
-                    </button>
                   </footer>
                 </article>
               </main>

@@ -18594,13 +18594,20 @@ main:focus { outline: none; }
 
 .sol-stage-footer {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding-top: 22px;
+  border-top: 1px solid #f1f5f9;
+  margin-top: 14px;
+  width: 100%;
+}
+.sol-stage-footer__controls {
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 24px;
-  border-top: 1px solid #f1f5f9;
-  margin-top: 10px;
-  flex-wrap: wrap;
-  gap: 14px;
+  width: 100%;
+  gap: 12px;
 }
 .sol-nav-stepper {
   display: inline-flex;
@@ -18616,6 +18623,12 @@ main:focus { outline: none; }
   cursor: pointer;
   transition: all 0.2s;
 }
+.sol-nav-stepper--prev {
+  margin-right: auto;
+}
+.sol-nav-stepper--next {
+  margin-left: auto;
+}
 .sol-nav-stepper:hover {
   border-color: #0284c7;
   color: #0284c7;
@@ -18624,6 +18637,7 @@ main:focus { outline: none; }
 .sol-stepper-indicator {
   font-size: 0.86rem;
   color: #64748b;
+  text-align: left;
 }
 .sol-stepper-indicator strong {
   color: #0f172a;
@@ -19635,16 +19649,35 @@ main:focus { outline: none; }
 
 /* 3. Inclusion & Innovation Section (LIGHT THEME) */
 .career-inclusion-section {
-  padding: clamp(65px, 7vw, 100px) 0 !important;
+  padding: clamp(55px, 6vw, 90px) 0 !important;
   background: #ffffff !important;
   border-top: 1px solid #e2e8f0 !important;
   border-bottom: 1px solid #e2e8f0 !important;
+  scroll-margin-top: 90px !important;
 }
 
 .career-inclusion-box {
   background: #ffffff !important;
   border: 1.5px solid #e2e8f0 !important;
+  border-radius: 24px !important;
+  padding: clamp(28px, 4.5vw, 48px) !important;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.career-inclusion-box__left {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+}
+
+.career-inclusion-box__left .badge-eyebrow {
+  color: #0284c7 !important;
+  background: rgba(2, 132, 199, 0.08) !important;
+  border: 1px solid rgba(2, 132, 199, 0.22) !important;
+  margin-bottom: 14px !important;
 }
 
 .career-inclusion-box__left .career-section-h2 {
@@ -19657,6 +19690,29 @@ main:focus { outline: none; }
 
 .career-inclusion-list li {
   color: #1e293b !important;
+}
+
+@media (max-width: 900px) {
+  .career-inclusion-section {
+    padding: 36px 0 !important;
+    scroll-margin-top: 86px !important;
+  }
+  .career-inclusion-box {
+    padding: 24px 20px !important;
+    border-radius: 20px !important;
+    gap: 24px !important;
+  }
+  .career-inclusion-box__left {
+    padding-top: 0 !important;
+    width: 100% !important;
+  }
+  .career-inclusion-box__right {
+    width: 100% !important;
+  }
+  .career-quote-feature {
+    padding: 20px 18px !important;
+    border-radius: 18px !important;
+  }
 }
 
 .career-inclusion-card {
