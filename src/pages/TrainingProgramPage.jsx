@@ -19,7 +19,8 @@ import {
   Check,
   Building2,
   GraduationCap,
-  Headphones
+  Headphones,
+  ShieldCheck
 } from 'lucide-react';
 import { 
   getTrainingProgramBySlug, 
@@ -106,6 +107,11 @@ function ModuleAccordion({ module, idx, isOpenDefault = false }) {
       </button>
       {open && (
         <div className="faq-answer" style={{ padding: '16px 20px', borderTop: '1px solid var(--border)' }}>
+          {module.overview && (
+            <p style={{ margin: '0 0 12px 0', color: '#334155', fontSize: '0.94rem', lineHeight: 1.65 }}>
+              {module.overview}
+            </p>
+          )}
           <ul className="bullets" style={{ margin: 0 }}>
             {module.topics.map((t, i) => (
               <li key={i}>{t}</li>
@@ -133,6 +139,8 @@ export default function TrainingProgramPage() {
   }
 
   const otherPrograms = trainingPrograms.filter((p) => p.id !== program.id);
+  const curriculumModules = program.modules || program.curriculum || [];
+  const toolsList = program.toolsLearned || program.tools || [];
 
   return (
     <>
@@ -204,14 +212,14 @@ export default function TrainingProgramPage() {
               </div>
             </div>
 
-            {/* VALUE PROPOSITION CALLOUT (White inner card with crisp dark text, Blue outside container) */}
-            <div className="training-value-outer-blue" style={{ margin: '2.5rem 0', borderRadius: '24px', padding: '22px', background: 'linear-gradient(145deg, #0a173b 0%, #060e24 100%)', border: '1.5px solid rgba(56, 189, 248, 0.35)', boxShadow: '0 20px 50px -10px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.1)' }}>
-              <div className="training-value-inner-white" style={{ background: '#ffffff', borderRadius: '16px', padding: '26px 30px', boxShadow: '0 8px 25px rgba(0, 0, 0, 0.08)' }}>
-                <h3 style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#0a1630', fontSize: '1.32rem', fontWeight: 800, marginBottom: '12px' }}>
+            {/* VALUE PROPOSITION CALLOUT (Sleek 3px dark luxury gradient border, crisp white inner card) */}
+            <div className="training-value-outer-blue">
+              <div className="training-value-inner-white">
+                <h3 style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#0a1630', fontSize: '1.25rem', fontWeight: 800, marginBottom: '10px' }}>
                   <CheckCircle2 size={22} style={{ color: '#0284c7', flexShrink: 0 }} aria-hidden="true" />
-                  Why Learn {program.title} at Velvora Academy?
+                  Why Learn {program.id === 'internship-program' ? 'Internship Program' : program.title} at Velvora Academy?
                 </h3>
-                <p style={{ margin: 0, color: '#334155', fontSize: '1.02rem', lineHeight: 1.75 }}>
+                <p style={{ margin: 0, color: '#334155', fontSize: '1rem', lineHeight: 1.7 }}>
                   {program.whyChoose}
                 </p>
               </div>
@@ -267,16 +275,16 @@ export default function TrainingProgramPage() {
             )}
 
             {/* COMPLETE CURRICULUM MODULES */}
-            {program.curriculum && program.curriculum.length > 0 && (
+            {curriculumModules.length > 0 && (
               <div style={{ marginTop: '3rem' }}>
                 <h3 className="section-subtitle">
-                  Complete Curriculum &amp; Syllabus ({program.curriculum.length} Modules)
+                  Complete Curriculum &amp; Syllabus ({curriculumModules.length} Modules)
                 </h3>
                 <p className="lead" style={{ marginBottom: '1.5rem', color: '#334155' }}>
                   Comprehensive module-by-module breakdown designed to take you from foundational concepts to enterprise execution.
                 </p>
                 <div className="faq-list">
-                  {program.curriculum.map((mod, idx) => (
+                  {curriculumModules.map((mod, idx) => (
                     <ModuleAccordion
                       key={mod.moduleNumber || idx}
                       module={mod}
@@ -289,50 +297,146 @@ export default function TrainingProgramPage() {
             )}
 
             {/* LIVE CAPSTONE PROJECTS & DELIVERABLES */}
-            {program.projects && program.projects.length > 0 && (
+            {(program.liveProject || (program.projects && program.projects.length > 0)) && (
               <div style={{ marginTop: '3.5rem' }}>
                 <h3 className="section-subtitle">
                   Live Capstone Projects &amp; Deliverables
                 </h3>
                 <p className="lead" style={{ marginBottom: '1.5rem', color: '#334155' }}>
-                  Every student and intern completes real production assets that form a verifiable portfolio for employment.
+                  Every student and intern completes real production assets that form a verified portfolio for employment.
                 </p>
-                <div className="svc-offers-grid">
-                  {program.projects.map((proj, idx) => (
-                    <div key={idx} className="svc-offer-card">
-                      <span className="pill" style={{ marginBottom: '8px', fontSize: '0.78rem' }}>
-                        Project 0{idx + 1}
-                      </span>
-                      <h4 style={{ fontSize: '1.1rem', margin: '4px 0 8px' }}>{proj.title}</h4>
-                      <p style={{ fontSize: '0.92rem', color: '#334155', lineHeight: 1.6 }}>{proj.desc}</p>
+
+                {program.liveProject && (
+                  <div className="training-capstone-card">
+                    <div className="training-capstone-head">
+                      <div className="training-capstone-badge">
+                        <Sparkles size={14} />
+                        <span>Production-Grade Capstone</span>
+                      </div>
+                      <h4 className="training-capstone-title">{program.liveProject.title}</h4>
+                      <p className="training-capstone-scope">{program.liveProject.scope}</p>
+                    </div>
+
+                    {program.liveProject.deliverables && (
+                      <div className="training-capstone-deliverables">
+                        <strong className="training-capstone-deliv-heading">Verified Production Deliverables:</strong>
+                        <div className="training-capstone-grid">
+                          {program.liveProject.deliverables.map((deliv, idx) => (
+                            <div key={idx} className="training-deliv-item">
+                              <CheckCircle2 size={16} className="training-deliv-icon" />
+                              <span>{deliv}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {program.liveProject.evaluation && (
+                      <div className="training-capstone-eval">
+                        <ShieldCheck size={18} className="training-eval-icon" />
+                        <div>
+                          <strong>Quality Evaluation &amp; Assessment Benchmark:</strong>
+                          <p>{program.liveProject.evaluation}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {program.projects && program.projects.length > 0 && !program.liveProject && (
+                  <div className="svc-offers-grid">
+                    {program.projects.map((proj, idx) => (
+                      <div key={idx} className="svc-offer-card">
+                        <span className="pill" style={{ marginBottom: '8px', fontSize: '0.78rem' }}>
+                          Project 0{idx + 1}
+                        </span>
+                        <h4 style={{ fontSize: '1.1rem', margin: '4px 0 8px' }}>{proj.title}</h4>
+                        <p style={{ fontSize: '0.92rem', color: '#334155', lineHeight: 1.6 }}>{proj.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* TOOLS & FRAMEWORKS MASTERED */}
+            {toolsList.length > 0 && (
+              <div style={{ marginTop: '3.5rem' }}>
+                <h3 className="section-subtitle">Tools, Technologies &amp; Standards Mastered</h3>
+                <p style={{ margin: '0 0 1rem 0', color: '#475569', fontSize: '0.95rem' }}>
+                  Industry-standard tools and verification suites integrated into hands-on daily production workflows:
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                  {toolsList.map((tool, idx) => (
+                    <span key={idx} className="training-tool-pill">
+                      <Layers size={14} style={{ color: '#0284c7' }} />
+                      <span>{tool}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* CAREER PATHWAYS & TARGET ROLES */}
+            {program.careerRoles && program.careerRoles.length > 0 && (
+              <div style={{ marginTop: '3.5rem' }}>
+                <h3 className="section-subtitle">Career Pathways &amp; Target Roles</h3>
+                <p style={{ margin: '0 0 1.25rem 0', color: '#475569', fontSize: '0.95rem' }}>
+                  Graduates and interns completing this track actively qualify for high-growth positions including:
+                </p>
+                <div className="training-careers-grid">
+                  {program.careerRoles.map((role, idx) => (
+                    <div key={idx} className="training-career-chip">
+                      <div className="training-career-chip-icon">
+                        <Briefcase size={16} />
+                      </div>
+                      <span className="training-career-chip-text">{role}</span>
                     </div>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* TOOLS & FRAMEWORKS MASTERED */}
-            {program.tools && program.tools.length > 0 && (
+            {/* ENROLLMENT CRITERIA & CREDENTIALING */}
+            {(program.targetAudience || program.prerequisites || program.certification) && (
               <div style={{ marginTop: '3.5rem' }}>
-                <h3 className="section-subtitle">Tools, Technologies &amp; Standards Mastered</h3>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '1rem' }}>
-                  {program.tools.map((tool, idx) => (
-                    <span
-                      key={idx}
-                      className="pill"
-                      style={{
-                        padding: '8px 16px',
-                        fontSize: '0.9rem',
-                        fontWeight: 600,
-                        background: 'rgba(56, 189, 248, 0.08)',
-                        color: '#0284c7',
-                        border: '1px solid rgba(56, 189, 248, 0.25)',
-                        borderRadius: '9999px'
-                      }}
-                    >
-                      {tool}
-                    </span>
-                  ))}
+                <h3 className="section-subtitle">Enrollment Criteria &amp; Credentialing</h3>
+                <div className="training-specs-ecosystem">
+                  {program.targetAudience && (
+                    <div className="training-spec-card">
+                      <div className="training-spec-card-head">
+                        <div className="training-spec-icon-wrap" style={{ color: '#0284c7', background: 'rgba(56, 189, 248, 0.12)' }}>
+                          <Users size={18} />
+                        </div>
+                        <strong>Target Audience</strong>
+                      </div>
+                      <p>{program.targetAudience}</p>
+                    </div>
+                  )}
+
+                  {program.prerequisites && (
+                    <div className="training-spec-card">
+                      <div className="training-spec-card-head">
+                        <div className="training-spec-icon-wrap" style={{ color: '#10b981', background: 'rgba(16, 185, 129, 0.12)' }}>
+                          <FileCheck2 size={18} />
+                        </div>
+                        <strong>Prerequisites</strong>
+                      </div>
+                      <p>{program.prerequisites}</p>
+                    </div>
+                  )}
+
+                  {program.certification && (
+                    <div className="training-spec-card">
+                      <div className="training-spec-card-head">
+                        <div className="training-spec-icon-wrap" style={{ color: '#f59e0b', background: 'rgba(245, 158, 11, 0.12)' }}>
+                          <Award size={18} />
+                        </div>
+                        <strong>Verified Credential</strong>
+                      </div>
+                      <p>{program.certification}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
