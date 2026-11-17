@@ -12,7 +12,9 @@ import {
   Send, 
   Sparkles,
   Layers,
-  HelpCircle
+  HelpCircle,
+  AlertCircle,
+  Loader2
 } from 'lucide-react';
 import { PageHero } from '../components/ui.jsx';
 import { company, partnershipData } from '../data/site.js';
@@ -32,9 +34,12 @@ export default function PartnerWithUs() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (field) => (e) => {
     setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+    if (errorMessage) setErrorMessage('');
   };
 
   const selectArea = (area) => {
@@ -52,25 +57,69 @@ export default function PartnerWithUs() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const subject = `Partnership Proposal: ${formData.organizationName} - ${formData.partnershipArea} Area`;
-    const body = `PARTNERSHIP APPLICATION
-----------------------------------------
-Organization Name: ${formData.organizationName}
-Contact Person: ${formData.contactPerson}
-Email: ${formData.email}
-Mobile Number: ${formData.phone || 'Not provided'}
-Partnership Area: ${formData.partnershipArea}
+    setErrorMessage('');
 
-Proposal / Message:
-${formData.proposal}
+    if (!formData.organizationName.trim()) {
+      setErrorMessage('Please enter your organization name.');
+      return;
+    }
+    if (!formData.contactPerson.trim()) {
+      setErrorMessage('Please enter your contact person name.');
+      return;
+    }
+    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      setErrorMessage('Please provide a valid email address.');
+      return;
+    }
+    if (!formData.phone.trim()) {
+      setErrorMessage('Please provide a mobile number.');
+      return;
+    }
+    if (!formData.proposal.trim()) {
+      setErrorMessage('Please describe your collaboration proposal or message.');
+      return;
+    }
 
-Submitted via Velvora Solutions Partnership Portal.`;
+    setIsSubmitting(true);
 
-    const mailto = `mailto:${company.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-    setSubmitted(true);
+    try {
+      const response = await fetch('/api/partner', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      let data = {};
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        data = await response.json().catch(() => ({}));
+      } else {
+        const text = await response.text().catch(() => '');
+        data = { error: text || 'Unable to connect to the mail server. Please try again.' };
+      }
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Failed to submit partnership request. Please try again.');
+      }
+
+      setSubmitted(true);
+      setFormData({
+        organizationName: '',
+        contactPerson: '',
+        email: '',
+        phone: '',
+        partnershipArea: 'Technology',
+        proposal: '',
+      });
+    } catch (err) {
+      setErrorMessage(err.message || 'Something went wrong while delivering your partnership request. Please try again or reach out to us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -210,18 +259,18 @@ Submitted via Velvora Solutions Partnership Portal.`;
                   <div className="partner-success-icon-box">
                     <CheckCircle2 size={44} />
                   </div>
-                  <h3 className="partner-success-title">Partnership Request Initialized!</h3>
+                  <h3 className="partner-success-title">Thank You for Reaching Out!</h3>
                   <p className="partner-success-desc">
-                    Your default email client has opened with your proposal. You can also send materials directly to{' '}
-                    <strong>{company.email}</strong>.
+                    Your partnership request has been received successfully and an automated confirmation email has been dispatched to your inbox.
                   </p>
-                  <p style={{ fontSize: '.88rem', color: '#334155', marginTop: '12px' }}>
-                    Our team looks forward to reviewing your organization's goals and discussing how we can grow together.
+                  <p style={{ fontSize: '.88rem', color: '#64748b', marginTop: '12px' }}>
+                    Our strategic alliances and leadership team will review your proposal and connect with you within 1–2 business days.
                   </p>
                   <button
                     type="button"
                     onClick={() => {
                       setSubmitted(false);
+                      setErrorMessage('');
                       setFormData({
                         organizationName: '',
                         contactPerson: '',
@@ -239,6 +288,13 @@ Submitted via Velvora Solutions Partnership Portal.`;
                 </div>
               ) : (
                 <form className="partner-form" onSubmit={handleSubmit}>
+                  {errorMessage && (
+                    <div className="partner-form-error" role="alert" style={{ background: '#fef2f2', border: '1px solid #fecaca', color: '#b91c1c', padding: '12px 16px', borderRadius: '8px', fontSize: '13.5px', display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.25rem' }}>
+                      <AlertCircle size={18} style={{ flexShrink: 0 }} />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
+
                   <div className="partner-field-row">
                     <div className="partner-field">
                       <label htmlFor="partner-org" className="partner-label">
@@ -352,9 +408,22 @@ Submitted via Velvora Solutions Partnership Portal.`;
                     />
                   </div>
 
-                  <button type="submit" className="btn btn--orange btn--block partner-submit-btn">
-                    <span>Submit Partnership Request</span>
-                    <Send size={16} aria-hidden="true" />
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting} 
+                    className="btn btn--orange btn--block partner-submit-btn"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 size={16} className="spin-icon" aria-hidden="true" />
+                        <span>Sending Request...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Submit Partnership Request</span>
+                        <Send size={16} aria-hidden="true" />
+                      </>
+                    )}
                   </button>
                 </form>
               )}
