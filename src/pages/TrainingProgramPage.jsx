@@ -138,8 +138,19 @@ export default function TrainingProgramPage() {
     <>
       <PageHero
         eyebrow="Training & Internships"
-        title={program.title}
-        crumbs={['Home', 'Training', program.title]}
+        title={
+          program.id === 'internship-program' ? (
+            <>
+              <span>Internship Program</span>
+              <span className="training-hero-sub-title">
+                - Live Industry Projects
+              </span>
+            </>
+          ) : (
+            program.title
+          )
+        }
+        crumbs={['Home', 'Training', program.id === 'internship-program' ? 'Internship Program' : program.title]}
       >
         {program.lead}
       </PageHero>

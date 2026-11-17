@@ -37,6 +37,7 @@ import {
 import { services } from '../data/site.js';
 import Icon from '../components/Icon.jsx';
 import { PageHero } from '../components/ui.jsx';
+import EpublishingProductionWheel from '../components/EpublishingProductionWheel.jsx';
 
 function getSubServiceMeta(id = '') {
   switch (id) {
@@ -390,25 +391,29 @@ export default function ServicePage() {
               </div>
             </div>
 
-            <ol className="svc-process-list">
-              {s.process.map((p, idx) => {
-                const cleanTitle = p.step.replace(/^\d+[\.\s\-]+/, '');
-                const stepIcons = [Search, FileCode, Layers, ShieldCheck, Rocket, Cpu, CheckCircle2, Zap];
-                const StepIcon = stepIcons[idx % stepIcons.length];
-                return (
-                  <li key={idx} className="svc-process-item">
-                    <div className="svc-process-header">
-                      <span className="step-num">{String(idx + 1).padStart(2, '0')}</span>
-                      <span className="step-icon-bubble">
-                        <StepIcon size={18} />
-                      </span>
-                      <h4 className="svc-process-title">{cleanTitle}</h4>
-                    </div>
-                    <p className="svc-process-desc">{p.desc}</p>
-                  </li>
-                );
-              })}
-            </ol>
+            {s.slug === 'epublishing' ? (
+              <EpublishingProductionWheel />
+            ) : (
+              <ol className="svc-process-list">
+                {s.process.map((p, idx) => {
+                  const cleanTitle = p.step.replace(/^\d+[\.\s\-]+/, '');
+                  const stepIcons = [Search, FileCode, Layers, ShieldCheck, Rocket, Cpu, CheckCircle2, Zap];
+                  const StepIcon = stepIcons[idx % stepIcons.length];
+                  return (
+                    <li key={idx} className="svc-process-item">
+                      <div className="svc-process-header">
+                        <span className="step-num">{String(idx + 1).padStart(2, '0')}</span>
+                        <span className="step-icon-bubble">
+                          <StepIcon size={18} />
+                        </span>
+                        <h4 className="svc-process-title">{cleanTitle}</h4>
+                      </div>
+                      <p className="svc-process-desc">{p.desc}</p>
+                    </li>
+                  );
+                })}
+              </ol>
+            )}
           </div>
         </section>
       )}
@@ -591,17 +596,38 @@ export default function ServicePage() {
                     <span className="svc-benefit-card__icon-wrap svc-benefit-card__icon-wrap--emerald">
                       <CheckCircle2 size={20} />
                     </span>
-                    <h3 className="svc-benefit-card__title">Verified Delivery Benefits</h3>
+                    <div>
+                      <span className="svc-benefit-eyebrow">Enterprise Delivery</span>
+                      <h3 className="svc-benefit-card__title">Key Deliverables &amp; Outcomes</h3>
+                    </div>
                   </div>
                   <ul className="svc-benefit-checklist">
-                    {s.benefits.map((b, i) => (
-                      <li key={i} className="svc-benefit-checkitem">
-                        <span className="svc-check-circle">
-                          <Check size={14} />
-                        </span>
-                        <span>{b}</span>
-                      </li>
-                    ))}
+                    {s.benefits.map((b, i) => {
+                      const colonIdx = b.indexOf(':');
+                      if (colonIdx > 0 && colonIdx < 55) {
+                        const title = b.slice(0, colonIdx).trim();
+                        const desc = b.slice(colonIdx + 1).trim();
+                        return (
+                          <li key={i} className="svc-benefit-checkitem">
+                            <span className="svc-check-circle">
+                              <Check size={14} />
+                            </span>
+                            <div className="svc-benefit-text-wrap">
+                              <strong className="svc-benefit-item-title">{title}</strong>
+                              <span className="svc-benefit-item-desc">{desc}</span>
+                            </div>
+                          </li>
+                        );
+                      }
+                      return (
+                        <li key={i} className="svc-benefit-checkitem">
+                          <span className="svc-check-circle">
+                            <Check size={14} />
+                          </span>
+                          <span>{b}</span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               )}
@@ -613,17 +639,38 @@ export default function ServicePage() {
                     <span className="svc-benefit-card__icon-wrap svc-benefit-card__icon-wrap--blue">
                       <ShieldCheck size={20} />
                     </span>
-                    <h3 className="svc-benefit-card__title">The Velvora Advantage</h3>
+                    <div>
+                      <span className="svc-benefit-eyebrow">Strategic Value</span>
+                      <h3 className="svc-benefit-card__title">The Velvora Advantage</h3>
+                    </div>
                   </div>
                   <ul className="svc-benefit-checklist">
-                    {s.whyVelvora.map((w, i) => (
-                      <li key={i} className="svc-benefit-checkitem">
-                        <span className="svc-check-circle svc-check-circle--blue">
-                          <Check size={14} />
-                        </span>
-                        <span>{w}</span>
-                      </li>
-                    ))}
+                    {s.whyVelvora.map((w, i) => {
+                      const colonIdx = w.indexOf(':');
+                      if (colonIdx > 0 && colonIdx < 55) {
+                        const title = w.slice(0, colonIdx).trim();
+                        const desc = w.slice(colonIdx + 1).trim();
+                        return (
+                          <li key={i} className="svc-benefit-checkitem">
+                            <span className="svc-check-circle svc-check-circle--blue">
+                              <Check size={14} />
+                            </span>
+                            <div className="svc-benefit-text-wrap">
+                              <strong className="svc-benefit-item-title">{title}</strong>
+                              <span className="svc-benefit-item-desc">{desc}</span>
+                            </div>
+                          </li>
+                        );
+                      }
+                      return (
+                        <li key={i} className="svc-benefit-checkitem">
+                          <span className="svc-check-circle svc-check-circle--blue">
+                            <Check size={14} />
+                          </span>
+                          <span>{w}</span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               )}

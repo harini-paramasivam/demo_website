@@ -964,16 +964,18 @@ export const services = [
       { step: '5. Deliver', desc: 'Final files, delivered on time with a quality report.' },
     ],
     benefits: [
-      '100% Guaranteed Retailer Acceptance on Amazon Kindle, Apple Books, Kobo, and Google Play',
-      'Zero-Error EPUBCheck Certification and complete WCAG accessibility compliance',
-      'Preserved editorial integrity for footnotes, multi-column layouts, and typography',
-      'Global distribution ready with embedded ONIX metadata and retail packaging',
-      'Rapid SLA turnaround for frontlist releases and high-volume backlist catalogues',
+      '100% Guaranteed Retailer Acceptance: Certified for Amazon Kindle, Apple Books, Kobo, and Google Play.',
+      'Zero-Error EPUBCheck Certification: Full compliance with IDPF / W3C standards and EPUB Accessibility 1.1.',
+      'Preserved Typographical Integrity: Pixel-accurate reproduction of footnotes, drop caps, multi-column grids, and poetry.',
+      'Global Distribution Readiness: Embedded ONIX 3.0 metadata, cover assets, and validated retailer packaging.',
+      'High-Velocity Conversion Capacity: Dedicated multi-format pipelines delivering 500+ titles monthly under strict SLAs.',
     ],
     whyVelvora: [
-      'Specialist Publishing Craft: Deep domain expertise in book typography, grid layouts, and reader engines.',
-      'Comprehensive Physical Device QA: Verified across iPads, Kindle Paperwhites, Android, and screen readers.',
-      'High-Volume Conversion Capacity: Scalable pipelines capable of delivering 500+ titles per month without quality degradation.',
+      'Specialist Publishing Craftsmanship: Decades of combined editorial and digital composition experience in commercial and academic book publishing.',
+      'Exhaustive Real-Device QA: Every title verified on physical Apple iPad, Kindle Paperwhite, Kobo Clara, Android, and desktop reader engines.',
+      'Accessibility-Native Production: Built-in WCAG 2.2 AA accessibility, screen-reader optimizations, and tactile reading structures from day one.',
+      'Direct Scalable Pre-Press Ingestion: Flawless conversions from Adobe InDesign packages, QuarkXPress, print-ready PDFs, or scanned hardcopies.',
+      'Dedicated Account Engagement Lead: Single point of contact offering proactive progress tracking, proof iterations, and rush turnaround SLAs.',
     ],
     whoItsFor: 'Book publishers, journal publishers, educational publishers, authors, and corporate content teams.',
     faqs: [
@@ -1005,11 +1007,18 @@ export const services = [
       { title: 'Output Transformation', desc: 'XML to HTML, EPUB, PDF, and other formats using XSLT.' },
     ],
     benefits: [
-      'Reuse content across formats and channels',
-      'Faster updates and corrections',
-      'Better searchability and discoverability',
-      'Lower long-term production cost',
-      'Easier accessibility compliance',
+      'True Single-Source Publishing: Create content once and transform automatically into print PDF, accessible EPUB 3, web HTML, and mobile feeds.',
+      'Universal Discoverability & Searchability: Deep semantic indexing conforming to scholarly standards for PubMed Central, Crossref, and Google Scholar.',
+      'Accelerated Production Cycles: Automated content transformations cut manual composition and proofing turnaround by over 60%.',
+      'Long-Term Digital Preservation: Standards-based archival XML formats designed for future-proof, multi-decade digital asset longevity.',
+      'Substantial Production Cost Savings: Elimination of duplicate pre-press re-keying and redundant formatting across downstream channels.',
+    ],
+    whyVelvora: [
+      'Full DTD & Schema Authority: Deep architectural mastery of JATS 1.3, BITS 2.1, DITA 1.3, DocBook 5.0, TEI, and custom proprietary XML schemas.',
+      'Zero-Tolerance Schematron QA: Dual-layer automated parser testing combined with specialist manual editorial review for 100% schema compliance.',
+      'Custom XSLT Transformation Pipelines: Tailored transformation stylesheets engineered for automated headless compilation into PDF, HTML, and EPUB.',
+      'Legacy Unstructured Conversion: High-precision extraction of headings, author ORCIDs, formulas, and complex tables from Word, PDF, and scanned print.',
+      'High-Throughput Global Ingestion: Proven infrastructure capable of processing over 50,000 journal and monograph pages per month without delays.',
     ],
     process: [
       { step: '01. Analyze & Audit', desc: 'We inspect your input manuscripts, citation styles, and target DTD schemas.' },
@@ -1199,18 +1208,18 @@ export const services = [
       { step: '6. Train and Support', desc: 'Optional training and ongoing support for your team.' },
     ],
     benefits: [
-      '100% Guaranteed Conformance to WCAG 2.2 Level AA / AAA, PDF/UA, and Section 508',
-      'Dual Verification: Automated scanner passes plus certified assistive tech testing (JAWS, NVDA, VoiceOver)',
-      'Mitigate Legal & Regulatory Exposure under ADA Title III and the European Accessibility Act (EAA)',
-      'Formal VPAT / ACR documentation delivered ready for government and institutional procurement',
-      'High-velocity batch remediation pipelines for legacy back-catalogues and continuous publishing',
+      '100% Guaranteed Conformance: Full adherence to WCAG 2.2 Level AA / AAA, PDF/UA (ISO 14289), and Section 508 standards.',
+      'Dual-Layer Verification: Automated compliance scanner passes coupled with certified human testing on real assistive technologies.',
+      'Complete Legal Risk Elimination: Full protection against digital discrimination liabilities under ADA Title III and the European Accessibility Act.',
+      'Formal VPAT & ACR Certifications: Detailed Voluntary Product Accessibility Templates delivered ready for government and enterprise procurement.',
+      'High-Volume Enterprise Remediation: Scalable batch processing for legacy backlists, courseware, and ongoing multi-format corporate releases.',
     ],
     whyVelvora: [
-      'Certified Universal Design and IAAP-aligned accessibility engineering specialists',
-      'Zero distortion of visual layout, branding aesthetics, or typographical precision',
-      'Full multi-format coverage spanning EPUB, PDF, Web Apps, Word, PowerPoint, and Excel workbooks',
-      'Direct integration with enterprise CMS and publishing workflows for automated compliance checks',
-      'Dedicated compliance specialist assigned to every account with SLA-backed delivery turnaround',
+      'Certified IAAP Specialists: Senior accessibility engineers credentialed in CPACC, WAS, and Universal Design principles.',
+      'Zero Layout Distortion Guarantee: Visual layout, typography, branding colors, and graphic fidelity are preserved without compromise.',
+      'End-to-End Multi-Format Scope: Unified remediation across EPUB 3, interactive PDF, web portals, Word, PowerPoint, and Excel workbooks.',
+      'Real Assistive Tech User Testing: Hands-on evaluation with JAWS, NVDA, Apple VoiceOver, Android TalkBack, and refreshable Braille displays.',
+      'Proactive Account Partnerships: Dedicated compliance liaison delivering executive progress reports, remediation certificates, and continuous support.',
     ],
     whoItsFor: 'Commercial book publishers, university presses, higher education institutions, government bodies, healthcare systems, and corporate communications teams.',
     whyItMatters: [
@@ -1272,12 +1281,19 @@ export const services = [
       { step: '4. Proofing', desc: 'First proofs, corrections, and second proofs.' },
       { step: '5. Final Files', desc: 'Print-ready PDF, source files, and digital outputs.' },
     ],
+    benefits: [
+      '100% Press-Ready PDF/X Output: Certified PDF/X-1a and PDF/X-4 files with calibrated color profiles, printer bleeds, and embedded fonts.',
+      'Multi-Format Reusable Assets: InDesign and LaTeX master files built with structured paragraph and character styles for seamless digital extraction.',
+      'Strict Editorial House-Style Fidelity: Perfect alignment with Chicago Manual of Style, APA, Oxford, or custom publisher brand guidelines.',
+      'Structured Proofing Management: Transparent galley proofs, author correction cycles, and revised final page proofs with tracked revision audit.',
+      'Day-One Accessibility Readiness: Heading structure, alt-text placeholders, and logical reading orders embedded directly within the layout templates.',
+    ],
     whyVelvora: [
-      'Consistent, house-style-accurate pages',
-      'Fewer proof rounds through careful first-pass quality',
-      'Source files built for multi-format reuse',
-      'Accessibility considered from the first layout, not added at the end',
-      'Clear turnaround times and dedicated project contacts',
+      'Over 99.8% First-Pass Proof Accuracy: Meticulous first-pass composition that drastically reduces proof correction rounds and overall author cost.',
+      'Multi-Engine Composition Mastery: Senior compositors operating across Adobe InDesign, QuarkXPress, LaTeX, and 3B2 Arbortext.',
+      'Integrated Digital Conversion Synergy: Layouts structured to eliminate duplicate pre-press expenses when converting to reflowable EPUB and XML.',
+      'Dedicated Senior Production Leads: Dedicated production coordinator providing transparent scheduling, live tracking, and emergency rush deliveries.',
+      'High-Volume Enterprise Scalability: Tested monthly composition capacity exceeding 20,000 complex academic monograph, textbook, and journal pages.',
     ],
     whoItsFor: 'Book publishers, university presses, scholarly journals, societies, authors, and corporate communications teams.',
     faqs: [
@@ -1334,11 +1350,19 @@ export const services = [
       { step: '4. Accessibility Testing', desc: 'Checked with screen readers and math-capable tools.' },
       { step: '5. Delivery', desc: 'Final files with a quality summary.' },
     ],
+    benefits: [
+      'Pixel-Perfect MathML & LaTeX Precision: Clean, standard-compliant semantic markup conforming to W3C MathML 3.0 recommendations.',
+      'High-Complexity Mathematical Composition: Flawless alignment of multi-line equation arrays, tensor notations, matrices, and chemical structures.',
+      'Accessible Spoken Equation Readouts: Seamless screen-reader integration with MathPlayer, NVDA, and JAWS for audio spoken mathematical syntax.',
+      'Dual Print & Web Output Packages: Print-ready vector EPS/PDF equations paired with web-optimized SVG vectors and MathML source.',
+      'Editorial Integrity Guarantee: Zero typographical drop-outs, inverted signs, or misaligned superscripts and subscripts.',
+    ],
     whyVelvora: [
-      'Specialists who understand mathematical notation',
-      'Careful verification of every equation',
-      'Math that remains readable on all devices and by assistive technology',
-      'One workflow for print, EPUB, web, and PDF',
+      'STEM Subject-Matter Specialists: Dedicated typesetting leads holding advanced STEM degrees ensuring mathematical and conceptual fidelity.',
+      'Rigorous Dual-Pass Equation Verification: Independent line-by-line verification comparing rendered equations directly against author source manuscripts.',
+      'Automated Ingestion from Legacy Math: Proprietary macros and converters transforming Word Equation Editor and MathType into clean LaTeX/MathML.',
+      'Universal Cross-Device Readability: Formulas render sharply on high-density displays, e-ink readers, web browsers, and offset printing presses.',
+      'Academic Journal & Textbook SLAs: Dependable, fast-track delivery cycles tailored for peer-reviewed STEM journals and university presses.',
     ],
     faqs: [
         {
@@ -1422,11 +1446,18 @@ export const services = [
       { step: '5. Deliver', desc: 'Final files in the format your systems need.' },
     ],
     benefits: [
-      'Better discoverability in search and retailer platforms',
-      'Faster, easier navigation for readers',
-      'Consistent data across all your titles',
-      'Cleaner feeds to distributors, libraries, and aggregators',
-      'Support for compliance and accessibility requirements',
+      'Maximum Retail & Academic Discoverability: Enhanced search rankings and algorithmic visibility across Amazon, libraries, and scholarly discovery engines.',
+      'Standardized Retail Feed Compliance: Validated ONIX 3.0 XML packages ready for automated ingestion by Ingram, Baker & Taylor, and global distributors.',
+      'Intuitive Reader Navigation: Detailed back-of-the-book subject and name indexes with verified page locators and reciprocal cross-references.',
+      'Consistent Catalog Architecture: Normalized contributor roles, standardized subject codes (BISAC/Thema), and clean bibliographic records.',
+      'Accessible Indexing for Digital Editions: Hyperlinked index locators optimized for reflowable EPUB 3 and digital PDF editions.',
+    ],
+    whyVelvora: [
+      'Professional Human Indexing Specialists: Certified indexers trained to ISO 999 and ANSI/NISO Z39.4 standards across academic, trade, and legal texts.',
+      'Comprehensive Classification Vocabularies: In-depth expertise in BISAC, BIC/Thema, Library of Congress (LCSH), MeSH, and custom ontologies.',
+      'Catalog Data Enrichment & Clean-Up: Systematic auditing and normalization of historical publishing databases, filling critical metadata gaps.',
+      'Automated Machine-Assisted Tagging: Intelligent entity extraction combined with human editorial verification for rapid catalog classification.',
+      'Multilingual Metadata Capabilities: Comprehensive tagging and indexing support across English, European, and regional international publications.',
     ],
     faqs: [
         {
@@ -1482,11 +1513,19 @@ export const services = [
       { step: '5. Validate', desc: 'Quality sampling and format checks.' },
       { step: '6. Deliver', desc: 'Final files with a quality report.' },
     ],
+    benefits: [
+      '99.95%+ Character Accuracy Guarantee: Dual-engine OCR extraction validated by trained human proofreaders and specialized domain dictionaries.',
+      'Searchable ISO-Compliant Archival PDFs: Searchable text layer conforming to ISO 19005 (PDF/A-1b and PDF/A-2u) for permanent digital preservation.',
+      'Preserved Original Document Geometry: Exact retention of complex multi-column columns, mathematical tables, footnotes, margins, and embedded figures.',
+      'Structured Downstream Digital Outputs: Pristine conversion into editable Word, XML, JATS, and reflowable EPUB 3 directly from scanned originals.',
+      'Non-Destructive Handling of Delicate Archives: Safe digitization workflows for rare historical manuscripts, aged journals, and bound institutional records.',
+    ],
     whyVelvora: [
-      'Combination of automated OCR and human proofreading',
-      'Scalable teams for large archives',
-      'Output ready for XML, EPUB, accessible PDF, and web publishing',
-      'Secure handling of valuable and confidential material',
+      'Advanced Optical Image Pre-Processing: Automated deskewing, binarization, artifact de-speckling, and contrast equalization before character recognition.',
+      'Human-in-the-Loop Quality Assurance: Every low-confidence character and ambiguous ligature is individually cross-checked by native-language proofreaders.',
+      'High-Throughput Archive Scalability: Industrial scanning and recognition infrastructure capable of converting millions of pages annually.',
+      'Multi-Lingual & Historical Script Mastery: Proven accuracy across non-Latin scripts, accented European alphabets, and vintage typography.',
+      'Secure Chain of Custody: Confidential, air-gapped handling protocols protecting sensitive legal, government, and proprietary corporate documents.',
     ],
     faqs: [
         {
@@ -1573,10 +1612,18 @@ export const services = [
       { step: '4. Deliver', desc: 'Files in your preferred formats, ready to upload.' },
     ],
     benefits: [
-      'Meet accessibility laws and procurement requirements',
-      'Reach deaf, hard of hearing, blind, and low-vision audiences',
-      'Improve search, engagement, and understanding',
-      'Support learners using a second language',
+      '99%+ Verbatim & Clean-Read Accuracy: Professional human transcribers ensuring exact fidelity to speaker dialogue, technical jargon, and terminology.',
+      'Full Legal & Regulatory Conformance: Guaranteed compliance with FCC mandates, ADA Title III, Section 508, and WCAG 2.2 Level AA guidelines.',
+      'Broadcast & Streaming Ready Deliverables: Accurate time-coded files in SRT, VTT, SCC, SMPTE-TT, and DFXP formats matching Netflix and LMS specifications.',
+      'Rich Acoustic & Visual Narration: Precise sound effect descriptors, multi-speaker identifications, and synchronized spoken audio description tracks.',
+      'Universal Audience Reach: Increased viewer engagement, comprehension for non-native speakers, and full inclusion for Deaf and blind audiences.',
+    ],
+    whyVelvora: [
+      'Trained Audio Description Narrators: Professional voice artists and scriptwriters who craft concise, elegant visual narrations during natural pauses.',
+      'Strict Human-in-the-Loop Quality Review: Double-pass human review eliminating auto-captioning errors, mistranslations, and timing drift.',
+      'Fast-Track Turnaround SLAs: Flexible delivery windows from 12-hour rush turnarounds to high-volume weekly broadcast batch processing.',
+      'Custom Style Guide Adherence: Exact alignment with publisher, academic, or corporate captioning formatting and terminology standards.',
+      'Accessible Media Player Integration: Technical consulting and media overlays for embedding synchronized captions into EPUB 3 and web portals.',
     ],
     faqs: [
         {
@@ -1622,11 +1669,18 @@ export const services = [
       { title: 'Continuous Quality Monitoring', desc: 'Machine telemetry dashboards tracking throughput, error rates, and human verification bottlenecks.' }
     ],
     benefits: [
-      'Up to 70% reduction in document processing time',
-      'Elimination of repetitive manual re-keying and copy errors',
-      'Consistent structural and metadata compliance',
-      'Scalable throughput during seasonal volume spikes',
-      '100% human-verified quality assurance guarantee'
+      'Accelerated Cycle Times: Up to 70% reduction in manual document ingestion and formatting turnaround.',
+      'Eliminated Copy & Data Errors: Systematic elimination of repetitive re-keying mistakes and typographical inconsistencies.',
+      'Enforced Structural Compliance: Deterministic schema enforcement ensuring 100% adherence to JATS, BITS, EPUB, and internal rules.',
+      'Elastic Cloud Throughput: Dynamic autoscaling pipelines engineered to ingest massive seasonal publishing volume spikes without delays.',
+      'Guaranteed Zero-Hallucination Delivery: Strict human-in-the-loop expert gates validating every machine-generated deliverable.',
+    ],
+    whyVelvora: [
+      'Hybrid Cognitive & Human Architecture: Combining high-speed LLM and OCR pipelines with certified publishing domain specialists.',
+      'Custom Domain Fine-Tuning: Proprietary prompt models and taxonomies tailored specifically to scientific, legal, and academic vocabularies.',
+      'Non-Destructive Continuous Auditing: Real-time telemetry dashboards tracking precision, recall, and turnaround throughput at every stage.',
+      'Turnkey Enterprise Integration: Secure RESTful API hooks, automated cloud bucket watchers, and native CMS/DAM synchronization.',
+      'Air-Gapped Confidentiality Protocols: Complete IP protection guaranteeing your proprietary content is never utilized for public AI training.',
     ],
     process: [
       { step: '1. Workflow Audit', desc: 'We map your current content production bottlenecks and identify high-ROI automation targets.' },
@@ -1679,11 +1733,18 @@ export const services = [
       { title: 'Security & DevOps', desc: 'Automated CI/CD deployment pipelines, containerization (Docker), and cloud infrastructure management.' }
     ],
     benefits: [
-      'Accessible by design across all assistive devices',
-      'Scalable cloud architecture engineered for enterprise growth',
-      'Rapid release cycles powered by modern CI/CD automation',
-      'Clean, maintainable, and fully documented source code',
-      'Zero vendor lock-in with open, modern standards'
+      'Accessibility-Native Engineering: Universal WCAG 2.2 Level AA compliance built directly into components, navigation, and ARIA architectures.',
+      'Enterprise Cloud Scalability: Modern microservice architectures designed for ultra-low latency and zero downtime under high concurrency.',
+      'Accelerated Deployment Sprints: Streamlined CI/CD automation and automated test coverage cutting release cycles from months to days.',
+      'Clean, Maintainable Source Code: Strictly typed TypeScript, modular component design, and comprehensive architecture documentation.',
+      'Zero Vendor Lock-In: Open, standardized technology stacks (React, Node, Python, Docker) giving you full ownership of your IP.',
+    ],
+    whyVelvora: [
+      'Specialized Publishing & EdTech Tech Stack: Deep experience building reading platforms, assessment engines, and digital asset portals.',
+      'Full-Cycle Agile Product Delivery: Dedicated cross-functional sprint pods featuring technical leads, UI/UX designers, and QA engineers.',
+      'Certified Assistive Tech Verification: Real-world manual testing with NVDA, JAWS, VoiceOver, and keyboard-only navigation regimens.',
+      'High-Performance Cloud Infrastructure: Production-hardened deployments on AWS, Azure, and Vercel with automated failover and caching.',
+      'Transparent Engineering Governance: Direct access to Git repositories, sprint burndown telemetry, and bi-weekly executive demo reviews.',
     ],
     process: [
       { step: '1. Discovery & Architecture', desc: 'Technical requirements gathering, system architecture planning, and UX wireframing.' },
@@ -1736,11 +1797,18 @@ export const services = [
       { title: 'Conversion & ROI Analytics', desc: 'Deep-funnel attribution and user journey tracking to optimize marketing and operational spend.' }
     ],
     benefits: [
-      'Real-time visibility into mission-critical KPIs',
-      'Automated reporting saving hundreds of manual staff hours',
-      'Data-backed strategic decision-making with high confidence',
-      'Unified single source of truth across all business departments',
-      'Accessible, color-blind-compliant dashboard visualizations'
+      'Executive Telemetry Visibility: Real-time, interactive dashboards providing instant clarity on critical commercial and operational KPIs.',
+      'Massive Labor Savings: Automated end-to-end ETL pipelines replacing hundreds of manual hours spent compiling error-prone spreadsheets.',
+      'Predictive Decision Intelligence: Machine learning models forecasting audience adoption, customer churn, and inventory requirements.',
+      'Unified Data Governance: A single, verified source of truth aggregating disparate enterprise databases into clean analytical warehouses.',
+      'Universal Visual Inclusivity: High-contrast, color-blind-compliant charts and screen-reader-accessible telemetry interfaces.',
+    ],
+    whyVelvora: [
+      'Enterprise BI Platform Mastery: Certified architects in Microsoft Power BI, Tableau, Looker Studio, and bespoke React/D3 dashboards.',
+      'Complex Pipeline Engineering: Robust data pipelines handling structured, semi-structured, and unstructured streaming datasets with zero data loss.',
+      'Publishing & Media Domain Metrics: Specialized analytics for reader drop-off, journal impact factors, royalty tiers, and subscription retention.',
+      'SOC-Grade Data Security: End-to-end encryption in transit and at rest with strict role-based row-level security (RLS) enforcement.',
+      'Hands-On Leadership Enablement: Thorough documentation, enterprise data dictionaries, and hands-on enablement workshops for your executive team.',
     ],
     process: [
       { step: '1. Data Audit', desc: 'We inventory your data sources, schemas, and analytical requirements.' },
@@ -1793,11 +1861,18 @@ export const services = [
       { title: 'Attribution & Performance Telemetry', desc: 'Transparent reporting tracking cost-per-lead, pipeline attribution, and lifetime client value.' }
     ],
     benefits: [
-      'Higher organic search rankings for competitive commercial keywords',
-      'Consistent inbound lead generation from qualified prospects',
-      'Lower cost-per-acquisition through continuous campaign optimization',
-      'Enhanced brand authority and industry thought leadership',
-      'Transparent, data-backed ROI reporting with zero vanity metrics'
+      'Dominant Search Engine Visibility: High organic search engine rankings for competitive commercial, academic, and technology keywords.',
+      'Predictable Inbound Pipeline: Consistent flow of qualified prospective leads driven by targeted intent and conversion-optimized funnels.',
+      'Maximized Advertising Efficiency: Lower cost-per-acquisition (CPA) achieved through continuous algorithmic A/B testing and negative-keyword pruning.',
+      'Authoritative Thought Leadership: High-impact whitepapers, technical articles, and case studies establishing industry credibility.',
+      'Transparent Financial Telemetry: Real-time attribution tracking cost-per-lead, conversion rates, and closed customer lifetime value.',
+    ],
+    whyVelvora: [
+      'Deep Technical SEO Specialization: Expert remediation of Core Web Vitals, server response latencies, and complex JSON-LD structured schemas.',
+      'Omnichannel Execution Engine: Cohesive campaigns synchronizing high-intent Google Search ads, LinkedIn B2B targeting, and content marketing.',
+      'Heuristic Conversion Optimization: Rigorous UX audits, user session heatmaps, and frictionless checkout/lead capture architectures.',
+      'Editorial & Scientific Tone of Voice: Seasoned technical copywriters who understand enterprise B2B audiences and complex domain products.',
+      'Zero-Vanity Metrics Accountability: Transparent weekly sprint reporting focused exclusively on pipeline velocity, qualified leads, and measurable ROI.',
     ],
     process: [
       { step: '1. Landscape Audit', desc: 'We analyze your website health, competitor keywords, and current conversion funnels.' },
