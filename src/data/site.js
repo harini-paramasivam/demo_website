@@ -338,7 +338,7 @@ export const solutionsData = [
       'Improved discoverability with enriched metadata',
       'Reduced production errors and duplication',
     ],
-    caseStudy: 'Making a 5,000‑Title EPUB Library Accessible',
+    caseStudy: 'Making a 5000‑Title EPUB Library Accessible',
     caseStudyLink: '/resources/case-studies',
     ctaText: 'Discuss Your Publishing Project',
     ctaSubject: 'Publishing Project',
@@ -920,11 +920,11 @@ export const teamMembers = [
     alt: 'Portrait of Anand Natarajan, Head of Operations',
   },
   {
-    name: 'Shanmugham',
+    name: 'Shanmugam',
     designation: 'Head of Digital Marketing',
     department: 'Digital Marketing',
-    bio: '“Shanmugham has 12+ years of experience in marketing and leads our Digital Marketing department. He is certified in Advanced SEO and Strategic Growth.”',
-    alt: 'Portrait of Shanmugham, Head of Digital Marketing',
+    bio: '“Shanmugam has 12+ years of experience in marketing and leads our Digital Marketing department. He is certified in Advanced SEO and Strategic Growth.”',
+    alt: 'Portrait of Shanmugam, Head of Digital Marketing',
   },
   {
     name: 'Hema',
@@ -1877,7 +1877,7 @@ export const content = {
     items: [
       {
         id: 'case-1',
-        title: 'Case Study 1: Making a 5,000-Title EPUB Library Accessible',
+        title: 'Case Study 1: Making a 5000-Title EPUB Library Accessible',
         challenge: 'A leading publisher needed its back-catalogue to meet EPUB Accessibility 1.1 requirements ahead of a regulatory deadline.',
         solution: 'Velvora upgraded EPUB 2 files to EPUB 3, added alt text, semantic structure, and accessibility metadata, and validated using EPUBCheck and Ace.',
         result: '99.8% of titles passed accessibility validation, delivered 3 weeks ahead of the deadline.',
@@ -1904,13 +1904,13 @@ export const content = {
     empty: 'No client testimonials published yet.',
     items: [
       {
-        quote: 'Velvora delivered over 5,000 accessible EPUB 3 files that passed EPUBCheck and Ace by DAISY on first submission. Their team is responsive, meticulous, and truly understands accessibility law.',
+        quote: 'Velvora delivered over 5000 accessible EPUB 3 files that passed EPUBCheck and Ace by DAISY on first submission. Their team is responsive, meticulous, and truly understands accessibility law.',
         author: 'Dr. Sarah Jenkins',
         role: 'Head of Digital Publishing',
         company: 'Oxford Academic Press Network',
         service: 'EPUB 3 Accessibility & Remediation',
         rating: 5,
-        metric: '5,000+ Titles Certified',
+        metric: '5000+ Titles Certified',
         tag: 'Academic Publishing',
         initials: 'SJ'
       },

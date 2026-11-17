@@ -50,7 +50,7 @@ const specialistMeta = {
     cert: 'Agile & Security Certified',
     tags: ['Operations Governance', 'SLA & Security Compliance', 'Cross-Team Delivery']
   },
-  'Shanmugham': {
+  'Shanmugam': {
     initials: 'SM',
     icon: TrendingUp,
     exp: '12+ Years Exp',

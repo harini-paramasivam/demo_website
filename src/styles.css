@@ -2583,9 +2583,9 @@ main:focus { outline: none; }
 }
 .accreditation-pill {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 18px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.9) 100%);
   border: 1px solid rgba(56, 189, 248, 0.3);
   border-radius: 14px;
@@ -2603,12 +2603,29 @@ main:focus { outline: none; }
 .accreditation-pill__icon {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 9px;
   background: rgba(2, 132, 199, 0.1);
   color: #0284c7;
   flex-shrink: 0;
+  margin-top: 1px;
+}
+.accreditation-pill__body {
+  min-width: 0;
+  flex: 1;
+}
+.accreditation-pill__title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.25;
+  margin-bottom: 3px;
+}
+.accreditation-pill__desc {
+  font-size: 0.74rem;
+  color: #64748b;
+  line-height: 1.35;
 }
 
 
@@ -21745,6 +21762,24 @@ main:focus { outline: none; }
     width: 100% !important;
     justify-content: center !important;
     text-align: center !important;
+  }
+
+  /* Company Overview Ecosystem & Accreditations mobile optimization */
+  .company-ecosystem-visual {
+    padding: 1.25rem 0.75rem !important;
+    border-radius: 18px !important;
+  }
+  .accreditation-strip {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+    gap: 10px !important;
+  }
+  .accreditation-pill {
+    padding: 11px 12px !important;
+    gap: 9px !important;
+  }
+  .accreditation-pill__icon {
+    width: 28px !important;
+    height: 28px !important;
   }
 
   /* GPU-Accelerated Smooth Scrolling Optimizations */

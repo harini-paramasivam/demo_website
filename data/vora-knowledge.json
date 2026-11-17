@@ -1,24 +1,24 @@
 {
   "syncMetadata": {
-    "version": "v1.3.342",
+    "version": "v1.3.358",
     "status": "Synchronized",
-    "lastSynchronized": "2026-11-14T07:07:26.325Z",
-    "sourceHash": "cc8ee7d0cdd33b90e4e7c1e186db7cc52ab408aa8c53221de80a715e5076a685",
+    "lastSynchronized": "2026-11-17T03:53:03.239Z",
+    "sourceHash": "c35363c5ce3618a5294dddb163ff46c507b2cd1e5bad0410257141e2342b5cb0",
     "indexedCount": 66,
     "indexedPages": 63,
     "indexedCareers": 3,
     "errorLogs": [],
     "changelog": [
-      "Synced 63 pages & 3 careers at 2026-11-14T07:07:26.325Z",
-      "Synced 63 pages & 3 careers at 2026-11-14T07:02:23.460Z",
-      "Synced 63 pages & 3 careers at 2026-11-14T07:02:21.978Z",
-      "Synced 63 pages & 3 careers at 2026-11-14T06:56:26.159Z",
-      "Synced 63 pages & 3 careers at 2026-11-14T06:42:29.495Z",
-      "Synced 63 pages & 3 careers at 2026-11-14T03:46:31.925Z",
-      "Synced 63 pages & 3 careers at 2026-11-14T03:46:31.921Z",
-      "Synced 63 pages & 3 careers at 2026-11-13T11:19:24.151Z",
-      "Synced 63 pages & 3 careers at 2026-11-13T11:18:56.426Z",
-      "Synced 63 pages & 3 careers at 2026-11-13T11:18:54.792Z"
+      "Synced 63 pages & 3 careers at 2026-11-17T03:53:03.239Z",
+      "Synced 63 pages & 3 careers at 2026-11-17T03:51:48.448Z",
+      "Synced 63 pages & 3 careers at 2026-11-17T03:51:32.747Z",
+      "Synced 63 pages & 3 careers at 2026-11-17T03:51:31.387Z",
+      "Synced 63 pages & 3 careers at 2026-11-17T03:49:48.911Z",
+      "Synced 63 pages & 3 careers at 2026-11-17T03:49:35.487Z",
+      "Synced 63 pages & 3 careers at 2026-11-17T03:49:22.856Z",
+      "Synced 63 pages & 3 careers at 2026-11-17T03:49:17.138Z",
+      "Synced 63 pages & 3 careers at 2026-11-17T03:49:15.899Z",
+      "Synced 63 pages & 3 careers at 2026-11-17T03:49:09.623Z"
     ]
   },
   "documents": [
@@ -88,7 +88,7 @@
       "url": "/about/our-team",
       "category": "team",
       "summary": "Velvora Solutions is founded and led by Iyshwariya Senthil (Founder & Managing Director) along with certified department heads in digital accessibility, production, technology, and operations.",
-      "content": "Velvora Solutions Leadership and Core Team:\n\nExecutive Founder:\n**Iyshwariya Senthil** — Founder & Managing Director\nBackground: With over 7 years of executive experience in publishing operations, universal design, and WCAG accessibility standards, she guides Velvora’s strategic roadmap. Certified in Universal Design and Publishing Operations.\n\nDepartment Heads & Leadership:\n• **Iyshwariya Senthil** (Founder / Managing Director — Executive Leadership): “Iyshwariya has 7+ years of experience in publishing and accessibility and leads our executive leadership. She is certified in Universal Design and Publishing Operations.”\n\n• **Rajesh Kumar** (Head of Accessibility — Digital Accessibility): “Rajesh has 9 years of experience in accessibility and leads our Digital Accessibility department. He is certified in CPACC and WAS.”\n\n• **Priya Raman** (Head of Production — Production): “Priya has 8 years of experience in publishing and leads our Production department. She is certified in Professional Editorial and Typesetting Standards.”\n\n• **Karthik Subramanian** (Head of Technology — Technology & AI): “Karthik has 10 years of experience in technology and leads our Technology department. He is certified in Cloud Architecture and AI Engineering.”\n\n• **Anand Natarajan** (Head of Operations — Operations): “Anand has 11 years of experience in publishing and technology and leads our Operations department. He is certified in Agile Operations and Information Security.”\n\n• **Shanmugham** (Head of Digital Marketing — Digital Marketing): “Shanmugham has 12+ years of experience in marketing and leads our Digital Marketing department. He is certified in Advanced SEO and Strategic Growth.”\n\n• **Hema** (Business Development Executive — Business Development & Client Relations): “Hema has 2+ years of experience in business development and client engagement. She specializes in strategic client partnerships, market expansion, and tailored service delivery.”\n\nDelivery Teams:\nOur specialists include certified accessibility auditors (CPACC, WAS), XML architects (JATS/BITS), typesetting compositors (InDesign/3B2), and full-stack software engineers.",
+      "content": "Velvora Solutions Leadership and Core Team:\n\nExecutive Founder:\n**Iyshwariya Senthil** — Founder & Managing Director\nBackground: With over 7 years of executive experience in publishing operations, universal design, and WCAG accessibility standards, she guides Velvora’s strategic roadmap. Certified in Universal Design and Publishing Operations.\n\nDepartment Heads & Leadership:\n• **Iyshwariya Senthil** (Founder / Managing Director — Executive Leadership): “Iyshwariya has 7+ years of experience in publishing and accessibility and leads our executive leadership. She is certified in Universal Design and Publishing Operations.”\n\n• **Rajesh Kumar** (Head of Accessibility — Digital Accessibility): “Rajesh has 9 years of experience in accessibility and leads our Digital Accessibility department. He is certified in CPACC and WAS.”\n\n• **Priya Raman** (Head of Production — Production): “Priya has 8 years of experience in publishing and leads our Production department. She is certified in Professional Editorial and Typesetting Standards.”\n\n• **Karthik Subramanian** (Head of Technology — Technology & AI): “Karthik has 10 years of experience in technology and leads our Technology department. He is certified in Cloud Architecture and AI Engineering.”\n\n• **Anand Natarajan** (Head of Operations — Operations): “Anand has 11 years of experience in publishing and technology and leads our Operations department. He is certified in Agile Operations and Information Security.”\n\n• **Shanmugam** (Head of Digital Marketing — Digital Marketing): “Shanmugam has 12+ years of experience in marketing and leads our Digital Marketing department. He is certified in Advanced SEO and Strategic Growth.”\n\n• **Hema** (Business Development Executive — Business Development & Client Relations): “Hema has 2+ years of experience in business development and client engagement. She specializes in strategic client partnerships, market expansion, and tailored service delivery.”\n\nDelivery Teams:\nOur specialists include certified accessibility auditors (CPACC, WAS), XML architects (JATS/BITS), typesetting compositors (InDesign/3B2), and full-stack software engineers.",
       "topics": [
         "Executive Leadership",
         "Iyshwariya Senthil",
@@ -108,7 +108,7 @@
         "priya raman",
         "karthik subramanian",
         "anand natarajan",
-        "shanmugham",
+        "shanmugam",
         "hema"
       ]
     },
@@ -450,7 +450,7 @@
       "url": "/solutions",
       "category": "solution",
       "summary": "Tailored solutions for Book and Journal Publishers covering Typesetting, XML Services, ePublishing, Metadata, EPUB Accessibility. Benefits include: Faster multi‑format publishing; Accessibility compliance built in.",
-      "content": "Industry Solution for Book and Journal Publishers (Publishing & Media):\nKey Challenges Solved:\n  - Multi‑format production (print, EPUB, PDF, web)\n  - Accessibility regulations for e‑books\n  - Large back‑catalogues and tight editorial schedules\n  - Inconsistent metadata affecting discoverability\nWorkflow Stages:\nTypeset → Structure in XML → Produce EPUB/PDF → Enrich with metadata → Validate for accessibility\nServices Included:\nTypesetting, XML Services, ePublishing, Metadata, EPUB Accessibility\nKey Measurable Benefits:\n  - Faster multi‑format publishing\n  - Accessibility compliance built in\n  - Improved discoverability with enriched metadata\n  - Reduced production errors and duplication\nCase Study Reference: Making a 5,000‑Title EPUB Library Accessible",
+      "content": "Industry Solution for Book and Journal Publishers (Publishing & Media):\nKey Challenges Solved:\n  - Multi‑format production (print, EPUB, PDF, web)\n  - Accessibility regulations for e‑books\n  - Large back‑catalogues and tight editorial schedules\n  - Inconsistent metadata affecting discoverability\nWorkflow Stages:\nTypeset → Structure in XML → Produce EPUB/PDF → Enrich with metadata → Validate for accessibility\nServices Included:\nTypesetting, XML Services, ePublishing, Metadata, EPUB Accessibility\nKey Measurable Benefits:\n  - Faster multi‑format publishing\n  - Accessibility compliance built in\n  - Improved discoverability with enriched metadata\n  - Reduced production errors and duplication\nCase Study Reference: Making a 5000‑Title EPUB Library Accessible",
       "topics": [
         "Book and Journal Publishers",
         "Industry Solutions",

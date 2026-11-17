@@ -71,7 +71,7 @@ export default function ResourcePage({ type }) {
                   <div className="trust-metric-label">On-Time SLA Delivery</div>
                 </div>
                 <div className="trust-metric-pod">
-                  <div className="trust-metric-value">5,000+</div>
+                  <div className="trust-metric-value">5000+</div>
                   <div className="trust-metric-label">EPUB &amp; XML Titles Converted</div>
                 </div>
                 <div className="trust-metric-pod">

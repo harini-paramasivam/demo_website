@@ -154,7 +154,7 @@ export default function CompanyOverview() {
                 </span>
               </div>
 
-              <svg viewBox="0 0 460 380" fill="none" xmlns="http://www.w3.org/2000/svg" className="company-ecosystem-svg">
+              <svg viewBox="0 0 520 370" fill="none" xmlns="http://www.w3.org/2000/svg" className="company-ecosystem-svg">
                 <defs>
                   <linearGradient id="ecoPulseCyan" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.9" />
@@ -173,7 +173,7 @@ export default function CompanyOverview() {
                     <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.5" />
                   </linearGradient>
                   <filter id="ecoGlow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="6" result="blur" />
+                    <feGaussianBlur stdDeviation="5" result="blur" />
                     <feMerge>
                       <feMergeNode in="blur" />
                       <feMergeNode in="SourceGraphic" />
@@ -182,59 +182,59 @@ export default function CompanyOverview() {
                 </defs>
 
                 {/* Perspective Orbit Rings */}
-                <ellipse cx="230" cy="190" rx="190" ry="110" stroke="rgba(56, 189, 248, 0.2)" strokeWidth="1.5" strokeDasharray="4 6" />
-                <ellipse cx="230" cy="190" rx="130" ry="75" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 5" />
+                <ellipse cx="260" cy="185" rx="200" ry="110" stroke="rgba(56, 189, 248, 0.2)" strokeWidth="1.5" strokeDasharray="4 6" />
+                <ellipse cx="260" cy="185" rx="140" ry="75" stroke="rgba(99, 102, 241, 0.25)" strokeWidth="1.2" strokeDasharray="3 5" />
 
                 {/* Cyber Connecting Vectors */}
-                <line x1="230" y1="190" x2="80" y2="90" stroke="url(#ecoPulseCyan)" strokeWidth="2" strokeDasharray="4 4" filter="url(#ecoGlow)" />
-                <line x1="230" y1="190" x2="380" y2="90" stroke="url(#ecoPulseEmerald)" strokeWidth="2" strokeDasharray="4 4" filter="url(#ecoGlow)" />
-                <line x1="230" y1="190" x2="80" y2="290" stroke="url(#ecoPulseGold)" strokeWidth="2" strokeDasharray="4 4" filter="url(#ecoGlow)" />
-                <line x1="230" y1="190" x2="380" y2="290" stroke="url(#ecoPulsePurple)" strokeWidth="2" strokeDasharray="4 4" filter="url(#ecoGlow)" />
+                <line x1="260" y1="185" x2="84" y2="77" stroke="url(#ecoPulseCyan)" strokeWidth="2" strokeDasharray="4 4" filter="url(#ecoGlow)" />
+                <line x1="260" y1="185" x2="436" y2="77" stroke="url(#ecoPulseEmerald)" strokeWidth="2" strokeDasharray="4 4" filter="url(#ecoGlow)" />
+                <line x1="260" y1="185" x2="84" y2="293" stroke="url(#ecoPulseGold)" strokeWidth="2" strokeDasharray="4 4" filter="url(#ecoGlow)" />
+                <line x1="260" y1="185" x2="436" y2="293" stroke="url(#ecoPulsePurple)" strokeWidth="2" strokeDasharray="4 4" filter="url(#ecoGlow)" />
 
                 {/* Central Hub: Velvora Neural Core */}
                 <g filter="url(#ecoGlow)">
-                  <circle cx="230" cy="190" r="46" fill="rgba(6, 12, 28, 0.95)" stroke="#38bdf8" strokeWidth="2.5" />
-                  <circle cx="230" cy="190" r="34" fill="rgba(14, 165, 233, 0.2)" stroke="rgba(56, 189, 248, 0.6)" strokeWidth="1.5" />
-                  <circle cx="230" cy="190" r="10" fill="#38bdf8" />
+                  <circle cx="260" cy="185" r="48" fill="rgba(6, 14, 34, 0.96)" stroke="#38bdf8" strokeWidth="2.5" />
+                  <circle cx="260" cy="185" r="42" fill="none" stroke="rgba(56, 189, 248, 0.35)" strokeWidth="1" strokeDasharray="3 3" />
+                  <circle cx="260" cy="158" r="3.5" fill="#38bdf8" />
                 </g>
-                <text x="230" y="185" textAnchor="middle" fill="#ffffff" fontSize="12" fontWeight="800" letterSpacing="0.05em">VELVORA</text>
-                <text x="230" y="200" textAnchor="middle" fill="#38bdf8" fontSize="9" fontWeight="700">NEURAL CORE</text>
+                <text x="260" y="181" textAnchor="middle" fill="#ffffff" fontSize="12" fontWeight="800" letterSpacing="0.06em">VELVORA</text>
+                <text x="260" y="197" textAnchor="middle" fill="#38bdf8" fontSize="8.5" fontWeight="700" letterSpacing="0.05em">NEURAL CORE</text>
 
                 {/* Satellite Node 1: Publishing & XML (Top Left) */}
                 <g filter="url(#ecoGlow)">
-                  <rect x="25" y="55" width="110" height="70" rx="14" fill="rgba(8, 16, 38, 0.92)" stroke="#38bdf8" strokeWidth="1.5" />
-                  <circle cx="45" cy="75" r="8" fill="rgba(56, 189, 248, 0.3)" stroke="#38bdf8" strokeWidth="1.2" />
+                  <rect x="16" y="40" width="136" height="74" rx="13" fill="rgba(8, 16, 38, 0.94)" stroke="#38bdf8" strokeWidth="1.5" />
+                  <circle cx="33" cy="59" r="7" fill="rgba(56, 189, 248, 0.25)" stroke="#38bdf8" strokeWidth="1.4" />
                 </g>
-                <text x="60" y="79" fill="#ffffff" fontSize="11" fontWeight="800">Publishing &amp; XML</text>
-                <text x="38" y="102" fill="#38bdf8" fontSize="9" fontWeight="650">JATS 1.3 · EPUB 3.3</text>
-                <text x="38" y="115" fill="#94a3b8" fontSize="8">Automated Schematron</text>
+                <text x="47" y="63" fill="#ffffff" fontSize="10" fontWeight="800">Publishing &amp; XML</text>
+                <text x="25" y="85" fill="#38bdf8" fontSize="8.5" fontWeight="700">JATS 1.3 · EPUB 3.3</text>
+                <text x="25" y="100" fill="#94a3b8" fontSize="8" fontWeight="500">Automated Schematron</text>
 
                 {/* Satellite Node 2: Accessibility Labs (Top Right) */}
                 <g filter="url(#ecoGlow)">
-                  <rect x="325" y="55" width="110" height="70" rx="14" fill="rgba(8, 16, 38, 0.92)" stroke="#10b981" strokeWidth="1.5" />
-                  <circle cx="345" cy="75" r="8" fill="rgba(16, 185, 129, 0.3)" stroke="#10b981" strokeWidth="1.2" />
+                  <rect x="368" y="40" width="136" height="74" rx="13" fill="rgba(8, 16, 38, 0.94)" stroke="#10b981" strokeWidth="1.5" />
+                  <circle cx="385" cy="59" r="7" fill="rgba(16, 185, 129, 0.25)" stroke="#10b981" strokeWidth="1.4" />
                 </g>
-                <text x="360" y="79" fill="#ffffff" fontSize="11" fontWeight="800">Accessibility</text>
-                <text x="338" y="102" fill="#34d399" fontSize="9" fontWeight="650">WCAG 2.2 AA / AAA</text>
-                <text x="338" y="115" fill="#94a3b8" fontSize="8">PDF/UA · VPAT 2.4</text>
+                <text x="399" y="63" fill="#ffffff" fontSize="10" fontWeight="800">Accessibility</text>
+                <text x="377" y="85" fill="#34d399" fontSize="8.5" fontWeight="700">WCAG 2.2 AA / AAA</text>
+                <text x="377" y="100" fill="#94a3b8" fontSize="8" fontWeight="500">PDF/UA · VPAT 2.4</text>
 
                 {/* Satellite Node 3: Enterprise AI (Bottom Left) */}
                 <g filter="url(#ecoGlow)">
-                  <rect x="25" y="255" width="110" height="70" rx="14" fill="rgba(8, 16, 38, 0.92)" stroke="#f59e0b" strokeWidth="1.5" />
-                  <circle cx="45" cy="275" r="8" fill="rgba(245, 158, 11, 0.3)" stroke="#f59e0b" strokeWidth="1.2" />
+                  <rect x="16" y="256" width="136" height="74" rx="13" fill="rgba(8, 16, 38, 0.94)" stroke="#f59e0b" strokeWidth="1.5" />
+                  <circle cx="33" cy="275" r="7" fill="rgba(245, 158, 11, 0.25)" stroke="#f59e0b" strokeWidth="1.4" />
                 </g>
-                <text x="60" y="279" fill="#ffffff" fontSize="11" fontWeight="800">AI Automation</text>
-                <text x="38" y="302" fill="#fbbf24" fontSize="9" fontWeight="650">Human-in-the-Loop</text>
-                <text x="38" y="315" fill="#94a3b8" fontSize="8">Document Parsing</text>
+                <text x="47" y="279" fill="#ffffff" fontSize="10" fontWeight="800">AI Automation</text>
+                <text x="25" y="301" fill="#fbbf24" fontSize="8.5" fontWeight="700">Human-in-the-Loop</text>
+                <text x="25" y="316" fill="#94a3b8" fontSize="8" fontWeight="500">Document Parsing</text>
 
                 {/* Satellite Node 4: Cloud Platforms (Bottom Right) */}
                 <g filter="url(#ecoGlow)">
-                  <rect x="325" y="255" width="110" height="70" rx="14" fill="rgba(8, 16, 38, 0.92)" stroke="#c084fc" strokeWidth="1.5" />
-                  <circle cx="345" cy="275" r="8" fill="rgba(192, 132, 252, 0.3)" stroke="#c084fc" strokeWidth="1.2" />
+                  <rect x="368" y="256" width="136" height="74" rx="13" fill="rgba(8, 16, 38, 0.94)" stroke="#c084fc" strokeWidth="1.5" />
+                  <circle cx="385" cy="275" r="7" fill="rgba(192, 132, 252, 0.25)" stroke="#c084fc" strokeWidth="1.4" />
                 </g>
-                <text x="360" y="279" fill="#ffffff" fontSize="11" fontWeight="800">Software &amp; Web</text>
-                <text x="338" y="302" fill="#c084fc" fontSize="9" fontWeight="650">Enterprise APIs</text>
-                <text x="338" y="315" fill="#94a3b8" fontSize="8">Accessible Web Apps</text>
+                <text x="399" y="279" fill="#ffffff" fontSize="10" fontWeight="800">Software &amp; Web</text>
+                <text x="377" y="301" fill="#c084fc" fontSize="8.5" fontWeight="700">Enterprise APIs</text>
+                <text x="377" y="316" fill="#94a3b8" fontSize="8" fontWeight="500">Accessible Web Apps</text>
               </svg>
 
               {/* FLOATING TELEMETRY SPEC CHIPS */}
@@ -271,9 +271,9 @@ export default function CompanyOverview() {
                     <span className="accreditation-pill__icon">
                       <AccIcon size={18} />
                     </span>
-                    <div>
-                      <div style={{ fontWeight: 800, color: '#0f172a' }}>{acc.name}</div>
-                      <div style={{ fontSize: '0.75rem', color: '#64748b' }}>{acc.desc}</div>
+                    <div className="accreditation-pill__body">
+                      <div className="accreditation-pill__title">{acc.name}</div>
+                      <div className="accreditation-pill__desc">{acc.desc}</div>
                     </div>
                   </div>
                 );

@@ -15,7 +15,7 @@ export default function CaseStudySpotlight() {
             </div>
 
             <h2 id="case-study-title" className="case-spotlight-title">
-              Making a 5,000-Title EPUB Library Accessible
+              Making a 5000-Title EPUB Library Accessible
             </h2>
 
             <p className="case-spotlight-lead">
@@ -24,7 +24,7 @@ export default function CaseStudySpotlight() {
 
             <div className="case-metrics-strip">
               <div className="case-metric">
-                <b>5,000+</b>
+                <b>5000+</b>
                 <span>EPUB 3 Converted</span>
               </div>
               <div className="case-metric">

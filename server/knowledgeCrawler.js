@@ -138,7 +138,7 @@ ${teamListFormatted}
 Delivery Teams:
 Our specialists include certified accessibility auditors (CPACC, WAS), XML architects (JATS/BITS), typesetting compositors (InDesign/3B2), and full-stack software engineers.`,
         topics: ['Executive Leadership', 'Iyshwariya Senthil', 'Certified Specialists', 'Accessibility Auditors', 'Technology Leaders'],
-        keywords: ['team', 'leadership', 'founder', 'managing director', 'ceo', 'iyshwariya senthil', 'executives', 'rajesh kumar', 'priya raman', 'karthik subramanian', 'anand natarajan', 'shanmugham', 'hema']
+        keywords: ['team', 'leadership', 'founder', 'managing director', 'ceo', 'iyshwariya senthil', 'executives', 'rajesh kumar', 'priya raman', 'karthik subramanian', 'anand natarajan', 'shanmugam', 'hema']
       });
 
       // D. ALL 9 SERVICES (Full Deep Content)
