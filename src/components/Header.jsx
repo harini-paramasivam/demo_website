@@ -299,16 +299,27 @@ export default function Header() {
           <Link to="/contact" className="btn btn--orange header__cta">
             Get in Touch <ArrowRight size={18} aria-hidden="true" />
           </Link>
-          <button
-            type="button"
-            className="header__toggle"
-            aria-label={mobile ? 'Close navigation menu' : 'Open navigation menu'}
-            aria-expanded={mobile}
-            aria-controls="mobile-nav"
-            onClick={() => setMobile(!mobile)}
-          >
-            {mobile ? <X size={26} /> : <Menu size={26} />}
-          </button>
+          <div className="header__mobile-actions">
+            <Link
+              to="/contact"
+              className="header__mobile-contact-btn"
+              aria-label="Contact Velvora Solutions"
+              title="Contact Us"
+              onClick={closeMobile}
+            >
+              <Mail size={20} aria-hidden="true" />
+            </Link>
+            <button
+              type="button"
+              className="header__toggle"
+              aria-label={mobile ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobile}
+              aria-controls="mobile-nav"
+              onClick={() => setMobile(!mobile)}
+            >
+              {mobile ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
         <div ref={progressRef} className="progress" style={{ width: '0%' }} aria-hidden="true" />
       </header>

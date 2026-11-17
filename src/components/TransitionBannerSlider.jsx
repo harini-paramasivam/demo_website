@@ -13,7 +13,6 @@ import Icon from './Icon.jsx';
 
 export default function TransitionBannerSlider() {
   const [activeIdx, setActiveIdx] = useState(0);
-  const [isHeld, setIsHeld] = useState(false);
   const totalSlides = transitionBannerContent.length;
   const timerRef = useRef(null);
 
@@ -26,22 +25,9 @@ export default function TransitionBannerSlider() {
   };
 
   useEffect(() => {
-    if (isHeld) {
-      clearInterval(timerRef.current);
-      return;
-    }
-    timerRef.current = setInterval(nextSlide, 12000); // 12 seconds auto slide
+    timerRef.current = setInterval(nextSlide, 8000); // 8 seconds auto slide
     return () => clearInterval(timerRef.current);
-  }, [activeIdx, isHeld]);
-
-  const handleCardClick = (e) => {
-    // If clicking a link or button directly, allow its normal action
-    if (e.target.closest('a') || e.target.closest('button')) {
-      return;
-    }
-    // Toggle hold when tapping/clicking banner card
-    setIsHeld((prev) => !prev);
-  };
+  }, [activeIdx]);
 
   const current = transitionBannerContent[activeIdx];
 
@@ -54,12 +40,10 @@ export default function TransitionBannerSlider() {
         {/* Main Banner Card with embedded Left & Right corner arrows */}
         <div className="t-slide-stage">
           <div 
-            className={`t-slide-card${isHeld ? ' is-held' : ''}`} 
+            className="t-slide-card" 
             key={activeIdx}
-            onClick={handleCardClick}
             role="region"
-            aria-label={`${current.title} slide. Tap to ${isHeld ? 'resume' : 'hold'}.`}
-            style={{ cursor: 'pointer' }}
+            aria-label={`${current.title} slide.`}
           >
             <div className="t-slide-card__ambient-glow" />
 
@@ -95,17 +79,6 @@ export default function TransitionBannerSlider() {
                   <Icon name={current.icon} size={15} />
                   <span>{current.tag}</span>
                 </span>
-
-                {/* Hold status button kept completely invisible as requested */}
-                <button
-                  type="button"
-                  onClick={() => setIsHeld((prev) => !prev)}
-                  className="sr-only"
-                  aria-label={isHeld ? 'Resume automatic sliding' : 'Hold automatic sliding'}
-                  aria-pressed={isHeld}
-                >
-                  {isHeld ? 'Resume' : 'Hold'}
-                </button>
               </div>
 
               <h2 className="t-slide-card__title">
