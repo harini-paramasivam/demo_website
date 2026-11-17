@@ -121,11 +121,11 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
   return (
     <div id="enrollment-form-section" className="te-form-wrapper" style={{ width: '100%', maxWidth: '860px', margin: '0 auto' }}>
       <div className="te-form-card" style={{
-        background: 'linear-gradient(145deg, rgba(10, 18, 42, 0.96) 0%, rgba(6, 12, 28, 0.98) 100%)',
-        border: '1.5px solid rgba(56, 189, 248, 0.35)',
+        background: '#ffffff',
+        border: '1.5px solid #e2e8f0',
         borderRadius: '24px',
         padding: 'clamp(24px, 4vw, 44px)',
-        boxShadow: '0 24px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(56, 189, 248, 0.12)',
+        boxShadow: '0 10px 36px rgba(15, 23, 42, 0.06)',
         position: 'relative'
       }}>
         {/* Header Badge & Title */}
@@ -134,13 +134,13 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
-            background: 'rgba(56, 189, 248, 0.12)',
-            border: '1px solid rgba(56, 189, 248, 0.35)',
+            background: 'rgba(2, 132, 199, 0.08)',
+            border: '1px solid rgba(2, 132, 199, 0.28)',
             borderRadius: '9999px',
             padding: '6px 16px',
             fontSize: '0.82rem',
-            fontWeight: 700,
-            color: '#38bdf8',
+            fontWeight: 750,
+            color: '#0284c7',
             letterSpacing: '0.04em',
             textTransform: 'uppercase',
             marginBottom: '12px'
@@ -148,39 +148,40 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
             <Sparkles size={14} />
             <span>Admissions Desk &amp; Enrollment Portal</span>
           </div>
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.3rem)', fontWeight: 800, color: '#ffffff', margin: '0 0 10px' }}>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.3rem)', fontWeight: 800, color: '#070f26', margin: '0 0 10px' }}>
             Enroll or Request Course Syllabus
           </h2>
-          <p style={{ fontSize: '1rem', color: '#e2e8f0', lineHeight: 1.6, maxWidth: '640px', margin: '0 auto' }}>
+          <p style={{ fontSize: '1rem', color: '#64748b', lineHeight: 1.6, maxWidth: '640px', margin: '0 auto' }}>
             Bridge academic theory with real industry workflows. Fill in your details below and an academic counselor will connect with you within 24 hours.
           </p>
         </div>
 
         {status.type === 'success' ? (
           <div style={{
-            background: 'rgba(12, 24, 56, 0.85)',
-            border: '1.5px solid rgba(56, 189, 248, 0.4)',
+            background: '#ffffff',
+            border: '1.5px solid #e2e8f0',
             borderRadius: '18px',
             padding: '36px 28px',
-            textAlign: 'center'
+            textAlign: 'center',
+            boxShadow: '0 10px 30px rgba(15, 23, 42, 0.05)'
           }}>
             <div style={{
               width: '64px',
               height: '64px',
               borderRadius: '50%',
-              background: 'rgba(56, 189, 248, 0.15)',
-              border: '2px solid #38bdf8',
-              color: '#38bdf8',
+              background: 'rgba(2, 132, 199, 0.1)',
+              border: '2px solid #0284c7',
+              color: '#0284c7',
               display: 'grid',
               placeItems: 'center',
               margin: '0 auto 18px'
             }}>
               <CheckCircle2 size={36} />
             </div>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#ffffff', marginBottom: '10px' }}>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#070f26', marginBottom: '10px' }}>
               Application Submitted Successfully!
             </h3>
-            <p style={{ color: '#cbd5e1', fontSize: '1.02rem', maxWidth: '540px', margin: '0 auto 20px', lineHeight: 1.6 }}>
+            <p style={{ color: '#475569', fontSize: '1.02rem', maxWidth: '540px', margin: '0 auto 20px', lineHeight: 1.6 }}>
               {status.message}
             </p>
 
@@ -189,37 +190,37 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
               alignItems: 'center',
               gap: '10px',
               padding: '8px 20px',
-              background: 'rgba(56, 189, 248, 0.15)',
-              border: '1px solid rgba(56, 189, 248, 0.4)',
+              background: 'rgba(2, 132, 199, 0.08)',
+              border: '1px solid rgba(2, 132, 199, 0.28)',
               borderRadius: '9999px',
               marginBottom: '24px'
             }}>
-              <span style={{ fontSize: '0.85rem', color: '#cbd5e1' }}>Enquiry Ref ID:</span>
-              <strong style={{ fontSize: '1.05rem', color: '#38bdf8', letterSpacing: '0.04em' }}>{status.referenceId}</strong>
+              <span style={{ fontSize: '0.85rem', color: '#64748b' }}>Enquiry Ref ID:</span>
+              <strong style={{ fontSize: '1.05rem', color: '#0284c7', letterSpacing: '0.04em' }}>{status.referenceId}</strong>
             </div>
 
             <div style={{
-              background: 'rgba(6, 12, 28, 0.7)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              background: '#f8fafc',
+              border: '1px solid #e2e8f0',
               borderRadius: '12px',
               padding: '16px 20px',
               textAlign: 'left',
               maxWidth: '520px',
               margin: '0 auto 24px',
               fontSize: '0.92rem',
-              color: '#cbd5e1'
+              color: '#475569'
             }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid #e2e8f0' }}>
                 <span>Selected Track:</span>
-                <strong style={{ color: '#ffffff' }}>{formData.program}</strong>
+                <strong style={{ color: '#070f26' }}>{formData.program}</strong>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid #e2e8f0' }}>
                 <span>Applicant:</span>
-                <strong style={{ color: '#ffffff' }}>{formData.fullName}</strong>
+                <strong style={{ color: '#070f26' }}>{formData.fullName}</strong>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid #e2e8f0' }}>
                 <span>Mode &amp; Duration:</span>
-                <strong style={{ color: '#ffffff' }}>{formData.trainingMode} · {formData.duration}</strong>
+                <strong style={{ color: '#070f26' }}>{formData.trainingMode} · {formData.duration}</strong>
               </div>
             </div>
 
@@ -235,7 +236,7 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                 href="https://wa.me/919500834236"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn--cyan"
+                className="btn btn--orange"
               >
                 Instant WhatsApp Enquiry <ArrowRight size={16} />
               </a>
@@ -245,11 +246,11 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
           <form onSubmit={handleSubmit} noValidate>
             {status.type === 'error' && (
               <div style={{
-                background: 'rgba(239, 68, 68, 0.15)',
-                border: '1px solid rgba(239, 68, 68, 0.4)',
+                background: '#fef2f2',
+                border: '1px solid #fecaca',
                 borderRadius: '10px',
                 padding: '12px 18px',
-                color: '#fca5a5',
+                color: '#b91c1c',
                 fontSize: '0.92rem',
                 display: 'flex',
                 alignItems: 'center',
@@ -267,11 +268,11 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
               alignItems: 'center',
               gap: '8px',
               fontSize: '0.82rem',
-              fontWeight: 700,
-              color: '#38bdf8',
+              fontWeight: 750,
+              color: '#0284c7',
               letterSpacing: '0.06em',
               textTransform: 'uppercase',
-              borderBottom: '1px solid rgba(56, 189, 248, 0.2)',
+              borderBottom: '1.5px solid #f1f5f9',
               paddingBottom: '8px',
               marginBottom: '1.25rem'
             }}>
@@ -287,8 +288,8 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
             }}>
               {/* Full Name */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label htmlFor="te-fullName" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
-                  Full Name <span style={{ color: '#38bdf8' }}>*</span>
+                <label htmlFor="te-fullName" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0f172a' }}>
+                  Full Name <span style={{ color: '#0284c7' }}>*</span>
                 </label>
                 <input
                   type="text"
@@ -301,10 +302,10 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                   style={{
                     width: '100%',
                     padding: '13px 16px',
-                    background: 'rgba(6, 12, 28, 0.85)',
-                    border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                    background: '#ffffff',
+                    border: '1.5px solid #cbd5e1',
                     borderRadius: '12px',
-                    color: '#ffffff',
+                    color: '#0f172a',
                     fontSize: '0.95rem',
                     boxSizing: 'border-box'
                   }}
@@ -314,8 +315,8 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
 
               {/* Email Address */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label htmlFor="te-email" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
-                  Email Address <span style={{ color: '#38bdf8' }}>*</span>
+                <label htmlFor="te-email" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0f172a' }}>
+                  Email Address <span style={{ color: '#0284c7' }}>*</span>
                 </label>
                 <input
                   type="email"
@@ -328,10 +329,10 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                   style={{
                     width: '100%',
                     padding: '13px 16px',
-                    background: 'rgba(6, 12, 28, 0.85)',
-                    border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                    background: '#ffffff',
+                    border: '1.5px solid #cbd5e1',
                     borderRadius: '12px',
-                    color: '#ffffff',
+                    color: '#0f172a',
                     fontSize: '0.95rem',
                     boxSizing: 'border-box'
                   }}
@@ -341,8 +342,8 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
 
               {/* Phone / WhatsApp */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label htmlFor="te-phone" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
-                  Phone / WhatsApp Number <span style={{ color: '#38bdf8' }}>*</span>
+                <label htmlFor="te-phone" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0f172a' }}>
+                  Phone / WhatsApp Number <span style={{ color: '#0284c7' }}>*</span>
                 </label>
                 <input
                   type="tel"
@@ -355,10 +356,10 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                   style={{
                     width: '100%',
                     padding: '13px 16px',
-                    background: 'rgba(6, 12, 28, 0.85)',
-                    border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                    background: '#ffffff',
+                    border: '1.5px solid #cbd5e1',
                     borderRadius: '12px',
-                    color: '#ffffff',
+                    color: '#0f172a',
                     fontSize: '0.95rem',
                     boxSizing: 'border-box'
                   }}
@@ -368,8 +369,8 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
 
               {/* Applicant Category */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label htmlFor="te-applicantType" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
-                  Applicant Category <span style={{ color: '#38bdf8' }}>*</span>
+                <label htmlFor="te-applicantType" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0f172a' }}>
+                  Applicant Category <span style={{ color: '#0284c7' }}>*</span>
                 </label>
                 <select
                   id="te-applicantType"
@@ -379,18 +380,20 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                   className="contact-input te-select-input"
                   style={{
                     width: '100%',
-                    background: '#070e24',
-                    border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                    padding: '13px 16px',
+                    background: '#ffffff',
+                    border: '1.5px solid #cbd5e1',
                     borderRadius: '12px',
-                    color: '#ffffff',
+                    color: '#0f172a',
+                    fontSize: '0.95rem',
                     boxSizing: 'border-box',
                     cursor: 'pointer'
                   }}
                 >
-                  <option value="Student (College / University)" style={{ background: '#070e24', color: '#ffffff' }}>Student (College / University)</option>
-                  <option value="Recent Graduate / Fresher" style={{ background: '#070e24', color: '#ffffff' }}>Recent Graduate / Fresher</option>
-                  <option value="Working Professional" style={{ background: '#070e24', color: '#ffffff' }}>Working Professional</option>
-                  <option value="Corporate / Enterprise Team" style={{ background: '#070e24', color: '#ffffff' }}>Corporate / Enterprise Team</option>
+                  <option value="Student (College / University)">Student (College / University)</option>
+                  <option value="Recent Graduate / Fresher">Recent Graduate / Fresher</option>
+                  <option value="Working Professional">Working Professional</option>
+                  <option value="Corporate / Enterprise Team">Corporate / Enterprise Team</option>
                 </select>
               </div>
             </div>
@@ -401,11 +404,11 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
               alignItems: 'center',
               gap: '8px',
               fontSize: '0.82rem',
-              fontWeight: 700,
-              color: '#38bdf8',
+              fontWeight: 750,
+              color: '#0284c7',
               letterSpacing: '0.06em',
               textTransform: 'uppercase',
-              borderBottom: '1px solid rgba(56, 189, 248, 0.2)',
+              borderBottom: '1.5px solid #f1f5f9',
               paddingBottom: '8px',
               marginBottom: '1.25rem',
               marginTop: '2rem'
@@ -417,8 +420,8 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '1.5rem' }}>
               {/* Program Selector */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label htmlFor="te-program" style={{ fontSize: '0.92rem', fontWeight: 700, color: '#ffffff' }}>
-                  Choose Program or Track <span style={{ color: '#38bdf8' }}>*</span>
+                <label htmlFor="te-program" style={{ fontSize: '0.92rem', fontWeight: 700, color: '#0f172a' }}>
+                  Choose Program or Track <span style={{ color: '#0284c7' }}>*</span>
                 </label>
                 <select
                   id="te-program"
@@ -428,38 +431,40 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                   className="contact-input te-select-input"
                   style={{
                     width: '100%',
-                    background: '#070e24',
-                    border: '1.5px solid rgba(56, 189, 248, 0.55)',
+                    padding: '13px 16px',
+                    background: '#ffffff',
+                    border: '1.5px solid #cbd5e1',
                     borderRadius: '12px',
-                    color: '#ffffff',
+                    color: '#0f172a',
+                    fontSize: '0.95rem',
                     fontWeight: 600,
                     boxSizing: 'border-box',
                     cursor: 'pointer'
                   }}
                 >
-                  <option value="Internship Program (Live Industry Projects)" style={{ background: '#070e24', color: '#ffffff' }}>
-                    ⭐ Flagship Internship Program
+                  <option value="Internship Program (Live Industry Projects)">
+                    ⭐ Flagship Internship Program (Live Industry Projects)
                   </option>
-                  <option value="ePublishing Training" style={{ background: '#070e24', color: '#ffffff' }}>
-                    ePublishing Training (EPUB 3, XML)
+                  <option value="ePublishing Training">
+                    ePublishing Training (EPUB 3, JATS XML, MathML)
                   </option>
-                  <option value="AI/ML Training" style={{ background: '#070e24', color: '#ffffff' }}>
-                    AI/ML Training (Deep Learning, NLP)
+                  <option value="AI/ML Training">
+                    AI/ML Training (Deep Learning, NLP Pipelines)
                   </option>
-                  <option value="Generative AI Training" style={{ background: '#070e24', color: '#ffffff' }}>
-                    Generative AI Training (LLMs, RAG)
+                  <option value="Generative AI Training">
+                    Generative AI Training (LLMs, RAG Architectures)
                   </option>
-                  <option value="Data Analytics & Business Intelligence Training" style={{ background: '#070e24', color: '#ffffff' }}>
-                    Data Analytics &amp; BI (Power BI, SQL)
+                  <option value="Data Analytics & Business Intelligence Training">
+                    Data Analytics &amp; BI (Power BI, SQL, Data Pipelines)
                   </option>
-                  <option value="Digital Accessibility Training" style={{ background: '#070e24', color: '#ffffff' }}>
-                    Digital Accessibility (WCAG 2.2)
+                  <option value="Digital Accessibility Training">
+                    Digital Accessibility Training (WCAG 2.2, PDF/UA, Section 508)
                   </option>
-                  <option value="Software Development Training" style={{ background: '#070e24', color: '#ffffff' }}>
-                    Software Development (Full Stack)
+                  <option value="Software Development Training">
+                    Software Development Training (React, Full Stack, Cloud)
                   </option>
-                  <option value="Digital Marketing Training" style={{ background: '#070e24', color: '#ffffff' }}>
-                    Digital Marketing (SEO, Performance)
+                  <option value="Digital Marketing Training">
+                    Digital Marketing Training (Technical SEO, Conversion Optimization)
                   </option>
                 </select>
               </div>
@@ -471,7 +476,7 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                 gap: '1.25rem'
               }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label htmlFor="te-trainingMode" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
+                  <label htmlFor="te-trainingMode" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0f172a' }}>
                     Preferred Learning Mode
                   </label>
                   <select
@@ -482,31 +487,33 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                     className="contact-input te-select-input"
                     style={{
                       width: '100%',
-                      background: '#070e24',
-                      border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                      padding: '13px 16px',
+                      background: '#ffffff',
+                      border: '1.5px solid #cbd5e1',
                       borderRadius: '12px',
-                      color: '#ffffff',
+                      color: '#0f172a',
+                      fontSize: '0.95rem',
                       boxSizing: 'border-box',
                       cursor: 'pointer'
                     }}
                   >
-                    <option value="Online Virtual Live (Interactive Webinar)" style={{ background: '#070e24', color: '#ffffff' }}>
-                      Online Virtual Live (Webinar)
+                    <option value="Online Virtual Live (Interactive Webinar)">
+                      Online Virtual Live (Interactive Webinar)
                     </option>
-                    <option value="Classroom In-Person (Cuddalore Head Office)" style={{ background: '#070e24', color: '#ffffff' }}>
-                      Classroom (Cuddalore Office)
+                    <option value="Classroom In-Person (Cuddalore Head Office)">
+                      Classroom In-Person (Cuddalore Head Office)
                     </option>
-                    <option value="Classroom In-Person (Chennai Branch Office)" style={{ background: '#070e24', color: '#ffffff' }}>
-                      Classroom (Chennai Office)
+                    <option value="Classroom In-Person (Chennai Branch Office)">
+                      Classroom In-Person (Chennai Branch Office)
                     </option>
-                    <option value="Hybrid (Virtual Live + Weekend In-Person Labs)" style={{ background: '#070e24', color: '#ffffff' }}>
-                      Hybrid (Virtual + Weekend Labs)
+                    <option value="Hybrid (Virtual Live + Weekend In-Person Labs)">
+                      Hybrid (Virtual Live + Weekend In-Person Labs)
                     </option>
                   </select>
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <label htmlFor="te-duration" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
+                  <label htmlFor="te-duration" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0f172a' }}>
                     Preferred Duration
                   </label>
                   <select
@@ -517,22 +524,24 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                     className="contact-input te-select-input"
                     style={{
                       width: '100%',
-                      background: '#070e24',
-                      border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                      padding: '13px 16px',
+                      background: '#ffffff',
+                      border: '1.5px solid #cbd5e1',
                       borderRadius: '12px',
-                      color: '#ffffff',
+                      color: '#0f172a',
+                      fontSize: '0.95rem',
                       boxSizing: 'border-box',
                       cursor: 'pointer'
                     }}
                   >
-                    <option value="1 Month (Fast-Track Project Bootcamp)" style={{ background: '#070e24', color: '#ffffff' }}>
-                      1 Month (Fast-Track Bootcamp)
+                    <option value="1 Month (Fast-Track Project Bootcamp)">
+                      1 Month (Fast-Track Project Bootcamp)
                     </option>
-                    <option value="3 Months (Standard Certification Track)" style={{ background: '#070e24', color: '#ffffff' }}>
-                      3 Months (Standard Track)
+                    <option value="3 Months (Standard Certification Track)">
+                      3 Months (Standard Certification Track)
                     </option>
-                    <option value="6 Months (Comprehensive Capstone & PPO)" style={{ background: '#070e24', color: '#ffffff' }}>
-                      6 Months (Capstone &amp; PPO)
+                    <option value="6 Months (Comprehensive Capstone & PPO)">
+                      6 Months (Comprehensive Capstone &amp; PPO)
                     </option>
                   </select>
                 </div>
@@ -540,7 +549,7 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
 
               {/* Message / Goals */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <label htmlFor="te-message" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#f1f5f9' }}>
+                <label htmlFor="te-message" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0f172a' }}>
                   Career Goals / Specific Topics You Want to Learn (Optional)
                 </label>
                 <textarea
@@ -553,10 +562,10 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
                   style={{
                     width: '100%',
                     padding: '14px 16px',
-                    background: 'rgba(6, 12, 28, 0.85)',
-                    border: '1.5px solid rgba(56, 189, 248, 0.3)',
+                    background: '#ffffff',
+                    border: '1.5px solid #cbd5e1',
                     borderRadius: '12px',
-                    color: '#ffffff',
+                    color: '#0f172a',
                     fontSize: '0.95rem',
                     minHeight: '110px',
                     resize: 'vertical',
@@ -571,10 +580,10 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
               <button
                 type="submit"
                 disabled={loading}
-                className="btn btn--cyan btn--lg btn--block te-submit-btn"
+                className="btn btn--orange btn--lg btn--block te-submit-btn"
                 style={{
                   width: '100%',
-                  fontWeight: 700,
+                  fontWeight: 750,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -601,7 +610,7 @@ export default function TrainingEnrollmentForm({ initialProgram = '', onSubmitte
               gap: '18px',
               marginTop: '1.25rem',
               fontSize: '0.84rem',
-              color: '#cbd5e1',
+              color: '#64748b',
               flexWrap: 'wrap'
             }}>
               <span>🔒 100% Confidential &amp; Verified</span>

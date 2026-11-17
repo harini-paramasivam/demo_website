@@ -14,7 +14,8 @@ import {
   Workflow,
   Check,
   LayoutGrid,
-  Filter
+  Filter,
+  ShieldCheck
 } from 'lucide-react';
 import { PageHero } from '../components/ui.jsx';
 import { solutionsData } from '../data/site.js';
@@ -511,6 +512,25 @@ export default function SolutionsOverview() {
               )}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* UNIFIED ENTERPRISE CONSULTATION CTA (MATCHING IMAGE 1) */}
+      <section className="section" style={{ paddingTop: '1rem', paddingBottom: '3.5rem' }}>
+        <div className="container">
+          <div className="testimonials-cta-spotlight">
+            <div className="testimonials-cta-spotlight__content">
+              <span className="badge-eyebrow" style={{ color: '#38bdf8' }}>
+                <ShieldCheck size={16} /> SLA Guarantee
+              </span>
+              <h4>Ready to Deploy These Architectures for Your Organization?</h4>
+              <p>Our solutions architects are available to discuss tailored timelines, sample audits, and fixed-scope delivery roadmaps.</p>
+            </div>
+            <Link to="/contact" className="btn btn--orange btn--lg testimonials-cta-spotlight__btn">
+              <span>Discuss Your Project</span>
+              <ArrowRight size={18} />
+            </Link>
+          </div>
         </div>
       </section>
     </>

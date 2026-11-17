@@ -827,24 +827,24 @@ export default function ServicePage() {
       )}
 
       {/* ========================================================================= */}
-      {/* ENTERPRISE ADVISORY CTA (DARK SHADE - 1ST CTA)                           */}
+      {/* ENTERPRISE ADVISORY CTA (UNIFIED SPOTLIGHT BANNER MATCHING IMAGE 1)        */}
       {/* ========================================================================= */}
-      <section className="section why-section-dark netbg svc-section-advisory-cta" style={{ paddingTop: '3.5rem', paddingBottom: '3.5rem' }}>
+      <section className="section" style={{ paddingTop: '2.5rem', paddingBottom: '2.5rem' }}>
         <div className="container">
-          <div className="svc-faqs-action-banner" style={{ marginTop: 0 }}>
-            <div>
-              <span className="badge-eyebrow" style={{ color: '#38bdf8', marginBottom: '8px', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <Sparkles size={16} /> Enterprise Advisory
+          <div className="testimonials-cta-spotlight">
+            <div className="testimonials-cta-spotlight__content">
+              <span className="badge-eyebrow" style={{ color: '#38bdf8' }}>
+                <ShieldCheck size={16} /> SLA Guarantee
               </span>
-              <h3 style={{ color: '#ffffff', fontSize: '1.5rem', fontWeight: 800, margin: '0 0 8px 0', letterSpacing: '-0.01em' }}>
+              <h4>
                 Ready to Get Started with {s.title}?
-              </h3>
-              <p style={{ color: '#e2e8f0', fontSize: '1rem', margin: 0, maxWidth: '620px', lineHeight: 1.6 }}>
+              </h4>
+              <p>
                 Our solutions architects will analyze your content requirements and propose a tailored delivery roadmap within 24 hours.
               </p>
             </div>
-            <Link to={`/contact?service=${encodeURIComponent(s.title)}`} className="btn btn--cyan btn--lg svc-faqs-action-banner__btn">
-              <span>{s.buttonText || 'Request a Quote'}</span>
+            <Link to={`/contact?service=${encodeURIComponent(s.title)}`} className="btn btn--orange btn--lg testimonials-cta-spotlight__btn">
+              <span>{s.buttonText || 'Discuss Your Project'}</span>
               <ArrowRight size={18} aria-hidden="true" />
             </Link>
           </div>

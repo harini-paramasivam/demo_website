@@ -741,8 +741,8 @@ export default function Careers() {
                 </div>
 
                 <div className="job-opening-card__meta">
-                  <span><MapPin size={14} /> {job.location}</span>
-                  <span><Clock size={14} /> {job.experience}</span>
+                  <span className="job-meta-item"><MapPin size={15} /> <span>{job.location}</span></span>
+                  <span className="job-meta-item"><Clock size={15} /> <span>{job.experience}</span></span>
                 </div>
 
                 <p className="job-opening-card__summary">{job.shortSummary || job.summary}</p>
