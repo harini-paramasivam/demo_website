@@ -2604,9 +2604,43 @@ main:focus { outline: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 18px;
+  gap: 14px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
 }
+
+.why-val-card__head-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1 1 200px;
+  min-width: 0;
+}
+
+.why-val-card__head-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.why-val-card__head-text .why-val-card__tagline {
+  font-size: 0.74rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 3px 0;
+  line-height: 1.25;
+}
+
+.why-val-card__head-text .why-val-card__title {
+  font-size: 1.25rem;
+  font-weight: 850;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+
 .why-val-card__pill {
   font-size: 0.74rem;
   font-weight: 750;
@@ -2616,7 +2650,10 @@ main:focus { outline: none; }
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #f1f5f9;
+  flex-shrink: 0;
+  margin-left: auto;
 }
+
 .why-val-card__tagline {
   font-size: 0.82rem;
   font-weight: 750;
@@ -20043,11 +20080,16 @@ main:focus { outline: none; }
   color: #334155 !important;
 }
 
-/* Sidebar styling in Light Section */
+/* Sidebar styling in Light Section - Perfectly aligned with Quality Validation */
+.svc-section-overview .svc-sidebar {
+  gap: 16px !important;
+}
+
 .svc-section-overview .svc-sidebar__card {
   background: #ffffff !important;
   border: 1.5px solid rgba(226, 232, 240, 0.95) !important;
-  border-radius: 24px !important;
+  border-radius: 20px !important;
+  padding: 18px 20px !important;
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
   position: relative !important;
   overflow: hidden !important;
@@ -20067,15 +20109,60 @@ main:focus { outline: none; }
 
 .svc-section-overview .svc-sidebar__card h3 {
   color: #0f172a !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.svc-section-overview .svc-sidebar__list {
+  gap: 4px !important;
 }
 
 .svc-section-overview .svc-sidebar__list a {
+  padding: 8px 12px !important;
+  font-size: 0.88rem !important;
   color: #334155 !important;
 }
 
 .svc-section-overview .svc-sidebar__list a:hover {
   background: rgba(2, 132, 199, 0.08) !important;
   color: #0284c7 !important;
+}
+
+.svc-section-overview .svc-sidebar__cta {
+  padding: 22px 22px !important;
+  border-radius: 20px !important;
+  margin-top: 0 !important;
+}
+
+.svc-section-overview .svc-sidebar__cta h4 {
+  font-size: 1.2rem !important;
+  margin-bottom: 0.45rem !important;
+}
+
+.svc-section-overview .svc-sidebar__cta p {
+  font-size: 0.92rem !important;
+  line-height: 1.5 !important;
+  margin-bottom: 1.1rem !important;
+}
+
+.svc-section-overview .svc-sidebar__cta .btn {
+  padding: 10px 18px !important;
+  font-size: 0.9rem !important;
+}
+
+@media (min-width: 992px) {
+  .svc-section-overview .svc-layout {
+    align-items: stretch !important;
+  }
+  .svc-section-overview .svc-sidebar {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    height: 100% !important;
+  }
+  .svc-section-overview .svc-sidebar__cta {
+    margin-top: auto !important;
+  }
 }
 
 /* Section 2: Production Process (DARK THEME) */
@@ -22382,13 +22469,55 @@ main:focus { outline: none; }
   .mobile-hub-banner {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     background: linear-gradient(135deg, rgba(14, 28, 64, 0.95) 0%, rgba(7, 13, 28, 0.98) 100%);
-    border: 1.5px solid rgba(56, 189, 248, 0.4);
-    border-radius: 16px;
-    padding: 14px 18px;
+    border: 1.5px solid rgba(56, 189, 248, 0.45);
+    border-radius: 18px;
+    padding: 12px 18px;
     margin-bottom: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+  .mobile-hub-img-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    border: 2px solid #38bdf8;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.45);
+    background: #0b1530;
+  }
+  .mobile-hub-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .mobile-hub-img-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 8px rgba(0, 242, 254, 0.4);
+    pointer-events: none;
+  }
+  .mobile-hub-text-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .mobile-hub-title {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.08rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+  }
+  .mobile-hub-subtitle {
+    font-size: 0.82rem;
+    color: #93c5fd;
+    font-weight: 600;
+    margin-top: 2px;
   }
   .mobile-stage-list {
     list-style: none;

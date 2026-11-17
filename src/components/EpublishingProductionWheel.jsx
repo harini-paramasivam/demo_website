@@ -208,12 +208,17 @@ export default function EpublishingProductionWheel() {
       {/* 5. MOBILE RESPONSIVE INTERCONNECTED VERTICAL PIPELINE (For Small Screens) */}
       <div className="epub-wheel-mobile">
         <div className="mobile-hub-banner">
-          <span className="center-hub-icon-wrap">
-            <Cpu size={20} className="accent" />
-          </span>
-          <div>
-            <h4 style={{ margin: 0, color: '#ffffff', fontSize: '1rem', fontWeight: 800 }}>PRODUCTION CORE</h4>
-            <span style={{ fontSize: '0.8rem', color: '#93c5fd' }}>Disciplined 5-Stage Lifecycle</span>
+          <div className="mobile-hub-img-circle">
+            <img
+              src="/hero-epublishing.jpg"
+              alt="Velvora ePublishing Production Core"
+              className="mobile-hub-img"
+            />
+            <span className="mobile-hub-img-glow" aria-hidden="true" />
+          </div>
+          <div className="mobile-hub-text-wrap">
+            <h4 className="mobile-hub-title">PRODUCTION CORE</h4>
+            <span className="mobile-hub-subtitle">Disciplined 5-Stage Lifecycle</span>
           </div>
         </div>
 

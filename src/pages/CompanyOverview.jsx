@@ -300,19 +300,22 @@ export default function CompanyOverview() {
                 <li key={v.title} className={`why__card ${v.themeClass}`}>
                   <div>
                     <div className="why-val-card__top">
-                      <span className="why__icon">
-                        <IconCmp size={24} aria-hidden="true" />
-                      </span>
+                      <div className="why-val-card__head-row">
+                        <span className="why__icon">
+                          <IconCmp size={24} aria-hidden="true" />
+                        </span>
+                        <div className="why-val-card__head-text">
+                          <div className="why-val-card__tagline" style={{ color: v.color }}>
+                            {v.tagline}
+                          </div>
+                          <h3 className="why-val-card__title">{v.title}</h3>
+                        </div>
+                      </div>
                       <span className="why-val-card__pill">
                         {v.badge}
                       </span>
                     </div>
 
-                    <div className="why-val-card__tagline" style={{ color: v.color }}>
-                      {v.tagline}
-                    </div>
-
-                    <h3>{v.title}</h3>
                     <p>{v.desc}</p>
                   </div>
 
