@@ -307,7 +307,7 @@ export default function Header() {
               title="Contact Us"
               onClick={closeMobile}
             >
-              <Phone size={19} aria-hidden="true" />
+              <Globe size={20} aria-hidden="true" />
             </Link>
             <button
               type="button"

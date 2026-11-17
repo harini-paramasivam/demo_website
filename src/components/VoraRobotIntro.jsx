@@ -378,16 +378,6 @@ export default function VoraRobotIntro({ onIntroComplete, onDockingStart }) {
           <div className="vora-merge-ripple" aria-hidden="true" />
         )}
       </div>
-
-      {/* Accessible Skip Button */}
-      <button
-        type="button"
-        onClick={completeIntro}
-        className="vora-skip-intro-btn"
-        aria-label="Skip robot introduction"
-      >
-        Skip
-      </button>
     </div>
   );
 }

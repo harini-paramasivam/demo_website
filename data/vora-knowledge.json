@@ -1,15 +1,16 @@
 {
   "syncMetadata": {
-    "version": "v1.3.477",
+    "version": "v1.3.478",
     "status": "Synchronized",
-    "lastSynchronized": "2026-11-17T11:48:32.859Z",
-    "sourceHash": "d9f21d94b21b407240ba2d6f1a446ae543bbb30f4870bc7d53f3f8525d0ac37b",
+    "lastSynchronized": "2026-11-17T12:09:11.939Z",
+    "sourceHash": "c3dc4c9239bf843f55cee5d2433643c6663c00f72637060456acaeda2dc7bf0a",
     "indexedCount": 66,
     "indexedPages": 63,
     "indexedCareers": 3,
     "errorLogs": [],
     "changelog": [
-      "Synced 63 pages & 3 careers at 2026-11-17T11:48:32.859Z",
+      "Synced 63 pages & 3 careers at 2026-11-17T12:09:11.939Z",
+      "Synced 63 pages & 3 careers at 2026-11-17T12:03:57.995Z",
       "Synced 63 pages & 3 careers at 2026-11-17T11:46:44.697Z",
       "Synced 63 pages & 3 careers at 2026-11-17T11:46:43.305Z",
       "Synced 63 pages & 3 careers at 2026-11-17T11:32:33.460Z",
@@ -17,8 +18,7 @@
       "Synced 63 pages & 3 careers at 2026-11-17T11:27:16.914Z",
       "Synced 63 pages & 3 careers at 2026-11-17T11:27:15.664Z",
       "Synced 63 pages & 3 careers at 2026-11-17T11:27:08.810Z",
-      "Synced 63 pages & 3 careers at 2026-11-17T11:26:57.296Z",
-      "Synced 63 pages & 3 careers at 2026-11-17T11:26:29.413Z"
+      "Synced 63 pages & 3 careers at 2026-11-17T11:26:57.296Z"
     ]
   },
   "documents": [
