@@ -43,23 +43,38 @@ export default function VoraRobotIntro({ onIntroComplete, onDockingStart }) {
   // Helper to calculate exact coordinates of the launcher button
   const getLauncherCoords = () => {
     const launcher = document.querySelector('.vora-launcher-btn');
+    const isMobile = window.innerWidth <= 768;
+    const robotWidth = 190;
     if (launcher) {
       const r = launcher.getBoundingClientRect();
       const inner = launcher.querySelector('.vora-launcher-inner');
       const innerRect = inner ? inner.getBoundingClientRect() : r;
+      const dockCenterX = innerRect.left + innerRect.width / 2;
+      const targetX = isMobile
+        ? Math.max(10, Math.min(dockCenterX - (robotWidth / 2) - 10, window.innerWidth - (robotWidth * 0.72) - 10))
+        : Math.max(r.left - 50, 160);
+      const finalX = dockCenterX - (robotWidth / 2);
+
+      const actorEl = document.querySelector('.vora-intro-actor');
+      let finalY = 0;
+      if (actorEl) {
+        const actorRect = actorEl.getBoundingClientRect();
+        const dockCenterY = innerRect.top + innerRect.height / 2;
+        const actorCenterY = actorRect.top + actorRect.height / 2;
+        finalY = Math.round(dockCenterY - actorCenterY);
+      }
+
       return {
-        // Target where the robot walks to right beside the dock
-        targetX: Math.max(r.left - 50, 160),
-        // Exact horizontal position of the inner avatar inside the launcher button (size 200px -> 44px)
-        finalX: innerRect.left - (200 - innerRect.width) / 2,
-        finalY: 4
+        targetX: Math.round(targetX),
+        finalX: Math.round(finalX),
+        finalY: finalY || (isMobile ? 2 : 4)
       };
     }
-    const defaultX = Math.max(window.innerWidth - 240, 160);
+    const defaultX = isMobile ? Math.max(window.innerWidth - 170, 20) : Math.max(window.innerWidth - 240, 160);
     return {
       targetX: defaultX,
-      finalX: defaultX + 30,
-      finalY: 4
+      finalX: defaultX + (isMobile ? 10 : 30),
+      finalY: isMobile ? 2 : 4
     };
   };
 
@@ -68,13 +83,7 @@ export default function VoraRobotIntro({ onIntroComplete, onDockingStart }) {
     hasStartedRef.current = true;
     setVisible(true);
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMobile = window.innerWidth <= 768;
-
-    if (prefersReducedMotion || isMobile) {
-      completeIntro();
-      return;
-    }
 
     // =========================================================================
     // SCENE 1: 3D ROBOT WALKS IN FROM BEYOND LEFT VIEWPORT
@@ -86,9 +95,11 @@ export default function VoraRobotIntro({ onIntroComplete, onDockingStart }) {
     setIsWalking(true);
     setIsWaving(false);
     setSpeechVisible(false);
-    setRobotPos({ x: -280, y: 0, scale: baseScale, opacity: 1, rotate: 0 });
+    setRobotPos({ x: isMobile ? -220 : -280, y: 0, scale: baseScale, opacity: 1, rotate: 0 });
 
-    const midPointX = Math.min(Math.max(window.innerWidth * (isMobile ? 0.24 : 0.28), isMobile ? 110 : 180), 420);
+    const midPointX = isMobile
+      ? Math.max(16, Math.round((window.innerWidth - 190) / 2))
+      : Math.min(Math.max(window.innerWidth * 0.28, 180), 420);
 
     // DOM paint cycle buffer before translating across smoothly
     scheduleStep(() => {
@@ -181,33 +192,39 @@ export default function VoraRobotIntro({ onIntroComplete, onDockingStart }) {
     setVisible(true);
     setIsPaused(false);
 
+    const isMobile = window.innerWidth <= 768;
+    const baseScale = isMobile ? 0.72 : 1;
+    const midPointX = isMobile
+      ? Math.max(16, Math.round((window.innerWidth - 190) / 2))
+      : 300;
+
     if (sceneNumber === 1) {
       setPhase('walking-in');
       setIsWalking(true);
       setIsWaving(false);
       setSpeechVisible(false);
-      setRobotPos({ x: 200, y: 0, scale: 1, opacity: 1, rotate: 0 });
+      setRobotPos({ x: midPointX, y: 0, scale: baseScale, opacity: 1, rotate: 0 });
     } else if (sceneNumber === 2) {
       setPhase('greeting-1');
       setIsWalking(false);
       setIsWaving(true);
       setSpeechText('Hi! 👋');
       setSpeechVisible(true);
-      setRobotPos({ x: 320, y: 0, scale: 1, opacity: 1, rotate: 0 });
+      setRobotPos({ x: midPointX, y: 0, scale: baseScale, opacity: 1, rotate: 0 });
     } else if (sceneNumber === 3) {
       const { targetX } = getLauncherCoords();
       setPhase('walking-to-target');
       setIsWalking(true);
       setIsWaving(false);
       setSpeechVisible(false);
-      setRobotPos({ x: targetX, y: 0, scale: 0.96, opacity: 1, rotate: 0 });
+      setRobotPos({ x: targetX, y: 0, scale: baseScale * 0.96, opacity: 1, rotate: 0 });
     } else if (sceneNumber === 4) {
       const { targetX } = getLauncherCoords();
       setPhase('entering-icon');
       setIsWalking(false);
       setIsWaving(false);
       setSpeechVisible(false);
-      setRobotPos({ x: targetX, y: 0, scale: 0.96, opacity: 1, rotate: 0 });
+      setRobotPos({ x: targetX, y: 0, scale: baseScale * 0.96, opacity: 1, rotate: 0 });
       if (onDockingStart) onDockingStart();
     } else if (sceneNumber === 5) {
       const { finalX, finalY } = getLauncherCoords();
