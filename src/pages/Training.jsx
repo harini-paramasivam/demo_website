@@ -463,7 +463,7 @@ export default function Training() {
         lead="Join Velvora Solutions Academy today. Choose from 8 specialized tracks or apply for our flagship internship with 100% live client project exposure."
         btnText="Apply for Enrollment"
         btnLink="#enrollment-form-section"
-        theme="light"
+        theme="dark"
       />
 
       {/* 8. FREQUENTLY ASKED QUESTIONS (UNDER CTA, ABOVE FOOTER) */}

@@ -470,7 +470,7 @@ export default function TrainingProgramPage() {
         lead="Join Velvora's professional training track with real-world industry projects, 1-on-1 mentorship, and recognized certification."
         btnText="Apply for Enrollment"
         btnLink="#enrollment-form-section"
-        theme="light"
+        theme="dark"
       />
 
       {/* FREQUENTLY ASKED QUESTIONS (UNDER CTA, ABOVE FOOTER) */}

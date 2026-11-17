@@ -373,9 +373,9 @@ export default function ServicePage() {
         <section className="section why-section-dark netbg svc-section-process">
           <div className="container">
             <div className="sec-head sec-head--dark text-center" style={{ marginBottom: '3rem' }}>
-              <p className="eyebrow" style={{ color: '#38bdf8' }}>
-                <Workflow size={15} style={{ verticalAlign: 'middle', marginRight: '6px' }} />
-                Delivery Methodology
+              <p className="eyebrow" style={{ color: '#38bdf8', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                <Workflow size={16} style={{ flexShrink: 0, display: 'inline-block' }} />
+                <span>Delivery Methodology</span>
               </p>
               <h2 style={{ color: '#ffffff', marginBottom: '14px' }}>Our Production &amp; Delivery Process</h2>
 
@@ -780,7 +780,7 @@ export default function ServicePage() {
       )}
 
       {/* ========================================================================= */}
-      {/* CLOSING CTA BAND (POSITIONED BEFORE FAQS AS REQUESTED)                   */}
+      {/* CLOSING CTA BAND (DARK SHADE AS REQUESTED)                               */}
       {/* ========================================================================= */}
       <CtaBand
         title={`Ready to Get Started with ${s.title}?`}
@@ -789,22 +789,22 @@ export default function ServicePage() {
         primaryBtnTo={`/contact?service=${encodeURIComponent(s.title)}`}
         secondaryBtnText="Explore All Services"
         secondaryBtnTo="/services"
-        theme="light"
+        theme="dark"
       />
 
       {/* ========================================================================= */}
-      {/* FREQUENTLY ASKED QUESTIONS (POSITIONED UNDER CTA, ABOVE FOOTER)          */}
+      {/* FREQUENTLY ASKED QUESTIONS (LIGHT MODE - POSITIONED UNDER CTA, ABOVE FOOTER) */}
       {/* ========================================================================= */}
       {s.faqs && (
-        <section className="section why-section-dark netbg svc-section-faqs">
-          <div className="container">
-            <div className="sec-head sec-head--dark text-center" style={{ marginBottom: '3rem' }}>
-              <p className="eyebrow" style={{ color: '#38bdf8' }}>
-                <HelpCircle size={15} style={{ verticalAlign: 'middle', marginRight: '6px' }} />
-                Expert Answers
+        <section className="section section--paper svc-section-faqs-light" style={{ paddingTop: '4rem', paddingBottom: '4.5rem' }}>
+          <div className="container" style={{ maxWidth: '860px' }}>
+            <div className="sec-head text-center" style={{ marginBottom: '2.75rem' }}>
+              <p className="eyebrow" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                <HelpCircle size={16} style={{ flexShrink: 0, display: 'inline-block' }} />
+                <span>Expert Answers</span>
               </p>
-              <h2 style={{ color: '#ffffff' }}>Frequently Asked Questions</h2>
-              <p className="lead" style={{ marginInline: 'auto', maxWidth: '640px', color: '#cbd5e1' }}>
+              <h2 style={{ color: 'var(--ink)' }}>Frequently Asked Questions</h2>
+              <p className="lead" style={{ marginInline: 'auto', maxWidth: '640px', color: '#475569' }}>
                 Clear, transparent answers to help you evaluate and launch your project with confidence.
               </p>
             </div>
