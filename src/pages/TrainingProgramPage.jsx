@@ -522,6 +522,38 @@ export default function TrainingProgramPage() {
               </ul>
             </div>
 
+            {/* TRAINING ACCREDITATION & KEY GUARANTEES CARD */}
+            <div className="svc-sidebar__card">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
+                <ShieldCheck size={18} style={{ color: '#0284c7' }} />
+                <h3 style={{ margin: 0, fontSize: '1.08rem', color: '#0a1630', fontWeight: 800 }}>
+                  Velvora Guarantee
+                </h3>
+              </div>
+              <ul className="svc-sidebar-guarantees-list">
+                <li>
+                  <CheckCircle2 size={15} style={{ color: '#10b981', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>100% Live Projects:</strong> Real production workflows, not toy demos.</span>
+                </li>
+                <li>
+                  <CheckCircle2 size={15} style={{ color: '#10b981', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>1-on-1 Mentorship:</strong> Direct guidance from senior practicing architects.</span>
+                </li>
+                <li>
+                  <CheckCircle2 size={15} style={{ color: '#10b981', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>Verified Credential:</strong> Certificate with online verification QR code.</span>
+                </li>
+                <li>
+                  <CheckCircle2 size={15} style={{ color: '#10b981', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>Flexible Batches:</strong> Weekday fast-track &amp; weekend executive cohorts.</span>
+                </li>
+                <li>
+                  <CheckCircle2 size={15} style={{ color: '#10b981', flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong>Career Assistance:</strong> Pre-Placement Offers (PPO) &amp; portfolio defense.</span>
+                </li>
+              </ul>
+            </div>
+
             {/* ADMISSIONS DESK QUICK CONTACT CARD (LUXURY OBSIDIAN DARK THEME WITH BRIGHT CONTRAST) */}
             <div className="svc-sidebar__cta netbg gradient-cta">
               <div style={{

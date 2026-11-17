@@ -85,15 +85,15 @@ export default function ResourcePage({ type }) {
               </div>
 
               {/* SECTION SUB-HEADER */}
-              <div className="testimonials-head-block text-center" style={{ margin: '3.5rem auto 2.5rem', maxWidth: '780px' }}>
-                <span className="subservices-hub-badge">
+              <div className="testimonials-head-block text-left" style={{ margin: '3.5rem 0 2rem 0', maxWidth: '100%', textAlign: 'left' }}>
+                <span className="subservices-hub-badge" style={{ marginLeft: 0, marginBottom: '0.85rem' }}>
                   <Sparkles size={15} />
                   <span>Enterprise Client Endorsements</span>
                 </span>
-                <h3 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.25rem)', fontWeight: 800, color: '#070e24', letterSpacing: '-0.02em', margin: '0 0 12px 0' }}>
+                <h3 className="testimonials-head-title">
                   Proven Impact Across Mission-Critical Deliverables
                 </h3>
-                <p style={{ color: '#475569', fontSize: '1.05rem', lineHeight: 1.65, margin: 0 }}>
+                <p style={{ color: '#475569', fontSize: '1.05rem', lineHeight: 1.65, margin: 0, maxWidth: '820px', textAlign: 'left' }}>
                   {c.intro}
                 </p>
               </div>

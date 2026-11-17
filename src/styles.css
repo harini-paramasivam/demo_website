@@ -8638,6 +8638,8 @@ main:focus { outline: none; }
 .solution-flow-steps {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  text-align: left;
   flex-wrap: wrap;
   gap: 6px;
   background: #f8fafc;
@@ -8648,11 +8650,15 @@ main:focus { outline: none; }
 .solution-flow-step-wrap {
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
+  text-align: left;
   gap: 6px;
 }
 .solution-flow-step {
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
+  text-align: left;
   gap: 6px;
   font-size: .82rem;
   font-weight: 600;
@@ -19386,19 +19392,26 @@ main:focus { outline: none; }
 .sol-flow-timeline {
   display: flex !important;
   flex-wrap: wrap !important;
-  gap: 6px !important;
+  gap: 8px !important;
   align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+  width: 100% !important;
 }
 .sol-flow-step-wrap {
   display: inline-flex !important;
   align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
   gap: 6px !important;
 }
 .sol-flow-step-pill {
   display: inline-flex !important;
   align-items: center !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
   gap: 6px !important;
-  padding: 5px 11px !important;
+  padding: 5px 12px !important;
   border-radius: 999px !important;
   background: #ffffff !important;
   border: 1px solid #cbd5e1 !important;
@@ -19411,6 +19424,9 @@ main:focus { outline: none; }
   font-size: 0.72rem !important;
   color: #0284c7 !important;
   font-weight: 700 !important;
+}
+.sol-flow-step-text {
+  text-align: left !important;
 }
 .sol-flow-arrow {
   color: #94a3b8 !important;
@@ -22612,5 +22628,61 @@ main:focus { outline: none; }
   font-size: 0.93rem;
   color: #475569;
   line-height: 1.62;
+}
+
+/* ========================================================================= */
+/* TRAINING SIDEBAR GUARANTEES & STICKY ENROLLMENT CTA                       */
+/* ========================================================================= */
+.svc-sidebar-guarantees-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.svc-sidebar-guarantees-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.86rem;
+  color: #334155;
+  line-height: 1.48;
+}
+
+.svc-sidebar-guarantees-list strong {
+  color: #0f172a;
+}
+
+@media (min-width: 1024px) {
+  .svc-sidebar .svc-sidebar__cta {
+    position: sticky;
+    top: 96px;
+    z-index: 5;
+  }
+}
+
+/* ========================================================================= */
+/* CLIENT ENDORSEMENTS - PROVEN IMPACT TITLE (LEFT-ALIGNED & 1-LINE)        */
+/* ========================================================================= */
+.testimonials-head-block.text-left {
+  text-align: left !important;
+}
+
+.testimonials-head-title {
+  font-size: clamp(1.32rem, 2.3vw, 2.25rem);
+  font-weight: 800;
+  color: #070e24;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px 0;
+  text-align: left !important;
+  line-height: 1.25;
+}
+
+@media (min-width: 880px) {
+  .testimonials-head-title {
+    white-space: nowrap !important;
+  }
 }
 
