@@ -877,7 +877,7 @@ export const blogArticles = [
     author: 'Velvora Quality Assurance Division',
     authorRole: 'Head of Quality Assurance',
     featured: false,
-    coverImage: '/card-content-services.jpg',
+    coverImage: '/hero-slide-7.jpg',
     summary: 'Why rigorous multi-tier QA—combining automated Schematron validation, EPUBCheck, and hands-on proofing—is the bedrock of publishing reputation.',
     metaTitle: 'Quality Assurance in Digital Publishing: Standards & Best Practices',
     metaDesc: 'Explore multi-tier publishing QA methodologies: automated Schematron schemas, EPUBCheck validation, assistive technology testing, and editorial integrity.',
