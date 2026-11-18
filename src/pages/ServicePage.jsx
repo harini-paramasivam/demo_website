@@ -357,8 +357,28 @@ export default function ServicePage() {
             </div>
 
             <div className="svc-sidebar__cta netbg">
+              <span className="svc-sidebar__cta-badge">
+                <Sparkles size={14} className="accent" aria-hidden="true" />
+                <span>Custom Solution Advisory</span>
+              </span>
               <h4>Let&apos;s Talk About Your Project</h4>
               <p>Tell us what you need, and we will suggest the right approach and share a free, no-obligation quote.</p>
+
+              <div className="svc-sidebar__cta-features">
+                <div className="svc-sidebar__cta-feat">
+                  <CheckCircle2 size={15} className="accent" aria-hidden="true" />
+                  <span>Prompt response within 1-2 business days</span>
+                </div>
+                <div className="svc-sidebar__cta-feat">
+                  <CheckCircle2 size={15} className="accent" aria-hidden="true" />
+                  <span>Confidential NDA available upon request</span>
+                </div>
+                <div className="svc-sidebar__cta-feat">
+                  <CheckCircle2 size={15} className="accent" aria-hidden="true" />
+                  <span>Free sample file audit &amp; scope review</span>
+                </div>
+              </div>
+
               <Link to="/contact" className="btn btn--orange">
                 Request a Free Quote <ArrowRight size={16} aria-hidden="true" />
               </Link>
@@ -391,29 +411,8 @@ export default function ServicePage() {
               </div>
             </div>
 
-            {s.slug === 'epublishing' ? (
-              <EpublishingProductionWheel />
-            ) : (
-              <ol className="svc-process-list">
-                {s.process.map((p, idx) => {
-                  const cleanTitle = p.step.replace(/^\d+[\.\s\-]+/, '');
-                  const stepIcons = [Search, FileCode, Layers, ShieldCheck, Rocket, Cpu, CheckCircle2, Zap];
-                  const StepIcon = stepIcons[idx % stepIcons.length];
-                  return (
-                    <li key={idx} className="svc-process-item">
-                      <div className="svc-process-header">
-                        <span className="step-num">{String(idx + 1).padStart(2, '0')}</span>
-                        <span className="step-icon-bubble">
-                          <StepIcon size={18} />
-                        </span>
-                        <h4 className="svc-process-title">{cleanTitle}</h4>
-                      </div>
-                      <p className="svc-process-desc">{p.desc}</p>
-                    </li>
-                  );
-                })}
-              </ol>
-            )}
+            {/* 5-Stage Interactive Production Methodology Diagram for ALL Services */}
+            <EpublishingProductionWheel service={s} />
           </div>
         </section>
       )}

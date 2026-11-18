@@ -314,32 +314,12 @@ export default function Training() {
                   position: 'relative'
                 }}
               >
-                {/* Meta Top Bar */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
-                  <div
-                    style={{
-                      width: '46px',
-                      height: '46px',
-                      borderRadius: '12px',
-                      background: 'rgba(56, 189, 248, 0.12)',
-                      border: '1px solid rgba(56, 189, 248, 0.3)',
-                      color: '#0284c7',
-                      display: 'grid',
-                      placeItems: 'center'
-                    }}
-                  >
+                {/* Meta Top Bar - Exact Horizontal Centerline Alignment */}
+                <div className="training-card-top-bar">
+                  <div className="training-card-icon-box">
                     <Icon name={p.icon || 'GraduationCap'} size={22} />
                   </div>
-                  <span
-                    className="pill"
-                    style={{
-                      fontSize: '0.78rem',
-                      fontWeight: 700,
-                      background: 'rgba(56, 189, 248, 0.08)',
-                      color: '#0284c7',
-                      border: '1px solid rgba(56, 189, 248, 0.25)'
-                    }}
-                  >
+                  <span className="training-duration-badge">
                     {p.duration.split('/')[0].trim()}
                   </span>
                 </div>

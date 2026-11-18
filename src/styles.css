@@ -5361,6 +5361,48 @@ main:focus { outline: none; }
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45), 0 0 22px rgba(56, 189, 248, 0.18);
 }
 
+/* Training Track Cards - Exact Parallel Centerline Alignment */
+.training-card-top-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: 46px !important;
+  margin-bottom: 18px !important;
+}
+
+.training-card-icon-box {
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 12px !important;
+  background: rgba(56, 189, 248, 0.12) !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  color: #0284c7 !important;
+  display: grid !important;
+  place-items: center !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+}
+
+.training-duration-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 34px !important;
+  padding: 0 14px !important;
+  margin: 0 !important;
+  font-size: 0.78rem !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  background: rgba(56, 189, 248, 0.08) !important;
+  color: #0284c7 !important;
+  border: 1px solid rgba(56, 189, 248, 0.28) !important;
+  border-radius: 999px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
 /* ===== Subservices (Digital Accessibility) ===== */
 .subservices-list {
   display: flex;
@@ -20129,25 +20171,63 @@ main:focus { outline: none; }
 }
 
 .svc-section-overview .svc-sidebar__cta {
-  padding: 22px 22px !important;
+  padding: 24px 22px !important;
   border-radius: 20px !important;
   margin-top: 0 !important;
 }
 
+.svc-sidebar__cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #38bdf8;
+  margin-bottom: 8px;
+}
+
 .svc-section-overview .svc-sidebar__cta h4 {
-  font-size: 1.2rem !important;
+  font-size: 1.22rem !important;
   margin-bottom: 0.45rem !important;
 }
 
 .svc-section-overview .svc-sidebar__cta p {
   font-size: 0.92rem !important;
-  line-height: 1.5 !important;
-  margin-bottom: 1.1rem !important;
+  line-height: 1.55 !important;
+  margin-bottom: 0 !important;
+}
+
+.svc-sidebar__cta-features {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 14px 0 18px 0;
+  padding: 14px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.svc-sidebar__cta-feat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: #e2e8f0;
+  line-height: 1.4;
+}
+
+.svc-sidebar__cta-feat svg {
+  color: #38bdf8;
+  flex-shrink: 0;
 }
 
 .svc-section-overview .svc-sidebar__cta .btn {
-  padding: 10px 18px !important;
-  font-size: 0.9rem !important;
+  padding: 11px 18px !important;
+  font-size: 0.92rem !important;
+  width: 100% !important;
+  justify-content: center !important;
 }
 
 @media (min-width: 992px) {
@@ -20157,11 +20237,16 @@ main:focus { outline: none; }
   .svc-section-overview .svc-sidebar {
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
+    gap: 18px !important;
     height: 100% !important;
   }
   .svc-section-overview .svc-sidebar__cta {
-    margin-top: auto !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    margin-top: 0 !important;
+    padding: 26px 22px !important;
   }
 }
 
