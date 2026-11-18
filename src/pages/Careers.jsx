@@ -24,6 +24,8 @@ import {
   BookOpen, 
   Check, 
   X,
+  ChevronLeft,
+  ChevronRight,
   UploadCloud,
   Paperclip,
   Globe,
@@ -48,13 +50,155 @@ import { PageHero } from '../components/ui.jsx';
 
 const jobOpenings = careersJobs;
 
+const growthPillars = [
+  {
+    letter: 'G',
+    title: 'Growth',
+    tagline: 'Continuous Learning, Mentorship & Global Exposure',
+    stageLabel: 'Milestone 01 · Skill Acceleration & Mastery',
+    desc: 'At Velvora, development starts on day one with structured technical learning pathways, dedicated executive mentorship, and direct participation in global digital accessibility and publishing operations.',
+    points: [
+      'Structured technical training in digital accessibility (WCAG/PDF-UA), ePublishing, AI automation, and data analytics.',
+      'Global exposure through cross-border enterprise publishing and higher-education client projects.',
+      '1-on-1 mentorship from seasoned industry leaders who actively architect your career progression.',
+      'Full corporate sponsorship for professional certifications, international workshops, and masterclasses.'
+    ],
+    sla: '100+ Annual Upskilling Hours & Certified Mentorship',
+    trajectory: [
+      { step: '01', title: 'Foundation & Tooling', text: 'Intensive domain onboarding & software accreditation' },
+      { step: '02', title: 'Project Immersion', text: 'Cross-functional client delivery & shadow audits' },
+      { step: '03', title: 'Autonomous Mastery', text: 'Leading technical pipelines & junior engineer mentorship' }
+    ],
+    story: {
+      quote: 'Joined as a junior content specialist and, through structured technical mentorship, transitioned into leading AI-powered XML automation pipelines.',
+      role: 'Content Specialist ➔ AI Workflow Lead'
+    }
+  },
+  {
+    letter: 'R',
+    title: 'Respect',
+    tagline: 'Empathetic Collaboration, Open Dialogue & Valued Voices',
+    stageLabel: 'Milestone 02 · Culture, Empathy & Voice',
+    desc: 'Every voice matters at Velvora. We maintain a non-hierarchical, open-door environment where ideas and insights from any team member can immediately reshape our production workflows.',
+    points: [
+      'Every perspective, background, and cultural contribution is actively listened to, respected, and celebrated.',
+      'Transparent communication channels where suggestions directly influence leadership decisions.',
+      'Inclusive practices ensuring our teams reflect the international readers who consume our accessible content.',
+      'Monthly peer-recognition and spotlight programs honoring individual and collective team milestones.'
+    ],
+    sla: 'Flat Communication Architecture & 100% Equal Voice Policy',
+    trajectory: [
+      { step: '01', title: 'Welcoming Onboarding', text: 'Assigned culture buddy with zero communication gatekeeping' },
+      { step: '02', title: 'Open Ideation', text: 'Direct participation in monthly engineering town halls' },
+      { step: '03', title: 'Culture Ambassadorship', text: 'Shaping team standards and fostering peer empathy' }
+    ],
+    story: {
+      quote: 'An open environment where even as a new recruit, my workflow recommendations were tested, approved, and rolled out company-wide.',
+      role: 'Accessibility Auditor'
+    }
+  },
+  {
+    letter: 'O',
+    title: 'Opportunity',
+    tagline: 'Merit-Based Mobility, High-Velocity Projects & Innovation',
+    stageLabel: 'Milestone 03 · Cross-Domain Career Mobility',
+    desc: 'We actively reject rigid career silos. Employees have the freedom and encouragement to explore cross-functional disciplines across publishing, AI, software, and marketing.',
+    points: [
+      'Equal opportunities to build expertise in publishing, digital accessibility, AI, and cloud architectures.',
+      'Seamless internal mobility allowing engineers and specialists to transition across departments.',
+      'Quarterly innovation challenges allowing teams to build proof-of-concepts with emerging technologies.',
+      'Fast-track leadership development programs for proactive individuals ready for greater ownership.'
+    ],
+    sla: 'Cross-Domain Mobility & Rapid Internal Career Elevation',
+    trajectory: [
+      { step: '01', title: 'Core Discipline Mastery', text: 'Excelling within your initial focus discipline' },
+      { step: '02', title: 'Cross-Domain Rotation', text: 'Hands-on participation in cross-team innovation labs' },
+      { step: '03', title: 'Practice Leadership', text: 'Heading new practice initiatives and service lines' }
+    ],
+    story: {
+      quote: 'Started in publishing QA and moved into full-stack software development by participating in our internal automation challenges.',
+      role: 'QA Associate ➔ Full-Stack Developer'
+    }
+  },
+  {
+    letter: 'W',
+    title: 'Well-being',
+    tagline: 'Work-Life Harmony, Flexibility & Comprehensive Wellness',
+    stageLabel: 'Milestone 04 · Sustainable Life Balance',
+    desc: 'High ambition requires sustainable energy. We engineer our operational schedules to safeguard mental health, family time, and personal happiness.',
+    points: [
+      'Flexible hybrid work arrangements supporting personal commitments and family priorities.',
+      'Holistic health initiatives including wellness reimbursements and ergonomic equipment support.',
+      'Proactive workload leveling to ensure tight client deadlines never compromise personal downtime.',
+      'Regular team social retreats, wellness days, and milestone celebrations to nurture true camaraderie.'
+    ],
+    sla: 'Flexible Hybrid Culture & Zero-Burnout Workload Policy',
+    trajectory: [
+      { step: '01', title: 'Balanced Schedule', text: 'Structured hours with clear off-clock boundaries' },
+      { step: '02', title: 'Hybrid Empowerment', text: 'Autonomous schedule flexibility and focus days' },
+      { step: '03', title: 'Sustained Fulfillment', text: 'Long-term career longevity with personal balance' }
+    ],
+    story: {
+      quote: 'Velvora’s flexible hybrid policies allowed me to complete my postgraduate degree while simultaneously hitting every career milestone.',
+      role: 'Senior Project Coordinator'
+    }
+  },
+  {
+    letter: 'T',
+    title: 'Transformation',
+    tagline: 'Future-Proof Reskilling & Pivoting into Next-Gen Tech',
+    stageLabel: 'Milestone 05 · Reskilling & Technological Evolution',
+    desc: 'The digital landscape is constantly transforming. We provide the mentorship, time, and infrastructure for our team members to pivot into high-demand frontier fields.',
+    points: [
+      'Structured pathways to pivot from traditional document workflows into Cognitive AI pipelines.',
+      'Direct hands-on experience building multi-modal automated accessibility and conversion engines.',
+      'Participation in global digital supply chain transformations with tier-1 publishers and universities.',
+      'Future-proofing your professional equity in rapidly growing compliance and AI industries.'
+    ],
+    sla: 'Full Reskilling Sponsorship & Next-Gen Tech Specialization',
+    trajectory: [
+      { step: '01', title: 'Skill Audit & Ambition', text: 'Identifying emerging technical passions and industry trends' },
+      { step: '02', title: 'Reskilling Sandbox', text: 'Dedicated laboratory time for experimenting with AI tools' },
+      { step: '03', title: 'Pioneering New Roles', text: 'Leading automated conversion and AI governance practices' }
+    ],
+    story: {
+      quote: 'Pivoted from traditional editorial typesetting into leading automated MathML and JATS XML ingestion pipelines.',
+      role: 'Typesetting Specialist ➔ XML Automation Lead'
+    }
+  },
+  {
+    letter: 'H',
+    title: 'Honesty',
+    tagline: 'Radical Integrity, Transparent SLAs & Psychological Safety',
+    stageLabel: 'Milestone 06 · Ethical Foundation & Radical Trust',
+    desc: 'Integrity is the bedrock of everything we do. From defensible WCAG compliance audits to honest internal feedback, transparency guides every interaction.',
+    points: [
+      'Transparent, candid feedback loops between leadership, project teams, and clients.',
+      'Absolute engineering integrity with zero tolerance for superficial or fake compliance shortcuts.',
+      'Ethical AI adoption principles and robust data privacy safeguards in all automated pipelines.',
+      'A psychologically safe culture where challenges are raised early and resolved collaboratively.'
+    ],
+    sla: 'Court-Defensible Audit Standards & Radical Internal Transparency',
+    trajectory: [
+      { step: '01', title: 'Open Trust Culture', text: 'Safe environment to ask questions and learn from mistakes' },
+      { step: '02', title: 'Client Accountability', text: 'Delivering unvarnished, accurate compliance audit reports' },
+      { step: '03', title: 'Standards Stewardship', text: 'Enforcing global accessibility ethics across the ecosystem' }
+    ],
+    story: {
+      quote: 'Our commitment to honesty means clients trust our audit findings completely, and internal teams always know where they stand.',
+      role: 'Principal Quality Auditor'
+    }
+  }
+];
+
 export default function Careers() {
   const [selectedJob, setSelectedJob] = useState('Copy Editing Specialist');
   const [applicationSubmitted, setApplicationSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [growthModalOpen, setGrowthModalOpen] = useState(false);
+  const [growthExpanded, setGrowthExpanded] = useState(false);
   const [inclusionModalOpen, setInclusionModalOpen] = useState(false);
+  const [activeGrowthIndex, setActiveGrowthIndex] = useState(0);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -199,7 +343,7 @@ export default function Careers() {
       setSelectedJob(jobTitle);
       setFormData((prev) => ({ ...prev, role: jobTitle }));
     }
-    setGrowthModalOpen(false);
+    setGrowthExpanded(false);
     setInclusionModalOpen(false);
     if (applySectionRef.current) {
       const topOffset = applySectionRef.current.getBoundingClientRect().top + window.scrollY - 135;
@@ -372,77 +516,223 @@ export default function Careers() {
         </div>
       </section>
 
-      {/* 2. CAREER FRAMEWORK: G.R.O.W. (DARK THEME) */}
+      {/* 2. CAREER FRAMEWORK: G.R.O.W.T.H. (OPEN FLUID PROGRESSION HIGHWAY - NO BOX MODEL) */}
       <section id="grow-framework" className="section why-section-dark netbg career-grow-section">
+        {/* Soft Ambient Radial Halo */}
+        <div className="growth-ambient-glow" aria-hidden="true" />
+
         <div className="container">
           <div className="career-grow-header text-center">
             <span className="pill"><i /> Career Progression</span>
-            <h2 className="career-section-h2">Our Career Framework: G.R.O.W.</h2>
+            <h2 className="career-section-h2">Our Career Framework: G.R.O.W.T.H.</h2>
             <p className="lead" style={{ color: '#cbd5e1', fontSize: '1.18rem', lineHeight: 1.7, maxWidth: '68ch' }}>
-              A structured roadmap designed to support your development from day one through continuous milestones.
+              A connected milestone roadmap designed to support your development from day one through continuous career transformations.
             </p>
           </div>
 
-          <div className="career-grow-grid">
-            <div className="grow-pod">
-              <div className="grow-pod__head">
-                <div className="grow-pod__icon-wrap">
-                  <TrendingUp size={22} />
-                </div>
-                <h3 className="grow-pod__title">Growth</h3>
+          {/* FLUID INTERACTIVE PROGRESSION HIGHWAY (ZERO BOXES, ZERO CARDS) */}
+          <div className="growth-highway-wrap">
+            {/* SUBWAY / TIMELINE TRACK NAVIGATOR */}
+            <div className="growth-subway-track" role="tablist" aria-label="G.R.O.W.T.H. Framework Milestones">
+              <div className="growth-subway-line" aria-hidden="true">
+                <div 
+                  className="growth-subway-progress" 
+                  style={{ width: `${(activeGrowthIndex / 5) * 100}%` }} 
+                />
               </div>
-              <p className="grow-pod__desc">
-                Continuous learning and skill development through training, mentorship, and global exposure.
-              </p>
+
+              {growthPillars.map((p, pIdx) => {
+                const isActive = pIdx === activeGrowthIndex;
+                return (
+                  <button
+                    key={p.letter}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    onClick={() => setActiveGrowthIndex(pIdx)}
+                    className={`growth-node-trigger ${isActive ? 'growth-node-trigger--active' : ''}`}
+                  >
+                    <span className="growth-node-ring">
+                      <span className="growth-node-letter">{p.letter}</span>
+                    </span>
+                    <span className="growth-node-label">{p.title}</span>
+                  </button>
+                );
+              })}
             </div>
 
-            <div className="grow-pod">
-              <div className="grow-pod__head">
-                <div className="grow-pod__icon-wrap">
-                  <HeartHandshake size={22} />
+            {/* UNIFIED OPEN FLUID SHOWCASE (NO BOXES, NO CARD BORDERS) */}
+            {(() => {
+              const p = growthPillars[activeGrowthIndex];
+              return (
+                <div className="growth-fluid-stage">
+                  {/* GLOWING WATERMARK LETTER */}
+                  <div className="growth-watermark-bg" aria-hidden="true">
+                    {p.letter}
+                  </div>
+
+                  <div className="growth-fluid-grid">
+                    {/* LEFT COLUMN: PILLAR PHILOSOPHY & ACTIONABLE POINTS */}
+                    <div className="growth-fluid-col-left">
+                      <div className="growth-stage-tag-row">
+                        <span className="growth-stage-pill">{p.stageLabel}</span>
+                        <span className="growth-stage-index">Step 0{activeGrowthIndex + 1} of 06</span>
+                      </div>
+
+                      <h3 className="growth-stage-heading">
+                        <span className="text-cyan">{p.letter}.</span> {p.title}: {p.tagline}
+                      </h3>
+                      <p className="growth-stage-narrative">{p.desc}</p>
+
+                      <div className="growth-initiatives-block">
+                        <h5 className="growth-initiatives-title">Actionable Milestones &amp; Support:</h5>
+                        <ul className="growth-initiatives-list">
+                          {p.points.map((pt, idx) => (
+                            <li key={idx}>
+                              <CheckCircle2 size={17} className="growth-pt-icon" aria-hidden="true" />
+                              <span>{pt}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="growth-sla-banner">
+                        <Sparkles size={16} className="text-orange" aria-hidden="true" />
+                        <span><strong>SLA Guarantee:</strong> {p.sla}</span>
+                      </div>
+                    </div>
+
+                    {/* RIGHT COLUMN: OPEN PROGRESSION LADDER & HUMAN STORY */}
+                    <div className="growth-fluid-col-right">
+                      {/* OPEN VERTICAL TIMELINE LADDER (ZERO BOXES) */}
+                      <div className="growth-open-timeline">
+                        <div className="growth-open-timeline-heading">
+                          <TrendingUp size={16} aria-hidden="true" />
+                          <span>Career Progression Ladder</span>
+                        </div>
+                        <div className="growth-open-steps">
+                          {p.trajectory.map((t, tIdx) => (
+                            <div key={tIdx} className="growth-open-step">
+                              <span className="growth-open-step-node">{t.step}</span>
+                              <div className="growth-open-step-text">
+                                <strong>{t.title}</strong>
+                                <p>{t.text}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* OPEN TESTIMONIAL QUOTE (NO BOX BORDERS) */}
+                      <div className="growth-open-quote">
+                        <p className="growth-open-quote-body">“{p.story.quote}”</p>
+                        <div className="growth-open-quote-author">
+                          <Award size={14} className="text-orange" aria-hidden="true" />
+                          <span>{p.story.role}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* BOTTOM FLUID CONTROLS & PAGINATION BAR */}
+                  <div className="growth-fluid-footer-bar">
+                    <button
+                      type="button"
+                      className="btn btn--outline btn--sm growth-nav-btn"
+                      onClick={() => setActiveGrowthIndex((prev) => (prev > 0 ? prev - 1 : growthPillars.length - 1))}
+                      aria-label="Previous milestone"
+                    >
+                      <ChevronLeft size={16} /> Previous Milestone
+                    </button>
+
+                    <div className="growth-dots-stream" aria-hidden="true">
+                      {growthPillars.map((_, dotIdx) => (
+                        <button
+                          key={dotIdx}
+                          type="button"
+                          onClick={() => setActiveGrowthIndex(dotIdx)}
+                          className={`growth-dot-node ${dotIdx === activeGrowthIndex ? 'growth-dot-node--active' : ''}`}
+                          aria-label={`Jump to milestone ${dotIdx + 1}`}
+                        />
+                      ))}
+                    </div>
+
+                    <button
+                      type="button"
+                      className="btn btn--outline btn--sm growth-nav-btn"
+                      onClick={() => setActiveGrowthIndex((prev) => (prev < growthPillars.length - 1 ? prev + 1 : 0))}
+                      aria-label="Next milestone"
+                    >
+                      Next Milestone <ChevronRight size={16} />
+                    </button>
+                  </div>
                 </div>
-                <h3 className="grow-pod__title">Respect</h3>
-              </div>
-              <p className="grow-pod__desc">
-                Valuing every perspective, background, and contribution across our teams.
-              </p>
+              );
+            })()}
+
+            {/* FULL DETAILED BLUEPRINT EXPANSION TOGGLE BUTTON */}
+            <div className="career-framework-btn-wrap" style={{ marginTop: '3.5rem', textAlign: 'center' }}>
+              <button
+                type="button"
+                onClick={() => setGrowthExpanded(!growthExpanded)}
+                className="btn btn--orange btn--lg career-glow-btn"
+              >
+                <span>{growthExpanded ? 'Collapse Detailed Blueprint Stream' : 'Explore Full G.R.O.W.T.H. Blueprint Stream'}</span>
+                <ArrowRight size={18} aria-hidden="true" />
+              </button>
             </div>
 
-            <div className="grow-pod">
-              <div className="grow-pod__head">
-                <div className="grow-pod__icon-wrap">
-                  <Rocket size={22} />
+            {/* EXPANDED BLUEPRINT: FLUID VERTICAL TIMELINE STREAM (ZERO BOXES, ZERO CARDS, ZERO POPUPS) */}
+            {growthExpanded && (
+              <div className="growth-expanded-stream">
+                <div className="growth-stream-heading-wrap">
+                  <span className="growth-stage-pill" style={{ marginBottom: '0.75rem' }}>
+                    <Sparkles size={14} aria-hidden="true" /> Comprehensive Roadmap
+                  </span>
+                  <h3>The Complete 6-Milestone Progression Blueprint</h3>
+                  <p>
+                    Every team member’s career at Velvora Solutions progresses along these six foundational pillars, engineered to empower individual mastery and global leadership.
+                  </p>
                 </div>
-                <h3 className="grow-pod__title">Opportunity</h3>
-              </div>
-              <p className="grow-pod__desc">
-                Equal chances to innovate in publishing, web development, software, AI, and marketing.
-              </p>
-            </div>
 
-            <div className="grow-pod">
-              <div className="grow-pod__head">
-                <div className="grow-pod__icon-wrap">
-                  <ShieldCheck size={22} />
+                <div className="growth-stream-timeline">
+                  {growthPillars.map((p, idx) => (
+                    <div key={p.letter} className="growth-stream-entry">
+                      <div className="growth-stream-entry-badge">
+                        <span>{p.letter}</span>
+                      </div>
+                      <div className="growth-stream-entry-content">
+                        <span className="growth-stage-pill" style={{ marginBottom: '0.45rem' }}>{p.stageLabel}</span>
+                        <h4 className="growth-stream-entry-title">{p.title}: {p.tagline}</h4>
+                        <p className="growth-stream-entry-desc">{p.desc}</p>
+
+                        <div className="growth-stream-points">
+                          {p.points.map((pt, pIdx) => (
+                            <div key={pIdx} className="growth-stream-point-item">
+                              <CheckCircle2 size={15} className="text-cyan" style={{ flexShrink: 0, marginTop: '3px' }} aria-hidden="true" />
+                              <span>{pt}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <p className="growth-stream-quote">“{p.story.quote}” — <strong>{p.story.role}</strong></p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <h3 className="grow-pod__title">Well‑being</h3>
-              </div>
-              <p className="grow-pod__desc">
-                A supportive environment that balances professional success with personal health.
-              </p>
-            </div>
-          </div>
 
-          {/* Learn More Button for G.R.O.W.T.H. */}
-          <div className="career-framework-btn-wrap">
-            <button
-              type="button"
-              onClick={() => setGrowthModalOpen(true)}
-              className="btn btn--orange btn--lg career-glow-btn"
-            >
-              <span>Learn More About Our Framework: G.R.O.W.T.H.</span>
-              <ArrowRight size={18} aria-hidden="true" />
-            </button>
+                <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+                  <button
+                    type="button"
+                    className="btn btn--orange btn--lg"
+                    onClick={() => scrollToApply()}
+                  >
+                    <span>Ready to Grow With Us? Explore Open Roles &amp; Apply</span>
+                    <ArrowRight size={18} />
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -1165,168 +1455,7 @@ export default function Careers() {
       </section>
 
       {/* ========================================================================= */}
-      {/* MODAL 1: LEARN MORE ABOUT OUR FRAMEWORK: G.R.O.W.T.H. */}
-      {/* ========================================================================= */}
-      {growthModalOpen && (
-        <div className="career-modal-backdrop" onClick={() => setGrowthModalOpen(false)}>
-          <div 
-            className="career-modal-dialog" 
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="growth-modal-title"
-          >
-            <div className="career-modal-header">
-              <div>
-                <span className="badge-eyebrow">
-                  <TrendingUp size={16} /> Detailed Blueprint
-                </span>
-                <h2 id="growth-modal-title" className="career-modal-title">
-                  Learn More About Our Framework: G.R.O.W.T.H.
-                </h2>
-              </div>
-              <button
-                type="button"
-                className="career-modal-close"
-                onClick={() => setGrowthModalOpen(false)}
-                aria-label="Close modal"
-              >
-                <X size={20} />
-              </button>
-            </div>
-
-            <div className="career-modal-body">
-              <div className="career-modal-intro-card">
-                <p>
-                  At Velvora Solutions, we believe careers thrive when people can achieve <strong>G.R.O.W.T.H.</strong> — a holistic journey that blends skill development, respect, opportunity, well‑being, transformation, and honesty.
-                </p>
-              </div>
-
-              <div className="growth-pillars-list">
-                <div className="growth-pillar-item">
-                  <div className="growth-pillar-item__badge">G</div>
-                  <div className="growth-pillar-item__content">
-                    <h3>Growth</h3>
-                    <ul>
-                      <li>Structured training programs in publishing, web/software, AI, and analytics.</li>
-                      <li>Global exposure through cross‑border projects and industry collaborations.</li>
-                      <li>Mentorship from experienced leaders who guide career paths.</li>
-                      <li>Access to certifications, workshops, and online learning platforms.</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="growth-pillar-item">
-                  <div className="growth-pillar-item__badge">R</div>
-                  <div className="growth-pillar-item__content">
-                    <h3>Respect</h3>
-                    <ul>
-                      <li>Every perspective, background, and contribution is valued.</li>
-                      <li>Open communication channels encourage ideas from all levels.</li>
-                      <li>Diversity is celebrated, ensuring teams reflect global voices.</li>
-                      <li>Recognition programs highlight individual and team achievements.</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="growth-pillar-item">
-                  <div className="growth-pillar-item__badge">O</div>
-                  <div className="growth-pillar-item__content">
-                    <h3>Opportunity</h3>
-                    <ul>
-                      <li>Equal chances to innovate in publishing, web/software, AI, analytics, and marketing.</li>
-                      <li>Career mobility across multiple domains.</li>
-                      <li>Internal innovation challenges to encourage experimentation.</li>
-                      <li>Leadership tracks for those ready to take on bigger responsibilities.</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="growth-pillar-item">
-                  <div className="growth-pillar-item__badge">W</div>
-                  <div className="growth-pillar-item__content">
-                    <h3>Well‑being</h3>
-                    <ul>
-                      <li>Flexible work arrangements to support personal and professional life.</li>
-                      <li>Health and wellness initiatives, including counseling and fitness programs.</li>
-                      <li>A supportive environment that prioritizes mental health.</li>
-                      <li>Celebrations, team‑building, and recognition events to keep morale high.</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="growth-pillar-item">
-                  <div className="growth-pillar-item__badge">T</div>
-                  <div className="growth-pillar-item__content">
-                    <h3>Transformation</h3>
-                    <ul>
-                      <li>Career transitions supported by mentorship (e.g., content → AI automation).</li>
-                      <li>Opportunities to reskill and upskill with emerging technologies.</li>
-                      <li>Exposure to global projects that reshape industries.</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="growth-pillar-item">
-                  <div className="growth-pillar-item__badge">H</div>
-                  <div className="growth-pillar-item__content">
-                    <h3>Honesty</h3>
-                    <ul>
-                      <li>Transparent communication with clients and colleagues.</li>
-                      <li>Integrity in every project delivery.</li>
-                      <li>Ethical practices that build long‑term trust.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Employee Growth Stories */}
-              <div className="growth-stories-section">
-                <h3 className="growth-stories-title">
-                  <Sparkles size={20} className="accent" />
-                  <span>Employee Growth Stories</span>
-                </h3>
-                <div className="growth-stories-grid">
-                  <div className="growth-story-card">
-                    <Quote size={20} className="accent" />
-                    <p>A content specialist who transitioned into AI automation through mentorship.</p>
-                  </div>
-                  <div className="growth-story-card">
-                    <Quote size={20} className="accent" />
-                    <p>A developer who grew into a project lead by taking part in innovation challenges.</p>
-                  </div>
-                  <div className="growth-story-card">
-                    <Quote size={20} className="accent" />
-                    <p>A marketing analyst who expanded into global strategy roles after training programs.</p>
-                  </div>
-                </div>
-                <p className="growth-stories-promise">
-                  These journeys show that <strong>G.R.O.W.T.H.</strong> is more than a framework — it’s a promise of transformation.
-                </p>
-              </div>
-
-              {/* Call to Action in Modal */}
-              <div className="career-modal-cta">
-                <div>
-                  <h4>Ready to grow with us?</h4>
-                  <p>Explore opportunities at Velvora Solutions and be part of a workplace where your skills, ideas, and well‑being matter.</p>
-                </div>
-                <button
-                  type="button"
-                  className="btn btn--orange btn--lg"
-                  onClick={() => scrollToApply()}
-                >
-                  <span>Apply Now</span>
-                  <ArrowRight size={18} />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ========================================================================= */}
-      {/* MODAL 2: OUR INCLUSIVE INNOVATION STORIES */}
+      {/* MODAL: OUR INCLUSIVE INNOVATION STORIES */}
       {/* ========================================================================= */}
       {inclusionModalOpen && (
         <div className="career-modal-backdrop" onClick={() => setInclusionModalOpen(false)}>

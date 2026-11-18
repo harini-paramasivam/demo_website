@@ -353,13 +353,34 @@ export default function Home() {
                 Velvora Solutions is a content and technology services company. We combine ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing to make your content well-structured, standards-compliant, discoverable, and usable by everyone, including people who rely on assistive technologies.
               </p>
               <div className="intro-card__tags">
-                <span className="intro-tag">ePublishing &amp; XML</span>
-                <span className="intro-tag">Digital Accessibility</span>
-                <span className="intro-tag">AI Automation</span>
-                <span className="intro-tag">Web &amp; Software</span>
-                <span className="intro-tag">Data Analytics</span>
-                <span className="intro-tag">Digital Marketing</span>
-                <span className="intro-tag">Training &amp; Skills</span>
+                <span className="intro-tag">
+                  <Icon name="BookOpen" size={14} className="intro-tag__icon" />
+                  <span>ePublishing &amp; XML</span>
+                </span>
+                <span className="intro-tag">
+                  <Icon name="CheckCircle2" size={14} className="intro-tag__icon" />
+                  <span>Digital Accessibility</span>
+                </span>
+                <span className="intro-tag">
+                  <Icon name="Cpu" size={14} className="intro-tag__icon" />
+                  <span>AI Automation</span>
+                </span>
+                <span className="intro-tag">
+                  <Icon name="Globe" size={14} className="intro-tag__icon" />
+                  <span>Web &amp; Software</span>
+                </span>
+                <span className="intro-tag">
+                  <Icon name="BarChart3" size={14} className="intro-tag__icon" />
+                  <span>Data Analytics</span>
+                </span>
+                <span className="intro-tag">
+                  <Icon name="Megaphone" size={14} className="intro-tag__icon" />
+                  <span>Digital Marketing</span>
+                </span>
+                <span className="intro-tag">
+                  <Icon name="GraduationCap" size={14} className="intro-tag__icon" />
+                  <span>Training &amp; Skills</span>
+                </span>
               </div>
             </div>
           </div>

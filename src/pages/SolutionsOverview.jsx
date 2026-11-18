@@ -276,16 +276,14 @@ export default function SolutionsOverview() {
                           </span>
                           <h3 className="sol-module-head__title">Velvora Solution Flow Pipeline</h3>
                         </div>
-                        <div className="sol-flow-timeline">
+                        <div className="sol-flow-timeline" style={{ textAlign: 'left', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
                           {activeSolution.flow.map((step, idx) => (
-                            <span key={idx} className="sol-flow-step-wrap">
+                            <span key={idx} className="sol-flow-step-wrap" style={{ textAlign: 'left', justifyContent: 'flex-start' }}>
                               <span className="sol-flow-step-pill">
                                 <span className="sol-flow-step-idx">0{idx + 1}</span>
                                 <span className="sol-flow-step-text">{step}</span>
                               </span>
-                              {idx < activeSolution.flow.length - 1 && (
-                                <ChevronRight size={13} className="sol-flow-arrow" aria-hidden="true" />
-                              )}
+                              <ChevronRight size={13} className="sol-flow-arrow" aria-hidden="true" />
                             </span>
                           ))}
                         </div>
@@ -576,15 +574,13 @@ function CatalogSolutionCard({ sol, onSelect }) {
             <Workflow size={15} className="solution-section__icon-flow" aria-hidden="true" />
             Solution Flow
           </h4>
-          <div className="solution-flow-steps">
+          <div className="solution-flow-steps" style={{ textAlign: 'left', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
             {sol.flow.map((step, idx) => (
-              <span key={idx} className="solution-flow-step-wrap">
+              <span key={idx} className="solution-flow-step-wrap" style={{ textAlign: 'left', justifyContent: 'flex-start' }}>
                 <span className="solution-flow-step">
                   <span className="solution-flow-step__idx">{idx + 1}.</span> {step}
                 </span>
-                {idx < sol.flow.length - 1 && (
-                  <ChevronRight size={13} className="solution-flow-arrow" aria-hidden="true" />
-                )}
+                <ChevronRight size={13} className="solution-flow-arrow" aria-hidden="true" />
               </span>
             ))}
           </div>

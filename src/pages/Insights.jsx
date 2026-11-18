@@ -504,8 +504,12 @@ export default function Insights() {
                       <p>{cs.result}</p>
                     </div>
 
-                    <Link to="/resources/case-studies" className="btn btn--outline btn--block case-snapshot-btn" style={{ marginTop: '16px' }}>
-                      <span>View Full Case Report</span>
+                    <Link 
+                      to={cs.landingPage || (cs.slug ? `/case-studies/${cs.slug}` : (cs.id === 'case-1' ? '/case-studies/epublishing-transformation' : cs.id === 'case-2' ? '/case-studies/wcag-accessibility' : '/case-studies/xml-journal-conversion'))} 
+                      className="btn btn--outline btn--block case-snapshot-btn" 
+                      style={{ marginTop: '16px' }}
+                    >
+                      <span>View Full Case &amp; Practice</span>
                       <ArrowRight size={15} aria-hidden="true" />
                     </Link>
                   </article>

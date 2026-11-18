@@ -161,8 +161,8 @@ export default function Contact() {
     },
     {
       label: 'Discover Our Projects',
-      hint: 'Leads to Case Studies / Insights',
-      to: '/resources/case-studies',
+      hint: 'Leads to Enterprise Case Studies',
+      to: '/case-studies',
       icon: Compass
     },
     {

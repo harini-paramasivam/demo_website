@@ -5,7 +5,8 @@ import {
   X, 
   Send, 
   Sparkles, 
-  ArrowRight, 
+  ArrowRight,
+  ArrowLeft,
   RotateCcw, 
   ShieldCheck, 
   ExternalLink, 
@@ -372,6 +373,17 @@ export default function VoraChat() {
         >
           {/* Header */}
           <div className="vora-chat-header">
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              className="vora-back-btn"
+              title="Back to page"
+              aria-label="Back to page"
+            >
+              <ArrowLeft size={18} />
+              <span className="vora-back-btn__text">Back</span>
+            </button>
+
             <div className="vora-header-left">
               <div className="vora-avatar-wrap">
                 <VoraRobotMascot size={36} isTalking={isTyping} />

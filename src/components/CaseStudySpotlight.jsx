@@ -38,7 +38,7 @@ export default function CaseStudySpotlight() {
             </div>
 
             <div className="case-spotlight-actions">
-              <Link to="/resources/case-studies" className="btn btn--orange btn--lg">
+              <Link to="/case-studies/epublishing-transformation" className="btn btn--orange btn--lg">
                 Read the Case Study <ArrowRight size={18} aria-hidden="true" />
               </Link>
               <Link to="/contact" className="btn btn--outline btn--lg">

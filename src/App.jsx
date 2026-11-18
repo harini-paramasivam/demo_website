@@ -18,6 +18,8 @@ import Training from './pages/Training.jsx';
 import TrainingProgramPage from './pages/TrainingProgramPage.jsx';
 import ServicePage from './pages/ServicePage.jsx';
 import ResourcePage from './pages/ResourcePage.jsx';
+import CaseStudiesPage from './pages/CaseStudiesPage.jsx';
+import CaseStudyDetailPage from './pages/CaseStudyDetailPage.jsx';
 import BlogOverview from './pages/BlogOverview.jsx';
 import BlogPost from './pages/BlogPost.jsx';
 import Contact from './pages/Contact.jsx';
@@ -85,7 +87,10 @@ export default function App() {
           <Route path="/resources/insights" element={<Insights />} />
           <Route path="/insights" element={<Insights />} />
           <Route path="/resources/news-events" element={<ResourcePage type="news-events" />} />
-          <Route path="/resources/case-studies" element={<ResourcePage type="case-studies" />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
+          <Route path="/case-studies/:slug" element={<CaseStudyDetailPage />} />
+          <Route path="/resources/case-studies" element={<CaseStudiesPage />} />
+          <Route path="/resources/case-studies/:slug" element={<CaseStudyDetailPage />} />
           <Route path="/resources/client-testimonials" element={<ResourcePage type="client-testimonials" />} />
           <Route path="/blog" element={<BlogOverview />} />
           <Route path="/blog/:slug" element={<BlogPost />} />

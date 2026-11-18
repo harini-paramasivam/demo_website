@@ -52,8 +52,12 @@ export default function ResourcePage({ type }) {
                     <Link to="/contact" className="btn btn--orange">
                       Get in Touch <ArrowRight size={16} aria-hidden="true" />
                     </Link>
-                    <Link to="/blog" className="btn btn--outline" style={{ color: 'var(--ink)' }}>
-                      Read the Full Case Study <ArrowRight size={16} aria-hidden="true" />
+                    <Link 
+                      to={cs.landingPage || (cs.slug ? `/case-studies/${cs.slug}` : (cs.id === 'case-1' ? '/case-studies/epublishing-transformation' : cs.id === 'case-2' ? '/case-studies/wcag-accessibility' : '/case-studies/xml-journal-conversion'))} 
+                      className="btn btn--outline" 
+                      style={{ color: 'var(--ink)' }}
+                    >
+                      Read Full Case Study <ArrowRight size={16} aria-hidden="true" />
                     </Link>
                   </div>
                 </article>
