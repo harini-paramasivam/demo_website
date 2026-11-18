@@ -2210,6 +2210,99 @@ main:focus { outline: none; }
   background: linear-gradient(90deg, #38bdf8, #f59e0b, transparent);
   box-shadow: 0 0 14px rgba(56, 189, 248, 0.6);
 }
+
+.sec-head.text-center,
+.sec-head[style*="text-align: center"],
+.text-center .sec-head,
+.sec-head--centered {
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+
+.sec-head.text-center::after,
+.sec-head[style*="text-align: center"]::after,
+.text-center .sec-head::after,
+.sec-head--centered::after {
+  margin-inline: auto !important;
+}
+
+/* Learning Journey Cards in Academic Methodology */
+.learning-step-card {
+  padding: 28px 24px;
+  border-radius: 20px;
+  background: linear-gradient(165deg, rgba(14, 22, 44, 0.96) 0%, rgba(7, 12, 26, 0.98) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.3);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.learning-step-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  opacity: 0.8;
+}
+
+.learning-step-card:hover {
+  transform: translateY(-4px);
+  border-color: #38bdf8;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), 0 0 25px rgba(56, 189, 248, 0.25);
+}
+
+.learning-step-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.learning-step-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(2, 132, 199, 0.12));
+  border: 1.5px solid rgba(56, 189, 248, 0.45);
+  color: #38bdf8;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
+}
+
+.learning-step-num-pill {
+  font-family: monospace;
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 8px;
+  padding: 4px 10px;
+  letter-spacing: 0.05em;
+}
+
+.learning-step-title {
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: #ffffff !important;
+  margin: 0 0 10px 0;
+  line-height: 1.35;
+}
+
+.learning-step-desc {
+  font-size: 0.94rem;
+  color: #cbd5e1 !important;
+  line-height: 1.65;
+  margin: 0;
+  flex-grow: 1;
+}
 .about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
 .about .lead { margin-top: 1.5rem; }
 

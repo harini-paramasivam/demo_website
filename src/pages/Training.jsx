@@ -14,7 +14,9 @@ import {
   Briefcase,
   HelpCircle,
   Laptop,
-  GraduationCap
+  GraduationCap,
+  BookOpen,
+  Workflow
 } from 'lucide-react';
 import { 
   trainingHero, 
@@ -387,10 +389,10 @@ export default function Training() {
       {/* 5. 4-STEP ACADEMIC LEARNING PROCESS (DARK THEME) */}
       <section className="section why-section-dark netbg" style={{ paddingTop: '3.5rem', paddingBottom: '4.5rem' }}>
         <div className="container">
-          <div className="sec-head sec-head--dark" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <p className="eyebrow" style={{ color: '#38bdf8' }}>Academic Methodology</p>
-            <h2 style={{ color: '#ffffff' }}>The Velvora Learning Journey</h2>
-            <p className="lead" style={{ marginInline: 'auto', maxWidth: '640px', color: '#cbd5e1' }}>
+          <div className="sec-head sec-head--dark text-center" style={{ marginInline: 'auto', textAlign: 'center', marginBottom: '3rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <p className="eyebrow" style={{ color: '#38bdf8', textAlign: 'center', margin: '0 auto 8px auto' }}>Academic Methodology</p>
+            <h2 style={{ color: '#ffffff', textAlign: 'center', margin: '0 auto 12px auto' }}>The Velvora Learning Journey</h2>
+            <p className="lead" style={{ marginInline: 'auto', maxWidth: '640px', color: '#cbd5e1', textAlign: 'center' }}>
               From foundational concepts to live enterprise delivery, our 4-stage progression ensures job-readiness.
             </p>
           </div>
@@ -399,33 +401,33 @@ export default function Training() {
             className="process-grid"
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
               gap: '24px'
             }}
           >
-            {learningRoadmap.map((step) => (
-              <div
-                key={step.step}
-                className="svc-offer-card"
-                style={{
-                  padding: '28px 24px',
-                  borderRadius: '18px',
-                  background: 'linear-gradient(165deg, rgba(14, 20, 36, 0.95) 0%, rgba(8, 12, 22, 0.98) 100%)',
-                  border: '1px solid rgba(56, 189, 248, 0.25)',
-                  boxShadow: '0 12px 30px rgba(0, 0, 0, 0.5)'
-                }}
-              >
-                <div style={{ fontSize: '2rem', fontWeight: 800, color: '#38bdf8', lineHeight: 1, marginBottom: '12px' }}>
-                  {step.step}
+            {learningRoadmap.map((step, idx) => {
+              const stepIcons = [BookOpen, Workflow, Users, Award];
+              const StepIcon = stepIcons[idx % stepIcons.length];
+              return (
+                <div
+                  key={step.step}
+                  className="learning-step-card"
+                >
+                  <div className="learning-step-card-top">
+                    <div className="learning-step-icon-wrap">
+                      <StepIcon size={22} />
+                    </div>
+                    <span className="learning-step-num-pill">{step.step}</span>
+                  </div>
+                  <h4 className="learning-step-title">
+                    {step.title}
+                  </h4>
+                  <p className="learning-step-desc">
+                    {step.desc}
+                  </p>
                 </div>
-                <h4 style={{ fontSize: '1.15rem', color: '#ffffff', marginBottom: '8px' }}>
-                  {step.title}
-                </h4>
-                <p style={{ fontSize: '0.92rem', color: '#e2e8f0', lineHeight: 1.6, margin: 0 }}>
-                  {step.desc}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

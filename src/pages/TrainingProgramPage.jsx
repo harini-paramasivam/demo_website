@@ -358,88 +358,6 @@ export default function TrainingProgramPage() {
                 )}
               </div>
             )}
-
-            {/* TOOLS & FRAMEWORKS MASTERED */}
-            {toolsList.length > 0 && (
-              <div style={{ marginTop: '3.5rem' }}>
-                <h3 className="section-subtitle">Tools, Technologies &amp; Standards Mastered</h3>
-                <p style={{ margin: '0 0 1rem 0', color: '#475569', fontSize: '0.95rem' }}>
-                  Industry-standard tools and verification suites integrated into hands-on daily production workflows:
-                </p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                  {toolsList.map((tool, idx) => (
-                    <span key={idx} className="training-tool-pill">
-                      <Layers size={14} style={{ color: '#0284c7' }} />
-                      <span>{tool}</span>
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* CAREER PATHWAYS & TARGET ROLES */}
-            {program.careerRoles && program.careerRoles.length > 0 && (
-              <div style={{ marginTop: '3.5rem' }}>
-                <h3 className="section-subtitle">Career Pathways &amp; Target Roles</h3>
-                <p style={{ margin: '0 0 1.25rem 0', color: '#475569', fontSize: '0.95rem' }}>
-                  Graduates and interns completing this track actively qualify for high-growth positions including:
-                </p>
-                <div className="training-careers-grid">
-                  {program.careerRoles.map((role, idx) => (
-                    <div key={idx} className="training-career-chip">
-                      <div className="training-career-chip-icon">
-                        <Briefcase size={16} />
-                      </div>
-                      <span className="training-career-chip-text">{role}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* ENROLLMENT CRITERIA & CREDENTIALING */}
-            {(program.targetAudience || program.prerequisites || program.certification) && (
-              <div style={{ marginTop: '3.5rem' }}>
-                <h3 className="section-subtitle">Enrollment Criteria &amp; Credentialing</h3>
-                <div className="training-specs-ecosystem">
-                  {program.targetAudience && (
-                    <div className="training-spec-card">
-                      <div className="training-spec-card-head">
-                        <div className="training-spec-icon-wrap" style={{ color: '#0284c7', background: 'rgba(56, 189, 248, 0.12)' }}>
-                          <Users size={18} />
-                        </div>
-                        <strong>Target Audience</strong>
-                      </div>
-                      <p>{program.targetAudience}</p>
-                    </div>
-                  )}
-
-                  {program.prerequisites && (
-                    <div className="training-spec-card">
-                      <div className="training-spec-card-head">
-                        <div className="training-spec-icon-wrap" style={{ color: '#10b981', background: 'rgba(16, 185, 129, 0.12)' }}>
-                          <FileCheck2 size={18} />
-                        </div>
-                        <strong>Prerequisites</strong>
-                      </div>
-                      <p>{program.prerequisites}</p>
-                    </div>
-                  )}
-
-                  {program.certification && (
-                    <div className="training-spec-card">
-                      <div className="training-spec-card-head">
-                        <div className="training-spec-icon-wrap" style={{ color: '#f59e0b', background: 'rgba(245, 158, 11, 0.12)' }}>
-                          <Award size={18} />
-                        </div>
-                        <strong>Verified Credential</strong>
-                      </div>
-                      <p>{program.certification}</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
           </div>
 
           {/* SIDEBAR */}
@@ -602,6 +520,93 @@ export default function TrainingProgramPage() {
               </div>
             </div>
           </aside>
+        </div>
+      </section>
+
+      {/* 3. FULL-WIDTH TOOLS, CAREERS & ENROLLMENT CREDENTIALS (ZERO EMPTY SPACE) */}
+      <section className="section section--paper" style={{ paddingTop: '0.5rem', paddingBottom: '3.5rem' }}>
+        <div className="container">
+          {/* TOOLS & FRAMEWORKS MASTERED */}
+          {toolsList.length > 0 && (
+            <div style={{ marginTop: '1.5rem', marginBottom: '3.5rem' }}>
+              <h3 className="section-subtitle">Tools, Technologies &amp; Standards Mastered</h3>
+              <p style={{ margin: '0 0 1rem 0', color: '#475569', fontSize: '0.95rem' }}>
+                Industry-standard tools and verification suites integrated into hands-on daily production workflows:
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                {toolsList.map((tool, idx) => (
+                  <span key={idx} className="training-tool-pill">
+                    <Layers size={14} style={{ color: '#0284c7' }} />
+                    <span>{tool}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* CAREER PATHWAYS & TARGET ROLES */}
+          {program.careerRoles && program.careerRoles.length > 0 && (
+            <div style={{ marginBottom: '3.5rem' }}>
+              <h3 className="section-subtitle">Career Pathways &amp; Target Roles</h3>
+              <p style={{ margin: '0 0 1.25rem 0', color: '#475569', fontSize: '0.95rem' }}>
+                Graduates and interns completing this track actively qualify for high-growth positions including:
+              </p>
+              <div className="training-careers-grid">
+                {program.careerRoles.map((role, idx) => (
+                  <div key={idx} className="training-career-chip">
+                    <div className="training-career-chip-icon">
+                      <Briefcase size={16} />
+                    </div>
+                    <span className="training-career-chip-text">{role}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* ENROLLMENT CRITERIA & CREDENTIALING */}
+          {(program.targetAudience || program.prerequisites || program.certification) && (
+            <div>
+              <h3 className="section-subtitle">Enrollment Criteria &amp; Credentialing</h3>
+              <div className="training-specs-ecosystem">
+                {program.targetAudience && (
+                  <div className="training-spec-card">
+                    <div className="training-spec-card-head">
+                      <div className="training-spec-icon-wrap" style={{ color: '#0284c7', background: 'rgba(56, 189, 248, 0.12)' }}>
+                        <Users size={18} />
+                      </div>
+                      <strong>Target Audience</strong>
+                    </div>
+                    <p>{program.targetAudience}</p>
+                  </div>
+                )}
+
+                {program.prerequisites && (
+                  <div className="training-spec-card">
+                    <div className="training-spec-card-head">
+                      <div className="training-spec-icon-wrap" style={{ color: '#10b981', background: 'rgba(16, 185, 129, 0.12)' }}>
+                        <FileCheck2 size={18} />
+                      </div>
+                      <strong>Prerequisites</strong>
+                    </div>
+                    <p>{program.prerequisites}</p>
+                  </div>
+                )}
+
+                {program.certification && (
+                  <div className="training-spec-card">
+                    <div className="training-spec-card-head">
+                      <div className="training-spec-icon-wrap" style={{ color: '#f59e0b', background: 'rgba(245, 158, 11, 0.12)' }}>
+                        <Award size={18} />
+                      </div>
+                      <strong>Verified Credential</strong>
+                    </div>
+                    <p>{program.certification}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
