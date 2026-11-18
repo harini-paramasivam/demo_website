@@ -210,42 +210,83 @@ export default function BlogPost() {
       {/* 2. BREADCRUMBS & ARTICLE HERO */}
       <header className="blog-post-hero">
         <div className="container">
-          {/* Breadcrumb Navigation */}
-          <nav className="blog-breadcrumbs" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="blog-bc-sep">/</span>
-            <Link to="/blog">Blog</Link>
-            <span className="blog-bc-sep">/</span>
-            <span className="blog-bc-cat">{article.categoryLabel}</span>
-          </nav>
+          <div className="blog-hero-layout">
+            {/* Left Content Column */}
+            <div className="blog-hero-left">
+              {/* Breadcrumb Navigation */}
+              <nav className="blog-breadcrumbs" aria-label="Breadcrumb">
+                <Link to="/">Home</Link>
+                <span className="blog-bc-sep">/</span>
+                <Link to="/blog">Blog</Link>
+                <span className="blog-bc-sep">/</span>
+                <span className="blog-bc-cat">{article.categoryLabel}</span>
+              </nav>
 
-          {/* Metadata Row */}
-          <div className="blog-post-meta">
-            <span className="blog-cat-badge">{article.categoryLabel}</span>
-            <span className="blog-post-date">
-              <Calendar size={14} aria-hidden="true" />
-              <time dateTime={article.publishedDate}>{article.publishedDate}</time>
-            </span>
-            <span className="blog-post-read">
-              <Clock size={14} aria-hidden="true" />
-              <span>{article.readTime}</span>
-            </span>
-          </div>
+              {/* Metadata Row */}
+              <div className="blog-post-meta">
+                <span className="blog-cat-badge">{article.categoryLabel}</span>
+                <span className="blog-post-date">
+                  <Calendar size={14} aria-hidden="true" />
+                  <time dateTime={article.publishedDate}>{article.publishedDate}</time>
+                </span>
+                <span className="blog-post-read">
+                  <Clock size={14} aria-hidden="true" />
+                  <span>{article.readTime}</span>
+                </span>
+              </div>
 
-          {/* Main Article Title */}
-          <h1 className="blog-post-h1" itemProp="headline">
-            {article.title}
-          </h1>
+              {/* Main Article Title */}
+              <h1 className="blog-post-h1" itemProp="headline">
+                {article.title}
+              </h1>
 
-          {/* Author Badge */}
-          <div className="blog-post-author-bar">
-            <div className="blog-author-avatar">
-              <ShieldCheck size={20} className="blog-author-icon" aria-hidden="true" />
+              {/* Lead Excerpt */}
+              {article.summary && (
+                <p className="blog-hero-lead-text">
+                  {article.summary}
+                </p>
+              )}
+
+              {/* Author Badge */}
+              <div className="blog-post-author-bar">
+                <div className="blog-author-avatar">
+                  <ShieldCheck size={20} className="blog-author-icon" aria-hidden="true" />
+                </div>
+                <div className="blog-author-details">
+                  <span className="blog-author-name" itemProp="author">{article.author}</span>
+                  <span className="blog-author-role">{article.authorRole} · Velvora Solutions</span>
+                </div>
+              </div>
             </div>
-            <div className="blog-author-details">
-              <span className="blog-author-name" itemProp="author">{article.author}</span>
-              <span className="blog-author-role">{article.authorRole} · Velvora Solutions</span>
-            </div>
+
+            {/* Right Graphic Banner Card */}
+            {article.coverImage && (
+              <div className="blog-hero-right">
+                <div className="blog-hero-graphic-card">
+                  <div className="blog-hero-ambient-glow" aria-hidden="true" />
+                  <div className="blog-hero-img-wrap">
+                    <img
+                      src={article.coverImage}
+                      alt={article.title}
+                      className="blog-hero-cover-img"
+                      loading="eager"
+                    />
+                    <div className="blog-hero-img-overlay" />
+                    <div className="blog-hero-card-badge">
+                      <span className="blog-hero-pulse-dot" />
+                      <span>{article.categoryLabel}</span>
+                    </div>
+                  </div>
+                  <div className="blog-hero-card-footer">
+                    <div className="blog-hero-card-meta-item">
+                      <ShieldCheck size={15} className="blog-hero-meta-icon" />
+                      <span>Production Architecture</span>
+                    </div>
+                    <span className="blog-hero-card-spec">ISO / WCAG Audited</span>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </header>
@@ -273,21 +314,6 @@ export default function BlogPost() {
                     ))}
                   </ul>
                 </aside>
-              )}
-
-              {/* Cover Image Feature */}
-              {article.coverImage && (
-                <figure className="blog-post-figure">
-                  <img
-                    src={article.coverImage}
-                    alt={article.title}
-                    className="blog-post-cover"
-                    loading="eager"
-                  />
-                  <figcaption className="blog-post-figcaption">
-                    Technical Architecture · {article.categoryLabel} Overview
-                  </figcaption>
-                </figure>
               )}
 
               {/* Rich Prose Content */}
