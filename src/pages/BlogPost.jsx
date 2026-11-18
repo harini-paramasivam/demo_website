@@ -207,86 +207,221 @@ export default function BlogPost() {
         aria-hidden="true" 
       />
 
-      {/* 2. BREADCRUMBS & ARTICLE HERO */}
-      <header className="blog-post-hero">
-        <div className="container">
-          <div className="blog-hero-layout">
-            {/* Left Content Column */}
-            <div className="blog-hero-left">
-              {/* Breadcrumb Navigation */}
-              <nav className="blog-breadcrumbs" aria-label="Breadcrumb">
-                <Link to="/">Home</Link>
-                <span className="blog-bc-sep">/</span>
-                <Link to="/blog">Blog</Link>
-                <span className="blog-bc-sep">/</span>
-                <span className="blog-bc-cat">{article.categoryLabel}</span>
-              </nav>
+      {/* 2. BREADCRUMBS & ARTICLE HERO WITH VELVORA FUTURISTIC GRAPHICS */}
+      <header className="blog-post-hero phero phero--futuristic">
+        {/* Full-Bleed Panoramic Cyber Wave Backdrop (Covers entire banner from left to right) */}
+        <div className="phero-panoramic-backdrop" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 500"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            className="phero-panoramic-svg"
+          >
+            <defs>
+              <linearGradient id="blogPanoGradPrimary" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.18" />
+                <stop offset="35%" stopColor="#0284c7" stopOpacity="0.32" />
+                <stop offset="70%" stopColor="#38bdf8" stopOpacity="0.55" />
+                <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.75" />
+              </linearGradient>
+              <linearGradient id="blogPanoGradSecondary" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#0284c7" stopOpacity="0.12" />
+                <stop offset="40%" stopColor="#38bdf8" stopOpacity="0.28" />
+                <stop offset="75%" stopColor="#60a5fa" stopOpacity="0.45" />
+                <stop offset="100%" stopColor="#00d2ff" stopOpacity="0.6" />
+              </linearGradient>
+              <filter id="blogPanoGlow" x="-10%" y="-10%" width="120%" height="120%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
 
-              {/* Metadata Row */}
-              <div className="blog-post-meta">
-                <span className="blog-cat-badge">{article.categoryLabel}</span>
-                <span className="blog-post-date">
-                  <Calendar size={14} aria-hidden="true" />
-                  <time dateTime={article.publishedDate}>{article.publishedDate}</time>
-                </span>
-                <span className="blog-post-read">
-                  <Clock size={14} aria-hidden="true" />
-                  <span>{article.readTime}</span>
-                </span>
-              </div>
+            {/* Undulating Panoramic Topography Wave Mesh Spanning Full Width (0px to 1440px) */}
+            <g filter="url(#blogPanoGlow)">
+              <path
+                d="M -50 380 Q 280 320, 580 360 T 1150 310 Q 1320 280, 1500 340"
+                stroke="url(#blogPanoGradPrimary)"
+                strokeWidth="1.8"
+                strokeDasharray="4 8"
+              />
+              <path
+                d="M -50 410 Q 300 360, 600 400 T 1180 340 Q 1340 310, 1500 370"
+                stroke="url(#blogPanoGradSecondary)"
+                strokeWidth="1.6"
+                strokeDasharray="3 7"
+              />
+              <path
+                d="M -50 440 Q 320 400, 620 430 T 1200 380 Q 1350 340, 1500 410"
+                stroke="url(#blogPanoGradPrimary)"
+                strokeWidth="1.5"
+                strokeDasharray="4 10"
+              />
+              <path
+                d="M -50 470 Q 340 430, 640 465 T 1220 420 Q 1360 380, 1500 450"
+                stroke="url(#blogPanoGradSecondary)"
+                strokeWidth="1.4"
+                strokeDasharray="2 8"
+              />
+              <path
+                d="M -50 160 Q 320 220, 720 180 T 1500 130"
+                stroke="url(#blogPanoGradSecondary)"
+                strokeWidth="1.2"
+                strokeDasharray="6 12"
+                opacity="0.35"
+              />
 
-              {/* Main Article Title */}
-              <h1 className="blog-post-h1" itemProp="headline">
-                {article.title}
-              </h1>
+              <line x1="120" y1="430" x2="160" y2="350" stroke="url(#blogPanoGradPrimary)" strokeWidth="1.2" strokeDasharray="3 6" opacity="0.4" />
+              <line x1="280" y1="440" x2="320" y2="360" stroke="url(#blogPanoGradPrimary)" strokeWidth="1.2" strokeDasharray="3 6" opacity="0.45" />
+              <line x1="450" y1="450" x2="490" y2="370" stroke="url(#blogPanoGradPrimary)" strokeWidth="1.2" strokeDasharray="3 6" opacity="0.5" />
+              <line x1="640" y1="465" x2="680" y2="385" stroke="url(#blogPanoGradPrimary)" strokeWidth="1.2" strokeDasharray="3 6" opacity="0.55" />
+              <line x1="840" y1="450" x2="880" y2="370" stroke="url(#blogPanoGradPrimary)" strokeWidth="1.4" strokeDasharray="3 6" opacity="0.6" />
+              <line x1="1050" y1="430" x2="1090" y2="350" stroke="url(#blogPanoGradPrimary)" strokeWidth="1.4" strokeDasharray="3 6" opacity="0.65" />
+              <line x1="1260" y1="410" x2="1300" y2="330" stroke="url(#blogPanoGradPrimary)" strokeWidth="1.5" strokeDasharray="3 6" opacity="0.7" />
 
-              {/* Lead Excerpt */}
-              {article.summary && (
-                <p className="blog-hero-lead-text">
-                  {article.summary}
-                </p>
-              )}
+              <circle cx="80" cy="180" r="3.5" fill="#38bdf8" opacity="0.5" />
+              <circle cx="210" cy="140" r="4" fill="#38bdf8" opacity="0.6" />
+              <circle cx="360" cy="190" r="3.5" fill="#38bdf8" opacity="0.5" />
+              <circle cx="520" cy="130" r="4.5" fill="#60a5fa" opacity="0.65" />
+              <circle cx="700" cy="170" r="4" fill="#38bdf8" opacity="0.6" />
+              <circle cx="890" cy="120" r="5" fill="#38bdf8" opacity="0.7" />
+              <circle cx="1080" cy="160" r="5.5" fill="#60a5fa" opacity="0.75" />
+              <circle cx="1290" cy="110" r="6" fill="#38bdf8" opacity="0.8" />
 
-              {/* Author Badge */}
-              <div className="blog-post-author-bar">
-                <div className="blog-author-avatar">
-                  <ShieldCheck size={20} className="blog-author-icon" aria-hidden="true" />
-                </div>
-                <div className="blog-author-details">
-                  <span className="blog-author-name" itemProp="author">{article.author}</span>
-                  <span className="blog-author-role">{article.authorRole} · Velvora Solutions</span>
-                </div>
-              </div>
+              <line x1="80" y1="180" x2="210" y2="140" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 6" opacity="0.25" />
+              <line x1="210" y1="140" x2="360" y2="190" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 6" opacity="0.25" />
+              <line x1="360" y1="190" x2="520" y2="130" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 6" opacity="0.3" />
+              <line x1="520" y1="130" x2="700" y2="170" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 6" opacity="0.3" />
+              <line x1="700" y1="170" x2="890" y2="120" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 6" opacity="0.35" />
+              <line x1="890" y1="120" x2="1080" y2="160" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 6" opacity="0.4" />
+              <line x1="1080" y1="160" x2="1290" y2="110" stroke="#38bdf8" strokeWidth="1" strokeDasharray="3 6" opacity="0.45" />
+            </g>
+          </svg>
+        </div>
+
+        {/* Optical Read-Contrast Scrim (Protects text on the left so graphics NEVER disturb words) */}
+        <div className="phero-read-scrim" aria-hidden="true" />
+
+        {/* Volumetric Multi-Spectrum Aurora Glow */}
+        <div className="phero-backglow phero-backglow--cyan" aria-hidden="true" />
+        <div className="phero-backglow phero-backglow--sapphire" aria-hidden="true" />
+        <div className="phero-ambient-orb" aria-hidden="true" />
+
+        {/* Rich 3D Volumetric Isometric & Prismatic Showcase Art Stage on the Right */}
+        <div className="phero-art-stage phero-art-stage--resources" aria-hidden="true">
+          <svg
+            viewBox="0 0 500 500"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="phero-art-svg"
+          >
+            <defs>
+              <filter id="blogPheroGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="12" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <filter id="blogPheroCoreGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="18" result="intenseGlow" />
+                <feMerge>
+                  <feMergeNode in="intenseGlow" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <linearGradient id="blogGlowGradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.95" />
+                <stop offset="100%" stopColor="#0284c7" stopOpacity="0.8" />
+              </linearGradient>
+              <linearGradient id="blogGlassLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#0369a1" stopOpacity="0.65" />
+              </linearGradient>
+              <radialGradient id="blogQuantumOrbCyan" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+                <stop offset="35%" stopColor="#38bdf8" stopOpacity="0.9" />
+                <stop offset="70%" stopColor="#0284c7" stopOpacity="0.45" />
+                <stop offset="100%" stopColor="#0284c7" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+
+            <g filter="url(#blogPheroGlow)">
+              {/* Deep Space Radial Atmosphere */}
+              <circle cx="250" cy="250" r="145" fill="url(#blogQuantumOrbCyan)" opacity="0.3" filter="url(#blogPheroCoreGlow)" />
+
+              {/* 3D Tilted Orbital Gyro Rings */}
+              <ellipse cx="250" cy="250" rx="200" ry="70" transform="rotate(-30 250 250)" stroke="url(#blogGlowGradCyan)" strokeWidth="2.5" fill="none" opacity="0.8" />
+              <ellipse cx="250" cy="250" rx="175" ry="58" transform="rotate(40 250 250)" stroke="url(#blogGlowGradCyan)" strokeWidth="2" strokeDasharray="16 10" fill="none" opacity="0.85" />
+              <ellipse cx="250" cy="250" rx="145" ry="46" transform="rotate(-75 250 250)" stroke="#00f2fe" strokeWidth="2" fill="none" opacity="0.9" />
+
+              {/* Multi-Layer Volumetric Spherical Core */}
+              <circle cx="250" cy="250" r="72" fill="url(#blogGlassLeft)" stroke="#38bdf8" strokeWidth="2" />
+              <circle cx="250" cy="250" r="50" fill="url(#blogQuantumOrbCyan)" filter="url(#blogPheroCoreGlow)" />
+              <circle cx="235" cy="235" r="22" fill="#ffffff" opacity="0.9" />
+
+              {/* Prismatic Horizon Ray */}
+              <line x1="50" y1="250" x2="450" y2="250" stroke="url(#blogGlowGradCyan)" strokeWidth="1.8" opacity="0.55" strokeDasharray="8 6" />
+
+              {/* Orbital Satellite Nodes */}
+              <circle cx="390" cy="170" r="9" fill="#00f2fe" />
+              <circle cx="110" cy="330" r="8" fill="#38bdf8" />
+              <circle cx="330" cy="355" r="7" fill="#60a5fa" />
+              <circle cx="170" cy="145" r="6" fill="#ffffff" />
+            </g>
+          </svg>
+          <div className="phero-art-flare phero-art-flare--primary phero-art-flare--resources" />
+          <div className="phero-art-flare phero-art-flare--secondary phero-art-flare--resources" />
+        </div>
+
+        {/* Foreground Content Container */}
+        <div className="container" style={{ position: 'relative', zIndex: 4 }}>
+          {/* Breadcrumb Navigation */}
+          <nav className="blog-breadcrumbs" aria-label="Breadcrumb">
+            <Link to="/">Home</Link>
+            <span className="blog-bc-sep">/</span>
+            <Link to="/blog">Blog</Link>
+            <span className="blog-bc-sep">/</span>
+            <span className="blog-bc-cat">{article.categoryLabel}</span>
+          </nav>
+
+          {/* Metadata Row */}
+          <div className="blog-post-meta">
+            <span className="blog-cat-badge">{article.categoryLabel}</span>
+            <span className="blog-post-date">
+              <Calendar size={14} aria-hidden="true" />
+              <time dateTime={article.publishedDate}>{article.publishedDate}</time>
+            </span>
+            <span className="blog-post-read">
+              <Clock size={14} aria-hidden="true" />
+              <span>{article.readTime}</span>
+            </span>
+          </div>
+
+          {/* Main Article Title */}
+          <h1 className="blog-post-h1 phero-title-glow" itemProp="headline">
+            {article.title}
+          </h1>
+
+          {/* Lead Excerpt */}
+          {article.summary && (
+            <p className="blog-hero-lead-text phero-lead-glow">
+              {article.summary}
+            </p>
+          )}
+
+          {/* Author Badge */}
+          <div className="blog-post-author-bar">
+            <div className="blog-author-avatar">
+              <ShieldCheck size={20} className="blog-author-icon" aria-hidden="true" />
             </div>
-
-            {/* Right Graphic Banner Card */}
-            {article.coverImage && (
-              <div className="blog-hero-right">
-                <div className="blog-hero-graphic-card">
-                  <div className="blog-hero-ambient-glow" aria-hidden="true" />
-                  <div className="blog-hero-img-wrap">
-                    <img
-                      src={article.coverImage}
-                      alt={article.title}
-                      className="blog-hero-cover-img"
-                      loading="eager"
-                    />
-                    <div className="blog-hero-img-overlay" />
-                    <div className="blog-hero-card-badge">
-                      <span className="blog-hero-pulse-dot" />
-                      <span>{article.categoryLabel}</span>
-                    </div>
-                  </div>
-                  <div className="blog-hero-card-footer">
-                    <div className="blog-hero-card-meta-item">
-                      <ShieldCheck size={15} className="blog-hero-meta-icon" />
-                      <span>Production Architecture</span>
-                    </div>
-                    <span className="blog-hero-card-spec">ISO / WCAG Audited</span>
-                  </div>
-                </div>
-              </div>
-            )}
+            <div className="blog-author-details">
+              <span className="blog-author-name" itemProp="author">{article.author}</span>
+              <span className="blog-author-role">{article.authorRole} · Velvora Solutions</span>
+            </div>
           </div>
         </div>
       </header>
@@ -314,6 +449,21 @@ export default function BlogPost() {
                     ))}
                   </ul>
                 </aside>
+              )}
+
+              {/* Featured Technical Figure */}
+              {article.coverImage && (
+                <figure className="blog-post-figure">
+                  <img
+                    src={article.coverImage}
+                    alt={article.title}
+                    className="blog-post-cover"
+                    loading="eager"
+                  />
+                  <figcaption className="blog-post-figcaption">
+                    Technical Architecture · {article.categoryLabel} Overview
+                  </figcaption>
+                </figure>
               )}
 
               {/* Rich Prose Content */}
