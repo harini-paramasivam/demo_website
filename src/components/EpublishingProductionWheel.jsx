@@ -622,7 +622,7 @@ export default function EpublishingProductionWheel({ service }) {
       {/* DESKTOP CIRCULAR ORBITAL SHOWCASE */}
       <div className="epub-wheel-desktop" aria-hidden="false">
         {/* SVG Orbital Track & Connection Flow Lines */}
-        <svg className="epub-wheel-svg" viewBox="0 0 680 540" fill="none" preserveAspectRatio="xMidYMid meet">
+        <svg className="epub-wheel-svg" viewBox="0 0 680 560" fill="none" preserveAspectRatio="xMidYMid meet">
           <defs>
             <linearGradient id="orbitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.4" />
@@ -637,15 +637,15 @@ export default function EpublishingProductionWheel({ service }) {
           </defs>
 
           {/* Glowing Ambient Core Backdrop */}
-          <circle cx="340" cy="270" r="160" fill="url(#centerCoreGlow)" />
+          <circle cx="340" cy="280" r="160" fill="url(#centerCoreGlow)" />
 
           {/* Main Orbital Track Rings */}
-          <circle cx="340" cy="270" r="215" stroke="rgba(56, 189, 248, 0.2)" strokeWidth="1.5" strokeDasharray="6 8" />
-          <circle cx="340" cy="270" r="145" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="1" strokeDasharray="3 6" />
+          <circle cx="340" cy="280" r="210" stroke="rgba(56, 189, 248, 0.2)" strokeWidth="1.5" strokeDasharray="6 8" />
+          <circle cx="340" cy="280" r="145" stroke="rgba(56, 189, 248, 0.3)" strokeWidth="1" strokeDasharray="3 6" />
 
           {/* Vector Flow Connector Polygon linking the 5 Nodes sequentially */}
           <path
-            d="M 180 100 L 500 100 L 565 330 L 340 480 L 115 330 Z"
+            d="M 185 85 L 495 85 L 562 280 L 340 485 L 118 280 Z"
             stroke="url(#orbitGrad)"
             strokeWidth="2"
             strokeDasharray="8 6"
@@ -653,11 +653,11 @@ export default function EpublishingProductionWheel({ service }) {
           />
 
           {/* Radial Rays from Center Hub to each Node */}
-          <line x1="340" y1="270" x2="180" y2="100" stroke="rgba(56, 189, 248, 0.25)" strokeWidth="1.2" />
-          <line x1="340" y1="270" x2="500" y2="100" stroke="rgba(56, 189, 248, 0.25)" strokeWidth="1.2" />
-          <line x1="340" y1="270" x2="565" y2="330" stroke="rgba(56, 189, 248, 0.25)" strokeWidth="1.2" />
-          <line x1="340" y1="270" x2="340" y2="480" stroke="rgba(56, 189, 248, 0.25)" strokeWidth="1.2" />
-          <line x1="340" y1="270" x2="115" y2="330" stroke="rgba(56, 189, 248, 0.25)" strokeWidth="1.2" />
+          <line x1="340" y1="280" x2="185" y2="85" stroke="rgba(56, 189, 248, 0.25)" strokeWidth="1.2" />
+          <line x1="340" y1="280" x2="495" y2="85" stroke="rgba(56, 189, 248, 0.25)" strokeWidth="1.2" />
+          <line x1="340" y1="280" x2="562" y2="280" stroke="rgba(56, 189, 248, 0.25)" strokeWidth="1.2" />
+          <line x1="340" y1="280" x2="340" y2="485" stroke="rgba(56, 189, 248, 0.25)" strokeWidth="1.2" />
+          <line x1="340" y1="280" x2="118" y2="280" stroke="rgba(56, 189, 248, 0.25)" strokeWidth="1.2" />
         </svg>
 
         {/* 1. CENTRAL PRODUCTION CORE HUB */}
