@@ -426,7 +426,7 @@ export default function BlogPost() {
               </div>
             </main>
 
-            {/* Right Sticky Sidebar (Populated with Existing Content to Eliminate Empty Space) */}
+            {/* Right Sidebar (Populated with Existing Content to Eliminate Empty Space) */}
             <aside className="blog-sidebar" aria-label="Article Sidebar">
               <div className="blog-sidebar-sticky">
                 {/* 1. Interactive Table of Contents */}
@@ -460,25 +460,7 @@ export default function BlogPost() {
                   </div>
                 )}
 
-                {/* 2. Key Takeaways Quick Reference */}
-                {article.keyTakeaways && article.keyTakeaways.length > 0 && (
-                  <div className="blog-sidebar-widget blog-takeaways-widget">
-                    <div className="blog-sidebar-widget-head">
-                      <Sparkles size={15} className="accent" aria-hidden="true" />
-                      <h4>Key Takeaways</h4>
-                    </div>
-                    <ul className="blog-sidebar-takeaways">
-                      {article.keyTakeaways.map((item, i) => (
-                        <li key={i}>
-                          <CheckCircle2 size={14} className="blog-check-icon" aria-hidden="true" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* 3. Recommended Reading / Related Technical Publications */}
+                {/* 2. Recommended Reading / Related Technical Publications */}
                 {relatedArticles && relatedArticles.length > 0 && (
                   <div className="blog-sidebar-widget blog-related-mini-widget">
                     <div className="blog-sidebar-widget-head">
@@ -502,7 +484,7 @@ export default function BlogPost() {
                   </div>
                 )}
 
-                {/* 4. Practice Credibility Box */}
+                {/* 3. Practice Credibility Box */}
                 <div className="blog-sidebar-widget blog-practice-widget">
                   <span className="eyebrow">About Velvora</span>
                   <h3>Engineering Quality & Inclusion</h3>
@@ -528,7 +510,7 @@ export default function BlogPost() {
                   </Link>
                 </div>
 
-                {/* 5. Rapid Assessment Card */}
+                {/* 4. Rapid Assessment Card */}
                 <div className="blog-sidebar-widget blog-assessment-widget">
                   <h4>Have a Similar Technical Challenge?</h4>
                   <p>

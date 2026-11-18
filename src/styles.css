@@ -16718,32 +16718,22 @@ main:focus { outline: none; }
   padding-top: 10px;
 }
 
-/* Sticky Sidebar & Rich Existing Content Container */
+/* Sidebar & Rich Existing Content Container (Natural Flow, Zero Inner Scrollbar) */
 .blog-sidebar {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   position: relative;
 }
 
 .blog-sidebar-sticky {
-  position: sticky;
-  top: 96px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-height: calc(100vh - 110px);
-  overflow-y: auto;
-  padding-right: 4px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(56, 189, 248, 0.4) transparent;
-}
-
-.blog-sidebar-sticky::-webkit-scrollbar {
-  width: 5px;
-}
-
-.blog-sidebar-sticky::-webkit-scrollbar-thumb {
-  background: rgba(56, 189, 248, 0.35);
-  border-radius: 4px;
+  gap: 24px;
+  position: static !important;
+  max-height: none !important;
+  overflow: visible !important;
+  padding-right: 0 !important;
 }
 
 .blog-sidebar-widget {
