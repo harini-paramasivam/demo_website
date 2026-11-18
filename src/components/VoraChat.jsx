@@ -373,26 +373,15 @@ export default function VoraChat() {
         >
           {/* Header */}
           <div className="vora-chat-header">
-            <button
-              type="button"
-              onClick={() => setIsOpen(false)}
-              className="vora-back-btn"
-              title="Back to page"
-              aria-label="Back to page"
-            >
-              <ArrowLeft size={18} />
-              <span className="vora-back-btn__text">Back</span>
-            </button>
-
             <div className="vora-header-left">
               <div className="vora-avatar-wrap">
                 <VoraRobotMascot size={36} isTalking={isTyping} />
               </div>
-              <div>
-                <h3 id="vora-chat-title" className="vora-bot-name">
-                  Velza
+              <div className="vora-title-block">
+                <div className="vora-name-row">
+                  <h3 id="vora-chat-title" className="vora-bot-name">Velza</h3>
                   <span className="vora-status-chip">AI Assistant</span>
-                </h3>
+                </div>
                 <div className="vora-sync-label">
                   <span className="sync-dot-green" />
                   <span>Synced with Website Content (v{syncStatus?.version || '1.2'})</span>
@@ -403,56 +392,12 @@ export default function VoraChat() {
             <div className="vora-header-actions">
               <button 
                 type="button" 
-                onClick={() => {
-                  setIsOpen(false);
-                  setIntroDone(false);
-                  window.dispatchEvent(new CustomEvent('vora_replay_intro'));
-                }}
-                className="vora-hdr-btn"
-                title="Watch / Replay Velza Mascot Intro"
-                aria-label="Replay Velza Mascot Intro"
-              >
-                <Sparkles size={16} />
-              </button>
-
-              <button 
-                type="button" 
-                onClick={() => setSoundEnabled(!soundEnabled)} 
-                className="vora-hdr-btn"
-                title={soundEnabled ? 'Mute sound' : 'Enable sound'}
-                aria-label={soundEnabled ? 'Mute sound' : 'Enable sound'}
-              >
-                {soundEnabled ? <Volume2 size={16} /> : <VolumeX size={16} />}
-              </button>
-
-              <button 
-                type="button" 
-                onClick={() => setAdminOpen(true)} 
-                className="vora-hdr-btn"
-                title="Knowledge Control & Live Recruitment Admin"
-                aria-label="Knowledge Control Panel"
-              >
-                <Database size={16} />
-              </button>
-
-              <button 
-                type="button" 
-                onClick={() => setMessages([messages[0]])} 
-                className="vora-hdr-btn"
-                title="Reset conversation"
-                aria-label="Reset conversation"
-              >
-                <RotateCcw size={16} />
-              </button>
-
-              <button 
-                type="button" 
                 onClick={() => setIsOpen(false)} 
                 className="vora-hdr-btn vora-close-btn"
-                title="Close chat"
-                aria-label="Close chat"
+                title="Close chat / Back to page"
+                aria-label="Close chat and return to page"
               >
-                <X size={18} />
+                <X size={22} />
               </button>
             </div>
           </div>
