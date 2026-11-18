@@ -27,6 +27,13 @@ import {
   UploadCloud,
   Paperclip,
   Globe,
+  Globe2,
+  Cpu,
+  Users2,
+  Zap,
+  MessagesSquare,
+  PenTool,
+  Eye,
   Quote,
   Target,
   Users,
@@ -300,6 +307,7 @@ export default function Careers() {
               onClick={(e) => scrollToSection(e, 'philosophy')} 
               className="career-jump-btn"
             >
+              <Sparkles size={14} className="career-jump-icon" />
               <span>Our Philosophy</span>
             </button>
             <button 
@@ -307,6 +315,7 @@ export default function Careers() {
               onClick={(e) => scrollToSection(e, 'grow-framework')} 
               className="career-jump-btn"
             >
+              <TrendingUp size={14} className="career-jump-icon" />
               <span>G.R.O.W. Framework</span>
             </button>
             <button 
@@ -314,6 +323,7 @@ export default function Careers() {
               onClick={(e) => scrollToSection(e, 'inclusion')} 
               className="career-jump-btn"
             >
+              <Users size={14} className="career-jump-icon" />
               <span>Inclusion &amp; Innovation</span>
             </button>
             <button 
@@ -321,6 +331,7 @@ export default function Careers() {
               onClick={(e) => scrollToSection(e, 'why-join')} 
               className="career-jump-btn"
             >
+              <Globe2 size={14} className="career-jump-icon" />
               <span>Why Join Us?</span>
             </button>
             <button 
@@ -328,6 +339,7 @@ export default function Careers() {
               onClick={(e) => scrollToSection(e, 'quality-framework')} 
               className="career-jump-btn"
             >
+              <ShieldCheck size={14} className="career-jump-icon" />
               <span>Quality Framework</span>
             </button>
             <button 
@@ -504,7 +516,12 @@ export default function Careers() {
 
           <div className="why-join-grid">
             <div className="why-join-card">
-              <div className="why-join-card__num">01</div>
+              <div className="why-join-card__top">
+                <div className="why-join-icon-wrap why-join-icon-wrap--cyan">
+                  <Globe2 size={24} />
+                </div>
+                <div className="why-join-card__num">01</div>
+              </div>
               <h3 className="why-join-card__title">Universal Impact</h3>
               <p className="why-join-card__text">
                 Work on projects that make content accessible to millions worldwide.
@@ -512,7 +529,12 @@ export default function Careers() {
             </div>
 
             <div className="why-join-card">
-              <div className="why-join-card__num">02</div>
+              <div className="why-join-card__top">
+                <div className="why-join-icon-wrap why-join-icon-wrap--emerald">
+                  <Cpu size={24} />
+                </div>
+                <div className="why-join-card__num">02</div>
+              </div>
               <h3 className="why-join-card__title">Modern Engineering</h3>
               <p className="why-join-card__text">
                 Build modern websites, applications, and digital solutions that transform industries.
@@ -520,7 +542,12 @@ export default function Careers() {
             </div>
 
             <div className="why-join-card">
-              <div className="why-join-card__num">03</div>
+              <div className="why-join-card__top">
+                <div className="why-join-icon-wrap why-join-icon-wrap--violet">
+                  <Users2 size={24} />
+                </div>
+                <div className="why-join-card__num">03</div>
+              </div>
               <h3 className="why-join-card__title">Specialist Collaboration</h3>
               <p className="why-join-card__text">
                 Collaborate with a team of specialists passionate about publishing, technology, and marketing.
@@ -528,7 +555,12 @@ export default function Careers() {
             </div>
 
             <div className="why-join-card">
-              <div className="why-join-card__num">04</div>
+              <div className="why-join-card__top">
+                <div className="why-join-icon-wrap why-join-icon-wrap--amber">
+                  <Zap size={24} />
+                </div>
+                <div className="why-join-card__num">04</div>
+              </div>
               <h3 className="why-join-card__title">Cutting-Edge Tech</h3>
               <p className="why-join-card__text">
                 Gain exposure to cutting‑edge AI workflows, data analytics, and global standards.
@@ -536,7 +568,12 @@ export default function Careers() {
             </div>
 
             <div className="why-join-card why-join-card--wide">
-              <div className="why-join-card__num">05</div>
+              <div className="why-join-card__top">
+                <div className="why-join-icon-wrap why-join-icon-wrap--rose">
+                  <HeartHandshake size={24} />
+                </div>
+                <div className="why-join-card__num">05</div>
+              </div>
               <h3 className="why-join-card__title">Culture of Contribution</h3>
               <p className="why-join-card__text">
                 Grow in a culture that celebrates curiosity, creativity, and contribution.
@@ -624,62 +661,92 @@ export default function Careers() {
 
           <div className="quality-steps-grid">
             <div className="quality-step-card">
-              <div className="quality-step-card__num">01</div>
+              <div className="quality-step-card__top">
+                <div className="quality-step-icon-wrap quality-step-icon-wrap--blue">
+                  <Compass size={22} />
+                </div>
+                <div className="quality-step-card__num">01</div>
+              </div>
               <h3 className="quality-step-card__title">Understand the Client’s Vision</h3>
               <ul className="quality-step-card__list">
-                <li>Begin with clear requirements gathering.</li>
-                <li>Ask the right questions to uncover hidden needs.</li>
-                <li>Align project goals with client expectations.</li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Begin with clear requirements gathering.</span></li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Ask the right questions to uncover hidden needs.</span></li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Align project goals with client expectations.</span></li>
               </ul>
             </div>
 
             <div className="quality-step-card">
-              <div className="quality-step-card__num">02</div>
+              <div className="quality-step-card__top">
+                <div className="quality-step-icon-wrap quality-step-icon-wrap--emerald">
+                  <Target size={22} />
+                </div>
+                <div className="quality-step-card__num">02</div>
+              </div>
               <h3 className="quality-step-card__title">Plan with Precision</h3>
               <ul className="quality-step-card__list">
-                <li>Break down tasks into achievable milestones.</li>
-                <li>Assign responsibilities clearly.</li>
-                <li>Use project management tools to track progress.</li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Break down tasks into achievable milestones.</span></li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Assign responsibilities clearly.</span></li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Use project management tools to track progress.</span></li>
               </ul>
             </div>
 
             <div className="quality-step-card">
-              <div className="quality-step-card__num">03</div>
+              <div className="quality-step-card__top">
+                <div className="quality-step-icon-wrap quality-step-icon-wrap--amber">
+                  <Sparkles size={22} />
+                </div>
+                <div className="quality-step-card__num">03</div>
+              </div>
               <h3 className="quality-step-card__title">Execute with Excellence</h3>
               <ul className="quality-step-card__list">
-                <li>Apply technical expertise (content, web/software, AI, analytics, marketing).</li>
-                <li>Follow industry standards (WCAG, PDF/UA, SEO best practices, coding guidelines).</li>
-                <li>Double‑check outputs with human + automated quality checks.</li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Apply technical expertise (content, web/software, AI, analytics, marketing).</span></li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Follow industry standards (WCAG, PDF/UA, SEO best practices, coding guidelines).</span></li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Double‑check outputs with human + automated quality checks.</span></li>
               </ul>
             </div>
 
             <div className="quality-step-card">
-              <div className="quality-step-card__num">04</div>
+              <div className="quality-step-card__top">
+                <div className="quality-step-icon-wrap quality-step-icon-wrap--cyan">
+                  <MessagesSquare size={22} />
+                </div>
+                <div className="quality-step-card__num">04</div>
+              </div>
               <h3 className="quality-step-card__title">Communicate Transparently</h3>
               <ul className="quality-step-card__list">
-                <li>Provide regular updates to clients.</li>
-                <li>Share progress reports and timelines.</li>
-                <li>Be proactive about challenges and solutions.</li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Provide regular updates to clients.</span></li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Share progress reports and timelines.</span></li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Be proactive about challenges and solutions.</span></li>
               </ul>
             </div>
 
             <div className="quality-step-card">
-              <div className="quality-step-card__num">05</div>
+              <div className="quality-step-card__top">
+                <div className="quality-step-icon-wrap quality-step-icon-wrap--violet">
+                  <ShieldCheck size={22} />
+                </div>
+                <div className="quality-step-card__num">05</div>
+              </div>
               <h3 className="quality-step-card__title">Test and Validate</h3>
               <ul className="quality-step-card__list">
-                <li>Run accessibility, functionality, and performance checks.</li>
-                <li>Validate against client requirements before delivery.</li>
-                <li>Ensure compliance with global standards.</li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Run accessibility, functionality, and performance checks.</span></li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Validate against client requirements before delivery.</span></li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Ensure compliance with global standards.</span></li>
               </ul>
             </div>
 
             <div className="quality-step-card">
-              <div className="quality-step-card__num">06</div>
+              <div className="quality-step-card__top">
+                <div className="quality-step-icon-wrap quality-step-icon-wrap--rose">
+                  <Rocket size={22} />
+                </div>
+                <div className="quality-step-card__num">06</div>
+              </div>
               <h3 className="quality-step-card__title">Deliver and Support</h3>
               <ul className="quality-step-card__list">
-                <li>Deliver on time, with complete documentation.</li>
-                <li>Offer post‑delivery support and training if needed.</li>
-                <li>Gather feedback to improve future projects.</li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Deliver on time, with complete documentation.</span></li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Offer post‑delivery support and training if needed.</span></li>
+                <li><CheckCircle2 size={15} className="quality-step-check" /> <span>Gather feedback to improve future projects.</span></li>
               </ul>
             </div>
           </div>
@@ -692,22 +759,37 @@ export default function Careers() {
             </h3>
             <div className="quality-extra-grid">
               <div className="quality-extra-pod">
+                <div className="quality-extra-icon-wrap">
+                  <BookOpen size={18} />
+                </div>
                 <strong>Continuous Learning</strong>
                 <p>Keep the team updated on new standards, tools, and technologies.</p>
               </div>
               <div className="quality-extra-pod">
+                <div className="quality-extra-icon-wrap">
+                  <MessagesSquare size={18} />
+                </div>
                 <strong>Client Feedback Loop</strong>
                 <p>Actively collect and act on client feedback to refine deliverable quality.</p>
               </div>
               <div className="quality-extra-pod">
+                <div className="quality-extra-icon-wrap">
+                  <Lightbulb size={18} />
+                </div>
                 <strong>Innovation Culture</strong>
                 <p>Encourage experimenting with AI, automation, and analytics to improve workflows.</p>
               </div>
               <div className="quality-extra-pod">
+                <div className="quality-extra-icon-wrap">
+                  <ShieldCheck size={18} />
+                </div>
                 <strong>Internal Audits</strong>
                 <p>Regularly review processes to ensure consistency and operational excellence.</p>
               </div>
               <div className="quality-extra-pod">
+                <div className="quality-extra-icon-wrap">
+                  <Award size={18} />
+                </div>
                 <strong>Celebrate Success</strong>
                 <p>Recognize team members who go above and beyond for quality delivery.</p>
               </div>
@@ -730,15 +812,29 @@ export default function Careers() {
 
           {/* JOB OPENINGS LIST */}
           <div className="job-openings-grid">
-            {jobOpenings.map((job) => (
-              <article key={job.id} className="job-opening-card job-opening-card--concise">
-                <div className="job-opening-card__head">
-                  <div>
-                    <span className="job-opening-card__dept">{job.department}</span>
-                    <h3 className="job-opening-card__title">{job.title}</h3>
+            {jobOpenings.map((job) => {
+              const roleIcons = {
+                'copy-editing-specialist': PenTool,
+                'ppt-accessibility-specialist': Eye,
+                'typesetting-specialist': BookOpen,
+                'ai-automation-engineer': Cpu,
+              };
+              const RoleIcon = roleIcons[job.id] || Briefcase;
+
+              return (
+                <article key={job.id} className="job-opening-card job-opening-card--concise">
+                  <div className="job-opening-card__head">
+                    <div className="job-opening-card__title-box">
+                      <div className="job-opening-role-icon-wrap">
+                        <RoleIcon size={20} />
+                      </div>
+                      <div>
+                        <span className="job-opening-card__dept">{job.department}</span>
+                        <h3 className="job-opening-card__title">{job.title}</h3>
+                      </div>
+                    </div>
+                    <span className="job-opening-card__type">{job.type}</span>
                   </div>
-                  <span className="job-opening-card__type">{job.type}</span>
-                </div>
 
                 <div className="job-opening-card__meta">
                   <span className="job-meta-item"><MapPin size={15} /> <span>{job.location}</span></span>
@@ -777,8 +873,9 @@ export default function Careers() {
                   </button>
                 </div>
               </article>
-            ))}
-          </div>
+            );
+          })}
+        </div>
         </div>
       </section>
 
