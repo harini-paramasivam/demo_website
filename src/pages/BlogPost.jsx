@@ -426,100 +426,136 @@ export default function BlogPost() {
               </div>
             </main>
 
-            {/* Right Sidebar (Populated with Existing Content to Eliminate Empty Space) */}
+            {/* Right Sidebar (Evenly Distributed Content to Eliminate Empty Space) */}
             <aside className="blog-sidebar" aria-label="Article Sidebar">
-              <div className="blog-sidebar-sticky">
-                {/* 1. Interactive Table of Contents */}
-                {article.content && article.content.length > 0 && (
-                  <div className="blog-sidebar-widget blog-toc-widget">
-                    <div className="blog-toc-head">
-                      <Bookmark size={15} className="accent" aria-hidden="true" />
-                      <h4>In This Article</h4>
-                    </div>
-                    <nav className="blog-toc-list" aria-label="Table of Contents">
-                      {article.content.map((sec, idx) => (
-                        <a
-                          key={idx}
-                          href={`#blog-sec-${idx}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            const el = document.getElementById(`blog-sec-${idx}`);
-                            if (el) {
-                              const y = el.getBoundingClientRect().top + window.pageYOffset - 96;
-                              window.scrollTo({ top: y, behavior: 'smooth' });
-                              setActiveSec(idx);
-                            }
-                          }}
-                          className={`blog-toc-item ${activeSec === idx ? 'is-active' : ''}`}
-                        >
-                          <span className="blog-toc-num">{String(idx + 1).padStart(2, '0')}</span>
-                          <span className="blog-toc-text">{sec.heading}</span>
-                        </a>
-                      ))}
-                    </nav>
+              {/* 1. Interactive Table of Contents */}
+              {article.content && article.content.length > 0 && (
+                <div className="blog-sidebar-widget blog-toc-widget">
+                  <div className="blog-toc-head">
+                    <Bookmark size={15} className="accent" aria-hidden="true" />
+                    <h4>In This Article</h4>
                   </div>
-                )}
-
-                {/* 2. Recommended Reading / Related Technical Publications */}
-                {relatedArticles && relatedArticles.length > 0 && (
-                  <div className="blog-sidebar-widget blog-related-mini-widget">
-                    <div className="blog-sidebar-widget-head">
-                      <BookOpen size={15} className="accent" aria-hidden="true" />
-                      <h4>Recommended Reading</h4>
-                    </div>
-                    <div className="blog-sidebar-related-list">
-                      {relatedArticles.map((rel) => (
-                        <Link key={rel.id} to={`/blog/${rel.slug}`} className="blog-sidebar-rel-card">
-                          <div className="blog-sidebar-rel-thumb">
-                            <img src={rel.coverImage} alt="" loading="lazy" />
-                          </div>
-                          <div className="blog-sidebar-rel-info">
-                            <span className="blog-sidebar-rel-cat">{rel.categoryLabel.split('&')[0]}</span>
-                            <h5 className="blog-sidebar-rel-title">{rel.title}</h5>
-                            <span className="blog-sidebar-rel-read">{rel.readTime}</span>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* 3. Practice Credibility Box */}
-                <div className="blog-sidebar-widget blog-practice-widget">
-                  <span className="eyebrow">About Velvora</span>
-                  <h3>Engineering Quality & Inclusion</h3>
-                  <p>
-                    Velvora Solutions is a content and technology services partner. We deliver ePublishing, XML conversion, digital accessibility (WCAG 2.2, PDF/UA, Section 508), and AI automation to global organizations.
-                  </p>
-                  <div className="blog-practice-check-list">
-                    <div className="blog-practice-check">
-                      <CheckCircle2 size={15} className="blog-check-icon" />
-                      <span>CPACC & WAS Certified Practice</span>
-                    </div>
-                    <div className="blog-practice-check">
-                      <CheckCircle2 size={15} className="blog-check-icon" />
-                      <span>ISO 14289-1 (PDF/UA) Standards</span>
-                    </div>
-                    <div className="blog-practice-check">
-                      <CheckCircle2 size={15} className="blog-check-icon" />
-                      <span>DAISY & W3C Validated EPUB 3</span>
-                    </div>
-                  </div>
-                  <Link to="/about/company-overview" className="blog-sidebar-link">
-                    Learn more about our methodology <ChevronRight size={14} />
-                  </Link>
+                  <nav className="blog-toc-list" aria-label="Table of Contents">
+                    {article.content.map((sec, idx) => (
+                      <a
+                        key={idx}
+                        href={`#blog-sec-${idx}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const el = document.getElementById(`blog-sec-${idx}`);
+                          if (el) {
+                            const y = el.getBoundingClientRect().top + window.pageYOffset - 96;
+                            window.scrollTo({ top: y, behavior: 'smooth' });
+                            setActiveSec(idx);
+                          }
+                        }}
+                        className={`blog-toc-item ${activeSec === idx ? 'is-active' : ''}`}
+                      >
+                        <span className="blog-toc-num">{String(idx + 1).padStart(2, '0')}</span>
+                        <span className="blog-toc-text">{sec.heading}</span>
+                      </a>
+                    ))}
+                  </nav>
                 </div>
+              )}
 
-                {/* 4. Rapid Assessment Card */}
-                <div className="blog-sidebar-widget blog-assessment-widget">
-                  <h4>Have a Similar Technical Challenge?</h4>
-                  <p>
-                    Share your sample files or compliance requirements for a confidential technical evaluation within one business day.
-                  </p>
-                  <Link to="/contact" className="btn btn--orange btn--block">
-                    Request Technical Assessment <ArrowRight size={15} />
-                  </Link>
+              {/* 2. Key Architectural Takeaways */}
+              {article.keyTakeaways && article.keyTakeaways.length > 0 && (
+                <div className="blog-sidebar-widget blog-takeaways-widget">
+                  <div className="blog-sidebar-widget-head">
+                    <Sparkles size={15} className="accent" aria-hidden="true" />
+                    <h4>Executive Highlights</h4>
+                  </div>
+                  <ul className="blog-sidebar-takeaways">
+                    {article.keyTakeaways.map((item, i) => (
+                      <li key={i}>
+                        <CheckCircle2 size={14} className="blog-check-icon" aria-hidden="true" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+              )}
+
+              {/* 3. Author & Editorial Authority Badge */}
+              <div className="blog-sidebar-widget blog-author-widget">
+                <div className="blog-sidebar-widget-head">
+                  <ShieldCheck size={15} className="accent" aria-hidden="true" />
+                  <h4>Practice Authority</h4>
+                </div>
+                <div className="blog-author-widget-body">
+                  <div className="blog-author-widget-avatar">
+                    <ShieldCheck size={22} className="accent" />
+                  </div>
+                  <div>
+                    <h5 className="blog-author-widget-name">{article.author}</h5>
+                    <span className="blog-author-widget-role">{article.authorRole}</span>
+                  </div>
+                </div>
+                <p className="blog-author-widget-note">
+                  Peer-reviewed and certified by Velvora Solutions Technical Architecture Division for industry standards compliance.
+                </p>
+              </div>
+
+              {/* 4. Recommended Reading / Related Technical Publications */}
+              {relatedArticles && relatedArticles.length > 0 && (
+                <div className="blog-sidebar-widget blog-related-mini-widget">
+                  <div className="blog-sidebar-widget-head">
+                    <BookOpen size={15} className="accent" aria-hidden="true" />
+                    <h4>Recommended Reading</h4>
+                  </div>
+                  <div className="blog-sidebar-related-list">
+                    {relatedArticles.map((rel) => (
+                      <Link key={rel.id} to={`/blog/${rel.slug}`} className="blog-sidebar-rel-card">
+                        <div className="blog-sidebar-rel-thumb">
+                          <img src={rel.coverImage} alt="" loading="lazy" />
+                        </div>
+                        <div className="blog-sidebar-rel-info">
+                          <span className="blog-sidebar-rel-cat">{rel.categoryLabel.split('&')[0]}</span>
+                          <h5 className="blog-sidebar-rel-title">{rel.title}</h5>
+                          <span className="blog-sidebar-rel-read">{rel.readTime}</span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* 5. Practice Credibility Box */}
+              <div className="blog-sidebar-widget blog-practice-widget">
+                <span className="eyebrow">About Velvora</span>
+                <h3>Engineering Quality &amp; Inclusion</h3>
+                <p>
+                  Velvora Solutions is a content and technology services partner delivering ePublishing, XML conversion, digital accessibility, and AI automation.
+                </p>
+                <div className="blog-practice-check-list">
+                  <div className="blog-practice-check">
+                    <CheckCircle2 size={15} className="blog-check-icon" />
+                    <span>CPACC &amp; WAS Certified Practice</span>
+                  </div>
+                  <div className="blog-practice-check">
+                    <CheckCircle2 size={15} className="blog-check-icon" />
+                    <span>ISO 14289-1 (PDF/UA) Standards</span>
+                  </div>
+                  <div className="blog-practice-check">
+                    <CheckCircle2 size={15} className="blog-check-icon" />
+                    <span>DAISY &amp; W3C Validated EPUB 3</span>
+                  </div>
+                </div>
+                <Link to="/about/company-overview" className="blog-sidebar-link">
+                  Learn more about our methodology <ChevronRight size={14} />
+                </Link>
+              </div>
+
+              {/* 6. Rapid Assessment Card */}
+              <div className="blog-sidebar-widget blog-assessment-widget">
+                <h4>Have a Similar Technical Challenge?</h4>
+                <p>
+                  Share your sample files or compliance requirements for a confidential technical evaluation within one business day.
+                </p>
+                <Link to="/contact" className="btn btn--orange btn--block">
+                  Request Technical Assessment <ArrowRight size={15} />
+                </Link>
               </div>
             </aside>
           </div>

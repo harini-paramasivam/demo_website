@@ -530,15 +530,20 @@ export default function TrainingProgramPage() {
           {toolsList.length > 0 && (
             <div style={{ marginTop: '1.5rem', marginBottom: '3.5rem' }}>
               <h3 className="section-subtitle">Tools, Technologies &amp; Standards Mastered</h3>
-              <p style={{ margin: '0 0 1rem 0', color: '#475569', fontSize: '0.95rem' }}>
+              <p style={{ margin: '0 0 1.25rem 0', color: '#475569', fontSize: '0.95rem' }}>
                 Industry-standard tools and verification suites integrated into hands-on daily production workflows:
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              <div className="training-tools-grid">
                 {toolsList.map((tool, idx) => (
-                  <span key={idx} className="training-tool-pill">
-                    <Layers size={14} style={{ color: '#0284c7' }} />
-                    <span>{tool}</span>
-                  </span>
+                  <div key={idx} className="training-tool-card">
+                    <div className="training-tool-card__icon">
+                      <Layers size={18} />
+                    </div>
+                    <div className="training-tool-card__info">
+                      <h4 className="training-tool-card__name">{tool}</h4>
+                      <span className="training-tool-card__badge">Production Benchmark</span>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -555,9 +560,12 @@ export default function TrainingProgramPage() {
                 {program.careerRoles.map((role, idx) => (
                   <div key={idx} className="training-career-chip">
                     <div className="training-career-chip-icon">
-                      <Briefcase size={16} />
+                      <Briefcase size={18} />
                     </div>
-                    <span className="training-career-chip-text">{role}</span>
+                    <div className="training-career-chip-info">
+                      <span className="training-career-chip-text">{role}</span>
+                      <span className="training-career-chip-sub">Direct Placement Track</span>
+                    </div>
                   </div>
                 ))}
               </div>
