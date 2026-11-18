@@ -377,11 +377,20 @@ export default function ServicePage() {
                   <CheckCircle2 size={15} className="accent" aria-hidden="true" />
                   <span>Free sample file audit &amp; scope review</span>
                 </div>
+                <div className="svc-sidebar__cta-feat">
+                  <CheckCircle2 size={15} className="accent" aria-hidden="true" />
+                  <span>Direct senior engineer consultation</span>
+                </div>
               </div>
 
               <Link to="/contact" className="btn btn--orange">
                 Request a Free Quote <ArrowRight size={16} aria-hidden="true" />
               </Link>
+
+              <div className="svc-sidebar__cta-trust">
+                <ShieldCheck size={14} className="accent" aria-hidden="true" />
+                <span>100% Confidential · Zero Obligation</span>
+              </div>
             </div>
           </aside>
         </div>

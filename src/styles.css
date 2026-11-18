@@ -20753,30 +20753,43 @@ main:focus { outline: none; }
   margin-top: 0 !important;
 }
 
+.svc-sidebar__cta-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
 @media (min-width: 992px) {
   .svc-section-overview .svc-layout {
     display: grid !important;
     grid-template-columns: 1fr 340px !important;
-    align-items: stretch !important;
+    align-items: start !important;
   }
   .svc-section-overview .svc-sidebar {
     display: flex !important;
     flex-direction: column !important;
-    gap: 16px !important;
-    height: 100% !important;
+    gap: 20px !important;
+    height: auto !important;
+    position: sticky !important;
+    top: 96px !important;
     box-sizing: border-box !important;
   }
   .svc-section-overview .svc-sidebar__card {
     flex-shrink: 0 !important;
   }
   .svc-section-overview .svc-sidebar__cta {
-    flex: 1 !important;
+    flex: none !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: space-between !important;
-    position: static !important;
+    justify-content: flex-start !important;
+    gap: 14px !important;
+    position: relative !important;
     margin-top: 0 !important;
-    padding: 20px 20px !important;
+    padding: 24px 22px !important;
     height: auto !important;
   }
 }
