@@ -17376,6 +17376,23 @@ svg.accent,
   color: #0f172a;
 }
 
+.blog-prose strong,
+.blog-prose-strong {
+  font-weight: 700 !important;
+  color: #0f172a !important;
+}
+
+.blog-prose code,
+.blog-prose-inline-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  font-size: 0.88em !important;
+  padding: 2px 6px !important;
+  border-radius: 6px !important;
+  background: rgba(2, 132, 199, 0.08) !important;
+  color: #0284c7 !important;
+  border: 1px solid rgba(2, 132, 199, 0.2) !important;
+}
+
 /* Contextual Service Bridge */
 .blog-service-bridge-card {
   display: flex;

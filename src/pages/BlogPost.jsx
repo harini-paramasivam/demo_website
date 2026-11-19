@@ -40,6 +40,32 @@ function getAuthorIcon(author = '', role = '') {
   return Users;
 }
 
+// Parses inline markdown like **bold text** and `code` into proper React elements
+function formatInlineContent(str) {
+  if (!str || typeof str !== 'string') return str;
+  const regex = /(\*\*[^*]+\*\*|`[^`]+`)/g;
+  const parts = str.split(regex);
+  if (parts.length === 1) return str;
+
+  return parts.map((part, i) => {
+    if (part.startsWith('**') && part.endsWith('**') && part.length > 4) {
+      return (
+        <strong key={i} className="blog-prose-strong">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    if (part.startsWith('`') && part.endsWith('`') && part.length > 2) {
+      return (
+        <code key={i} className="blog-prose-inline-code">
+          {part.slice(1, -1)}
+        </code>
+      );
+    }
+    return part;
+  });
+}
+
 export default function BlogPost() {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -465,7 +491,7 @@ export default function BlogPost() {
                     {article.keyTakeaways.map((takeaway, idx) => (
                       <li key={idx}>
                         <CheckCircle2 size={16} className="blog-takeaway-check" aria-hidden="true" />
-                        <span>{takeaway}</span>
+                        <span>{formatInlineContent(takeaway)}</span>
                       </li>
                     ))}
                   </ul>
@@ -501,7 +527,7 @@ export default function BlogPost() {
                             return (
                               <ul key={pIdx} className="blog-prose-list">
                                 {bulletItems.map((item, bIdx) => (
-                                  <li key={bIdx}>{item.replace(/^• /, '')}</li>
+                                  <li key={bIdx}>{formatInlineContent(item.replace(/^• /, ''))}</li>
                                 ))}
                               </ul>
                             );
@@ -511,19 +537,19 @@ export default function BlogPost() {
                             return (
                               <ol key={pIdx} className="blog-prose-numlist">
                                 {numberedItems.map((item, nIdx) => (
-                                  <li key={nIdx}>{item.replace(/^\d+\.\s/, '')}</li>
+                                  <li key={nIdx}>{formatInlineContent(item.replace(/^\d+\.\s/, ''))}</li>
                                 ))}
                               </ol>
                             );
                           }
-                          return <p key={pIdx}>{paragraph}</p>;
+                          return <p key={pIdx}>{formatInlineContent(paragraph)}</p>;
                         })}
                       </div>
                     )}
 
                     {sec.callout && (
                       <blockquote className="blog-prose-callout">
-                        <p>{sec.callout}</p>
+                        <p>{formatInlineContent(sec.callout)}</p>
                       </blockquote>
                     )}
                   </section>
