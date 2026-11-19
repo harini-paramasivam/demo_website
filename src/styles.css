@@ -1951,7 +1951,9 @@ svg.accent,
 }
 
 .stat-card__num {
-  display: block;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
   font-size: clamp(2.4rem, 4.2vw, 3.6rem);
   font-weight: 800;
   letter-spacing: -.035em;
@@ -1964,9 +1966,9 @@ svg.accent,
 
 .stat-card__plus {
   display: inline-block;
-  margin-left: 1px;
-  font-size: 0.82em;
-  font-weight: 700;
+  margin-left: 0;
+  font-size: 0.88em;
+  font-weight: 800;
   color: #0284c7;
   -webkit-text-fill-color: #0284c7;
   vertical-align: baseline;
@@ -2030,6 +2032,11 @@ svg.accent,
   .stat-card__num {
     font-size: 1.85rem !important;
     line-height: 1.1 !important;
+  }
+  .stat-card__plus {
+    font-size: 0.85em !important;
+    vertical-align: baseline !important;
+    margin-left: 0 !important;
   }
   .stat-card__label {
     font-size: 0.8rem !important;
