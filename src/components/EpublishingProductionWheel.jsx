@@ -729,7 +729,6 @@ export default function EpublishingProductionWheel({ service }) {
             </span>
             <span className="center-hub-title">{hubConfig.title}</span>
             <span className="center-hub-sub">{hubConfig.sub}</span>
-            <span className="center-hub-badge">5-Stage Continuous Cycle</span>
           </div>
         </div>
 
