@@ -732,7 +732,7 @@ export const nav = [
           {
             title: 'Website Development',
             desc: 'Modern, responsive, accessible web portals & applications.',
-            to: '/services/software-development',
+            to: '/services/website-development',
             icon: 'Globe',
             color: 'indigo',
           },
@@ -767,7 +767,8 @@ export const nav = [
       { label: 'XML Services', to: '/services/xml' },
       { label: 'Digital Accessibility (EPUB 2 & 3, Web, PDF, Word, PowerPoint, Excel)', to: '/services/digital-accessibility' },
       { label: 'AI & Workflow Automation', to: '/services/ai-automation' },
-      { label: 'Software & Web Development', to: '/services/software-development' },
+      { label: 'Website Development', to: '/services/website-development' },
+      { label: 'Software Development', to: '/services/software-development' },
       { label: 'Data Analytics & Business Intelligence', to: '/services/data-analytics' },
       { label: 'Digital Marketing & Growth', to: '/services/digital-marketing' },
       { label: 'Typesetting and Design', to: '/services/typesetting-and-design' },
@@ -1730,67 +1731,131 @@ export const services = [
     ]
   },
   {
-    slug: 'software-development',
-    aliases: ['software', 'website-development', 'web-development', 'custom-software'],
-    title: 'Software & Web Development',
-    pageTitle: 'Software & Web Development Services | Velvora Solutions',
-    metaDesc: 'Resilient full-stack web applications, React interfaces, cloud microservices, and accessible modern interfaces designed for enterprise reliability by Velvora Solutions.',
-    heading: 'Software & Web Development: Smarter, Scalable Digital Architecture',
-    icon: 'Code',
-    short: 'Resilient full-stack web applications, scalable cloud architectures, and accessible modern interfaces designed for enterprise reliability.',
-    buttonText: 'Build Your Application',
+    slug: 'website-development',
+    aliases: ['web-development', 'web-portals', 'corporate-websites', 'frontend-development'],
+    title: 'Website Development',
+    pageTitle: 'Enterprise Website & Web Portal Development | Velvora Solutions',
+    metaDesc: 'Bespoke, lightning-fast corporate websites, accessible web portals, and headless CMS architectures built for global brand performance and WCAG 2.2 compliance by Velvora Solutions.',
+    heading: 'Website Development: Accessible, High-Performance Digital Portals',
+    icon: 'Globe',
+    short: 'Modern responsive corporate websites, accessible enterprise web portals, and headless CMS platforms engineered for lightning speed and global brand authority.',
+    buttonText: 'Build Your Website',
     overview:
-      'Digital products demand uncompromising stability, responsive user experiences, and universal accessibility from day one. Velvora engineers bespoke web applications, enterprise portals, cloud microservices, and content platforms using modern React, Node.js, Python, and cloud infrastructure. We bridge technical precision with accessible design systems to deliver platforms that perform at global scale.',
+      'Your digital presence is the frontline of your enterprise brand. Velvora builds ultra-responsive, accessible, and conversion-optimized websites and web portals tailored to scholarly publishers, enterprises, and high-growth organizations. Leveraging modern React, Next.js, Headless CMS architectures, and WCAG 2.2 AA accessibility standards, we create engaging digital destinations that load instantly, rank prominently, and convert visitors into loyal clients.',
     whatWeOffer: [
-      { title: 'Custom Web Applications', desc: 'High-performance single-page and server-rendered web applications built on React and modern frameworks.' },
-      { title: 'Accessible UI Systems & Design Systems', desc: 'Enterprise component libraries strictly compliant with WCAG 2.2 AA standards and ARIA best practices.' },
-      { title: 'Cloud APIs & Microservices', desc: 'Scalable RESTful and GraphQL backend architectures engineered for high-concurrency content delivery.' },
-      { title: 'CMS & Publishing Platforms', desc: 'Headless CMS implementations, custom publishing portals, and editorial workflow applications.' },
-      { title: 'Legacy Modernization', desc: 'Refactoring outdated codebases into modular, testable, and cloud-native microservices.' },
-      { title: 'Security & DevOps', desc: 'Automated CI/CD deployment pipelines, containerization (Docker), and cloud infrastructure management.' }
+      { title: 'Corporate & Publisher Portals', desc: 'Secure, high-traffic web portals and digital catalogs engineered with modern component frameworks and responsive grid layouts.' },
+      { title: 'Headless CMS Architecture', desc: 'Decoupled content management systems (Sanity, Strapi, Contentful) enabling non-technical editorial teams to publish seamlessly.' },
+      { title: 'WCAG 2.2 Accessible Design', desc: 'Native keyboard navigability, high-contrast typography, screen-reader optimized ARIA landmarks, and 100% ADA/EAA compliance.' },
+      { title: 'Core Web Vitals Optimization', desc: 'Sub-second load times, optimized asset delivery, edge caching, and 100/100 Lighthouse performance engineering.' },
+      { title: 'Interactive Web Applications', desc: 'Dynamic client dashboards, faceted search engines, multi-step inquiry flows, and custom client engagement tools.' },
+      { title: 'Technical SEO & Metadata Integration', desc: 'Comprehensive JSON-LD semantic schema, OpenGraph tags, dynamic sitemaps, and automated search engine indexation.' }
     ],
     benefits: [
-      'Accessibility-Native Engineering: Universal WCAG 2.2 Level AA compliance built directly into components, navigation, and ARIA architectures.',
-      'Enterprise Cloud Scalability: Modern microservice architectures designed for ultra-low latency and zero downtime under high concurrency.',
-      'Accelerated Deployment Sprints: Streamlined CI/CD automation and automated test coverage cutting release cycles from months to days.',
-      'Clean, Maintainable Source Code: Strictly typed TypeScript, modular component design, and comprehensive architecture documentation.',
-      'Zero Vendor Lock-In: Open, standardized technology stacks (React, Node, Python, Docker) giving you full ownership of your IP.',
+      'Sub-Second Edge Performance: Worldwide CDN caching and optimized asset pipelines ensuring maximum page speed and near-zero bounce rates.',
+      'Universal Accessibility from Day One: Certified WCAG 2.2 AA compliance preventing legal risk and welcoming every user seamlessly.',
+      'Editorial Autonomy with Modern CMS: Intuitive visual page builders and headless CMS backends empowering your content team without developer bottlenecks.',
+      'Search Engine Dominance: Clean semantic HTML5, fast rendering, and structured schema delivering top-tier organic visibility.',
+      'Enterprise Scalability & Security: Modern Jamstack architectures with SSL hardening, DDoS mitigation, and 99.99% uptime reliability.'
     ],
     whyVelvora: [
-      'Specialized Publishing & EdTech Tech Stack: Deep experience building reading platforms, assessment engines, and digital asset portals.',
-      'Full-Cycle Agile Product Delivery: Dedicated cross-functional sprint pods featuring technical leads, UI/UX designers, and QA engineers.',
-      'Certified Assistive Tech Verification: Real-world manual testing with NVDA, JAWS, VoiceOver, and keyboard-only navigation regimens.',
-      'High-Performance Cloud Infrastructure: Production-hardened deployments on AWS, Azure, and Vercel with automated failover and caching.',
-      'Transparent Engineering Governance: Direct access to Git repositories, sprint burndown telemetry, and bi-weekly executive demo reviews.',
+      'Domain Expertise in Publishing & Tech: Proven track record designing sophisticated portals for academic institutions, publishers, and global brands.',
+      'Human-Tested Assistive Compatibility: Rigorous real-device testing with NVDA, JAWS, VoiceOver, and keyboard-only audits prior to release.',
+      'End-to-End Design to Deployment: Seamless cross-functional delivery from Figma design systems and UX prototyping to production cloud launch.',
+      'Zero Bloat, Future-Proof Stacks: Clean, lightweight codebases using React, Next.js, and TypeScript without clunky legacy plugins or themes.',
+      'Dedicated Post-Launch Support: SLA-backed maintenance, security patching, Core Web Vitals monitoring, and ongoing feature sprints.'
     ],
     process: [
-      { step: '1. Discovery & Architecture', desc: 'Technical requirements gathering, system architecture planning, and UX wireframing.' },
-      { step: '2. Agile Sprint Delivery', desc: 'Rapid, iterative sprint cycles with continuous demo reviews and automated testing.' },
-      { step: '3. Accessibility & Security QA', desc: 'Full automated and manual screen-reader auditing alongside penetration and load testing.' },
-      { step: '4. Production Deployment', desc: 'Zero-downtime deployment to your preferred cloud environment (AWS, Azure, Vercel).' },
-      { step: '5. Ongoing SLA Support', desc: 'Continuous monitoring, performance tuning, and technical maintenance.' }
+      { step: '1. Discovery & UX Architecture', desc: 'Auditing user personas, brand requirements, content hierarchy, and technical SEO goals.' },
+      { step: '2. Wireframing & Design Systems', desc: 'Crafting responsive mobile-first Figma prototypes, interactive component systems, and color palettes.' },
+      { step: '3. Agile Frontend Engineering', desc: 'Building semantic, accessible React/Next.js components integrated with headless CMS APIs.' },
+      { step: '4. Performance & Accessibility QA', desc: 'Comprehensive cross-device QA, screen-reader testing, and 100/100 Core Web Vitals optimization.' },
+      { step: '5. Edge Deployment & Launch', desc: 'Zero-downtime DNS cutover, CDN edge deployment, SSL configuration, and analytics verification.' }
     ],
     faqs: [
-        {
-            "q": "What tech stack does your development engineering team specialize in?",
-            "a": "Our core stack includes React, TypeScript, Next.js, Node.js, Express, Python/FastAPI, PostgreSQL, MongoDB, Docker, and modern AWS/Vercel cloud architectures."
-        },
-        {
-            "q": "How do you guarantee web applications meet WCAG 2.2 AA accessibility standards?",
-            "a": "Accessibility is embedded into our development process, from keyboard navigability and ARIA landmarks to screen-reader verification with JAWS and NVDA."
-        },
-        {
-            "q": "Can you augment our existing in-house development team?",
-            "a": "Absolutely. We offer dedicated team augmentation, specialized full-stack sprint squads, and complete end-to-end turnkey software project delivery."
-        },
-        {
-            "q": "What development methodology and code quality standards do you follow?",
-            "a": "We practice Agile/Scrum with bi-weekly sprints, comprehensive automated unit testing, strict GitHub pull request reviews, and continuous CI/CD integration."
-        },
-        {
-            "q": "Do you provide post-launch maintenance, monitoring, and SLA support?",
-            "a": "Yes. We offer 24/7 uptime monitoring, security patching, API version updates, database optimization, and guaranteed response SLAs for production systems."
-        }
+      {
+        q: 'Which content management systems (CMS) do you support for website development?',
+        a: 'We specialize in modern Headless CMS solutions like Sanity, Strapi, Contentful, and Ghost, as well as decoupled WordPress or custom markdown-driven workflows tailored to your editorial team.'
+      },
+      {
+        q: 'How do you ensure our website complies with ADA and WCAG accessibility regulations?',
+        a: 'Accessibility is baked in from wireframing to code delivery. We validate contrast ratios, semantic HTML5 structure, ARIA roles, keyboard focus, and verify with NVDA and JAWS screen readers.'
+      },
+      {
+        q: 'Will our new website achieve high Google Core Web Vitals scores?',
+        a: 'Yes. We engineer every portal for 95+ to 100 Lighthouse scores, implementing modern image formats (WebP/AVIF), edge CDN caching, code splitting, and zero layout shift (CLS).'
+      },
+      {
+        q: 'Can you migrate our existing content, blogs, and SEO redirects safely?',
+        a: 'Absolutely. We provide end-to-end automated content migration, preserve existing URL structures, and implement comprehensive 301 redirect maps so your SEO equity is completely protected.'
+      },
+      {
+        q: 'What kind of maintenance and support do you offer after website launch?',
+        a: 'We offer continuous SLA-backed maintenance packages covering security updates, domain/SSL monitoring, monthly performance audits, CMS upgrades, and dedicated sprint hours for new features.'
+      }
+    ]
+  },
+  {
+    slug: 'software-development',
+    aliases: ['software', 'custom-software', 'enterprise-software', 'backend-development'],
+    title: 'Software Development',
+    pageTitle: 'Custom Software Development & Cloud Engineering | Velvora Solutions',
+    metaDesc: 'Resilient full-stack enterprise software, cloud microservices, custom APIs, database architectures, and scalable digital systems engineered by Velvora Solutions.',
+    heading: 'Software Development: Resilient, Cloud-Native Enterprise Engineering',
+    icon: 'Code',
+    short: 'Resilient full-stack applications, scalable cloud microservices, and secure API architectures engineered for high-concurrency enterprise reliability.',
+    buttonText: 'Architect Your Software',
+    overview:
+      'Modern enterprise software demands architectural resilience, high concurrency, strict security, and modular maintainability. Velvora engineers bespoke enterprise platforms, cloud-native microservices, custom APIs, and backend data processing pipelines using Node.js, Python, TypeScript, Docker, and distributed cloud infrastructures. We transform complex business workflows into reliable, scalable software assets that drive operational excellence.',
+    whatWeOffer: [
+      { title: 'Custom Enterprise Applications', desc: 'Scalable, multi-tenant web platforms, internal business tooling, and workflow automation portals.' },
+      { title: 'Cloud APIs & Microservice Architectures', desc: 'High-throughput RESTful and GraphQL backend microservices designed for zero-downtime distributed systems.' },
+      { title: 'Database Design & Optimization', desc: 'Relational (PostgreSQL, MySQL) and NoSQL (MongoDB, Redis) data models optimized for transactional integrity and speed.' },
+      { title: 'DevOps & Automated CI/CD Pipelines', desc: 'Containerized infrastructure (Docker, Kubernetes) with automated testing, staging, and zero-downtime deployments.' },
+      { title: 'Legacy Modernization & Code Refactoring', desc: 'Deconstructing monolithic legacy codebases into modular, maintainable, and cost-effective cloud services.' },
+      { title: 'System Integration & Enterprise Middleware', desc: 'Secure synchronization pipelines connecting CRM, ERP, billing systems, and third-party SaaS ecosystems.' }
+    ],
+    benefits: [
+      'High-Concurrency Cloud Architecture: Resilient microservices engineered to handle millions of requests with sub-100ms API response times.',
+      'Strict Code Quality & Maintainability: Modular TypeScript, clean architecture design patterns, and 90%+ automated test suite coverage.',
+      'Rapid Agile Sprint Cadence: Bi-weekly deliverable sprints with continuous demo reviews, burndown tracking, and prompt feedback integration.',
+      'Zero Vendor Lock-In: Open, standardized technology stacks (Node, Python, PostgreSQL, Docker) guaranteeing 100% IP ownership to your enterprise.',
+      'Enterprise-Grade Security Baseline: End-to-end encryption, role-based access control (RBAC), OWASP top-10 mitigation, and audit logging.'
+    ],
+    whyVelvora: [
+      'Senior Engineering Talent: Direct collaboration with seasoned software architects, full-stack developers, and certified cloud engineers.',
+      'Security-First Mindset: Built-in penetration testing, static code analysis, vulnerability scanning, and strict data confidentiality protocols.',
+      'Proven High-Volume Reliability: Systems designed for 99.99% uptime with automated health telemetry, circuit breakers, and failover redundancy.',
+      'Agile Transparency & Collaboration: Full access to Git repositories, Jira boards, daily asynchronous standups, and bi-weekly executive reviews.',
+      'Long-Term Production Support: Guaranteed response SLAs, 24/7 uptime monitoring, database maintenance, and continuous optimization.'
+    ],
+    process: [
+      { step: '1. Discovery & Technical Architecture', desc: 'System requirements scoping, database schema modeling, and API contract specifications.' },
+      { step: '2. Agile Sprint Engineering', desc: 'Iterative two-week development sprints with automated CI/CD builds, code reviews, and unit tests.' },
+      { step: '3. Security, Load & Stress Testing', desc: 'OWASP vulnerability scanning, high-concurrency load benchmarking, and automated regression testing.' },
+      { step: '4. Production Deployment', desc: 'Zero-downtime containerized release to AWS, Azure, or private cloud environments.' },
+      { step: '5. Ongoing SLA & DevOps Support', desc: '24/7 infrastructure telemetry, database indexing, patch management, and proactive feature enhancements.' }
+    ],
+    faqs: [
+      {
+        q: 'What backend languages, frameworks, and databases do you specialize in?',
+        a: 'Our core backend engineering stack includes Node.js (Express, NestJS), Python (FastAPI, Django), TypeScript, Go, PostgreSQL, MongoDB, Redis, and Elasticsearch.'
+      },
+      {
+        q: 'How do you handle software scalability and high-concurrency traffic?',
+        a: 'We architect stateless microservices, implement connection pooling, configure Redis caching layers, and use Docker containers with automated horizontal auto-scaling on AWS or Azure.'
+      },
+      {
+        q: 'Can you integrate our custom software with our existing enterprise ERP or CRM?',
+        a: 'Yes. We have extensive experience designing secure REST/GraphQL middleware to synchronize with Salesforce, HubSpot, SAP, NetSuite, Stripe, and proprietary legacy databases.'
+      },
+      {
+        q: 'Who owns the intellectual property (IP) and source code of the developed software?',
+        a: 'You retain 100% intellectual property ownership of all source code, architecture diagrams, database schemas, and documentation from day one.'
+      },
+      {
+        q: 'Do you offer ongoing SLA contracts and DevOps infrastructure maintenance?',
+        a: 'Yes. We provide comprehensive DevOps support packages with guaranteed emergency response SLAs, proactive security patching, database optimization, and cloud cost management.'
+      }
     ]
   },
   {

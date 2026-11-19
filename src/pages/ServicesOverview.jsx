@@ -16,6 +16,7 @@ import {
   BarChart3, 
   Code, 
   Cpu, 
+  Globe,
   Search, 
   Share2, 
   Target, 
@@ -188,9 +189,9 @@ const serviceGroups = [
       {
         title: 'Website Development',
         desc: 'Modern, high-performance, and strictly accessible web applications tailored to your enterprise brand.',
-        to: '/services/software-development',
-        icon: Code,
-        badge: 'Full-Stack · Accessible Web App',
+        to: '/services/website-development',
+        icon: Globe,
+        badge: 'Accessible Portals · Headless CMS',
       },
       {
         title: 'Software Development',

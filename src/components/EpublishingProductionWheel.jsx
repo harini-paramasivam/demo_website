@@ -19,7 +19,8 @@ import {
   TrendingUp,
   Workflow,
   Headphones,
-  ScanLine
+  ScanLine,
+  Globe
 } from 'lucide-react';
 
 // Domain-specific tailored deliverables & iconography for all 12 services
@@ -447,6 +448,53 @@ const SERVICE_STAGES_MAP = {
       deliverables: ['Production System Cloud Deployment', 'Automated Telemetry & Health Dashboard', 'Continuous Optimization Plan']
     }
   ],
+  'website-development': [
+    {
+      num: '01',
+      title: 'Audit & Scope',
+      tag: 'UX & Information Scoping',
+      icon: Search,
+      color: '#38bdf8',
+      summary: 'Thorough evaluation of user journeys, SEO taxonomy, brand requirements, and responsive layout objectives.',
+      deliverables: ['Information Architecture Blueprint', 'UX Wireframes & User Journey Scoping', 'Technical & SEO Performance Goals']
+    },
+    {
+      num: '02',
+      title: 'Design',
+      tag: 'Design System & Prototypes',
+      icon: FileCode,
+      color: '#818cf8',
+      summary: 'Crafting responsive UI components, mobile-first design systems, interactive prototypes, and typography palettes.',
+      deliverables: ['Figma Component Library', 'Interactive Mobile/Desktop Prototypes', 'WCAG Contrast & Typographic Palette']
+    },
+    {
+      num: '03',
+      title: 'Build',
+      tag: 'Responsive & Headless CMS',
+      icon: Globe,
+      color: '#00f2fe',
+      summary: 'Engineering fast, accessible, semantic web pages with React/Next.js, Tailwind, and headless CMS integrations.',
+      deliverables: ['Semantic HTML5 & Accessible React Code', 'Headless CMS Content Modeling', 'Responsive Cross-Device Layouts']
+    },
+    {
+      num: '04',
+      title: 'Validate',
+      tag: 'Core Web Vitals & WCAG QA',
+      icon: ShieldCheck,
+      color: '#10b981',
+      summary: 'Rigorous 100/100 Core Web Vitals tuning, multi-browser testing, assistive screen-reader QA, and SEO verification.',
+      deliverables: ['WCAG 2.2 AA Compliance Audit', '100% Core Web Vitals Lighthouse Report', 'Cross-Browser & Device Compatibility QA']
+    },
+    {
+      num: '05',
+      title: 'Launch',
+      tag: 'Global Edge & DNS Release',
+      icon: Rocket,
+      color: '#f59e0b',
+      summary: 'Zero-downtime deployment to global edge CDN (Vercel/Cloudflare/AWS), SSL hardening, and analytics integration.',
+      deliverables: ['Global CDN Edge Deployment', 'SSL Hardening & DNS Cutover', 'Post-Launch Analytics & SLA Monitoring']
+    }
+  ],
   'software-development': [
     {
       num: '01',
@@ -601,6 +649,7 @@ const SERVICE_HUB_CONFIG = {
   'ocr-and-digitization': { title: 'Digitization', sub: 'Neural OCR Core' },
   'captioning-transcription-and-audio-description': { title: 'Captioning', sub: 'Media Audio Core' },
   'ai-automation': { title: 'AI Automation', sub: 'Intelligent Core' },
+  'website-development': { title: 'Web Portals', sub: 'Responsive Web Core' },
   'software-development': { title: 'Software Dev', sub: 'Engineering Core' },
   'data-analytics': { title: 'Data Analytics', sub: 'Intelligence Core' },
   'digital-marketing': { title: 'Marketing', sub: 'Growth & ROI Core' }
@@ -617,6 +666,7 @@ const SERVICE_IMAGES_MAP = {
   'ocr-and-digitization': '/about-manuscript.jpg',
   'captioning-transcription-and-audio-description': '/card-content-services.jpg',
   'ai-automation': '/hero-robot-ai.jpg',
+  'website-development': '/hero-slide-4.jpg',
   'software-development': '/hero-velvora-elite.jpg',
   'data-analytics': '/card-content-services.jpg',
   'digital-marketing': '/card-marketing.jpg'
