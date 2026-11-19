@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Navigate, useParams, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Navigate, useParams, Link, useLocation } from 'react-router-dom';
 import {
   ArrowRight,
   CheckCircle2,
@@ -155,6 +155,12 @@ function getOfferIcon(title = '', idx = 0) {
 
 function FaqAccordion({ items = [] }) {
   const [openIdx, setOpenIdx] = useState(0);
+  const location = useLocation();
+
+  // Always reset to first FAQ opened when items change or navigating between pages
+  useEffect(() => {
+    setOpenIdx(0);
+  }, [location.pathname, items]);
 
   return (
     <div className="faq-list">
@@ -856,7 +862,7 @@ export default function ServicePage() {
                 Clear, transparent answers to help you evaluate and launch your project with confidence.
               </p>
             </div>
-            <FaqAccordion items={s.faqs} />
+            <FaqAccordion key={s.slug || slug} items={s.faqs} />
           </div>
         </section>
       )}

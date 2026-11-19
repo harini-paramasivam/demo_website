@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   Sparkles, 
   ArrowRight, 
@@ -31,6 +31,12 @@ import TrainingEnrollmentForm from '../components/TrainingEnrollmentForm.jsx';
 
 function FaqAccordion({ items = [] }) {
   const [openIdx, setOpenIdx] = useState(0); // 1st Q&A opened by default!
+  const location = useLocation();
+
+  // Always reset to first FAQ opened when items change or navigating between pages
+  useEffect(() => {
+    setOpenIdx(0);
+  }, [location.pathname, items]);
 
   return (
     <div className="faq-list">
@@ -450,7 +456,7 @@ export default function Training() {
             </p>
           </div>
 
-          <FaqAccordion items={trainingFaqs} />
+          <FaqAccordion key="training-faqs" items={trainingFaqs} />
         </div>
       </section>
     </>

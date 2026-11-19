@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import { useParams, Link, Navigate, useLocation } from 'react-router-dom';
 import { 
   ArrowRight, 
   CheckCircle2, 
@@ -33,6 +33,12 @@ import TrainingEnrollmentForm from '../components/TrainingEnrollmentForm.jsx';
 
 function FaqAccordion({ items = [] }) {
   const [openIdx, setOpenIdx] = useState(0); // 1st Q&A opened by default!
+  const location = useLocation();
+
+  // Always reset to first FAQ opened when items change or navigating between pages
+  useEffect(() => {
+    setOpenIdx(0);
+  }, [location.pathname, items]);
 
   return (
     <div className="faq-list" style={{ marginTop: '1.25rem' }}>
@@ -71,6 +77,12 @@ function FaqAccordion({ items = [] }) {
 
 function ModuleAccordion({ module, idx, isOpenDefault = false }) {
   const [open, setOpen] = useState(isOpenDefault);
+  const location = useLocation();
+
+  useEffect(() => {
+    setOpen(isOpenDefault);
+  }, [location.pathname, isOpenDefault]);
+
   return (
     <div className={`faq-item${open ? ' is-open' : ''}`} style={{ marginBottom: '14px' }}>
       <button
@@ -286,7 +298,7 @@ export default function TrainingProgramPage() {
                 <div className="faq-list">
                   {curriculumModules.map((mod, idx) => (
                     <ModuleAccordion
-                      key={mod.moduleNumber || idx}
+                      key={`${slug || 'program'}-mod-${mod.moduleNumber || idx}`}
                       module={mod}
                       idx={idx}
                       isOpenDefault={idx === 0}
@@ -636,7 +648,7 @@ export default function TrainingProgramPage() {
                 Key answers about curriculum structure, project deliverables, and mentorship for {program.title}.
               </p>
             </div>
-            <FaqAccordion items={program.programFaqs || program.faqs} />
+            <FaqAccordion key={`${slug || 'program'}-faqs`} items={program.programFaqs || program.faqs} />
           </div>
         </section>
       )}
