@@ -93,20 +93,20 @@ function ModuleAccordion({ module, idx, isOpenDefault = false }) {
         aria-expanded={open}
         onClick={() => setOpen(!open)}
       >
-        <div className="curriculum-module-head-left">
+        <div className="curriculum-module-top-row">
           <span className="pill curriculum-module-pill">
             MODULE {modNum}
           </span>
-          <strong className="curriculum-module-title">{module.title}</strong>
+          <div className="curriculum-module-head-right">
+            <span className="curriculum-module-duration">{module.duration}</span>
+            <ChevronDown
+              size={18}
+              aria-hidden="true"
+              className={`curriculum-module-chev ${open ? 'is-rotated' : ''}`}
+            />
+          </div>
         </div>
-        <div className="curriculum-module-head-right">
-          <span className="curriculum-module-duration">{module.duration}</span>
-          <ChevronDown
-            size={18}
-            aria-hidden="true"
-            className={`curriculum-module-chev ${open ? 'is-rotated' : ''}`}
-          />
-        </div>
+        <strong className="curriculum-module-title">{module.title}</strong>
       </button>
       {open && (
         <div className="faq-answer" style={{ padding: '16px 20px', borderTop: '1px solid var(--border)' }}>

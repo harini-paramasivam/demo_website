@@ -6070,26 +6070,25 @@ svg.accent,
 /* ===== Curriculum Module Accordion Equal Alignment ===== */
 .curriculum-module-btn {
   display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
   width: 100% !important;
-  gap: 16px !important;
+  gap: 10px !important;
   padding: 18px 22px !important;
   text-align: left !important;
 }
 
-.curriculum-module-head-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex: 1 1 auto;
-  min-width: 0;
+.curriculum-module-top-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
 }
 
 .curriculum-module-pill {
   width: 115px !important;
   min-width: 115px !important;
-  padding: 6px 14px !important;
+  padding: 5px 12px !important;
   font-size: 0.8rem !important;
   font-weight: 800 !important;
   background: rgba(56, 189, 248, 0.12) !important;
@@ -6103,49 +6102,50 @@ svg.accent,
   letter-spacing: 0.04em !important;
   font-variant-numeric: tabular-nums !important;
   border-radius: 999px !important;
+  margin: 0 !important;
 }
 
 .curriculum-module-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.35;
-  flex: 1 1 auto;
-  min-width: 0;
+  font-size: 1.1rem !important;
+  font-weight: 750 !important;
+  color: var(--ink) !important;
+  line-height: 1.35 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  display: block !important;
+  width: 100% !important;
 }
 
 .curriculum-module-head-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-  margin-left: auto;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-shrink: 0 !important;
+  margin-left: auto !important;
 }
 
 .curriculum-module-duration {
-  font-size: 0.85rem;
-  color: #1e293b;
-  font-weight: 600;
-  white-space: nowrap;
+  font-size: 0.85rem !important;
+  color: #1e293b !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
 }
 
 .curriculum-module-chev {
-  transition: transform 0.2s ease;
-  flex-shrink: 0;
+  transition: transform 0.2s ease !important;
+  flex-shrink: 0 !important;
+  color: #64748b !important;
 }
 
 .curriculum-module-chev.is-rotated {
-  transform: rotate(180deg);
+  transform: rotate(180deg) !important;
 }
 
 @media (max-width: 640px) {
   .curriculum-module-btn {
     padding: 14px 16px !important;
-    gap: 12px !important;
-  }
-  .curriculum-module-head-left {
-    flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px !important;
   }
 }
 
