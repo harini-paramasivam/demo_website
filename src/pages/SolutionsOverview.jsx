@@ -8,12 +8,15 @@ import {
   Layers, 
   Building2, 
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   Sparkles,
   Award,
   SlidersHorizontal,
   Workflow,
   Check,
   LayoutGrid,
+  Table,
   Filter,
   ShieldCheck
 } from 'lucide-react';
@@ -61,6 +64,9 @@ export default function SolutionsOverview() {
 
   // Filter state for catalog view
   const [filter, setFilter] = useState('all');
+
+  // Layout mode for catalog: 'cards' (Executive Cards) vs 'matrix' (Comparison Table)
+  const [catalogLayout, setCatalogLayout] = useState('cards');
 
   // Active solution object
   const activeSolution = useMemo(() => {
@@ -146,7 +152,7 @@ export default function SolutionsOverview() {
       </section>
 
       {/* SOLUTIONS COMMAND CENTER SECTION */}
-      <section className="section section--paper sol-command-section" aria-labelledby="solutions-hub-heading">
+      <section className="section sol-command-section" aria-labelledby="solutions-hub-heading">
         <div className="container">
           {/* TOP CONTROLS: VIEW SWITCHER */}
           <div className="sol-top-bar sol-top-bar--centered">
@@ -458,49 +464,78 @@ export default function SolutionsOverview() {
           )}
 
           {/* ========================================================================= */}
-          {/* VIEW MODE 2: COMPLETE PORTFOLIO CATALOG (GRID VIEW) */}
+          {/* VIEW MODE 2: COMPLETE PORTFOLIO CATALOG (GRID & MATRIX VIEWS) */}
           {/* ========================================================================= */}
           {viewMode === 'grid' && (
             <div className="sol-catalog-view">
-              {/* Category Filter Tabs */}
-              <div className="sol-filter-pills" role="tablist" aria-label="Filter catalog">
-                <button
-                  type="button"
-                  className={`sol-filter-pill${filter === 'all' ? ' is-active' : ''}`}
-                  onClick={() => setFilter('all')}
-                >
-                  <SlidersHorizontal size={15} />
-                  <span>All Solutions</span>
-                  <span className="sol-filter-count">{solutionsData.length}</span>
-                </button>
-                <button
-                  type="button"
-                  className={`sol-filter-pill${filter === 'industry' ? ' is-active' : ''}`}
-                  onClick={() => setFilter('industry')}
-                >
-                  <Building2 size={15} />
-                  <span>By Industry</span>
-                  <span className="sol-filter-count">
-                    {solutionsData.filter((s) => s.category === 'industry').length}
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  className={`sol-filter-pill${filter === 'need' ? ' is-active' : ''}`}
-                  onClick={() => setFilter('need')}
-                >
-                  <Sparkles size={15} />
-                  <span>By Need</span>
-                  <span className="sol-filter-count">
-                    {solutionsData.filter((s) => s.category === 'need').length}
-                  </span>
-                </button>
+              {/* Category Filter Tabs & Layout Switcher Toolbar */}
+              <div className="sol-catalog-toolbar">
+                <div className="sol-filter-pills" role="tablist" aria-label="Filter catalog">
+                  <button
+                    type="button"
+                    className={`sol-filter-pill${filter === 'all' ? ' is-active' : ''}`}
+                    onClick={() => setFilter('all')}
+                  >
+                    <SlidersHorizontal size={15} />
+                    <span>All Solutions</span>
+                    <span className="sol-filter-count">{solutionsData.length}</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`sol-filter-pill${filter === 'industry' ? ' is-active' : ''}`}
+                    onClick={() => setFilter('industry')}
+                  >
+                    <Building2 size={15} />
+                    <span>By Industry</span>
+                    <span className="sol-filter-count">
+                      {solutionsData.filter((s) => s.category === 'industry').length}
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`sol-filter-pill${filter === 'need' ? ' is-active' : ''}`}
+                    onClick={() => setFilter('need')}
+                  >
+                    <Sparkles size={15} />
+                    <span>By Need</span>
+                    <span className="sol-filter-count">
+                      {solutionsData.filter((s) => s.category === 'need').length}
+                    </span>
+                  </button>
+                </div>
+
+                {/* Display Mode Switcher (Cards vs Matrix) */}
+                <div className="sol-layout-switcher" role="radiogroup" aria-label="Catalog layout mode">
+                  <button
+                    type="button"
+                    className={`sol-layout-btn${catalogLayout === 'cards' ? ' is-active' : ''}`}
+                    onClick={() => setCatalogLayout('cards')}
+                    title="Executive Cards Grid"
+                  >
+                    <LayoutGrid size={15} />
+                    <span>Executive Cards</span>
+                  </button>
+                  <button
+                    type="button"
+                    className={`sol-layout-btn${catalogLayout === 'matrix' ? ' is-active' : ''}`}
+                    onClick={() => setCatalogLayout('matrix')}
+                    title="Comparison Matrix Table"
+                  >
+                    <Table size={15} />
+                    <span>Comparison Matrix</span>
+                  </button>
+                </div>
               </div>
 
-              {/* If filter is ALL: Display 2 distinct sections (Industry 2x2, Need 3:2 Funnel) */}
-              {filter === 'all' ? (
+              {/* View Presentation: Matrix Table vs Executive Cards */}
+              {catalogLayout === 'matrix' ? (
+                <SolutionsMatrixTable 
+                  solutions={filteredSolutions} 
+                  onSelect={selectSolution} 
+                />
+              ) : filter === 'all' ? (
                 <div className="sol-catalog-sections">
-                  {/* SECTION 1: BY INDUSTRY SECTOR (2x2 GRID) */}
+                  {/* SECTION 1: BY INDUSTRY SECTOR */}
                   <div className="sol-catalog-group">
                     <div className="sol-group-head">
                       <div className="sol-group-head__badge">
@@ -520,7 +555,7 @@ export default function SolutionsOverview() {
                     </div>
                   </div>
 
-                  {/* SECTION 2: BY OPERATIONAL NEED (3:2 FUNNEL GRID) */}
+                  {/* SECTION 2: BY OPERATIONAL NEED */}
                   <div className="sol-catalog-group" style={{ marginTop: '56px' }}>
                     <div className="sol-group-head">
                       <div className="sol-group-head__badge">
@@ -576,15 +611,100 @@ export default function SolutionsOverview() {
 }
 
 /**
- * Standardized High-Impact Solution Card for Catalog View
+ * Executive Comparison Matrix Table for Enterprise Solution Portfolios
+ */
+function SolutionsMatrixTable({ solutions, onSelect }) {
+  return (
+    <div className="sol-matrix-table-wrap">
+      <table className="sol-matrix-table">
+        <thead>
+          <tr>
+            <th scope="col" style={{ width: '22%' }}>Architecture / Framework</th>
+            <th scope="col" style={{ width: '13%' }}>Sector / Scope</th>
+            <th scope="col" style={{ width: '25%' }}>Core Challenge Solved</th>
+            <th scope="col" style={{ width: '22%' }}>Delivery Pipeline</th>
+            <th scope="col" style={{ width: '18%' }}>Executive Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {solutions.map((sol) => (
+            <tr key={sol.id} className="sol-matrix-row">
+              <td className="sol-matrix-title-cell">
+                <div className="sol-matrix-title-flex">
+                  <div className="sol-matrix-icon-box">
+                    <Icon name={sol.icon} size={20} />
+                  </div>
+                  <div>
+                    <h4 className="sol-matrix-name">{sol.title}</h4>
+                    <span className="sol-matrix-subtag">{sol.tag}</span>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <span className={`sol-matrix-badge sol-matrix-badge--${sol.category}`}>
+                  {sol.category === 'industry' ? <Building2 size={12} /> : <Sparkles size={12} />}
+                  <span>{sol.categoryLabel}</span>
+                </span>
+              </td>
+              <td>
+                <p className="sol-matrix-challenge">
+                  {sol.challenges[0]}
+                </p>
+                {sol.challenges.length > 1 && (
+                  <span className="sol-matrix-more-hint">+{sol.challenges.length - 1} additional pain points</span>
+                )}
+              </td>
+              <td>
+                <div className="sol-matrix-flow-strip">
+                  {sol.flow.map((step, idx) => (
+                    <span key={idx} className="sol-matrix-flow-step">
+                      {idx + 1}. {step}
+                    </span>
+                  ))}
+                </div>
+              </td>
+              <td>
+                <div className="sol-matrix-actions">
+                  <button
+                    type="button"
+                    onClick={() => onSelect(sol)}
+                    className="sol-matrix-blueprint-btn"
+                    title="Inspect architecture blueprint"
+                  >
+                    <Workflow size={13} />
+                    <span>Inspect Blueprint</span>
+                  </button>
+                  <Link
+                    to={`/contact?subject=${encodeURIComponent(sol.ctaSubject || sol.title)}`}
+                    className="sol-matrix-enquire-link"
+                  >
+                    <span>Enquire</span>
+                    <ArrowRight size={12} />
+                  </Link>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+/**
+ * Standardized High-Impact Executive Solution Card for Catalog View
+ * Compact layout with expandable deep-dive specifications
  */
 function CatalogSolutionCard({ sol, onSelect }) {
+  const [expanded, setExpanded] = useState(false);
+
   return (
-    <article className="solution-card">
+    <article className={`solution-card${expanded ? ' is-expanded' : ''}`}>
+      {/* Header */}
       <div className="solution-card__header">
         <div className="solution-card__top">
           <div className="solution-card__icon-box">
-            <Icon name={sol.icon} size={24} />
+            <Icon name={sol.icon} size={22} />
           </div>
           <span className="solution-card__badge">{sol.categoryLabel}</span>
         </div>
@@ -593,116 +713,163 @@ function CatalogSolutionCard({ sol, onSelect }) {
       </div>
 
       <div className="solution-card__content">
-        {/* Challenge */}
-        <div className="solution-section">
-          <h4 className="solution-section__title">
-            <AlertCircle size={15} className="solution-section__icon-alert" aria-hidden="true" />
-            The Challenge
-          </h4>
-          <ul className="solution-challenge-list">
-            {sol.challenges.map((c, i) => (
-              <li key={i}>{c}</li>
-            ))}
-          </ul>
+        {/* Core Challenge Snapshot */}
+        <div className="solution-card__summary-block">
+          <span className="solution-card__block-label">
+            <AlertCircle size={13} className="text-amber-400" />
+            <span>Core Challenge</span>
+          </span>
+          <p className="solution-card__summary-text">
+            {sol.challenges[0]}
+          </p>
         </div>
 
-        {/* Flow */}
-        <div className="solution-section">
-          <h4 className="solution-section__title">
-            <Workflow size={15} className="solution-section__icon-flow" aria-hidden="true" />
-            Solution Flow
-          </h4>
-          <div className="solution-flow-steps" style={{ textAlign: 'left', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
-            {sol.flow.map((step, idx) => (
-              <span key={idx} className="solution-flow-step-wrap" style={{ textAlign: 'left', justifyContent: 'flex-start' }}>
-                <span className="solution-flow-step">
-                  <span className="solution-flow-step__idx">{idx + 1}.</span> {step}
-                </span>
-                <ChevronRight size={13} className="solution-flow-arrow" aria-hidden="true" />
+        {/* 3-Step Pipeline Flow Strip */}
+        <div className="solution-card__pipeline-strip">
+          <span className="solution-card__block-label">
+            <Workflow size={13} className="text-cyan-400" />
+            <span>Delivery Pipeline</span>
+          </span>
+          <div className="solution-card__pipeline-pills">
+            {sol.flow.slice(0, 3).map((st, i) => (
+              <span key={i} className="solution-card__pipeline-pill">
+                <span className="sol-pipe-num">0{i + 1}</span> {st}
               </span>
             ))}
+            {sol.flow.length > 3 && (
+              <span className="solution-card__pipeline-more">+{sol.flow.length - 3}</span>
+            )}
           </div>
         </div>
 
-        {/* Services Included */}
-        <div className="solution-section">
-          <h4 className="solution-section__title">Services Included</h4>
-          <div className="solution-services-tags">
-            {sol.servicesIncluded.map((s) => (
-              <span key={s} className="solution-service-pill">
-                {s}
-              </span>
+        {/* Top Integrated Services */}
+        <div className="solution-card__services-block">
+          <span className="solution-card__block-label">
+            <Layers size={13} className="text-indigo-400" />
+            <span>Integrated Stack</span>
+          </span>
+          <div className="solution-card__services-pills">
+            {sol.servicesIncluded.slice(0, 4).map((s) => (
+              <span key={s} className="sol-mini-service-tag">{s}</span>
             ))}
+            {sol.servicesIncluded.length > 4 && (
+              <span className="sol-mini-service-tag sol-mini-service-tag--more">
+                +{sol.servicesIncluded.length - 4}
+              </span>
+            )}
           </div>
         </div>
 
-        {/* Benefits */}
-        <div className="solution-section">
-          <h4 className="solution-section__title">
-            <CheckCircle2 size={15} className="solution-section__icon-check" aria-hidden="true" />
-            Benefits Delivered
-          </h4>
-          <ul className="solution-benefits-list">
-            {sol.benefits.map((b, i) => (
-              <li key={i}>
-                <CheckCircle2 size={15} className="solution-check-bullet" aria-hidden="true" />
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
+        {/* Primary Guaranteed Outcome */}
+        <div className="solution-card__outcome-block">
+          <span className="solution-card__block-label">
+            <CheckCircle2 size={13} className="text-emerald-400" />
+            <span>Guaranteed Outcome</span>
+          </span>
+          <p className="solution-card__outcome-text">
+            {sol.benefits[0]}
+          </p>
         </div>
 
-        {/* Standards We Work To (for Compliance) */}
-        {sol.standards && (
-          <div className="solution-section solution-section--standards">
-            <h4 className="solution-section__title">
-              <Award size={15} className="solution-section__icon-award" aria-hidden="true" />
-              Standards We Work To
-            </h4>
-            <div className="solution-standards-grid">
-              {sol.standards.map((st) => (
-                <span key={st} className="solution-standard-tag">
-                  {st}
-                </span>
-              ))}
+        {/* Expandable Full Specifications Drawer */}
+        {expanded && (
+          <div className="solution-card__drawer">
+            {/* Full Challenges */}
+            {sol.challenges.length > 1 && (
+              <div className="sol-drawer-section">
+                <h5 className="sol-drawer-heading">Detailed Operational Bottlenecks</h5>
+                <ul className="sol-drawer-list">
+                  {sol.challenges.map((c, i) => (
+                    <li key={i}>{c}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Complete Flow */}
+            <div className="sol-drawer-section">
+              <h5 className="sol-drawer-heading">Complete 5-Stage Orchestration</h5>
+              <div className="sol-drawer-flow">
+                {sol.flow.map((step, idx) => (
+                  <span key={idx} className="sol-drawer-flow-item">
+                    <strong>Phase {idx + 1}:</strong> {step}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
 
-        {/* Case Study Callout */}
-        {sol.caseStudy && (
-          <div className="solution-case-callout">
-            <span className="solution-case-callout__eyebrow">Related Case Study</span>
-            <p className="solution-case-callout__text">
-              <strong>{sol.caseStudy}</strong>
-            </p>
-            {sol.caseStudyLink && (
-              <Link to={sol.caseStudyLink} className="solution-case-callout__link">
-                Explore Case Study <ChevronRight size={13} aria-hidden="true" />
-              </Link>
+            {/* Complete Benefits */}
+            <div className="sol-drawer-section">
+              <h5 className="sol-drawer-heading">All SLA & Business Deliverables</h5>
+              <ul className="sol-drawer-benefits">
+                {sol.benefits.map((b, i) => (
+                  <li key={i}>
+                    <CheckCircle2 size={13} className="text-emerald-400" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Standards & Compliance */}
+            {sol.standards && (
+              <div className="sol-drawer-section">
+                <h5 className="sol-drawer-heading">Governing Standards</h5>
+                <div className="sol-drawer-tags">
+                  {sol.standards.map((st) => (
+                    <span key={st} className="sol-drawer-tag">{st}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Case Study */}
+            {sol.caseStudy && (
+              <div className="sol-drawer-case">
+                <span className="sol-drawer-case__label">Proven Implementation</span>
+                <p className="sol-drawer-case__text">{sol.caseStudy}</p>
+                {sol.caseStudyLink && (
+                  <Link to={sol.caseStudyLink} className="sol-drawer-case__link">
+                    Read Published Case Study <ChevronRight size={13} />
+                  </Link>
+                )}
+              </div>
             )}
           </div>
         )}
+
+        {/* Toggle Specifications Button */}
+        <button
+          type="button"
+          onClick={() => setExpanded(!expanded)}
+          className="sol-card-expand-btn"
+          aria-expanded={expanded}
+        >
+          <span>{expanded ? 'Collapse Specifications' : 'View Full Specifications'}</span>
+          {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+        </button>
       </div>
 
-      {/* Footer CTA & Interactive Deep Dive Link */}
+      {/* Card Actions */}
       <div className="solution-card__footer">
-        <Link
-          to={`/contact?subject=${encodeURIComponent(sol.ctaSubject || sol.title)}`}
-          className="btn btn--orange btn--block"
-        >
-          <span>{sol.ctaText}</span>
-          <ArrowRight size={16} aria-hidden="true" />
-        </Link>
         <button
           type="button"
           onClick={onSelect}
           className="sol-card-blueprint-btn"
           title="Open in Interactive Blueprint Stage"
         >
-          <Workflow size={13} />
+          <Workflow size={14} />
           <span>Inspect Architecture Blueprint</span>
         </button>
+        <div className="solution-card__sub-actions">
+          <Link
+            to={`/contact?subject=${encodeURIComponent(sol.ctaSubject || sol.title)}`}
+            className="sol-card-enquire-btn"
+          >
+            <span>{sol.ctaText}</span>
+            <ArrowRight size={14} />
+          </Link>
+        </div>
       </div>
     </article>
   );
