@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {
+  ArrowLeft,
   ArrowRight,
   Award,
   BarChart3,
@@ -216,6 +217,16 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const progressRef = useRef(null);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    closeMobile();
+    if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
 
   useEffect(() => {
     setOpenMenu(null);
@@ -274,9 +285,23 @@ export default function Header() {
       <header className={`header${scrolled ? ' is-scrolled' : ''}`}>
         <a href="#main" className="skip">Skip to main content</a>
         <div className="container header__bar">
-          <Link to="/" className="header__logo" aria-label="Velvora Solutions – home" onClick={closeMobile}>
-            <img src="/logo.png" alt="Velvora Solutions" width="910" height="305" />
-          </Link>
+          <div className="header__left">
+            {pathname !== '/' && (
+              <button
+                type="button"
+                className="header__back-btn"
+                onClick={handleBack}
+                aria-label="Go back to previous page"
+                title="Go back"
+              >
+                <ArrowLeft size={18} aria-hidden="true" />
+                <span className="header__back-text">Back</span>
+              </button>
+            )}
+            <Link to="/" className="header__logo" aria-label="Velvora Solutions – home" onClick={closeMobile}>
+              <img src="/logo.png" alt="Velvora Solutions" width="910" height="305" />
+            </Link>
+          </div>
           <nav className="nav" aria-label="Main">
             <ul className="nav__list">
               {nav.map((item) =>

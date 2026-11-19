@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { 
+  ArrowLeft,
   BookOpen, 
   FolderOpen, 
   Lightbulb, 
@@ -596,14 +597,27 @@ export default function Insights() {
       {activeMedia && (
         <div className="media-modal-backdrop" onClick={handleCloseMedia} role="dialog" aria-modal="true">
           <div className="media-modal-card" onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              className="media-modal-close"
-              onClick={handleCloseMedia}
-              aria-label="Close media player"
-            >
-              <X size={20} />
-            </button>
+            <div className="media-modal-top-actions">
+              <button
+                type="button"
+                className="media-modal-back-btn"
+                onClick={handleCloseMedia}
+                aria-label="Back to Insights"
+                title="Back to Insights"
+              >
+                <ArrowLeft size={16} aria-hidden="true" />
+                <span>Back to Insights</span>
+              </button>
+              <button
+                type="button"
+                className="media-modal-close"
+                onClick={handleCloseMedia}
+                aria-label="Close media player"
+                title="Close"
+              >
+                <X size={20} />
+              </button>
+            </div>
 
             <div className="media-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>

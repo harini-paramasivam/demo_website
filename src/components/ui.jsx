@@ -1,5 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
-import { ArrowRight, Info } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { ArrowLeft, ArrowRight, Info } from 'lucide-react';
 
 export const Eyebrow = ({ children, dark }) => (
   <p className={`eyebrow${dark ? ' eyebrow--dark' : ''}`}>{children}</p>
@@ -24,6 +24,16 @@ export const TextLink = ({ to, children }) => (
 
 export function PageHero({ eyebrow, title, children, crumbs = [] }) {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
+
   // Prevent duplicate 'Home' in breadcrumbs if caller passes 'Home' in crumbs array
   const displayCrumbs = crumbs.filter((c, idx) => !(idx === 0 && (c.toLowerCase() === 'home' || c === '/')));
 
@@ -437,12 +447,24 @@ export function PageHero({ eyebrow, title, children, crumbs = [] }) {
 
       {/* 3. Text Content Layer (Crisp, High-Contrast typography directly in front) */}
       <div className="container" style={{ position: 'relative', zIndex: 3 }}>
-        <nav aria-label="Breadcrumb" className="crumbs">
-          <Link to="/">Home</Link>
-          {displayCrumbs.map((c) => (
-            <span key={c}> / {c}</span>
-          ))}
-        </nav>
+        <div className="phero-nav-bar">
+          <button
+            type="button"
+            className="phero-back-btn"
+            onClick={handleBack}
+            aria-label="Go back to previous page"
+            title="Go back"
+          >
+            <ArrowLeft size={15} aria-hidden="true" />
+            <span>Back</span>
+          </button>
+          <nav aria-label="Breadcrumb" className="crumbs">
+            <Link to="/">Home</Link>
+            {displayCrumbs.map((c) => (
+              <span key={c}> / {c}</span>
+            ))}
+          </nav>
+        </div>
         {eyebrow && (
           <p className="pill">
             <i />
