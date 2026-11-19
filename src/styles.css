@@ -2241,7 +2241,12 @@ svg.accent,
   .intro-card {
     grid-template-columns: 1fr !important;
     padding: clamp(1.4rem, 4vw, 1.8rem) clamp(1rem, 3.5vw, 1.35rem) !important;
+    padding-bottom: 2rem !important;
     gap: 1.4rem !important;
+  }
+  /* Hide decorative corner tech brackets on mobile so they never collide with or disturb tag icons */
+  .intro-card__corner {
+    display: none !important;
   }
 }
 @media (max-width: 640px) {
@@ -2252,15 +2257,19 @@ svg.accent,
     width: 100% !important;
     align-items: center !important;
     justify-content: flex-start !important;
+    position: relative !important;
+    z-index: 5 !important;
   }
   .intro-tag {
+    position: relative !important;
+    z-index: 5 !important;
     display: inline-flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    padding: 5px 11px !important;
+    padding: 6px 12px !important;
     font-size: 0.77rem !important;
     font-weight: 600 !important;
-    gap: 6px !important;
+    gap: 7px !important;
     width: auto !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
@@ -2277,10 +2286,14 @@ svg.accent,
     text-overflow: clip !important;
   }
   .intro-tag__icon {
-    width: 13px !important;
-    height: 13px !important;
-    min-width: 13px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
     flex-shrink: 0 !important;
+    vertical-align: middle !important;
   }
   .intro-tag:last-child {
     grid-column: unset !important;
@@ -2445,10 +2458,23 @@ svg.accent,
   border-bottom-right-radius: 6px;
 }
 .intro-card:hover .intro-card__corner {
-  width: 24px;
-  height: 24px;
-  border-color: #00d2ff;
-  box-shadow: 0 0 12px rgba(0, 210, 255, 0.5);
+  box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+}
+.intro-card:hover .intro-card__corner--tl {
+  border-top-color: #00d2ff;
+  border-left-color: #00d2ff;
+}
+.intro-card:hover .intro-card__corner--tr {
+  border-top-color: #00d2ff;
+  border-right-color: #00d2ff;
+}
+.intro-card:hover .intro-card__corner--bl {
+  border-bottom-color: #00d2ff;
+  border-left-color: #00d2ff;
+}
+.intro-card:hover .intro-card__corner--br {
+  border-bottom-color: #00d2ff;
+  border-right-color: #00d2ff;
 }
 
 .intro-card > .intro-card__header,
