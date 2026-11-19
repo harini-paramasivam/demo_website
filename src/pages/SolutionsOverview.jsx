@@ -46,7 +46,7 @@ export default function SolutionsOverview() {
     );
   }, [slug]);
 
-  // Active solution in Interactive Console
+  // Active solution in Interactive andConsole
   const [activeSolutionId, setActiveSolutionId] = useState(
     matchedSolution ? matchedSolution.id : solutionsData[0].id
   );
@@ -73,7 +73,6 @@ export default function SolutionsOverview() {
     return solutionsData.find((s) => s.id === activeSolutionId) || solutionsData[0];
   }, [activeSolutionId]);
 
-  // Current index for previous / next navigation
   const activeIndex = useMemo(() => {
     return solutionsData.findIndex((s) => s.id === activeSolution.id);
   }, [activeSolution]);
@@ -152,7 +151,7 @@ export default function SolutionsOverview() {
       </section>
 
       {/* SOLUTIONS COMMAND CENTER SECTION */}
-      <section className="section sol-command-section" aria-labelledby="solutions-hub-heading">
+      <section className="section section--paper sol-command-section" aria-labelledby="solutions-hub-heading">
         <div className="container">
           {/* TOP CONTROLS: VIEW SWITCHER */}
           <div className="sol-top-bar sol-top-bar--centered">
@@ -716,7 +715,7 @@ function CatalogSolutionCard({ sol, onSelect }) {
         {/* Core Challenge Snapshot */}
         <div className="solution-card__summary-block">
           <span className="solution-card__block-label">
-            <AlertCircle size={13} className="text-amber-400" />
+            <AlertCircle size={13} className="text-amber-500" />
             <span>Core Challenge</span>
           </span>
           <p className="solution-card__summary-text">
@@ -727,7 +726,7 @@ function CatalogSolutionCard({ sol, onSelect }) {
         {/* 3-Step Pipeline Flow Strip */}
         <div className="solution-card__pipeline-strip">
           <span className="solution-card__block-label">
-            <Workflow size={13} className="text-cyan-400" />
+            <Workflow size={13} className="text-sky-600" />
             <span>Delivery Pipeline</span>
           </span>
           <div className="solution-card__pipeline-pills">
@@ -745,7 +744,7 @@ function CatalogSolutionCard({ sol, onSelect }) {
         {/* Top Integrated Services */}
         <div className="solution-card__services-block">
           <span className="solution-card__block-label">
-            <Layers size={13} className="text-indigo-400" />
+            <Layers size={13} className="text-indigo-600" />
             <span>Integrated Stack</span>
           </span>
           <div className="solution-card__services-pills">
@@ -763,7 +762,7 @@ function CatalogSolutionCard({ sol, onSelect }) {
         {/* Primary Guaranteed Outcome */}
         <div className="solution-card__outcome-block">
           <span className="solution-card__block-label">
-            <CheckCircle2 size={13} className="text-emerald-400" />
+            <CheckCircle2 size={13} className="text-emerald-600" />
             <span>Guaranteed Outcome</span>
           </span>
           <p className="solution-card__outcome-text">
@@ -804,7 +803,7 @@ function CatalogSolutionCard({ sol, onSelect }) {
               <ul className="sol-drawer-benefits">
                 {sol.benefits.map((b, i) => (
                   <li key={i}>
-                    <CheckCircle2 size={13} className="text-emerald-400" />
+                    <CheckCircle2 size={13} className="text-emerald-600" />
                     <span>{b}</span>
                   </li>
                 ))}

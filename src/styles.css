@@ -19557,15 +19557,7 @@ svg.accent,
 }
 
 .sol-command-section {
-  position: relative;
-  background: #040816 !important;
-  background-image: 
-    linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px) !important;
-  background-size: 48px 48px !important;
-  color: #e2e8f0;
   padding-top: 40px !important;
-  min-height: 80vh;
 }
 
 /* TOP CONTROLS BAR */
@@ -20176,33 +20168,33 @@ svg.accent,
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 9px 16px;
+  padding: 9px 18px;
   border-radius: 999px;
-  background: rgba(15, 23, 42, 0.75);
-  border: 1px solid rgba(56, 189, 248, 0.22);
-  color: #cbd5e1;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  color: #334155;
   font-size: 0.86rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
 }
 .sol-filter-pill:hover {
-  background: rgba(30, 41, 59, 0.85);
-  border-color: rgba(56, 189, 248, 0.45);
-  color: #ffffff;
+  background: #f8fafc;
+  border-color: #0284c7;
+  color: #0284c7;
 }
 .sol-filter-pill.is-active {
   background: linear-gradient(135deg, #0284c7, #2563eb);
   color: #ffffff;
-  border-color: #38bdf8;
-  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35);
+  border-color: #0284c7;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28);
 }
 .sol-filter-count {
   padding: 1px 7px;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.4);
-  color: #94a3b8;
+  background: rgba(0, 0, 0, 0.06);
+  color: #64748b;
   font-size: 0.72rem;
   font-weight: 700;
 }
@@ -20215,12 +20207,11 @@ svg.accent,
 .sol-layout-switcher {
   display: inline-flex;
   align-items: center;
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
   border-radius: 999px;
   padding: 4px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 .sol-layout-btn {
   display: inline-flex;
@@ -20230,31 +20221,30 @@ svg.accent,
   border-radius: 999px;
   background: transparent;
   border: none;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 .sol-layout-btn:hover {
-  color: #ffffff;
+  color: #0f172a;
 }
 .sol-layout-btn.is-active {
   background: linear-gradient(135deg, #0284c7, #2563eb);
   color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.4);
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.35);
 }
 
-/* EXECUTIVE COMPARISON MATRIX TABLE */
+/* EXECUTIVE COMPARISON MATRIX TABLE (LIGHT BLUEPRINT THEME) */
 .sol-matrix-table-wrap {
   width: 100%;
   overflow-x: auto;
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(56, 189, 248, 0.22);
+  background: #ffffff;
+  border: 1.5px solid rgba(226, 232, 240, 0.95);
   border-radius: 20px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
   margin-bottom: 36px;
   -webkit-overflow-scrolling: touch;
 }
@@ -20269,21 +20259,21 @@ svg.accent,
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #38bdf8;
-  background: rgba(2, 6, 23, 0.7);
-  border-bottom: 1.5px solid rgba(56, 189, 248, 0.25);
+  color: #0284c7;
+  background: #f8fafc;
+  border-bottom: 2px solid #e2e8f0;
   white-space: nowrap;
 }
 .sol-matrix-table td {
   padding: 18px 20px;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.12);
+  border-bottom: 1px solid #f1f5f9;
   vertical-align: middle;
 }
 .sol-matrix-row {
   transition: background 0.2s ease;
 }
 .sol-matrix-row:hover {
-  background: rgba(56, 189, 248, 0.05);
+  background: #f0f9ff;
 }
 .sol-matrix-row:last-child td {
   border-bottom: none;
@@ -20297,23 +20287,23 @@ svg.accent,
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: rgba(56, 189, 248, 0.12);
+  background: #f0f9ff;
   border: 1px solid rgba(56, 189, 248, 0.3);
   display: grid;
   place-items: center;
-  color: #38bdf8;
+  color: #0284c7;
   flex-shrink: 0;
 }
 .sol-matrix-name {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #0f172a;
   margin: 0 0 3px;
   line-height: 1.3;
 }
 .sol-matrix-subtag {
   font-size: 0.74rem;
-  color: #38bdf8;
+  color: #0284c7;
   font-weight: 600;
 }
 .sol-matrix-badge {
@@ -20327,24 +20317,24 @@ svg.accent,
   white-space: nowrap;
 }
 .sol-matrix-badge--industry {
-  background: rgba(56, 189, 248, 0.12);
+  background: #f0f9ff;
   border: 1px solid rgba(56, 189, 248, 0.3);
-  color: #7dd3fc;
+  color: #0284c7;
 }
 .sol-matrix-badge--need {
-  background: rgba(168, 85, 247, 0.12);
-  border: 1px solid rgba(168, 85, 247, 0.3);
-  color: #d8b4fe;
+  background: #faf5ff;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  color: #7e22ce;
 }
 .sol-matrix-challenge {
   font-size: 0.85rem;
   line-height: 1.45;
-  color: #cbd5e1;
+  color: #334155;
   margin: 0 0 4px;
 }
 .sol-matrix-more-hint {
   font-size: 0.72rem;
-  color: #94a3b8;
+  color: #64748b;
   font-weight: 600;
 }
 .sol-matrix-flow-strip {
@@ -20354,7 +20344,7 @@ svg.accent,
 }
 .sol-matrix-flow-step {
   font-size: 0.78rem;
-  color: #94a3b8;
+  color: #475569;
   display: inline-block;
   white-space: nowrap;
 }
@@ -20371,9 +20361,9 @@ svg.accent,
   gap: 6px;
   padding: 7px 12px;
   border-radius: 8px;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(2, 132, 199, 0.12));
+  background: #f0f9ff;
   border: 1px solid rgba(56, 189, 248, 0.35);
-  color: #38bdf8;
+  color: #0284c7;
   font-size: 0.76rem;
   font-weight: 700;
   cursor: pointer;
@@ -20381,8 +20371,8 @@ svg.accent,
   white-space: nowrap;
 }
 .sol-matrix-blueprint-btn:hover {
-  background: rgba(56, 189, 248, 0.25);
-  border-color: #38bdf8;
+  background: #0284c7;
+  border-color: #0284c7;
   color: #ffffff;
 }
 .sol-matrix-enquire-link {
@@ -20392,17 +20382,17 @@ svg.accent,
   gap: 4px;
   padding: 5px 10px;
   border-radius: 8px;
-  color: #94a3b8;
+  color: #475569;
   font-size: 0.74rem;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s;
 }
 .sol-matrix-enquire-link:hover {
-  color: #ffffff;
+  color: #0284c7;
 }
 
-/* SECTION HEADINGS */
+/* SECTION HEADINGS (LIGHT BLUEPRINT THEME) */
 .sol-group-head {
   margin-bottom: 24px;
 }
@@ -20412,9 +20402,9 @@ svg.accent,
   gap: 6px;
   padding: 4px 12px;
   border-radius: 999px;
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #0284c7;
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -20424,12 +20414,12 @@ svg.accent,
 .sol-group-head__title {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #0f172a;
   margin: 0 0 6px;
 }
 .sol-group-head__desc {
   font-size: 0.95rem;
-  color: #94a3b8;
+  color: #64748b;
   margin: 0;
   max-width: 65ch;
 }
@@ -20440,79 +20430,78 @@ svg.accent,
   gap: 28px;
 }
 
-/* MODERN COMPACT SOLUTION CARD STYLES */
-.sol-command-section .solution-card {
-  background: rgba(15, 23, 42, 0.75) !important;
-  border: 1px solid rgba(56, 189, 248, 0.2) !important;
+/* MODERN COMPACT SOLUTION CARD STYLES (LIGHT BLUEPRINT THEME) */
+.solution-card {
+  background: #ffffff !important;
+  border: 1.5px solid rgba(226, 232, 240, 0.95) !important;
   border-radius: 20px !important;
   padding: 24px !important;
-  backdrop-filter: blur(12px) !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35) !important;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04) !important;
   transition: all 0.25s ease !important;
   display: flex !important;
   flex-direction: column !important;
   position: relative !important;
 }
-.sol-command-section .solution-card:hover {
+.solution-card:hover {
   transform: translateY(-4px) !important;
-  border-color: rgba(56, 189, 248, 0.55) !important;
-  box-shadow: 0 16px 40px -10px rgba(56, 189, 248, 0.25) !important;
+  border-color: rgba(2, 132, 199, 0.45) !important;
+  box-shadow: 0 16px 36px -10px rgba(2, 132, 199, 0.15) !important;
 }
-.sol-command-section .solution-card__header {
+.solution-card__header {
   margin-bottom: 16px;
   padding-bottom: 14px;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.12);
+  border-bottom: 1px solid #f1f5f9;
 }
-.sol-command-section .solution-card__top {
+.solution-card__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
 }
-.sol-command-section .solution-card__icon-box {
+.solution-card__icon-box {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: #f0f9ff;
+  border: 1px solid rgba(56, 189, 248, 0.25);
   display: grid;
   place-items: center;
-  color: #38bdf8;
+  color: #0284c7;
   transition: transform 0.3s;
 }
-.sol-command-section .solution-card:hover .solution-card__icon-box {
+.solution-card:hover .solution-card__icon-box {
   transform: scale(1.06);
-  background: rgba(56, 189, 248, 0.2);
+  background: #e0f2fe;
 }
-.sol-command-section .solution-card__badge {
+.solution-card__badge {
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 4px 10px;
   border-radius: 999px;
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  color: #7dd3fc;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #475569;
 }
-.sol-command-section .solution-card__title {
+.solution-card__title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #0f172a;
   margin: 0 0 6px;
   line-height: 1.3;
 }
-.sol-command-section .solution-card__tag {
+.solution-card__tag {
   display: inline-block;
   font-size: 0.82rem;
   font-weight: 600;
-  color: #38bdf8;
+  color: #0284c7;
 }
 
-/* Card Content Blocks */
+/* Card Content Blocks (Light Theme) */
 .solution-card__summary-block {
-  background: rgba(2, 6, 23, 0.6);
-  border: 1px solid rgba(245, 158, 11, 0.22);
+  background: #fffbeb;
+  border: 1px solid #fde68a;
   border-radius: 12px;
   padding: 12px 14px;
   margin-bottom: 12px;
@@ -20525,19 +20514,19 @@ svg.accent,
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #94a3b8;
+  color: #64748b;
   margin-bottom: 5px;
 }
 .solution-card__summary-text {
   font-size: 0.86rem;
   line-height: 1.5;
-  color: #e2e8f0;
+  color: #1e293b;
   margin: 0;
 }
 
 .solution-card__pipeline-strip {
-  background: rgba(2, 6, 23, 0.5);
-  border: 1px solid rgba(56, 189, 248, 0.15);
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 12px 14px;
   margin-bottom: 12px;
@@ -20552,16 +20541,16 @@ svg.accent,
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
   border-radius: 8px;
   padding: 4px 8px;
   font-size: 0.76rem;
   font-weight: 600;
-  color: #cbd5e1;
+  color: #334155;
 }
 .sol-pipe-num {
-  color: #38bdf8;
+  color: #0284c7;
   font-weight: 800;
   font-size: 0.7rem;
 }
@@ -20570,8 +20559,8 @@ svg.accent,
   align-items: center;
   padding: 4px 8px;
   border-radius: 8px;
-  background: rgba(56, 189, 248, 0.1);
-  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  color: #0284c7;
   font-size: 0.74rem;
   font-weight: 700;
 }
@@ -20589,20 +20578,20 @@ svg.accent,
   font-size: 0.74rem;
   padding: 3px 9px;
   border-radius: 999px;
-  background: rgba(99, 102, 241, 0.12);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  color: #a5b4fc;
+  background: #eef2ff;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  color: #4338ca;
   font-weight: 600;
 }
 .sol-mini-service-tag--more {
-  background: rgba(148, 163, 184, 0.12);
-  border-color: rgba(148, 163, 184, 0.25);
-  color: #94a3b8;
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #64748b;
 }
 
 .solution-card__outcome-block {
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
   border-radius: 12px;
   padding: 12px 14px;
   margin-bottom: 14px;
@@ -20610,7 +20599,8 @@ svg.accent,
 .solution-card__outcome-text {
   font-size: 0.85rem;
   line-height: 1.5;
-  color: #a7f3d0;
+  color: #065f46;
+  font-weight: 500;
   margin: 0;
 }
 
@@ -20622,26 +20612,26 @@ svg.accent,
   width: 100%;
   padding: 8px 12px;
   border-radius: 10px;
-  background: rgba(2, 6, 23, 0.7);
-  border: 1px dashed rgba(56, 189, 248, 0.3);
-  color: #38bdf8;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  color: #0284c7;
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
 }
 .sol-card-expand-btn:hover {
-  background: rgba(56, 189, 248, 0.12);
-  border-color: #38bdf8;
-  color: #ffffff;
+  background: #f0f9ff;
+  border-color: #0284c7;
+  color: #0284c7;
 }
 
-/* Expanded Specifications Drawer */
+/* Expanded Specifications Drawer (Light Theme) */
 .solution-card__drawer {
   margin-top: 14px;
   padding: 14px;
-  background: rgba(2, 6, 23, 0.75);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -20658,7 +20648,7 @@ svg.accent,
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #94a3b8;
+  color: #64748b;
   margin: 0;
 }
 .sol-drawer-list {
@@ -20671,7 +20661,7 @@ svg.accent,
 }
 .sol-drawer-list li {
   font-size: 0.82rem;
-  color: #cbd5e1;
+  color: #334155;
   line-height: 1.45;
 }
 .sol-drawer-flow {
@@ -20681,11 +20671,12 @@ svg.accent,
 }
 .sol-drawer-flow-item {
   font-size: 0.8rem;
-  color: #cbd5e1;
-  background: rgba(15, 23, 42, 0.8);
+  color: #1e293b;
+  background: #ffffff;
   padding: 6px 10px;
   border-radius: 6px;
-  border-left: 2px solid #38bdf8;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid #0284c7;
 }
 .sol-drawer-benefits {
   list-style: none;
@@ -20700,7 +20691,7 @@ svg.accent,
   align-items: flex-start;
   gap: 8px;
   font-size: 0.82rem;
-  color: #cbd5e1;
+  color: #334155;
   line-height: 1.4;
 }
 .sol-drawer-tags {
@@ -20711,15 +20702,15 @@ svg.accent,
 .sol-drawer-tag {
   font-size: 0.74rem;
   padding: 2px 8px;
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  color: #fde68a;
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+  color: #b45309;
   border-radius: 6px;
   font-weight: 600;
 }
 .sol-drawer-case {
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
   border-radius: 8px;
   padding: 10px 12px;
 }
@@ -20727,13 +20718,13 @@ svg.accent,
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: #38bdf8;
+  color: #0284c7;
   display: block;
   margin-bottom: 2px;
 }
 .sol-drawer-case__text {
   font-size: 0.82rem;
-  color: #ffffff;
+  color: #0f172a;
   font-weight: 600;
   margin: 0 0 6px;
 }
@@ -20742,7 +20733,7 @@ svg.accent,
   align-items: center;
   gap: 4px;
   font-size: 0.78rem;
-  color: #38bdf8;
+  color: #0284c7;
   font-weight: 700;
   text-decoration: none;
 }
@@ -20750,11 +20741,11 @@ svg.accent,
   text-decoration: underline;
 }
 
-/* Card Actions */
-.sol-command-section .solution-card__footer {
+/* Card Actions (Light Theme) */
+.solution-card__footer {
   margin-top: auto !important;
   padding-top: 16px;
-  border-top: 1px solid rgba(56, 189, 248, 0.12);
+  border-top: 1px solid #f1f5f9;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -20767,19 +20758,19 @@ svg.accent,
   width: 100%;
   padding: 10px 16px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(2, 132, 199, 0.12));
-  border: 1.5px solid rgba(56, 189, 248, 0.4);
-  color: #38bdf8;
+  background: #f0f9ff;
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  color: #0284c7;
   font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
 }
 .sol-card-blueprint-btn:hover {
-  background: rgba(56, 189, 248, 0.25);
-  border-color: #38bdf8;
+  background: #0284c7;
+  border-color: #0284c7;
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
 }
 .solution-card__sub-actions {
   display: flex;
@@ -20794,124 +20785,18 @@ svg.accent,
   width: 100%;
   padding: 8px 14px;
   border-radius: 10px;
-  background: transparent;
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  color: #94a3b8;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  color: #334155;
   font-size: 0.8rem;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s;
 }
 .sol-card-enquire-btn:hover {
-  color: #ffffff;
-  border-color: rgba(56, 189, 248, 0.4);
-  background: rgba(15, 23, 42, 0.6);
-}
-
-/* BLUEPRINT CONSOLE DARK THEME OVERRIDES */
-.sol-command-section .sol-rail-card {
-  background: rgba(15, 23, 42, 0.8) !important;
-  border: 1px solid rgba(56, 189, 248, 0.2) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
-  backdrop-filter: blur(12px) !important;
-}
-.sol-command-section .sol-rail-header {
-  color: #38bdf8;
-}
-.sol-command-section .sol-rail-group-label {
-  color: #94a3b8;
-}
-.sol-command-section .sol-rail-item {
-  background: rgba(2, 6, 23, 0.6);
-  border: 1px solid rgba(56, 189, 248, 0.1);
-}
-.sol-command-section .sol-rail-item:hover {
-  background: rgba(30, 41, 59, 0.8);
-  border-color: rgba(56, 189, 248, 0.35);
-}
-.sol-command-section .sol-rail-item.is-active {
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(2, 132, 199, 0.12));
-  border-color: #38bdf8;
-  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.25);
-}
-.sol-command-section .sol-rail-item__title {
-  color: #ffffff;
-}
-.sol-command-section .sol-rail-item__icon {
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  color: #38bdf8;
-}
-
-.sol-command-section .sol-stage-card {
-  background: rgba(15, 23, 42, 0.8) !important;
-  border: 1px solid rgba(56, 189, 248, 0.2) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
-  backdrop-filter: blur(12px) !important;
-}
-.sol-command-section .sol-stage-header {
-  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
-}
-.sol-command-section .sol-stage-header__title {
-  color: #ffffff;
-}
-.sol-command-section .sol-stage-badge--cat {
-  background: rgba(56, 189, 248, 0.1);
-  color: #94a3b8;
-  border-color: rgba(56, 189, 248, 0.2);
-}
-.sol-command-section .sol-module {
-  background: rgba(2, 6, 23, 0.6) !important;
-  border: 1px solid rgba(56, 189, 248, 0.15) !important;
-}
-.sol-command-section .sol-module-head__title {
-  color: #ffffff;
-}
-.sol-command-section .sol-challenge-list li,
-.sol-command-section .sol-benefits-list li {
-  color: #cbd5e1;
-}
-.sol-command-section .sol-flow-timeline__step {
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(56, 189, 248, 0.18);
-  color: #cbd5e1;
-}
-.sol-command-section .sol-flow-timeline__content {
-  color: #f1f5f9;
-}
-.sol-command-section .sol-service-chip {
-  background: rgba(99, 102, 241, 0.12);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  color: #a5b4fc;
-}
-.sol-command-section .sol-std-pill {
-  background: rgba(245, 158, 11, 0.1);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  color: #fde68a;
-}
-.sol-command-section .sol-nav-stepper {
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  color: #cbd5e1;
-}
-.sol-command-section .sol-nav-stepper:hover {
-  background: rgba(56, 189, 248, 0.15);
-  border-color: #38bdf8;
-  color: #ffffff;
-}
-.sol-command-section .sol-stepper-indicator {
-  color: #94a3b8;
-}
-.sol-command-section .sol-stepper-indicator strong {
-  color: #ffffff;
-}
-.sol-command-section .sol-empty-notice {
-  background: rgba(15, 23, 42, 0.75);
-  border-color: rgba(56, 189, 248, 0.25);
-  color: #cbd5e1;
-}
-.sol-command-section .sol-empty-notice p {
-  color: #cbd5e1;
+  color: #0284c7;
+  border-color: #0284c7;
+  background: #f8fafc;
 }
 
 @media (max-width: 1080px) {
