@@ -673,11 +673,16 @@ const SERVICE_IMAGES_MAP = {
 };
 
 export default function EpublishingProductionWheel({ service }) {
-  const [activeIdx, setActiveIdx] = useState(2); // Default to '03' stage
+  const [activeIdx, setActiveIdx] = useState(0); // Default to '01' stage across all services
   const scalerRef = useRef(null);
   const [scale, setScale] = useState(1);
 
   const slug = service?.slug || 'epublishing';
+
+  // Automatically reset to stage 01 whenever the user switches services
+  useEffect(() => {
+    setActiveIdx(0);
+  }, [slug]);
   const stages = SERVICE_STAGES_MAP[slug] || SERVICE_STAGES_MAP.epublishing;
   const hubImage = SERVICE_IMAGES_MAP[slug] || '/hero-epublishing.jpg';
   const serviceName = service?.title || 'Production';
