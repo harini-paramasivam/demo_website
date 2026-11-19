@@ -2239,28 +2239,33 @@ svg.accent,
 }
 @media (max-width: 640px) {
   .intro-card__tags {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
     gap: 8px !important;
     width: 100% !important;
-  }
-  .intro-tag {
-    display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    padding: 8px 10px !important;
-    font-size: 0.77rem !important;
-    gap: 6px !important;
-    width: 100% !important;
+  }
+  .intro-tag {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 7px 14px !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    gap: 7px !important;
+    width: auto !important;
+    max-width: 100% !important;
     box-sizing: border-box !important;
     text-align: left !important;
     white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    border-radius: 999px !important;
   }
   .intro-tag:last-child {
-    grid-column: span 2 !important;
-    justify-content: center !important;
+    grid-column: unset !important;
+    justify-content: flex-start !important;
   }
 }
 @media (max-width: 900px) {
@@ -4151,90 +4156,14 @@ svg.accent,
 .footer__tagline { font-weight: 600; color: var(--orange); margin-bottom: 8px; }
 .footer__desc { font-size: .92rem; line-height: 1.5; color: var(--on-navy-muted); }
 
-/* Floating Mobile Phone Call Button (Strictly for Mobile View Alone) */
+/* Floating Mobile Phone Call Button (Permanently Removed) */
 .mobile-phone-launcher {
   display: none !important;
 }
 
 @media (max-width: 768px) {
   .mobile-phone-launcher {
-    position: fixed !important;
-    left: 16px !important;
-    right: auto !important;
-    bottom: 68px !important;
-    z-index: 9985 !important;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    width: 42px !important;
-    height: 42px !important;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(7, 14, 36, 0.95) 0%, rgba(13, 30, 76, 0.92) 100%);
-    border: 1.5px solid rgba(56, 189, 248, 0.65);
-    box-shadow: 
-      0 12px 35px -6px rgba(0, 0, 0, 0.85),
-      0 0 25px rgba(14, 165, 233, 0.45),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    text-decoration: none;
-    color: #38bdf8;
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .mobile-phone-launcher:active {
-    transform: scale(0.92);
-    border-color: #00d2ff;
-  }
-
-  .mobile-phone-pulse {
-    position: absolute;
-    inset: -5px;
-    border-radius: 50%;
-    border: 1.5px solid #00d2ff;
-    animation: mobilePhonePulse 2.4s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-    pointer-events: none;
-  }
-
-  @keyframes mobilePhonePulse {
-    0% { transform: scale(0.85); opacity: 0.9; }
-    60%, 100% { transform: scale(1.45); opacity: 0; }
-  }
-
-  .mobile-phone-inner {
-    position: relative;
-    display: grid;
-    place-items: center;
-    width: 100%;
-    height: 100%;
-  }
-
-  .mobile-phone-icon {
-    width: 19px;
-    height: 19px;
-    color: #38bdf8;
-    filter: drop-shadow(0 0 8px rgba(0, 210, 255, 0.6));
-    animation: mobilePhoneWiggle 4s ease-in-out infinite;
-  }
-
-  @keyframes mobilePhoneWiggle {
-    0%, 80%, 100% { transform: rotate(0deg); }
-    85% { transform: rotate(-14deg); }
-    90% { transform: rotate(14deg); }
-    95% { transform: rotate(-8deg); }
-  }
-
-  .mobile-phone-online-dot {
-    position: absolute;
-    bottom: 2px;
-    right: 2px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #10b981;
-    border: 2px solid #070e24;
-    box-shadow: 0 0 8px #10b981;
+    display: none !important;
   }
 
   .totop {
