@@ -23811,13 +23811,15 @@ svg.accent,
 }
 
 .center-hub-title {
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   font-weight: 850;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   color: #ffffff;
   text-transform: uppercase;
   line-height: 1.15;
   margin: 0;
+  text-align: center;
+  max-width: 175px;
 }
 
 .center-hub-sub {

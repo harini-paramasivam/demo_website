@@ -590,6 +590,22 @@ const SERVICE_STAGES_MAP = {
   ]
 };
 
+// Center hub dynamic service branding configuration
+const SERVICE_HUB_CONFIG = {
+  epublishing: { title: 'ePublishing', sub: 'Production Core' },
+  xml: { title: 'XML Services', sub: 'Architecture Core' },
+  'digital-accessibility': { title: 'Accessibility', sub: 'Compliance Core' },
+  'typesetting-and-design': { title: 'Typesetting', sub: 'Design Core' },
+  'math-and-equation-typesetting': { title: 'Math Typeset', sub: 'Precision Core' },
+  'metadata-indexing-and-taxonomy': { title: 'Metadata', sub: 'Taxonomy Core' },
+  'ocr-and-digitization': { title: 'Digitization', sub: 'Neural OCR Core' },
+  'captioning-transcription-and-audio-description': { title: 'Captioning', sub: 'Media Audio Core' },
+  'ai-automation': { title: 'AI Automation', sub: 'Intelligent Core' },
+  'software-development': { title: 'Software Dev', sub: 'Engineering Core' },
+  'data-analytics': { title: 'Data Analytics', sub: 'Intelligence Core' },
+  'digital-marketing': { title: 'Marketing', sub: 'Growth & ROI Core' }
+};
+
 // Domain hero images for the mobile hub banner
 const SERVICE_IMAGES_MAP = {
   epublishing: '/hero-epublishing.jpg',
@@ -613,6 +629,11 @@ export default function EpublishingProductionWheel({ service }) {
   const stages = SERVICE_STAGES_MAP[slug] || SERVICE_STAGES_MAP.epublishing;
   const hubImage = SERVICE_IMAGES_MAP[slug] || '/hero-epublishing.jpg';
   const serviceName = service?.title || 'Production';
+
+  const hubConfig = SERVICE_HUB_CONFIG[slug] || {
+    title: serviceName.split(' ')[0],
+    sub: 'Production Core'
+  };
 
   const activeStage = stages[activeIdx] || stages[0];
   const ActiveIcon = activeStage.icon || Workflow;
@@ -661,14 +682,14 @@ export default function EpublishingProductionWheel({ service }) {
         </svg>
 
         {/* 1. CENTRAL PRODUCTION CORE HUB */}
-        <div className="epub-wheel-center-hub" role="region" aria-label="Velvora Production Hub">
+        <div className="epub-wheel-center-hub" role="region" aria-label={`${hubConfig.title} Hub`}>
           <div className="center-hub-pulse-ring" aria-hidden="true" />
           <div className="center-hub-inner">
             <span className="center-hub-icon-wrap">
               <Cpu size={20} className="accent" />
             </span>
-            <span className="center-hub-title">PRODUCTION</span>
-            <span className="center-hub-sub">{serviceName.split(' ')[0]} Core</span>
+            <span className="center-hub-title">{hubConfig.title}</span>
+            <span className="center-hub-sub">{hubConfig.sub}</span>
             <span className="center-hub-badge">5-Stage Continuous Cycle</span>
           </div>
         </div>
@@ -766,7 +787,7 @@ export default function EpublishingProductionWheel({ service }) {
             <span className="mobile-hub-img-glow" aria-hidden="true" />
           </div>
           <div className="mobile-hub-text-wrap">
-            <h4 className="mobile-hub-title">{serviceName.toUpperCase()} CORE</h4>
+            <h4 className="mobile-hub-title">{hubConfig.title.toUpperCase()} CORE</h4>
             <span className="mobile-hub-subtitle">Disciplined 5-Stage Lifecycle</span>
           </div>
         </div>
