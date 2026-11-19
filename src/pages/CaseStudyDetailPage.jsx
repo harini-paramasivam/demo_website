@@ -190,7 +190,7 @@ export default function CaseStudyDetailPage() {
             {/* LEFT: CHALLENGE CONTEXT */}
             <div className="case-detail-card case-challenge-narrative-pod">
               <div className="case-detail-card-head">
-                <span className="case-detail-section-tag case-detail-section-tag--orange">
+                <span className="case-detail-section-tag case-detail-section-tag--purple">
                   <AlertCircle size={14} aria-hidden="true" />
                   <span>The Challenge</span>
                 </span>
@@ -216,7 +216,7 @@ export default function CaseStudyDetailPage() {
             {/* RIGHT: PAIN POINTS MATRIX */}
             <div className="case-detail-card case-painpoints-pod">
               <div className="case-detail-card-head">
-                <span className="case-detail-section-tag case-detail-section-tag--orange">
+                <span className="case-detail-section-tag case-detail-section-tag--purple">
                   <Layers size={14} aria-hidden="true" />
                   <span>Audit Findings</span>
                 </span>

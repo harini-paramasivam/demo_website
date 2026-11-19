@@ -138,8 +138,7 @@ export default function CaseStudiesPage() {
                     </Link>
                     <Link 
                       to="/contact" 
-                      className="btn btn--outline btn--case-discuss"
-                      style={{ color: 'var(--ink)' }}
+                      className="btn btn--case-discuss"
                     >
                       Discuss Similar Project <ArrowRight size={15} aria-hidden="true" />
                     </Link>
