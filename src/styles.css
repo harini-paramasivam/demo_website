@@ -23837,37 +23837,33 @@ svg.accent,
 
 /* Regulatory & Technical Conformance Head Badge */
 .accreditation-head-badge {
-  display: inline-block !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
   text-align: center !important;
   margin-inline: auto !important;
-  max-width: 95% !important;
   color: #0284c7 !important;
   font-size: 0.85rem !important;
   font-weight: 800 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.08em !important;
-  line-height: 1.4 !important;
+  line-height: 1.25 !important;
 }
 
 .accreditation-head-badge svg {
-  display: inline-block !important;
-  vertical-align: -2.5px !important;
-  margin-right: 6px !important;
-  margin-left: 0 !important;
+  display: block !important;
+  width: 16px !important;
+  height: 16px !important;
   color: #0284c7 !important;
   flex-shrink: 0 !important;
+  margin: 0 !important;
 }
 
-.accreditation-head-badge .accreditation-nowrap {
-  white-space: nowrap !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-  vertical-align: baseline !important;
-}
-
-.accreditation-head-badge .accreditation-nowrap svg {
-  margin-right: 0 !important;
+.accreditation-head-badge > span {
+  display: inline-block !important;
+  text-align: center !important;
+  line-height: 1.25 !important;
 }
 
 .epub-stage-detail-panel {
