@@ -2773,7 +2773,8 @@ svg.accent,
   position: relative !important;
   background: linear-gradient(155deg, rgba(13, 22, 45, 0.94) 0%, rgba(6, 12, 28, 0.98) 100%) !important;
   border: 1.5px solid rgba(56, 189, 248, 0.28) !important;
-  border-radius: 22px !important;
+  border-radius: 20px !important;
+  padding: 24px 22px !important;
   box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.75), 0 0 25px -8px rgba(56, 189, 248, 0.15) !important;
   color: #ffffff !important;
   overflow: hidden !important;
@@ -2781,6 +2782,12 @@ svg.accent,
   flex-direction: column !important;
   justify-content: space-between !important;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
+}
+
+@media (max-width: 640px) {
+  .why-section-dark .why__card {
+    padding: 16px 14px !important;
+  }
 }
 
 .why-section-dark .why__card::before {
@@ -2820,16 +2827,18 @@ svg.accent,
 
 .why-section-dark .why__card h3 {
   color: #ffffff !important;
-  font-size: 1.4rem !important;
+  font-size: 1.25rem !important;
   font-weight: 850 !important;
-  letter-spacing: -0.01em;
-  margin: 0 0 8px 0 !important;
+  letter-spacing: -0.01em !important;
+  margin: 0 0 2px 0 !important;
+  line-height: 1.2 !important;
 }
 
 .why-section-dark .why__card p {
   color: #cbd5e1 !important;
-  font-size: 1.02rem !important;
-  line-height: 1.68 !important;
+  font-size: 0.94rem !important;
+  line-height: 1.55 !important;
+  margin: 0 !important;
 }
 
 /* Individual Value Card Themes (Company Overview & Guiding Principles) */
@@ -2913,15 +2922,15 @@ svg.accent,
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
 }
 
 .why-val-card__head-row {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   flex: 1 1 200px;
   min-width: 0;
 }
@@ -2929,8 +2938,9 @@ svg.accent,
 .why-val-card__head-row .why__icon {
   margin-bottom: 0 !important;
   flex-shrink: 0;
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
 }
 
 .why-val-card__head-text {
@@ -2941,27 +2951,27 @@ svg.accent,
 }
 
 .why-val-card__head-text .why-val-card__title {
-  font-size: 1.35rem;
-  font-weight: 850;
-  color: #ffffff;
-  margin: 0 0 3px 0;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  font-size: 1.25rem !important;
+  font-weight: 850 !important;
+  color: #ffffff !important;
+  margin: 0 0 2px 0 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.01em !important;
 }
 
 .why-val-card__head-text .why-val-card__tagline {
-  font-size: 0.74rem;
-  font-weight: 750;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin: 0;
-  line-height: 1.25;
+  font-size: 0.72rem !important;
+  font-weight: 750 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin: 0 !important;
+  line-height: 1.25 !important;
 }
 
 .why-val-card__pill {
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 750;
-  padding: 4px 11px;
+  padding: 3px 10px;
   border-radius: 999px;
   letter-spacing: 0.04em;
   background: rgba(255, 255, 255, 0.08);
@@ -2975,7 +2985,8 @@ svg.accent,
   .why-val-card__top {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 7px;
+    margin-bottom: 10px;
   }
   .why-val-card__head-row {
     width: 100%;
@@ -2988,27 +2999,27 @@ svg.accent,
 }
 
 .why-val-card__tagline {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 750;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
 }
 .why-val-card__highlights {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 18px;
-  padding-top: 14px;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 .why-val-card__chip {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 650;
-  padding: 3px 10px;
+  padding: 3px 9px;
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
