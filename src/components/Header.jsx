@@ -161,7 +161,7 @@ function DropdownItem({ item, open, onToggle, onClose }) {
                 </span>
               </div>
 
-              <div className="nav__megamenu-subtopics">
+              <div className={`nav__megamenu-subtopics ${item.categories[activeCategory]?.subtopics.length === 1 ? 'nav__megamenu-subtopics--single' : ''}`}>
                 {item.categories[activeCategory]?.subtopics.map((sub) => {
                   const SubIcon = ICON_MAP[sub.icon] || BookOpen;
                   return (

@@ -478,7 +478,7 @@ svg.accent,
   top: calc(100% + 10px);
   left: 0;
   right: 0;
-  max-width: 980px;
+  max-width: 1000px;
   margin: 0 auto;
   background: rgba(8, 14, 30, 0.98);
   backdrop-filter: blur(28px);
@@ -646,6 +646,15 @@ svg.accent,
   gap: 12px;
   align-content: start;
 }
+.nav__megamenu-subtopics--single,
+.nav__megamenu-subtopics:has(> .nav__megamenu-card:only-child) {
+  grid-template-columns: 1fr;
+}
+.nav__megamenu-subtopics--single .nav__megamenu-card,
+.nav__megamenu-card:only-child {
+  grid-column: 1 / -1;
+  max-width: 580px;
+}
 .nav__megamenu-card {
   display: flex;
   align-items: flex-start;
@@ -741,7 +750,10 @@ svg.accent,
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 4px;
+  gap: 6px;
+}
+.nav__megamenu-card-title span {
+  white-space: nowrap;
 }
 .nav__megamenu-card-arrow {
   color: #64748b;
