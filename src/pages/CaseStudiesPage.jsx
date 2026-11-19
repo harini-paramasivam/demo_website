@@ -55,7 +55,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* CASE STUDIES LIST */}
-      <section className="section section--paper case-studies-list-section">
+      <section className="section case-studies-list-section">
         <div className="container">
           <div className="case-studies-header-block">
             <div className="case-studies-badge-pill">

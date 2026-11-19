@@ -45,7 +45,7 @@ export default function CaseStudyDetailPage() {
         >
           The case study you are looking for does not exist or may have been relocated.
         </PageHero>
-        <section className="section section--paper">
+        <section className="section case-detail-body-section">
           <div className="container" style={{ textAlign: 'center', padding: '60px 20px' }}>
             <AlertCircle size={48} style={{ color: 'var(--orange)', marginBottom: '16px' }} />
             <h2 style={{ marginBottom: '12px', color: 'var(--navy)' }}>Case Study Not Found</h2>
@@ -91,7 +91,7 @@ export default function CaseStudyDetailPage() {
       </section>
 
       {/* MAIN CONTENT CONTAINER */}
-      <section className="section section--paper case-detail-body-section">
+      <section className="section case-detail-body-section">
         <div className="container">
           {/* BACK LINK */}
           <div className="case-detail-back-bar">
