@@ -183,8 +183,8 @@ export default function Home() {
                 ))}
               </div>
 
-              {/* Glowing Capsule Action Buttons */}
-              <div className="hero-ref-btn-row">
+              {/* Glowing Capsule Action Buttons (Desktop placement) */}
+              <div className="hero-ref-btn-row hero-ref-btn-row--desktop">
                 <Link to="/contact" className="hero-ref-btn-primary">
                   <span>Get in Touch</span>
                   <ArrowRight size={17} aria-hidden="true" />
@@ -202,6 +202,17 @@ export default function Home() {
               onNext={handleNext}
               onPrev={handlePrev}
             />
+
+            {/* Glowing Capsule Action Buttons (Mobile placement: below 3D artwork image) */}
+            <div className="hero-ref-btn-row hero-ref-btn-row--mobile">
+              <Link to="/contact" className="hero-ref-btn-primary">
+                <span>Get in Touch</span>
+                <ArrowRight size={17} aria-hidden="true" />
+              </Link>
+              <Link to="/services" className="hero-ref-btn-secondary">
+                <span>Explore Services</span>
+              </Link>
+            </div>
           </div>
 
           {/* INTEGRATED BOTTOM FROSTED GLASS DECK (Exactly as in Reference Design) */}

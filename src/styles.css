@@ -1140,6 +1140,10 @@ svg.accent,
   gap: 16px;
 }
 
+.hero-ref-btn-row--mobile {
+  display: none !important;
+}
+
 /* Glowing Neon Capsule Primary Button (Identical to Reference View Demo Pill) */
 .hero-ref-btn-primary {
   display: inline-flex;
@@ -1672,6 +1676,14 @@ svg.accent,
 
 /* Responsive Breakpoints for Split-Screen Hero */
 @media (max-width: 1080px) {
+  .hero-ref-btn-row--desktop {
+    display: none !important;
+  }
+  .hero-ref-btn-row--mobile {
+    display: flex !important;
+    width: 100% !important;
+    margin-top: 8px !important;
+  }
   .hero-ref-stage-grid {
     grid-template-columns: 1fr;
     gap: 32px;
