@@ -110,66 +110,47 @@ function getSubServiceMeta(id = '') {
 
 function getOfferIcon(title = '', idx = 0) {
   const t = title.toLowerCase();
+  let IconCmp = Sparkles;
+
   if (t.includes('bi') || t.includes('dashboard') || t.includes('analytics') || t.includes('report')) {
-    return { IconCmp: BarChart3, color: 'blue' };
-  }
-  if (t.includes('pipeline') || t.includes('etl') || t.includes('database') || t.includes('data')) {
-    return { IconCmp: Cpu, color: 'indigo' };
-  }
-  if (t.includes('ai') || t.includes('model') || t.includes('predictive') || t.includes('forecast')) {
-    return { IconCmp: BrainCircuit, color: 'purple' };
-  }
-  if (t.includes('automate') || t.includes('automation') || t.includes('bot')) {
-    return { IconCmp: Bot, color: 'cyan' };
-  }
-  if (t.includes('clean') || t.includes('normalize') || t.includes('qa') || t.includes('audit')) {
-    return { IconCmp: Sparkles, color: 'emerald' };
-  }
-  if (t.includes('conversion') || t.includes('roi') || t.includes('growth') || t.includes('telemetry')) {
-    return { IconCmp: Zap, color: 'amber' };
-  }
-  if (t.includes('seo') || t.includes('marketing') || t.includes('campaign')) {
-    return { IconCmp: Megaphone, color: 'rose' };
-  }
-  if (t.includes('epub') || t.includes('book') || t.includes('print')) {
-    return { IconCmp: BookOpen, color: 'blue' };
-  }
-  if (t.includes('xml') || t.includes('schema') || t.includes('tag')) {
-    return { IconCmp: FileCode, color: 'cyan' };
-  }
-  if (t.includes('accessib') || t.includes('screen reader') || t.includes('wcag')) {
-    return { IconCmp: ShieldCheck, color: 'emerald' };
-  }
-  if (t.includes('typeset') || t.includes('design') || t.includes('layout')) {
-    return { IconCmp: Palette, color: 'indigo' };
-  }
-  if (t.includes('math') || t.includes('equation') || t.includes('latex')) {
-    return { IconCmp: Sigma, color: 'purple' };
-  }
-  if (t.includes('meta') || t.includes('index') || t.includes('taxonom')) {
-    return { IconCmp: Bookmark, color: 'amber' };
-  }
-  if (t.includes('ocr') || t.includes('scan') || t.includes('digitiz')) {
-    return { IconCmp: ScanText, color: 'emerald' };
-  }
-  if (t.includes('caption') || t.includes('transcription') || t.includes('audio') || t.includes('video')) {
-    return { IconCmp: Video, color: 'rose' };
-  }
-  if (t.includes('web') || t.includes('software') || t.includes('app') || t.includes('dev')) {
-    return { IconCmp: Code, color: 'indigo' };
+    IconCmp = BarChart3;
+  } else if (t.includes('pipeline') || t.includes('etl') || t.includes('database') || t.includes('data')) {
+    IconCmp = Cpu;
+  } else if (t.includes('ai') || t.includes('model') || t.includes('predictive') || t.includes('forecast')) {
+    IconCmp = BrainCircuit;
+  } else if (t.includes('automate') || t.includes('automation') || t.includes('bot')) {
+    IconCmp = Bot;
+  } else if (t.includes('clean') || t.includes('normalize') || t.includes('qa') || t.includes('audit')) {
+    IconCmp = CheckCircle2;
+  } else if (t.includes('conversion') || t.includes('roi') || t.includes('growth') || t.includes('telemetry')) {
+    IconCmp = Zap;
+  } else if (t.includes('seo') || t.includes('marketing') || t.includes('campaign')) {
+    IconCmp = Megaphone;
+  } else if (t.includes('epub') || t.includes('book') || t.includes('print')) {
+    IconCmp = BookOpen;
+  } else if (t.includes('xml') || t.includes('schema') || t.includes('tag')) {
+    IconCmp = FileCode;
+  } else if (t.includes('accessib') || t.includes('screen reader') || t.includes('wcag')) {
+    IconCmp = ShieldCheck;
+  } else if (t.includes('typeset') || t.includes('design') || t.includes('layout')) {
+    IconCmp = Palette;
+  } else if (t.includes('math') || t.includes('equation') || t.includes('latex')) {
+    IconCmp = Sigma;
+  } else if (t.includes('meta') || t.includes('index') || t.includes('taxonom')) {
+    IconCmp = Bookmark;
+  } else if (t.includes('ocr') || t.includes('scan') || t.includes('digitiz')) {
+    IconCmp = ScanText;
+  } else if (t.includes('caption') || t.includes('transcription') || t.includes('audio') || t.includes('video')) {
+    IconCmp = Video;
+  } else if (t.includes('web') || t.includes('software') || t.includes('app') || t.includes('dev')) {
+    IconCmp = Code;
+  } else {
+    const fallbacks = [Sparkles, Target, Layers, Cpu, Award, CheckCircle2, Zap];
+    IconCmp = fallbacks[idx % fallbacks.length];
   }
 
-  // Fallback palette
-  const fallbacks = [
-    { IconCmp: Sparkles, color: 'cyan' },
-    { IconCmp: Target, color: 'blue' },
-    { IconCmp: Layers, color: 'indigo' },
-    { IconCmp: Cpu, color: 'purple' },
-    { IconCmp: Award, color: 'amber' },
-    { IconCmp: CheckCircle2, color: 'emerald' },
-    { IconCmp: Zap, color: 'rose' },
-  ];
-  return fallbacks[idx % fallbacks.length];
+  // Unified brand theme color across all services
+  return { IconCmp, color: 'cyan' };
 }
 
 function FaqAccordion({ items = [] }) {
@@ -293,7 +274,7 @@ export default function ServicePage() {
             {s.standards && (
               <div className="callout-card" style={{ margin: '2rem 0' }}>
                 <div className="svc-offer-card__head" style={{ marginBottom: '8px' }}>
-                  <div className="svc-offer-card__icon svc-offer-card__icon--emerald" style={{ width: '36px', height: '36px' }}>
+                  <div className="svc-offer-card__icon svc-offer-card__icon--cyan" style={{ width: '36px', height: '36px' }}>
                     <CheckCircle2 size={18} />
                   </div>
                   <h3 style={{ margin: 0, fontSize: '1.2rem', color: '#0f172a' }}>Standards We Work To</h3>

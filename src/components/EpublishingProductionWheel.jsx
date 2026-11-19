@@ -665,7 +665,7 @@ export default function EpublishingProductionWheel({ service }) {
           <div className="center-hub-pulse-ring" aria-hidden="true" />
           <div className="center-hub-inner">
             <span className="center-hub-icon-wrap">
-              <Cpu size={24} className="accent" />
+              <Cpu size={20} className="accent" />
             </span>
             <span className="center-hub-title">PRODUCTION</span>
             <span className="center-hub-sub">{serviceName.split(' ')[0]} Core</span>

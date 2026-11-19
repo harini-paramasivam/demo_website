@@ -5323,45 +5323,26 @@ main:focus { outline: none; }
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
-  transition: transform 0.22s ease;
-}
-.svc-offer-card:hover .svc-offer-card__icon {
-  transform: scale(1.1);
-}
-.svc-offer-card__icon--blue {
-  background: linear-gradient(135deg, rgba(37, 99, 235, 0.16) 0%, rgba(29, 78, 216, 0.08) 100%);
-  border: 1px solid rgba(59, 130, 246, 0.4);
-  color: #2563eb;
-}
-.svc-offer-card__icon--cyan {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.16) 0%, rgba(8, 145, 178, 0.08) 100%);
-  border: 1px solid rgba(56, 189, 248, 0.4);
+  transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.14) 0%, rgba(2, 132, 199, 0.08) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.35);
   color: #0284c7;
 }
-.svc-offer-card__icon--indigo {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.16) 0%, rgba(79, 70, 229, 0.08) 100%);
-  border: 1px solid rgba(99, 102, 241, 0.4);
-  color: #4f46e5;
+.svc-offer-card:hover .svc-offer-card__icon {
+  transform: scale(1.08);
+  border-color: rgba(56, 189, 248, 0.6);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.22) 0%, rgba(2, 132, 199, 0.14) 100%);
 }
-.svc-offer-card__icon--purple {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.16) 0%, rgba(147, 51, 234, 0.08) 100%);
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  color: #7e22ce;
-}
-.svc-offer-card__icon--amber {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.16) 0%, rgba(217, 119, 6, 0.08) 100%);
-  border: 1px solid rgba(245, 158, 11, 0.4);
-  color: #d97706;
-}
-.svc-offer-card__icon--emerald {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.16) 0%, rgba(5, 150, 105, 0.08) 100%);
-  border: 1px solid rgba(16, 185, 129, 0.4);
-  color: #059669;
-}
+.svc-offer-card__icon--blue,
+.svc-offer-card__icon--cyan,
+.svc-offer-card__icon--indigo,
+.svc-offer-card__icon--purple,
+.svc-offer-card__icon--amber,
+.svc-offer-card__icon--emerald,
 .svc-offer-card__icon--rose {
-  background: linear-gradient(135deg, rgba(244, 63, 94, 0.16) 0%, rgba(225, 29, 72, 0.08) 100%);
-  border: 1px solid rgba(244, 63, 94, 0.4);
-  color: #e11d48;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.14) 0%, rgba(2, 132, 199, 0.08) 100%) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  color: #0284c7 !important;
 }
 
 /* ===== Service Offer Cards & Categories (Equal Point Level & Standardized Typography) ===== */
@@ -23344,8 +23325,8 @@ main:focus { outline: none; }
   top: 260px;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 180px;
-  height: 180px;
+  width: 212px;
+  height: 212px;
   border-radius: 50%;
   background: radial-gradient(circle at 40% 40%, rgba(14, 34, 82, 0.98) 0%, rgba(5, 10, 24, 0.99) 100%);
   border: 2px solid #38bdf8;
@@ -23358,11 +23339,13 @@ main:focus { outline: none; }
   text-align: center;
   z-index: 10;
   cursor: default;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .center-hub-pulse-ring {
   position: absolute;
-  inset: -12px;
+  inset: -10px;
   border-radius: 50%;
   border: 1.5px solid rgba(56, 189, 248, 0.4);
   animation: hubPulseRing 3.5s ease-in-out infinite alternate;
@@ -23378,46 +23361,62 @@ main:focus { outline: none; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px;
+  justify-content: center;
+  padding: 10px 14px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .center-hub-icon-wrap {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: rgba(56, 189, 248, 0.15);
   border: 1px solid rgba(56, 189, 248, 0.4);
   display: grid;
   place-items: center;
   color: #38bdf8;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
+}
+
+.center-hub-icon-wrap svg {
+  width: 20px;
+  height: 20px;
 }
 
 .center-hub-title {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 850;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: #ffffff;
   text-transform: uppercase;
+  line-height: 1.15;
+  margin: 0;
 }
 
 .center-hub-sub {
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   color: #38bdf8;
   font-weight: 700;
   letter-spacing: 0.04em;
-  margin-top: 4px;
+  margin-top: 3px;
+  line-height: 1.15;
 }
 
 .center-hub-badge {
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   color: #e2e8f0;
   background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 999px;
-  padding: 4px 12px;
-  margin-top: 8px;
+  padding: 3px 10px;
+  margin-top: 6px;
   font-weight: 650;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  max-width: 155px;
+  box-sizing: border-box;
 }
 
 .epub-wheel-node {
