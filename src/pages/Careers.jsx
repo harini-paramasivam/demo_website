@@ -1119,16 +1119,14 @@ export default function Careers() {
                         <RoleIcon size={20} />
                       </div>
                       <div className="job-opening-card__header-content">
-                        <div className="job-opening-card__meta-top">
-                          <span className="job-opening-card__dept">{job.department}</span>
-                          <span className="job-opening-card__type">{job.type}</span>
-                        </div>
+                        <span className="job-opening-card__dept">{job.department}</span>
                         <h3 className="job-opening-card__title">{job.title}</h3>
                       </div>
                     </div>
                   </div>
 
                 <div className="job-opening-card__meta">
+                  <span className="job-meta-item"><Briefcase size={15} /> <span>{job.type}</span></span>
                   <span className="job-meta-item"><MapPin size={15} /> <span>{job.location}</span></span>
                   <span className="job-meta-item"><Clock size={15} /> <span>{job.experience}</span></span>
                 </div>
