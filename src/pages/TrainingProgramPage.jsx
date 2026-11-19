@@ -83,37 +83,28 @@ function ModuleAccordion({ module, idx, isOpenDefault = false }) {
     setOpen(isOpenDefault);
   }, [location.pathname, isOpenDefault]);
 
+  const modNum = String(module.moduleNumber || idx + 1).padStart(2, '0');
+
   return (
     <div className={`faq-item${open ? ' is-open' : ''}`} style={{ marginBottom: '14px' }}>
       <button
         type="button"
-        className="faq-question"
+        className="faq-question curriculum-module-btn"
         aria-expanded={open}
         onClick={() => setOpen(!open)}
-        style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', flexWrap: 'wrap', gap: '10px' }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', textAlign: 'left', flexWrap: 'wrap', flex: '1 1 auto', minWidth: '0' }}>
-          <span
-            className="pill"
-            style={{
-              padding: '4px 12px',
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              background: 'rgba(56, 189, 248, 0.12)',
-              color: '#0284c7',
-              border: '1px solid rgba(56, 189, 248, 0.3)'
-            }}
-          >
-            Module {module.moduleNumber || idx + 1}
+        <div className="curriculum-module-head-left">
+          <span className="pill curriculum-module-pill">
+            MODULE {modNum}
           </span>
-          <strong style={{ fontSize: '1.05rem', color: 'var(--ink)' }}>{module.title}</strong>
+          <strong className="curriculum-module-title">{module.title}</strong>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0, marginLeft: 'auto' }}>
-          <span style={{ fontSize: '0.85rem', color: '#1e293b', fontWeight: 600 }}>{module.duration}</span>
+        <div className="curriculum-module-head-right">
+          <span className="curriculum-module-duration">{module.duration}</span>
           <ChevronDown
             size={18}
             aria-hidden="true"
-            style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .2s' }}
+            className={`curriculum-module-chev ${open ? 'is-rotated' : ''}`}
           />
         </div>
       </button>
