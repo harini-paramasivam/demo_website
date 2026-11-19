@@ -74,7 +74,7 @@ const SERVICE_STAGES_MAP = {
   xml: [
     {
       num: '01',
-      title: 'Analyze & Audit',
+      title: 'Analyze',
       tag: 'Schema & Input Audit',
       icon: Search,
       color: '#38bdf8',
@@ -83,7 +83,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '02',
-      title: 'Schema Mapping',
+      title: 'Map',
       tag: 'XSLT & Tagging Rules',
       icon: FileCode,
       color: '#818cf8',
@@ -92,7 +92,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '03',
-      title: 'Tagging & Conversion',
+      title: 'Convert',
       tag: 'JATS/BITS Extraction',
       icon: Binary,
       color: '#00f2fe',
@@ -101,7 +101,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '04',
-      title: 'Validation QA',
+      title: 'Validate',
       tag: 'Schematron & DTD Checks',
       icon: ShieldCheck,
       color: '#10b981',
@@ -110,7 +110,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '05',
-      title: 'Transformation',
+      title: 'Deliver',
       tag: 'Multi-Format Output',
       icon: Rocket,
       color: '#f59e0b',
@@ -121,7 +121,7 @@ const SERVICE_STAGES_MAP = {
   'digital-accessibility': [
     {
       num: '01',
-      title: 'Assess & Audit',
+      title: 'Assess',
       tag: 'WCAG & PDF Scanner',
       icon: Search,
       color: '#38bdf8',
@@ -130,7 +130,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '02',
-      title: 'Remediation Plan',
+      title: 'Plan',
       tag: 'Testing Matrix & Scope',
       icon: FileCode,
       color: '#818cf8',
@@ -139,7 +139,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '03',
-      title: 'Structural Fixes',
+      title: 'Remediate',
       tag: 'Reading Order & Semantics',
       icon: Layers,
       color: '#00f2fe',
@@ -148,7 +148,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '04',
-      title: 'Screen Reader QA',
+      title: 'Validate',
       tag: 'JAWS & NVDA Verification',
       icon: ShieldCheck,
       color: '#10b981',
@@ -157,7 +157,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '05',
-      title: 'Certify & Report',
+      title: 'Certify',
       tag: 'VPAT 2.4 & Final ACR',
       icon: Rocket,
       color: '#f59e0b',
@@ -168,7 +168,7 @@ const SERVICE_STAGES_MAP = {
   'typesetting-and-design': [
     {
       num: '01',
-      title: 'Manuscript Audit',
+      title: 'Audit',
       tag: 'Trim Size & House Style',
       icon: Search,
       color: '#38bdf8',
@@ -177,7 +177,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '02',
-      title: 'Sample Spreads',
+      title: 'Design',
       tag: 'Grid & Typography Design',
       icon: FileCode,
       color: '#818cf8',
@@ -186,7 +186,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '03',
-      title: 'Composition',
+      title: 'Compose',
       tag: 'Full Page Flow & Figures',
       icon: Layers,
       color: '#00f2fe',
@@ -195,7 +195,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '04',
-      title: 'Proofing QA',
+      title: 'Proof',
       tag: 'Multi-Pass Proofing Checks',
       icon: ShieldCheck,
       color: '#10b981',
@@ -204,7 +204,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '05',
-      title: 'Press Delivery',
+      title: 'Deliver',
       tag: 'Certified Print-Ready PDF',
       icon: Rocket,
       color: '#f59e0b',
@@ -215,7 +215,7 @@ const SERVICE_STAGES_MAP = {
   'math-and-equation-typesetting': [
     {
       num: '01',
-      title: 'Notation Audit',
+      title: 'Audit',
       tag: 'LaTeX / MathML Scoping',
       icon: Search,
       color: '#38bdf8',
@@ -224,7 +224,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '02',
-      title: 'Style Definition',
+      title: 'Format',
       tag: 'Formula Rules & Specs',
       icon: FileCode,
       color: '#818cf8',
@@ -233,7 +233,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '03',
-      title: 'Precision Markup',
+      title: 'Typeset',
       tag: 'MathML / LaTeX Encoding',
       icon: Binary,
       color: '#00f2fe',
@@ -242,7 +242,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '04',
-      title: 'Visual Proofing',
+      title: 'Validate',
       tag: 'Original vs Rendered QA',
       icon: ShieldCheck,
       color: '#10b981',
@@ -251,7 +251,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '05',
-      title: 'Package Delivery',
+      title: 'Deliver',
       tag: 'MathML & Vector Output',
       icon: Rocket,
       color: '#f59e0b',
@@ -262,7 +262,7 @@ const SERVICE_STAGES_MAP = {
   'metadata-indexing-and-taxonomy': [
     {
       num: '01',
-      title: 'Taxonomy Scoping',
+      title: 'Scope',
       tag: 'Vocabulary & Classification',
       icon: Search,
       color: '#38bdf8',
@@ -271,7 +271,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '02',
-      title: 'Schema Definition',
+      title: 'Structure',
       tag: 'Ontology & Rule Mapping',
       icon: FileCode,
       color: '#818cf8',
@@ -280,7 +280,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '03',
-      title: 'Semantic Indexing',
+      title: 'Index',
       tag: 'Deep Tagging & Cross-Links',
       icon: Layers,
       color: '#00f2fe',
@@ -289,7 +289,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '04',
-      title: 'Discovery QA',
+      title: 'Validate',
       tag: 'Search Engine Audit',
       icon: ShieldCheck,
       color: '#10b981',
@@ -298,7 +298,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '05',
-      title: 'Catalog Package',
+      title: 'Deliver',
       tag: 'Normalized ONIX & MARC',
       icon: Rocket,
       color: '#f59e0b',
@@ -309,7 +309,7 @@ const SERVICE_STAGES_MAP = {
   'ocr-and-digitization': [
     {
       num: '01',
-      title: 'Assess & Ingest',
+      title: 'Ingest',
       tag: 'Condition & Format Scoping',
       icon: Search,
       color: '#38bdf8',
@@ -318,7 +318,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '02',
-      title: 'High-Res Capture',
+      title: 'Scan',
       tag: 'Deskew & Pre-Processing',
       icon: ScanLine,
       color: '#818cf8',
@@ -327,7 +327,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '03',
-      title: 'Neural OCR',
+      title: 'Recognize',
       tag: 'Multi-Engine Recognition',
       icon: Binary,
       color: '#00f2fe',
@@ -336,8 +336,8 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '04',
-      title: 'Proofreading QA',
-      tag: 'Character-by-Character Tagging',
+      title: 'Proof',
+      tag: 'Character-by-Character QA',
       icon: ShieldCheck,
       color: '#10b981',
       summary: 'Character-by-character manual proofreading and semantic structural tagging conforming to 99.95%+ accuracy.',
@@ -345,7 +345,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '05',
-      title: 'Digital Delivery',
+      title: 'Deliver',
       tag: 'Searchable PDF/A & XML',
       icon: Rocket,
       color: '#f59e0b',
@@ -356,7 +356,7 @@ const SERVICE_STAGES_MAP = {
   'captioning-transcription-and-audio-description': [
     {
       num: '01',
-      title: 'Media Review',
+      title: 'Review',
       tag: 'Media Length & Standards',
       icon: Search,
       color: '#38bdf8',
@@ -365,7 +365,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '02',
-      title: 'Transcription',
+      title: 'Transcribe',
       tag: 'Frame-Accurate Time-Sync',
       icon: FileCode,
       color: '#818cf8',
@@ -374,7 +374,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '03',
-      title: 'Audio Description',
+      title: 'Describe',
       tag: 'Sound & Narration Sync',
       icon: Headphones,
       color: '#00f2fe',
@@ -383,7 +383,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '04',
-      title: 'Readability QA',
+      title: 'Validate',
       tag: 'Speed & Legibility Checks',
       icon: ShieldCheck,
       color: '#10b981',
@@ -392,7 +392,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '05',
-      title: 'Compliant Output',
+      title: 'Deliver',
       tag: 'Certified SRT/VTT/SCC',
       icon: Rocket,
       color: '#f59e0b',
@@ -403,7 +403,7 @@ const SERVICE_STAGES_MAP = {
   'ai-automation': [
     {
       num: '01',
-      title: 'Workflow Audit',
+      title: 'Audit',
       tag: 'Bottleneck & ROI Scoping',
       icon: Search,
       color: '#38bdf8',
@@ -412,7 +412,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '02',
-      title: 'Pipeline Design',
+      title: 'Design',
       tag: 'Model Selection & Gates',
       icon: Workflow,
       color: '#818cf8',
@@ -421,7 +421,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '03',
-      title: 'Implementation',
+      title: 'Engineer',
       tag: 'Schematron & NLP Modules',
       icon: Cpu,
       color: '#00f2fe',
@@ -430,7 +430,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '04',
-      title: 'Benchmark QA',
+      title: 'Validate',
       tag: 'Accuracy vs Golden Files',
       icon: ShieldCheck,
       color: '#10b981',
@@ -439,7 +439,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '05',
-      title: 'Cloud Deployment',
+      title: 'Deploy',
       tag: 'Telemetry & Monitoring',
       icon: Rocket,
       color: '#f59e0b',
@@ -450,7 +450,7 @@ const SERVICE_STAGES_MAP = {
   'software-development': [
     {
       num: '01',
-      title: 'Architecture',
+      title: 'Discover',
       tag: 'System & UX Scoping',
       icon: Search,
       color: '#38bdf8',
@@ -459,7 +459,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '02',
-      title: 'Sprint Planning',
+      title: 'Design',
       tag: 'Design System & Roadmaps',
       icon: FileCode,
       color: '#818cf8',
@@ -468,7 +468,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '03',
-      title: 'Agile Coding',
+      title: 'Develop',
       tag: 'Full-Stack Development',
       icon: Code2,
       color: '#00f2fe',
@@ -477,7 +477,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '04',
-      title: 'Testing & QA',
+      title: 'Validate',
       tag: 'Security & WCAG Audits',
       icon: ShieldCheck,
       color: '#10b981',
@@ -486,7 +486,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '05',
-      title: 'Cloud Rollout',
+      title: 'Deploy',
       tag: 'CI/CD Zero-Downtime',
       icon: Rocket,
       color: '#f59e0b',
@@ -497,7 +497,7 @@ const SERVICE_STAGES_MAP = {
   'data-analytics': [
     {
       num: '01',
-      title: 'Data Ingestion',
+      title: 'Ingest',
       tag: 'Source Inventory & Auditing',
       icon: Search,
       color: '#38bdf8',
@@ -506,7 +506,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '02',
-      title: 'ETL Pipelines',
+      title: 'Transform',
       tag: 'Cleaning & Transformation',
       icon: Workflow,
       color: '#818cf8',
@@ -515,7 +515,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '03',
-      title: 'BI Dashboards',
+      title: 'Visualize',
       tag: 'Metrics & Visualization',
       icon: BarChart3,
       color: '#00f2fe',
@@ -524,7 +524,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '04',
-      title: 'Validation QA',
+      title: 'Validate',
       tag: 'Reconciliation & Testing',
       icon: ShieldCheck,
       color: '#10b981',
@@ -533,7 +533,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '05',
-      title: 'Telemetry Deploy',
+      title: 'Deploy',
       tag: 'Automated Scheduled Sync',
       icon: Rocket,
       color: '#f59e0b',
@@ -544,7 +544,7 @@ const SERVICE_STAGES_MAP = {
   'digital-marketing': [
     {
       num: '01',
-      title: 'Landscape Audit',
+      title: 'Audit',
       tag: 'Competitor & SEO Analysis',
       icon: Search,
       color: '#38bdf8',
@@ -553,7 +553,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '02',
-      title: 'Strategy Plan',
+      title: 'Strategize',
       tag: 'Audience & Channel Matrix',
       icon: FileCode,
       color: '#818cf8',
@@ -562,7 +562,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '03',
-      title: 'Campaign Setup',
+      title: 'Launch',
       tag: 'SEO & High-Converting Copy',
       icon: TrendingUp,
       color: '#00f2fe',
@@ -571,7 +571,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '04',
-      title: 'Conversion QA',
+      title: 'Optimize',
       tag: 'A/B Testing & Tracking',
       icon: ShieldCheck,
       color: '#10b981',
@@ -580,7 +580,7 @@ const SERVICE_STAGES_MAP = {
     },
     {
       num: '05',
-      title: 'Scale & Optimize',
+      title: 'Scale',
       tag: 'Full-Funnel ROI Reporting',
       icon: Rocket,
       color: '#f59e0b',

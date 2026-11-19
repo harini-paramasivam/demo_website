@@ -23750,8 +23750,8 @@ svg.accent,
   top: 260px;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 212px;
-  height: 212px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   background: radial-gradient(circle at 40% 40%, rgba(14, 34, 82, 0.98) 0%, rgba(5, 10, 24, 0.99) 100%);
   border: 2px solid #38bdf8;
@@ -23847,7 +23847,11 @@ svg.accent,
 .epub-wheel-node {
   position: absolute;
   width: 200px;
-  padding: 14px 18px;
+  height: 106px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 16px;
   background: linear-gradient(145deg, rgba(14, 22, 44, 0.96) 0%, rgba(7, 13, 28, 0.98) 100%);
   border: 1.5px solid rgba(56, 189, 248, 0.3);
   border-radius: 18px;
@@ -23862,23 +23866,23 @@ svg.accent,
 .epub-wheel-node.is-active {
   border-color: #00f2fe;
   background: linear-gradient(145deg, rgba(18, 30, 60, 0.98) 0%, rgba(10, 18, 40, 1) 100%);
-  transform: translateY(-4px) scale(1.04);
+  transform: translateY(-3px);
   box-shadow: 
     0 16px 40px rgba(0, 0, 0, 0.75),
     0 0 25px rgba(0, 242, 254, 0.35);
 }
 
-.epub-wheel-node--1 { top: 28px; left: calc(50% - 265px); }
-.epub-wheel-node--2 { top: 28px; right: calc(50% - 265px); }
-.epub-wheel-node--3 { top: 215px; right: 18px; }
-.epub-wheel-node--4 { bottom: 20px; left: calc(50% - 100px); }
-.epub-wheel-node--5 { top: 215px; left: 18px; }
+.epub-wheel-node--1 { top: 20px; left: calc(50% - 275px); }
+.epub-wheel-node--2 { top: 20px; right: calc(50% - 275px); }
+.epub-wheel-node--3 { top: 215px; right: 10px; }
+.epub-wheel-node--4 { bottom: 18px; left: calc(50% - 100px); }
+.epub-wheel-node--5 { top: 215px; left: 10px; }
 
 .node-badge-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .node-num-pill {
@@ -23903,17 +23907,24 @@ svg.accent,
 }
 
 .node-title {
-  margin: 0 0 5px 0;
+  margin: 0 0 2px 0;
   font-size: 1.25rem;
   font-weight: 800;
   color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
 }
 
 .node-tag {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #cbd5e1;
-  line-height: 1.4;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Regulatory & Technical Conformance Head Badge */
