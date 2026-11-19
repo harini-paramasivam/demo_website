@@ -33,7 +33,7 @@ export const company = {
 };
 
 export const numbersStrip = [
-  { value: '5+', count: 5, label: 'Countries Reached' },
+  { value: '10+', count: 10, label: 'Countries Reached' },
   { value: '500+', count: 500, label: 'XML Titles Structured' },
   { value: '2,000+', count: 2000, label: 'Training Hours Delivered' },
   { value: '30+', count: 30, label: 'Skilled Specialists' },
@@ -204,7 +204,7 @@ export const industrySolutions = [
     icon: 'BookOpen',
     tag: 'Publishing Industry',
     highlights: ['EPUB 3 & MathML', 'JATS / BITS XML', 'EAA Compliance', 'Backlist Remediation'],
-    to: '/services/epublishing'
+    to: '/solutions/publishers'
   },
   {
     id: 'universities',
@@ -214,7 +214,7 @@ export const industrySolutions = [
     icon: 'GraduationCap',
     tag: 'Higher Ed & EdTech',
     highlights: ['Course Packs & Syllabi', 'STEM / LaTeX / MathML', 'PDF/UA Remediation', 'LMS Readiness'],
-    to: '/services/digital-accessibility'
+    to: '/solutions/universities'
   },
   {
     id: 'enterprises',
@@ -224,7 +224,7 @@ export const industrySolutions = [
     icon: 'Building2',
     tag: 'Corporate & Finance',
     highlights: ['ESG & Annual Reports', 'Office 365 / PDF', 'AI Automation', 'Enterprise SLAs'],
-    to: '/services/ai-automation'
+    to: '/solutions/enterprises'
   },
   {
     id: 'government',
@@ -234,7 +234,7 @@ export const industrySolutions = [
     icon: 'Landmark',
     tag: 'Public Administration',
     highlights: ['Section 508 & ADA', 'VPAT / ACR Reports', 'Public Forms Remediation', 'Screen Reader QA'],
-    to: '/services/digital-accessibility'
+    to: '/solutions/government'
   }
 ];
 
@@ -319,6 +319,8 @@ export const solutionsData = [
   // 🔹 By Industry
   {
     id: 'publishers-solution',
+    slug: 'publishers',
+    aliases: ['publishers', 'publishing', 'publishers-solution'],
     category: 'industry',
     categoryLabel: 'By Industry',
     title: 'Book and Journal Publishers',
@@ -345,6 +347,8 @@ export const solutionsData = [
   },
   {
     id: 'universities-edtech-solution',
+    slug: 'universities',
+    aliases: ['universities', 'universities-edtech', 'edtech', 'universities-edtech-solution'],
     category: 'industry',
     categoryLabel: 'By Industry',
     title: 'Universities and EdTech',
@@ -371,6 +375,8 @@ export const solutionsData = [
   },
   {
     id: 'enterprises-corporate-solution',
+    slug: 'enterprises',
+    aliases: ['enterprises', 'enterprises-corporate', 'corporate', 'enterprises-corporate-solution'],
     category: 'industry',
     categoryLabel: 'By Industry',
     title: 'Enterprises and Corporate Teams',
@@ -396,43 +402,47 @@ export const solutionsData = [
     ctaSubject: 'Corporate Project',
   },
   {
-    id: 'accessibility-compliance-solution',
+    id: 'government-public-sector-solution',
+    slug: 'government',
+    aliases: ['government', 'government-public-sector', 'government-and-public-sector', 'accessibility-compliance', 'accessibility-compliance-solution'],
     category: 'industry',
     categoryLabel: 'By Industry',
-    title: 'Accessibility Compliance',
-    tag: 'Global Compliance',
-    icon: 'ShieldCheck',
+    title: 'Government and Public Sector',
+    tag: 'Public Sector & Compliance',
+    icon: 'Landmark',
     challenges: [
-      'Unclear which laws and standards apply',
-      'Content and websites with unknown accessibility gaps',
-      'Regulatory deadlines and procurement requirements',
-      'Legal and reputational risk from inaccessible content',
+      'Statutory compliance mandates (Section 508, ADA Title II, EAA 2025)',
+      'High volume of citizen-facing digital portals, forms, and public notices',
+      'Complex legacy PDF and document archives with accessibility barriers',
+      'Vendor procurement requiring formal, court-defensible VPAT / ACR documentation',
     ],
-    flow: ['Audit', 'Remediate', 'Verify with screen readers', 'Report (VPAT/ACR)', 'Train & monitor'],
-    servicesIncluded: ['Web Accessibility', 'EPUB Accessibility', 'PDF Accessibility', 'Training & Consulting'],
+    flow: ['Statutory Compliance Audit', 'Document Remediation', 'Assistive Tech Verification', 'VPAT/ACR Reporting', 'Continuous Monitoring'],
+    servicesIncluded: ['Section 508 & ADA Conformance', 'PDF/UA Remediation', 'Court-Defensible VPAT/ACR', 'Screen Reader Testing', 'Web Accessibility'],
     benefits: [
-      'Clear compliance roadmap',
-      'Verified accessibility with assistive technology testing',
-      'Ready‑to‑use VPAT/ACR documentation',
-      'Long‑term monitoring and staff training',
+      'Zero regulatory compliance gaps across public-facing digital assets',
+      'Court-defensible VPAT 2.4 / ACR documentation for procurement',
+      'Fully inclusive digital access for citizens of all abilities',
+      'Rapid turnaround SLAs for critical statutory publications',
     ],
     standards: [
-      'WCAG 2.1/2.2',
-      'PDF/UA',
-      'EPUB Accessibility 1.1',
       'Section 508',
-      'ADA',
-      'AODA',
+      'ADA Title II',
+      'WCAG 2.1 & 2.2 AA',
+      'PDF/UA (ISO 14289-1)',
+      'European Accessibility Act (EAA)',
       'EN 301 549',
-      'European Accessibility Act',
     ],
-    ctaText: 'Get a Free Accessibility Consultation',
-    ctaSubject: 'Accessibility Consultation',
+    caseStudy: 'Federal Agency Portal & 12,000 PDF Remediation Conformance',
+    caseStudyLink: '/case-studies/wcag-accessibility',
+    ctaText: 'Discuss Public Sector Compliance',
+    ctaSubject: 'Government & Public Sector Project',
   },
 
   // 🔹 By Need
   {
     id: 'back-catalogue-conversion-solution',
+    slug: 'back-catalogue',
+    aliases: ['back-catalogue', 'back-catalogue-conversion', 'backlist'],
     category: 'need',
     categoryLabel: 'By Need',
     title: 'Back‑Catalogue Conversion and Accessibility',
@@ -456,6 +466,8 @@ export const solutionsData = [
   },
   {
     id: 'xml-first-publishing-solution',
+    slug: 'xml-first',
+    aliases: ['xml-first', 'xml-publishing', 'structured-content'],
     category: 'need',
     categoryLabel: 'By Need',
     title: 'XML‑First Publishing Workflow',
@@ -479,6 +491,8 @@ export const solutionsData = [
   },
   {
     id: 'print-archive-digitization-solution',
+    slug: 'print-archive',
+    aliases: ['print-archive', 'digitization', 'preservation'],
     category: 'need',
     categoryLabel: 'By Need',
     title: 'Print Archive Digitization',
@@ -502,6 +516,8 @@ export const solutionsData = [
   },
   {
     id: 'ai-powered-content-workflows-solution',
+    slug: 'ai-workflows',
+    aliases: ['ai-workflows', 'ai-content', 'automation'],
     category: 'need',
     categoryLabel: 'By Need',
     title: 'AI‑Powered Content Workflows',
@@ -525,6 +541,8 @@ export const solutionsData = [
   },
   {
     id: 'accessible-dashboards-reporting-solution',
+    slug: 'accessible-dashboards',
+    aliases: ['accessible-dashboards', 'dashboards', 'reporting', 'bi-analytics'],
     category: 'need',
     categoryLabel: 'By Need',
     title: 'Accessible Dashboards and Reporting',
@@ -2208,7 +2226,7 @@ export const insightsData = {
     {
       episode: 10,
       title: 'Global Voices',
-      description: 'Perspectives from professionals across 5+ countries on digital transformation trends.',
+      description: 'Perspectives from professionals across 10+ countries on digital transformation trends.',
       duration: '30 min',
       tag: 'Global Perspectives',
     },

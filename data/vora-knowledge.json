@@ -1,14 +1,16 @@
 {
   "syncMetadata": {
-    "version": "v1.3.643",
+    "version": "v1.3.645",
     "status": "Synchronized",
-    "lastSynchronized": "2026-11-19T07:37:46.216Z",
-    "sourceHash": "45f4b2fc41369194e617a1a4764c11d6d0e1ce7ceef0dc65e1341dd8d11ab533",
+    "lastSynchronized": "2026-11-19T07:57:55.046Z",
+    "sourceHash": "7f89a1c8924c6300ed104a2722e81ffa2ca396f5d53bba5c8fe867ecefb5be56",
     "indexedCount": 66,
     "indexedPages": 63,
     "indexedCareers": 3,
     "errorLogs": [],
     "changelog": [
+      "Synced 63 pages & 3 careers at 2026-11-19T07:57:55.046Z",
+      "Synced 63 pages & 3 careers at 2026-11-19T07:57:55.042Z",
       "Synced 63 pages & 3 careers at 2026-11-19T07:37:46.216Z",
       "Synced 63 pages & 3 careers at 2026-11-19T07:10:19.510Z",
       "Synced 63 pages & 3 careers at 2026-11-19T07:10:19.507Z",
@@ -16,9 +18,7 @@
       "Synced 63 pages & 3 careers at 2026-11-19T06:53:37.880Z",
       "Synced 63 pages & 3 careers at 2026-11-19T06:44:47.381Z",
       "Synced 63 pages & 3 careers at 2026-11-19T06:37:19.200Z",
-      "Synced 63 pages & 3 careers at 2026-11-19T06:37:19.197Z",
-      "Synced 63 pages & 3 careers at 2026-11-19T06:14:34.600Z",
-      "Synced 63 pages & 3 careers at 2026-11-19T06:14:34.597Z"
+      "Synced 63 pages & 3 careers at 2026-11-19T06:37:19.197Z"
     ]
   },
   "documents": [
@@ -426,7 +426,7 @@
       "url": "/solutions",
       "category": "solution",
       "summary": "Velvora Solutions designs end-to-end industry solutions for publishers, enterprises, and educational institutions, combining automated pipelines with specialized human quality control.",
-      "content": "Industry Solutions & Tailored Workflows at Velvora Solutions:\nWe combine automated engineering, standards compliance, and domain expertise to solve complex content production and digital accessibility challenges across four primary solution suites:\n\n• **Book and Journal Publishers** (Publishing & Media): Solves key challenges including Multi‑format production (print, EPUB, PDF, web). Flow: Typeset → Structure in XML → Produce EPUB/PDF → Enrich with metadata → Validate for accessibility\n\n• **Universities and EdTech** (Higher Ed & EdTech): Solves key challenges including Thousands of inaccessible course PDFs, slides, and documents. Flow: Audit content → Remediate files → Caption media → Train staff → Report progress\n\n• **Enterprises and Corporate Teams** (Corporate & Enterprise): Solves key challenges including Large volumes of inaccessible internal and customer‑facing documents. Flow: Assess → Remediate documents → Build templates → Automate workflows → Train teams\n\n• **Accessibility Compliance** (Global Compliance): Solves key challenges including Unclear which laws and standards apply. Flow: Audit → Remediate → Verify with screen readers → Report (VPAT/ACR) → Train & monitor\n\n• **Back‑Catalogue Conversion and Accessibility** (Archival & Backlist): Solves key challenges including Large archives locked in print or legacy formats. Flow: Digitize → OCR → Structure in XML → Produce EPUB/PDF → Remediate for accessibility\n\n• **XML‑First Publishing Workflow** (Structured Architecture): Solves key challenges including Inefficient multi‑format pipelines. Flow: Manuscript → XML structuring → Multi‑format output → Metadata enrichment → Accessibility validation\n\n• **Print Archive Digitization** (Digitization & Preservation): Solves key challenges including Valuable archives locked in physical format. Flow: Scan → OCR → Structure → Metadata tagging → Digital delivery\n\n• **AI‑Powered Content Workflows** (Next-Gen Automation): Solves key challenges including Repetitive manual content tasks. Flow: Discover → Automate → Human review → Pilot → Scale\n\n• **Accessible Dashboards and Reporting** (Business Intelligence): Solves key challenges including Business data locked in inaccessible dashboards. Flow: Collect data → Clean and prepare → Build dashboards → Accessibility review → Deliver and train\n\nKey Enterprise Advantages:\n• End-to-End Pipeline Integration: Seamless ingestion from raw manuscripts to validated deliverables.\n• Multi-Standard Conformance: Dual validation adhering to WCAG 2.2 AA/AAA, PDF/UA, JATS/BITS XML, and EPUB 3.\n• Scalability & High Turnaround: Capable of handling high-volume seasonal backlists and real-time releases.\n• Human-in-the-Loop Quality Assurance: Dual validation pairing automated algorithms with certified manual inspection.\n\nFor bespoke enterprise implementation blueprints or technical demos, contact our solutions architects at info@velvorasolutions.com.",
+      "content": "Industry Solutions & Tailored Workflows at Velvora Solutions:\nWe combine automated engineering, standards compliance, and domain expertise to solve complex content production and digital accessibility challenges across four primary solution suites:\n\n• **Book and Journal Publishers** (Publishing & Media): Solves key challenges including Multi‑format production (print, EPUB, PDF, web). Flow: Typeset → Structure in XML → Produce EPUB/PDF → Enrich with metadata → Validate for accessibility\n\n• **Universities and EdTech** (Higher Ed & EdTech): Solves key challenges including Thousands of inaccessible course PDFs, slides, and documents. Flow: Audit content → Remediate files → Caption media → Train staff → Report progress\n\n• **Enterprises and Corporate Teams** (Corporate & Enterprise): Solves key challenges including Large volumes of inaccessible internal and customer‑facing documents. Flow: Assess → Remediate documents → Build templates → Automate workflows → Train teams\n\n• **Government and Public Sector** (Public Sector & Compliance): Solves key challenges including Statutory compliance mandates (Section 508, ADA Title II, EAA 2025). Flow: Statutory Compliance Audit → Document Remediation → Assistive Tech Verification → VPAT/ACR Reporting → Continuous Monitoring\n\n• **Back‑Catalogue Conversion and Accessibility** (Archival & Backlist): Solves key challenges including Large archives locked in print or legacy formats. Flow: Digitize → OCR → Structure in XML → Produce EPUB/PDF → Remediate for accessibility\n\n• **XML‑First Publishing Workflow** (Structured Architecture): Solves key challenges including Inefficient multi‑format pipelines. Flow: Manuscript → XML structuring → Multi‑format output → Metadata enrichment → Accessibility validation\n\n• **Print Archive Digitization** (Digitization & Preservation): Solves key challenges including Valuable archives locked in physical format. Flow: Scan → OCR → Structure → Metadata tagging → Digital delivery\n\n• **AI‑Powered Content Workflows** (Next-Gen Automation): Solves key challenges including Repetitive manual content tasks. Flow: Discover → Automate → Human review → Pilot → Scale\n\n• **Accessible Dashboards and Reporting** (Business Intelligence): Solves key challenges including Business data locked in inaccessible dashboards. Flow: Collect data → Clean and prepare → Build dashboards → Accessibility review → Deliver and train\n\nKey Enterprise Advantages:\n• End-to-End Pipeline Integration: Seamless ingestion from raw manuscripts to validated deliverables.\n• Multi-Standard Conformance: Dual validation adhering to WCAG 2.2 AA/AAA, PDF/UA, JATS/BITS XML, and EPUB 3.\n• Scalability & High Turnaround: Capable of handling high-volume seasonal backlists and real-time releases.\n• Human-in-the-Loop Quality Assurance: Dual validation pairing automated algorithms with certified manual inspection.\n\nFor bespoke enterprise implementation blueprints or technical demos, contact our solutions architects at info@velvorasolutions.com.",
       "topics": [
         "Industry Solutions",
         "Enterprise Workflows",
@@ -514,23 +514,23 @@
       ]
     },
     {
-      "id": "solution-accessibility-compliance-solution",
-      "title": "Solution: Accessibility Compliance",
+      "id": "solution-government-public-sector-solution",
+      "title": "Solution: Government and Public Sector",
       "url": "/solutions",
       "category": "solution",
-      "summary": "Tailored solutions for Accessibility Compliance covering Web Accessibility, EPUB Accessibility, PDF Accessibility, Training & Consulting. Benefits include: Clear compliance roadmap; Verified accessibility with assistive technology testing.",
-      "content": "Industry Solution for Accessibility Compliance (Global Compliance):\nKey Challenges Solved:\n  - Unclear which laws and standards apply\n  - Content and websites with unknown accessibility gaps\n  - Regulatory deadlines and procurement requirements\n  - Legal and reputational risk from inaccessible content\nWorkflow Stages:\nAudit → Remediate → Verify with screen readers → Report (VPAT/ACR) → Train & monitor\nServices Included:\nWeb Accessibility, EPUB Accessibility, PDF Accessibility, Training & Consulting\nKey Measurable Benefits:\n  - Clear compliance roadmap\n  - Verified accessibility with assistive technology testing\n  - Ready‑to‑use VPAT/ACR documentation\n  - Long‑term monitoring and staff training\nCase Study Reference: Enterprise Implementation",
+      "summary": "Tailored solutions for Government and Public Sector covering Section 508 & ADA Conformance, PDF/UA Remediation, Court-Defensible VPAT/ACR, Screen Reader Testing, Web Accessibility. Benefits include: Zero regulatory compliance gaps across public-facing digital assets; Court-defensible VPAT 2.4 / ACR documentation for procurement.",
+      "content": "Industry Solution for Government and Public Sector (Public Sector & Compliance):\nKey Challenges Solved:\n  - Statutory compliance mandates (Section 508, ADA Title II, EAA 2025)\n  - High volume of citizen-facing digital portals, forms, and public notices\n  - Complex legacy PDF and document archives with accessibility barriers\n  - Vendor procurement requiring formal, court-defensible VPAT / ACR documentation\nWorkflow Stages:\nStatutory Compliance Audit → Document Remediation → Assistive Tech Verification → VPAT/ACR Reporting → Continuous Monitoring\nServices Included:\nSection 508 & ADA Conformance, PDF/UA Remediation, Court-Defensible VPAT/ACR, Screen Reader Testing, Web Accessibility\nKey Measurable Benefits:\n  - Zero regulatory compliance gaps across public-facing digital assets\n  - Court-defensible VPAT 2.4 / ACR documentation for procurement\n  - Fully inclusive digital access for citizens of all abilities\n  - Rapid turnaround SLAs for critical statutory publications\nCase Study Reference: Federal Agency Portal & 12,000 PDF Remediation Conformance",
       "topics": [
-        "Accessibility Compliance",
+        "Government and Public Sector",
         "Industry Solutions",
-        "Global Compliance",
+        "Public Sector & Compliance",
         "Workflow Optimization"
       ],
       "keywords": [
         "solution",
         "industry solution",
-        "accessibility compliance",
-        "global compliance",
+        "government and public sector",
+        "public sector & compliance",
         "challenges",
         "benefits",
         "workflow"
@@ -718,7 +718,7 @@
       "url": "/resources/insights",
       "category": "insight",
       "summary": "Explore in-depth articles, real-world case snapshots, practical checklists, 10 podcast episodes, and 10 video guides covering publishing, accessibility, AI, and analytics.",
-      "content": "Velvora Insights Knowledge Hub:\nCovers articles, case snapshots, checklists, podcasts, and video guides.\nFeatured Podcasts:\n• Episode 1: \"AI Meets Accessibility\" (22 min, AI & Inclusivity) — How machine learning is helping detect and fix accessibility gaps before content reaches readers.\n• Episode 2: \"Metadata Magic\" (18 min, Metadata & SEO) — Why metadata is the hidden engine of discoverability in publishing and marketing.\n• Episode 3: \"From Manuscript to Millions\" (25 min, XML Architecture) — A walkthrough of modern XML workflows that scale content globally.\n• Episode 4: \"Inclusive Learning at Scale\" (28 min, EdTech & Higher Ed) — Universities and EdTech platforms share how they deliver accessible learning materials.\n• Episode 5: \"Digital Marketing for Startups\" (20 min, Growth & Strategy) — Smart, budget‑friendly strategies to amplify reach without burning cash.\n• Episode 6: \"The Future of EPUB Accessibility\" (24 min, EPUB 3 & Standards) — Exploring standards like EPUB Accessibility 1.1 and what they mean for publishers.\n• Episode 7: \"Data to Decisions\" (21 min, BI & Analytics) — How analytics transform raw data into actionable insights for enterprises.\n• Episode 8: \"Government and Compliance\" (26 min, Policy & Section 508) — Meeting Section 508 and WCAG requirements without slowing down workflows.\n• Episode 9: \"Automation in Action\" (23 min, Workflow Automation) — Real stories of AI workflows cutting manual work in publishing and IT services.\n• Episode 10: \"Global Voices\" (30 min, Global Perspectives) — Perspectives from professionals across 5+ countries on digital transformation trends.\nKey Topics Explored:\n• Future of Digital Accessibility in 2026 (WCAG 2.2 Level AA/AAA, EAA, PDF/UA)\n• Demystifying JATS & BITS XML for scholarly publishing\n• Integrating AI into human publishing QA pipelines\n• University accessibility transformations and EPUB 3 compliance.",
+      "content": "Velvora Insights Knowledge Hub:\nCovers articles, case snapshots, checklists, podcasts, and video guides.\nFeatured Podcasts:\n• Episode 1: \"AI Meets Accessibility\" (22 min, AI & Inclusivity) — How machine learning is helping detect and fix accessibility gaps before content reaches readers.\n• Episode 2: \"Metadata Magic\" (18 min, Metadata & SEO) — Why metadata is the hidden engine of discoverability in publishing and marketing.\n• Episode 3: \"From Manuscript to Millions\" (25 min, XML Architecture) — A walkthrough of modern XML workflows that scale content globally.\n• Episode 4: \"Inclusive Learning at Scale\" (28 min, EdTech & Higher Ed) — Universities and EdTech platforms share how they deliver accessible learning materials.\n• Episode 5: \"Digital Marketing for Startups\" (20 min, Growth & Strategy) — Smart, budget‑friendly strategies to amplify reach without burning cash.\n• Episode 6: \"The Future of EPUB Accessibility\" (24 min, EPUB 3 & Standards) — Exploring standards like EPUB Accessibility 1.1 and what they mean for publishers.\n• Episode 7: \"Data to Decisions\" (21 min, BI & Analytics) — How analytics transform raw data into actionable insights for enterprises.\n• Episode 8: \"Government and Compliance\" (26 min, Policy & Section 508) — Meeting Section 508 and WCAG requirements without slowing down workflows.\n• Episode 9: \"Automation in Action\" (23 min, Workflow Automation) — Real stories of AI workflows cutting manual work in publishing and IT services.\n• Episode 10: \"Global Voices\" (30 min, Global Perspectives) — Perspectives from professionals across 10+ countries on digital transformation trends.\nKey Topics Explored:\n• Future of Digital Accessibility in 2026 (WCAG 2.2 Level AA/AAA, EAA, PDF/UA)\n• Demystifying JATS & BITS XML for scholarly publishing\n• Integrating AI into human publishing QA pipelines\n• University accessibility transformations and EPUB 3 compliance.",
       "topics": [
         "Knowledge Hub",
         "Podcasts",

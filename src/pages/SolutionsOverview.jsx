@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useMemo, useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { 
   ArrowRight, 
   ArrowLeft,
@@ -24,9 +24,37 @@ import { useReveal } from '../components/hooks.jsx';
 
 export default function SolutionsOverview() {
   useReveal();
+  const { slug } = useParams();
+  const navigate = useNavigate();
+
+  // Find solution matching URL slug if present
+  const matchedSolution = useMemo(() => {
+    if (!slug) return null;
+    const clean = slug.toLowerCase().trim();
+    return (
+      solutionsData.find(
+        (s) =>
+          s.slug === clean ||
+          s.id === clean ||
+          s.id.replace(/-solution$/, '') === clean ||
+          (s.aliases && s.aliases.includes(clean)) ||
+          (s.slug && clean.includes(s.slug))
+      ) || null
+    );
+  }, [slug]);
 
   // Active solution in Interactive Console
-  const [activeSolutionId, setActiveSolutionId] = useState(solutionsData[0].id);
+  const [activeSolutionId, setActiveSolutionId] = useState(
+    matchedSolution ? matchedSolution.id : solutionsData[0].id
+  );
+
+  // Sync active solution whenever URL slug changes
+  useEffect(() => {
+    if (matchedSolution) {
+      setActiveSolutionId(matchedSolution.id);
+      setViewMode('console');
+    }
+  }, [matchedSolution]);
 
   // View mode: 'console' (Interactive Architecture Blueprint) vs 'grid' (Full Catalog Matrix)
   const [viewMode, setViewMode] = useState('console');
@@ -44,14 +72,22 @@ export default function SolutionsOverview() {
     return solutionsData.findIndex((s) => s.id === activeSolution.id);
   }, [activeSolution]);
 
+  const selectSolution = (sol) => {
+    setActiveSolutionId(sol.id);
+    setViewMode('console');
+    if (sol.slug) {
+      navigate(`/solutions/${sol.slug}`, { replace: false });
+    }
+  };
+
   const handlePrev = () => {
     const prevIndex = (activeIndex - 1 + solutionsData.length) % solutionsData.length;
-    setActiveSolutionId(solutionsData[prevIndex].id);
+    selectSolution(solutionsData[prevIndex]);
   };
 
   const handleNext = () => {
     const nextIndex = (activeIndex + 1) % solutionsData.length;
-    setActiveSolutionId(solutionsData[nextIndex].id);
+    selectSolution(solutionsData[nextIndex]);
   };
 
   // Filtered solutions for grid view
@@ -72,11 +108,13 @@ export default function SolutionsOverview() {
   return (
     <>
       <PageHero
-        eyebrow="Solutions Overview"
-        title="Practical Solutions for Real Challenges"
-        crumbs={['Home', 'Solutions']}
+        eyebrow={slug && activeSolution ? `${activeSolution.tag} Solution` : 'Solutions Overview'}
+        title={slug && activeSolution ? activeSolution.title : 'Practical Solutions for Real Challenges'}
+        crumbs={slug && activeSolution ? ['Home', 'Solutions', activeSolution.title] : ['Home', 'Solutions']}
       >
-        Velvora applies its services to solve industry‑specific and organizational challenges. Each solution includes the challenge, the solution flow, the services included, and the benefits delivered.
+        {slug && activeSolution
+          ? `Purpose-built architecture and delivery frameworks engineered specifically for ${activeSolution.title.toLowerCase()}. Explore operational challenges, workflow blueprints, and verified benefits.`
+          : 'Velvora applies its services to solve industry‑specific and organizational challenges. Each solution includes the challenge, the solution flow, the services included, and the benefits delivered.'}
       </PageHero>
 
       {/* METRIC HIGHLIGHT STRIP */}
@@ -160,7 +198,7 @@ export default function SolutionsOverview() {
                             key={sol.id}
                             type="button"
                             className={`sol-rail-item${isSelected ? ' is-active' : ''}`}
-                            onClick={() => setActiveSolutionId(sol.id)}
+                            onClick={() => selectSolution(sol)}
                             aria-selected={isSelected}
                           >
                             <span className="sol-rail-item__icon">
@@ -188,7 +226,7 @@ export default function SolutionsOverview() {
                             key={sol.id}
                             type="button"
                             className={`sol-rail-item${isSelected ? ' is-active' : ''}`}
-                            onClick={() => setActiveSolutionId(sol.id)}
+                            onClick={() => selectSolution(sol)}
                             aria-selected={isSelected}
                           >
                             <span className="sol-rail-item__icon">
@@ -477,7 +515,7 @@ export default function SolutionsOverview() {
 
                     <div className="grid-4-even">
                       {industrySolutions.map((sol) => (
-                        <CatalogSolutionCard key={sol.id} sol={sol} onSelect={() => { setActiveSolutionId(sol.id); setViewMode('console'); }} />
+                        <CatalogSolutionCard key={sol.id} sol={sol} onSelect={() => selectSolution(sol)} />
                       ))}
                     </div>
                   </div>
@@ -497,7 +535,7 @@ export default function SolutionsOverview() {
 
                     <div className="grid-5-funnel">
                       {needSolutions.map((sol) => (
-                        <CatalogSolutionCard key={sol.id} sol={sol} onSelect={() => { setActiveSolutionId(sol.id); setViewMode('console'); }} />
+                        <CatalogSolutionCard key={sol.id} sol={sol} onSelect={() => selectSolution(sol)} />
                       ))}
                     </div>
                   </div>
@@ -506,7 +544,7 @@ export default function SolutionsOverview() {
                 /* Filtered Grid */
                 <div className="solutions-grid" style={{ marginTop: '28px' }}>
                   {filteredSolutions.map((sol) => (
-                    <CatalogSolutionCard key={sol.id} sol={sol} onSelect={() => { setActiveSolutionId(sol.id); setViewMode('console'); }} />
+                    <CatalogSolutionCard key={sol.id} sol={sol} onSelect={() => selectSolution(sol)} />
                   ))}
                 </div>
               )}

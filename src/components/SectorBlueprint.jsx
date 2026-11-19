@@ -41,7 +41,11 @@ export default function SectorBlueprint() {
               </div>
 
               <div className="sector-pod__body">
-                <h3 className="sector-pod__title">{item.industry}</h3>
+                <h3 className="sector-pod__title">
+                  <Link to={item.to || '/solutions'} className="sector-pod__title-link">
+                    {item.industry}
+                  </Link>
+                </h3>
                 <h4 className="sector-pod__headline">{item.headline}</h4>
                 <p className="sector-pod__desc">{item.desc}</p>
 

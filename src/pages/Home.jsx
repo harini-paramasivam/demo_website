@@ -246,7 +246,7 @@ export default function Home() {
                 <Icon name="Globe" size={22} />
               </div>
               <b className="stat-card__num">
-                <CountUp to={5} /><span className="stat-card__plus">+</span>
+                <CountUp to={10} /><span className="stat-card__plus">+</span>
               </b>
               <span className="stat-card__label">Countries Reached</span>
               <span className="stat-card__sub">Global Delivery</span>

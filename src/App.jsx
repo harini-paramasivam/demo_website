@@ -82,7 +82,8 @@ export default function App() {
           <Route path="/training-and-internships" element={<Training />} />
           <Route path="/services/accessibility-training-and-consulting" element={<Training />} />
           <Route path="/solutions" element={<SolutionsOverview />} />
-          <Route path="/solutions-overview" element={<SolutionsOverview />} />
+          <Route path="/solutions/:slug" element={<SolutionsOverview />} />
+          <Route path="/solutions-overview" element={<Navigate to="/solutions" replace />} />
           <Route path="/services/:slug" element={<ServicePage />} />
           <Route path="/resources/insights" element={<Insights />} />
           <Route path="/insights" element={<Insights />} />
