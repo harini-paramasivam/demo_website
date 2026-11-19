@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   Search, 
   FileCode, 
@@ -624,6 +624,8 @@ const SERVICE_IMAGES_MAP = {
 
 export default function EpublishingProductionWheel({ service }) {
   const [activeIdx, setActiveIdx] = useState(2); // Default to '03' stage
+  const scalerRef = useRef(null);
+  const [scale, setScale] = useState(1);
 
   const slug = service?.slug || 'epublishing';
   const stages = SERVICE_STAGES_MAP[slug] || SERVICE_STAGES_MAP.epublishing;
@@ -638,10 +640,47 @@ export default function EpublishingProductionWheel({ service }) {
   const activeStage = stages[activeIdx] || stages[0];
   const ActiveIcon = activeStage.icon || Workflow;
 
+  useEffect(() => {
+    const updateScale = () => {
+      if (!scalerRef.current) return;
+      const width = scalerRef.current.clientWidth;
+      if (width < 680 && width > 0) {
+        const computedScale = Math.min(1, Math.max(0.38, (width - 4) / 680));
+        setScale(computedScale);
+      } else {
+        setScale(1);
+      }
+    };
+
+    updateScale();
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(updateScale) : null;
+    if (ro && scalerRef.current) {
+      ro.observe(scalerRef.current);
+    }
+    window.addEventListener('resize', updateScale);
+
+    return () => {
+      if (ro) ro.disconnect();
+      window.removeEventListener('resize', updateScale);
+    };
+  }, []);
+
   return (
     <div className="epub-wheel-container">
-      {/* DESKTOP CIRCULAR ORBITAL SHOWCASE */}
-      <div className="epub-wheel-desktop" aria-hidden="false">
+      {/* UNIFIED CIRCULAR ORBITAL SHOWCASE (Desktop & Mobile) */}
+      <div 
+        className="epub-wheel-scaler-wrap" 
+        ref={scalerRef}
+        style={{ height: `${Math.round(640 * scale)}px` }}
+      >
+        <div 
+          className="epub-wheel-desktop" 
+          aria-hidden="false"
+          style={{
+            transform: `scale(${scale})`,
+            transformOrigin: 'top center'
+          }}
+        >
         {/* SVG Orbital Track & Connection Flow Lines */}
         <svg className="epub-wheel-svg" viewBox="0 0 680 640" fill="none" preserveAspectRatio="xMidYMid meet">
           <defs>
@@ -722,6 +761,7 @@ export default function EpublishingProductionWheel({ service }) {
             </div>
           );
         })}
+        </div>
       </div>
 
       {/* 3. ACTIVE STAGE INSPECTOR BAR (Full Rich Details with Zero Empty Void) */}
@@ -775,8 +815,8 @@ export default function EpublishingProductionWheel({ service }) {
         })}
       </div>
 
-      {/* 5. MOBILE RESPONSIVE INTERCONNECTED VERTICAL PIPELINE (For Small Screens) */}
-      <div className="epub-wheel-mobile">
+      {/* 5. MOBILE PIPELINE (HIDDEN - CIRCULAR WHEEL UNIFIED FOR ALL VIEWPORTS) */}
+      <div className="epub-wheel-mobile" style={{ display: 'none' }} aria-hidden="true">
         <div className="mobile-hub-banner">
           <div className="mobile-hub-img-circle">
             <img

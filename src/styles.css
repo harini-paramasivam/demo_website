@@ -23728,13 +23728,26 @@ svg.accent,
   overflow: hidden !important;
 }
 
+.epub-wheel-scaler-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+  height: 640px;
+}
+
 .epub-wheel-desktop {
   position: relative;
-  width: 100%;
+  width: 680px;
+  min-width: 680px;
   height: 640px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  transform-origin: top center;
 }
 
 .epub-wheel-svg {
@@ -24105,14 +24118,21 @@ svg.accent,
 
 @media (max-width: 860px) {
   .epub-wheel-container {
-    padding: 20px 16px !important;
+    padding: 20px 12px 24px 12px !important;
     border-radius: 20px !important;
   }
+  .epub-wheel-scaler-wrap {
+    --wheel-scale: clamp(0.4, calc((100vw - 32px) / 680), 1);
+    height: calc(640px * var(--wheel-scale));
+    overflow: hidden;
+  }
   .epub-wheel-desktop {
-    display: none;
+    display: flex !important;
+    transform: scale(var(--wheel-scale));
+    transform-origin: top center;
   }
   .epub-wheel-mobile {
-    display: block;
+    display: none !important;
   }
   .mobile-hub-banner {
     display: flex;
