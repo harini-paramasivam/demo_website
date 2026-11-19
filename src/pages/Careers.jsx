@@ -1118,12 +1118,14 @@ export default function Careers() {
                       <div className="job-opening-role-icon-wrap">
                         <RoleIcon size={20} />
                       </div>
-                      <div>
-                        <span className="job-opening-card__dept">{job.department}</span>
+                      <div className="job-opening-card__header-content">
+                        <div className="job-opening-card__meta-top">
+                          <span className="job-opening-card__dept">{job.department}</span>
+                          <span className="job-opening-card__type">{job.type}</span>
+                        </div>
                         <h3 className="job-opening-card__title">{job.title}</h3>
                       </div>
                     </div>
-                    <span className="job-opening-card__type">{job.type}</span>
                   </div>
 
                 <div className="job-opening-card__meta">
