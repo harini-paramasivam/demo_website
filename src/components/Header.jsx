@@ -22,6 +22,7 @@ import {
   Menu,
   Palette,
   Phone,
+  Smartphone,
   ScanText,
   ShieldCheck,
   Sigma,
@@ -286,18 +287,6 @@ export default function Header() {
         <a href="#main" className="skip">Skip to main content</a>
         <div className="container header__bar">
           <div className="header__left">
-            {pathname !== '/' && (
-              <button
-                type="button"
-                className="header__back-btn"
-                onClick={handleBack}
-                aria-label="Go back to previous page"
-                title="Go back"
-              >
-                <ArrowLeft size={18} aria-hidden="true" />
-                <span className="header__back-text">Back</span>
-              </button>
-            )}
             <Link to="/" className="header__logo" aria-label="Velvora Solutions – home" onClick={closeMobile}>
               <img src="/logo.png" alt="Velvora Solutions" width="910" height="305" />
             </Link>
@@ -332,7 +321,7 @@ export default function Header() {
               title="Contact Us"
               onClick={closeMobile}
             >
-              <Globe size={20} aria-hidden="true" />
+              <Smartphone size={20} aria-hidden="true" />
             </Link>
             <button
               type="button"
