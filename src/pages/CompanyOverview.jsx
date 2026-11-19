@@ -305,10 +305,10 @@ export default function CompanyOverview() {
                           <IconCmp size={24} aria-hidden="true" />
                         </span>
                         <div className="why-val-card__head-text">
+                          <h3 className="why-val-card__title">{v.title}</h3>
                           <div className="why-val-card__tagline" style={{ color: v.color }}>
                             {v.tagline}
                           </div>
-                          <h3 className="why-val-card__title">{v.title}</h3>
                         </div>
                       </div>
                       <span className="why-val-card__pill">
