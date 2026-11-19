@@ -2237,11 +2237,18 @@ svg.accent,
   color: #38bdf8;
   flex-shrink: 0;
 }
+@media (max-width: 768px) {
+  .intro-card {
+    grid-template-columns: 1fr !important;
+    padding: clamp(1.4rem, 4vw, 1.8rem) clamp(1rem, 3.5vw, 1.35rem) !important;
+    gap: 1.4rem !important;
+  }
+}
 @media (max-width: 640px) {
   .intro-card__tags {
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 8px !important;
+    gap: 8px 8px !important;
     width: 100% !important;
     align-items: center !important;
     justify-content: flex-start !important;
@@ -2250,10 +2257,10 @@ svg.accent,
     display: inline-flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    padding: 7px 14px !important;
-    font-size: 0.82rem !important;
+    padding: 5px 11px !important;
+    font-size: 0.77rem !important;
     font-weight: 600 !important;
-    gap: 7px !important;
+    gap: 6px !important;
     width: auto !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
@@ -2262,6 +2269,18 @@ svg.accent,
     overflow: visible !important;
     text-overflow: clip !important;
     border-radius: 999px !important;
+    flex-shrink: 0 !important;
+  }
+  .intro-tag span {
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+  .intro-tag__icon {
+    width: 13px !important;
+    height: 13px !important;
+    min-width: 13px !important;
+    flex-shrink: 0 !important;
   }
   .intro-tag:last-child {
     grid-column: unset !important;
