@@ -1,10 +1,10 @@
 {
-  "auditDate": "2026-11-19T08:57:21.220Z",
+  "auditDate": "2026-11-19T09:01:10.065Z",
   "totalQuestions": 100,
   "passed": 100,
   "failed": 0,
   "accuracyPct": "100.00%",
-  "durationSec": "0.11s",
+  "durationSec": "0.15s",
   "hallucinatedCount": 0,
   "irrelevantCount": 0,
   "incorrectRetrievalCount": 0,
