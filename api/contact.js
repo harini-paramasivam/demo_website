@@ -99,27 +99,8 @@ export default async function handler(req, res) {
       </div>
     `;
 
-    const transporter = nodemailer.createTransport({
-      host,
-      port,
-      secure,
-      auth: { user, pass }
-    });
-
-    // 1. Send internal notification to Velvora
-    await transporter.sendMail({
-      from: sender,
-      to: recipient,
-      replyTo: email.trim(),
-      subject: `[Contact Enquiry] ${cleanSubject}`,
-      html: htmlContent
-    });
-
-    // 2. Automatically Send Confirmation Email to the user (Client Consultation Specific)
-    let userConfirmationSent = false;
-    try {
-      const serviceTitle = escapeHtml(lookingFor || 'Project Consultation & Services');
-      const userHtml = `
+    const serviceTitle = escapeHtml(lookingFor || 'Project Consultation & Services');
+    const userHtml = `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
           <div style="background: linear-gradient(135deg, #070e24 0%, #0d1e4c 100%); padding: 28px 32px; color: #ffffff;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
@@ -179,18 +160,46 @@ export default async function handler(req, res) {
         </div>
       `;
 
-      await transporter.sendMail({
-        from: sender,
-        to: email.trim(),
-        subject: `Enquiry Received – ${lookingFor || 'Project Consultation'} | Velvora Solutions`,
-        text: `Dear ${name.trim()},\n\nThank you for contacting Velvora Solutions.\nWe have received your enquiry regarding ${lookingFor || 'our services'}.\n\nOur client team will contact you within 24 business hours.\n\nBest Regards,\nClient Solutions Team\nVelvora Solutions\nEmail: info@velvorasolutions.com\nWebsite: https://velvorasolutions.com`,
-        html: userHtml
-      });
-      userConfirmationSent = true;
-      console.log(`[Contact API] Client confirmation email sent successfully to ${email.trim()}`);
-    } catch (candErr) {
-      console.error(`[Contact API] Failed to send user confirmation email:`, candErr);
+    // Fast connection pooled transporter with short timeouts
+    const transporter = nodemailer.createTransport({
+      host,
+      port,
+      secure,
+      auth: { user, pass },
+      pool: true,
+      maxConnections: 3,
+      connectionTimeout: 6000,
+      greetingTimeout: 5000,
+      socketTimeout: 10000
+    });
+
+    // Send both internal notification and user confirmation concurrently in parallel
+    const internalMailPromise = transporter.sendMail({
+      from: sender,
+      to: recipient,
+      replyTo: email.trim(),
+      subject: `[Contact Enquiry] ${cleanSubject}`,
+      html: htmlContent
+    });
+
+    const userMailPromise = transporter.sendMail({
+      from: sender,
+      to: email.trim(),
+      subject: `Enquiry Received – ${lookingFor || 'Project Consultation'} | Velvora Solutions`,
+      text: `Dear ${name.trim()},\n\nThank you for contacting Velvora Solutions.\nWe have received your enquiry regarding ${lookingFor || 'our services'}.\n\nOur client team will contact you within 24 business hours.\n\nBest Regards,\nClient Solutions Team\nVelvora Solutions\nEmail: info@velvorasolutions.com\nWebsite: https://velvorasolutions.com`,
+      html: userHtml
+    }).catch((err) => {
+      console.error(`[Contact API] Failed to send user confirmation email:`, err);
+      return null;
+    });
+
+    const [internalRes, userRes] = await Promise.allSettled([internalMailPromise, userMailPromise]);
+
+    if (internalRes.status === 'rejected') {
+      throw internalRes.reason;
     }
+
+    const userConfirmationSent = userRes.status === 'fulfilled' && !!userRes.value;
 
     return res.status(200).json({
       success: true,

@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import { transitionBannerContent } from '../data/site.js';
 
 export default function HeroArt({
@@ -9,20 +9,29 @@ export default function HeroArt({
 }) {
   const current = transitionBannerContent[activeIdx] || transitionBannerContent[0];
   const stageRef = useRef(null);
+  const rafRef = useRef(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseMove = useCallback((e) => {
     if (!stageRef.current) return;
     const rect = stageRef.current.getBoundingClientRect();
-    // Normalize -1 to +1
     const nx = (e.clientX - rect.left) / rect.width - 0.5;
     const ny = (e.clientY - rect.top) / rect.height - 0.5;
-    // Max 10 deg tilt
-    setTilt({
-      x: nx * 12,
-      y: -ny * 12
+
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      setTilt({
+        x: nx * 10,
+        y: -ny * 10
+      });
     });
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
   const handleMouseEnter = () => {
@@ -31,6 +40,7 @@ export default function HeroArt({
 
   const handleMouseLeave = () => {
     setIsHovering(false);
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
     setTilt({ x: 0, y: 0 });
   };
 
@@ -110,6 +120,8 @@ export default function HeroArt({
             width="1376"
             height="768"
             loading="eager"
+            fetchpriority="high"
+            decoding="async"
           />
         </div>
       </div>

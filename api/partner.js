@@ -114,11 +114,15 @@ export default async function handler(req, res) {
       host,
       port,
       secure,
-      auth: { user, pass }
+      auth: { user, pass },
+      pool: true,
+      maxConnections: 3,
+      connectionTimeout: 6000,
+      greetingTimeout: 5000,
+      socketTimeout: 10000
     });
 
-    // 1. Send internal notification to Velvora
-    await transporter.sendMail({
+    const internalMailPromise = transporter.sendMail({
       from: sender,
       to: recipient,
       replyTo: cleanEmail,
@@ -126,10 +130,7 @@ export default async function handler(req, res) {
       html: htmlContent
     });
 
-    // 2. Automatically Send Confirmation Email to the Partner Applicant
-    let userConfirmationSent = false;
-    try {
-      const userHtml = `
+    const userHtml = `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
           <div style="background: linear-gradient(135deg, #070e24 0%, #0d1e4c 100%); padding: 28px 32px; color: #ffffff;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
@@ -194,18 +195,24 @@ export default async function handler(req, res) {
         </div>
       `;
 
-      await transporter.sendMail({
-        from: sender,
-        to: cleanEmail,
-        subject: `Partnership Proposal Received – ${cleanOrg} | Velvora Solutions`,
-        text: `Dear ${cleanPerson},\n\nThank you for reaching out to explore a partnership with Velvora Solutions on behalf of ${cleanOrg}.\nWe have received your proposal regarding ${cleanArea} collaboration.\n\nOur partnership liaison team will review your synergy outline and connect with you within 1 to 2 business days.\n\nBest Regards,\nStrategic Alliances Team\nVelvora Solutions\nEmail: info@velvorasolutions.com\nWebsite: https://velvorasolutions.com`,
-        html: userHtml
-      });
-      userConfirmationSent = true;
-      console.log(`[Partner API] Partner confirmation email sent successfully to ${cleanEmail}`);
-    } catch (candErr) {
+    const userMailPromise = transporter.sendMail({
+      from: sender,
+      to: cleanEmail,
+      subject: `Partnership Proposal Received – ${cleanOrg} | Velvora Solutions`,
+      text: `Dear ${cleanPerson},\n\nThank you for reaching out to explore a partnership with Velvora Solutions on behalf of ${cleanOrg}.\nWe have received your proposal regarding ${cleanArea} collaboration.\n\nOur partnership liaison team will review your synergy outline and connect with you within 1 to 2 business days.\n\nBest Regards,\nStrategic Alliances Team\nVelvora Solutions\nEmail: info@velvorasolutions.com\nWebsite: https://velvorasolutions.com`,
+      html: userHtml
+    }).catch((candErr) => {
       console.error(`[Partner API] Failed to send partner confirmation email:`, candErr);
+      return null;
+    });
+
+    const [internalRes, userRes] = await Promise.allSettled([internalMailPromise, userMailPromise]);
+
+    if (internalRes.status === 'rejected') {
+      throw internalRes.reason;
     }
+
+    const userConfirmationSent = userRes.status === 'fulfilled' && !!userRes.value;
 
     return res.status(200).json({
       success: true,

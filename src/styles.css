@@ -1274,6 +1274,12 @@ svg.accent,
   display: block;
 }
 
+.cyber-wave-mesh {
+  will-change: transform;
+  filter: drop-shadow(0 0 4px rgba(0, 210, 255, 0.45));
+  transform: translateZ(0);
+}
+
 .wave-drift-1 {
   animation: waveDrift1 12s ease-in-out infinite alternate;
 }
@@ -1448,7 +1454,10 @@ svg.accent,
   max-height: 520px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 45px rgba(0, 210, 255, 0.35));
+  filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 30px rgba(0, 210, 255, 0.3));
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
   transition: transform 0.4s ease;
 }
 

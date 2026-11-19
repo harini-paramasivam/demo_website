@@ -227,7 +227,12 @@ export default async function handler(req, res) {
       host,
       port,
       secure,
-      auth: { user, pass }
+      auth: { user, pass },
+      pool: true,
+      maxConnections: 3,
+      connectionTimeout: 6000,
+      greetingTimeout: 5000,
+      socketTimeout: 10000
     });
 
     // 1. Send Internal Notification to Velvora Admissions Desk
@@ -277,7 +282,7 @@ export default async function handler(req, res) {
       </div>
     `;
 
-    await transporter.sendMail({
+    const internalMailPromise = transporter.sendMail({
       from: sender,
       to: recipient,
       replyTo: email.trim(),
@@ -285,31 +290,34 @@ export default async function handler(req, res) {
       html: internalHtml
     });
 
-    // 2. Automatically Send Confirmation Email to the Candidate
-    let candidateConfirmationSent = false;
-    try {
-      const { html: candHtml, text: candText } = getCandidateTrainingEmail({
-        fullName: fullName.trim(),
-        email: email.trim(),
-        phone: phone.trim(),
-        program: chosenProgram,
-        trainingMode: cleanMode,
-        duration: cleanDuration,
-        referenceId
-      });
+    const { html: candHtml, text: candText } = getCandidateTrainingEmail({
+      fullName: fullName.trim(),
+      email: email.trim(),
+      phone: phone.trim(),
+      program: chosenProgram,
+      trainingMode: cleanMode,
+      duration: cleanDuration,
+      referenceId
+    });
 
-      await transporter.sendMail({
-        from: sender,
-        to: email.trim(),
-        subject: `Application Received – ${chosenProgram} | Velvora Solutions`,
-        text: candText,
-        html: candHtml
-      });
-      candidateConfirmationSent = true;
-      console.log(`[Training API] Confirmation email sent successfully to ${email.trim()}`);
-    } catch (confErr) {
+    const candidateMailPromise = transporter.sendMail({
+      from: sender,
+      to: email.trim(),
+      subject: `Application Received – ${chosenProgram} | Velvora Solutions`,
+      text: candText,
+      html: candHtml
+    }).catch((confErr) => {
       console.error(`[Training API] Candidate confirmation email failed for ${email.trim()}:`, confErr);
+      return null;
+    });
+
+    const [internalRes, candRes] = await Promise.allSettled([internalMailPromise, candidateMailPromise]);
+
+    if (internalRes.status === 'rejected') {
+      throw internalRes.reason;
     }
+
+    const candidateConfirmationSent = candRes.status === 'fulfilled' && !!candRes.value;
 
     return res.status(200).json({
       success: true,

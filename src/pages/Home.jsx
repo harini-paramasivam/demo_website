@@ -19,13 +19,29 @@ export default function Home() {
     // Ensure data-theme is cleared so the website strictly uses the new logo static brand palette
     document.documentElement.removeAttribute('data-theme');
 
-    // Preload all slide images for instant, zero-latency 3-second transitions
-    transitionBannerContent.forEach((slide) => {
-      if (slide.image) {
-        const img = new Image();
-        img.src = slide.image;
+    // Lazily preload subsequent slides in background only after initial render is complete
+    const preloadTimer = setTimeout(() => {
+      const remainingSlides = transitionBannerContent.slice(1);
+      if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+        window.requestIdleCallback(() => {
+          remainingSlides.forEach((slide) => {
+            if (slide.image) {
+              const img = new Image();
+              img.src = slide.image;
+            }
+          });
+        });
+      } else {
+        remainingSlides.forEach((slide) => {
+          if (slide.image) {
+            const img = new Image();
+            img.src = slide.image;
+          }
+        });
       }
-    });
+    }, 1200);
+
+    return () => clearTimeout(preloadTimer);
   }, []);
 
   const [heroIdx, setHeroIdx] = useState(0);

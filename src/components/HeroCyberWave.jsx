@@ -30,15 +30,10 @@ export default function HeroCyberWave() {
             <stop offset="75%" stopColor="#60a5fa" stopOpacity="0.6" />
             <stop offset="100%" stopColor="#00d2ff" stopOpacity="0.3" />
           </linearGradient>
-
-          <filter id="cyberGlow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
         </defs>
 
         {/* 1. Undulating Wavy Dotted Topography Grid (Spanning across WORDS SIDE on left & ROBOT on right) */}
-        <g className="cyber-wave-mesh" filter="url(#cyberGlow)">
+        <g className="cyber-wave-mesh">
           {/* Base sweeping flow curves */}
           <path
             d="M -50 480 Q 280 420, 580 460 T 1150 410 Q 1320 370, 1500 440"
