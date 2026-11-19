@@ -2919,44 +2919,65 @@ svg.accent,
 
 /* Card Header Strip, Badges & Highlights */
 .why-val-card__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
+  display: block;
+  margin-bottom: 8px !important;
 }
 
 .why-val-card__head-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
-  flex: 1 1 200px;
+  width: 100%;
   min-width: 0;
 }
 
 .why-val-card__head-row .why__icon {
   margin-bottom: 0 !important;
   flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 12px !important;
+  margin-top: 2px !important;
 }
 
 .why-val-card__head-text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  flex: 1 1 auto;
   min-width: 0;
 }
 
-.why-val-card__head-text .why-val-card__title {
+.why-val-card__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 2px;
+}
+
+.why-val-card__title-row .why-val-card__title {
   font-size: 1.25rem !important;
   font-weight: 850 !important;
   color: #ffffff !important;
-  margin: 0 0 2px 0 !important;
+  margin: 0 !important;
   line-height: 1.2 !important;
   letter-spacing: -0.01em !important;
+}
+
+.why-val-card__title-row .why-val-card__pill {
+  font-size: 0.68rem !important;
+  font-weight: 750 !important;
+  padding: 2px 8px !important;
+  border-radius: 999px !important;
+  letter-spacing: 0.03em !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  color: #f1f5f9 !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
 }
 
 .why-val-card__head-text .why-val-card__tagline {
@@ -2968,34 +2989,30 @@ svg.accent,
   line-height: 1.25 !important;
 }
 
+@media (max-width: 640px) {
+  .why-section-dark .why__card {
+    padding: 14px 14px !important;
+  }
+  .why-val-card__head-row .why__icon {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 10px !important;
+  }
+  .why-val-card__title-row .why-val-card__title {
+    font-size: 1.15rem !important;
+  }
+}
+
 .why-val-card__pill {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 750;
-  padding: 3px 10px;
+  padding: 2px 8px;
   border-radius: 999px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #f1f5f9;
   flex-shrink: 0;
-  margin-left: auto;
-}
-
-@media (max-width: 640px) {
-  .why-val-card__top {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 7px;
-    margin-bottom: 10px;
-  }
-  .why-val-card__head-row {
-    width: 100%;
-    align-items: center;
-  }
-  .why-val-card__pill {
-    margin-left: 0 !important;
-    align-self: flex-start;
-  }
 }
 
 .why-val-card__tagline {
@@ -23552,6 +23569,9 @@ svg.accent,
   .why__card {
     padding: 20px 16px !important;
     border-radius: 18px !important;
+  }
+  .why-section-dark .why__card {
+    padding: 14px 14px !important;
   }
 
   /* Split sections fall back to 1 column */
