@@ -19888,22 +19888,34 @@ svg.accent,
   margin-top: auto !important;
   display: flex !important;
   gap: 10px !important;
-  flex-wrap: wrap !important;
+  flex-direction: column !important;
+  width: 100% !important;
 }
 .job-card-primary-btn {
-  flex: 1 1 200px !important;
+  flex: none !important;
   text-decoration: none !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   gap: 8px !important;
+  padding: 11px 20px !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  min-height: 44px !important;
+  height: 44px !important;
+  box-sizing: border-box !important;
+}
+.job-card-quick-btn {
+  flex: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   padding: 11px 18px !important;
   font-size: 0.88rem !important;
   font-weight: 700 !important;
-}
-.job-card-quick-btn {
-  padding: 11px 16px !important;
-  font-size: 0.88rem !important;
+  min-height: 44px !important;
+  height: 44px !important;
+  box-sizing: border-box !important;
 }
 
 /* ===== INDIVIDUAL JOB DETAIL PAGE (/careers/:jobId) ===== */
@@ -21103,25 +21115,6 @@ svg.accent,
   border-bottom: 1px solid rgba(56, 189, 248, 0.2) !important;
   padding: clamp(65px, 7vw, 100px) 0 !important;
   overflow: hidden !important;
-}
-
-.svc-section-overview::before {
-  content: '';
-  position: absolute;
-  top: -120px;
-  left: -80px;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, rgba(37, 99, 235, 0.03) 50%, transparent 70%);
-  filter: blur(65px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.svc-section-overview .container {
-  position: relative;
-  z-index: 2;
 }
 
 .svc-section-overview .svc-header--glass {
@@ -25444,10 +25437,18 @@ svg.accent,
   .job-opening-card--concise .job-opening-card__action {
     flex-direction: column !important;
     width: 100% !important;
+    gap: 10px !important;
+    margin-top: auto !important;
   }
   .job-card-primary-btn,
   .job-card-quick-btn {
     width: 100% !important;
+    flex: none !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
+    padding: 0 18px !important;
     justify-content: center !important;
+    box-sizing: border-box !important;
   }
 }
