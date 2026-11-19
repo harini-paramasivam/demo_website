@@ -14,7 +14,8 @@ import {
   ShieldCheck,
   Cpu,
   Layers,
-  ChevronRight
+  ChevronRight,
+  PenTool
 } from 'lucide-react';
 import { blogArticles, blogCategories, getFeaturedArticle } from '../data/blogData.js';
 import { PageHero } from '../components/ui.jsx';
@@ -147,6 +148,7 @@ export default function BlogOverview() {
                     Read Full Article <ArrowRight size={16} aria-hidden="true" />
                   </Link>
                   <span className="blog-author-tag">
+                    <PenTool size={13} style={{ display: 'inline', verticalAlign: '-1px', marginRight: '6px', color: '#0284c7' }} aria-hidden="true" />
                     By <strong>{featured.author}</strong> ({featured.authorRole})
                   </span>
                 </div>

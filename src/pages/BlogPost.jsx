@@ -16,9 +16,29 @@ import {
   ShieldCheck,
   Sparkles,
   ChevronRight,
-  MessageSquare
+  MessageSquare,
+  PenTool,
+  Cpu,
+  Users
 } from 'lucide-react';
 import { getArticleBySlug, getRelatedArticles } from '../data/blogData.js';
+
+function getAuthorIcon(author = '', role = '') {
+  const text = `${author} ${role}`.toLowerCase();
+  if (text.includes('editorial') || text.includes('publishing') || text.includes('formats') || text.includes('composition') || text.includes('press')) {
+    return PenTool;
+  }
+  if (text.includes('accessib') || text.includes('compliance') || text.includes('cpacc') || text.includes('was') || text.includes('qa') || text.includes('quality') || text.includes('assurance')) {
+    return ShieldCheck;
+  }
+  if (text.includes('ai') || text.includes('automation') || text.includes('technology') || text.includes('technical') || text.includes('data') || text.includes('engineering') || text.includes('pdf')) {
+    return Cpu;
+  }
+  if (text.includes('digitiz') || text.includes('ocr')) {
+    return BookOpen;
+  }
+  return Users;
+}
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -29,6 +49,7 @@ export default function BlogPost() {
 
   const article = useMemo(() => getArticleBySlug(slug), [slug]);
   const relatedArticles = useMemo(() => (article ? getRelatedArticles(article.slug, 3) : []), [article]);
+  const AuthorIcon = useMemo(() => getAuthorIcon(article?.author, article?.authorRole), [article]);
 
   // Scroll to top on route change
   useEffect(() => {
@@ -416,7 +437,7 @@ export default function BlogPost() {
           {/* Author Badge */}
           <div className="blog-post-author-bar">
             <div className="blog-author-avatar">
-              <ShieldCheck size={20} className="blog-author-icon" aria-hidden="true" />
+              <AuthorIcon size={20} className="blog-author-icon" aria-hidden="true" />
             </div>
             <div className="blog-author-details">
               <span className="blog-author-name" itemProp="author">{article.author}</span>
@@ -608,7 +629,7 @@ export default function BlogPost() {
               {article.content && article.content.length > 0 && (
                 <div className="blog-sidebar-widget blog-toc-widget">
                   <div className="blog-toc-head">
-                    <Bookmark size={15} className="accent" aria-hidden="true" />
+                    <Bookmark size={16} className="blog-widget-head-icon" aria-hidden="true" />
                     <h4>In This Article</h4>
                   </div>
                   <nav className="blog-toc-list" aria-label="Table of Contents">
@@ -639,7 +660,7 @@ export default function BlogPost() {
               {article.keyTakeaways && article.keyTakeaways.length > 0 && (
                 <div className="blog-sidebar-widget blog-takeaways-widget">
                   <div className="blog-sidebar-widget-head">
-                    <Sparkles size={15} className="accent" aria-hidden="true" />
+                    <Sparkles size={16} className="blog-widget-head-icon" aria-hidden="true" />
                     <h4>Executive Highlights</h4>
                   </div>
                   <ul className="blog-sidebar-takeaways">
@@ -656,12 +677,12 @@ export default function BlogPost() {
               {/* 3. Author & Editorial Authority Badge */}
               <div className="blog-sidebar-widget blog-author-widget">
                 <div className="blog-sidebar-widget-head">
-                  <ShieldCheck size={15} className="accent" aria-hidden="true" />
+                  <ShieldCheck size={16} className="blog-widget-head-icon" aria-hidden="true" />
                   <h4>Practice Authority</h4>
                 </div>
                 <div className="blog-author-widget-body">
                   <div className="blog-author-widget-avatar">
-                    <ShieldCheck size={22} className="accent" />
+                    <AuthorIcon size={22} className="blog-author-icon" />
                   </div>
                   <div>
                     <h5 className="blog-author-widget-name">{article.author}</h5>
@@ -677,7 +698,7 @@ export default function BlogPost() {
               {relatedArticles && relatedArticles.length > 0 && (
                 <div className="blog-sidebar-widget blog-related-mini-widget">
                   <div className="blog-sidebar-widget-head">
-                    <BookOpen size={15} className="accent" aria-hidden="true" />
+                    <BookOpen size={16} className="blog-widget-head-icon" aria-hidden="true" />
                     <h4>Recommended Reading</h4>
                   </div>
                   <div className="blog-sidebar-related-list">
