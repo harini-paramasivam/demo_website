@@ -1140,8 +1140,20 @@ svg.accent,
   gap: 16px;
 }
 
-.hero-ref-btn-row--mobile {
-  display: none !important;
+@media (min-width: 1081px) {
+  .hero-ref-btn-row--mobile {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1080px) {
+  .hero-ref-btn-row--desktop {
+    display: none !important;
+  }
+  .hero-ref-btn-row--mobile {
+    display: flex !important;
+    margin-top: 8px !important;
+  }
 }
 
 /* Glowing Neon Capsule Primary Button (Identical to Reference View Demo Pill) */
@@ -1757,7 +1769,10 @@ svg.accent,
   }
 
   /* Keep Hero Action Buttons Parallel on Mobile View (Get in Touch & Explore Services) */
-  .hero-ref-btn-row {
+  .hero-ref-btn-row--desktop {
+    display: none !important;
+  }
+  .hero-ref-btn-row--mobile {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
@@ -1767,6 +1782,7 @@ svg.accent,
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
+    margin-top: 10px !important;
   }
   .hero-ref-btn-primary,
   .hero-ref-btn-secondary {
@@ -1805,7 +1821,10 @@ svg.accent,
     padding: 12px 14px !important;
     gap: 10px !important;
   }
-  .hero-ref-btn-row {
+  .hero-ref-btn-row--desktop {
+    display: none !important;
+  }
+  .hero-ref-btn-row--mobile {
     gap: 8px !important;
   }
   .hero-ref-btn-primary,
