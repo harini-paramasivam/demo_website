@@ -53,20 +53,20 @@ const values = [
   {
     title: 'Collaboration',
     tagline: 'An Extension of Your Internal Team',
-    desc: 'We operate as an agile extension of your publishing or product team, adopting your workflows, tools, and communication channels seamlessly.',
+    desc: 'We operate as an agile extension of your team, adopting your workflows, delivery tools, and communication channels seamlessly.',
     badge: 'Dedicated Squad Model',
     icon: Layers,
     themeClass: 'why-val-card--collaboration',
-    highlights: ['Direct engineer communication', 'Agile sprint sync & tooling', 'Scalable burst capacity'],
+    highlights: ['Direct engineer communication', 'Agile sprint sync', 'Scalable capacity'],
   },
   {
     title: 'Continuous Learning',
     tagline: 'Pioneering Standards & Frontier AI',
-    desc: 'Standards and technology evolve constantly, and so do we. We invest in ongoing R&D, IAAP certifications, and ethical AI tools to keep our clients ahead.',
-    badge: 'R&D & Human-AI Lab',
+    desc: 'Standards and technology evolve constantly. We invest in continuous R&D, IAAP credentials, and ethical AI tools to keep clients ahead.',
+    badge: 'R&D & AI Lab',
     icon: RefreshCw,
     themeClass: 'why-val-card--learning',
-    highlights: ['Weekly standards review', 'IAAP WAS/CPACC credentials', 'Ethical AI research lab'],
+    highlights: ['Weekly standards review', 'IAAP WAS credentials', 'Ethical AI lab'],
   },
 ];
 

@@ -2715,7 +2715,12 @@ svg.accent,
   padding: 0; 
   display: grid; 
   grid-template-columns: repeat(6, 1fr); 
+  grid-auto-rows: 1fr;
+  align-items: stretch;
   gap: 24px; 
+}
+.why > * {
+  height: 100%;
 }
 .why > :nth-child(1),
 .why > :nth-child(2),
@@ -2903,7 +2908,8 @@ svg.accent,
   color: #cbd5e1 !important;
   font-size: 0.94rem !important;
   line-height: 1.55 !important;
-  margin: 0 !important;
+  margin: 14px 0 0 0 !important;
+  min-height: 4.4em !important;
 }
 
 /* Individual Value Card Themes (Company Overview & Guiding Principles) */
@@ -3014,27 +3020,29 @@ svg.accent,
 }
 
 .why-val-card__title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 2px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  flex-wrap: nowrap !important;
+  margin-bottom: 2px !important;
 }
 
 .why-val-card__title-row .why-val-card__title {
-  font-size: 1.25rem !important;
+  font-size: clamp(1.05rem, 1.18vw, 1.25rem) !important;
   font-weight: 850 !important;
   color: #ffffff !important;
   margin: 0 !important;
   line-height: 1.2 !important;
   letter-spacing: -0.01em !important;
+  white-space: nowrap !important;
+  min-width: 0 !important;
 }
 
 .why-val-card__title-row .why-val-card__pill {
-  font-size: 0.68rem !important;
+  font-size: 0.66rem !important;
   font-weight: 750 !important;
-  padding: 2px 8px !important;
+  padding: 2px 7.5px !important;
   border-radius: 999px !important;
   letter-spacing: 0.03em !important;
   background: rgba(255, 255, 255, 0.08) !important;
@@ -3052,6 +3060,10 @@ svg.accent,
   letter-spacing: 0.05em !important;
   margin: 0 !important;
   line-height: 1.25 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  min-height: 16px !important;
 }
 
 @media (max-width: 640px) {
@@ -3064,36 +3076,19 @@ svg.accent,
     border-radius: 10px !important;
   }
   .why-val-card__title-row .why-val-card__title {
-    font-size: 1.15rem !important;
+    font-size: 1.12rem !important;
   }
 }
 
-.why-val-card__pill {
-  font-size: 0.68rem;
-  font-weight: 750;
-  padding: 2px 8px;
-  border-radius: 999px;
-  letter-spacing: 0.03em;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #f1f5f9;
-  flex-shrink: 0;
-}
-
-.why-val-card__tagline {
-  font-size: 0.78rem;
-  font-weight: 750;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 6px;
-}
 .why-val-card__highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  margin-top: 16px !important;
+  padding-top: 12px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  min-height: 58px !important;
+  align-content: flex-start !important;
 }
 .why-val-card__chip {
   display: inline-flex;
