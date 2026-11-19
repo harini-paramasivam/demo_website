@@ -236,7 +236,7 @@ export default function OurTeam() {
                         <span className="monogram-text">{meta.initials}</span>
                       </div>
                       <div className="specialist-dept-badge">
-                        <DeptIcon size={14} className="dept-badge-icon" />
+                        <DeptIcon size={14} className="dept-badge-icon" aria-hidden="true" />
                         <span>{member.department}</span>
                       </div>
                     </div>
