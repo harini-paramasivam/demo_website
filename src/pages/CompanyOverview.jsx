@@ -256,8 +256,11 @@ export default function CompanyOverview() {
           <div style={{ marginTop: '3.5rem' }}>
             <div style={{ textAlign: 'center', marginBottom: '1.2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <span className="badge-eyebrow accreditation-head-badge">
-                <ShieldCheck size={16} style={{ flexShrink: 0, marginRight: '4px' }} />
-                <span>Regulatory &amp; Technical Conformance</span>
+                <span className="accreditation-nowrap">
+                  <ShieldCheck size={16} aria-hidden="true" />
+                  <span>Regulatory</span>
+                </span>{' '}
+                <span>&amp; Technical Conformance</span>
               </span>
               <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--ink)', margin: '0.3rem 0 0 0' }}>
                 Standards We Engineer To
