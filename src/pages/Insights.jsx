@@ -712,8 +712,8 @@ export default function Insights() {
                     <span className="insight-article-tag">{article.tag}</span>
                     <h3 className="insight-article-title">{article.title}</h3>
                     <p className="insight-article-summary">{article.summary}</p>
-                    <Link to="/contact" className="tlink" style={{ marginTop: 'auto' }}>
-                      Request Full Publication <ArrowRight size={15} aria-hidden="true" />
+                    <Link to={article.to || '/blog'} className="tlink" style={{ marginTop: 'auto' }}>
+                      Read Full Article <ArrowRight size={15} aria-hidden="true" />
                     </Link>
                   </article>
                 ))}
