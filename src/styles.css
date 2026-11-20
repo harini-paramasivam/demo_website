@@ -5076,9 +5076,10 @@ svg.accent,
 
 .pillar-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   margin-bottom: 6px;
+  line-height: 1.35;
 }
 
 .pillar-header h4 {
@@ -5086,11 +5087,13 @@ svg.accent,
   font-weight: 700;
   color: #ffffff;
   margin: 0;
+  line-height: 1.35;
 }
 
 .pillar-icon--cyan {
   color: #38bdf8;
   flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .pillar-icon--gold {
@@ -5414,16 +5417,18 @@ svg.accent,
 
 .specialist-cert-pill {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start !important;
   gap: 8px;
   font-size: 0.8rem;
   font-weight: 600;
   color: #cbd5e1;
+  line-height: 1.4;
 }
 
 .cert-check-icon {
   color: #38bdf8;
-  flex-shrink: 0;
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
 }
 
 .specialist-tags-list {
@@ -7267,13 +7272,16 @@ svg.accent,
 }
 .case-badge-list li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   color: #1e293b;
   font-size: 0.92rem;
+  line-height: 1.45;
 }
 .case-badge-list li svg {
   color: #0284c7;
+  flex-shrink: 0;
+  margin-top: 3px;
 }
 
 /* 5. INTRO PILLARS & WHY ENHANCEMENTS */
@@ -18207,11 +18215,15 @@ svg.accent,
 
 .blog-practice-check {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   font-size: 0.82rem;
   font-weight: 600;
+  line-height: 1.4;
   color: #1e293b;
+}
+.blog-practice-check .blog-check-icon {
+  margin-top: 2px;
 }
 
 .blog-sidebar-link {
