@@ -23507,33 +23507,92 @@ svg.accent,
 }
 
 /* ========================================================================= */
-/* CATALOG VIEW (EXECUTIVE SLATE ENTERPRISE ARCHITECTURE SHOWCASE) */
+/* SEAMLESS LUXURY BENTO SHOWCASE (CONTINUOUS OBSIDIAN / SLATE EXPERIENCE)   */
 /* ========================================================================= */
-.sol-catalog-view,
-.sol-catalog-view--hybrid {
-  margin-top: 10px;
-  background: radial-gradient(ellipse at 50% 0%, #152038 0%, #0d1527 50%, #080d19 100%) !important;
-  border: 1.5px solid rgba(148, 163, 184, 0.16) !important;
-  border-radius: 28px !important;
-  padding: clamp(24px, 4vw, 44px) !important;
-  box-shadow: 0 25px 65px -15px rgba(2, 6, 23, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+.sol-bento-section {
+  background: radial-gradient(ellipse at 50% 0%, #0d1629 0%, #080e1b 50%, #040711 100%) !important;
+  color: #f8fafc !important;
+  padding: 40px 0 70px !important;
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.14);
 }
 
-.sol-catalog-view::before {
+.sol-bento-section::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.6), transparent);
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(56, 189, 248, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.02) 1px, transparent 1px);
+  background-size: 38px 38px;
+  opacity: 0.55;
   pointer-events: none;
 }
 
-/* CATALOG TOOLBAR: FILTERS + SEARCH + LAYOUT SWITCHER */
-.sol-catalog-toolbar {
+/* 1. LUXURY METRICS TELEMETRY BAR */
+.sol-bento-metrics {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  border-radius: 18px;
+  padding: 14px 18px;
+  margin-bottom: 32px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.45);
+}
+
+.sol-bento-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.sol-bento-metric-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  transition: all 0.2s ease;
+}
+
+.sol-bento-metric-item:hover {
+  background: rgba(56, 189, 248, 0.06);
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+.sol-bento-metric-key {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.sol-bento-metric-val {
+  display: block;
+  font-size: 0.74rem;
+  color: #94a3b8;
+  line-height: 1.35;
+}
+
+@media (max-width: 1050px) {
+  .sol-bento-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .sol-bento-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 2. EXECUTIVE CONTROL BAR (TABS, SEARCH & SWITCHER) */
+.sol-bento-control-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23542,36 +23601,20 @@ svg.accent,
   flex-wrap: wrap;
 }
 
-.sol-catalog-toolbar__left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.sol-catalog-toolbar__right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-/* Category Filter Pills */
-.sol-filter-pills {
+.sol-bento-filter-group {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 0 !important;
   background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 5px;
   border-radius: 999px;
   border: 1px solid rgba(148, 163, 184, 0.18);
+  flex-wrap: wrap;
 }
 
-.sol-filter-pill {
+.sol-bento-tab {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -23586,51 +23629,58 @@ svg.accent,
   transition: all 0.2s ease;
 }
 
-.sol-filter-pill:hover {
+.sol-bento-tab:hover {
+  color: #ffffff;
   background: rgba(255, 255, 255, 0.05);
-  color: #f1f5f9;
 }
 
-.sol-filter-pill.is-active {
+.sol-bento-tab.is-active {
   background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
   color: #ffffff;
-  border-color: rgba(56, 189, 248, 0.5);
+  border-color: rgba(56, 189, 248, 0.4);
   box-shadow: 0 2px 10px rgba(2, 132, 199, 0.35);
 }
 
-.sol-filter-count {
+.sol-bento-tab-count {
   padding: 1px 7px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.12);
   color: #94a3b8;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
 }
 
-.sol-filter-pill.is-active .sol-filter-count {
+.sol-bento-tab.is-active .sol-bento-tab-count {
   background: rgba(255, 255, 255, 0.25);
   color: #ffffff;
 }
 
-/* Real-Time Live Search */
-.sol-catalog-search {
+.sol-bento-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Search Box */
+.sol-bento-search {
   position: relative;
   display: flex;
   align-items: center;
 }
 
-.sol-catalog-search__icon {
+.sol-bento-search__icon {
   position: absolute;
-  left: 14px;
+  left: 12px;
   color: #64748b;
   pointer-events: none;
 }
 
-.sol-catalog-search__input {
+.sol-bento-search__input {
   background: rgba(15, 23, 42, 0.65);
   border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: 999px;
-  padding: 7px 34px 7px 34px;
+  padding: 7px 32px 7px 32px;
   font-size: 0.82rem;
   color: #f1f5f9;
   width: clamp(210px, 22vw, 290px);
@@ -23638,34 +23688,29 @@ svg.accent,
   transition: all 0.2s ease;
 }
 
-.sol-catalog-search__input::placeholder {
+.sol-bento-search__input::placeholder {
   color: #64748b;
 }
 
-.sol-catalog-search__input:focus {
+.sol-bento-search__input:focus {
   border-color: rgba(56, 189, 248, 0.5);
   background: rgba(15, 23, 42, 0.85);
   box-shadow: 0 0 12px rgba(2, 132, 199, 0.25);
 }
 
-.sol-catalog-search__clear {
+.sol-bento-search__clear {
   position: absolute;
-  right: 11px;
+  right: 10px;
   background: transparent;
   border: none;
   color: #94a3b8;
   cursor: pointer;
   display: flex;
   align-items: center;
-  padding: 2px;
 }
 
-.sol-catalog-search__clear:hover {
-  color: #ffffff;
-}
-
-/* Layout Switcher */
-.sol-layout-switcher {
+/* Switcher */
+.sol-bento-switcher {
   display: inline-flex;
   align-items: center;
   background: rgba(15, 23, 42, 0.65);
@@ -23676,7 +23721,7 @@ svg.accent,
   padding: 4px;
 }
 
-.sol-layout-btn {
+.sol-bento-switcher-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -23691,568 +23736,483 @@ svg.accent,
   transition: all 0.2s ease;
 }
 
-.sol-layout-btn:hover {
-  color: #f1f5f9;
+.sol-bento-switcher-btn:hover {
+  color: #ffffff;
 }
 
-.sol-layout-btn.is-active {
+.sol-bento-switcher-btn.is-active {
   background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
   color: #ffffff;
   font-weight: 700;
   box-shadow: 0 2px 10px rgba(2, 132, 199, 0.35);
 }
 
-/* Search Feedback & Empty State */
-.sol-search-feedback {
+/* 3. FLAGSHIP ARCHITECTURE SPOTLIGHT (BENTO HERO CARD) */
+.sol-flagship-spotlight {
+  background: linear-gradient(165deg, rgba(20, 30, 52, 0.95) 0%, rgba(10, 16, 30, 0.98) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.28);
+  border-radius: 24px;
+  padding: clamp(22px, 3.5vw, 36px);
+  margin-bottom: 36px;
+  box-shadow: 0 20px 50px -12px rgba(2, 6, 23, 0.6), 0 0 35px rgba(56, 189, 248, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.sol-flagship-spotlight::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.7), transparent);
+  pointer-events: none;
+}
+
+/* Quick Select Architecture Pills */
+.sol-spotlight-nav-strip {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 16px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(148, 163, 184, 0.14);
-  margin-bottom: 24px;
-  font-size: 0.85rem;
-  color: #cbd5e1;
-}
-
-.sol-search-feedback strong {
-  color: #38bdf8;
-}
-
-.sol-search-reset-btn {
-  background: transparent;
-  border: none;
-  color: #38bdf8;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.sol-empty-state {
-  text-align: center;
-  padding: 48px 24px;
-  background: rgba(15, 23, 42, 0.4);
-  border: 1px dashed rgba(148, 163, 184, 0.2);
-  border-radius: 20px;
-  color: #94a3b8;
-  margin: 20px 0;
-}
-
-.sol-empty-state svg {
-  color: #38bdf8;
-  margin-bottom: 12px;
-}
-
-.sol-empty-state h4 {
-  font-size: 1.15rem;
-  color: #ffffff;
-  margin: 0 0 6px;
-}
-
-.sol-empty-state p {
-  font-size: 0.88rem;
-  color: #94a3b8;
-  margin: 0 0 16px;
-}
-
-/* Section Headings */
-.sol-group-head {
+  gap: 12px;
+  padding-bottom: 18px;
   margin-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
 }
 
-.sol-group-head__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  color: #38bdf8;
-  font-size: 0.76rem;
+.sol-spotlight-nav-label {
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  margin-bottom: 8px;
+  color: #94a3b8;
+  white-space: nowrap;
 }
 
-.sol-group-head__title {
-  font-size: clamp(1.35rem, 2vw, 1.7rem);
-  font-weight: 800;
-  color: #ffffff !important;
-  margin: 0 0 6px;
-}
-
-.sol-group-head__desc {
-  font-size: 0.92rem;
-  color: #94a3b8 !important;
-  margin: 0;
-  max-width: 68ch;
-  line-height: 1.55;
-}
-
-/* ========================================================================= */
-/* LAYOUT 1: EXECUTIVE ARCHITECTURE SHOWCASE ROWS (FLOW VIEW - NOT ONLY GRIDS) */
-/* ========================================================================= */
-.sol-showcase-list {
+.sol-spotlight-nav-pills {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
-.sol-showcase-card {
-  background: linear-gradient(170deg, rgba(18, 27, 46, 0.88) 0%, rgba(11, 18, 32, 0.94) 100%);
+.sol-spotlight-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(148, 163, 184, 0.16);
-  border-radius: 20px;
-  padding: 24px 28px;
-  transition: all 0.25s ease;
-  position: relative;
-  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.3);
+  color: #cbd5e1;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-.sol-showcase-card:hover {
-  border-color: rgba(56, 189, 248, 0.45);
-  transform: translateY(-2px);
-  box-shadow: 0 16px 36px -8px rgba(2, 132, 199, 0.2);
+.sol-spotlight-nav-pill:hover {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
 }
 
-.sol-showcase-main {
-  display: grid;
-  grid-template-columns: 280px 1.1fr 1fr;
-  gap: 26px;
-  align-items: start;
+.sol-spotlight-nav-pill.is-active {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  color: #ffffff;
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
 }
 
-@media (max-width: 1180px) {
-  .sol-showcase-main {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-}
-
-/* Left Column: Identity & Actions */
-.sol-showcase-head {
+/* Spotlight Header */
+.sol-spotlight-header {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 16px;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
-.sol-showcase-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(2, 132, 199, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.28);
+.sol-spotlight-identity {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.sol-spotlight-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(2, 132, 199, 0.15);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
   display: grid;
   place-items: center;
   color: #38bdf8;
   flex-shrink: 0;
+  box-shadow: 0 0 16px rgba(2, 132, 199, 0.2);
 }
 
-.sol-showcase-badges {
+.sol-spotlight-meta-tags {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-bottom: 4px;
+  gap: 8px;
+  margin-bottom: 6px;
   flex-wrap: wrap;
 }
 
 .sol-badge-cat {
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  padding: 2px 8px;
+  padding: 3px 9px;
   border-radius: 999px;
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.25);
   color: #38bdf8;
 }
 
 .sol-badge-tag {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: #94a3b8;
   font-weight: 600;
 }
 
-.sol-showcase-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0;
-  line-height: 1.3;
-}
-
-.sol-showcase-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.sol-btn-blueprint {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  width: 100%;
-  padding: 9px 14px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
-  border: 1px solid rgba(56, 189, 248, 0.35);
-  color: #ffffff;
-  font-size: 0.8rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.3);
-}
-
-.sol-btn-blueprint:hover {
-  background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%);
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.45);
-}
-
-.sol-btn-enquire {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  width: 100%;
-  padding: 7px 12px;
-  border-radius: 9px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  color: #cbd5e1;
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.sol-btn-enquire:hover {
-  color: #38bdf8;
-  border-color: #38bdf8;
-  background: rgba(56, 189, 248, 0.06);
-}
-
-/* UNIFIED SLATE PODS (ZERO RAINBOW COLOR CLUTTER) */
-.sol-meta-pod {
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(148, 163, 184, 0.12);
-  border-radius: 12px;
-  padding: 12px 14px;
-  margin-bottom: 10px;
-}
-
-.sol-meta-pod:last-child {
-  margin-bottom: 0;
-}
-
-.sol-meta-pod__label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.72rem;
+.sol-badge-sla {
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #94a3b8;
-  margin-bottom: 5px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #34d399;
 }
 
-.sol-meta-pod__label svg {
-  color: #38bdf8;
-}
-
-.sol-meta-pod__text {
-  font-size: 0.85rem;
-  line-height: 1.48;
-  color: #e2e8f0;
+.sol-spotlight-title {
+  font-size: clamp(1.4rem, 2.5vw, 1.95rem);
+  font-weight: 800;
+  color: #ffffff;
   margin: 0;
+  line-height: 1.25;
 }
 
-/* Pipeline Flow Chain */
-.sol-flow-chain {
+.sol-spotlight-ctas {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 6px;
-  margin-top: 4px;
+  gap: 10px;
 }
 
-.sol-flow-node {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+.sol-spotlight-cta {
+  white-space: nowrap;
+}
+
+/* Spotlight Pipeline Strip */
+.sol-spotlight-pipeline-box {
   background: rgba(15, 23, 42, 0.7);
   border: 1px solid rgba(148, 163, 184, 0.18);
-  border-radius: 8px;
-  padding: 4px 8px;
-  font-size: 0.76rem;
-  color: #f1f5f9;
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
 }
 
-.sol-flow-node__step {
-  color: #38bdf8;
-  font-weight: 800;
-  font-size: 0.68rem;
+.sol-pipeline-header {
+  margin-bottom: 10px;
 }
 
-.sol-flow-node__arrow {
-  color: #64748b;
-  font-size: 0.8rem;
-  margin-left: 2px;
-}
-
-/* Tech Stack Tags */
-.sol-tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 4px;
-}
-
-.sol-tech-tag {
-  font-size: 0.72rem;
-  padding: 3px 8px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(148, 163, 184, 0.14);
-  color: #cbd5e1;
-  font-weight: 500;
-}
-
-/* Expand Drawer */
-.sol-showcase-expand-bar {
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  display: flex;
-  justify-content: flex-end;
-}
-
-.sol-showcase-expand-btn {
+.sol-pipeline-heading {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: transparent;
-  border: none;
-  color: #38bdf8;
-  font-size: 0.76rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  padding: 0;
-}
-
-.sol-showcase-expand-btn:hover {
-  color: #ffffff;
-}
-
-.sol-showcase-drawer {
-  margin-top: 14px;
-  padding: 16px 18px;
-  background: rgba(9, 14, 27, 0.85);
-  border: 1px solid rgba(148, 163, 184, 0.15);
-  border-radius: 14px;
-  animation: fadeIn 0.2s ease;
-}
-
-.sol-drawer-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-@media (max-width: 900px) {
-  .sol-drawer-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-}
-
-.sol-drawer-subhead {
-  font-size: 0.72rem;
+  gap: 7px;
+  font-size: 0.74rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: #38bdf8;
-  margin: 0 0 8px;
 }
 
-.sol-drawer-items {
-  list-style: disc;
-  padding-left: 16px;
+.sol-pipeline-stages {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sol-pipeline-stage-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 9px;
+  padding: 6px 11px;
+}
+
+.sol-stage-number {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+.sol-stage-text {
+  font-size: 0.8rem;
+  color: #f1f5f9;
+  font-weight: 500;
+}
+
+.sol-stage-connector {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-left: 2px;
+}
+
+/* 2-Column Spotlight Pods */
+.sol-spotlight-pods-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+@media (max-width: 900px) {
+  .sol-spotlight-pods-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sol-spotlight-pod {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+
+.sol-pod-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.sol-pod-head svg {
+  color: #38bdf8;
+}
+
+.sol-pod-head h3 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.sol-pod-list {
+  list-style: none;
+  padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 }
 
-.sol-drawer-items li {
-  font-size: 0.8rem;
-  color: #cbd5e1;
-  line-height: 1.45;
-}
-
-.sol-drawer-flow-list {
+.sol-pod-list li {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: #e2e8f0;
 }
 
-.sol-drawer-flow-item {
-  font-size: 0.78rem;
-  color: #f1f5f9;
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid rgba(148, 163, 184, 0.14);
-  border-left: 3px solid #0284c7;
-  padding: 5px 9px;
-  border-radius: 6px;
+.sol-pod-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #38bdf8;
+  margin-top: 7px;
+  flex-shrink: 0;
 }
 
-.sol-drawer-caseref {
-  margin-top: 12px;
-  padding: 10px 12px;
-  background: rgba(2, 132, 199, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  border-radius: 8px;
+.sol-pod-check {
+  color: #34d399;
+  margin-top: 3px;
+  flex-shrink: 0;
 }
 
-.sol-caseref-label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #38bdf8;
-  display: block;
-  margin-bottom: 2px;
+/* Spotlight Footer */
+.sol-spotlight-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
 }
 
-.sol-caseref-title {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #ffffff;
-  margin: 0 0 4px;
+.sol-spotlight-tech-stack {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.sol-caseref-link {
+.sol-tech-stack-label {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   font-size: 0.74rem;
-  color: #38bdf8;
   font-weight: 700;
-  text-decoration: none;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-/* ========================================================================= */
-/* LAYOUT 2: COMPACT EXECUTIVE CARDS GRID */
-/* ========================================================================= */
-.grid-4-even,
-.solutions-grid {
+.sol-tech-stack-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.sol-tech-pill {
+  font-size: 0.74rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.sol-spotlight-caseref {
+  display: flex;
+  align-items: center;
+}
+
+.sol-caseref-anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: #38bdf8;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.sol-caseref-anchor:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.sol-caseref-text {
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+/* 4. SECONDARY ARCHITECTURES BENTO GRID */
+.sol-bento-secondary-section {
+  margin-top: 36px;
+}
+
+.sol-secondary-head {
+  margin-bottom: 22px;
+}
+
+.sol-secondary-title {
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px;
+}
+
+.sol-secondary-desc {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.sol-bento-cards-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 22px;
 }
 
 @media (max-width: 900px) {
-  .grid-4-even,
-  .solutions-grid {
+  .sol-bento-cards-grid {
     grid-template-columns: 1fr;
   }
 }
 
-.solution-card {
-  background: linear-gradient(170deg, rgba(18, 27, 46, 0.88) 0%, rgba(11, 18, 32, 0.94) 100%) !important;
-  border: 1px solid rgba(148, 163, 184, 0.16) !important;
-  border-radius: 18px !important;
-  padding: 22px !important;
-  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.3) !important;
-  transition: all 0.25s ease !important;
-  display: flex !important;
-  flex-direction: column !important;
-  position: relative !important;
+.sol-bento-card {
+  background: linear-gradient(170deg, rgba(18, 27, 46, 0.88) 0%, rgba(10, 16, 30, 0.95) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 18px;
+  padding: 22px;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.35);
 }
 
-.solution-card:hover {
-  transform: translateY(-3px) !important;
-  border-color: rgba(56, 189, 248, 0.45) !important;
-  box-shadow: 0 16px 36px -8px rgba(2, 132, 199, 0.2) !important;
+.sol-bento-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 16px 36px -8px rgba(2, 132, 199, 0.2);
 }
 
-.solution-card__header {
-  margin-bottom: 14px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.solution-card__top {
+.sol-bento-card__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-.solution-card__icon-box {
+.sol-bento-card__icon {
   width: 40px;
   height: 40px;
   border-radius: 10px;
   background: rgba(2, 132, 199, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.28);
+  border: 1px solid rgba(56, 189, 248, 0.25);
   display: grid;
   place-items: center;
   color: #38bdf8;
-  transition: transform 0.25s;
 }
 
-.solution-card:hover .solution-card__icon-box {
-  transform: scale(1.06);
+.sol-bento-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.solution-card__badge {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  color: #38bdf8;
-}
-
-.solution-card__title {
+.sol-bento-card__title {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #ffffff !important;
-  margin: 0 0 4px;
+  color: #ffffff;
+  margin: 0 0 12px;
   line-height: 1.3;
 }
 
-.solution-card__tag {
-  display: inline-block;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #94a3b8 !important;
-}
-
-/* Unified Card Pods (No Rainbow Boxes) */
-.sol-card-pod {
+.sol-bento-card__pod {
   background: rgba(255, 255, 255, 0.025);
   border: 1px solid rgba(148, 163, 184, 0.12);
-  border-radius: 11px;
+  border-radius: 10px;
   padding: 10px 12px;
   margin-bottom: 10px;
 }
 
-.sol-card-pod__label {
+.sol-bento-pod__label {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.7rem;
+  gap: 5px;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -24260,34 +24220,39 @@ svg.accent,
   margin-bottom: 4px;
 }
 
-.sol-card-pod__label svg {
+.sol-bento-pod__label svg {
   color: #38bdf8;
 }
 
-.sol-card-pod__text {
-  font-size: 0.83rem;
+.sol-bento-pod__text {
+  font-size: 0.82rem;
   line-height: 1.45;
   color: #e2e8f0;
   margin: 0;
 }
 
-.sol-card-pipe-pills {
+.sol-card-pipe-flow {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 4px;
 }
 
-.sol-card-pipe-pill {
+.sol-card-pipe-step {
   display: inline-flex;
   align-items: center;
   gap: 5px;
   background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.18);
+  border: 1px solid rgba(148, 163, 184, 0.16);
   border-radius: 6px;
   padding: 3px 7px;
   font-size: 0.74rem;
   color: #f1f5f9;
+}
+
+.sol-card-pipe-step strong {
+  color: #38bdf8;
+  font-size: 0.68rem;
 }
 
 .sol-card-pipe-more {
@@ -24301,96 +24266,45 @@ svg.accent,
   font-weight: 700;
 }
 
-.sol-card-stack-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 4px;
-}
-
-.sol-card-stack-pill {
-  font-size: 0.72rem;
-  padding: 2px 7px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(148, 163, 184, 0.14);
-  color: #cbd5e1;
-  font-weight: 500;
-}
-
-.sol-card-stack-pill--more {
-  color: #94a3b8;
-}
-
-.sol-card-expand-btn {
+/* Card Actions */
+.sol-bento-card__actions {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 7px 10px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px dashed rgba(148, 163, 184, 0.2);
-  color: #38bdf8;
-  font-size: 0.76rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  margin-top: 4px;
-}
-
-.sol-card-expand-btn:hover {
-  background: rgba(2, 132, 199, 0.1);
-  border-color: #38bdf8;
-  color: #ffffff;
-}
-
-/* Card Action Footer */
-.solution-card__footer {
-  margin-top: auto !important;
+  gap: 8px;
+  margin-top: auto;
   padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
 }
 
-.sol-card-blueprint-btn {
+.sol-bento-inspect-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  width: 100%;
-  padding: 9px 14px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%) !important;
-  border: 1px solid rgba(56, 189, 248, 0.35) !important;
-  color: #ffffff !important;
-  font-size: 0.8rem;
+  gap: 6px;
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #ffffff;
+  font-size: 0.78rem;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.3) !important;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-.sol-card-blueprint-btn:hover {
-  background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%) !important;
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.45) !important;
+.sol-bento-inspect-btn:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
 }
 
-.solution-card__sub-actions {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.sol-card-enquire-btn {
+.sol-bento-enquire-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  width: 100%;
-  padding: 7px 12px;
+  gap: 4px;
+  padding: 8px 12px;
   border-radius: 9px;
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(148, 163, 184, 0.18);
@@ -24398,187 +24312,71 @@ svg.accent,
   font-size: 0.78rem;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-.sol-card-enquire-btn:hover {
+.sol-bento-enquire-btn:hover {
   color: #38bdf8;
   border-color: #38bdf8;
   background: rgba(56, 189, 248, 0.06);
 }
 
-/* ========================================================================= */
-/* LAYOUT 3: COMPARISON MATRIX TABLE (UNIFIED SLATE) */
-/* ========================================================================= */
-.sol-matrix-table-wrap {
-  width: 100%;
-  overflow-x: auto;
-  background: rgba(14, 22, 38, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1.5px solid rgba(148, 163, 184, 0.18);
-  border-radius: 18px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
-  margin-bottom: 24px;
-  -webkit-overflow-scrolling: touch;
+/* 5. CONTINUOUS LUXURY CONSULTATION CTA SECTION */
+.sol-bento-cta-section {
+  background: #030712 !important;
+  padding: 10px 0 60px !important;
 }
 
-.sol-matrix-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-}
-
-.sol-matrix-table th {
-  padding: 14px 18px;
-  font-size: 0.74rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: #38bdf8;
-  background: rgba(9, 14, 27, 0.95);
-  border-bottom: 1.5px solid rgba(148, 163, 184, 0.16);
-  white-space: nowrap;
-}
-
-.sol-matrix-table td {
-  padding: 16px 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  vertical-align: middle;
-  color: #cbd5e1;
-}
-
-.sol-matrix-row {
-  transition: background 0.2s ease;
-}
-
-.sol-matrix-row:hover {
-  background: rgba(56, 189, 248, 0.05);
-}
-
-.sol-matrix-row:last-child td {
-  border-bottom: none;
-}
-
-.sol-matrix-title-flex {
+.sol-luxury-cta-card {
+  background: linear-gradient(165deg, rgba(16, 25, 46, 0.95) 0%, rgba(9, 14, 28, 0.98) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.25);
+  border-radius: 24px;
+  padding: clamp(28px, 4vw, 42px);
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 32px;
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.6);
+  flex-wrap: wrap;
 }
 
-.sol-matrix-icon-box {
-  width: 38px;
-  height: 38px;
-  border-radius: 9px;
-  background: rgba(2, 132, 199, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  display: grid;
-  place-items: center;
-  color: #38bdf8;
-  flex-shrink: 0;
+.sol-luxury-cta-content {
+  flex: 1;
+  min-width: 280px;
 }
 
-.sol-matrix-name {
-  font-size: 0.92rem;
+.sol-cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #38bdf8;
+  margin-bottom: 8px;
+}
+
+.sol-luxury-cta-content h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  font-weight: 800;
   color: #ffffff;
-  margin: 0 0 2px;
+  margin: 0 0 8px;
   line-height: 1.3;
 }
 
-.sol-matrix-subtag {
-  font-size: 0.72rem;
+.sol-luxury-cta-content p {
+  font-size: 0.92rem;
   color: #94a3b8;
-  font-weight: 600;
+  margin: 0;
+  max-width: 65ch;
+  line-height: 1.55;
 }
 
-.sol-matrix-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  padding: 3px 9px;
-  border-radius: 999px;
-  white-space: nowrap;
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  color: #38bdf8;
+.sol-luxury-cta-actions {
+  flex-shrink: 0;
 }
-
-.sol-matrix-challenge {
-  font-size: 0.82rem;
-  line-height: 1.45;
-  color: #e2e8f0;
-  margin: 0 0 3px;
-}
-
-.sol-matrix-more-hint {
-  font-size: 0.7rem;
-  color: #64748b;
-  font-weight: 600;
-}
-
-.sol-matrix-flow-strip {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.sol-matrix-flow-step {
-  font-size: 0.76rem;
-  color: #94a3b8;
-  display: inline-block;
-  white-space: nowrap;
-}
-
-.sol-matrix-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  min-width: 130px;
-}
-
-.sol-matrix-blueprint-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 6px 11px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
-  border: 1px solid rgba(56, 189, 248, 0.35);
-  color: #ffffff;
-  font-size: 0.74rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
-}
-
-.sol-matrix-blueprint-btn:hover {
-  background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%);
-}
-
-.sol-matrix-enquire-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 5px 9px;
-  border-radius: 8px;
-  color: #94a3b8;
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.sol-matrix-enquire-link:hover {
-  color: #38bdf8;
-}
-
 @media (max-width: 1080px) {
   .sol-blueprint-console {
     grid-template-columns: 1fr;

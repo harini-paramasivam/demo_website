@@ -1,26 +1,21 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { 
   ArrowRight, 
-  ArrowLeft,
   CheckCircle2, 
   AlertCircle, 
   Layers, 
   Building2, 
-  ChevronRight,
-  ChevronDown,
-  ChevronUp,
-  Sparkles,
-  Award,
-  SlidersHorizontal,
-  Workflow,
-  Check,
-  LayoutGrid,
-  Table,
-  Filter,
-  ShieldCheck,
-  Search,
-  X
+  Sparkles, 
+  Workflow, 
+  Check, 
+  LayoutGrid, 
+  Table, 
+  ShieldCheck, 
+  Search, 
+  X,
+  ExternalLink,
+  ChevronRight
 } from 'lucide-react';
 import { PageHero } from '../components/ui.jsx';
 import { solutionsData } from '../data/site.js';
@@ -31,6 +26,7 @@ export default function SolutionsOverview() {
   useReveal();
   const { slug } = useParams();
   const navigate = useNavigate();
+  const spotlightRef = useRef(null);
 
   // Find solution matching URL slug if present
   const matchedSolution = useMemo(() => {
@@ -48,59 +44,44 @@ export default function SolutionsOverview() {
     );
   }, [slug]);
 
-  // Active solution in Interactive Console
+  // Active solution in Spotlight
   const [activeSolutionId, setActiveSolutionId] = useState(
     matchedSolution ? matchedSolution.id : solutionsData[0].id
   );
-
-  // Sync active solution whenever URL slug changes
-  useEffect(() => {
-    if (matchedSolution) {
-      setActiveSolutionId(matchedSolution.id);
-      setViewMode('console');
-    }
-  }, [matchedSolution]);
-
-  // View mode: 'console' (Interactive Architecture Blueprint) vs 'grid' (Full Catalog Matrix)
-  const [viewMode, setViewMode] = useState('console');
-
-  // Filter state for catalog view
-  const [filter, setFilter] = useState('all');
-
-  // Layout mode for catalog: 'showcase' (Executive Flow) vs 'cards' (Grid) vs 'matrix' (Comparison Table)
-  const [catalogLayout, setCatalogLayout] = useState('showcase');
-
-  // Real-time keyword search query
-  const [searchQuery, setSearchQuery] = useState('');
 
   // Active solution object
   const activeSolution = useMemo(() => {
     return solutionsData.find((s) => s.id === activeSolutionId) || solutionsData[0];
   }, [activeSolutionId]);
 
-  const activeIndex = useMemo(() => {
-    return solutionsData.findIndex((s) => s.id === activeSolution.id);
-  }, [activeSolution]);
+  // Sync active solution whenever URL slug changes
+  useEffect(() => {
+    if (matchedSolution) {
+      setActiveSolutionId(matchedSolution.id);
+    }
+  }, [matchedSolution]);
 
-  const selectSolution = (sol) => {
+  // Filter state: 'all' | 'industry' | 'need'
+  const [filter, setFilter] = useState('all');
+
+  // Presentation mode: 'showcase' (Luxury Bento Showcase) vs 'matrix' (Comparison Matrix)
+  const [viewMode, setViewMode] = useState('showcase');
+
+  // Real-time keyword search query
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Switch solution in spotlight and update URL
+  const selectSolution = (sol, scroll = true) => {
     setActiveSolutionId(sol.id);
-    setViewMode('console');
     if (sol.slug) {
       navigate(`/solutions/${sol.slug}`, { replace: false });
     }
+    if (scroll && spotlightRef.current) {
+      spotlightRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
-  const handlePrev = () => {
-    const prevIndex = (activeIndex - 1 + solutionsData.length) % solutionsData.length;
-    selectSolution(solutionsData[prevIndex]);
-  };
-
-  const handleNext = () => {
-    const nextIndex = (activeIndex + 1) % solutionsData.length;
-    selectSolution(solutionsData[nextIndex]);
-  };
-
-  // Filtered solutions for catalog view
+  // Filtered solutions based on category filter and search keyword
   const filteredSolutions = useMemo(() => {
     return solutionsData.filter((sol) => {
       const matchCat = filter === 'all' || sol.category === filter;
@@ -119,563 +100,422 @@ export default function SolutionsOverview() {
     });
   }, [filter, searchQuery]);
 
-  const industrySolutions = useMemo(() => {
-    return solutionsData.filter((s) => s.category === 'industry');
-  }, []);
-
-  const needSolutions = useMemo(() => {
-    return solutionsData.filter((s) => s.category === 'need');
-  }, []);
+  // Secondary solutions excluding the one featured in the spotlight
+  const secondarySolutions = useMemo(() => {
+    return filteredSolutions.filter((s) => s.id !== activeSolution.id);
+  }, [filteredSolutions, activeSolution.id]);
 
   return (
     <>
+      {/* 1. MASTER FUTURISTIC HERO BANNER */}
       <PageHero
-        eyebrow={slug && activeSolution ? `${activeSolution.tag} Solution` : 'Solutions Overview'}
-        title={slug && activeSolution ? activeSolution.title : 'Practical Solutions for Real Challenges'}
-        crumbs={slug && activeSolution ? ['Home', 'Solutions', activeSolution.title] : ['Home', 'Solutions']}
+        eyebrow={slug && activeSolution ? `${activeSolution.tag} Solution` : 'Solutions Architecture'}
+        title={slug && activeSolution ? activeSolution.title : 'Enterprise Architectures Engineered for Scale'}
       >
         {slug && activeSolution
           ? `Purpose-built architecture and delivery frameworks engineered specifically for ${activeSolution.title.toLowerCase()}. Explore operational challenges, workflow blueprints, and verified benefits.`
-          : 'Velvora applies its services to solve industry‑specific and organizational challenges. Each solution includes the challenge, the solution flow, the services included, and the benefits delivered.'}
+          : 'Mission-critical transformation blueprints, automated publishing pipelines, and certified accessibility architectures engineered with strict SLA guarantees.'}
       </PageHero>
 
-      {/* METRIC HIGHLIGHT STRIP */}
-      <section className="sol-metrics-strip" aria-label="Key Solutions Capabilities">
+      {/* 2. SEAMLESS LUXURY BENTO SECTION (UNIFIED CONTINUOUS DARK-SLATE CANVAS) */}
+      <section className="sol-bento-section" aria-label="Solutions Showcase">
         <div className="container">
-          <div className="sol-metrics-grid">
-            <div className="sol-metric-pill">
-              <span className="sol-metric-dot sol-metric-dot--blue" />
-              <strong className="sol-metric-key">9 Enterprise Architectures</strong>
-              <span className="sol-metric-val">End-to-End Solutions</span>
-            </div>
-            <div className="sol-metric-pill">
-              <span className="sol-metric-dot sol-metric-dot--cyan" />
-              <strong className="sol-metric-key">4 Industry Frameworks</strong>
-              <span className="sol-metric-val">Publishers, EdTech &amp; Corporate</span>
-            </div>
-            <div className="sol-metric-pill">
-              <span className="sol-metric-dot sol-metric-dot--emerald" />
-              <strong className="sol-metric-key">5 Operational Needs</strong>
-              <span className="sol-metric-val">Modernization, AI &amp; Backlists</span>
-            </div>
-            <div className="sol-metric-pill">
-              <span className="sol-metric-dot sol-metric-dot--purple" />
-              <strong className="sol-metric-key">100% Verified SLAs</strong>
-              <span className="sol-metric-val">Zero Production Disruption</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SOLUTIONS COMMAND CENTER SECTION */}
-      <section className="section section--paper sol-command-section" aria-labelledby="solutions-hub-heading">
-        <div className="container">
-          {/* TOP CONTROLS: VIEW SWITCHER */}
-          <div className="sol-top-bar sol-top-bar--centered">
-            <div className="sol-view-switcher" role="tablist" aria-label="Solutions display mode">
-              <button
-                type="button"
-                role="tab"
-                aria-selected={viewMode === 'console'}
-                className={`sol-view-btn${viewMode === 'console' ? ' is-active' : ''}`}
-                onClick={() => setViewMode('console')}
-              >
-                <Workflow size={17} aria-hidden="true" />
-                <span>Interactive Blueprint</span>
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected={viewMode === 'grid'}
-                className={`sol-view-btn${viewMode === 'grid' ? ' is-active' : ''}`}
-                onClick={() => setViewMode('grid')}
-              >
-                <LayoutGrid size={17} aria-hidden="true" />
-                <span>Full Portfolio Catalog</span>
-              </button>
-            </div>
-          </div>
-
-          {/* ========================================================================= */}
-          {/* VIEW MODE 1: INTERACTIVE ARCHITECTURE BLUEPRINT (COMMAND CONSOLE) */}
-          {/* ========================================================================= */}
-          {viewMode === 'console' && (
-            <div className="sol-blueprint-console">
-              {/* LEFT RAIL: SOLUTION SELECTOR */}
-              <aside className="sol-rail" aria-label="Select a solution architecture">
-                <div className="sol-rail-card">
-                  <div className="sol-rail-header">
-                    <Filter size={15} style={{ color: '#0284c7' }} />
-                    <span>Select Architecture</span>
-                  </div>
-
-                  {/* Industry Group */}
-                  <div className="sol-rail-group">
-                    <span className="sol-rail-group-label">By Industry Sector (4)</span>
-                    <div className="sol-rail-list">
-                      {industrySolutions.map((sol) => {
-                        const isSelected = sol.id === activeSolution.id;
-                        return (
-                          <button
-                            key={sol.id}
-                            type="button"
-                            className={`sol-rail-item${isSelected ? ' is-active' : ''}`}
-                            onClick={() => selectSolution(sol)}
-                            aria-selected={isSelected}
-                          >
-                            <span className="sol-rail-item__icon">
-                              <Icon name={sol.icon} size={17} />
-                            </span>
-                            <div className="sol-rail-item__text">
-                              <strong>{sol.title}</strong>
-                              <span>{sol.tag}</span>
-                            </div>
-                            <ChevronRight size={14} className="sol-rail-item__arrow" aria-hidden="true" />
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* Operational Need Group */}
-                  <div className="sol-rail-group" style={{ marginTop: '14px' }}>
-                    <span className="sol-rail-group-label">By Operational Need (5)</span>
-                    <div className="sol-rail-list">
-                      {needSolutions.map((sol) => {
-                        const isSelected = sol.id === activeSolution.id;
-                        return (
-                          <button
-                            key={sol.id}
-                            type="button"
-                            className={`sol-rail-item${isSelected ? ' is-active' : ''}`}
-                            onClick={() => selectSolution(sol)}
-                            aria-selected={isSelected}
-                          >
-                            <span className="sol-rail-item__icon">
-                              <Icon name={sol.icon} size={17} />
-                            </span>
-                            <div className="sol-rail-item__text">
-                              <strong>{sol.title}</strong>
-                              <span>{sol.tag}</span>
-                            </div>
-                            <ChevronRight size={14} className="sol-rail-item__arrow" aria-hidden="true" />
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </aside>
-
-              {/* RIGHT STAGE: ACTIVE SOLUTION ARCHITECTURE DISPLAY */}
-              <main className="sol-stage" aria-live="polite">
-                <article className="sol-stage-card">
-                  {/* Stage Top Banner */}
-                  <header className="sol-stage-header">
-                    <div className="sol-stage-header__icon-box">
-                      <Icon name={activeSolution.icon} size={30} />
-                    </div>
-                    <div className="sol-stage-header__info">
-                      <div className="sol-stage-header__meta">
-                        <span className="sol-stage-badge sol-stage-badge--cat">
-                          {activeSolution.categoryLabel}
-                        </span>
-                        <span className="sol-stage-badge sol-stage-badge--tag">
-                          {activeSolution.tag}
-                        </span>
-                      </div>
-                      <h2 className="sol-stage-header__title">{activeSolution.title}</h2>
-                    </div>
-                    <div className="sol-stage-header__action">
-                      <Link
-                        to={`/contact?subject=${encodeURIComponent(activeSolution.ctaSubject || activeSolution.title)}`}
-                        className="btn btn--orange sol-stage-cta-btn"
-                      >
-                        <span>{activeSolution.ctaText}</span>
-                        <ArrowRight size={16} aria-hidden="true" />
-                      </Link>
-                    </div>
-                  </header>
-
-                  {/* BALANCED 2-COLUMN STAGE BODY - ZERO ARTIFICIAL GAPS */}
-                  <div className="sol-stage-body">
-                    {/* LEFT COLUMN */}
-                    <div className="sol-stage-col sol-stage-col--workflow">
-                      {/* 1. THE CHALLENGE */}
-                      <div className="sol-module sol-module--challenges">
-                        <div className="sol-module-head">
-                          <span className="sol-module-head__icon sol-module-head__icon--alert">
-                            <AlertCircle size={15} aria-hidden="true" />
-                          </span>
-                          <h3 className="sol-module-head__title">The Operational Challenge</h3>
-                        </div>
-                        <ul className="sol-challenge-list">
-                          {activeSolution.challenges.map((c, i) => (
-                            <li key={i}>
-                              <span className="sol-challenge-dot" />
-                              <span>{c}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* 2. SOLUTION FLOW PIPELINE (COMPACT CONNECTED ROADMAP) */}
-                      <div className="sol-module sol-module--flow">
-                        <div className="sol-module-head">
-                          <span className="sol-module-head__icon sol-module-head__icon--flow">
-                            <Workflow size={15} aria-hidden="true" />
-                          </span>
-                          <h3 className="sol-module-head__title">Velvora Solution Flow Pipeline</h3>
-                        </div>
-                        <ol className="sol-flow-list">
-                          {activeSolution.flow.map((step, i) => (
-                            <li key={i} className="sol-flow-item">
-                              <span className="sol-flow-step-num">{i + 1}</span>
-                              <span className="sol-flow-step-text">{step}</span>
-                            </li>
-                          ))}
-                        </ol>
-                      </div>
-                    </div>
-
-                    {/* RIGHT COLUMN */}
-                    <div className="sol-stage-col sol-stage-col--tech">
-                      {/* 3. SERVICES INCLUDED */}
-                      <div className="sol-module sol-module--services">
-                        <div className="sol-module-head">
-                          <span className="sol-module-head__icon sol-module-head__icon--services">
-                            <Layers size={15} aria-hidden="true" />
-                          </span>
-                          <h3 className="sol-module-head__title">Included Services &amp; Technology</h3>
-                        </div>
-                        <div className="sol-services-tags">
-                          {activeSolution.servicesIncluded.map((s) => (
-                            <span key={s} className="sol-service-pill">
-                              {s}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* 4. VERIFIED BUSINESS BENEFITS */}
-                      <div className="sol-module sol-module--benefits">
-                        <div className="sol-module-head">
-                          <span className="sol-module-head__icon sol-module-head__icon--benefits">
-                            <CheckCircle2 size={15} aria-hidden="true" />
-                          </span>
-                          <h3 className="sol-module-head__title">Verified Business Outcomes</h3>
-                        </div>
-                        <ul className="sol-benefits-list">
-                          {activeSolution.benefits.map((b, i) => (
-                            <li key={i}>
-                              <Check size={15} className="sol-benefit-check" aria-hidden="true" />
-                              <span>{b}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* 5. VALIDATED CASE STUDY SPOTLIGHT */}
-                      {activeSolution.caseStudy && (
-                        <div className="sol-module sol-module--casestudy">
-                          <div className="sol-module-head">
-                            <span className="sol-module-head__icon sol-module-head__icon--case">
-                              <Award size={15} aria-hidden="true" />
-                            </span>
-                            <h3 className="sol-module-head__title">Validated In Production</h3>
-                          </div>
-                          <p className="sol-casestudy-text">{activeSolution.caseStudy}</p>
-                          {activeSolution.caseStudyLink && (
-                            <Link to={activeSolution.caseStudyLink} className="sol-casestudy-link">
-                              <span>Read Full Case Study</span>
-                              <ArrowRight size={14} aria-hidden="true" />
-                            </Link>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Stage Bottom Navigation Stepper */}
-                  <footer className="sol-stage-footer">
-                    <div className="sol-stepper-btns">
-                      <button
-                        type="button"
-                        className="sol-nav-stepper sol-nav-stepper--prev"
-                        onClick={handlePrev}
-                        aria-label="View previous solution"
-                      >
-                        <ArrowLeft size={16} aria-hidden="true" />
-                        <span>Previous Solution</span>
-                      </button>
-                      <button
-                        type="button"
-                        className="sol-nav-stepper sol-nav-stepper--next"
-                        onClick={handleNext}
-                        aria-label="View next solution"
-                      >
-                        <span>Next Solution</span>
-                        <ArrowRight size={16} aria-hidden="true" />
-                      </button>
-                    </div>
-                    <div className="sol-stepper-indicator">
-                      <span>Architecture <strong>{activeIndex + 1}</strong> of <strong>{solutionsData.length}</strong></span>
-                    </div>
-                  </footer>
-                </article>
-              </main>
-            </div>
-          )}
-
-          {/* ========================================================================= */}
-          {/* VIEW MODE 2: COMPLETE PORTFOLIO CATALOG (SHOWCASE, GRID & MATRIX VIEWS) */}
-          {/* ========================================================================= */}
-          {viewMode === 'grid' && (
-            <div className="sol-catalog-view sol-catalog-view--hybrid">
-              {/* Category Filter Tabs, Real-Time Search & Layout Switcher Toolbar */}
-              <div className="sol-catalog-toolbar">
-                <div className="sol-catalog-toolbar__left">
-                  <div className="sol-filter-pills" role="tablist" aria-label="Filter catalog">
-                    <button
-                      type="button"
-                      className={`sol-filter-pill${filter === 'all' ? ' is-active' : ''}`}
-                      onClick={() => setFilter('all')}
-                    >
-                      <SlidersHorizontal size={14} />
-                      <span>All Architectures</span>
-                      <span className="sol-filter-count">{solutionsData.length}</span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`sol-filter-pill${filter === 'industry' ? ' is-active' : ''}`}
-                      onClick={() => setFilter('industry')}
-                    >
-                      <Building2 size={14} />
-                      <span>Industry Frameworks</span>
-                      <span className="sol-filter-count">
-                        {solutionsData.filter((s) => s.category === 'industry').length}
-                      </span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`sol-filter-pill${filter === 'need' ? ' is-active' : ''}`}
-                      onClick={() => setFilter('need')}
-                    >
-                      <Sparkles size={14} />
-                      <span>Operational Needs</span>
-                      <span className="sol-filter-count">
-                        {solutionsData.filter((s) => s.category === 'need').length}
-                      </span>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="sol-catalog-toolbar__right">
-                  {/* Real-time search box */}
-                  <div className="sol-catalog-search">
-                    <Search size={14} className="sol-catalog-search__icon" />
-                    <input
-                      type="text"
-                      className="sol-catalog-search__input"
-                      placeholder="Search architectures, standards..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      aria-label="Search architectures"
-                    />
-                    {searchQuery && (
-                      <button
-                        type="button"
-                        className="sol-catalog-search__clear"
-                        onClick={() => setSearchQuery('')}
-                        aria-label="Clear search"
-                        title="Clear search"
-                      >
-                        <X size={13} />
-                      </button>
-                    )}
-                  </div>
-
-                  {/* Display Mode Switcher (Showcase Flow vs Cards Grid vs Matrix) */}
-                  <div className="sol-layout-switcher" role="radiogroup" aria-label="Catalog layout mode">
-                    <button
-                      type="button"
-                      className={`sol-layout-btn${catalogLayout === 'showcase' ? ' is-active' : ''}`}
-                      onClick={() => setCatalogLayout('showcase')}
-                      title="Architecture Showcase Flow"
-                    >
-                      <Workflow size={14} />
-                      <span>Showcase Flow</span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`sol-layout-btn${catalogLayout === 'cards' ? ' is-active' : ''}`}
-                      onClick={() => setCatalogLayout('cards')}
-                      title="Compact Cards Grid"
-                    >
-                      <LayoutGrid size={14} />
-                      <span>Grid</span>
-                    </button>
-                    <button
-                      type="button"
-                      className={`sol-layout-btn${catalogLayout === 'matrix' ? ' is-active' : ''}`}
-                      onClick={() => setCatalogLayout('matrix')}
-                      title="Comparison Matrix Table"
-                    >
-                      <Table size={14} />
-                      <span>Comparison Matrix</span>
-                    </button>
-                  </div>
+          {/* A. LUXURY TELEMETRY METRICS BAR */}
+          <div className="sol-bento-metrics" aria-label="Enterprise capability indicators">
+            <div className="sol-bento-metrics-grid">
+              <div className="sol-bento-metric-item">
+                <span className="sol-metric-dot sol-metric-dot--cyan" />
+                <div className="sol-bento-metric-text">
+                  <strong className="sol-bento-metric-key">9 Enterprise Architectures</strong>
+                  <span className="sol-bento-metric-val">End-to-End Solutions</span>
                 </div>
               </div>
 
-              {/* Search Active Notification Feedback */}
-              {searchQuery && (
-                <div className="sol-search-feedback">
-                  <span>
-                    Found <strong>{filteredSolutions.length}</strong> {filteredSolutions.length === 1 ? 'architecture' : 'architectures'} matching &ldquo;{searchQuery}&rdquo;
-                  </span>
-                  <button type="button" onClick={() => setSearchQuery('')} className="sol-search-reset-btn">
-                    Reset Search
-                  </button>
+              <div className="sol-bento-metric-item">
+                <span className="sol-metric-dot sol-metric-dot--blue" />
+                <div className="sol-bento-metric-text">
+                  <strong className="sol-bento-metric-key">4 Industry Frameworks</strong>
+                  <span className="sol-bento-metric-val">Publishers, EdTech &amp; Enterprise</span>
                 </div>
-              )}
+              </div>
 
-              {/* Empty Search State */}
-              {filteredSolutions.length === 0 ? (
-                <div className="sol-empty-state">
-                  <AlertCircle size={28} />
-                  <h4>No architectures matched your search</h4>
-                  <p>Try searching for terms like &ldquo;XML&rdquo;, &ldquo;Accessibility&rdquo;, &ldquo;AI&rdquo;, &ldquo;Workflow&rdquo;, or &ldquo;EPUB&rdquo;.</p>
-                  <button type="button" onClick={() => { setSearchQuery(''); setFilter('all'); }} className="btn btn--blue btn--sm">
-                    View All 9 Architectures
-                  </button>
+              <div className="sol-bento-metric-item">
+                <span className="sol-metric-dot sol-metric-dot--emerald" />
+                <div className="sol-bento-metric-text">
+                  <strong className="sol-bento-metric-key">5 Operational Needs</strong>
+                  <span className="sol-bento-metric-val">Modernization, AI &amp; Backlists</span>
                 </div>
-              ) : catalogLayout === 'matrix' ? (
-                /* VIEW PRESENTATION 1: COMPARISON MATRIX TABLE */
-                <SolutionsMatrixTable 
-                  solutions={filteredSolutions} 
-                  onSelect={selectSolution} 
+              </div>
+
+              <div className="sol-bento-metric-item">
+                <span className="sol-metric-dot sol-metric-dot--purple" />
+                <div className="sol-bento-metric-text">
+                  <strong className="sol-bento-metric-key">100% Verified SLAs</strong>
+                  <span className="sol-bento-metric-val">Zero Disruption Guarantee</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* B. EXECUTIVE CONTROL BAR (FILTERS, SEARCH & VIEW MODE SWITCHER) */}
+          <div className="sol-bento-control-bar">
+            {/* Left: Category Filter Tabs */}
+            <div className="sol-bento-filter-group" role="tablist" aria-label="Filter solutions">
+              <button
+                type="button"
+                className={`sol-bento-tab${filter === 'all' ? ' is-active' : ''}`}
+                onClick={() => setFilter('all')}
+              >
+                <span>All Architectures</span>
+                <span className="sol-bento-tab-count">{solutionsData.length}</span>
+              </button>
+              <button
+                type="button"
+                className={`sol-bento-tab${filter === 'industry' ? ' is-active' : ''}`}
+                onClick={() => setFilter('industry')}
+              >
+                <Building2 size={14} />
+                <span>Industry Sectors</span>
+                <span className="sol-bento-tab-count">
+                  {solutionsData.filter((s) => s.category === 'industry').length}
+                </span>
+              </button>
+              <button
+                type="button"
+                className={`sol-bento-tab${filter === 'need' ? ' is-active' : ''}`}
+                onClick={() => setFilter('need')}
+              >
+                <Sparkles size={14} />
+                <span>Operational Needs</span>
+                <span className="sol-bento-tab-count">
+                  {solutionsData.filter((s) => s.category === 'need').length}
+                </span>
+              </button>
+            </div>
+
+            {/* Right: Search & Presentation Switcher */}
+            <div className="sol-bento-actions-group">
+              {/* Real-time search box */}
+              <div className="sol-bento-search">
+                <Search size={14} className="sol-bento-search__icon" />
+                <input
+                  type="text"
+                  className="sol-bento-search__input"
+                  placeholder="Search architectures or standards..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  aria-label="Search architectures"
                 />
-              ) : catalogLayout === 'showcase' ? (
-                /* VIEW PRESENTATION 2: EXECUTIVE ARCHITECTURE SHOWCASE (FLOW VIEW) */
-                filter === 'all' && !searchQuery.trim() ? (
-                  <div className="sol-catalog-sections">
-                    {/* SECTION 1: INDUSTRY SECTORS */}
-                    <div className="sol-catalog-group">
-                      <div className="sol-group-head">
-                        <div className="sol-group-head__badge">
-                          <Building2 size={15} />
-                          <span>Industry Frameworks</span>
-                        </div>
-                        <h3 className="sol-group-head__title">Solutions by Industry (4 Frameworks)</h3>
-                        <p className="sol-group-head__desc">
-                          Domain-tailored transformation pipelines addressing publishers, higher education, enterprises, and global compliance.
-                        </p>
-                      </div>
+                {searchQuery && (
+                  <button
+                    type="button"
+                    className="sol-bento-search__clear"
+                    onClick={() => setSearchQuery('')}
+                    aria-label="Clear search query"
+                  >
+                    <X size={13} />
+                  </button>
+                )}
+              </div>
 
-                      <div className="sol-showcase-list">
-                        {industrySolutions.map((sol) => (
-                          <CatalogSolutionShowcaseRow key={sol.id} sol={sol} onSelect={() => selectSolution(sol)} />
-                        ))}
-                      </div>
+              {/* View Switcher: Showcase vs Matrix */}
+              <div className="sol-bento-switcher" role="radiogroup" aria-label="Catalog presentation">
+                <button
+                  type="button"
+                  className={`sol-bento-switcher-btn${viewMode === 'showcase' ? ' is-active' : ''}`}
+                  onClick={() => setViewMode('showcase')}
+                  title="Luxury Bento Architecture Showcase"
+                >
+                  <LayoutGrid size={14} />
+                  <span>Bento Showcase</span>
+                </button>
+                <button
+                  type="button"
+                  className={`sol-bento-switcher-btn${viewMode === 'matrix' ? ' is-active' : ''}`}
+                  onClick={() => setViewMode('matrix')}
+                  title="Enterprise Comparison Matrix Table"
+                >
+                  <Table size={14} />
+                  <span>Comparison Matrix</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* C. ACTIVE SEARCH FEEDBACK */}
+          {searchQuery && (
+            <div className="sol-search-feedback">
+              <span>
+                Found <strong>{filteredSolutions.length}</strong> {filteredSolutions.length === 1 ? 'architecture' : 'architectures'} matching &ldquo;{searchQuery}&rdquo;
+              </span>
+              <button type="button" onClick={() => setSearchQuery('')} className="sol-search-reset-btn">
+                Reset Search
+              </button>
+            </div>
+          )}
+
+          {/* D. EMPTY SEARCH STATE */}
+          {filteredSolutions.length === 0 ? (
+            <div className="sol-empty-state">
+              <AlertCircle size={32} />
+              <h4>No matching architectures found</h4>
+              <p>Try searching for terms like &ldquo;XML&rdquo;, &ldquo;Accessibility&rdquo;, &ldquo;AI&rdquo;, or &ldquo;EPUB&rdquo;.</p>
+              <button
+                type="button"
+                onClick={() => { setSearchQuery(''); setFilter('all'); }}
+                className="btn btn--blue btn--sm"
+              >
+                View All 9 Architectures
+              </button>
+            </div>
+          ) : viewMode === 'matrix' ? (
+            /* E. VIEW MODE: COMPARISON MATRIX TABLE */
+            <SolutionsMatrixTable 
+              solutions={filteredSolutions} 
+              onSelect={(sol) => {
+                selectSolution(sol);
+                setViewMode('showcase');
+              }} 
+            />
+          ) : (
+            /* F. VIEW MODE: LUXURY BENTO SHOWCASE */
+            <div className="sol-bento-showcase">
+              {/* 1. FLAGSHIP ARCHITECTURE SPOTLIGHT (BENTO HERO CARD) */}
+              <div ref={spotlightRef} className="sol-flagship-spotlight">
+                {/* Spotlight Top Bar: Quick Architecture Switcher Pills */}
+                <div className="sol-spotlight-nav-strip">
+                  <span className="sol-spotlight-nav-label">Select Architecture:</span>
+                  <div className="sol-spotlight-nav-pills">
+                    {solutionsData.map((sol) => {
+                      const isSelected = sol.id === activeSolution.id;
+                      return (
+                        <button
+                          key={sol.id}
+                          type="button"
+                          className={`sol-spotlight-nav-pill${isSelected ? ' is-active' : ''}`}
+                          onClick={() => selectSolution(sol, false)}
+                          aria-selected={isSelected}
+                        >
+                          <Icon name={sol.icon} size={13} />
+                          <span>{sol.title}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Spotlight Core Content */}
+                <div className="sol-spotlight-header">
+                  <div className="sol-spotlight-identity">
+                    <div className="sol-spotlight-icon-wrap">
+                      <Icon name={activeSolution.icon} size={28} />
                     </div>
-
-                    {/* SECTION 2: OPERATIONAL NEEDS */}
-                    <div className="sol-catalog-group" style={{ marginTop: '48px' }}>
-                      <div className="sol-group-head">
-                        <div className="sol-group-head__badge">
-                          <Sparkles size={15} />
-                          <span>Operational Needs</span>
-                        </div>
-                        <h3 className="sol-group-head__title">Solutions by Need (5 Architectures)</h3>
-                        <p className="sol-group-head__desc">
-                          Targeted workflows addressing backlists, automated XML ingestion, custom application engineering, and executive BI.
-                        </p>
+                    <div>
+                      <div className="sol-spotlight-meta-tags">
+                        <span className="sol-badge-cat">{activeSolution.categoryLabel}</span>
+                        <span className="sol-badge-tag">{activeSolution.tag}</span>
+                        <span className="sol-badge-sla">Verified SLA Delivery</span>
                       </div>
-
-                      <div className="sol-showcase-list">
-                        {needSolutions.map((sol) => (
-                          <CatalogSolutionShowcaseRow key={sol.id} sol={sol} onSelect={() => selectSolution(sol)} />
-                        ))}
-                      </div>
+                      <h2 className="sol-spotlight-title">{activeSolution.title}</h2>
                     </div>
                   </div>
-                ) : (
-                  <div className="sol-showcase-list">
-                    {filteredSolutions.map((sol) => (
-                      <CatalogSolutionShowcaseRow key={sol.id} sol={sol} onSelect={() => selectSolution(sol)} />
+
+                  <div className="sol-spotlight-ctas">
+                    <Link
+                      to={`/contact?subject=${encodeURIComponent(activeSolution.ctaSubject || activeSolution.title)}`}
+                      className="btn btn--blue btn--glow sol-spotlight-cta"
+                    >
+                      <span>Deploy Architecture Blueprint</span>
+                      <ArrowRight size={15} />
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Interactive End-to-End Pipeline Roadmap Strip */}
+                <div className="sol-spotlight-pipeline-box">
+                  <div className="sol-pipeline-header">
+                    <span className="sol-pipeline-heading">
+                      <Workflow size={14} />
+                      <span>End-to-End Execution Sequence ({activeSolution.flow.length} Production Stages)</span>
+                    </span>
+                  </div>
+                  <div className="sol-pipeline-stages">
+                    {activeSolution.flow.map((step, idx) => (
+                      <div key={idx} className="sol-pipeline-stage-node">
+                        <span className="sol-stage-number">0{idx + 1}</span>
+                        <span className="sol-stage-text">{step}</span>
+                        {idx < activeSolution.flow.length - 1 && (
+                          <span className="sol-stage-connector" aria-hidden="true">→</span>
+                        )}
+                      </div>
                     ))}
                   </div>
-                )
-              ) : (
-                /* VIEW PRESENTATION 3: COMPACT CARDS GRID */
-                filter === 'all' && !searchQuery.trim() ? (
-                  <div className="sol-catalog-sections">
-                    {/* SECTION 1: BY INDUSTRY SECTOR */}
-                    <div className="sol-catalog-group">
-                      <div className="sol-group-head">
-                        <div className="sol-group-head__badge">
-                          <Building2 size={15} />
-                          <span>Industry Frameworks</span>
-                        </div>
-                        <h3 className="sol-group-head__title">Solutions by Industry (4 Frameworks)</h3>
-                        <p className="sol-group-head__desc">
-                          Domain-tailored transformation pipelines addressing publishers, higher education, enterprises, and global compliance.
-                        </p>
-                      </div>
+                </div>
 
-                      <div className="grid-4-even">
-                        {industrySolutions.map((sol) => (
-                          <CatalogSolutionCard key={sol.id} sol={sol} onSelect={() => selectSolution(sol)} />
-                        ))}
-                      </div>
+                {/* 2-Column Balanced Architecture Pods */}
+                <div className="sol-spotlight-pods-grid">
+                  {/* Left Pod: Operational Bottlenecks Addressed */}
+                  <div className="sol-spotlight-pod">
+                    <div className="sol-pod-head">
+                      <AlertCircle size={15} />
+                      <h3>The Operational Challenge</h3>
                     </div>
+                    <ul className="sol-pod-list">
+                      {activeSolution.challenges.map((c, idx) => (
+                        <li key={idx}>
+                          <span className="sol-pod-dot" />
+                          <span>{c}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                    {/* SECTION 2: BY OPERATIONAL NEED */}
-                    <div className="sol-catalog-group" style={{ marginTop: '48px' }}>
-                      <div className="sol-group-head">
-                        <div className="sol-group-head__badge">
-                          <Sparkles size={15} />
-                          <span>Operational Needs</span>
-                        </div>
-                        <h3 className="sol-group-head__title">Solutions by Need (5 Architectures)</h3>
-                        <p className="sol-group-head__desc">
-                          Targeted workflows addressing backlists, automated XML ingestion, custom application engineering, and executive BI.
-                        </p>
-                      </div>
+                  {/* Right Pod: Verified Business Benefits */}
+                  <div className="sol-spotlight-pod">
+                    <div className="sol-pod-head">
+                      <CheckCircle2 size={15} />
+                      <h3>Verified Business Outcomes &amp; SLA</h3>
+                    </div>
+                    <ul className="sol-pod-list">
+                      {activeSolution.benefits.map((b, idx) => (
+                        <li key={idx}>
+                          <Check size={14} className="sol-pod-check" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
 
-                      <div className="solutions-grid">
-                        {needSolutions.map((sol) => (
-                          <CatalogSolutionCard key={sol.id} sol={sol} onSelect={() => selectSolution(sol)} />
-                        ))}
-                      </div>
+                {/* Spotlight Footer: Included Tech Stack & Case Study Link */}
+                <div className="sol-spotlight-footer">
+                  <div className="sol-spotlight-tech-stack">
+                    <span className="sol-tech-stack-label">
+                      <Layers size={13} /> Integrated Stack:
+                    </span>
+                    <div className="sol-tech-stack-pills">
+                      {activeSolution.servicesIncluded.map((s) => (
+                        <span key={s} className="sol-tech-pill">{s}</span>
+                      ))}
                     </div>
                   </div>
-                ) : (
-                  <div className="solutions-grid">
-                    {filteredSolutions.map((sol) => (
-                      <CatalogSolutionCard key={sol.id} sol={sol} onSelect={() => selectSolution(sol)} />
+
+                  {activeSolution.caseStudy && (
+                    <div className="sol-spotlight-caseref">
+                      {activeSolution.caseStudyLink ? (
+                        <Link to={activeSolution.caseStudyLink} className="sol-caseref-anchor">
+                          <span>Case Study: {activeSolution.caseStudy}</span>
+                          <ExternalLink size={12} />
+                        </Link>
+                      ) : (
+                        <span className="sol-caseref-text">Case Study: {activeSolution.caseStudy}</span>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* 2. SECONDARY ARCHITECTURES BENTO GRID */}
+              {secondarySolutions.length > 0 && (
+                <div className="sol-bento-secondary-section">
+                  <div className="sol-secondary-head">
+                    <h3 className="sol-secondary-title">
+                      {filter === 'all' ? 'Explore All Other Enterprise Architectures' : `Filtered Architectures (${secondarySolutions.length})`}
+                    </h3>
+                    <p className="sol-secondary-desc">
+                      Select any architecture below to inspect its live execution sequence, SLA deliverables, and verified benefits.
+                    </p>
+                  </div>
+
+                  <div className="sol-bento-cards-grid">
+                    {secondarySolutions.map((sol) => (
+                      <article key={sol.id} className="sol-bento-card">
+                        <div className="sol-bento-card__top">
+                          <div className="sol-bento-card__icon">
+                            <Icon name={sol.icon} size={22} />
+                          </div>
+                          <div className="sol-bento-card__meta">
+                            <span className="sol-badge-cat">{sol.categoryLabel}</span>
+                            <span className="sol-badge-tag">{sol.tag}</span>
+                          </div>
+                        </div>
+
+                        <h4 className="sol-bento-card__title">{sol.title}</h4>
+
+                        {/* Operational Bottleneck Snapshot */}
+                        <div className="sol-bento-card__pod">
+                          <span className="sol-bento-pod__label">
+                            <AlertCircle size={12} /> Operational Bottleneck
+                          </span>
+                          <p className="sol-bento-pod__text">{sol.challenges[0]}</p>
+                        </div>
+
+                        {/* Pipeline Strip */}
+                        <div className="sol-bento-card__pod">
+                          <span className="sol-bento-pod__label">
+                            <Workflow size={12} /> Delivery Pipeline
+                          </span>
+                          <div className="sol-card-pipe-flow">
+                            {sol.flow.slice(0, 3).map((st, i) => (
+                              <span key={i} className="sol-card-pipe-step">
+                                <strong>0{i + 1}</strong> {st}
+                              </span>
+                            ))}
+                            {sol.flow.length > 3 && (
+                              <span className="sol-card-pipe-more">+{sol.flow.length - 3}</span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Verified SLA Outcome */}
+                        <div className="sol-bento-card__pod">
+                          <span className="sol-bento-pod__label">
+                            <CheckCircle2 size={12} /> Guaranteed Outcome
+                          </span>
+                          <p className="sol-bento-pod__text">{sol.benefits[0]}</p>
+                        </div>
+
+                        {/* Card Action Buttons */}
+                        <div className="sol-bento-card__actions">
+                          <button
+                            type="button"
+                            className="sol-bento-inspect-btn"
+                            onClick={() => selectSolution(sol, true)}
+                            title="Inspect in Flagship Spotlight"
+                          >
+                            <Workflow size={13} />
+                            <span>Inspect Spotlight</span>
+                          </button>
+                          <Link
+                            to={`/contact?subject=${encodeURIComponent(sol.ctaSubject || sol.title)}`}
+                            className="sol-bento-enquire-btn"
+                          >
+                            <span>Enquire</span>
+                            <ArrowRight size={12} />
+                          </Link>
+                        </div>
+                      </article>
                     ))}
                   </div>
-                )
+                </div>
               )}
             </div>
           )}
         </div>
       </section>
 
-      {/* UNIFIED ENTERPRISE CONSULTATION CTA */}
-      <section className="section" style={{ paddingTop: '1rem', paddingBottom: '3.5rem' }}>
+      {/* 3. UNIFIED ENTERPRISE CONSULTATION SPOTLIGHT (CONTINUOUS LUXURY DARK THEME) */}
+      <section className="sol-bento-cta-section" aria-label="Architecture consultation">
         <div className="container">
-          <div className="testimonials-cta-spotlight sol-cta-spotlight--light">
-            <div className="testimonials-cta-spotlight__content">
-              <span className="badge-eyebrow" style={{ color: '#0284c7' }}>
-                <ShieldCheck size={16} /> SLA Guarantee
+          <div className="sol-luxury-cta-card">
+            <div className="sol-luxury-cta-content">
+              <span className="sol-cta-badge">
+                <ShieldCheck size={16} /> Certified SLA Guarantee
               </span>
-              <h4>Ready to Deploy These Architectures for Your Organization?</h4>
-              <p>Our solutions architects are available to discuss tailored timelines, sample audits, and fixed-scope delivery roadmaps.</p>
+              <h3>Ready to Deploy These Architectures for Your Organization?</h3>
+              <p>Our solutions architects are available to review your current content workflows, conduct complimentary technical audits, and provide customized implementation roadmaps.</p>
             </div>
-            <div className="testimonials-cta-spotlight__actions">
+            <div className="sol-luxury-cta-actions">
               <Link to="/contact" className="btn btn--blue btn--glow">
                 Schedule Architecture Consultation <ArrowRight size={16} />
               </Link>
@@ -684,341 +524,6 @@ export default function SolutionsOverview() {
         </div>
       </section>
     </>
-  );
-}
-
-/**
- * Executive Architecture Showcase Row (Horizontal Flow Layout - Not Just a Box Grid)
- * Balanced, elegant enterprise layout with live pipeline flow and unified palette
- */
-function CatalogSolutionShowcaseRow({ sol, onSelect }) {
-  const [expanded, setExpanded] = useState(false);
-
-  return (
-    <article className={`sol-showcase-card${expanded ? ' is-expanded' : ''}`}>
-      <div className="sol-showcase-main">
-        {/* Left Column: Identity & Direct Actions */}
-        <div className="sol-showcase-col sol-showcase-col--identity">
-          <div className="sol-showcase-head">
-            <div className="sol-showcase-icon">
-              <Icon name={sol.icon} size={22} />
-            </div>
-            <div>
-              <div className="sol-showcase-badges">
-                <span className="sol-badge-cat">{sol.categoryLabel}</span>
-                <span className="sol-badge-tag">{sol.tag}</span>
-              </div>
-              <h4 className="sol-showcase-title">{sol.title}</h4>
-            </div>
-          </div>
-
-          <div className="sol-showcase-actions">
-            <button
-              type="button"
-              className="sol-btn-blueprint"
-              onClick={onSelect}
-              title="Launch interactive blueprint console"
-            >
-              <Workflow size={14} />
-              <span>Interactive Blueprint</span>
-            </button>
-            <Link
-              to={`/contact?subject=${encodeURIComponent(sol.ctaSubject || sol.title)}`}
-              className="sol-btn-enquire"
-            >
-              <span>Enquire Architecture</span>
-              <ArrowRight size={12} />
-            </Link>
-          </div>
-        </div>
-
-        {/* Center Column: Operational Bottleneck & Verified Outcome */}
-        <div className="sol-showcase-col sol-showcase-col--details">
-          <div className="sol-meta-pod">
-            <span className="sol-meta-pod__label">
-              <AlertCircle size={13} />
-              <span>Operational Bottleneck</span>
-            </span>
-            <p className="sol-meta-pod__text">{sol.challenges[0]}</p>
-          </div>
-
-          <div className="sol-meta-pod">
-            <span className="sol-meta-pod__label">
-              <CheckCircle2 size={13} />
-              <span>Verified Enterprise Outcome &amp; SLA</span>
-            </span>
-            <p className="sol-meta-pod__text">{sol.benefits[0]}</p>
-          </div>
-        </div>
-
-        {/* Right Column: Pipeline & Tech Stack */}
-        <div className="sol-showcase-col sol-showcase-col--pipeline">
-          <div className="sol-meta-pod">
-            <span className="sol-meta-pod__label">
-              <Workflow size={13} />
-              <span>Transformation Pipeline ({sol.flow.length} Stages)</span>
-            </span>
-            <div className="sol-flow-chain">
-              {sol.flow.slice(0, 4).map((st, i) => (
-                <div key={i} className="sol-flow-node">
-                  <span className="sol-flow-node__step">0{i + 1}</span>
-                  <span className="sol-flow-node__text">{st}</span>
-                  {i < Math.min(sol.flow.length, 4) - 1 && (
-                    <span className="sol-flow-node__arrow" aria-hidden="true">→</span>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="sol-meta-pod">
-            <span className="sol-meta-pod__label">
-              <Layers size={13} />
-              <span>Integrated Technology Stack</span>
-            </span>
-            <div className="sol-tech-tags">
-              {sol.servicesIncluded.map((s) => (
-                <span key={s} className="sol-tech-tag">{s}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Expand / Collapse Button */}
-      <div className="sol-showcase-expand-bar">
-        <button
-          type="button"
-          className="sol-showcase-expand-btn"
-          onClick={() => setExpanded(!expanded)}
-          aria-expanded={expanded}
-        >
-          <span>{expanded ? 'Hide Deep-Dive Technical Specifications' : 'Inspect Full Architecture Specifications & Case Studies'}</span>
-          {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-        </button>
-      </div>
-
-      {/* Expanded Specifications Drawer */}
-      {expanded && (
-        <div className="sol-showcase-drawer">
-          <div className="sol-drawer-grid">
-            <div className="sol-drawer-col">
-              <h5 className="sol-drawer-subhead">All Operational Challenges Addressed</h5>
-              <ul className="sol-drawer-items">
-                {sol.challenges.map((c, idx) => (
-                  <li key={idx}>{c}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="sol-drawer-col">
-              <h5 className="sol-drawer-subhead">End-to-End Execution Sequence</h5>
-              <div className="sol-drawer-flow-list">
-                {sol.flow.map((step, idx) => (
-                  <div key={idx} className="sol-drawer-flow-item">
-                    <strong>Stage 0{idx + 1}:</strong> {step}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="sol-drawer-col">
-              <h5 className="sol-drawer-subhead">Guaranteed Enterprise Benefits</h5>
-              <ul className="sol-drawer-items">
-                {sol.benefits.map((b, idx) => (
-                  <li key={idx}>{b}</li>
-                ))}
-              </ul>
-
-              {sol.caseStudy && (
-                <div className="sol-drawer-caseref">
-                  <span className="sol-caseref-label">Validated Production Reference</span>
-                  <p className="sol-caseref-title">{sol.caseStudy}</p>
-                  {sol.caseStudyLink && (
-                    <Link to={sol.caseStudyLink} className="sol-caseref-link">
-                      <span>Read Published Case Study</span>
-                      <ArrowRight size={12} />
-                    </Link>
-                  )}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-    </article>
-  );
-}
-
-/**
- * Standardized High-Impact Executive Solution Card for Grid View
- * Unified professional palette without distracting rainbow color boxes
- */
-function CatalogSolutionCard({ sol, onSelect }) {
-  const [expanded, setExpanded] = useState(false);
-
-  return (
-    <article className={`solution-card${expanded ? ' is-expanded' : ''}`}>
-      {/* Header */}
-      <div className="solution-card__header">
-        <div className="solution-card__top">
-          <div className="solution-card__icon-box">
-            <Icon name={sol.icon} size={22} />
-          </div>
-          <span className="solution-card__badge">{sol.categoryLabel}</span>
-        </div>
-        <h3 className="solution-card__title">{sol.title}</h3>
-        <span className="solution-card__tag">{sol.tag}</span>
-      </div>
-
-      <div className="solution-card__content">
-        {/* Core Challenge Snapshot */}
-        <div className="sol-card-pod">
-          <span className="sol-card-pod__label">
-            <AlertCircle size={13} />
-            <span>Operational Bottleneck</span>
-          </span>
-          <p className="sol-card-pod__text">
-            {sol.challenges[0]}
-          </p>
-        </div>
-
-        {/* 3-Step Pipeline Flow Strip */}
-        <div className="sol-card-pod">
-          <span className="sol-card-pod__label">
-            <Workflow size={13} />
-            <span>Delivery Pipeline</span>
-          </span>
-          <div className="sol-card-pipe-pills">
-            {sol.flow.slice(0, 3).map((st, i) => (
-              <span key={i} className="sol-card-pipe-pill">
-                <span className="sol-pipe-num">0{i + 1}</span> {st}
-              </span>
-            ))}
-            {sol.flow.length > 3 && (
-              <span className="sol-card-pipe-more">+{sol.flow.length - 3}</span>
-            )}
-          </div>
-        </div>
-
-        {/* Top Integrated Services */}
-        <div className="sol-card-pod">
-          <span className="sol-card-pod__label">
-            <Layers size={13} />
-            <span>Integrated Tech Stack</span>
-          </span>
-          <div className="sol-card-stack-pills">
-            {sol.servicesIncluded.slice(0, 4).map((s) => (
-              <span key={s} className="sol-card-stack-pill">{s}</span>
-            ))}
-            {sol.servicesIncluded.length > 4 && (
-              <span className="sol-card-stack-pill sol-card-stack-pill--more">
-                +{sol.servicesIncluded.length - 4}
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* Primary Guaranteed Outcome */}
-        <div className="sol-card-pod">
-          <span className="sol-card-pod__label">
-            <CheckCircle2 size={13} />
-            <span>Verified Outcome &amp; SLA</span>
-          </span>
-          <p className="sol-card-pod__text">
-            {sol.benefits[0]}
-          </p>
-        </div>
-
-        {/* Expandable Full Specifications Drawer */}
-        {expanded && (
-          <div className="solution-card__drawer">
-            {/* Full Challenges */}
-            {sol.challenges.length > 1 && (
-              <div className="sol-drawer-section">
-                <h5 className="sol-drawer-heading">Detailed Operational Bottlenecks</h5>
-                <ul className="sol-drawer-list">
-                  {sol.challenges.map((c, i) => (
-                    <li key={i}>{c}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Complete Flow */}
-            <div className="sol-drawer-section">
-              <h5 className="sol-drawer-heading">Complete 5-Stage Orchestration</h5>
-              <div className="sol-drawer-flow">
-                {sol.flow.map((step, idx) => (
-                  <span key={idx} className="sol-drawer-flow-item">
-                    <strong>Phase {idx + 1}:</strong> {step}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Complete Benefits */}
-            <div className="sol-drawer-section">
-              <h5 className="sol-drawer-heading">All SLA &amp; Business Deliverables</h5>
-              <ul className="sol-drawer-benefits">
-                {sol.benefits.map((b, i) => (
-                  <li key={i}>
-                    <CheckCircle2 size={13} style={{ color: '#38bdf8', flexShrink: 0, marginTop: '2px' }} />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Case Study */}
-            {sol.caseStudy && (
-              <div className="sol-drawer-case">
-                <span className="sol-drawer-case__label">Proven Implementation</span>
-                <p className="sol-drawer-case__text">{sol.caseStudy}</p>
-                {sol.caseStudyLink && (
-                  <Link to={sol.caseStudyLink} className="sol-drawer-case__link">
-                    Read Published Case Study <ChevronRight size={13} />
-                  </Link>
-                )}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Toggle Specifications Button */}
-        <button
-          type="button"
-          onClick={() => setExpanded(!expanded)}
-          className="sol-card-expand-btn"
-          aria-expanded={expanded}
-        >
-          <span>{expanded ? 'Collapse Specifications' : 'View Full Specifications'}</span>
-          {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-        </button>
-      </div>
-
-      {/* Card Actions */}
-      <footer className="solution-card__footer">
-        <button
-          type="button"
-          onClick={onSelect}
-          className="sol-card-blueprint-btn"
-          title="Open in Interactive Blueprint Stage"
-        >
-          <Workflow size={14} />
-          <span>Inspect Architecture Blueprint</span>
-        </button>
-        <div className="solution-card__sub-actions">
-          <Link
-            to={`/contact?subject=${encodeURIComponent(sol.ctaSubject || sol.title)}`}
-            className="sol-card-enquire-btn"
-          >
-            <span>{sol.ctaText}</span>
-            <ArrowRight size={14} />
-          </Link>
-        </div>
-      </footer>
-    </article>
   );
 }
 
@@ -1081,10 +586,10 @@ function SolutionsMatrixTable({ solutions, onSelect }) {
                     type="button"
                     onClick={() => onSelect(sol)}
                     className="sol-matrix-blueprint-btn"
-                    title="Inspect architecture blueprint"
+                    title="Inspect in Flagship Spotlight"
                   >
                     <Workflow size={13} />
-                    <span>Inspect Blueprint</span>
+                    <span>Inspect Spotlight</span>
                   </button>
                   <Link
                     to={`/contact?subject=${encodeURIComponent(sol.ctaSubject || sol.title)}`}
