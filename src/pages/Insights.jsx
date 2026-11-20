@@ -762,7 +762,7 @@ export default function Insights() {
                       className="btn btn--outline btn--block case-snapshot-btn" 
                       style={{ marginTop: '16px' }}
                     >
-                      <span>View Full Case &amp; Practice</span>
+                      <span>View Full Case Study &amp; Practice</span>
                       <ArrowRight size={15} aria-hidden="true" />
                     </Link>
                   </article>
