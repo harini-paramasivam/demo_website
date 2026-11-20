@@ -23507,16 +23507,16 @@ svg.accent,
 }
 
 /* ========================================================================= */
-/* CATALOG VIEW (HYBRID EXECUTIVE SLATE & FROSTED GLASS THEME) */
+/* CATALOG VIEW (EXECUTIVE SLATE ENTERPRISE ARCHITECTURE SHOWCASE) */
 /* ========================================================================= */
 .sol-catalog-view,
 .sol-catalog-view--hybrid {
   margin-top: 10px;
-  background: radial-gradient(ellipse at 50% 0%, #162447 0%, #0d1629 55%, #080d19 100%) !important;
-  border: 1.5px solid rgba(56, 189, 248, 0.22) !important;
+  background: radial-gradient(ellipse at 50% 0%, #152038 0%, #0d1527 50%, #080d19 100%) !important;
+  border: 1.5px solid rgba(148, 163, 184, 0.16) !important;
   border-radius: 28px !important;
   padding: clamp(24px, 4vw, 44px) !important;
-  box-shadow: 0 25px 65px -15px rgba(2, 6, 23, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 25px 65px -15px rgba(2, 6, 23, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
   position: relative;
   overflow: hidden;
 }
@@ -23528,60 +23528,74 @@ svg.accent,
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.7), transparent);
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.6), transparent);
   pointer-events: none;
 }
 
-/* CATALOG TOOLBAR: FILTERS + VIEW LAYOUT SWITCHER */
+/* CATALOG TOOLBAR: FILTERS + SEARCH + LAYOUT SWITCHER */
 .sol-catalog-toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   flex-wrap: wrap;
 }
 
+.sol-catalog-toolbar__left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sol-catalog-toolbar__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Category Filter Pills */
 .sol-filter-pills {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
   margin-bottom: 0 !important;
   background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  padding: 6px;
+  padding: 5px;
   border-radius: 999px;
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(148, 163, 184, 0.18);
 }
 
 .sol-filter-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
+  gap: 7px;
+  padding: 7px 15px;
   border-radius: 999px;
   background: transparent;
   border: 1px solid transparent;
   color: #94a3b8;
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.22s ease;
+  transition: all 0.2s ease;
 }
 
 .sol-filter-pill:hover {
-  background: rgba(56, 189, 248, 0.1);
-  color: #38bdf8;
-  border-color: rgba(56, 189, 248, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f1f5f9;
 }
 
 .sol-filter-pill.is-active {
-  background: linear-gradient(135deg, rgba(2, 132, 199, 0.9) 0%, rgba(37, 99, 235, 0.85) 100%);
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
   color: #ffffff;
-  border-color: rgba(56, 189, 248, 0.6);
-  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.35);
 }
 
 .sol-filter-count {
@@ -23598,56 +23612,814 @@ svg.accent,
   color: #ffffff;
 }
 
-/* LAYOUT SWITCHER (CARDS VS MATRIX) */
+/* Real-Time Live Search */
+.sol-catalog-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sol-catalog-search__icon {
+  position: absolute;
+  left: 14px;
+  color: #64748b;
+  pointer-events: none;
+}
+
+.sol-catalog-search__input {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 999px;
+  padding: 7px 34px 7px 34px;
+  font-size: 0.82rem;
+  color: #f1f5f9;
+  width: clamp(210px, 22vw, 290px);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.sol-catalog-search__input::placeholder {
+  color: #64748b;
+}
+
+.sol-catalog-search__input:focus {
+  border-color: rgba(56, 189, 248, 0.5);
+  background: rgba(15, 23, 42, 0.85);
+  box-shadow: 0 0 12px rgba(2, 132, 199, 0.25);
+}
+
+.sol-catalog-search__clear {
+  position: absolute;
+  right: 11px;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+.sol-catalog-search__clear:hover {
+  color: #ffffff;
+}
+
+/* Layout Switcher */
 .sol-layout-switcher {
   display: inline-flex;
   align-items: center;
   background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: 999px;
-  padding: 5px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 4px;
 }
 
 .sol-layout-btn {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 7px 15px;
+  gap: 6px;
+  padding: 6px 14px;
   border-radius: 999px;
   background: transparent;
   border: none;
   color: #94a3b8;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .sol-layout-btn:hover {
-  color: #38bdf8;
+  color: #f1f5f9;
 }
 
 .sol-layout-btn.is-active {
-  background: linear-gradient(135deg, #0284c7, #2563eb);
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
   color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 2px 12px rgba(2, 132, 199, 0.4);
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.35);
 }
 
-/* EXECUTIVE COMPARISON MATRIX TABLE (HYBRID DUAL-TONE THEME) */
+/* Search Feedback & Empty State */
+.sol-search-feedback {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  margin-bottom: 24px;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.sol-search-feedback strong {
+  color: #38bdf8;
+}
+
+.sol-search-reset-btn {
+  background: transparent;
+  border: none;
+  color: #38bdf8;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.sol-empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px dashed rgba(148, 163, 184, 0.2);
+  border-radius: 20px;
+  color: #94a3b8;
+  margin: 20px 0;
+}
+
+.sol-empty-state svg {
+  color: #38bdf8;
+  margin-bottom: 12px;
+}
+
+.sol-empty-state h4 {
+  font-size: 1.15rem;
+  color: #ffffff;
+  margin: 0 0 6px;
+}
+
+.sol-empty-state p {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin: 0 0 16px;
+}
+
+/* Section Headings */
+.sol-group-head {
+  margin-bottom: 22px;
+}
+
+.sol-group-head__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #38bdf8;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.sol-group-head__title {
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  font-weight: 800;
+  color: #ffffff !important;
+  margin: 0 0 6px;
+}
+
+.sol-group-head__desc {
+  font-size: 0.92rem;
+  color: #94a3b8 !important;
+  margin: 0;
+  max-width: 68ch;
+  line-height: 1.55;
+}
+
+/* ========================================================================= */
+/* LAYOUT 1: EXECUTIVE ARCHITECTURE SHOWCASE ROWS (FLOW VIEW - NOT ONLY GRIDS) */
+/* ========================================================================= */
+.sol-showcase-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sol-showcase-card {
+  background: linear-gradient(170deg, rgba(18, 27, 46, 0.88) 0%, rgba(11, 18, 32, 0.94) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 20px;
+  padding: 24px 28px;
+  transition: all 0.25s ease;
+  position: relative;
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.3);
+}
+
+.sol-showcase-card:hover {
+  border-color: rgba(56, 189, 248, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -8px rgba(2, 132, 199, 0.2);
+}
+
+.sol-showcase-main {
+  display: grid;
+  grid-template-columns: 280px 1.1fr 1fr;
+  gap: 26px;
+  align-items: start;
+}
+
+@media (max-width: 1180px) {
+  .sol-showcase-main {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* Left Column: Identity & Actions */
+.sol-showcase-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.sol-showcase-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(2, 132, 199, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  display: grid;
+  place-items: center;
+  color: #38bdf8;
+  flex-shrink: 0;
+}
+
+.sol-showcase-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+
+.sol-badge-cat {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+}
+
+.sol-badge-tag {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.sol-showcase-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.sol-showcase-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sol-btn-blueprint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  padding: 9px 14px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.3);
+}
+
+.sol-btn-blueprint:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%);
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.45);
+}
+
+.sol-btn-enquire {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+  padding: 7px 12px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.sol-btn-enquire:hover {
+  color: #38bdf8;
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.06);
+}
+
+/* UNIFIED SLATE PODS (ZERO RAINBOW COLOR CLUTTER) */
+.sol-meta-pod {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.sol-meta-pod:last-child {
+  margin-bottom: 0;
+}
+
+.sol-meta-pod__label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  margin-bottom: 5px;
+}
+
+.sol-meta-pod__label svg {
+  color: #38bdf8;
+}
+
+.sol-meta-pod__text {
+  font-size: 0.85rem;
+  line-height: 1.48;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+/* Pipeline Flow Chain */
+.sol-flow-chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.sol-flow-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 0.76rem;
+  color: #f1f5f9;
+}
+
+.sol-flow-node__step {
+  color: #38bdf8;
+  font-weight: 800;
+  font-size: 0.68rem;
+}
+
+.sol-flow-node__arrow {
+  color: #64748b;
+  font-size: 0.8rem;
+  margin-left: 2px;
+}
+
+/* Tech Stack Tags */
+.sol-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.sol-tech-tag {
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+/* Expand Drawer */
+.sol-showcase-expand-bar {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sol-showcase-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: #38bdf8;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.sol-showcase-expand-btn:hover {
+  color: #ffffff;
+}
+
+.sol-showcase-drawer {
+  margin-top: 14px;
+  padding: 16px 18px;
+  background: rgba(9, 14, 27, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 14px;
+  animation: fadeIn 0.2s ease;
+}
+
+.sol-drawer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+@media (max-width: 900px) {
+  .sol-drawer-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.sol-drawer-subhead {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #38bdf8;
+  margin: 0 0 8px;
+}
+
+.sol-drawer-items {
+  list-style: disc;
+  padding-left: 16px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sol-drawer-items li {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  line-height: 1.45;
+}
+
+.sol-drawer-flow-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sol-drawer-flow-item {
+  font-size: 0.78rem;
+  color: #f1f5f9;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-left: 3px solid #0284c7;
+  padding: 5px 9px;
+  border-radius: 6px;
+}
+
+.sol-drawer-caseref {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 8px;
+}
+
+.sol-caseref-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #38bdf8;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.sol-caseref-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 4px;
+}
+
+.sol-caseref-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.74rem;
+  color: #38bdf8;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* ========================================================================= */
+/* LAYOUT 2: COMPACT EXECUTIVE CARDS GRID */
+/* ========================================================================= */
+.grid-4-even,
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+@media (max-width: 900px) {
+  .grid-4-even,
+  .solutions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.solution-card {
+  background: linear-gradient(170deg, rgba(18, 27, 46, 0.88) 0%, rgba(11, 18, 32, 0.94) 100%) !important;
+  border: 1px solid rgba(148, 163, 184, 0.16) !important;
+  border-radius: 18px !important;
+  padding: 22px !important;
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.25s ease !important;
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+}
+
+.solution-card:hover {
+  transform: translateY(-3px) !important;
+  border-color: rgba(56, 189, 248, 0.45) !important;
+  box-shadow: 0 16px 36px -8px rgba(2, 132, 199, 0.2) !important;
+}
+
+.solution-card__header {
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.solution-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.solution-card__icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(2, 132, 199, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  display: grid;
+  place-items: center;
+  color: #38bdf8;
+  transition: transform 0.25s;
+}
+
+.solution-card:hover .solution-card__icon-box {
+  transform: scale(1.06);
+}
+
+.solution-card__badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+}
+
+.solution-card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff !important;
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+
+.solution-card__tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #94a3b8 !important;
+}
+
+/* Unified Card Pods (No Rainbow Boxes) */
+.sol-card-pod {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 11px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.sol-card-pod__label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.sol-card-pod__label svg {
+  color: #38bdf8;
+}
+
+.sol-card-pod__text {
+  font-size: 0.83rem;
+  line-height: 1.45;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.sol-card-pipe-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.sol-card-pipe-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 6px;
+  padding: 3px 7px;
+  font-size: 0.74rem;
+  color: #f1f5f9;
+}
+
+.sol-card-pipe-more {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #38bdf8;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.sol-card-stack-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.sol-card-stack-pill {
+  font-size: 0.72rem;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.sol-card-stack-pill--more {
+  color: #94a3b8;
+}
+
+.sol-card-expand-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(148, 163, 184, 0.2);
+  color: #38bdf8;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 4px;
+}
+
+.sol-card-expand-btn:hover {
+  background: rgba(2, 132, 199, 0.1);
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+/* Card Action Footer */
+.solution-card__footer {
+  margin-top: auto !important;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.sol-card-blueprint-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  padding: 9px 14px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  color: #ffffff !important;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.3) !important;
+}
+
+.sol-card-blueprint-btn:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%) !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.45) !important;
+}
+
+.solution-card__sub-actions {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sol-card-enquire-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+  padding: 7px 12px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.sol-card-enquire-btn:hover {
+  color: #38bdf8;
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.06);
+}
+
+/* ========================================================================= */
+/* LAYOUT 3: COMPARISON MATRIX TABLE (UNIFIED SLATE) */
+/* ========================================================================= */
 .sol-matrix-table-wrap {
   width: 100%;
   overflow-x: auto;
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(14, 22, 38, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1.5px solid rgba(56, 189, 248, 0.25);
-  border-radius: 20px;
+  border: 1.5px solid rgba(148, 163, 184, 0.18);
+  border-radius: 18px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
-  margin-bottom: 36px;
+  margin-bottom: 24px;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -23658,20 +24430,20 @@ svg.accent,
 }
 
 .sol-matrix-table th {
-  padding: 16px 20px;
-  font-size: 0.76rem;
+  padding: 14px 18px;
+  font-size: 0.74rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   color: #38bdf8;
-  background: rgba(10, 16, 31, 0.95);
-  border-bottom: 2px solid rgba(56, 189, 248, 0.22);
+  background: rgba(9, 14, 27, 0.95);
+  border-bottom: 1.5px solid rgba(148, 163, 184, 0.16);
   white-space: nowrap;
 }
 
 .sol-matrix-table td {
-  padding: 18px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   vertical-align: middle;
   color: #cbd5e1;
 }
@@ -23681,7 +24453,7 @@ svg.accent,
 }
 
 .sol-matrix-row:hover {
-  background: rgba(56, 189, 248, 0.08);
+  background: rgba(56, 189, 248, 0.05);
 }
 
 .sol-matrix-row:last-child td {
@@ -23695,11 +24467,11 @@ svg.accent,
 }
 
 .sol-matrix-icon-box {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: rgba(2, 132, 199, 0.15);
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  background: rgba(2, 132, 199, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
   display: grid;
   place-items: center;
   color: #38bdf8;
@@ -23707,16 +24479,16 @@ svg.accent,
 }
 
 .sol-matrix-name {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: #ffffff;
-  margin: 0 0 3px;
+  margin: 0 0 2px;
   line-height: 1.3;
 }
 
 .sol-matrix-subtag {
-  font-size: 0.74rem;
-  color: #38bdf8;
+  font-size: 0.72rem;
+  color: #94a3b8;
   font-weight: 600;
 }
 
@@ -23724,46 +24496,37 @@ svg.accent,
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 3px 9px;
   border-radius: 999px;
   white-space: nowrap;
-}
-
-.sol-matrix-badge--industry {
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
   color: #38bdf8;
 }
 
-.sol-matrix-badge--need {
-  background: rgba(168, 85, 247, 0.15);
-  border: 1px solid rgba(168, 85, 247, 0.3);
-  color: #c084fc;
-}
-
 .sol-matrix-challenge {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   line-height: 1.45;
   color: #e2e8f0;
-  margin: 0 0 4px;
+  margin: 0 0 3px;
 }
 
 .sol-matrix-more-hint {
-  font-size: 0.72rem;
-  color: #94a3b8;
+  font-size: 0.7rem;
+  color: #64748b;
   font-weight: 600;
 }
 
 .sol-matrix-flow-strip {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .sol-matrix-flow-step {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: #94a3b8;
   display: inline-block;
   white-space: nowrap;
@@ -23773,7 +24536,7 @@ svg.accent,
   display: flex;
   flex-direction: column;
   gap: 6px;
-  min-width: 140px;
+  min-width: 130px;
 }
 
 .sol-matrix-blueprint-btn {
@@ -23781,22 +24544,21 @@ svg.accent,
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 7px 12px;
+  padding: 6px 11px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #0284c7, #2563eb);
-  border: 1px solid rgba(56, 189, 248, 0.4);
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  border: 1px solid rgba(56, 189, 248, 0.35);
   color: #ffffff;
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
 }
 
 .sol-matrix-blueprint-btn:hover {
-  background: linear-gradient(135deg, #0369a1, #1d4ed8);
-  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.5);
+  background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%);
 }
 
 .sol-matrix-enquire-link {
@@ -23804,480 +24566,17 @@ svg.accent,
   align-items: center;
   justify-content: center;
   gap: 4px;
-  padding: 5px 10px;
+  padding: 5px 9px;
   border-radius: 8px;
-  color: #38bdf8;
-  font-size: 0.74rem;
+  color: #94a3b8;
+  font-size: 0.72rem;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.2s;
 }
 
 .sol-matrix-enquire-link:hover {
-  color: #ffffff;
-}
-
-/* SECTION HEADINGS (HYBRID THEME) */
-.sol-group-head {
-  margin-bottom: 26px;
-}
-
-.sol-group-head__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.35);
   color: #38bdf8;
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 10px;
-}
-
-.sol-group-head__title {
-  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
-  font-weight: 800;
-  color: #ffffff !important;
-  margin: 0 0 8px;
-}
-
-.sol-group-head__desc {
-  font-size: 0.95rem;
-  color: #94a3b8 !important;
-  margin: 0;
-  max-width: 68ch;
-  line-height: 1.6;
-}
-
-.grid-4-even {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
-}
-
-/* MODERN COMPACT SOLUTION CARD STYLES (HYBRID DUAL-TONE THEME) */
-.solution-card {
-  background: linear-gradient(170deg, rgba(22, 33, 56, 0.92) 0%, rgba(14, 21, 38, 0.97) 100%) !important;
-  border: 1px solid rgba(56, 189, 248, 0.22) !important;
-  border-radius: 20px !important;
-  padding: 24px !important;
-  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-  transition: all 0.25s ease !important;
-  display: flex !important;
-  flex-direction: column !important;
-  position: relative !important;
-}
-
-.solution-card:hover {
-  transform: translateY(-5px) !important;
-  border-color: rgba(56, 189, 248, 0.6) !important;
-  box-shadow: 0 20px 48px -10px rgba(2, 132, 199, 0.3), 0 0 24px rgba(56, 189, 248, 0.2) !important;
-}
-
-.solution-card__header {
-  margin-bottom: 16px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.solution-card__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.solution-card__icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: rgba(2, 132, 199, 0.15);
-  border: 1px solid rgba(56, 189, 248, 0.35);
-  display: grid;
-  place-items: center;
-  color: #38bdf8;
-  transition: transform 0.3s;
-}
-
-.solution-card:hover .solution-card__icon-box {
-  transform: scale(1.08);
-  background: rgba(2, 132, 199, 0.25);
-}
-
-.solution-card__badge {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(56, 189, 248, 0.1);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  color: #7dd3fc;
-}
-
-.solution-card__title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #ffffff !important;
-  margin: 0 0 6px;
-  line-height: 1.3;
-}
-
-.solution-card__tag {
-  display: inline-block;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #38bdf8 !important;
-}
-
-/* Card Content Blocks (Hybrid Slate Theme) */
-.solution-card__summary-block {
-  background: rgba(245, 158, 11, 0.08) !important;
-  border: 1px solid rgba(245, 158, 11, 0.25) !important;
-  border-radius: 12px !important;
-  padding: 12px 14px;
-  margin-bottom: 12px;
-}
-
-.solution-card__block-label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #fbbf24;
-  margin-bottom: 5px;
-}
-
-.solution-card__summary-text {
-  font-size: 0.86rem;
-  line-height: 1.5;
-  color: #fef3c7 !important;
-  margin: 0;
-}
-
-.solution-card__pipeline-strip {
-  background: rgba(15, 23, 42, 0.6) !important;
-  border: 1px solid rgba(56, 189, 248, 0.2) !important;
-  border-radius: 12px !important;
-  padding: 12px 14px;
-  margin-bottom: 12px;
-}
-
-.solution-card__pipeline-strip .solution-card__block-label {
-  color: #38bdf8;
-}
-
-.solution-card__pipeline-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 6px;
-}
-
-.solution-card__pipeline-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  background: rgba(30, 41, 59, 0.8) !important;
-  border: 1px solid rgba(56, 189, 248, 0.25) !important;
-  border-radius: 8px;
-  padding: 4px 8px;
-  font-size: 0.76rem;
-  font-weight: 600;
-  color: #e2e8f0 !important;
-}
-
-.sol-pipe-num {
-  color: #38bdf8;
-  font-weight: 800;
-  font-size: 0.7rem;
-}
-
-.solution-card__pipeline-more {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 8px;
-  border-radius: 8px;
-  background: rgba(56, 189, 248, 0.15) !important;
-  color: #38bdf8 !important;
-  font-size: 0.74rem;
-  font-weight: 700;
-}
-
-.solution-card__services-block {
-  margin-bottom: 12px;
-}
-
-.solution-card__services-block .solution-card__block-label {
-  color: #a5b4fc;
-}
-
-.solution-card__services-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 6px;
-}
-
-.sol-mini-service-tag {
-  font-size: 0.74rem;
-  padding: 3px 9px;
-  border-radius: 999px;
-  background: rgba(99, 102, 241, 0.15) !important;
-  border: 1px solid rgba(129, 140, 248, 0.3) !important;
-  color: #c7d2fe !important;
-  font-weight: 600;
-}
-
-.sol-mini-service-tag--more {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  color: #94a3b8 !important;
-}
-
-.solution-card__outcome-block {
-  background: rgba(16, 185, 129, 0.08) !important;
-  border: 1px solid rgba(16, 185, 129, 0.25) !important;
-  border-radius: 12px !important;
-  padding: 12px 14px;
-  margin-bottom: 14px;
-}
-
-.solution-card__outcome-block .solution-card__block-label {
-  color: #34d399;
-}
-
-.solution-card__outcome-text {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: #d1fae5 !important;
-  font-weight: 500;
-  margin: 0;
-}
-
-/* Expand / Collapse Specifications Button */
-.sol-card-expand-btn {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 8px 12px;
-  border-radius: 10px;
-  background: rgba(15, 23, 42, 0.6) !important;
-  border: 1px dashed rgba(56, 189, 248, 0.35) !important;
-  color: #38bdf8 !important;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.sol-card-expand-btn:hover {
-  background: rgba(2, 132, 199, 0.2) !important;
-  border-color: #38bdf8 !important;
-  color: #ffffff !important;
-}
-
-/* Expanded Specifications Drawer (Hybrid Slate Theme) */
-.solution-card__drawer {
-  margin-top: 14px;
-  padding: 14px;
-  background: rgba(10, 16, 31, 0.95) !important;
-  border: 1px solid rgba(56, 189, 248, 0.25) !important;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  animation: fadeIn 0.25s ease;
-}
-
-.sol-drawer-section {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.sol-drawer-heading {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #38bdf8;
-  margin: 0;
-}
-
-.sol-drawer-list {
-  list-style: disc;
-  padding-left: 18px;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.sol-drawer-list li {
-  font-size: 0.82rem;
-  color: #cbd5e1;
-  line-height: 1.45;
-}
-
-.sol-drawer-flow {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.sol-drawer-flow-item {
-  font-size: 0.8rem;
-  color: #f1f5f9;
-  background: rgba(15, 23, 42, 0.8);
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid rgba(56, 189, 248, 0.2);
-  border-left: 3px solid #0284c7;
-}
-
-.sol-drawer-benefits {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.sol-drawer-benefits li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 0.82rem;
-  color: #cbd5e1;
-  line-height: 1.4;
-}
-
-.sol-drawer-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.sol-drawer-tag {
-  font-size: 0.74rem;
-  padding: 2px 8px;
-  background: rgba(245, 158, 11, 0.15);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  color: #fbbf24;
-  border-radius: 6px;
-  font-weight: 600;
-}
-
-.sol-drawer-case {
-  background: rgba(2, 132, 199, 0.1);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  border-radius: 8px;
-  padding: 10px 12px;
-}
-
-.sol-drawer-case__label {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #38bdf8;
-  display: block;
-  margin-bottom: 2px;
-}
-
-.sol-drawer-case__text {
-  font-size: 0.82rem;
-  color: #ffffff;
-  font-weight: 600;
-  margin: 0 0 6px;
-}
-
-.sol-drawer-case__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.78rem;
-  color: #38bdf8;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.sol-drawer-case__link:hover {
-  text-decoration: underline;
-  color: #ffffff;
-}
-
-/* Card Actions (Hybrid Slate Theme) */
-.solution-card__footer {
-  margin-top: auto !important;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.sol-card-blueprint-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  padding: 10px 16px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%) !important;
-  border: 1px solid rgba(56, 189, 248, 0.4) !important;
-  color: #ffffff !important;
-  font-size: 0.82rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
-  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35) !important;
-}
-
-.sol-card-blueprint-btn:hover {
-  background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%) !important;
-  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5) !important;
-  transform: translateY(-1px);
-}
-
-.solution-card__sub-actions {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.sol-card-enquire-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  width: 100%;
-  padding: 8px 14px;
-  border-radius: 10px;
-  background: rgba(30, 41, 59, 0.7);
-  border: 1.5px solid rgba(148, 163, 184, 0.3);
-  color: #e2e8f0;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.sol-card-enquire-btn:hover {
-  color: #38bdf8;
-  border-color: #38bdf8;
-  background: rgba(56, 189, 248, 0.12);
 }
 
 @media (max-width: 1080px) {
