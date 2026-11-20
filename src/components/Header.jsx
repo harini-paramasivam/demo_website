@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import {
-  ArrowLeft,
   ArrowRight,
   Award,
   BarChart3,
@@ -218,15 +217,6 @@ export default function Header() {
   const progressRef = useRef(null);
   const { pathname } = useLocation();
   const navigate = useNavigate();
-
-  const handleBack = () => {
-    closeMobile();
-    if (window.history.state && window.history.state.idx > 0) {
-      navigate(-1);
-    } else {
-      navigate('/');
-    }
-  };
 
   useEffect(() => {
     setOpenMenu(null);

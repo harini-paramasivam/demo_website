@@ -426,15 +426,6 @@ export default function BlogPost() {
 
         {/* Foreground Content Container */}
         <div className="container" style={{ position: 'relative', zIndex: 4 }}>
-          {/* Breadcrumb Navigation */}
-          <nav className="blog-breadcrumbs" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
-            <span className="blog-bc-sep">/</span>
-            <Link to="/blog">Blog</Link>
-            <span className="blog-bc-sep">/</span>
-            <span className="blog-bc-cat">{article.categoryLabel}</span>
-          </nav>
-
           {/* Metadata Row */}
           <div className="blog-post-meta">
             <span className="blog-cat-badge">{article.categoryLabel}</span>
