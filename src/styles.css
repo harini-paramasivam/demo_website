@@ -3053,13 +3053,13 @@ svg.accent,
 /* Card Header Strip, Badges & Highlights */
 .why-val-card__top {
   display: block;
-  margin-bottom: 8px !important;
+  margin-bottom: 10px !important;
 }
 
 .why-val-card__head-row {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 14px;
   width: 100%;
   min-width: 0;
 }
@@ -3083,11 +3083,11 @@ svg.accent,
 
 .why-val-card__title-row {
   display: flex !important;
-  align-items: center !important;
+  align-items: flex-start !important;
   justify-content: space-between !important;
-  gap: 8px !important;
-  flex-wrap: nowrap !important;
-  margin-bottom: 2px !important;
+  gap: 8px 12px !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 4px !important;
   min-width: 0 !important;
 }
 
@@ -3096,16 +3096,18 @@ svg.accent,
   font-weight: 850 !important;
   color: #ffffff !important;
   margin: 0 !important;
-  line-height: 1.2 !important;
+  line-height: 1.25 !important;
   letter-spacing: -0.01em !important;
-  white-space: nowrap !important;
+  white-space: normal !important;
+  word-break: normal !important;
   min-width: 0 !important;
+  flex: 1 1 auto !important;
 }
 
 .why-val-card__title-row .why-val-card__pill {
   font-size: 0.65rem !important;
   font-weight: 750 !important;
-  padding: 2px 7px !important;
+  padding: 3px 8px !important;
   border-radius: 999px !important;
   letter-spacing: 0.03em !important;
   background: rgba(255, 255, 255, 0.08) !important;
@@ -3114,6 +3116,7 @@ svg.accent,
   flex-shrink: 0 !important;
   white-space: nowrap !important;
   margin: 0 !important;
+  margin-top: 1px !important;
 }
 
 .why-val-card__head-text .why-val-card__tagline {
@@ -3122,24 +3125,53 @@ svg.accent,
   text-transform: uppercase !important;
   letter-spacing: 0.05em !important;
   margin: 0 !important;
-  line-height: 1.25 !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  min-height: 16px !important;
+  line-height: 1.35 !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  min-height: auto !important;
 }
 
 @media (max-width: 640px) {
   .why-section-dark .why__card {
-    padding: 14px 14px !important;
+    padding: 16px 14px !important;
+  }
+  .why-val-card__head-row {
+    gap: 12px !important;
+    align-items: flex-start !important;
   }
   .why-val-card__head-row .why__icon {
     width: 38px !important;
     height: 38px !important;
     border-radius: 10px !important;
+    flex-shrink: 0 !important;
+    margin-top: 2px !important;
+  }
+  .why-val-card__title-row {
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 6px 10px !important;
+    flex-wrap: wrap !important;
+    margin-bottom: 4px !important;
   }
   .why-val-card__title-row .why-val-card__title {
-    font-size: 1.12rem !important;
+    font-size: 1.05rem !important;
+    white-space: normal !important;
+    line-height: 1.25 !important;
+  }
+  .why-val-card__title-row .why-val-card__pill {
+    font-size: 0.62rem !important;
+    padding: 2px 7px !important;
+    flex-shrink: 0 !important;
+  }
+  .why-val-card__head-text .why-val-card__tagline {
+    font-size: 0.68rem !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
   }
 }
 
