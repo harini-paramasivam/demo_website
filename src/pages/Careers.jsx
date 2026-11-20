@@ -1044,7 +1044,7 @@ export default function Careers() {
           {/* What Else We Should Do for Quality Projects */}
           <div className="quality-extra-box">
             <h3 className="quality-extra-box__title">
-              <Lightbulb size={20} className="accent" />
+              <Lightbulb size={30} className="quality-extra-title-icon accent" />
               <span>What Else We Should Do for Quality Projects</span>
             </h3>
             <div className="quality-extra-grid">

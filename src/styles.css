@@ -11737,12 +11737,21 @@ svg.accent,
 }
 .quality-extra-box__title {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-start;
+  gap: 12px;
   font-size: 1.35rem;
   font-weight: 800;
   color: #ffffff;
   margin: 0 0 1.8rem;
+}
+.quality-extra-title-icon {
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  min-height: 30px !important;
+  flex-shrink: 0 !important;
+  color: #0284c7 !important;
+  margin-top: 2px !important;
 }
 .quality-extra-grid {
   display: grid;
@@ -22182,6 +22191,9 @@ svg.accent,
 
 .quality-extra-box__title {
   color: #0f172a !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
 }
 
 .quality-extra-pod {
