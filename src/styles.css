@@ -2858,39 +2858,75 @@ svg.accent,
 }
 
 .intro-card__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px 12px !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 .intro-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 16px;
-  border-radius: 999px;
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: #f8fafc;
-  background: rgba(56, 189, 248, 0.1);
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  letter-spacing: 0.02em;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  padding: 8px 16px !important;
+  border-radius: 999px !important;
+  font-size: 0.84rem !important;
+  font-weight: 600 !important;
+  color: #f8fafc !important;
+  background: rgba(56, 189, 248, 0.12) !important;
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  letter-spacing: 0.015em !important;
+  line-height: 1.35 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  max-width: 100% !important;
+  flex: 0 0 auto !important;
+  box-sizing: border-box !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
 }
 
 .intro-tag:hover {
-  background: rgba(56, 189, 248, 0.22);
-  border-color: #38bdf8;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+  background: rgba(56, 189, 248, 0.24) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35) !important;
 }
 
 .intro-tag__icon {
-  color: #38bdf8;
-  flex-shrink: 0;
+  color: #38bdf8 !important;
+  flex-shrink: 0 !important;
+  width: 14px !important;
+  height: 14px !important;
+  min-width: 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.intro-tag__label,
+.intro-tag span {
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  display: inline !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  color: inherit !important;
+}
+
+@media (max-width: 900px) {
+  .intro-card {
+    grid-template-columns: 1fr;
+    padding: 2.2rem 1.8rem;
+    gap: 1.8rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -2904,6 +2940,16 @@ svg.accent,
   /* Hide decorative corner tech brackets on mobile so they never collide with or disturb tag icons */
   .intro-card__corner {
     display: none !important;
+  }
+
+  .intro-card__tags {
+    gap: 8px 10px !important;
+  }
+
+  .intro-tag {
+    padding: 7px 14px !important;
+    font-size: 0.8rem !important;
+    gap: 7px !important;
   }
 }
 
@@ -2928,33 +2974,16 @@ svg.accent,
     padding: 6px 12px !important;
     font-size: 0.77rem !important;
     font-weight: 600 !important;
-    gap: 7px !important;
+    gap: 6px !important;
     width: auto !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
     text-align: left !important;
     white-space: nowrap !important;
     overflow: visible !important;
-    text-overflow: clip !important;
+    text-overflow: unset !important;
     border-radius: 999px !important;
     flex-shrink: 0 !important;
-  }
-
-  .intro-tag span {
-    white-space: nowrap !important;
-    overflow: visible !important;
-    text-overflow: clip !important;
-  }
-
-  .intro-tag__icon {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 14px !important;
-    height: 14px !important;
-    min-width: 14px !important;
-    flex-shrink: 0 !important;
-    vertical-align: middle !important;
   }
 
   .intro-tag:last-child {
@@ -2963,11 +2992,25 @@ svg.accent,
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 480px) {
   .intro-card {
-    grid-template-columns: 1fr;
-    padding: 2.2rem 1.8rem;
-    gap: 1.8rem;
+    padding: 1.35rem 0.9rem !important;
+    border-radius: 18px !important;
+  }
+
+  .intro-card__text {
+    font-size: 0.95rem !important;
+    line-height: 1.62 !important;
+  }
+
+  .intro-card__tags {
+    gap: 7px 8px !important;
+  }
+
+  .intro-tag {
+    padding: 6px 11px !important;
+    font-size: 0.76rem !important;
+    gap: 6px !important;
   }
 }
 

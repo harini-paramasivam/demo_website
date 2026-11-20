@@ -379,34 +379,34 @@ export default function Home() {
               <p className="intro-card__text">
                 Velvora Solutions is a content and technology services company. We combine ePublishing, XML, digital accessibility, AI automation, website development, software development, data analytics, and digital marketing to make your content well-structured, standards-compliant, discoverable, and usable by everyone, including people who rely on assistive technologies.
               </p>
-              <div className="intro-card__tags">
-                <span className="intro-tag">
+              <div className="intro-card__tags" style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 10px', width: '100%', alignItems: 'center' }}>
+                <span className="intro-tag" style={{ whiteSpace: 'nowrap', overflow: 'visible', textOverflow: 'unset' }}>
                   <Icon name="BookOpen" size={14} className="intro-tag__icon" />
-                  <span>ePublishing &amp; XML</span>
+                  <span className="intro-tag__label" style={{ whiteSpace: 'nowrap', overflow: 'visible' }}>ePublishing &amp; XML</span>
                 </span>
-                <span className="intro-tag">
+                <span className="intro-tag" style={{ whiteSpace: 'nowrap', overflow: 'visible', textOverflow: 'unset' }}>
                   <Icon name="CheckCircle2" size={14} className="intro-tag__icon" />
-                  <span>Digital Accessibility</span>
+                  <span className="intro-tag__label" style={{ whiteSpace: 'nowrap', overflow: 'visible' }}>Digital Accessibility</span>
                 </span>
-                <span className="intro-tag">
+                <span className="intro-tag" style={{ whiteSpace: 'nowrap', overflow: 'visible', textOverflow: 'unset' }}>
                   <Icon name="Cpu" size={14} className="intro-tag__icon" />
-                  <span>AI Automation</span>
+                  <span className="intro-tag__label" style={{ whiteSpace: 'nowrap', overflow: 'visible' }}>AI Automation</span>
                 </span>
-                <span className="intro-tag">
+                <span className="intro-tag" style={{ whiteSpace: 'nowrap', overflow: 'visible', textOverflow: 'unset' }}>
                   <Icon name="Globe" size={14} className="intro-tag__icon" />
-                  <span>Web &amp; Software</span>
+                  <span className="intro-tag__label" style={{ whiteSpace: 'nowrap', overflow: 'visible' }}>Web &amp; Software</span>
                 </span>
-                <span className="intro-tag">
+                <span className="intro-tag" style={{ whiteSpace: 'nowrap', overflow: 'visible', textOverflow: 'unset' }}>
                   <Icon name="BarChart3" size={14} className="intro-tag__icon" />
-                  <span>Data Analytics</span>
+                  <span className="intro-tag__label" style={{ whiteSpace: 'nowrap', overflow: 'visible' }}>Data Analytics</span>
                 </span>
-                <span className="intro-tag">
+                <span className="intro-tag" style={{ whiteSpace: 'nowrap', overflow: 'visible', textOverflow: 'unset' }}>
                   <Icon name="Megaphone" size={14} className="intro-tag__icon" />
-                  <span>Digital Marketing</span>
+                  <span className="intro-tag__label" style={{ whiteSpace: 'nowrap', overflow: 'visible' }}>Digital Marketing</span>
                 </span>
-                <span className="intro-tag">
+                <span className="intro-tag" style={{ whiteSpace: 'nowrap', overflow: 'visible', textOverflow: 'unset' }}>
                   <Icon name="GraduationCap" size={14} className="intro-tag__icon" />
-                  <span>Training &amp; Skills</span>
+                  <span className="intro-tag__label" style={{ whiteSpace: 'nowrap', overflow: 'visible' }}>Training &amp; Skills</span>
                 </span>
               </div>
             </div>
