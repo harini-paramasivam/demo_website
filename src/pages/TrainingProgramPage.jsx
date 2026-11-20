@@ -435,7 +435,9 @@ export default function TrainingProgramPage() {
                 {otherPrograms.map((op) => (
                   <li key={op.id}>
                     <Link to={`/training/${op.id}`}>
-                      <Icon name={op.icon || 'GraduationCap'} size={16} />
+                      <span className="svc-sidebar__icon-wrap">
+                        <Icon name={op.icon || 'GraduationCap'} size={op.icon === 'GraduationCap' ? 22 : 19} />
+                      </span>
                       <span>{op.title}</span>
                     </Link>
                   </li>

@@ -335,7 +335,9 @@ export default function ServicePage() {
                 {others.map((o) => (
                   <li key={o.slug}>
                     <Link to={`/services/${o.slug}`}>
-                      <Icon name={o.icon} size={18} />
+                      <span className="svc-sidebar__icon-wrap">
+                        <Icon name={o.icon} size={19} />
+                      </span>
                       <span>{o.title}</span>
                     </Link>
                   </li>
