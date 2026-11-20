@@ -17927,8 +17927,16 @@ svg.accent,
 }
 
 .blog-bridge-btn {
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.35;
+  padding: 12px 24px;
+  min-height: 50px;
+  height: auto;
   flex-shrink: 0;
+  max-width: 100%;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 /* Post Tags */
@@ -18393,10 +18401,20 @@ svg.accent,
   }
   .blog-service-bridge-card {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    padding: 22px 18px;
+    gap: 18px;
   }
   .blog-bridge-btn {
     width: 100%;
+    white-space: normal !important;
+    text-align: center;
+    line-height: 1.35;
+    padding: 12px 18px !important;
+    height: auto !important;
+    min-height: 48px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
   }
   .blog-post-h1 {
     font-size: 1.65rem;
