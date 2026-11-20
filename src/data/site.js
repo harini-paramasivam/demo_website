@@ -2427,7 +2427,7 @@ export const insightsData = {
         'Enable logical keyboard navigation and tab order across metric tiles',
       ],
       linkText: 'Review Dashboard Standards',
-      to: '/services',
+      to: '/services/data-analytics',
     },
     {
       id: 'tip-4',
@@ -2471,7 +2471,7 @@ export const insightsData = {
       date: 'Industry Outlook',
       summary: 'Automated algorithms scan document trees at scale, but true usability requires native assistive technology users to verify reading flows, screen-reader audio, and contextual accuracy.',
       action: 'Learn More',
-      to: '/services/digital-accessibility',
+      to: '/services/ai-automation',
     },
     {
       id: 'lead-3',
