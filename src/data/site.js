@@ -996,7 +996,7 @@ export const services = [
       'Direct Scalable Pre-Press Ingestion: Flawless conversions from Adobe InDesign packages, QuarkXPress, print-ready PDFs, or scanned hardcopies.',
       'Dedicated Account Engagement Lead: Single point of contact offering proactive progress tracking, proof iterations, and rush turnaround SLAs.',
     ],
-    whoItsFor: 'Book publishers, journal publishers, educational publishers, authors, and corporate content teams.',
+    whoItsFor: 'Book Publishers, Journal Publishers, Educational Publishers, Authors, and Corporate Content Teams.',
     faqs: [
       { q: 'What digital book formats do you convert and support?', a: 'We produce and convert reflowable EPUB 3, fixed-layout EPUB 3, legacy EPUB 2, Kindle (KPF/MOBI), interactive PDFs, and accessible web editions.' },
       { q: 'Do your EPUB files pass EPUBCheck and retail store validation?', a: 'Yes, 100%. Every title is validated against the latest EPUBCheck standard and manually tested on real Apple Books, Kindle, Kobo, and Google Play devices before delivery.' },
@@ -1046,6 +1046,7 @@ export const services = [
       { step: '04. Validation QA', desc: 'Rigorous automated DTD parsing, Schematron checks, and manual editorial verification.' },
       { step: '05. Delivery & Transformation', desc: 'Delivery of 100% valid XML packages ready for PubMed, Crossref, and web CMS.' },
     ],
+    whoItsFor: 'Scholarly Journal Publishers, Book Publishers, University Presses, Academic Societies, Content Aggregators, and Enterprise Documentation Teams.',
     faqs: [
       { q: 'Which standard XML DTDs and schemas do you support?', a: 'We specialize in JATS 1.3, BITS 2.1, PubMed Central (PMC), DITA, DocBook 5, TEI, Crossref schema, and bespoke proprietary publisher XML DTDs.' },
       { q: 'Can you convert unstructured Word and PDF documents directly into JATS XML?', a: 'Yes. We extract semantic headings, author affiliations, ORCID IDs, bibliographic references, math equations, and tables into 100% schema-valid XML.' },
@@ -1239,7 +1240,7 @@ export const services = [
       'Real Assistive Tech User Testing: Hands-on evaluation with JAWS, NVDA, Apple VoiceOver, Android TalkBack, and refreshable Braille displays.',
       'Proactive Account Partnerships: Dedicated compliance liaison delivering executive progress reports, remediation certificates, and continuous support.',
     ],
-    whoItsFor: 'Commercial book publishers, university presses, higher education institutions, government bodies, healthcare systems, and corporate communications teams.',
+    whoItsFor: 'Commercial Book Publishers, University Presses, Higher Education Institutions, Government Bodies, Healthcare Systems, and Corporate Communications Teams.',
     whyItMatters: [
       { title: 'Reach more readers', desc: 'Include people with visual, hearing, motor, and cognitive disabilities.' },
       { title: 'Meet legal requirements', desc: 'Laws such as the ADA, Section 508, AODA, and the European Accessibility Act increasingly require accessible content, including e-books.' },
@@ -1313,7 +1314,7 @@ export const services = [
       'Dedicated Senior Production Leads: Dedicated production coordinator providing transparent scheduling, live tracking, and emergency rush deliveries.',
       'High-Volume Enterprise Scalability: Tested monthly composition capacity exceeding 20,000 complex academic monograph, textbook, and journal pages.',
     ],
-    whoItsFor: 'Book publishers, university presses, scholarly journals, societies, authors, and corporate communications teams.',
+    whoItsFor: 'Book Publishers, University Presses, Scholarly Journals, Societies, Authors, and Corporate Communications Teams.',
     faqs: [
         {
             "q": "Can you work to our existing publisher house style and InDesign templates?",
@@ -1360,7 +1361,8 @@ export const services = [
       { title: 'Accessible Math in PDF', desc: 'Tagged math with alternative text for PDF/UA compliance.' },
       { title: 'Math QA', desc: 'Independent checking of every equation against the source.' },
     ],
-    subjects: 'Mathematics, statistics, physics, chemistry, engineering, computer science, economics, and education.',
+    subjects: 'Mathematics, Statistics, Physics, Chemistry, Engineering, Computer Science, Economics, and Education.',
+    whoItsFor: 'Academic STEM Publishers, Scientific Journal Editorial Boards, University Presses, Technical Authors, Higher Education Faculty, and Research Institutions.',
     process: [
       { step: '1. Source Review', desc: 'We check your files, formats, and notation conventions.' },
       { step: '2. Conversion or Typesetting', desc: 'Equations are typeset or converted to the target format.' },
@@ -1477,6 +1479,7 @@ export const services = [
       'Automated Machine-Assisted Tagging: Intelligent entity extraction combined with human editorial verification for rapid catalog classification.',
       'Multilingual Metadata Capabilities: Comprehensive tagging and indexing support across English, European, and regional international publications.',
     ],
+    whoItsFor: 'Scholarly Publishers, University Libraries, Content Aggregators, Digital Archives, Indexing Societies, and Enterprise Knowledge Teams.',
     faqs: [
         {
             "q": "What classification taxonomies and subject schemas do you utilize?",
@@ -1544,6 +1547,7 @@ export const services = [
       'Multi-Lingual & Historical Script Mastery: Proven accuracy across non-Latin scripts, accented European alphabets, and vintage typography.',
       'Secure Chain of Custody: Confidential, air-gapped handling protocols protecting sensitive legal, government, and proprietary corporate documents.',
     ],
+    whoItsFor: 'Heritage Libraries, University Archives, Historical Societies, Legal Firms, Government Registries, and Research Institutions.',
     faqs: [
         {
             "q": "Is OCR text alone sufficient to make a digital document accessible?",
@@ -1643,6 +1647,7 @@ export const services = [
       'Custom Style Guide Adherence: Exact alignment with publisher, academic, or corporate captioning formatting and terminology standards.',
       'Accessible Media Player Integration: Technical consulting and media overlays for embedding synchronized captions into EPUB 3 and web portals.',
     ],
+    whoItsFor: 'Universities & EdTech Platforms, Video Producers, Broadcast Media, Corporate L&D Departments, Government Agencies, and Streaming Services.',
     faqs: [
         {
             "q": "What is the difference between closed captions and subtitles?",
@@ -1700,6 +1705,7 @@ export const services = [
       'Turnkey Enterprise Integration: Secure RESTful API hooks, automated cloud bucket watchers, and native CMS/DAM synchronization.',
       'Air-Gapped Confidentiality Protocols: Complete IP protection guaranteeing your proprietary content is never utilized for public AI training.',
     ],
+    whoItsFor: 'Digital Publishers, Enterprise Operations Teams, Financial Services, SaaS Platforms, Media Organizations, and High-Volume Content Labs.',
     process: [
       { step: '1. Workflow Audit', desc: 'We map your current content production bottlenecks and identify high-ROI automation targets.' },
       { step: '2. Pipeline Design', desc: 'We architect custom AI modules, schema validators, and human review gates.' },
@@ -1764,6 +1770,7 @@ export const services = [
       'Zero Bloat, Future-Proof Stacks: Clean, lightweight codebases using React, Next.js, and TypeScript without clunky legacy plugins or themes.',
       'Dedicated Post-Launch Support: SLA-backed maintenance, security patching, Core Web Vitals monitoring, and ongoing feature sprints.'
     ],
+    whoItsFor: 'Scholarly Publishers, Enterprise Brands, University Departments, SaaS Companies, E-Commerce Portals, and Professional Service Firms.',
     process: [
       { step: '1. Discovery & UX Architecture', desc: 'Auditing user personas, brand requirements, content hierarchy, and technical SEO goals.' },
       { step: '2. Wireframing & Design Systems', desc: 'Crafting responsive mobile-first Figma prototypes, interactive component systems, and color palettes.' },
@@ -1828,6 +1835,7 @@ export const services = [
       'Agile Transparency & Collaboration: Full access to Git repositories, Jira boards, daily asynchronous standups, and bi-weekly executive reviews.',
       'Long-Term Production Support: Guaranteed response SLAs, 24/7 uptime monitoring, database maintenance, and continuous optimization.'
     ],
+    whoItsFor: 'Enterprise Organizations, FinTech Startups, High-Volume Data Platforms, Cloud Infrastructure Providers, and Digital Media Companies.',
     process: [
       { step: '1. Discovery & Technical Architecture', desc: 'System requirements scoping, database schema modeling, and API contract specifications.' },
       { step: '2. Agile Sprint Engineering', desc: 'Iterative two-week development sprints with automated CI/CD builds, code reviews, and unit tests.' },
@@ -1892,6 +1900,7 @@ export const services = [
       'SOC-Grade Data Security: End-to-end encryption in transit and at rest with strict role-based row-level security (RLS) enforcement.',
       'Hands-On Leadership Enablement: Thorough documentation, enterprise data dictionaries, and hands-on enablement workshops for your executive team.',
     ],
+    whoItsFor: 'Executive Leadership Teams, Marketing Directors, Business Operations Managers, E-Commerce Brands, and Data Science Groups.',
     process: [
       { step: '1. Data Audit', desc: 'We inventory your data sources, schemas, and analytical requirements.' },
       { step: '2. Pipeline Engineering', desc: 'We build secure, automated ETL connectors to ingest and clean raw data.' },
@@ -1956,6 +1965,7 @@ export const services = [
       'Editorial & Scientific Tone of Voice: Seasoned technical copywriters who understand enterprise B2B audiences and complex domain products.',
       'Zero-Vanity Metrics Accountability: Transparent weekly sprint reporting focused exclusively on pipeline velocity, qualified leads, and measurable ROI.',
     ],
+    whoItsFor: 'B2B Enterprises, Publishing Houses, Higher Education Institutions, Direct-to-Consumer Brands, and Technology Providers.',
     process: [
       { step: '1. Landscape Audit', desc: 'We analyze your website health, competitor keywords, and current conversion funnels.' },
       { step: '2. Strategy Roadmap', desc: 'We define target audience personas, high-intent keyword targets, and channel allocations.' },

@@ -23604,7 +23604,11 @@ svg.accent,
   font-size: 0.88rem;
   font-weight: 600;
   color: #1e293b;
+  text-transform: capitalize;
   transition: all 0.2s ease;
+}
+.svc-audience-pill__text {
+  text-transform: capitalize;
 }
 .svc-audience-pill:hover {
   background: #ffffff;

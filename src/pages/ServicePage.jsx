@@ -725,12 +725,16 @@ export default function ServicePage() {
 
                       {/* Split into rich badges/chips */}
                       <div className="svc-audience-pills-wrap">
-                        {s.whoItsFor.split(/,\s*(?:and\s+)?|\s+and\s+/).filter(Boolean).map((aud, aIdx) => (
-                          <div key={aIdx} className="svc-audience-pill">
-                            <span className="svc-audience-pill__dot" />
-                            <span className="svc-audience-pill__text">{aud.trim().replace(/\.$/, '')}</span>
-                          </div>
-                        ))}
+                        {s.whoItsFor.split(/,\s*(?:and\s+)?|\s+and\s+/).filter(Boolean).map((aud, aIdx) => {
+                          const clean = aud.trim().replace(/\.$/, '');
+                          const formatted = clean.replace(/\b[a-z]/g, (c) => c.toUpperCase());
+                          return (
+                            <div key={aIdx} className="svc-audience-pill">
+                              <span className="svc-audience-pill__dot" />
+                              <span className="svc-audience-pill__text">{formatted}</span>
+                            </div>
+                          );
+                        })}
                       </div>
 
                       <p className="svc-audience-card__summary">
