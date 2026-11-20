@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowLeft,
@@ -97,6 +97,235 @@ export default function Insights() {
   const [speechActive, setSpeechActive] = useState(false);
 
   const timerRef = useRef(null);
+
+  // --- Category Carousel Navigation State & Refs ---
+  const carouselRef = useRef(null);
+  const tabRefs = useRef({});
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const isInteractingRef = useRef(false);
+  const isPausedAtEndRef = useRef(false);
+  const scrollDirectionRef = useRef(1); // 1: forward/rightward, -1: reverse
+  const lastTimeRef = useRef(0);
+  const animFrameRef = useRef(null);
+  const resumeTimerRef = useRef(null);
+  const pauseTimerRef = useRef(null);
+
+  // Mouse drag state
+  const isDraggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragStartScrollLeftRef = useRef(0);
+  const dragDistanceRef = useRef(0);
+
+  // Update edge fade indicators
+  const updateScrollEdges = useCallback(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    if (max <= 4) {
+      setCanScrollLeft(false);
+      setCanScrollRight(false);
+    } else {
+      setCanScrollLeft(el.scrollLeft > 6);
+      setCanScrollRight(el.scrollLeft < max - 6);
+    }
+  }, []);
+
+  // Pause auto-movement immediately on user interaction
+  const pauseAutoMovement = useCallback(() => {
+    isInteractingRef.current = true;
+    if (pauseTimerRef.current) {
+      clearTimeout(pauseTimerRef.current);
+      pauseTimerRef.current = null;
+    }
+    if (resumeTimerRef.current) {
+      clearTimeout(resumeTimerRef.current);
+      resumeTimerRef.current = null;
+    }
+  }, []);
+
+  // Schedule auto-movement resume after user stops interacting
+  const scheduleResume = useCallback((delay = 3800) => {
+    if (resumeTimerRef.current) {
+      clearTimeout(resumeTimerRef.current);
+    }
+    resumeTimerRef.current = setTimeout(() => {
+      isInteractingRef.current = false;
+      isPausedAtEndRef.current = false;
+      lastTimeRef.current = performance.now();
+    }, delay);
+  }, []);
+
+  // Drag and touch interaction handlers
+  const handleTouchStart = () => {
+    pauseAutoMovement();
+  };
+
+  const handleTouchMove = () => {
+    pauseAutoMovement();
+    updateScrollEdges();
+  };
+
+  const handleTouchEnd = () => {
+    scheduleResume(4000);
+    updateScrollEdges();
+  };
+
+  const handlePointerDown = (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    pauseAutoMovement();
+    isDraggingRef.current = true;
+    dragStartXRef.current = e.clientX;
+    dragStartScrollLeftRef.current = carouselRef.current ? carouselRef.current.scrollLeft : 0;
+    dragDistanceRef.current = 0;
+  };
+
+  const handlePointerMove = (e) => {
+    if (!isDraggingRef.current || !carouselRef.current) return;
+    const deltaX = e.clientX - dragStartXRef.current;
+    dragDistanceRef.current = Math.abs(deltaX);
+    carouselRef.current.scrollLeft = dragStartScrollLeftRef.current - deltaX;
+    updateScrollEdges();
+  };
+
+  const handlePointerUp = () => {
+    if (isDraggingRef.current) {
+      isDraggingRef.current = false;
+      scheduleResume(4000);
+    }
+  };
+
+  const handleMouseEnter = () => {
+    pauseAutoMovement();
+  };
+
+  const handleMouseLeave = () => {
+    if (isDraggingRef.current) {
+      isDraggingRef.current = false;
+    }
+    scheduleResume(2500);
+  };
+
+  const handleWheel = () => {
+    pauseAutoMovement();
+    scheduleResume(3500);
+    updateScrollEdges();
+  };
+
+  const handleScroll = () => {
+    updateScrollEdges();
+  };
+
+  // Click tab handler (ignores clicks caused by dragging)
+  const handleTabClick = (tabId) => {
+    if (dragDistanceRef.current > 6) {
+      return;
+    }
+    setActiveTab(tabId);
+  };
+
+  // Smoothly center the active tab when selected and keep it visible
+  useEffect(() => {
+    const btn = tabRefs.current[activeTab];
+    const container = carouselRef.current;
+    if (!btn || !container) return;
+
+    pauseAutoMovement();
+
+    const btnLeft = btn.offsetLeft;
+    const btnWidth = btn.offsetWidth;
+    const containerWidth = container.clientWidth;
+    const targetScroll = btnLeft - (containerWidth / 2) + (btnWidth / 2);
+
+    container.scrollTo({
+      left: Math.max(0, targetScroll),
+      behavior: 'smooth'
+    });
+
+    scheduleResume(4500);
+  }, [activeTab, pauseAutoMovement, scheduleResume]);
+
+  // Automatic subtle horizontal drift loop (22px/sec)
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      updateScrollEdges();
+      return;
+    }
+
+    const SPEED_PX_PER_SEC = 22;
+
+    const animate = (timestamp) => {
+      if (!lastTimeRef.current) {
+        lastTimeRef.current = timestamp;
+      }
+      const deltaMs = timestamp - lastTimeRef.current;
+      lastTimeRef.current = timestamp;
+
+      const el = carouselRef.current;
+      if (!el) {
+        animFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      if (maxScroll <= 4) {
+        animFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
+      if (!isInteractingRef.current && !isPausedAtEndRef.current) {
+        const deltaSec = Math.min(deltaMs / 1000, 0.1);
+        const shift = SPEED_PX_PER_SEC * deltaSec;
+
+        if (scrollDirectionRef.current === 1) {
+          const next = el.scrollLeft + shift;
+          if (next >= maxScroll - 1) {
+            el.scrollLeft = maxScroll;
+            isPausedAtEndRef.current = true;
+            pauseTimerRef.current = setTimeout(() => {
+              scrollDirectionRef.current = -1;
+              isPausedAtEndRef.current = false;
+              lastTimeRef.current = performance.now();
+            }, 1800);
+          } else {
+            el.scrollLeft = next;
+          }
+        } else {
+          const next = el.scrollLeft - shift;
+          if (next <= 1) {
+            el.scrollLeft = 0;
+            isPausedAtEndRef.current = true;
+            pauseTimerRef.current = setTimeout(() => {
+              scrollDirectionRef.current = 1;
+              isPausedAtEndRef.current = false;
+              lastTimeRef.current = performance.now();
+            }, 1800);
+          } else {
+            el.scrollLeft = next;
+          }
+        }
+        updateScrollEdges();
+      }
+
+      animFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    lastTimeRef.current = performance.now();
+    animFrameRef.current = requestAnimationFrame(animate);
+
+    const handleResize = () => updateScrollEdges();
+    window.addEventListener('resize', handleResize, { passive: true });
+    updateScrollEdges();
+
+    return () => {
+      if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+      if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [updateScrollEdges]);
 
   const blogItems = content.blog?.items || [];
   const caseItems = content['case-studies']?.items || [];
@@ -266,21 +495,44 @@ export default function Insights() {
       {/* FILTER TABS DOCK */}
       <section className="career-nav-section-dark netbg" aria-label="Insights Filter Categories">
         <div className="container">
-          <div className="career-filter-bar" role="tablist" aria-label="Filter insights categories">
-            {insightsData.sections.map((tab) => (
-              <button
-                key={tab.id}
-                type="button"
-                role="tab"
-                aria-selected={activeTab === tab.id}
-                className={`career-filter-btn${activeTab === tab.id ? ' is-active' : ''}`}
-                onClick={() => setActiveTab(tab.id)}
-              >
-                <Icon name={tab.icon} size={15} aria-hidden="true" />
-                <span>{tab.label}</span>
-                <span className="why-filter-count" style={{ marginLeft: 6 }}>{tab.count}</span>
-              </button>
-            ))}
+          <div className="insights-filter-carousel-wrapper">
+            {/* Subtle Gradient Edge Masks indicating overflow */}
+            <div className={`filter-edge-mask filter-edge-mask--left ${canScrollLeft ? 'is-visible' : ''}`} aria-hidden="true" />
+            <div className={`filter-edge-mask filter-edge-mask--right ${canScrollRight ? 'is-visible' : ''}`} aria-hidden="true" />
+
+            <div
+              ref={carouselRef}
+              className="career-filter-bar"
+              role="tablist"
+              aria-label="Filter insights categories"
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onWheel={handleWheel}
+              onScroll={handleScroll}
+            >
+              {insightsData.sections.map((tab) => (
+                <button
+                  key={tab.id}
+                  ref={(el) => { tabRefs.current[tab.id] = el; }}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeTab === tab.id}
+                  className={`career-filter-btn${activeTab === tab.id ? ' is-active' : ''}`}
+                  onClick={() => handleTabClick(tab.id)}
+                >
+                  <Icon name={tab.icon} size={15} aria-hidden="true" />
+                  <span>{tab.label}</span>
+                  <span className="why-filter-count" style={{ marginLeft: 6 }}>{tab.count}</span>
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="career-filter-hint">
