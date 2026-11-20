@@ -466,7 +466,7 @@ export default function SolutionsOverview() {
           {/* VIEW MODE 2: COMPLETE PORTFOLIO CATALOG (GRID & MATRIX VIEWS) */}
           {/* ========================================================================= */}
           {viewMode === 'grid' && (
-            <div className="sol-catalog-view">
+            <div className="sol-catalog-view sol-catalog-view--hybrid">
               {/* Category Filter Tabs & Layout Switcher Toolbar */}
               <div className="sol-catalog-toolbar">
                 <div className="sol-filter-pills" role="tablist" aria-label="Filter catalog">
