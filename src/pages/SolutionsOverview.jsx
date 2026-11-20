@@ -113,7 +113,6 @@ export default function SolutionsOverview() {
   return (
     <>
       <PageHero
-        theme="light"
         eyebrow={slug && activeSolution ? `${activeSolution.tag} Solution` : 'Solutions Overview'}
         title={slug && activeSolution ? activeSolution.title : 'Practical Solutions for Real Challenges'}
         crumbs={slug && activeSolution ? ['Home', 'Solutions', activeSolution.title] : ['Home', 'Solutions']}
