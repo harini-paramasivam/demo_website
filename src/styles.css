@@ -5998,7 +5998,8 @@ svg.accent,
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    width: 100vw !important;
+    width: 100% !important;
+    max-width: 100% !important;
     height: calc(100vh - var(--header-h, 76px)) !important;
     height: calc(100dvh - var(--header-h, 76px)) !important;
     z-index: 999999 !important;
@@ -17888,8 +17889,9 @@ svg.accent,
     left: 0 !important;
     right: 0 !important;
     bottom: 0 !important;
-    width: 100vw !important;
-    max-width: 100vw !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-width: 100% !important;
     height: 100% !important;
     height: 100dvh !important;
     max-height: 100dvh !important;
@@ -27558,7 +27560,7 @@ svg.accent,
 
   html, body {
     width: 100% !important;
-    max-width: 100vw !important;
+    max-width: 100% !important;
     overflow-x: hidden !important;
     position: relative !important;
   }
@@ -27592,30 +27594,179 @@ svg.accent,
   .svc-layout,
   .contact-grid-main,
   .career-openings-grid,
+  .career-cards-grid,
+  .career-values-grid,
+  .career-check-list,
+  .career-stories-grid,
+  .career-innov-grid,
+  .career-innov-teasers,
+  .career-testimonials-grid,
+  .career-insights-row,
+  .career-why-global-grid,
+  .career-grow-grid,
   .job-opening-card,
   .insights-cases-grid,
+  .insights-articles-grid,
+  .insights-tips-grid,
+  .insights-podcast-grid,
+  .insights-video-grid,
+  .insights-leadership-grid,
+  .client-charter-grid,
+  .quality-steps-grid,
+  .quality-extra-grid,
+  .innovation-action-grid,
+  .employee-voices-grid,
+  .inclusion-why-grid,
   .training-course-card,
+  .training-cards-grid,
+  .training-capstone-grid,
+  .training-tools-grid,
+  .training-careers-grid,
+  .training-specs-ecosystem,
+  .training-hero-grid,
   .solution-card,
+  .solutions-grid,
+  .partner-why-grid,
+  .partner-opp-grid,
   .testimonial-card,
+  .testimonials-grid,
   .news-card,
+  .news-grid,
   .blog-card,
+  .blog-grid,
+  .blog-topics-grid,
+  .blog-related-grid,
+  .blog-post-layout,
   .svc-audience-showcase-grid,
   .svc-audience-secondary-grid,
   .svc-audience-matrix-wrap,
   .svc-offers-grid,
   .svc-benefits-showcase-grid,
+  .subservices-deliverables-grid,
+  .subservices-matrix-grid,
   .sol-blueprint-console,
   .sol-stage-body,
   .job-detail-layout,
-  .training-hero-grid,
   .leadership-showcase,
   .solutions-hub-layout,
   .blog-featured-card,
+  .case-related-grid,
+  .case-detail-kpi-grid,
+  .case-results-metric-grid-4,
+  .case-tools-grid,
+  .case-phases-grid-2x2,
   .service-group-block__grid {
     grid-template-columns: minmax(0, 1fr) !important;
     width: 100% !important;
     max-width: 100% !important;
+    min-width: 0 !important;
     box-sizing: border-box !important;
+  }
+
+  /* Transition Banner Slider Arrows - Position at Bottom to never overlap text */
+  .t-slide-card {
+    padding: clamp(24px, 5vw, 36px) clamp(18px, 4vw, 28px) 76px clamp(18px, 4vw, 28px) !important;
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .t-card-arrow {
+    top: auto !important;
+    bottom: 18px !important;
+    transform: none !important;
+    width: 44px !important;
+    height: 44px !important;
+    z-index: 10 !important;
+  }
+
+  .t-card-arrow:hover {
+    transform: scale(1.05) !important;
+  }
+
+  .t-card-arrow--prev {
+    left: auto !important;
+    right: 72px !important;
+  }
+
+  .t-card-arrow--next {
+    right: 18px !important;
+  }
+
+  /* Comparison Matrix Table Safe Touch Scroll */
+  .sol-matrix-table-wrap {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 16px !important;
+  }
+
+  .sol-matrix-table {
+    min-width: 740px !important;
+    width: 100% !important;
+  }
+
+  /* Modals Dynamic Viewport Height for Mobile Browser Bars */
+  .media-modal-card {
+    max-height: calc(100vh - 60px) !important;
+    max-height: calc(100dvh - 60px) !important;
+    padding: 20px 16px !important;
+    border-radius: 20px !important;
+    width: calc(100% - 24px) !important;
+    margin: 12px auto !important;
+  }
+
+  .career-modal-dialog {
+    max-height: 90vh !important;
+    max-height: 90dvh !important;
+    border-radius: 20px !important;
+    width: calc(100% - 24px) !important;
+    margin: 12px auto !important;
+  }
+
+  /* Form inputs & search fields: 16px font-size to prevent iOS Safari auto-zoom */
+  input,
+  select,
+  textarea,
+  .contact-input,
+  .contact-textarea,
+  .contact-select,
+  .career-input,
+  .career-textarea,
+  .partner-input,
+  .partner-textarea,
+  .te-select-input,
+  .te-textarea,
+  .blog-search-input,
+  .solutions-search-input,
+  .sol-search-field,
+  .sol-bento-search__input,
+  .vora-text-input {
+    font-size: 16px !important;
+  }
+
+  /* Floating UI Safe Area Padding */
+  .totop {
+    left: max(16px, env(safe-area-inset-left, 16px)) !important;
+    bottom: max(16px, env(safe-area-inset-bottom, 16px)) !important;
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .chat-fab,
+  .vora-chat-launcher {
+    right: max(16px, env(safe-area-inset-right, 16px)) !important;
+    bottom: max(16px, env(safe-area-inset-bottom, 16px)) !important;
+  }
+
+  /* Ensure touch-friendly tap targets */
+  .btn {
+    min-height: 44px !important;
+  }
+
+  .sol-filter-btn,
+  .why-filter-btn {
+    min-height: 40px !important;
   }
 
   /* Service page overview and sidebar cards */
@@ -27801,8 +27952,76 @@ svg.accent,
 
   .header__mobile-contact-btn,
   .header__toggle {
-    width: 40px !important;
-    height: 40px !important;
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .phero h1 {
+    font-size: clamp(1.75rem, 6.5vw, 2.15rem) !important;
+  }
+
+  .stat-card {
+    padding: 18px 14px !important;
+  }
+
+  .stat-card__num {
+    font-size: clamp(2rem, 8vw, 2.5rem) !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .btn {
+    padding: 10px 14px !important;
+    font-size: 0.88rem !important;
+  }
+
+  .intro-card {
+    padding: 1.15rem 0.75rem !important;
+    border-radius: 16px !important;
+  }
+
+  .intro-card__title {
+    font-size: 1.35rem !important;
+  }
+
+  .section {
+    padding: 40px 0 !important;
+  }
+
+  .phero {
+    padding: 40px 0 30px !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  .header__logo img {
+    max-width: 140px !important;
+    height: 32px !important;
+  }
+
+  .header__mobile-actions {
+    gap: 6px !important;
+  }
+
+  .header__mobile-contact-btn,
+  .header__toggle {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .badge-eyebrow {
+    font-size: 0.72rem !important;
+    padding: 4px 8px !important;
   }
 }
 
@@ -28673,9 +28892,15 @@ svg.accent,
   .epub-wheel-container {
     padding: 20px 12px 24px 12px !important;
     border-radius: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
   .epub-wheel-scaler-wrap {
-    --wheel-scale: clamp(0.4, calc((100vw - 32px) / 680), 1);
+    --wheel-scale: clamp(0.35, calc((100% - 16px) / 680), 1);
+    width: 100% !important;
+    max-width: 100% !important;
     height: calc(640px * var(--wheel-scale));
     overflow: hidden;
   }
