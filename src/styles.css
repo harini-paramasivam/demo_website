@@ -7582,6 +7582,7 @@ svg.accent,
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   margin-bottom: 22px;
 }
 
@@ -7600,6 +7601,7 @@ svg.accent,
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  white-space: nowrap;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 .glance-card__badge svg {
@@ -7617,6 +7619,10 @@ svg.accent,
   background: rgba(56, 189, 248, 0.1);
   border: 1px solid rgba(56, 189, 248, 0.22);
   border-radius: 6px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .glance-card__title {
@@ -7700,8 +7706,39 @@ svg.accent,
     grid-template-columns: 1fr;
     gap: 20px;
   }
+  .glance-card__content {
+    padding: 24px 20px 22px !important;
+  }
+  .glance-card__top {
+    gap: 10px !important;
+    margin-bottom: 16px !important;
+  }
+  .glance-card__badge {
+    padding: 5px 12px !important;
+    font-size: 0.7rem !important;
+    white-space: nowrap !important;
+  }
+  .glance-card__code {
+    font-size: 0.75rem !important;
+    padding: 3px 8px !important;
+    flex-shrink: 0 !important;
+  }
   .glance-card__media {
     height: 170px;
+  }
+}
+
+@media (max-width: 380px) {
+  .glance-card__content {
+    padding: 20px 16px 18px !important;
+  }
+  .glance-card__badge {
+    padding: 4px 10px !important;
+    font-size: 0.65rem !important;
+  }
+  .glance-card__code {
+    font-size: 0.7rem !important;
+    padding: 2px 6px !important;
   }
 }
 

@@ -189,7 +189,7 @@ export const homeServices = [
     btnText: 'Explore Training',
     to: '/training',
     icon: 'GraduationCap',
-    tag: 'Talent & Skills',
+    tag: 'Talent Development',
     badge: 'Publishing · Accessibility · Tech',
     image: '/card-training.jpg'
   }
