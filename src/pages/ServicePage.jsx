@@ -199,8 +199,36 @@ function FaqAccordion({ items = [] }) {
 
 export default function ServicePage() {
   const { slug } = useParams();
+  const location = useLocation();
   const [activeSubTab, setActiveSubTab] = useState(0);
   const s = services.find((x) => x.slug === slug || (x.aliases && x.aliases.includes(slug)));
+
+  const handleSelectProtocol = (idx) => {
+    setActiveSubTab(idx);
+    setTimeout(() => {
+      const spotlightEl = document.getElementById('subservices-protocol-spotlight');
+      if (spotlightEl) {
+        const headerOffset = 85;
+        const elementPosition = spotlightEl.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: elementPosition - headerOffset,
+          behavior: 'smooth'
+        });
+      }
+    }, 40);
+  };
+
+  useEffect(() => {
+    if (s?.subServices && location.hash) {
+      const hash = location.hash.replace('#', '').toLowerCase();
+      const foundIdx = s.subServices.findIndex(
+        (sub) => sub.id.toLowerCase() === hash || sub.id.toLowerCase().includes(hash)
+      );
+      if (foundIdx >= 0) {
+        handleSelectProtocol(foundIdx);
+      }
+    }
+  }, [location.hash, s]);
 
   if (!s) return <Navigate to="/not-found" replace />;
 
@@ -448,7 +476,7 @@ export default function ServicePage() {
                         role="tab"
                         aria-selected={isActive}
                         className={`subservices-tab-pill ${isActive ? 'is-active' : ''}`}
-                        onClick={() => setActiveSubTab(idx)}
+                        onClick={() => handleSelectProtocol(idx)}
                       >
                         <span className={`subservices-tab-icon subservices-tab-icon--${meta.color}`}>
                           <MetaIcon size={16} />
@@ -467,7 +495,7 @@ export default function ServicePage() {
                   const ActiveIcon = activeMeta.IconComp;
 
                   return (
-                    <div className="subservices-spotlight-card" id={activeSub.id}>
+                    <div className="subservices-spotlight-card" id="subservices-protocol-spotlight" data-protocol-id={activeSub.id}>
                       <div className="subservices-spotlight-glow" aria-hidden="true" />
 
                       {/* Header */}
@@ -559,10 +587,10 @@ export default function ServicePage() {
                         <div
                           key={sub.id}
                           className={`subservices-matrix-card ${isSel ? 'is-active' : ''}`}
-                          onClick={() => {
-                            setActiveSubTab(idx);
-                            document.getElementById(sub.id)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                          }}
+                          onClick={() => handleSelectProtocol(idx)}
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleSelectProtocol(idx); }}
                         >
                           <div className="subservices-matrix-card__head">
                             <span className={`subservices-matrix-card__icon-wrap subservices-tab-icon--${meta.color}`}>
