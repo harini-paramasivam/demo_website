@@ -22,7 +22,7 @@ export const TextLink = ({ to, children }) => (
   </Link>
 );
 
-export function PageHero({ eyebrow, title, children, crumbs = [] }) {
+export function PageHero({ eyebrow, title, children, crumbs = [], theme }) {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -46,8 +46,10 @@ export function PageHero({ eyebrow, title, children, crumbs = [] }) {
   else if (pathname.startsWith('/contact')) pageTheme = 'contact';
   else if (pathname.startsWith('/resources') || pathname.startsWith('/blog')) pageTheme = 'resources';
 
+  const isLight = theme === 'light' || pageTheme === 'solutions';
+
   return (
-    <section className="phero phero--futuristic">
+    <section className={`phero phero--futuristic${isLight ? ' phero--light' : ''}`}>
       {/* 1. Full-Bleed Panoramic Cyber Wave & Constellation Landscape (Covers Entire Banner Width from Left to Right) */}
       <div className="phero-panoramic-backdrop" aria-hidden="true">
         <svg
@@ -59,16 +61,16 @@ export function PageHero({ eyebrow, title, children, crumbs = [] }) {
         >
           <defs>
             <linearGradient id={`panoGradPrimary-${pageTheme}`} x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.18" />
-              <stop offset="35%" stopColor="#0284c7" stopOpacity="0.32" />
-              <stop offset="70%" stopColor={pageTheme === 'solutions' ? '#c084fc' : pageTheme === 'training' ? '#34d399' : pageTheme === 'careers' ? '#f59e0b' : '#38bdf8'} stopOpacity="0.55" />
-              <stop offset="100%" stopColor="#38bdf8" stopOpacity="0.75" />
+              <stop offset="0%" stopColor={isLight ? '#0284c7' : '#38bdf8'} stopOpacity={isLight ? '0.35' : '0.18'} />
+              <stop offset="35%" stopColor={isLight ? '#0369a1' : '#0284c7'} stopOpacity={isLight ? '0.45' : '0.32'} />
+              <stop offset="70%" stopColor={pageTheme === 'solutions' ? (isLight ? '#7c3aed' : '#c084fc') : pageTheme === 'training' ? '#34d399' : pageTheme === 'careers' ? '#f59e0b' : '#38bdf8'} stopOpacity={isLight ? '0.45' : '0.55'} />
+              <stop offset="100%" stopColor={isLight ? '#0284c7' : '#38bdf8'} stopOpacity={isLight ? '0.55' : '0.75'} />
             </linearGradient>
             <linearGradient id={`panoGradSecondary-${pageTheme}`} x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#0284c7" stopOpacity="0.12" />
-              <stop offset="40%" stopColor="#38bdf8" stopOpacity="0.28" />
-              <stop offset="75%" stopColor="#60a5fa" stopOpacity="0.45" />
-              <stop offset="100%" stopColor="#00d2ff" stopOpacity="0.6" />
+              <stop offset="0%" stopColor={isLight ? '#0284c7' : '#0284c7'} stopOpacity={isLight ? '0.22' : '0.12'} />
+              <stop offset="40%" stopColor={isLight ? '#38bdf8' : '#38bdf8'} stopOpacity={isLight ? '0.35' : '0.28'} />
+              <stop offset="75%" stopColor={isLight ? '#6366f1' : '#60a5fa'} stopOpacity={isLight ? '0.42' : '0.45'} />
+              <stop offset="100%" stopColor={isLight ? '#0284c7' : '#00d2ff'} stopOpacity={isLight ? '0.5' : '0.6'} />
             </linearGradient>
             <filter id={`panoGlow-${pageTheme}`} x="-10%" y="-10%" width="120%" height="120%">
               <feGaussianBlur stdDeviation="4" result="blur" />
@@ -217,17 +219,17 @@ export function PageHero({ eyebrow, title, children, crumbs = [] }) {
 
             {/* Solutions 3D Facets (Violet & Cyan) */}
             <linearGradient id="solTop" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.55" />
-              <stop offset="40%" stopColor="#38bdf8" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#c084fc" stopOpacity="0.2" />
+              <stop offset="0%" stopColor="#ffffff" stopOpacity={isLight ? "0.95" : "0.55"} />
+              <stop offset="40%" stopColor={isLight ? "#e0f2fe" : "#38bdf8"} stopOpacity={isLight ? "0.85" : "0.35"} />
+              <stop offset="100%" stopColor={isLight ? "#ede9fe" : "#c084fc"} stopOpacity={isLight ? "0.75" : "0.2"} />
             </linearGradient>
             <linearGradient id="solLeft" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.45" />
-              <stop offset="100%" stopColor="#0369a1" stopOpacity="0.75" />
+              <stop offset="0%" stopColor={isLight ? "#38bdf8" : "#38bdf8"} stopOpacity={isLight ? "0.85" : "0.45"} />
+              <stop offset="100%" stopColor={isLight ? "#0284c7" : "#0369a1"} stopOpacity={isLight ? "0.9" : "0.75"} />
             </linearGradient>
             <linearGradient id="solRight" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#c084fc" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#4c1d95" stopOpacity="0.85" />
+              <stop offset="0%" stopColor={isLight ? "#c084fc" : "#c084fc"} stopOpacity={isLight ? "0.8" : "0.5"} />
+              <stop offset="100%" stopColor={isLight ? "#7c3aed" : "#4c1d95"} stopOpacity={isLight ? "0.9" : "0.85"} />
             </linearGradient>
 
             {/* Radial Core Glows */}
@@ -270,8 +272,8 @@ export function PageHero({ eyebrow, title, children, crumbs = [] }) {
 
               {/* Connecting Vertical Energy Pillars */}
               <line x1="160" y1="355" x2="160" y2="245" stroke="#38bdf8" strokeWidth="2" strokeDasharray="6 4" opacity="0.75" />
-              <line x1="340" y1="355" x2="340" y2="245" stroke="#c084fc" strokeWidth="2" strokeDasharray="6 4" opacity="0.75" />
-              <line x1="250" y1="410" x2="250" y2="295" stroke="#ffffff" strokeWidth="2.5" opacity="0.8" />
+              <line x1="340" y1="355" x2="340" y2="245" stroke={isLight ? '#7c3aed' : '#c084fc'} strokeWidth="2" strokeDasharray="6 4" opacity="0.75" />
+              <line x1="250" y1="410" x2="250" y2="295" stroke={isLight ? '#0284c7' : '#ffffff'} strokeWidth="2.5" opacity="0.8" />
 
               {/* Mid Tier: Floating Angled Glass Server Block */}
               <polygon points="250,195 365,255 250,315 135,255" fill="url(#solTop)" stroke="#38bdf8" strokeWidth="2" />
@@ -280,22 +282,22 @@ export function PageHero({ eyebrow, title, children, crumbs = [] }) {
 
               {/* Glowing Quantum Core Sphere suspended in center */}
               <circle cx="250" cy="235" r="38" fill="url(#quantumOrbCyan)" filter={`url(#pheroCoreGlow-${pageTheme})`} />
-              <circle cx="250" cy="235" r="16" fill="#ffffff" />
+              <circle cx="250" cy="235" r="16" fill={isLight ? '#38bdf8' : '#ffffff'} />
 
               {/* Top Tier: Floating Precision Crystal Diamond */}
-              <polygon points="250,95 305,128 250,160 195,128" fill="url(#solTop)" stroke="#c084fc" strokeWidth="2" />
+              <polygon points="250,95 305,128 250,160 195,128" fill="url(#solTop)" stroke={isLight ? '#7c3aed' : '#c084fc'} strokeWidth="2" />
               <polygon points="195,128 250,160 250,185 195,153" fill="url(#solLeft)" stroke="rgba(56, 189, 248, 0.6)" strokeWidth="1.2" />
               <polygon points="250,160 305,128 305,153 250,185" fill="url(#solRight)" stroke="rgba(192, 132, 252, 0.6)" strokeWidth="1.2" />
 
               {/* 3D Orbit Ring encircling structure */}
               <ellipse cx="250" cy="255" rx="195" ry="75" transform="rotate(-18 250 255)" stroke="url(#glowGradCyan)" strokeWidth="2.2" strokeDasharray="14 10" fill="none" opacity="0.85" />
               <circle cx="105" cy="305" r="7" fill="#38bdf8" />
-              <circle cx="395" cy="205" r="8" fill="#c084fc" />
+              <circle cx="395" cy="205" r="8" fill={isLight ? '#7c3aed' : '#c084fc'} />
 
               {/* Micro-spark Nodes in Space */}
               <circle cx="370" cy="115" r="4.5" fill="#38bdf8" />
-              <circle cx="130" cy="180" r="4" fill="#c084fc" />
-              <circle cx="250" cy="70" r="5" fill="#ffffff" />
+              <circle cx="130" cy="180" r="4" fill={isLight ? '#7c3aed' : '#c084fc'} />
+              <circle cx="250" cy="70" r="5" fill={isLight ? '#0284c7' : '#ffffff'} />
             </g>
           )}
 
@@ -472,7 +474,7 @@ export function PageHero({ eyebrow, title, children, crumbs = [] }) {
           </p>
         )}
         <h1 className="phero-title-glow">{title}</h1>
-        {children && <p className="lead lead--dark phero-lead-glow">{children}</p>}
+        {children && <p className={`lead ${isLight ? 'lead--light' : 'lead--dark'} phero-lead-glow`}>{children}</p>}
       </div>
     </section>
   );

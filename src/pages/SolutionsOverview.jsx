@@ -113,6 +113,7 @@ export default function SolutionsOverview() {
   return (
     <>
       <PageHero
+        theme="light"
         eyebrow={slug && activeSolution ? `${activeSolution.tag} Solution` : 'Solutions Overview'}
         title={slug && activeSolution ? activeSolution.title : 'Practical Solutions for Real Challenges'}
         crumbs={slug && activeSolution ? ['Home', 'Solutions', activeSolution.title] : ['Home', 'Solutions']}
@@ -414,7 +415,7 @@ export default function SolutionsOverview() {
                       )}
 
                       {/* 6. DEPLOY ACTION CARD */}
-                      <div className="sol-direct-card">
+                      <div className="sol-direct-card sol-direct-card--light">
                         <span className="sol-direct-card__badge">Execution SLA</span>
                         <h4 className="sol-direct-card__title">Deploy this Architecture</h4>
                         <p className="sol-direct-card__desc">
@@ -590,9 +591,9 @@ export default function SolutionsOverview() {
       {/* UNIFIED ENTERPRISE CONSULTATION CTA (MATCHING IMAGE 1) */}
       <section className="section" style={{ paddingTop: '1rem', paddingBottom: '3.5rem' }}>
         <div className="container">
-          <div className="testimonials-cta-spotlight">
+          <div className="testimonials-cta-spotlight sol-cta-spotlight--light">
             <div className="testimonials-cta-spotlight__content">
-              <span className="badge-eyebrow" style={{ color: '#38bdf8' }}>
+              <span className="badge-eyebrow" style={{ color: '#0284c7' }}>
                 <ShieldCheck size={16} /> SLA Guarantee
               </span>
               <h4>Ready to Deploy These Architectures for Your Organization?</h4>
