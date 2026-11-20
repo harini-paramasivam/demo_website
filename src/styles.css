@@ -25144,6 +25144,7 @@ svg.accent,
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 12px;
+  width: 100%;
 }
 
 .training-deliv-item {
@@ -25154,12 +25155,79 @@ svg.accent,
   color: #1e293b;
   line-height: 1.5;
   font-weight: 550;
+  min-width: 0;
+}
+
+.training-deliv-item span {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: normal;
+  flex: 1 1 auto;
 }
 
 .training-deliv-icon {
   color: #10b981;
   flex-shrink: 0;
   margin-top: 3px;
+}
+
+@media (max-width: 640px) {
+  .training-capstone-card {
+    padding: 20px 14px !important;
+    border-radius: 18px !important;
+  }
+  .training-capstone-head {
+    margin-bottom: 18px !important;
+  }
+  .training-capstone-title {
+    font-size: 1.18rem !important;
+    line-height: 1.35 !important;
+  }
+  .training-capstone-scope {
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+  }
+  .training-capstone-deliverables {
+    padding: 16px 14px !important;
+    border-radius: 14px !important;
+    margin-bottom: 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .training-capstone-deliv-heading {
+    font-size: 0.82rem !important;
+    margin-bottom: 12px !important;
+  }
+  .training-capstone-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+  .training-deliv-item {
+    font-size: 0.88rem !important;
+    gap: 9px !important;
+    line-height: 1.45 !important;
+  }
+  .training-deliv-icon {
+    width: 15px !important;
+    height: 15px !important;
+    margin-top: 2.5px !important;
+  }
+  .training-capstone-eval {
+    padding: 14px 12px !important;
+    gap: 10px !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .training-capstone-eval strong {
+    font-size: 0.82rem !important;
+    line-height: 1.35 !important;
+  }
+  .training-capstone-eval p {
+    font-size: 0.86rem !important;
+    line-height: 1.5 !important;
+  }
 }
 
 .training-capstone-eval {
