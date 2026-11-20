@@ -1,24 +1,24 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import {
+import { 
   ArrowLeft,
-  BookOpen,
-  FolderOpen,
-  Lightbulb,
-  ShieldCheck,
-  Headphones,
-  Video,
-  Sparkles,
-  ArrowRight,
-  Play,
-  Pause,
-  Volume2,
+  BookOpen, 
+  FolderOpen, 
+  Lightbulb, 
+  ShieldCheck, 
+  Headphones, 
+  Video, 
+  Sparkles, 
+  ArrowRight, 
+  Play, 
+  Pause, 
+  Volume2, 
   VolumeX,
   RotateCcw,
-  Clock,
-  Calendar,
-  ChevronRight,
-  CheckCircle2,
+  Clock, 
+  Calendar, 
+  ChevronRight, 
+  CheckCircle2, 
   SlidersHorizontal,
   X,
   ExternalLink,
@@ -541,25 +541,25 @@ export default function Insights() {
               {activeTab === 'all'
                 ? 'All Knowledge Hub Assets (43)'
                 : activeTab === 'articles'
-                  ? 'Articles & Long-Form Trends'
-                  : activeTab === 'cases'
-                    ? 'Case Studies & Snapshots'
-                    : activeTab === 'tips'
-                      ? 'Tips & Actionable Best Practices'
-                      : activeTab === 'leadership'
-                        ? 'Strategic Thought Leadership'
-                        : activeTab === 'podcasts'
-                          ? 'Velvora Podcast Series (10 Episodes)'
-                          : 'Velvora Explainer Video Series (10 Clips)'}
+                ? 'Articles & Long-Form Trends'
+                : activeTab === 'cases'
+                ? 'Case Studies & Snapshots'
+                : activeTab === 'tips'
+                ? 'Tips & Actionable Best Practices'
+                : activeTab === 'leadership'
+                ? 'Strategic Thought Leadership'
+                : activeTab === 'podcasts'
+                ? 'Velvora Podcast Series (10 Episodes)'
+                : 'Velvora Explainer Video Series (10 Clips)'}
             </span>
             <span className="career-filter-hint__text">
               — {activeTab === 'all'
                 ? 'Browsing all 6 publication sub-sections: articles, case snapshots, checklists, thought leadership, podcasts, and video series.'
                 : activeTab === 'podcasts'
-                  ? 'Click "Listen Now" on any episode to hear voice narration and broadcast audio directly in your browser.'
-                  : activeTab === 'videos'
-                    ? 'Watch and listen to 10 visual explainers and workflow walkthroughs.'
-                    : 'Curated by Velvora’s specialists in accessibility, content engineering, and automation.'}
+                ? 'Click "Listen Now" on any episode to hear voice narration and broadcast audio directly in your browser.'
+                : activeTab === 'videos'
+                ? 'Watch and listen to 10 visual explainers and workflow walkthroughs.'
+                : 'Curated by Velvora’s specialists in accessibility, content engineering, and automation.'}
             </span>
           </div>
         </div>
@@ -653,7 +653,7 @@ export default function Insights() {
               <div className="insights-video-grid">
                 {insightsData.videos.map((vid) => (
                   <article key={vid.id} className="video-card">
-                    <div
+                    <div 
                       className="video-card__thumbnail"
                       onClick={() => handleOpenMedia('video', vid)}
                       role="button"
@@ -712,8 +712,8 @@ export default function Insights() {
                     <span className="insight-article-tag">{article.tag}</span>
                     <h3 className="insight-article-title">{article.title}</h3>
                     <p className="insight-article-summary">{article.summary}</p>
-                    <Link to="/contact" className="tlink" style={{ marginTop: 'auto' }}>
-                      Request Full Publication <ArrowRight size={15} aria-hidden="true" />
+                    <Link to={article.to || '/blog'} className="tlink" style={{ marginTop: 'auto' }}>
+                      Read Full Article <ArrowRight size={15} aria-hidden="true" />
                     </Link>
                   </article>
                 ))}
@@ -741,7 +741,7 @@ export default function Insights() {
                   <article key={cs.id} className="case-snapshot-card">
                     <span className="case-snapshot-badge">Enterprise Case Snapshot</span>
                     <h3 className="case-snapshot-title">{cs.title}</h3>
-
+                    
                     <div className="case-snapshot-block case-snapshot-block--challenge">
                       <strong>The Challenge:</strong>
                       <p>{cs.challenge}</p>
@@ -757,9 +757,9 @@ export default function Insights() {
                       <p>{cs.result}</p>
                     </div>
 
-                    <Link
-                      to={cs.landingPage || (cs.slug ? `/case-studies/${cs.slug}` : (cs.id === 'case-1' ? '/case-studies/epublishing-transformation' : cs.id === 'case-2' ? '/case-studies/wcag-accessibility' : '/case-studies/xml-journal-conversion'))}
-                      className="btn btn--outline btn--block case-snapshot-btn"
+                    <Link 
+                      to={cs.landingPage || (cs.slug ? `/case-studies/${cs.slug}` : (cs.id === 'case-1' ? '/case-studies/epublishing-transformation' : cs.id === 'case-2' ? '/case-studies/wcag-accessibility' : '/case-studies/xml-journal-conversion'))} 
+                      className="btn btn--outline btn--block case-snapshot-btn" 
                       style={{ marginTop: '16px' }}
                     >
                       <span>View Full Case Study &amp; Practice</span>
@@ -905,7 +905,7 @@ export default function Insights() {
 
                   {/* Scrubber track */}
                   <div className="player-scrubber-track">
-                    <div
+                    <div 
                       className="player-scrubber-fill"
                       style={{ width: `${Math.min(100, (currentTime / totalDuration) * 100)}%` }}
                     />

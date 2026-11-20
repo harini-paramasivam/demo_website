@@ -10417,6 +10417,11 @@ svg.accent,
 .case-snapshot-btn {
   margin-top: 16px;
   align-self: stretch;
+  text-align: center;
+  line-height: 1.35;
+  padding: 12px 18px;
+  min-height: 48px;
+  height: auto;
 }
 
 /* Tips & Best Practices (Sub-section 3) */

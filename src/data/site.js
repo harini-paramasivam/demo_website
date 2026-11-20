@@ -2033,7 +2033,7 @@ export const content = {
         tag: 'Events',
         summary: 'Meet our team and talk to us about ePublishing, XML, and accessibility.',
         actionLabel: 'Learn More',
-        href: '/contact',
+        href: '/services/epublishing',
       },
     ],
   },
