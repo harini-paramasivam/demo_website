@@ -447,7 +447,7 @@ export const solutionsData = [
     categoryLabel: 'By Need',
     title: 'Back‑Catalogue Conversion and Accessibility',
     tag: 'Archival & Backlist',
-    icon: 'Layers',
+    icon: 'Library',
     challenges: [
       'Large archives locked in print or legacy formats',
       'Inaccessible back‑catalogues failing compliance',

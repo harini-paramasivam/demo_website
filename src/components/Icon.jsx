@@ -40,7 +40,10 @@ import {
   Play,
   Pause,
   ArrowUpRight,
-  Cpu
+  Cpu,
+  Archive,
+  Library,
+  FolderArchive
 } from 'lucide-react';
 
 const map = {
@@ -57,6 +60,9 @@ const map = {
   Quote,
   FileText,
   Layers,
+  Archive,
+  Library,
+  FolderArchive,
   Sigma,
   Tags,
   ScanText,

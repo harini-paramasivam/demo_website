@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ArrowRight, Grid, Sliders, Layers } from 'lucide-react';
 import { homeServices } from '../data/site.js';
@@ -7,6 +7,8 @@ import Icon from './Icon.jsx';
 export default function HomeServicesSlider() {
   const [viewMode, setViewMode] = useState('slider'); // 'slider' or 'grid'
   const [activeSlide, setActiveSlide] = useState(0);
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
 
   const total = homeServices.length;
 
@@ -16,6 +18,27 @@ export default function HomeServicesSlider() {
 
   const prev = () => {
     setActiveSlide((prev) => (prev - 1 + total) % total);
+  };
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current !== null && touchEndX.current !== null) {
+      const diff = touchStartX.current - touchEndX.current;
+      if (diff > 45) {
+        next();
+      } else if (diff < -45) {
+        prev();
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
   };
 
   return (
@@ -69,8 +92,13 @@ export default function HomeServicesSlider() {
       </div>
 
       {viewMode === 'slider' ? (
-        /* Slider Mode: Carousel stage showing active card + neighbor previews */
-        <div className="svc-carousel-stage">
+        /* Slider Mode: Carousel stage showing active card + neighbor previews with native touch swipe */
+        <div 
+          className="svc-carousel-stage"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className="svc-carousel-track">
             {homeServices.map((svc, idx) => {
               const isActive = idx === activeSlide;

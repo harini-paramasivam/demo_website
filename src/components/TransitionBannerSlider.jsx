@@ -15,6 +15,8 @@ export default function TransitionBannerSlider() {
   const [activeIdx, setActiveIdx] = useState(0);
   const totalSlides = transitionBannerContent.length;
   const timerRef = useRef(null);
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
 
   const nextSlide = () => {
     setActiveIdx((prev) => (prev + 1) % totalSlides);
@@ -22,6 +24,27 @@ export default function TransitionBannerSlider() {
 
   const prevSlide = () => {
     setActiveIdx((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current !== null && touchEndX.current !== null) {
+      const diff = touchStartX.current - touchEndX.current;
+      if (diff > 45) {
+        nextSlide();
+      } else if (diff < -45) {
+        prevSlide();
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
   };
 
   useEffect(() => {
@@ -37,8 +60,13 @@ export default function TransitionBannerSlider() {
       aria-label="Capabilities Showcase"
     >
       <div className="container">
-        {/* Main Banner Card with embedded Left & Right corner arrows */}
-        <div className="t-slide-stage">
+        {/* Main Banner Card with embedded Left & Right corner arrows and native touch swipe */}
+        <div 
+          className="t-slide-stage"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div 
             className="t-slide-card" 
             key={activeIdx}

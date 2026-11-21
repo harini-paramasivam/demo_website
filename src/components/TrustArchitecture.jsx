@@ -105,8 +105,8 @@ const filterTabs = [
   { id: 'partnership', label: 'Partnership & Speed', hint: 'Multi-Service Convergence, Editorial DNA & Agile Engagement Models' }
 ];
 
-export default function TrustArchitecture() {
-  const [activeFilter, setActiveFilter] = useState('standards');
+export default function TrustArchitecture({ defaultFilter = 'all' } = {}) {
+  const [activeFilter, setActiveFilter] = useState(defaultFilter);
 
   const currentTab = filterTabs.find((t) => t.id === activeFilter) || filterTabs[0];
   const filteredItems = activeFilter === 'all'

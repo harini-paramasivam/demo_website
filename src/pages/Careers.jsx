@@ -325,7 +325,9 @@ export default function Careers() {
   };
 
   const scrollToSection = (e, sectionId) => {
-    if (e) e.preventDefault();
+    if (e && e.preventDefault) e.preventDefault();
+    setGrowthExpanded(false);
+    setInclusionModalOpen(false);
     const el = document.getElementById(sectionId);
     if (el) {
       const headerOffset = 135;
@@ -488,7 +490,7 @@ export default function Careers() {
             </button>
             <button 
               type="button" 
-              onClick={() => scrollToApply()} 
+              onClick={(e) => scrollToSection(e, 'openings-section')} 
               className="career-jump-btn career-jump-btn--cta"
             >
               <Briefcase size={15} />
@@ -725,7 +727,7 @@ export default function Careers() {
                   <button
                     type="button"
                     className="btn btn--orange btn--lg"
-                    onClick={() => scrollToApply()}
+                    onClick={(e) => scrollToSection(e, 'openings-section')}
                   >
                     <span>Ready to Grow With Us? Explore Open Roles &amp; Apply</span>
                     <ArrowRight size={18} />

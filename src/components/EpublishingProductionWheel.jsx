@@ -700,7 +700,7 @@ export default function EpublishingProductionWheel({ service }) {
       if (!scalerRef.current) return;
       const width = scalerRef.current.clientWidth;
       if (width < 680 && width > 0) {
-        const computedScale = Math.min(1, Math.max(0.38, (width - 4) / 680));
+        const computedScale = Math.min(1, Math.max(0.30, (width - 4) / 680));
         setScale(computedScale);
       } else {
         setScale(1);

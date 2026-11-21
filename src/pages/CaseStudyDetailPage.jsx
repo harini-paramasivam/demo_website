@@ -109,7 +109,7 @@ export default function CaseStudyDetailPage() {
             {/* LEFT: SUMMARY & TAKEAWAYS */}
             <div className="case-detail-card case-summary-pod">
               <div className="case-detail-card-head">
-                <span className="case-detail-section-tag">
+                <span className="case-detail-section-tag case-detail-section-tag--cyan">
                   <Sparkles size={14} aria-hidden="true" />
                   <span>Executive Summary</span>
                 </span>
@@ -216,7 +216,7 @@ export default function CaseStudyDetailPage() {
             {/* RIGHT: PAIN POINTS MATRIX */}
             <div className="case-detail-card case-painpoints-pod">
               <div className="case-detail-card-head">
-                <span className="case-detail-section-tag case-detail-section-tag--purple">
+                <span className="case-detail-section-tag case-detail-section-tag--cyan">
                   <Layers size={14} aria-hidden="true" />
                   <span>Audit Findings</span>
                 </span>
@@ -271,7 +271,7 @@ export default function CaseStudyDetailPage() {
               ============================================================ */}
           <div className="case-detail-card case-results-full-card">
             <div className="case-detail-card-head" style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 2.25rem' }}>
-              <span className="case-detail-section-tag case-detail-section-tag--green">
+              <span className="case-detail-section-tag case-detail-section-tag--cyan">
                 <Award size={14} aria-hidden="true" />
                 <span>Measurable Outcomes</span>
               </span>

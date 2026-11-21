@@ -265,6 +265,20 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Lock body scroll on real mobile devices when mobile navigation drawer is open
+  useEffect(() => {
+    if (mobile) {
+      const origOverflow = document.body.style.overflow;
+      const origTouchAction = document.body.style.touchAction;
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+      return () => {
+        document.body.style.overflow = origOverflow;
+        document.body.style.touchAction = origTouchAction;
+      };
+    }
+  }, [mobile]);
+
   const closeMobile = () => {
     setMobile(false);
     setMobileSub(null);

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
 import { industrySolutions } from '../data/site.js';
@@ -6,11 +6,34 @@ import Icon from './Icon.jsx';
 
 export default function IndustrySolutionsSlider() {
   const [activeTab, setActiveTab] = useState(0);
+  const touchStartX = useRef(null);
+  const touchEndX = useRef(null);
   const total = industrySolutions.length;
   const current = industrySolutions[activeTab];
 
   const next = () => setActiveTab((prev) => (prev + 1) % total);
   const prev = () => setActiveTab((prev) => (prev - 1 + total) % total);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current !== null && touchEndX.current !== null) {
+      const diff = touchStartX.current - touchEndX.current;
+      if (diff > 45) {
+        next();
+      } else if (diff < -45) {
+        prev();
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
 
   return (
     <div className="ind-slider">
@@ -32,8 +55,13 @@ export default function IndustrySolutionsSlider() {
         ))}
       </div>
 
-      {/* Main Interactive Industry Slide Card */}
-      <div className="ind-stage">
+      {/* Main Interactive Industry Slide Card with Native Touch Gestures */}
+      <div 
+        className="ind-stage"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div className="ind-slide-card" key={current.id}>
           <div className="ind-slide-card__glow" />
 
